@@ -13,4 +13,12 @@ The software stack of Mycroft creates a hackable open source voice assistant.
 At this moment development is in very early stages and focussed on the Raspberry Pi 3B. As soon as an initial first workable version
 is created, other hardware might be added.
 
-Building instructions will follow soon...
+### Getting the code
+
+First, get the code on your system! The simplest method is via git.
+
+- `cd ~/`
+- `git clone --recurse-submodules https://github.com/j1nx/MycroftOS.git`
+- `cd MycroftOS`
+
+More building instructions will follow soon...
