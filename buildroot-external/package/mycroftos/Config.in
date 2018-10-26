@@ -1,0 +1,8 @@
+menuconfig BR2_PACKAGE_MYCROFTOS
+	bool "mycroftos-app"
+	help
+	  This is the Application layer that builds the
+	  Mycroft A.I. software stack on top of Buildroot
+	  with defaults packages and configurations.
+
+	  https://github.com/j1nx/MycroftOS/

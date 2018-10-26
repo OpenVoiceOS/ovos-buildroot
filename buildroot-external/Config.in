@@ -1,0 +1,2 @@
+source "$BR2_EXTERNAL_MYCROFTOS_PATH/package/mycroftos/Config.in"
+
