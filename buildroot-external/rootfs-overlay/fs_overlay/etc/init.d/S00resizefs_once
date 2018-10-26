@@ -1,0 +1,23 @@
+#!/bin/sh
+#
+# Auto resize root partition at first boot after init_resize
+#
+
+start() {
+	printf "Starting resize2fs_once: "
+	ROOT_DEV=$(findmnt / -o source -n) &&
+	resize2fs $ROOT_DEV &&
+	rm /etc/init.d/S00resizefs_once &&
+	echo "OK"
+}
+
+case "$1" in
+  start)
+	start
+	;;
+  *)
+	echo "Usage: $0 {start}"
+	exit 1
+esac
+
+exit $?
