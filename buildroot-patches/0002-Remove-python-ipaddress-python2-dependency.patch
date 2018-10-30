@@ -1,0 +1,23 @@
+From d9887a607e129081ed759c122c2d4d9c47b78482 Mon Sep 17 00:00:00 2001
+From: Peter Steenbergen <info@j1nx.nl>
+Date: Mon, 29 Oct 2018 14:09:20 +0100
+Subject: [PATCH 1/1] Remove python-ipaddress python2 dependency
+
+---
+ package/python-ipaddress/Config.in | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/package/python-ipaddress/Config.in b/package/python-ipaddress/Config.in
+index b2b9f0b1c3..badd8eeaed 100644
+--- a/package/python-ipaddress/Config.in
++++ b/package/python-ipaddress/Config.in
+@@ -1,6 +1,5 @@
+ config BR2_PACKAGE_PYTHON_IPADDRESS
+ 	bool "python-ipaddress"
+-	depends on BR2_PACKAGE_PYTHON
+ 	help
+ 	  Python 3.3's ipaddress for older Python versions.
+ 
+-- 
+2.11.0
+

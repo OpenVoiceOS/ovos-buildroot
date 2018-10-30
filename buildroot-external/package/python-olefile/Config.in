@@ -1,0 +1,8 @@
+config BR2_PACKAGE_PYTHON_OLEFILE
+	bool "python-olefile"
+	help
+	  Python package to parse, read and write Microsoft OLE2
+	  files (Structured Storage or Compound Document, Microsoft
+	  Office).
+
+	  https://www.decalage.info/python/olefileio

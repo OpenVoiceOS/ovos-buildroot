@@ -1,0 +1,6 @@
+config BR2_PACKAGE_PYTHON_COVERAGE
+	bool "python-coverage"
+	help
+	  Code coverage measurement for Python.
+
+	  https://bitbucket.org/ned/coveragepy

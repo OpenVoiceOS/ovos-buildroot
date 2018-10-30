@@ -1,0 +1,6 @@
+# md5, sha256 from https://pypi.org/pypi/olefile/json
+md5	af351575e53aa00c36ae1c71ee9b0043  olefile-0.46.zip
+sha256	133b031eaf8fd2c9399b78b8bc5b8fcbe4c31e85295749bb17a87cba8f3c3964  olefile-0.46.zip
+# Locally computed sha256 checksums
+sha256	04488d55ea9ac2a18400f61adc6421b5881705a943693bc7c0d9b3364dc10f39  LICENSE.txt
+sha256	303ace0d9ec3d39293b5f9f1a6954ef3a52115554151f8e421e3ad59372b7c53  doc/License.rst

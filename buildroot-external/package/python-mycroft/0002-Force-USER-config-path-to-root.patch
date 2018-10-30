@@ -1,0 +1,23 @@
+From 93b3e606dddd93e8346da265a1751ecb546c882b Mon Sep 17 00:00:00 2001
+From: Peter Steenbergen <info@j1nx.nl>
+Date: Sat, 13 Oct 2018 10:50:06 +0200
+Subject: [PATCH 1/1] Force USER config path.
+
+---
+ mycroft/configuration/locations.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/mycroft/configuration/locations.py b/mycroft/configuration/locations.py
+index 0759152f99..3666ac5dfa 100644
+--- a/mycroft/configuration/locations.py
++++ b/mycroft/configuration/locations.py
+@@ -15,5 +15,5 @@ from os.path import join, dirname, expanduser
+ 
+ DEFAULT_CONFIG = join(dirname(__file__), 'mycroft.conf')
+ SYSTEM_CONFIG = '/etc/mycroft/mycroft.conf'
+-USER_CONFIG = join(expanduser('~'), '.mycroft/mycroft.conf')
++USER_CONFIG = '/.mycroft/mycroft.conf'
+ REMOTE_CONFIG = "mycroft.ai"
+-- 
+2.11.0
+

@@ -1,0 +1,6 @@
+config BR2_PACKAGE_PYTHON_PEP8
+	bool "python-pep8"
+	help
+	  Python style guide checker.
+
+	  http://pep8.readthedocs.org/

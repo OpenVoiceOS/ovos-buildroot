@@ -1,0 +1,5 @@
+# md5, sha256 from https://pypi.org/pypi/smmap2/json
+md5	886ecac014a09cfe2259bc235cf31e2e  smmap2-2.0.4.tar.gz
+sha256	dc216005e529d57007ace27048eb336dcecb7fc413cfb3b2f402bb25972b69c6  smmap2-2.0.4.tar.gz
+# Locally computed sha256 checksums
+sha256	88e9d93f708d110b328a834302dd1d5c6afbda530e7721d15d80b3511d86f235  LICENSE

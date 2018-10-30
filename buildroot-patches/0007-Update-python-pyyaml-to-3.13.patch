@@ -1,0 +1,39 @@
+From fe4cf3fe0078c170cef37b33df04ef913ca35dfc Mon Sep 17 00:00:00 2001
+From: Peter Steenbergen <info@j1nx.nl>
+Date: Mon, 29 Oct 2018 14:22:19 +0100
+Subject: [PATCH 1/1] Update python-pyyaml to 3.13
+
+---
+ package/python-pyyaml/python-pyyaml.hash | 2 ++
+ package/python-pyyaml/python-pyyaml.mk   | 4 ++--
+ 2 files changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/package/python-pyyaml/python-pyyaml.hash b/package/python-pyyaml/python-pyyaml.hash
+index 209ab27e53..637394878f 100644
+--- a/package/python-pyyaml/python-pyyaml.hash
++++ b/package/python-pyyaml/python-pyyaml.hash
+@@ -1,3 +1,5 @@
+ # md5 from https://pypi.python.org/pypi/pyyaml/json, sha256 locally computed
+ md5 4c129761b661d181ebf7ff4eb2d79950 PyYAML-3.12.tar.gz
+ sha256 592766c6303207a20efc445587778322d7f73b161bd994f227adaa341ba212ab PyYAML-3.12.tar.gz
++sha256	c36c938a872e5ff494938b33b14aaa156cb439ec67548fcab3535bb78b0846e8 PyYAML-3.11.tar.gz
++sha256	3ef3092145e9b70e3ddd2c7ad59bdd0252a94dfe3949721633e41344de00a6bf PyYAML-3.13.tar.gz
+diff --git a/package/python-pyyaml/python-pyyaml.mk b/package/python-pyyaml/python-pyyaml.mk
+index beeaf88e96..cbf8df7b2d 100644
+--- a/package/python-pyyaml/python-pyyaml.mk
++++ b/package/python-pyyaml/python-pyyaml.mk
+@@ -4,9 +4,9 @@
+ #
+ ################################################################################
+ 
+-PYTHON_PYYAML_VERSION = 3.12
++PYTHON_PYYAML_VERSION = 3.13
+ PYTHON_PYYAML_SOURCE = PyYAML-$(PYTHON_PYYAML_VERSION).tar.gz
+-PYTHON_PYYAML_SITE = https://pypi.python.org/packages/4a/85/db5a2df477072b2902b0eb892feb37d88ac635d36245a72a6a69b23b383a
++PYTHON_PYYAML_SITE = https://files.pythonhosted.org/packages/9e/a3/1d13970c3f36777c583f136c136f804d70f500168edc1edea6daa7200769
+ PYTHON_PYYAML_SETUP_TYPE = distutils
+ PYTHON_PYYAML_LICENSE = MIT
+ PYTHON_PYYAML_LICENSE_FILES = LICENSE
+-- 
+2.11.0
+

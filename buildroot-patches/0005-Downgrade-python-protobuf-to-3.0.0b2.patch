@@ -1,0 +1,66 @@
+From 40f89d39b97402d83b2a49f05ddd7ff9031ac269 Mon Sep 17 00:00:00 2001
+From: Peter Steenbergen <info@j1nx.nl>
+Date: Mon, 29 Oct 2018 14:17:39 +0100
+Subject: [PATCH 1/1] Downgrade python-protobuf to 3.0.0b2
+
+---
+ package/python-protobuf/Config.in            | 12 ++----------
+ package/python-protobuf/python-protobuf.hash |  5 ++---
+ package/python-protobuf/python-protobuf.mk   |  7 +++----
+ 3 files changed, 7 insertions(+), 17 deletions(-)
+
+diff --git a/package/python-protobuf/Config.in b/package/python-protobuf/Config.in
+index 8a70e80ad7..5cb57da16e 100644
+--- a/package/python-protobuf/Config.in
++++ b/package/python-protobuf/Config.in
+@@ -1,14 +1,6 @@
+ config BR2_PACKAGE_PYTHON_PROTOBUF
+ 	bool "python-protobuf"
+-	# host-protobuf only builds on certain architectures
+-	depends on BR2_HOSTARCH = "x86_64" || BR2_HOSTARCH = "x86"
+-	depends on BR2_HOST_GCC_AT_LEAST_4_8 # host-protobuf
+-	select BR2_PACKAGE_PYTHON_SIX # runtime
+ 	help
+-	  Python implementation of the Google Protocol Buffers.
++	  Protocol Buffers are Google’s data interchange format.
+ 
+-	  Protocol buffers are Google's language-neutral,
+-	  platform-neutral, extensible mechanism for serializing
+-	  structured data.
+-
+-	  https://github.com/protobuf-c/protobuf-c
++	  https://developers.google.com/protocol-buffers/
+diff --git a/package/python-protobuf/python-protobuf.hash b/package/python-protobuf/python-protobuf.hash
+index 652751c7b6..23882135d6 100644
+--- a/package/python-protobuf/python-protobuf.hash
++++ b/package/python-protobuf/python-protobuf.hash
+@@ -1,3 +1,2 @@
+-# Locally calculated
+-sha256 6b399412cd68c7efe64d31824ad0db44f803aed91d0c6a9ea94272682c3da2df  protobuf-python-3.6.0.tar.gz
+-sha256 6e5e117324afd944dcf67f36cf329843bc1a92229a8cd9bb573d7a83130fea7d  LICENSE
++# md5, sha256 from https://pypi.org/pypi/pyee/json
++sha256	d5b560bbc4b7d97cc2455c05cad9299d9db02d7bd11193b05684e3a86303c229  protobuf-3.0.0b2.tar.gz
+diff --git a/package/python-protobuf/python-protobuf.mk b/package/python-protobuf/python-protobuf.mk
+index b91ba49339..3ada34dbae 100644
+--- a/package/python-protobuf/python-protobuf.mk
++++ b/package/python-protobuf/python-protobuf.mk
+@@ -4,13 +4,12 @@
+ #
+ ################################################################################
+ 
+-PYTHON_PROTOBUF_VERSION = $(PROTOBUF_VERSION)
+-PYTHON_PROTOBUF_SOURCE = protobuf-python-$(PYTHON_PROTOBUF_VERSION).tar.gz
+-PYTHON_PROTOBUF_SITE = $(PROTOBUF_SITE)
++PYTHON_PROTOBUF_VERSION = 3.0.0b2
++PYTHON_PROTOBUF_SOURCE = protobuf-$(PYTHON_PROTOBUF_VERSION).tar.gz
++PYTHON_PROTOBUF_SITE = https://files.pythonhosted.org/packages/21/e4/b27b31f5c8a650af6c9bb4f3626d411f855a5668d334d4c7419da58c0d9f
+ PYTHON_PROTOBUF_LICENSE = BSD-3-Clause
+ PYTHON_PROTOBUF_LICENSE_FILES = LICENSE
+ PYTHON_PROTOBUF_DEPENDENCIES = host-protobuf
+ PYTHON_PROTOBUF_SETUP_TYPE = setuptools
+-PYTHON_PROTOBUF_SUBDIR = python
+ 
+ $(eval $(python-package))
+-- 
+2.11.0
+

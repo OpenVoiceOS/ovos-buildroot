@@ -1,0 +1,7 @@
+config BR2_PACKAGE_PYTHON_DEPRECATED
+	bool "python-deprecated"
+	help
+	  Python @deprecated decorator to deprecate 
+	  old python classes, functions or methods..
+
+	  https://github.com/tantale/deprecated

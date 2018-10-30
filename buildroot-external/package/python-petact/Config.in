@@ -1,0 +1,6 @@
+config BR2_PACKAGE_PYTHON_PETACT
+	bool "python-petact"
+	help
+	  A package extraction tool.
+
+	  https://github.com/matthewscholefield/petact

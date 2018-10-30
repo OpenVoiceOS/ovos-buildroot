@@ -1,0 +1,6 @@
+# md5, sha256 from https://pypi.org/pypi/pulsectl/json
+sha256	b18741b8ccd34244bc132601e0ed8fd2bd68289f52d8e415c14f3606893949b1  pulsectl-17.7.4.tar.gz
+md5	eb2ebb4825b350210b14221d83c69551  pulsectl-18.8.0.tar.gz
+sha256	119d419c66b373a69628219641a6cf14d5dc3c33be82f6b38198db5633d14353  pulsectl-18.8.0.tar.gz
+# Locally computed sha256 checksums
+sha256	6844c3ddfa1f805abfb31e904b53dfc0bb8ba28bf8719e7617a783c188a1a02b  COPYING

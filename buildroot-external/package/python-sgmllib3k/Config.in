@@ -1,0 +1,6 @@
+config BR2_PACKAGE_PYTHON_SGMLLIB3K
+	bool "python-sgmllib3k"
+	help
+	  Py3k port of sgmllib.
+
+	  http://hg.hardcoded.net/sgmllib

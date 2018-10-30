@@ -1,0 +1,7 @@
+config BR2_PACKAGE_PYTHON_PYAUDIO
+	bool "python-pyaudio"
+	help
+	  Bindings for PortAudio v19, the cross-platform audio
+	  input/output stream library.
+
+	  http://people.csail.mit.edu/hubert/pyaudio/

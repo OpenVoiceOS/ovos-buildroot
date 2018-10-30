@@ -1,0 +1,8 @@
+config BR2_PACKAGE_PYTHON_MSM
+	bool "python-msm"
+	select BR2_PACKAGE_PYTHON_GITPYTHON # runtime
+	select BR2_PACKAGE_PYTHON_TYPING # runtime
+	help
+	  Mycroft Skills Manager.
+
+	  https://github.com/MycroftAI/mycroft-skills-manager

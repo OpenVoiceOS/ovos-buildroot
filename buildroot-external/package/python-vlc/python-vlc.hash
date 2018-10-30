@@ -1,0 +1,6 @@
+# md5, sha256 from https://pypi.org/pypi/python-vlc/json
+sha256	9727819d0051bfc21a17bf355f917a503be6bafdaa7c414d6bf81acc7081081d  python-vlc-1.1.2.tar.gz
+md5	7223e009debc7cca65471223a7678437  python-vlc-3.0.102.tar.gz
+sha256	c51a1c553852a08bd92176de473e15bda7d507ff5ec58005b2a9de5ca8f593a5  python-vlc-3.0.102.tar.gz
+# Locally computed sha256 checksums
+sha256	dc626520dcd53a22f727af3ee42c770e56c97a64fe3adb063799d8ab032fe551  COPYING

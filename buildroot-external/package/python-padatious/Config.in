@@ -1,0 +1,9 @@
+config BR2_PACKAGE_PYTHON_PADATIOUS
+	bool "python-padatious"
+	select BR2_PACKAGE_PYTHON_FANN2 # runtime
+	select BR2_PACKAGE_PYTHON_XXHASH # runtime
+	select BR2_PACKAGE_PYTHON_PADAOS # runtime
+	help
+	  A neural network intent parser.
+
+	  http://github.com/MycroftAI/padatious

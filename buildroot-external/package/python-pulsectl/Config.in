@@ -1,0 +1,8 @@
+config BR2_PACKAGE_PYTHON_PULSECTL
+	bool "python-pulsectl"
+	select BR2_PACKAGE_PYTHON_SETUPTOOLS # runtime
+	help
+	  Python high-level interface and ctypes-based bindings for
+	  PulseAudio (libpulse).
+
+	  http://github.com/mk-fg/python-pulse-control

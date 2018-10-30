@@ -1,0 +1,6 @@
+# md5, sha256 from https://pypi.org/pypi/xxhash/json
+md5	e8d6615df1d8465c40248184d4f2f1ef  xxhash-1.2.0.tar.gz
+sha256	61202733bd596c73b11af61023c423fa762b020ddf4e5b38730db9de5c6335ef  xxhash-1.2.0.tar.gz
+# Locally computed sha256 checksums
+sha256	6ad46eaa8ec28ec92b4b83da3d1711e1d8c7bbf6138952c3a8f4bec46bdaaa6d  LICENSE
+sha256	86ec6953794503942b70fcd4f35b565d44f63f703b7037ce44dad965c4aaae91  deps/xxhash/LICENSE

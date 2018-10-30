@@ -1,0 +1,6 @@
+config BR2_PACKAGE_PYTHON_PYGITHUB
+	bool "python-pygithub"
+	help
+	  Use the full Github API v3
+
+	  http://pygithub.readthedocs.io/en/latest/

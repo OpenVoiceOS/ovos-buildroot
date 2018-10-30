@@ -1,0 +1,6 @@
+config BR2_PACKAGE_PYTHON_XMLRUNNER
+	bool "python-xmlrunner"
+	help
+	  PyUnit-based test runner with JUnit like XML reporting.
+
+	  https://github.com/pycontribs/xmlrunner
