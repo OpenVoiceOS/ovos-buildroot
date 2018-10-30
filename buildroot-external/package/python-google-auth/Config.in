@@ -1,0 +1,10 @@
+config BR2_PACKAGE_PYTHON_GOOGLE_AUTH
+	bool "python-google-auth"
+	select BR2_PACKAGE_PYTHON_PYASN1_MODULES # runtime
+	select BR2_PACKAGE_PYTHON_RSA # runtime
+	select BR2_PACKAGE_PYTHON_SIX # runtime
+	select BR2_PACKAGE_PYTHON_CACHETOOLS # runtime
+	help
+	  Google Authentication Library.
+
+	  https://github.com/GoogleCloudPlatform/google-auth-library-python

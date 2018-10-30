@@ -1,0 +1,6 @@
+# md5, sha256 from https://pypi.org/pypi/requests-futures/json
+md5	e26d2af8099b3235d696620dcb02a75b  requests-futures-0.9.7.tar.gz
+sha256	a9ca2c3480b6fac29ec5de59c146742e2ab2b60f8c68581766094edb52ea7bad  requests-futures-0.9.7.tar.gz
+# Locally computed sha256 checksums
+sha256	447bc9654d46e2b301eac16686b3730645846717f5a5ff400b177b28245b408d  LICENSE
+sha256	33aa8a3b7892850701707d7e094b1e1ce7c4f7a36ff2a1dcc2da4e01a1a00f7e  requests-futures-0.9.5.tar.gz

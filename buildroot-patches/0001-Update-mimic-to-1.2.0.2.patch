@@ -1,0 +1,90 @@
+From 1c97c05ae21762932e4a7dece3996a4872c769db Mon Sep 17 00:00:00 2001
+From: Peter Steenbergen <info@j1nx.nl>
+Date: Mon, 29 Oct 2018 09:56:56 +0100
+Subject: [PATCH 1/1] Update mimic to 1.2.0.2
+
+---
+ package/mimic/0001-disable-werror.patch | 13 +++++++++++++
+ package/mimic/Config.in                 |  2 ++
+ package/mimic/mimic.hash                |  1 +
+ package/mimic/mimic.mk                  | 14 ++++++++++----
+ 4 files changed, 26 insertions(+), 4 deletions(-)
+ create mode 100644 package/mimic/0001-disable-werror.patch
+
+diff --git a/package/mimic/0001-disable-werror.patch b/package/mimic/0001-disable-werror.patch
+new file mode 100644
+index 0000000000..ad37023390
+--- /dev/null
++++ b/package/mimic/0001-disable-werror.patch
+@@ -0,0 +1,13 @@
++Removing the -Werror FLAG
++
++diff --git a/Makefile.am b/Makefile.am
++--- a/Makefile.am
+++++ b/Makefile.am
++@@ -1,6 +1,6 @@
++ ACLOCAL_AMFLAGS = -I m4
++ 
++-AM_CPPFLAGS = -Wall -Werror -I$(top_srcdir)/include $(ICU_CFLAGS)
+++AM_CPPFLAGS = -Wall -I$(top_srcdir)/include $(ICU_CFLAGS)
++ 
++ SUBDIRS = .
++ 
+diff --git a/package/mimic/Config.in b/package/mimic/Config.in
+index 79641d3790..254b1844ad 100644
+--- a/package/mimic/Config.in
++++ b/package/mimic/Config.in
+@@ -4,6 +4,8 @@ comment "mimic needs a toolchain w/ wchar"
+ config BR2_PACKAGE_MIMIC
+ 	bool "mimic"
+ 	depends on BR2_USE_WCHAR
++	select BR2_PACKAGE_ICU
++	select BR2_PACKAGE_PCRE2
+ 	help
+ 	  Mimic is a fast, lightweight Text-to-speech engine developed
+ 	  by Mycroft A.I. and VocaliD, based on Carnegie Mellon
+diff --git a/package/mimic/mimic.hash b/package/mimic/mimic.hash
+index 39d016548a..4570ed91db 100644
+--- a/package/mimic/mimic.hash
++++ b/package/mimic/mimic.hash
+@@ -1,2 +1,3 @@
+ # Locally calculated
+ sha256	725003c9972d5b67c49d5ea6a89cb26b63414ff2c7adbbaf9200cf9eb55f80eb  mimic-1.1.0.tar.gz
++sha256  6adcc9911b09d6e9513add41ad9dfc0893ece277f556419869520a0f0708c102  mimic-1.2.0.2.tar.gz
+diff --git a/package/mimic/mimic.mk b/package/mimic/mimic.mk
+index 2d246561c9..a64b3d50bb 100644
+--- a/package/mimic/mimic.mk
++++ b/package/mimic/mimic.mk
+@@ -4,12 +4,12 @@
+ #
+ ################################################################################
+ 
+-MIMIC_VERSION = 1.1.0
++MIMIC_VERSION = 1.2.0.2
+ MIMIC_SITE = $(call github,MycroftAI,mimic,$(MIMIC_VERSION))
+ MIMIC_LICENSE = MIT
+ MIMIC_LICENSE_FILES = COPYING
+-
+-MIMIC_DEPENDENCIES = host-pkgconf
++MIMIC_AUTORECONF = YES
++MIMIC_DEPENDENCIES = host-pkgconf host-automake host-autoconf host-libtool
+ 
+ ifeq ($(BR2_PACKAGE_MIMIC_AUDIO_BACKEND_ALSA),y)
+ MIMIC_AUDIO_BACKEND = alsa
+@@ -24,6 +24,12 @@ else ifeq ($(BR2_PACKAGE_MIMIC_AUDIO_BACKEND_NONE),y)
+ MIMIC_AUDIO_BACKEND = none
+ endif
+ 
+-MIMIC_CONF_OPTS += --with-audio=$(MIMIC_AUDIO_BACKEND)
++define MIMIC_RUN_AUTOGEN
++	cd $(@D) && PATH=$(BR_PATH) ./autogen.sh
++endef
++
++MIMIC_CONF_OPTS += --prefix="/usr/local" --with-audio=$(MIMIC_AUDIO_BACKEND)
++
++MIMIC_PRE_CONFIGURE_HOOKS += MIMIC_RUN_AUTOGEN
+ 
+ $(eval $(autotools-package))
+-- 
+2.11.0
+

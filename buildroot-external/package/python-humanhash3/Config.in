@@ -1,0 +1,6 @@
+config BR2_PACKAGE_PYTHON_HUMANHASH3
+	bool "python-humanhash3"
+	help
+	  Human-readable representations of digests.
+
+	  https://github.com/blag/humanhash

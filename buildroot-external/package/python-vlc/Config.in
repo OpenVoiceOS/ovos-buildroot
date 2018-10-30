@@ -1,0 +1,6 @@
+config BR2_PACKAGE_PYTHON_VLC
+	bool "python-vlc"
+	help
+	  VLC bindings for python.
+
+	  http://wiki.videolan.org/PythonBinding

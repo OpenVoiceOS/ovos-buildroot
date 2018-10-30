@@ -1,0 +1,6 @@
+config BR2_PACKAGE_PYTHON_MONOTONIC
+	bool "python-monotonic"
+	help
+	  An implementation of time.monotonic() for Python 2 & < 3.3.
+
+	  https://github.com/atdt/monotonic

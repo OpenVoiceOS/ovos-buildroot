@@ -1,0 +1,6 @@
+# md5, sha256 from https://pypi.org/pypi/pychromecast/json
+sha256	addc87ecb769c6883756081e0e775d6cac0b45b6698419d7419c589ff7f55244  PyChromecast-0.7.7.tar.gz
+md5	4449701d330e33b8694aa7582662958c  PyChromecast-2.3.0.tar.gz
+sha256	f385168e34d2ef47f976c8e41bad2f58f5ca004634c0ccb1a12623d8beb2fa38  PyChromecast-2.3.0.tar.gz
+# Locally computed sha256 checksums
+sha256	8d2bcee690b23cc4cbeb8efd79a38bd73d301de169db61f136cdf97b8279db34  LICENSE

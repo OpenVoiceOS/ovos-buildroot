@@ -1,0 +1,11 @@
+config BR2_PACKAGE_PYTHON_GOOGLE_API_PYTHON_CLIENT
+	bool "python-google-api-python-client"
+	select BR2_PACKAGE_PYTHON_HTTPLIB2 # runtime
+	select BR2_PACKAGE_PYTHON_GOOGLE_AUTH # runtime
+	select BR2_PACKAGE_PYTHON_GOOGLE_AUTH_HTTPLIB2 # runtime
+	select BR2_PACKAGE_PYTHON_SIX # runtime
+	select BR2_PACKAGE_PYTHON_URITEMPLATE # runtime
+	help
+	  Google API Client Library for Python.
+
+	  http://github.com/google/google-api-python-client/

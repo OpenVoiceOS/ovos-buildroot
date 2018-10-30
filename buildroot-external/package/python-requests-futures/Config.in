@@ -1,0 +1,7 @@
+config BR2_PACKAGE_PYTHON_REQUESTS_FUTURES
+	bool "python-requests-futures"
+	select BR2_PACKAGE_PYTHON_REQUESTS # runtime
+	help
+	  Asynchronous Python HTTP for Humans.
+
+	  https://github.com/ross/requests-futures

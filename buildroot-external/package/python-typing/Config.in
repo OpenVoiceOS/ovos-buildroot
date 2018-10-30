@@ -1,0 +1,6 @@
+config BR2_PACKAGE_PYTHON_TYPING
+	bool "python-typing"
+	help
+	  Type Hints for Python.
+
+	  https://docs.python.org/3/library/typing.html

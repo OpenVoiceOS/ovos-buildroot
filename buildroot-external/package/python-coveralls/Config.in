@@ -1,0 +1,9 @@
+config BR2_PACKAGE_PYTHON_COVERALLS
+	bool "python-coveralls"
+	select BR2_PACKAGE_PYTHON_DOCOPT # runtime
+	select BR2_PACKAGE_PYTHON_COVERAGE # runtime
+	select BR2_PACKAGE_PYTHON_REQUESTS # runtime
+	help
+	  Show coverage stats online via coveralls.io.
+
+	  http://github.com/coveralls-clients/coveralls-python

@@ -1,0 +1,7 @@
+config BR2_PACKAGE_PYTHON_POCKETSPHINX
+	bool "python-pocketsphinx"
+	help
+	  Python interface to CMU Sphinxbase and Pocketsphinx
+	  libraries.
+
+	  https://github.com/bambocher/pocketsphinx-python

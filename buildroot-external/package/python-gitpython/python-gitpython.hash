@@ -1,0 +1,5 @@
+# md5, sha256 from https://pypi.org/pypi/GitPython/json
+md5	cee43a39a1468084d49d1c49fb675204  GitPython-2.1.11.tar.gz
+sha256	8237dc5bfd6f1366abeee5624111b9d6879393d84745a507de0fda86043b65a8  GitPython-2.1.11.tar.gz
+# Locally computed sha256 checksums
+sha256	fd657ffc2cef63d25c78cab7808d414dd03a282e63893491fd11c32f98be67fb  LICENSE

@@ -1,0 +1,8 @@
+config BR2_PACKAGE_PYTHON_GOOGLE_AUTH_HTTPLIB2
+	bool "python-google-auth-httplib2"
+	select BR2_PACKAGE_PYTHON_GOOGLE_AUTH # runtime
+	select BR2_PACKAGE_PYTHON_HTTPLIB2 # runtime
+	help
+	  Google Authentication Library: httplib2 transport.
+
+	  https://github.com/GoogleCloudPlatform/google-auth-library-python-httplib2

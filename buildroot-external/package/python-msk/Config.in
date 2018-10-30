@@ -1,0 +1,10 @@
+config BR2_PACKAGE_PYTHON_MSK
+	bool "python-msk"
+	select BR2_PACKAGE_PYTHON_GITPYTHON # runtime
+	select BR2_PACKAGE_PYTHON_TYPING # runtime
+	select BR2_PACKAGE_PYTHON_MSM # runtime
+	select BR2_PACKAGE_PYTHON_PYGITHUB # runtime
+	help
+	  Mycroft Skills Kit.
+
+	  https://github.com/MycroftAI/mycroft-skills-kit

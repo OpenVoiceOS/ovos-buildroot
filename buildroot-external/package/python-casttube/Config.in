@@ -1,0 +1,7 @@
+config BR2_PACKAGE_PYTHON_CASTTUBE
+	bool "python-casttube"
+	select BR2_PACKAGE_PYTHON_REQUESTS # runtime
+	help
+	  YouTube chromecast api.
+
+	  http://github.com/ur1katz/casttube

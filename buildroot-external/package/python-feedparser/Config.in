@@ -1,0 +1,7 @@
+config BR2_PACKAGE_PYTHON_FEEDPARSER
+	bool "python-feedparser"
+	help
+	  Universal feed parser, handles RSS 0.9x, RSS 1.0, RSS 2.0,
+	  CDF, Atom 0.3, and Atom 1.0 feeds.
+
+	  https://github.com/kurtmckee/feedparser

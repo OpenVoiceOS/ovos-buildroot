@@ -1,0 +1,10 @@
+config BR2_PACKAGE_PYTHON_PYCHROMECAST
+	bool "python-pychromecast"
+	select BR2_PACKAGE_PYTHON_REQUESTS # runtime
+	select BR2_PACKAGE_PYTHON_PROTOBUF # runtime
+	select BR2_PACKAGE_PYTHON_ZEROCONF # runtime
+	select BR2_PACKAGE_PYTHON_CASTTUBE # runtime
+	help
+	  Python module to talk to Google Chromecast.
+
+	  https://github.com/balloob/pychromecast

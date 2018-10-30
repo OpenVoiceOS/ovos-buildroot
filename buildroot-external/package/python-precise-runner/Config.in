@@ -1,0 +1,7 @@
+config BR2_PACKAGE_PYTHON_PRECISE_RUNNER
+	bool "python-precise-runner"
+	select BR2_PACKAGE_PYTHON_PYAUDIO # runtime
+	help
+	  Wrapper to use Mycroft Precise Wake Word Listener.
+
+	  http://github.com/MycroftAI/mycroft-precise

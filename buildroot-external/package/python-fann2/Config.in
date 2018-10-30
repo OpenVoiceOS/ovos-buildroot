@@ -1,0 +1,7 @@
+config BR2_PACKAGE_PYTHON_FANN2
+	bool "python-fann2"
+	depends on BR2_PACKAGE_PYTHON3
+	help
+	  Fast Artificial Neural Network Library (FANN) Python bindings.
+
+	  https://github.com/FutureLinkCorporation/fann2

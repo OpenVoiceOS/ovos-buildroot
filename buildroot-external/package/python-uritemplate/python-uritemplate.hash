@@ -1,0 +1,5 @@
+# md5, sha256 from https://pypi.org/pypi/uritemplate/json
+md5	1ec31e0d8a2eec72357b2cef4bce5945  uritemplate-3.0.0.tar.gz
+sha256	c02643cebe23fc8adb5e6becffe201185bf06c40bda5c0b4028a93f1527d011d  uritemplate-3.0.0.tar.gz
+# Locally computed sha256 checksums
+sha256	b6408be3e63037044329f4198584d59124e913fcd7845bf8379e7fd9a43aac90  LICENSE
