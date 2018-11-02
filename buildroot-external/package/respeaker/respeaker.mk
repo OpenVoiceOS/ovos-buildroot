@@ -7,7 +7,7 @@
 RESPEAKER_VERSION = be0812c70be29b0666a89f22a9d403cfb4c48fca
 RESPEAKER_SITE = $(call github,respeaker,seeed-voicecard,$(RESPEAKER_VERSION))
 RESPEAKER_LICENSE = GNU General Public License v3.0
-RESPEAKER_DEPENDENCIES = rpi-firmware
+RESPEAKER_DEPENDENCIES = rpi-firmware rpi-userland dtc
 
 $(eval $(kernel-module))
 

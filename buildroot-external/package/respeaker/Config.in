@@ -1,6 +1,7 @@
 config BR2_PACKAGE_RESPEAKER
 	bool "respeaker"
 	select BR2_PACKAGE_RPI_USERLAND
+	select BR2_PACKAGE_DTC
 	help
 	  The ReSpeaker series is a family of 
 	  development boards designed to enable 
