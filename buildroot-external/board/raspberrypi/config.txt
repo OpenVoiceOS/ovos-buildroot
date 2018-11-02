@@ -24,3 +24,8 @@ dtparam=audio=on
 
 # Disable rainbow color splash
 disable_splash=1
+
+# Enable some optional hardware interfaces
+dtparam=i2c_arm=on
+dtoverlay=i2s-mmap
+dtparam=i2s=on
