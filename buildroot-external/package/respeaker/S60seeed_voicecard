@@ -7,6 +7,7 @@ umask 077
 
 start() {
 	printf "Starting seeed-voicecard: "
+	mount -t configfs none /sys/kernel/config
 	/usr/bin/seeed-voicecard
 	touch /var/lock/seeed-voicecard
 	echo "OK"
