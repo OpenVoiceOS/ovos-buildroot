@@ -1,0 +1,16 @@
+#!/bin/bash
+set -e
+
+echo "Resize data partition ..."
+parted /dev/mmcblk0 unit % resizepart 2 yes 100%
+echo "Resize partition done"
+
+partprobe /dev/mmcblk0
+sync
+
+echo "Resize data filesystem ..."
+resize2fs /dev/mmcblk0p2
+echo "Resize filesystem done"
+
+chmod -x /etc/init.d/S00resize_sdcard
+
