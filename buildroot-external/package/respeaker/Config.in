@@ -1,0 +1,17 @@
+config BR2_PACKAGE_RESPEAKER
+	bool "respeaker"
+	select BR2_PACKAGE_RPI_USERLAND
+	select BR2_PACKAGE_DTC
+	select BR2_PACKAGE_DTC_PROGRAMS
+	help
+	  The ReSpeaker series is a family of 
+	  development boards designed to enable 
+	  a future where voice interface is part 
+	  of everyday human-device interaction. 
+	  Designed to be easily integrated (and 
+	  customized) into products, but also to 
+	  allow other services and products to be 
+	  easily integrated into it.
+
+	  https://respeaker.io/
+
