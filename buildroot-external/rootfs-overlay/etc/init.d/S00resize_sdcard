@@ -1,16 +1,25 @@
-#!/bin/bash
-set -e
+#!/bin/sh
+#
+# Resize SD card
+#
 
-echo "Resize data partition ..."
-parted /dev/mmcblk0 unit % resizepart 2 yes 100%
-echo "Resize partition done"
+start() {
+	printf "Resize data partition ..."
+	parted /dev/mmcblk0 unit % resizepart 2 yes 100% &&
+	partprobe /dev/mmcblk0 &&
+	sync &&
+	resize2fs /dev/mmcblk0p2 &&
+	chmod -x /etc/init.d/S00resize_sdcard &&
+	echo "[OK]"
+}
 
-partprobe /dev/mmcblk0
-sync
+case "$1" in
+  start)
+        start
+        ;;
+  *)
+        echo "Usage: $0 {start}"
+        exit 1
+esac
 
-echo "Resize data filesystem ..."
-resize2fs /dev/mmcblk0p2
-echo "Resize filesystem done"
-
-chmod -x /etc/init.d/S00resize_sdcard
-
+exit $?
