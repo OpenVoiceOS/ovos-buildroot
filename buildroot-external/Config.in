@@ -1,5 +1,6 @@
 menu "Additional libraries and applications"
 	source "$BR2_EXTERNAL_MYCROFTOS_PATH/package/fann/Config.in"
+	source "$BR2_EXTERNAL_MYCROFTOS_PATH/package/nodogsplash/Config.in"
 endmenu
 menu "Additional external python modules"
         source "$BR2_EXTERNAL_MYCROFTOS_PATH/package/python-adapt-parser/Config.in"
