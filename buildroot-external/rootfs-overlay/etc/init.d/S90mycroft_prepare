@@ -23,7 +23,18 @@ start() {
 	if ping -q -c 1 -W 1 1.1.1.1 >/dev/null 2>&1 ; then
         	return 0
     	fi
+
+	# Check if /.mycroft exist already and if not
+        # create a symbolic link to /root/.mycroft
+        if [[ ! -w /.mycroft/ ]] ; then
+                # Creating .mycroft symlink
+                printf "Creating /.mycroft/ symlink"
+                if [[ ! -d /.mycroft/ ]] ; then
+                        ln -s /root/.mycroft /.mycroft
+                fi
+        fi
 }
+
 case "$1" in
   start)
 	start
