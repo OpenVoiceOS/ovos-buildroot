@@ -1,1 +1,1 @@
-root=/dev/mmcblk0p2 console=tty3 consoleblank=0 loglevel=3 vt.global_cursor_default=0 logo.nologo rootwait fastboot noswap quiet
+root=/dev/mmcblk0p2 console=tty3 consoleblank=0 loglevel=1 vt.global_cursor_default=0 logo.nologo rootwait fastboot noswap quiet
