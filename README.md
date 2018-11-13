@@ -13,7 +13,7 @@ More information about the Mycroft A.I. software stack at https://mycroft.ai
 
 ## Stats:
 
-| [![Build Status](https://travis-ci.org/j1nx/MycroftOS.svg?branch=develop)](https://travis-ci.org/j1nx/MycroftOS) || [![GitHub last commit](https://img.shields.io/github/last-commit/google/skia.svg)](https://github.com/j1nx/MycroftOS/commits/develop) |
+| [![Build Status](https://travis-ci.org/j1nx/MycroftOS.svg?branch=develop)](https://travis-ci.org/j1nx/MycroftOS) | [![GitHub last commit](https://img.shields.io/github/last-commit/google/skia.svg)](https://github.com/j1nx/MycroftOS/commits/develop) |
 |:---:|:---:|
 | This shows if the code is valid and can be build. | This shows when this repo was updated for the last time |
 | [![GitHub stars](https://img.shields.io/github/stars/j1nx/MycroftOS.svg)](https://github.com/j1nx/MycroftOS/stargazers) | [![GitHub issues](https://img.shields.io/github/issues/j1nx/home_assistant_config.svg)](https://github.com/j1nx/MycroftOS/issues) |
