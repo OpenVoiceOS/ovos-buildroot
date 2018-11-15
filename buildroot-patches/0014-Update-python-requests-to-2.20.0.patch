@@ -1,0 +1,40 @@
+From 4ab4440998021d962d1fca4e0db9666e9905a547 Mon Sep 17 00:00:00 2001
+From: Peter Steenbergen <info@j1nx.nl>
+Date: Wed, 14 Nov 2018 19:39:38 +0100
+Subject: [PATCH 1/1] Update python-requests to 2.20.0
+
+---
+ package/python-requests/python-requests.hash | 1 +
+ package/python-requests/python-requests.mk   | 4 ++--
+ 2 files changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/package/python-requests/python-requests.hash b/package/python-requests/python-requests.hash
+index b71fe86ee7..784d6cbf6c 100644
+--- a/package/python-requests/python-requests.hash
++++ b/package/python-requests/python-requests.hash
+@@ -1,5 +1,6 @@
+ # md5, sha256 from https://pypi.org/pypi/requests/json
+ md5	6c1a31afec9d614e2e71a91ee6ca2878  requests-2.19.1.tar.gz
+ sha256	ec22d826a36ed72a7358ff3fe56cbd4ba69dd7a6718ffd450ff0e9df7a47ce6a  requests-2.19.1.tar.gz
++sha256	99dcfdaaeb17caf6e526f32b6a7b780461512ab3f1d992187801694cba42770c  requests-2.20.0.tar.gz
+ # Locally computed sha256 checksums
+ sha256	82a869fe4e967449956d26a546adc762acace028852ce81ba16c3c5b1d76b15b  LICENSE
+diff --git a/package/python-requests/python-requests.mk b/package/python-requests/python-requests.mk
+index 881d196526..358835d816 100644
+--- a/package/python-requests/python-requests.mk
++++ b/package/python-requests/python-requests.mk
+@@ -4,9 +4,9 @@
+ #
+ ################################################################################
+ 
+-PYTHON_REQUESTS_VERSION = 2.19.1
++PYTHON_REQUESTS_VERSION = 2.20.0
+ PYTHON_REQUESTS_SOURCE = requests-$(PYTHON_REQUESTS_VERSION).tar.gz
+-PYTHON_REQUESTS_SITE = https://files.pythonhosted.org/packages/54/1f/782a5734931ddf2e1494e4cd615a51ff98e1879cbe9eecbdfeaf09aa75e9
++PYTHON_REQUESTS_SITE = https://files.pythonhosted.org/packages/97/10/92d25b93e9c266c94b76a5548f020f3f1dd0eb40649cb1993532c0af8f4c
+ PYTHON_REQUESTS_SETUP_TYPE = setuptools
+ PYTHON_REQUESTS_LICENSE = Apache-2.0
+ PYTHON_REQUESTS_LICENSE_FILES = LICENSE
+-- 
+2.11.0
+
