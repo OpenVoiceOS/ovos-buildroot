@@ -1,7 +1,7 @@
-From 4ab4440998021d962d1fca4e0db9666e9905a547 Mon Sep 17 00:00:00 2001
+From eda2b1e6268b4410f62e220c7565528c75657d38 Mon Sep 17 00:00:00 2001
 From: Peter Steenbergen <info@j1nx.nl>
-Date: Wed, 14 Nov 2018 19:39:38 +0100
-Subject: [PATCH 1/1] Update python-requests to 2.20.0
+Date: Tue, 8 Jan 2019 14:42:40 +0100
+Subject: [PATCH 1/1] Downgrade python-requests to 2.20.0
 
 ---
  package/python-requests/python-requests.hash | 1 +
@@ -9,28 +9,28 @@ Subject: [PATCH 1/1] Update python-requests to 2.20.0
  2 files changed, 3 insertions(+), 2 deletions(-)
 
 diff --git a/package/python-requests/python-requests.hash b/package/python-requests/python-requests.hash
-index b71fe86ee7..784d6cbf6c 100644
+index e3b77744af..f7d20ab1a3 100644
 --- a/package/python-requests/python-requests.hash
 +++ b/package/python-requests/python-requests.hash
 @@ -1,5 +1,6 @@
  # md5, sha256 from https://pypi.org/pypi/requests/json
- md5	6c1a31afec9d614e2e71a91ee6ca2878  requests-2.19.1.tar.gz
- sha256	ec22d826a36ed72a7358ff3fe56cbd4ba69dd7a6718ffd450ff0e9df7a47ce6a  requests-2.19.1.tar.gz
+ md5	2918817ea4688f4ea21cb4b11e353448  requests-2.20.1.tar.gz
+ sha256	ea881206e59f41dbd0bd445437d792e43906703fff75ca8ff43ccdb11f33f263  requests-2.20.1.tar.gz
 +sha256	99dcfdaaeb17caf6e526f32b6a7b780461512ab3f1d992187801694cba42770c  requests-2.20.0.tar.gz
  # Locally computed sha256 checksums
- sha256	82a869fe4e967449956d26a546adc762acace028852ce81ba16c3c5b1d76b15b  LICENSE
+ sha256	be41abac2c40f8530307e8d172c590b476f4a488bc6a68f8de57b7cf64786687  LICENSE
 diff --git a/package/python-requests/python-requests.mk b/package/python-requests/python-requests.mk
-index 881d196526..358835d816 100644
+index 0c327759b0..358835d816 100644
 --- a/package/python-requests/python-requests.mk
 +++ b/package/python-requests/python-requests.mk
 @@ -4,9 +4,9 @@
  #
  ################################################################################
  
--PYTHON_REQUESTS_VERSION = 2.19.1
+-PYTHON_REQUESTS_VERSION = 2.20.1
 +PYTHON_REQUESTS_VERSION = 2.20.0
  PYTHON_REQUESTS_SOURCE = requests-$(PYTHON_REQUESTS_VERSION).tar.gz
--PYTHON_REQUESTS_SITE = https://files.pythonhosted.org/packages/54/1f/782a5734931ddf2e1494e4cd615a51ff98e1879cbe9eecbdfeaf09aa75e9
+-PYTHON_REQUESTS_SITE = https://files.pythonhosted.org/packages/40/35/298c36d839547b50822985a2cf0611b3b978a5ab7a5af5562b8ebe3e1369
 +PYTHON_REQUESTS_SITE = https://files.pythonhosted.org/packages/97/10/92d25b93e9c266c94b76a5548f020f3f1dd0eb40649cb1993532c0af8f4c
  PYTHON_REQUESTS_SETUP_TYPE = setuptools
  PYTHON_REQUESTS_LICENSE = Apache-2.0
