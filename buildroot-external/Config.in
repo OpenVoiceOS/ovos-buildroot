@@ -51,5 +51,4 @@ menu "Additional external python modules"
 	source "$BR2_EXTERNAL_MYCROFTOS_PATH/package/python-vlc/Config.in"
 	source "$BR2_EXTERNAL_MYCROFTOS_PATH/package/python-xmlrunner/Config.in"
 	source "$BR2_EXTERNAL_MYCROFTOS_PATH/package/python-xxhash/Config.in"
-	source "$BR2_EXTERNAL_MYCROFTOS_PATH/package/python-zeroconf/Config.in"
 endmenu
