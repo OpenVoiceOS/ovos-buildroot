@@ -1,4 +1,4 @@
-# <img src='https://rawgithub.com/FortAwesome/Font-Awesome/master/advanced-options/raw-svg/solid/cogs.svg' card_color='#22a7f0' width='50' height='50' style='vertical-align:bottom'/> MycroftOS
+# <img src='https://lh4.googleusercontent.com/7IAT3nWyZ8sscizAH9GJ6m9fAACJ16lFbv5_9yIuFvZPyH-St5KifweRxkqH0w7ohTe98V2sOfp0XUvz-FAN=w1920-h938-rw' width='50' height='50' style='vertical-align:bottom'/> MycroftOS
 MycroftOS is a bare minimal linux OS based on Buildroot to run the Mycroft A.I. software stack on embedded devices. 
 The software stack of Mycroft creates a hackable open source voice assistant.
 
@@ -7,7 +7,7 @@ More information about the Mycroft A.I. software stack at https://mycroft.ai
 
 ## System.
 - Linux kernel 4.14 (LT)
-- Buildroot 2018.08.x
+- Buildroot 2018.11.x
 - Mycroft 18.08.x
 - Raspberry Pi 3B (initial development hardware)
 
@@ -45,9 +45,9 @@ Then we can build the image(s) by running the following command;
 ... More building instructions will follow soon ...
 
 ## Credits
-Mycroft AI (@MycroftAI)
+Mycroft AI (@MycroftAI)<br>
 Buildroot (@buildroot)
 
-Inspired by;
-HassOS (@home-assistant)
+### Inspired by;
+HassOS (@home-assistant)<br>
 Recalbox (Gitlab - @recalbox)
