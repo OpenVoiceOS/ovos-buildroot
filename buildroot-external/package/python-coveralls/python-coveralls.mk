@@ -4,9 +4,9 @@
 #
 ################################################################################
 
-PYTHON_COVERALLS_VERSION = 1.5.0
+PYTHON_COVERALLS_VERSION = 1.5.1
 PYTHON_COVERALLS_SOURCE = coveralls-$(PYTHON_COVERALLS_VERSION).tar.gz
-PYTHON_COVERALLS_SITE = https://files.pythonhosted.org/packages/b4/2f/aa954703728177258a935b766004f7504b9a4ff8c8aec0adee3d311feec2
+PYTHON_COVERALLS_SITE = https://files.pythonhosted.org/packages/d2/4a/d0966ab522988667a9f23886dcec5cc029f1eb9848843466fbd2bb7a37fb
 PYTHON_COVERALLS_SETUP_TYPE = setuptools
 PYTHON_COVERALLS_LICENSE = MIT
 PYTHON_COVERALLS_LICENSE_FILES = LICENSE.txt

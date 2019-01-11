@@ -1,5 +1,6 @@
 # md5, sha256 from https://pypi.org/pypi/coveralls/json
 md5	17590cc28420c62c654d23ae4f2d0ada  coveralls-1.5.0.tar.gz
 sha256	9dee67e78ec17b36c52b778247762851c8e19a893c9a14e921a2fc37f05fac22  coveralls-1.5.0.tar.gz
+sha256  ab638e88d38916a6cedbf80a9cd8992d5fa55c77ab755e262e00b36792b7cd6d  coveralls-1.5.1.tar.gz
 # Locally computed sha256 checksums
 sha256	2bdbe1aad6b2e8ed03146162233339b470815ad576986377dbd541b9c032f72f  LICENSE.txt
