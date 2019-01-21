@@ -1,4 +1,4 @@
-# <img src='https://lh4.googleusercontent.com/7IAT3nWyZ8sscizAH9GJ6m9fAACJ16lFbv5_9yIuFvZPyH-St5KifweRxkqH0w7ohTe98V2sOfp0XUvz-FAN=w1920-h938-rw' width='50' height='50' style='vertical-align:bottom'/> MycroftOS
+# <img src='https://camo.githubusercontent.com/48b782bbddb51b97cf2971fda5817080075f7799/68747470733a2f2f7261772e6769746861636b2e636f6d2f466f7274417765736f6d652f466f6e742d417765736f6d652f6d61737465722f737667732f736f6c69642f636f67732e737667' width='50' height='50' style='vertical-align:bottom'/> MycroftOS
 MycroftOS is a bare minimal linux OS based on Buildroot to run the Mycroft A.I. software stack on embedded devices. 
 The software stack of Mycroft creates a hackable open source voice assistant.
 
