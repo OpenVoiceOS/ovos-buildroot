@@ -1,0 +1,8 @@
+#!/bin/sh
+#
+# Load seeed-voicecard modules....
+#
+
+modprobe snd-soc-seeed-voicecard
+modprobe snd-soc-ac108
+modprobe snd-soc-wm8960
