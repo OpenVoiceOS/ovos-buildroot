@@ -4,108 +4,105 @@
 
 The following Python libraries are installed when Mycroft has been fully booted and configured;
 
-# pip list
-Package                  Version
------------------------- ----------
-adapt-parser             0.3.0
-arrow                    0.10.0
-astral                   1.4
-beautifulsoup4           4.5.3
-bs4                      0.0.1
-cachetools               2.1.0
-casttube                 0.1.0
-certifi                  2018.10.15
-cffi                     1.11.2
-chardet                  3.0.4
-Click                    7.0
-configshell-fb           1.1.18
-coverage                 4.5.1
-coveralls                1.5.1
-daemonize                2.4.7
-ddg3                     0.6.6
-Deprecated               1.2.3
-docopt                   0.6.2
-fann2                    1.0.7
-fasteners                0.14.1
-feedparser               5.2.1
-gitdb2                   2.0.4
-GitPython                2.1.11
-google-api-python-client 1.6.4
-google-auth              1.5.1
-google-auth-httplib2     0.0.3
-gTTS                     2.0.1
-gTTS-token               1.1.3
-httplib2                 0.10.3
-humanhash3               0.0.6
-idna                     2.7
-ifaddr                   0.1.6
-inflect                  2.1.0
-inflection               0.3.1
-jaraco.itertools         4.4.1
-lxml                     4.2.5
-monotonic                1.5
-more-itertools           5.0.0
-msk                      0.3.12
-msm                      0.6.3
-multi-key-dict           2.0.3
-mycroft-core             18.8.11
-netaddr                  0.7.19
-netifaces                0.10.7
-oauth2client             4.1.3
-oauthlib                 2.1.0
-olefile                  0.46
-padaos                   0.1.8
-padatious                0.4.5
-pep8                     1.7.0
-petact                   0.1.2
-Pillow                   4.1.1
-pip                      18.1
-pocketsphinx             0.1.0
-precise-runner           0.2.1
-protobuf                 3.0.0b2
-psutil                   5.2.1
-pulsectl                 17.7.4
-pyalsaaudio              0.8.2
-pyasn1                   0.4.4
-pyasn1-modules           0.2.2
-PyAudio                  0.2.11
-PyChromecast             0.7.7
-pyCLI                    2.0.3
-pycparser                2.19
-pycrypto                 2.6.1
-pyee                     1.0.1
-PyGithub                 1.43.2
-pyjokes                  0.5.0
-PyJWT                    1.6.4
-pyowm                    2.6.1
-pyparsing                2.1.10
-pyserial                 3.0
-python-dateutil          2.7.5
-python-vlc               1.1.2
-pytz                     2017.2
-requests                 2.20.0
-requests-futures         0.9.5
-rsa                      4.0
-setuptools               40.5.0
-sgmllib3k                1.0.0
-six                      1.10.0
-smmap2                   2.0.4
-source                   1.2.0
-SpeechRecognition        3.8.1
-texttable                0.9.1
-tornado                  5.1.1
-typing                   3.6.6
-tzlocal                  1.3
-uritemplate              3.0.0
-urllib3                  1.24.1
-urwid                    1.3.1
-uuid                     1.30
-websocket-client         0.32.0
-wikipedia                1.4.0
-wolframalpha             3.0
-wrapt                    1.10.11
-xmlrunner                1.7.7
-xmltodict                0.11.0
-xxhash                   1.2.0
-zeroconf                 0.20.0
+- adapt-parser             0.3.0
+- arrow                    0.10.0
+- astral                   1.4
+- beautifulsoup4           4.5.3
+- bs4                      0.0.1
+- cachetools               2.1.0
+- casttube                 0.1.0
+- certifi                  2018.10.15
+- cffi                     1.11.2
+- chardet                  3.0.4
+- Click                    7.0
+- configshell-fb           1.1.18
+- coverage                 4.5.1
+- coveralls                1.5.1
+- daemonize                2.4.7
+- ddg3                     0.6.6
+- Deprecated               1.2.3
+- docopt                   0.6.2
+- fann2                    1.0.7
+- fasteners                0.14.1
+- feedparser               5.2.1
+- gitdb2                   2.0.4
+- GitPython                2.1.11
+- google-api-python-client 1.6.4
+- google-auth              1.5.1
+- google-auth-httplib2     0.0.3
+- gTTS                     2.0.1
+- gTTS-token               1.1.3
+- httplib2                 0.10.3
+- humanhash3               0.0.6
+- idna                     2.7
+- ifaddr                   0.1.6
+- inflect                  2.1.0
+- inflection               0.3.1
+- jaraco.itertools         4.4.1
+- lxml                     4.2.5
+- monotonic                1.5
+- more-itertools           5.0.0
+- msk                      0.3.12
+- msm                      0.6.3
+- multi-key-dict           2.0.3
+- mycroft-core             18.8.11
+- netaddr                  0.7.19
+- netifaces                0.10.7
+- oauth2client             4.1.3
+- oauthlib                 2.1.0
+- olefile                  0.46
+- padaos                   0.1.8
+- padatious                0.4.5
+- pep8                     1.7.0
+- petact                   0.1.2
+- Pillow                   4.1.1
+- pip                      18.1
+- pocketsphinx             0.1.0
+- precise-runner           0.2.1
+- protobuf                 3.0.0b2
+- psutil                   5.2.1
+- pulsectl                 17.7.4
+- pyalsaaudio              0.8.2
+- pyasn1                   0.4.4
+- pyasn1-modules           0.2.2
+- PyAudio                  0.2.11
+- PyChromecast             0.7.7
+- pyCLI                    2.0.3
+- pycparser                2.19
+- pycrypto                 2.6.1
+- pyee                     1.0.1
+- PyGithub                 1.43.2
+- pyjokes                  0.5.0
+- PyJWT                    1.6.4
+- pyowm                    2.6.1
+- pyparsing                2.1.10
+- pyserial                 3.0
+- python-dateutil          2.7.5
+- python-vlc               1.1.2
+- pytz                     2017.2
+- requests                 2.20.0
+- requests-futures         0.9.5
+- rsa                      4.0
+- setuptools               40.5.0
+- sgmllib3k                1.0.0
+- six                      1.10.0
+- smmap2                   2.0.4
+- source                   1.2.0
+- SpeechRecognition        3.8.1
+- texttable                0.9.1
+- tornado                  5.1.1
+- typing                   3.6.6
+- tzlocal                  1.3
+- uritemplate              3.0.0
+- urllib3                  1.24.1
+- urwid                    1.3.1
+- uuid                     1.30
+- websocket-client         0.32.0
+- wikipedia                1.4.0
+- wolframalpha             3.0
+- wrapt                    1.10.11
+- xmlrunner                1.7.7
+- xmltodict                0.11.0
+- xxhash                   1.2.0
+- zeroconf                 0.20.0
 
