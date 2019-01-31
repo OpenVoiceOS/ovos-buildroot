@@ -1,2 +1,3 @@
 modprobe snd-bcm2835
+modprobe spi-bcm2835
 #modprobe snd-usb-audio

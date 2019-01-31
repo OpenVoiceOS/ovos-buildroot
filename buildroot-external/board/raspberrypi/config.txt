@@ -34,3 +34,4 @@ disable_splash=1
 dtparam=i2c_arm=on
 dtoverlay=i2s-mmap
 dtparam=i2s=on
+dtparam=spi=on
