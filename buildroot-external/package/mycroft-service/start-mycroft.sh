@@ -23,31 +23,34 @@ DIR="$( pwd )"
 
 function help() {
     echo "${script}:  Mycroft command/service launcher"
-    echo "usage: ${script} [command] [params]"
+    echo "usage: ${script} [COMMAND] [restart] [params]"
     echo
-    echo "Services:"
+    echo "Services COMMANDs:"
     echo "  all                      runs core services: bus, audio, skills, voice"
     echo "  debug                    runs core services, then starts the CLI"
-    echo
-    echo "Services:"
     echo "  audio                    the audio playback service"
     echo "  bus                      the messagebus service"
     echo "  skills                   the skill service"
     echo "  voice                    voice capture service"
+    # echo "  wifi                     wifi setup service"
     echo "  enclosure                mark_1 enclosure service"
     echo
-    echo "Tools:"
+    echo "Tool COMMANDs:"
     echo "  cli                      the Command Line Interface"
     echo "  unittest                 run mycroft-core unit tests (requires pytest)"
     echo "  skillstest               run the skill autotests for all skills (requires pytest)"
     echo
-    echo "Utils:"
+    echo "Util COMMANDs:"
     echo "  audiotest                attempt simple audio validation"
     echo "  audioaccuracytest        more complex audio validation"
     echo "  sdkdoc                   generate sdk documentation"
     echo
+    echo "Options:"
+    echo "  restart                  (optional) Force the service to restart if running"
+    echo
     echo "Examples:"
     echo "  ${script} all"
+    echo "  ${script} all restart"
     echo "  ${script} cli"
     echo "  ${script} unittest"
 
@@ -72,7 +75,32 @@ function name-to-script-path() {
     esac
 }
 
+first_time=true
+
+# set the right locale / language settings
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+export LANGUAGE=en_US.UTF-8
+
+function init-once() {
+    if ($first_time) ; then
+        echo "Initializing..."
+        # Check if Mycroft log folders are present and if not
+	# create those logging folders
+	if [[ ! -w /var/log/mycroft/ ]] ; then
+		# Creating needed folders
+		printf "Creating /var/log/mycroft/ directory"
+		if [[ ! -d /var/log/mycroft/ ]] ; then
+			mkdir /var/log/mycroft/
+		fi
+	fi
+        first_time=false
+    fi
+}
+
 function launch-process() {
+    init-once
+
     name-to-script-path ${1}
 
     # Launch process in foreground
@@ -80,12 +108,28 @@ function launch-process() {
     python3 -m ${_module} $_params
 }
 
+function require-process() {
+    # Launch process if not found
+    name-to-script-path ${1}
+    if ! pgrep -f "python3 -m ${_module}" > /dev/null ; then
+        # Start required process
+        launch-background ${1}
+    fi
+}
+
 function launch-background() {
+    init-once
+
     # Check if given module is running and start (or restart if running)
     name-to-script-path ${1}
     if pgrep -f "python3 -m ${_module}" > /dev/null ; then
-        echo "Restarting: ${1}"
-        "${DIR}/stop-mycroft.sh" ${1}
+        if ($_force_restart) ; then
+            echo "Restarting: ${1}"
+            "${DIR}/stop-mycroft.sh" ${1}
+        else
+            # Already running, no need to restart
+            return
+        fi
     else
         echo "Starting background service $1"
     fi
@@ -107,25 +151,27 @@ function launch-all() {
     launch-background skills
     launch-background audio
     launch-background voice
-
-    # Determine platform type
-    if [[ -r /etc/mycroft/mycroft.conf ]] ; then
-        mycroft_platform=$( jq -r ".enclosure.platform" < /etc/mycroft/mycroft.conf )
-        if [[ $mycroft_platform = "mycroft_mark_1" ]] ; then
-            # running on a Mark 1, start enclosure service
-            launch-background enclosure
-        fi
-    fi
+    launch-background enclosure
 }
 
 _opt=$1
+_force_restart=false
 shift
+if [[ "${1}" == "restart" ]] || [[ "${_opt}" == "restart" ]] ; then
+    _force_restart=true
+    if [[ "${_opt}" == "restart" ]] ; then
+        # Support "start-mycroft.sh restart all" as well as "start-mycroft.sh all restart"
+        _opt=$1
+    fi
+    shift
+fi
 _params=$@
 
 case ${_opt} in
     "all")
         launch-all
         ;;
+
     "bus")
         launch-background ${_opt}
         ;;
@@ -138,12 +184,33 @@ case ${_opt} in
     "voice")
         launch-background ${_opt}
         ;;
+
     "debug")
         launch-all
         launch-process cli
         ;;
+
     "cli")
+        require-process bus
+        require-process skills
         launch-process ${_opt}
+        ;;
+
+    # TODO: Restore support for Wifi Setup on a Picroft, etc.
+    # "wifi")
+    #    launch-background ${_opt}
+    #    ;;
+    "unittest")
+        source-venv
+        pytest test/unittests/ --cov=mycroft "$@"
+        ;;
+    "singleunittest")
+        source-venv
+        pytest "$@"
+        ;;
+    "skillstest")
+        source-venv
+        pytest test/integrationtests/skills/discover_tests.py "$@"
         ;;
     "audiotest")
         launch-process ${_opt}
@@ -151,11 +218,17 @@ case ${_opt} in
     "audioaccuracytest")
         launch-process ${_opt}
         ;;
+    "sdkdoc")
+        source-venv
+        cd doc
+        make ${opt}
+        cd ..
+        ;;
     "enclosure")
         launch-background ${_opt}
         ;;
+
     *)
         help
         ;;
 esac
-
