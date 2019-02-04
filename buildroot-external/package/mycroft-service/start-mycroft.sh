@@ -201,15 +201,12 @@ case ${_opt} in
     #    launch-background ${_opt}
     #    ;;
     "unittest")
-        source-venv
         pytest test/unittests/ --cov=mycroft "$@"
         ;;
     "singleunittest")
-        source-venv
         pytest "$@"
         ;;
     "skillstest")
-        source-venv
         pytest test/integrationtests/skills/discover_tests.py "$@"
         ;;
     "audiotest")
@@ -219,7 +216,6 @@ case ${_opt} in
         launch-process ${_opt}
         ;;
     "sdkdoc")
-        source-venv
         cd doc
         make ${opt}
         cd ..
