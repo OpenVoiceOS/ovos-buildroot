@@ -83,6 +83,7 @@ export LANG=en_US.UTF-8
 export LANGUAGE=en_US.UTF-8
 
 function init-once() {
+    fbv -f -d 1 /opt/mycroft/splash/logo.png > /dev/null 2>&1
     if ($first_time) ; then
         echo "Initializing..."
         # Check if Mycroft log folders are present and if not
