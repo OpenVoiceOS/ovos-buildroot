@@ -1,1 +1,1 @@
-mycroft ALL = ALL
+mycroft ALL=(ALL:ALL) NOPASSWD: ALL
