@@ -1,6 +1,6 @@
-From 78f8690894cf7fe98b16a08a6f98cbb15b2c1fa3 Mon Sep 17 00:00:00 2001
+From 8c455033a1d5a9010c8f09faaf4c53f1f7995e92 Mon Sep 17 00:00:00 2001
 From: Peter Steenbergen <info@j1nx.nl>
-Date: Mon, 7 Jan 2019 14:12:49 +0100
+Date: Mon, 2 Sep 2019 16:42:44 +0200
 Subject: [PATCH 1/1] Downgrade python-pillow to 4.1.1
 
 ---
@@ -9,26 +9,26 @@ Subject: [PATCH 1/1] Downgrade python-pillow to 4.1.1
  2 files changed, 3 insertions(+), 2 deletions(-)
 
 diff --git a/package/python-pillow/python-pillow.hash b/package/python-pillow/python-pillow.hash
-index 0f90a0be18..607b5d8b2b 100644
+index fa9caae679..d74c79893e 100644
 --- a/package/python-pillow/python-pillow.hash
 +++ b/package/python-pillow/python-pillow.hash
 @@ -2,3 +2,4 @@
  # sha256 for LICENSE locally computed
- sha256 f8b3d413c5a8f84b12cd4c5df1d8e211777c9852c6be3ee9c094b626644d3eab  Pillow-5.2.0.tar.gz
- sha256 4960fc18becc286be839c8ff17bd70cd5222533f761129142153443718a25199  LICENSE
+ sha256 809c0a2ce9032cbcd7b5313f71af4bdc5c8c771cb86eb7559afd954cab82ebb5  Pillow-6.0.0.tar.gz
+ sha256 64ea4328ed56392b423ef968519a9ad427e3de9b985862c95ed2ed4d793d22ee  LICENSE
 +sha256 00b6a5f28d00f720235a937ebc2f50f4292a5c7e2d6ab9a8b26153b625c4f431  Pillow-4.1.1.tar.gz
 diff --git a/package/python-pillow/python-pillow.mk b/package/python-pillow/python-pillow.mk
-index c3a3d13315..227a664dde 100644
+index 6efa9f3923..227a664dde 100644
 --- a/package/python-pillow/python-pillow.mk
 +++ b/package/python-pillow/python-pillow.mk
 @@ -4,9 +4,9 @@
  #
  ################################################################################
  
--PYTHON_PILLOW_VERSION = 5.2.0
+-PYTHON_PILLOW_VERSION = 6.0.0
 +PYTHON_PILLOW_VERSION = 4.1.1
  PYTHON_PILLOW_SOURCE = Pillow-$(PYTHON_PILLOW_VERSION).tar.gz
--PYTHON_PILLOW_SITE = https://files.pythonhosted.org/packages/d3/c4/b45b9c0d549f482dd072055e2d3ced88f3b977f7b87c7a990228b20e7da1
+-PYTHON_PILLOW_SITE = https://files.pythonhosted.org/packages/81/1a/6b2971adc1bca55b9a53ed1efa372acff7e8b9913982a396f3fa046efaf8
 +PYTHON_PILLOW_SITE = https://files.pythonhosted.org/packages/93/73/66854f63b1941aad9af18a1de59f9cf95ad1a87c801540222e332f6688d7
  PYTHON_PILLOW_LICENSE = PIL Software License
  PYTHON_PILLOW_LICENSE_FILES = LICENSE
