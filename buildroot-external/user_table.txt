@@ -1,0 +1,1 @@
+mycroft -1 mycroft -1 =mycroft /home/mycroft /bin/sh gpio,audio,pulse,pulse-access Mycroft user

@@ -99,7 +99,7 @@ case ${OPT} in
         end-process audio
         end-process speech
         end-process enclosure
-	fbv -f -d 1 /opt/mycroft/splash/background.png > /dev/null 2>&1
+	sudo fbv -f -d 1 /opt/mycroft/splash/background.png > /dev/null 2>&1
         ;;
     "bus")
         end-process messagebus.service

@@ -10,10 +10,6 @@ MYCROFT_SERVICE_SITE_METHOD = local
 MYCROFT_SERVICE_LICENSE = Apache License 2.0
 MYCROFT_SERVICE_LICENSE_FILES = LICENSE
 
-define MYCROFT_SERVICE_USERS
-	mycroft -1 mycroft -1 * /home/mycroft /bin/sh audio,pulse-access
-endef
-
 define MYCROFT_SERVICE_INSTALL_TARGET_CMDS
 	$(INSTALL) -m 0755 $(@D)/start-mycroft.sh $(TARGET_DIR)/usr/bin/
 	$(INSTALL) -m 0755 $(@D)/stop-mycroft.sh $(TARGET_DIR)/usr/bin/

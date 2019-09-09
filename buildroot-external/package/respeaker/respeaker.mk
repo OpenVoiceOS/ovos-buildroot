@@ -12,7 +12,7 @@ RESPEAKER_DEPENDENCIES = rpi-firmware rpi-userland dtc
 $(eval $(kernel-module))
 
 define RESPEAKER_INSTALL_TARGET_CMDS
-	$(INSTALL) -D -m 644 $(@D)/seeed-voicecard.service \
+	$(INSTALL) -D -m 0644 $(BR2_EXTERNAL_MYCROFTOS_PATH)/package/respeaker/seeed-voicecard.service \
 		$(TARGET_DIR)/usr/lib/systemd/system/seeed-voicecard.service
 	mkdir -p $(TARGET_DIR)/etc/systemd/system/sysinit.target.wants
 	ln -fs ../../../../usr/lib/systemd/system/seeed-voicecard.service \
@@ -26,6 +26,8 @@ define RESPEAKER_INSTALL_TARGET_CMDS
 	$(INSTALL) -D -m 0644 $(@D)/*.conf $(TARGET_DIR)/etc/voicecard
 	$(INSTALL) -D -m 0644 $(@D)/*.state $(TARGET_DIR)/etc/voicecard
 	$(INSTALL) -D -m 0755 $(@D)/seeed-voicecard $(TARGET_DIR)/usr/bin
+	$(INSTALL) -D -m 0755 $(BR2_EXTERNAL_MYCROFTOS_PATH)/package/respeaker/start-seeed-voicecard.sh \
+		$(TARGET_DIR)/usr/bin
 
 	$(INSTALL) -D -m 0644 $(@D)/seeed-2mic-voicecard.dtbo $(BINARIES_DIR)/rpi-firmware/overlays/
         $(INSTALL) -D -m 0644 $(@D)/seeed-4mic-voicecard.dtbo $(BINARIES_DIR)/rpi-firmware/overlays/
