@@ -5,7 +5,7 @@ After=alsa-restore.service
 [Service]
 Type=oneshot
 RemainAfterExit=yes
-ExecStart=/usr/bin/start-seeed-voicecard.sh
+ExecStart=/usr/bin/seeed-voicecard
 User=root
  
 [Install]
