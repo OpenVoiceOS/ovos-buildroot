@@ -1,0 +1,6 @@
+config BR2_PACKAGE_MYCROFT_SPLASH
+	bool "mycroft-splash"
+	help
+	  Show Mycroft A.I. branded splash screens on boot/halt.
+
+	  https://mycroft.ai/ https://www.j1nx.nl

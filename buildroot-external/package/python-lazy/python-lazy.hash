@@ -1,0 +1,5 @@
+# md5, sha256 from https://pypi.org/pypi/lazy/json
+md5	f4e5a0a5d2add47352a7e10ee87f8211  lazy-1.4.zip
+sha256	2c6d27a5ab130fb85435320651a47403adcb37ecbcc501b0c6606391f65f5b43  lazy-1.4.zip
+# Locally computed sha256 checksums
+sha256	8ba489d9fecfaabf369f6ee4394e689d21b313547531898e2942173f877bfee2  LICENSE
