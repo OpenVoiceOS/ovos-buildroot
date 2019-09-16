@@ -22,22 +22,15 @@
 
 set -x
 exec 1>/var/log/$(basename $0).log 2>&1
+mkdir -p /boot
+mount -t vfat /dev/mmcblk0p1 /boot
+
 #enable i2c interface
 dtparam i2c_arm=on
 modprobe i2c-dev
 
 #enable spi interface
 dtparam spi=on
-
-# Check if /boot folder exist
-if [ ! -d /boot ]; then
-  mkdir -p /boot
-fi
-
-# Check if /boot is mounted and mount it if not
-if mountpoint -q /boot; then
-  mount -t vfat /dev/mmcblk0p1 /boot
-fi
 
 _VER_RUN=
 function get_kernel_version() {
@@ -156,7 +149,7 @@ if [ "$overlay" ]; then
     echo "create $overlay pulse default file"
     ln -s $pulse_default /etc/pulse/default.pa
     echo "create $overlay pulse daemon file"
-    ln -s $pulsedaemon /etc/pulse/daemon.conf
+    ln -s $pulse_daemon /etc/pulse/daemon.conf
 fi
 
 alsactl restore
