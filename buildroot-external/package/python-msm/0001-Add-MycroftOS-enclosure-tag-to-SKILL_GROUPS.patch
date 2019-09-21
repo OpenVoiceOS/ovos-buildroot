@@ -1,0 +1,26 @@
+From 61a1116fc464df46bd934d45fc4a22dcfee52607 Mon Sep 17 00:00:00 2001
+From: Peter Steenbergen <info@j1nx.nl>
+Date: Sat, 21 Sep 2019 12:18:38 +0200
+Subject: [PATCH 1/1] Add MycroftOS enclosure tag to SKILL_GROUPS
+
+---
+ msm/mycroft_skills_manager.py | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/msm/mycroft_skills_manager.py b/msm/mycroft_skills_manager.py
+index b36540e..327f1fc 100644
+--- a/msm/mycroft_skills_manager.py
++++ b/msm/mycroft_skills_manager.py
+@@ -86,7 +86,8 @@ def save_device_skill_state(func):
+ 
+ class MycroftSkillsManager(object):
+     SKILL_GROUPS = {'default', 'mycroft_mark_1', 'picroft', 'kde',
+-                    'respeaker', 'mycroft_mark_2', 'mycroft_mark_2pi'}
++                    'respeaker', 'mycroft_mark_2', 'mycroft_mark_2pi',
++		    'MycroftOS'}
+     DEFAULT_SKILLS_DIR = "/opt/mycroft/skills"
+ 
+     def __init__(self, platform='default', skills_dir=None, repo=None,
+-- 
+2.11.0
+
