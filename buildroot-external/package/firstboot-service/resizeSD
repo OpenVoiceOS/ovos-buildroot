@@ -1,0 +1,9 @@
+#!/bin/bash
+#
+printf "Resize data partition ..."
+parted /dev/mmcblk0 unit % resizepart 2 100% &&
+partprobe /dev/mmcblk0 &&
+sync &&
+resize2fs /dev/mmcblk0p2 &&
+echo "[OK]"
+

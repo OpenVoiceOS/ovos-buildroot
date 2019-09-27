@@ -1,4 +1,5 @@
 menu "Mycroft A.I. Personal Assistant"
+	source "$BR2_EXTERNAL_MYCROFTOS_PATH/package/firstboot-service/Config.in"
 	source "$BR2_EXTERNAL_MYCROFTOS_PATH/package/python-mycroft/Config.in"
 	source "$BR2_EXTERNAL_MYCROFTOS_PATH/package/mycroft-service/Config.in"
 	source "$BR2_EXTERNAL_MYCROFTOS_PATH/package/mycroft-splash/Config.in"

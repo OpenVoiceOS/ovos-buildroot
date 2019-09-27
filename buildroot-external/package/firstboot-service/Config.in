@@ -1,0 +1,8 @@
+config BR2_PACKAGE_FIRSTBOOT_SERVICE
+	bool "firstboot-service"
+	help
+	  A systemd service that only runs on first boot
+	  which can be used to run certain scripts that
+	  prepare the rootfs. For now being used to auto
+	  expand the filesystem over the full size of the
+	  SD card.
