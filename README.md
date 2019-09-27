@@ -8,7 +8,7 @@ More information about the Mycroft A.I. software stack at https://mycroft.ai
 ## System.
 - Linux kernel 4.14 (LT)
 - Buildroot 2019.05.x
-- Mycroft 18.08.x
+- Mycroft 19.08.x
 - Raspberry Pi 3B (initial development hardware)
 
 ## Stats:
