@@ -1,0 +1,5 @@
+# md5, sha256 from https://pypi.org/pypi/colorzero/json
+md5	7581c4b7fc5f52bf41422e4bbb29731a  colorzero-1.1.tar.gz
+sha256	acba47119b5d8555680d3cda9afe6ccc5481385ccc3c00084dd973f7aa184599  colorzero-1.1.tar.gz
+# Locally computed sha256 checksums
+sha256	47778d78e05bb6c39c022814e3712a0327c6418c7251757e72167ab8ff12bb4d  LICENSE.txt

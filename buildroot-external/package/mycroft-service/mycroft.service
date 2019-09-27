@@ -1,0 +1,15 @@
+[Unit]
+Description=Mycroft AI
+After=pulseaudio.service
+
+[Service]
+User=mycroft
+WorkingDirectory=/home/mycroft
+ExecStart=start-mycroft.sh all
+ExecStop=stop-mycroft.sh all
+Type=forking
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target

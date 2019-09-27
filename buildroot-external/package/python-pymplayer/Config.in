@@ -1,0 +1,6 @@
+config BR2_PACKAGE_PYTHON_PYMPLAYER
+	bool "python-pymplayer"
+	help
+	  mplayer python api.
+
+	  https://github.com/JarbasAl/py_mplayer

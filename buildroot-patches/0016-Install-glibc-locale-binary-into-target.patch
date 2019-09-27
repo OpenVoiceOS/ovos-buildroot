@@ -1,0 +1,25 @@
+From 9f17489757e974bd7781544b719392e22395cd8e Mon Sep 17 00:00:00 2001
+From: Peter Steenbergen <info@j1nx.nl>
+Date: Wed, 6 Feb 2019 08:40:32 +0100
+Subject: [PATCH 1/1] Install glibc locale binary into target
+
+---
+ package/glibc/glibc.mk | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/package/glibc/glibc.mk b/package/glibc/glibc.mk
+index 88178d7eb9..5ce1aafb7c 100644
+--- a/package/glibc/glibc.mk
++++ b/package/glibc/glibc.mk
+@@ -134,6 +134,8 @@ GLIBC_LIBS_LIB += libthread_db.so.*
+ endif
+ 
+ define GLIBC_INSTALL_TARGET_CMDS
++	$(INSTALL) -m 0755 -D $(@D)/build/locale/locale \
++		$(TARGET_DIR)/usr/bin/locale
+ 	for libpattern in $(GLIBC_LIBS_LIB); do \
+ 		$(call copy_toolchain_lib_root,$$libpattern) ; \
+ 	done
+-- 
+2.11.0
+

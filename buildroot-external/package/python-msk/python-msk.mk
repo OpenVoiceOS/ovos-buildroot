@@ -4,9 +4,9 @@
 #
 ################################################################################
 
-PYTHON_MSK_VERSION = 0.3.11
+PYTHON_MSK_VERSION = 0.3.13
 PYTHON_MSK_SOURCE = msk-$(PYTHON_MSK_VERSION).tar.gz
-PYTHON_MSK_SITE = https://files.pythonhosted.org/packages/6d/2d/561d58e16d456ee5ca79d6dff3fb053f56da4ad62832eccce82b61a65789
+PYTHON_MSK_SITE = https://files.pythonhosted.org/packages/28/51/8d2193b8f1471178149cdbcc1830b086e978f99598208cae2ba2741b2979
 PYTHON_MSK_SETUP_TYPE = setuptools
 
 $(eval $(python-package))

@@ -1,0 +1,40 @@
+From 604cd3de6db49b067154e0405ba605fa73b81443 Mon Sep 17 00:00:00 2001
+From: Peter Steenbergen <info@j1nx.nl>
+Date: Mon, 2 Sep 2019 16:54:02 +0200
+Subject: [PATCH 1/1] Downgrade python-psutil to 5.2.1
+
+---
+ package/python-psutil/python-psutil.hash | 1 +
+ package/python-psutil/python-psutil.mk   | 4 ++--
+ 2 files changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/package/python-psutil/python-psutil.hash b/package/python-psutil/python-psutil.hash
+index a7d49a9ab6..d8e1020fb1 100644
+--- a/package/python-psutil/python-psutil.hash
++++ b/package/python-psutil/python-psutil.hash
+@@ -1,5 +1,6 @@
+ # md5, sha256 from https://pypi.org/pypi/psutil/json
+ md5	571962acd249bcfbae317884af47c402  psutil-5.6.2.tar.gz
+ sha256	828e1c3ca6756c54ac00f1427fdac8b12e21b8a068c3bb9b631a1734cada25ed  psutil-5.6.2.tar.gz
++sha256	fe0ea53b302f68fca1c2a3bac289e11344456786141b73391ed4022b412d5455  psutil-5.2.1.tar.gz
+ # Locally computed sha256 checksums
+ sha256	bb073826b0dfb43b631c38ad5d9844cda74cc631d2a5569ad8798be4274a3e17  LICENSE
+diff --git a/package/python-psutil/python-psutil.mk b/package/python-psutil/python-psutil.mk
+index ed1a9051c8..162d1b7f50 100644
+--- a/package/python-psutil/python-psutil.mk
++++ b/package/python-psutil/python-psutil.mk
+@@ -4,9 +4,9 @@
+ #
+ ################################################################################
+ 
+-PYTHON_PSUTIL_VERSION = 5.6.2
++PYTHON_PSUTIL_VERSION = 5.2.1
+ PYTHON_PSUTIL_SOURCE = psutil-$(PYTHON_PSUTIL_VERSION).tar.gz
+-PYTHON_PSUTIL_SITE = https://files.pythonhosted.org/packages/c6/c1/beed5e4eaa1345901b595048fab1c85aee647ea0fc02d9e8bf9aceb81078
++PYTHON_PSUTIL_SITE = https://files.pythonhosted.org/packages/b8/47/c85fbcd23f40892db6ecc88782beb6ee66d22008c2f9821d777cb1984240
+ PYTHON_PSUTIL_SETUP_TYPE = setuptools
+ PYTHON_PSUTIL_LICENSE = BSD-3-Clause
+ PYTHON_PSUTIL_LICENSE_FILES = LICENSE
+-- 
+2.11.0
+

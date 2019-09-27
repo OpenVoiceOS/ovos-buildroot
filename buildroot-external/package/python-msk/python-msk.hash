@@ -1,3 +1,5 @@
 # md5, sha256 from https://pypi.org/pypi/msk/json
 md5	1460094aeffac634008ba1dd12348c3b  msk-0.3.11.tar.gz
 sha256	d5c157a60eecba4c3b07de89e43e85dec366b5ecdd3677f7e73c0c4cddf01b74  msk-0.3.11.tar.gz
+sha256	8e5a1fb7afa22977a9d6ee0835ac52420b74324c1d2088286aacc485a521e573  msk-0.3.12.tar.gz
+sha256	55be86ff2cd0087016759f2b15b40861cda2a8d8a8d0c669fdacdf32a77a10da  msk-0.3.13.tar.gz

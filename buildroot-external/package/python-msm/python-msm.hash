@@ -1,5 +1,5 @@
 # md5, sha256 from https://pypi.org/pypi/msm/json
 md5	fe54a2aecd6751bef66fdcd27ffd3cdc  msm-0.5.19.tar.gz
-sha256	0f67b73e277a73ff4c97ecdf0aa6e10b1202bc09d2666f69170f9aa20653c573  msm-0.5.19.tar.gz
+sha256	c201785997f3b766ec376a89bbb3367889ac542183ca26733ffe002bb94917b4  msm-0.8.3.tar.gz
 # Locally computed sha256 checksums
 sha256	a6cba85bc92e0cff7a450b1d873c0eaa2e9fc96bf472df0247a26bec77bf3ff9  LICENSE

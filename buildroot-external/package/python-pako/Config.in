@@ -1,0 +1,7 @@
+config BR2_PACKAGE_PYTHON_PAKO
+	bool "python-pako"
+	select BR2_PACKAGE_PYTHON_APPDIRS # runtime
+	help
+	  The universal package manager library.
+
+	  https://github.com/MycroftAI/pako
