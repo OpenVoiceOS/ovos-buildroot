@@ -1,0 +1,4 @@
+config BR2_PACKAGE_WIFISETUP_SERVICE
+	bool "wifisetup-service"
+	help
+	  A systemd service to start the MycroftOS-WiFiSetup.
