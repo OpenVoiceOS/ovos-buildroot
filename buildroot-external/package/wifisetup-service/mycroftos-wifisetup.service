@@ -1,0 +1,12 @@
+[Unit]
+Description=MycroftOS Wifi Setup
+After=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/usr/lib/node_modules/MycroftOS-WiFiSetup/
+ExecStart=/usr/lib/node_modules/MycroftOS-WiFiSetup/run.sh 
+
+[Install]
+WantedBy=multi-user.target
