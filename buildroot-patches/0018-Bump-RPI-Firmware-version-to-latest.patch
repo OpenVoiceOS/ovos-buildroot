@@ -1,7 +1,7 @@
-From 7ae402d49e37bb33d5868a1a207594dcd7da6ccd Mon Sep 17 00:00:00 2001
+From 4ee090e789a75429c5eb91c6d8cb6c8dd8040cb8 Mon Sep 17 00:00:00 2001
 From: Peter Steenbergen <info@j1nx.nl>
-Date: Tue, 3 Sep 2019 20:44:43 +0200
-Subject: [PATCH 1/1] Bump rpi-firmware to latest 4.14.x version
+Date: Tue, 22 Oct 2019 13:43:53 +0200
+Subject: [PATCH 1/1] Bump RPI Firmware version to latest
 
 ---
  package/rpi-firmware/rpi-firmware.hash | 2 +-
@@ -9,15 +9,15 @@ Subject: [PATCH 1/1] Bump rpi-firmware to latest 4.14.x version
  2 files changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/package/rpi-firmware/rpi-firmware.hash b/package/rpi-firmware/rpi-firmware.hash
-index d719fa6e08..b6b8824f3f 100644
+index d719fa6e08..5c39b0a0e3 100644
 --- a/package/rpi-firmware/rpi-firmware.hash
 +++ b/package/rpi-firmware/rpi-firmware.hash
 @@ -1,2 +1,2 @@
  # Locally computed
 -sha256 e911f6342ea8aa9380cae97c6f5ac4ddd370527265f23d5b5d4b2c6f679d4ba8 rpi-firmware-ebf7b40cdc6effe7ffa3fd5195e8be01b94f80da.tar.gz
-+sha256 9a34ccc4a51695a33206cc6c8534f615ba5a30fcbce5fa3add400ecc6b80ad8a rpi-firmware-83977fe3b6ef54c1d29c83b0a778d330f523441f.tar.gz
++sha256 6e04cfca954c8e087eae81837a0813a642dcca58f05bcfdf6a15e69dc657a30e rpi-firmware-9f4983548584d4f70e6eec5270125de93a081483.tar.gz
 diff --git a/package/rpi-firmware/rpi-firmware.mk b/package/rpi-firmware/rpi-firmware.mk
-index 272db1c321..b57ed2ef4c 100644
+index 272db1c321..3089c8dbfc 100644
 --- a/package/rpi-firmware/rpi-firmware.mk
 +++ b/package/rpi-firmware/rpi-firmware.mk
 @@ -4,7 +4,7 @@
@@ -25,7 +25,7 @@ index 272db1c321..b57ed2ef4c 100644
  ################################################################################
  
 -RPI_FIRMWARE_VERSION = ebf7b40cdc6effe7ffa3fd5195e8be01b94f80da
-+RPI_FIRMWARE_VERSION = 83977fe3b6ef54c1d29c83b0a778d330f523441f
++RPI_FIRMWARE_VERSION = 9f4983548584d4f70e6eec5270125de93a081483
  RPI_FIRMWARE_SITE = $(call github,raspberrypi,firmware,$(RPI_FIRMWARE_VERSION))
  RPI_FIRMWARE_LICENSE = BSD-3-Clause
  RPI_FIRMWARE_LICENSE_FILES = boot/LICENCE.broadcom
