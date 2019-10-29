@@ -1,6 +1,0 @@
-config BR2_PACKAGE_PYTHON_INFLECTION
-	bool "python-inflection"
-	help
-	  A port of Ruby on Rails inflector to Python.
-
-	  http://github.com/jpvanhal/inflection
