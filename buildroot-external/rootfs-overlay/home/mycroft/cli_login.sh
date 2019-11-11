@@ -13,5 +13,7 @@ echo "**                                                           **"
 echo "**                MycroftOS Version 0.1.0                    **"
 echo "**                                                           **"
 echo "***************************************************************"
+echo
+echo "Please wait a moment while I load the Mycroft CLI client ..."
 sleep 2  # give user a few moments to notice the version
 mycroft-cli-client
