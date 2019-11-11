@@ -122,6 +122,7 @@ if [ "$overlay" ]; then
     rm /etc/asound.conf
     rm /var/lib/alsa/asound.state
     rm /etc/pulse/default.pa
+    rm /etc/pulse/system.pa
     rm /etc/pulse/daemon.conf
 
     kernel_ver=$(get_kernel_version)
@@ -148,6 +149,8 @@ if [ "$overlay" ]; then
     ln -s $asound_state /var/lib/alsa/asound.state
     echo "create $overlay pulse default file"
     ln -s $pulse_default /etc/pulse/default.pa
+    echo "create $overlay pulse system file"
+    ln -s $pulse_default /etc/pulse/system.pa
     echo "create $overlay pulse daemon file"
     ln -s $pulse_daemon /etc/pulse/daemon.conf
 fi
