@@ -3,12 +3,10 @@
 set -x
 exec 1>/var/log/$(basename $0).log 2>&1
 
-rm /etc/asound.conf
 rm /etc/pulse/default.pa
 rm /etc/pulse/system.pa
 rm /etc/pulse/daemon.conf
 
-ln -s /etc/default-asound.conf /etc/asound.conf
 ln -s /etc/pulse/pulseaudio-default.pa /etc/pulse/default.pa
 ln -s /etc/pulse/pulseaudio-system.pa /etc/pulse/system.pa
 ln -s /etc/pulse/pulseaudio-daemon.conf /etc/pulse/daemon.conf
