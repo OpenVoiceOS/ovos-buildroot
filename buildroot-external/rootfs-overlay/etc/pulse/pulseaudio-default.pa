@@ -70,12 +70,12 @@ load-module module-bluetooth-discover
 .ifexists module-esound-protocol-unix.so
 load-module module-esound-protocol-unix
 .endif
-load-module module-native-protocol-unix
+load-module module-native-protocol-unix auth-anonymous=1
 
 ### Network access (may be configured with paprefs, so leave this commented
 ### here if you plan to use paprefs)
 #load-module module-esound-protocol-tcp
-#load-module module-native-protocol-tcp
+load-module module-native-protocol-tcp auth-ip-acl=127.0.0.1;192.168.0.0/16;172.16.0.0/12;10.0.0.0/8 auth-anonymous=1
 
 ### Load the RTP receiver module (also configured via paprefs, see above)
 #load-module module-rtp-recv
@@ -143,7 +143,6 @@ load-module module-filter-apply
 unload-module module-suspend-on-idle
 unload-module module-role-cork
 load-module module-role-ducking
-unload-module module-stream-restore
 
 ### Enable Echo/Noise-Cancellation
 load-module module-echo-cancel aec_method=webrtc source_name=echoCancel_source sink_name=echoCancel_sink
