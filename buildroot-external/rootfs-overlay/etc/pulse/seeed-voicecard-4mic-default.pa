@@ -139,11 +139,16 @@ load-module module-filter-apply
 ### Make some devices default
 #set-default-sink output
 #set-default-source input
-set-default-source alsa_input.platform-soc_sound.seeed-source
-set-default-sink alsa_output.platform-soc_sound.seeed-sink
+#set-default-source alsa_input.platform-soc_sound.seeed-source
+#set-default-sink alsa_output.platform-soc_sound.seeed-sink
 
 ### MycroftOS Audio Settings
 unload-module module-suspend-on-idle
 unload-module module-role-cork
 load-module module-role-ducking
 unload-module module-stream-restore
+
+### Enable Echo/Noise-Cancellation
+load-module module-echo-cancel aec_method=webrtc source_name=echoCancel_source sink_name=echoCancel_sink
+set-default-source echoCancel_source
+set-default-sink echoCancel_sink

@@ -61,3 +61,8 @@ unload-module module-suspend-on-idle
 unload-module module-role-cork
 load-module module-role-ducking
 unload-module module-stream-restore
+
+### Enable Echo/Noise-Cancellation
+load-module module-echo-cancel aec_method=webrtc source_name=echoCancel_source sink_name=echoCancel_sink
+set-default-source echoCancel_source
+set-default-sink echoCancel_sink
