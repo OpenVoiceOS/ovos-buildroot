@@ -1,6 +1,6 @@
 # md5, sha256 from https://pypi.org/pypi/gTTS/json
 md5	a74588d23840f07badb195bda8138b2d  gTTS-2.0.1.tar.gz
-sha256	a6d4cf039da2797de8af2da7c1f0ce700ac0b48601ce6c11a02b337fd6bdcf57  gTTS-2.0.3.tar.gz
+sha256	79300af5a61936fd525a0805d5fa85ae77db7301932af251e52fcefddb14de60  gTTS-2.0.4.tar.gz
 sha256	124dfc447056cc622989319ebb553d56cfd5c197c345cee3397b675a6da84f58  gTTS-1.1.7.tar.gz
 # Locally computed sha256 checksums
 sha256	d762ddea99fa1eddb0a03d040a97e4e1404f432f7c70d4b49d391858230a22aa  LICENSE

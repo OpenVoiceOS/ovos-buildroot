@@ -1,8 +1,0 @@
-config BR2_PACKAGE_PYTHON_GTTS_TOKEN
-	bool "python-gtts_token"
-	select BR2_PACKAGE_PYTHON_REQUESTS # runtime
-	help
-	  Calculates a token to run the Google Translate text to
-	  speech.
-
-	  https://github.com/boudewijn26/gTTS-token
