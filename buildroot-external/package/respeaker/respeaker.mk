@@ -21,6 +21,9 @@ define RESPEAKER_INSTALL_TARGET_CMDS
 	$(INSTALL) -D -m 0644 $(BR2_EXTERNAL_MYCROFTOS_PATH)/package/respeaker/respeaker.conf \
 		$(TARGET_DIR)/etc/modules-load.d/respeaker.conf
 
+	mkdir -p $(TARGET_DIR)/etc/voicecard
+	$(INSTALL) -D -m 0644 $(@D)/*.state $(TARGET_DIR)/etc/voicecard
+
 	$(INSTALL) -D -m 0755 $(BR2_EXTERNAL_MYCROFTOS_PATH)/package/respeaker/seeed-voicecard \
 		$(TARGET_DIR)/usr/bin
 
