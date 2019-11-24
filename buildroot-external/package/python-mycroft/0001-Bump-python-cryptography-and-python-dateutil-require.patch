@@ -1,26 +1,23 @@
-From 830ba05cc56b84b1a3b783d08c063233119639ef Mon Sep 17 00:00:00 2001
+From bd97a98afbb3d232df317efce20d52ae45991064 Mon Sep 17 00:00:00 2001
 From: Peter Steenbergen <info@j1nx.nl>
-Date: Fri, 15 Nov 2019 12:55:16 +0100
-Subject: [PATCH 1/1] Bump python-tornado and python-dateutil versions as
- requirements
+Date: Sun, 24 Nov 2019 12:02:05 +0100
+Subject: [PATCH 1/1] Bump python-cryptography and python-dateutil requirements
 
 ---
  requirements.txt | 4 ++--
  1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/requirements.txt b/requirements.txt
-index 7eeb701c30..0762473922 100644
+index 81ffedf13a..68bb499775 100644
 --- a/requirements.txt
 +++ b/requirements.txt
-@@ -5,7 +5,7 @@ gTTS==2.0.4
+@@ -1,5 +1,5 @@
+ six==1.13.0
+-cryptography==2.6.1
++cryptography==2.8
+ requests==2.20.0
+ gTTS==2.0.4
  PyAudio==0.2.11
- pyee==5.0.0
- SpeechRecognition==3.8.1
--tornado==4.5.3
-+tornado==5.1.1
- websocket-client==0.54.0
- requests-futures==0.9.5
- pyalsaaudio==0.8.2
 @@ -15,7 +15,7 @@ psutil==5.2.1
  pocketsphinx==0.1.0
  inflection==0.3.1

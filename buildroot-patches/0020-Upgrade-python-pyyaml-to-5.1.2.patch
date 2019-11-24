@@ -1,24 +1,24 @@
-From 9e3aab58da51794b97336c3f1a8988b5c5aed7c1 Mon Sep 17 00:00:00 2001
+From 625a432767c65656904369584b23f1f1bf901f76 Mon Sep 17 00:00:00 2001
 From: Peter Steenbergen <info@j1nx.nl>
-Date: Sat, 7 Sep 2019 15:06:40 +0200
-Subject: [PATCH 1/1] Downgrade python-pyyaml to 3.13
+Date: Sun, 24 Nov 2019 11:51:57 +0100
+Subject: [PATCH 1/1] Upgrade python-pyyaml to 5.1.2
 
 ---
- package/python-pyyaml/python-pyyaml.hash | 2 +-
+ package/python-pyyaml/python-pyyaml.hash | 1 +
  package/python-pyyaml/python-pyyaml.mk   | 4 ++--
- 2 files changed, 3 insertions(+), 3 deletions(-)
+ 2 files changed, 3 insertions(+), 2 deletions(-)
 
 diff --git a/package/python-pyyaml/python-pyyaml.hash b/package/python-pyyaml/python-pyyaml.hash
-index 256742feb6..6b79caae31 100644
+index 256742feb6..7bdaca9859 100644
 --- a/package/python-pyyaml/python-pyyaml.hash
 +++ b/package/python-pyyaml/python-pyyaml.hash
-@@ -1,3 +1,3 @@
+@@ -1,3 +1,4 @@
  # md5, sha256 from https://pypi.python.org/pypi/pyyaml/json
  md5 a842bc7391e145bbe4e7fd0d32da1132 PyYAML-4.2b4.tar.gz
--sha256 3c17fb92c8ba2f525e4b5f7941d850e7a48c3a59b32d331e2502a3cdc6648e76 PyYAML-4.2b4.tar.gz
-+sha256 3ef3092145e9b70e3ddd2c7ad59bdd0252a94dfe3949721633e41344de00a6bf PyYAML-3.13.tar.gz
+ sha256 3c17fb92c8ba2f525e4b5f7941d850e7a48c3a59b32d331e2502a3cdc6648e76 PyYAML-4.2b4.tar.gz
++sha256 01adf0b6c6f61bd11af6e10ca52b7d4057dd0be0343eb9283c878cf3af56aee4 PyYAML-5.1.2.tar.gz
 diff --git a/package/python-pyyaml/python-pyyaml.mk b/package/python-pyyaml/python-pyyaml.mk
-index b73b4356a0..521c3a6921 100644
+index b73b4356a0..165a938f11 100644
 --- a/package/python-pyyaml/python-pyyaml.mk
 +++ b/package/python-pyyaml/python-pyyaml.mk
 @@ -4,9 +4,9 @@
@@ -26,13 +26,13 @@ index b73b4356a0..521c3a6921 100644
  ################################################################################
  
 -PYTHON_PYYAML_VERSION = 4.2b4
-+PYTHON_PYYAML_VERSION = 3.13
++PYTHON_PYYAML_VERSION = 5.1.2
  PYTHON_PYYAML_SOURCE = PyYAML-$(PYTHON_PYYAML_VERSION).tar.gz
 -PYTHON_PYYAML_SITE = https://files.pythonhosted.org/packages/a8/c6/a8d1555e795dbd0375c3c93b576ca13bbf139db51ea604afa19a2c35fc03
-+PYTHON_PYYAML_SITE = https://files.pythonhosted.org/packages/9e/a3/1d13970c3f36777c583f136c136f804d70f500168edc1edea6daa7200769
++PYTHON_PYYAML_SITE = https://files.pythonhosted.org/packages/e3/e8/b3212641ee2718d556df0f23f78de8303f068fe29cdaa7a91018849582fe
  PYTHON_PYYAML_SETUP_TYPE = distutils
  PYTHON_PYYAML_LICENSE = MIT
  PYTHON_PYYAML_LICENSE_FILES = LICENSE
 -- 
-2.11.0
+2.24.0.rc1
 
