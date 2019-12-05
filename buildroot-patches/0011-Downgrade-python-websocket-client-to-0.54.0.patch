@@ -1,41 +1,40 @@
-From cc13c52d8a7c8816b093688421b45dab0c620be6 Mon Sep 17 00:00:00 2001
+From ef65c12a6bbcf4e6bf329d7b7e654f30414aac77 Mon Sep 17 00:00:00 2001
 From: Peter Steenbergen <info@j1nx.nl>
-Date: Sat, 7 Sep 2019 17:03:17 +0200
+Date: Tue, 3 Dec 2019 16:36:04 +0100
 Subject: [PATCH 1/1] Downgrade python-websocket-client to 0.54.0
 
 ---
  package/python-websocket-client/python-websocket-client.hash | 1 +
- package/python-websocket-client/python-websocket-client.mk   | 5 +++--
- 2 files changed, 4 insertions(+), 2 deletions(-)
+ package/python-websocket-client/python-websocket-client.mk   | 4 ++--
+ 2 files changed, 3 insertions(+), 2 deletions(-)
 
 diff --git a/package/python-websocket-client/python-websocket-client.hash b/package/python-websocket-client/python-websocket-client.hash
-index 3672ca074b..70ea66a652 100644
+index 735cb53e1c..a740da5245 100644
 --- a/package/python-websocket-client/python-websocket-client.hash
 +++ b/package/python-websocket-client/python-websocket-client.hash
-@@ -2,3 +2,4 @@
- md5	790b3ecb5364293ad70c59a1b92debb1  websocket_client-0.47.0.tar.gz
- sha256	a453dc4dfa6e0db3d8fd7738a308a88effe6240c59f3226eb93e8f020c216149  websocket_client-0.47.0.tar.gz
- sha256	e580b2a1a57c33085dd6a07cff693d828f7c3fa8a11ce56ade2a62c46951930d  LICENSE
+@@ -1,5 +1,6 @@
+ # md5, sha256 from https://pypi.org/pypi/websocket-client/json
+ md5	89484bd5dac71123ae6a09b2f90fe62c  websocket_client-0.56.0.tar.gz
+ sha256	1fd5520878b68b84b5748bb30e592b10d0a91529d5383f74f4964e72b297fd3a  websocket_client-0.56.0.tar.gz
 +sha256	e51562c91ddb8148e791f0155fdb01325d99bb52c4cdbb291aee7a3563fd0849  websocket_client-0.54.0.tar.gz
+ # Locally computed sha256 checksums
+ sha256	a47b06717e8a3cf01d1307141287b1b4fa17fe4bb8785633d2fc6f57cb71d05e  LICENSE
 diff --git a/package/python-websocket-client/python-websocket-client.mk b/package/python-websocket-client/python-websocket-client.mk
-index 58c8407db3..e07f9c5a6a 100644
+index 518f7b29a9..98cc941efe 100644
 --- a/package/python-websocket-client/python-websocket-client.mk
 +++ b/package/python-websocket-client/python-websocket-client.mk
-@@ -4,11 +4,12 @@
+@@ -4,9 +4,9 @@
  #
  ################################################################################
  
--PYTHON_WEBSOCKET_CLIENT_VERSION = 0.47.0
+-PYTHON_WEBSOCKET_CLIENT_VERSION = 0.56.0
 +PYTHON_WEBSOCKET_CLIENT_VERSION = 0.54.0
  PYTHON_WEBSOCKET_CLIENT_SOURCE = websocket_client-$(PYTHON_WEBSOCKET_CLIENT_VERSION).tar.gz
--PYTHON_WEBSOCKET_CLIENT_SITE = https://pypi.python.org/packages/c9/bb/8d3dd9063cfe0cd5d03fe6a1f74ddd948f384e9c1eff0eb978f3976a7d27
+-PYTHON_WEBSOCKET_CLIENT_SITE = https://files.pythonhosted.org/packages/c5/01/8c9c7de6c46f88e70b5a3276c791a2be82ae83d8e0d0cc030525ee2866fd
 +PYTHON_WEBSOCKET_CLIENT_SITE = https://files.pythonhosted.org/packages/35/d4/14e446a82bc9172d088ebd81c0b02c5ca8481bfeecb13c9ef07998f9249b
  PYTHON_WEBSOCKET_CLIENT_SETUP_TYPE = setuptools
- PYTHON_WEBSOCKET_CLIENT_LICENSE = LGPL-2.1+
- PYTHON_WEBSOCKET_CLIENT_LICENSE_FILES = LICENSE
- 
- $(eval $(python-package))
-+$(eval $(host-python-package))
+ # Project was under LGPL-2.1+, but was relicensed under
+ # BSD-3-Clause. The LICENSE file contains the BSD-3-Clause text, but
 -- 
-2.11.0
+2.24.0.rc1
 
