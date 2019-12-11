@@ -8,6 +8,7 @@ First, get the code on your system! The simplest method is via git.
 - cd ~/ 
 - git clone --recurse-submodules https://github.com/j1nx/MycroftOS.git 
 - cd MycroftOS 
+- git checkout develop
 
 ## Patching Buildroot.
 If this is the very first time you are going to build an image, you need to execute the following command once;
