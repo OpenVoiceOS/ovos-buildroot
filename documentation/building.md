@@ -8,6 +8,7 @@ First, get the code on your system! The simplest method is via git.
 - cd ~/ 
 - git clone --recurse-submodules https://github.com/j1nx/MycroftOS.git 
 - cd MycroftOS 
+- git checkout develop
 
 ## Patching Buildroot.
 If this is the very first time you are going to build an image, you need to execute the following command once;
@@ -17,9 +18,15 @@ If this is the very first time you are going to build an image, you need to exec
 This will patch the Buildroot packages.
 
 ## Building the image.
-We can build the image(s) by running the following command;
+Building the image(s) can be done by utilizing a proper Makefile;
 <br>
-- ./scripts/build.sh
+To see the available commands, just run: 'make help'
 <br>
-At this moment only one image get's build. Namely the one for RPi3. Later on in time this section will get expanded with other possible supported hardware.
+As example to build the rpi3 version;<br>
+make clean<br>
+make rpi3-config<br>
+make rpi3<br>
+<br>
+To build all available buids, run;<br>
+make all
 

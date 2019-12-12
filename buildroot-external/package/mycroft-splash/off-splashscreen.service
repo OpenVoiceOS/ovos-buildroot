@@ -1,0 +1,12 @@
+[Unit]
+Description=Mycroft AI safe power off splash screen
+DefaultDependencies=no
+After=umount.target
+Before=final.target
+
+[Service]
+ExecStart=fbv -f -d 1 /opt/mycroft/splash/off.png > /dev/null 2>&1
+Type=oneshot
+
+[Install]
+WantedBy=shutdown.target

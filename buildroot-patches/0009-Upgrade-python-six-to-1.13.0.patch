@@ -1,0 +1,40 @@
+From 87471715ae7e2c663211556ab20c02dc4b205247 Mon Sep 17 00:00:00 2001
+From: Peter Steenbergen <info@j1nx.nl>
+Date: Sun, 24 Nov 2019 11:37:14 +0100
+Subject: [PATCH 1/1] Upgrade python-six to 1.13.0
+
+---
+ package/python-six/python-six.hash | 1 +
+ package/python-six/python-six.mk   | 4 ++--
+ 2 files changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/package/python-six/python-six.hash b/package/python-six/python-six.hash
+index b7262b12b1..6102e8356e 100644
+--- a/package/python-six/python-six.hash
++++ b/package/python-six/python-six.hash
+@@ -1,5 +1,6 @@
+ # md5, sha256 from https://pypi.org/pypi/six/json
+ md5	9ae5d1feed8c0215f4ae4adcd9207fcb  six-1.12.0.tar.gz
+ sha256	d16a0141ec1a18405cd4ce8b4613101da75da0e9a7aec5bdd4fa804d0e0eba73  six-1.12.0.tar.gz
++sha256	30f610279e8b2578cab6db20741130331735c781b56053c59c4076da27f06b66  six-1.13.0.tar.gz
+ # Locally computed sha256 checksums
+ sha256	e732f54da58f3e9cf0c48e8b512948936fcf7361bd58afa63a9a3c392bf794ad  LICENSE
+diff --git a/package/python-six/python-six.mk b/package/python-six/python-six.mk
+index 95817fa34b..906c268d74 100644
+--- a/package/python-six/python-six.mk
++++ b/package/python-six/python-six.mk
+@@ -4,9 +4,9 @@
+ #
+ ################################################################################
+ 
+-PYTHON_SIX_VERSION = 1.12.0
++PYTHON_SIX_VERSION = 1.13.0
+ PYTHON_SIX_SOURCE = six-$(PYTHON_SIX_VERSION).tar.gz
+-PYTHON_SIX_SITE = https://files.pythonhosted.org/packages/dd/bf/4138e7bfb757de47d1f4b6994648ec67a51efe58fa907c1e11e350cddfca
++PYTHON_SIX_SITE = https://files.pythonhosted.org/packages/94/3e/edcf6fef41d89187df7e38e868b2dd2182677922b600e880baad7749c865
+ PYTHON_SIX_SETUP_TYPE = setuptools
+ PYTHON_SIX_LICENSE = MIT
+ PYTHON_SIX_LICENSE_FILES = LICENSE
+-- 
+2.24.0.rc1
+

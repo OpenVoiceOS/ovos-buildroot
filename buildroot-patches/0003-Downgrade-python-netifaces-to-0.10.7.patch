@@ -1,0 +1,40 @@
+From 701652ba2883b1032c26ba3e33c253f55d69a0e5 Mon Sep 17 00:00:00 2001
+From: Peter Steenbergen <info@j1nx.nl>
+Date: Tue, 3 Dec 2019 16:25:14 +0100
+Subject: [PATCH 1/1] Downgrade python-netifaces to 0.10.7
+
+---
+ package/python-netifaces/python-netifaces.hash | 1 +
+ package/python-netifaces/python-netifaces.mk   | 4 ++--
+ 2 files changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/package/python-netifaces/python-netifaces.hash b/package/python-netifaces/python-netifaces.hash
+index f59208014b..fde136fe62 100644
+--- a/package/python-netifaces/python-netifaces.hash
++++ b/package/python-netifaces/python-netifaces.hash
+@@ -1,5 +1,6 @@
+ # md5, sha256 from https://pypi.org/pypi/netifaces/json
+ md5	de92cc322b4f56047c073f802ad77860  netifaces-0.10.9.tar.gz
+ sha256	2dee9ffdd16292878336a58d04a20f0ffe95555465fee7c9bd23b3490ef2abf3  netifaces-0.10.9.tar.gz
++sha256	bd590fcb75421537d4149825e1e63cca225fd47dad861710c46bd1cb329d8cbd  netifaces-0.10.7.tar.gz
+ # Locally computed sha256 checksums
+ sha256	b20b895164b72b9cc0170e6c0d60b14f9aaacc6862c0556eed41eaa348883705  LICENSE
+diff --git a/package/python-netifaces/python-netifaces.mk b/package/python-netifaces/python-netifaces.mk
+index 502529c008..101702e454 100644
+--- a/package/python-netifaces/python-netifaces.mk
++++ b/package/python-netifaces/python-netifaces.mk
+@@ -4,9 +4,9 @@
+ #
+ ################################################################################
+ 
+-PYTHON_NETIFACES_VERSION = 0.10.9
++PYTHON_NETIFACES_VERSION = 0.10.7
+ PYTHON_NETIFACES_SOURCE = netifaces-$(PYTHON_NETIFACES_VERSION).tar.gz
+-PYTHON_NETIFACES_SITE = https://files.pythonhosted.org/packages/0d/18/fd6e9c71a35b67a73160ec80a49da63d1eed2d2055054cc2995714949132
++PYTHON_NETIFACES_SITE = https://files.pythonhosted.org/packages/81/39/4e9a026265ba944ddf1fea176dbb29e0fe50c43717ba4fcf3646d099fe38
+ PYTHON_NETIFACES_LICENSE = MIT
+ PYTHON_NETIFACES_LICENSE_FILES = LICENSE
+ PYTHON_NETIFACES_SETUP_TYPE = setuptools
+-- 
+2.24.0.rc1
+

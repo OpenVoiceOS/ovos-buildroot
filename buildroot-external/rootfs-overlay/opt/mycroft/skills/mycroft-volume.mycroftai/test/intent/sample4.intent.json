@@ -1,0 +1,8 @@
+{
+  "utterance": "rise volume",
+  "intent_type": "IncreaseVolume",
+  "intent": {
+    "Volume": "volume",
+    "Increase": "rise"
+  }
+}

@@ -1,0 +1,39 @@
+From 49c4b14af92d607156c16a5c0759a01cee0f7268 Mon Sep 17 00:00:00 2001
+From: Peter Steenbergen <info@j1nx.nl>
+Date: Tue, 3 Dec 2019 16:57:10 +0100
+Subject: [PATCH 1/1] Downgrade python-dateutil to 2.7.5
+
+---
+ package/python-dateutil/python-dateutil.hash | 1 +
+ package/python-dateutil/python-dateutil.mk   | 4 ++--
+ 2 files changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/package/python-dateutil/python-dateutil.hash b/package/python-dateutil/python-dateutil.hash
+index f3dc69f272..834d0b79b5 100644
+--- a/package/python-dateutil/python-dateutil.hash
++++ b/package/python-dateutil/python-dateutil.hash
+@@ -1,5 +1,6 @@
+ # md5, sha256 from https://pypi.org/pypi/python-dateutil/json
+ md5	f2a1d4b680b297b367a974664ca3a4f6  python-dateutil-2.8.1.tar.gz
+ sha256	73ebfe9dbf22e832286dafa60473e4cd239f8592f699aa5adaf10050e6e1823c  python-dateutil-2.8.1.tar.gz
++sha256	88f9287c0174266bb0d8cedd395cfba9c58e87e5ad86b2ce58859bc11be3cf02  python-dateutil-2.7.5.tar.gz
+ # Locally computed sha256 checksums
+ sha256	ba00f51a0d92823b5a1cde27d8b5b9d2321e67ed8da9bc163eff96d5e17e577e  LICENSE
+diff --git a/package/python-dateutil/python-dateutil.mk b/package/python-dateutil/python-dateutil.mk
+index 759261d2d1..5e90398331 100644
+--- a/package/python-dateutil/python-dateutil.mk
++++ b/package/python-dateutil/python-dateutil.mk
+@@ -4,8 +4,8 @@
+ #
+ ################################################################################
+ 
+-PYTHON_DATEUTIL_VERSION = 2.8.1
+-PYTHON_DATEUTIL_SITE = https://files.pythonhosted.org/packages/be/ed/5bbc91f03fa4c839c4c7360375da77f9659af5f7086b7a7bdda65771c8e0
++PYTHON_DATEUTIL_VERSION = 2.7.5
++PYTHON_DATEUTIL_SITE = https://files.pythonhosted.org/packages/0e/01/68747933e8d12263d41ce08119620d9a7e5eb72c876a3442257f74490da0
+ PYTHON_DATEUTIL_SETUP_TYPE = setuptools
+ PYTHON_DATEUTIL_LICENSE = BSD-3-Clause
+ PYTHON_DATEUTIL_LICENSE_FILES = LICENSE
+-- 
+2.24.0.rc1
+

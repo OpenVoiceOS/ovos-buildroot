@@ -1,0 +1,4 @@
+#!/bin/bash
+#
+/usr/sbin/resizeSD &&
+rm /etc/firstboot

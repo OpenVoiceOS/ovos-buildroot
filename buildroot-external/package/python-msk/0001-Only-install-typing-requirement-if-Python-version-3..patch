@@ -1,0 +1,25 @@
+From a918c7274654865534f42590608407b2d61d1972 Mon Sep 17 00:00:00 2001
+From: Peter Steenbergen <info@j1nx.nl>
+Date: Sun, 8 Dec 2019 12:34:31 +0100
+Subject: [PATCH 1/1] Only install typing requirement if Python version < 3.5
+
+---
+ setup.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/setup.py b/setup.py
+index 62928e2..b4b6746 100644
+--- a/setup.py
++++ b/setup.py
+@@ -26,7 +26,7 @@ setup(
+     version='0.3.14',  # Also update in msk/__init__.py
+     packages=['msk', 'msk.actions'],
+     package_data={'msk': ['licenses/*']},
+-    install_requires=['GitPython', 'typing', 'msm>=0.5.13', 'pygithub', 'requests', 'colorama'],
++    install_requires=['GitPython', 'typing;python_version<"3.5"', 'msm>=0.5.13', 'pygithub', 'requests', 'colorama'],
+     url='https://github.com/MycroftAI/mycroft-skills-kit',
+     license='Apache-2.0',
+     author='Mycroft AI',
+-- 
+2.24.0.rc1
+

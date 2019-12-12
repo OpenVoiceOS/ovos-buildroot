@@ -1,0 +1,16 @@
+[Unit]
+Description=First Boot run script
+DefaultDependencies=no
+Conflicts=shutdown.target
+After=systemd-remount-fs.service
+Before=sysinit.target shutdown.target
+ConditionPathIsReadWrite=/etc
+ConditionPathExists=/etc/firstboot
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/sbin/firstboot
+
+[Install]
+WantedBy=sysinit.target
