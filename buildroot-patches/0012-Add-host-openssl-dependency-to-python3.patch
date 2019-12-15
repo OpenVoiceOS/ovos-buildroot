@@ -1,0 +1,35 @@
+From f1468008e466ce9aa27449c98ce775b292945190 Mon Sep 17 00:00:00 2001
+From: Peter Steenbergen <info@j1nx.nl>
+Date: Mon, 7 Jan 2019 16:59:08 +0100
+Subject: [PATCH 1/1] Add host-openssl dependency to python3
+
+---
+ package/python3/python3.mk | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
+
+diff --git a/package/python3/python3.mk b/package/python3/python3.mk
+index 8fbb95b9ad..0f8cce45dc 100644
+--- a/package/python3/python3.mk
++++ b/package/python3/python3.mk
+@@ -26,8 +26,7 @@ HOST_PYTHON3_CONF_OPTS += \
+ 	--enable-unicodedata \
+ 	--disable-test-modules \
+ 	--disable-idle3 \
+-	--disable-ossaudiodev \
+-	--disable-openssl
++	--disable-ossaudiodev
+ 
+ # Make sure that LD_LIBRARY_PATH overrides -rpath.
+ # This is needed because libpython may be installed at the same time that
+@@ -40,7 +39,7 @@ HOST_PYTHON3_CONF_ENV += \
+ 
+ PYTHON3_DEPENDENCIES = host-python3 libffi
+ 
+-HOST_PYTHON3_DEPENDENCIES = host-expat host-zlib host-libffi
++HOST_PYTHON3_DEPENDENCIES = host-expat host-zlib host-libffi host-openssl
+ 
+ PYTHON3_INSTALL_STAGING = YES
+ 
+-- 
+2.11.0
+
