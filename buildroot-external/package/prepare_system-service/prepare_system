@@ -18,4 +18,4 @@ ln -s /etc/pulse/pulseaudio-default.pa /etc/pulse/default.pa
 ln -s /etc/pulse/pulseaudio-system.pa /etc/pulse/system.pa
 ln -s /etc/pulse/pulseaudio-daemon.conf /etc/pulse/daemon.conf
 
-alsactl restore
+export LC_ALL="C"
