@@ -19,3 +19,9 @@ ln -s /etc/pulse/pulseaudio-system.pa /etc/pulse/system.pa
 ln -s /etc/pulse/pulseaudio-daemon.conf /etc/pulse/daemon.conf
 
 export LC_ALL="C"
+
+mkdir -p /etc/wpa_supplicant
+if [ -f "/boot/wpa_supplicant.conf" ]; then
+    mv /boot/wpa_supplicant.conf /etc/wpa_supplicant/wpa_supplicant-wlan0.conf
+    chmod 600 /etc/wpa_supplicant/wpa_supplicant-wlan0.conf
+fi
