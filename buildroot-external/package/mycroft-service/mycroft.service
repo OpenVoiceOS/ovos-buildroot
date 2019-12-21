@@ -1,15 +1,15 @@
 [Unit]
-Description=Mycroft AI
+Description=Mycroft A.I. Software stack.
 After=pulseaudio.service
+After=network-online.target
 
 [Service]
 User=mycroft
 WorkingDirectory=/home/mycroft
-ExecStart=start-mycroft.sh all
-ExecStop=stop-mycroft.sh all
-Type=forking
-Restart=always
-RestartSec=3
+Type=oneshot
+ExecStartPre=/bin/bash -c 'while ! ping -q -c 1 -W 1 1.1.1.1 >/dev/null 2>&1; do sleep 1; done'
+ExecStart=/bin/true
+RemainAfterExit=yes
 
 [Install]
 WantedBy=multi-user.target

@@ -1,0 +1,15 @@
+[Unit]
+Description=Mycroft Voice
+PartOf=mycroft.service
+After=mycroft.service
+
+[Service]
+User=mycroft
+WorkingDirectory=/home/mycroft
+ExecStart=mycroft-speech-client
+StandardOutput=file:/var/log/mycroft/voice.log
+StandardError=file:/var/log/mycroft/voice.error.log
+Restart=on-failure
+
+[Install]
+WantedBy=mycroft.service

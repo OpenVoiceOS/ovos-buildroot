@@ -1,0 +1,15 @@
+[Unit]
+Description=Mycroft Skills
+PartOf=mycroft.service
+After=mycroft.service
+
+[Service]
+User=mycroft
+WorkingDirectory=/home/mycroft
+ExecStart=mycroft-skills
+StandardOutput=file:/var/log/mycroft/skills.log
+StandardError=file:/var/log/mycroft/skills.error.log
+Restart=on-failure
+
+[Install]
+WantedBy=mycroft.service

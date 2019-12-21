@@ -1,0 +1,15 @@
+[Unit]
+Description=Mycroft Audio
+PartOf=mycroft.service
+After=mycroft.service
+
+[Service]
+User=mycroft
+WorkingDirectory=/home/mycroft
+ExecStart=mycroft-audio
+StandardOutput=file:/var/log/mycroft/audio.log
+StandardError=file:/var/log/mycroft/audio.error.log
+Restart=on-failure
+
+[Install]
+WantedBy=mycroft.service

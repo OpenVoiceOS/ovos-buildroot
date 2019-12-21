@@ -11,13 +11,31 @@ MYCROFT_SERVICE_LICENSE = Apache License 2.0
 MYCROFT_SERVICE_LICENSE_FILES = LICENSE
 
 define MYCROFT_SERVICE_INSTALL_TARGET_CMDS
-	$(INSTALL) -m 0755 $(@D)/start-mycroft.sh $(TARGET_DIR)/usr/bin/
-	$(INSTALL) -m 0755 $(@D)/stop-mycroft.sh $(TARGET_DIR)/usr/bin/
 	$(INSTALL) -D -m 644 $(@D)/mycroft.service \
 		$(TARGET_DIR)/usr/lib/systemd/system/mycroft.service
+	$(INSTALL) -D -m 644 $(@D)/mycroft-messagebus.service \
+                $(TARGET_DIR)/usr/lib/systemd/system/mycroft-messagebus.service
+	$(INSTALL) -D -m 644 $(@D)/mycroft-audio.service \
+                $(TARGET_DIR)/usr/lib/systemd/system/mycroft-audio.service
+	$(INSTALL) -D -m 644 $(@D)/mycroft-voice.service \
+                $(TARGET_DIR)/usr/lib/systemd/system/mycroft-voice.service
+	$(INSTALL) -D -m 644 $(@D)/mycroft-enclosure.service \
+                $(TARGET_DIR)/usr/lib/systemd/system/mycroft-enclosure.service
+	$(INSTALL) -D -m 644 $(@D)/mycroft-skills.service \
+                $(TARGET_DIR)/usr/lib/systemd/system/mycroft-skills.service
 	mkdir -p $(TARGET_DIR)/etc/systemd/system/multi-user.target.wants
 	ln -fs ../../../../usr/lib/systemd/system/mycroft.service \
 		$(TARGET_DIR)/etc/systemd/system/multi-user.target.wants/mycroft.service
+	ln -fs ../../../../usr/lib/systemd/system/mycroft-messagebus.service \
+                $(TARGET_DIR)/etc/systemd/system/multi-user.target.wants/mycroft-messagebus.service
+	ln -fs ../../../../usr/lib/systemd/system/mycroft-audio.service \
+                $(TARGET_DIR)/etc/systemd/system/multi-user.target.wants/mycroft-audio.service
+	ln -fs ../../../../usr/lib/systemd/system/mycroft-voice.service \
+                $(TARGET_DIR)/etc/systemd/system/multi-user.target.wants/mycroft-voice.service
+	ln -fs ../../../../usr/lib/systemd/system/mycroft-enclosure.service \
+                $(TARGET_DIR)/etc/systemd/system/multi-user.target.wants/mycroft-enclosure.service
+	ln -fs ../../../../usr/lib/systemd/system/mycroft-skills.service \
+                $(TARGET_DIR)/etc/systemd/system/multi-user.target.wants/mycroft-skills.service
 endef
 
 $(eval $(generic-package))

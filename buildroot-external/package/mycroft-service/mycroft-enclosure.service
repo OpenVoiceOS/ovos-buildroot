@@ -1,0 +1,16 @@
+[Unit]
+Description=Mycroft Enclosure
+PartOf=mycroft.service
+After=mycroft.service
+After=mycroft-messagebus.service
+
+[Service]
+User=mycroft
+WorkingDirectory=/home/mycroft
+ExecStart=mycroft-enclosure-client
+StandardOutput=file:/var/log/mycroft/enclosure.log
+StandardError=file:/var/log/mycroft/enclosure.error.log
+Restart=on-failure
+
+[Install]
+WantedBy=mycroft.service
