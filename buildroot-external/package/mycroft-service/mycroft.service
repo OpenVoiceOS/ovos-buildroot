@@ -8,8 +8,10 @@ User=mycroft
 WorkingDirectory=/home/mycroft
 Type=oneshot
 ExecStartPre=fbv -f -d 1 /opt/mycroft/splash/logo.png > /dev/null 2>&1
-ExecStartPre=/bin/bash -c 'while ! ping -q -c 1 -W 1 1.1.1.1 >/dev/null 2>&1; do sleep 1; done'
+ExecStartPre=/bin/bash -c 'fbv -f -d 1 /opt/mycroft/splash/waiting.png > /dev/null 2>&1;\
+                           while ! ping -q -c 1 -W 1 1.1.1.1 >/dev/null 2>&1; do sleep 1; done'
 ExecStart=/bin/true
+ExecStartPost=fbv -f -d 1 /opt/mycroft/splash/logo.png > /dev/null 2>&1
 RemainAfterExit=yes
 
 [Install]
