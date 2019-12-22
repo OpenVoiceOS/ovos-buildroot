@@ -14,7 +14,9 @@ echo "**                MycroftOS Version 0.1.0                    **"
 echo "**                                                           **"
 echo "***************************************************************"
 echo
-echo "Welcome to MycroftOS, you can start the mycroft CLI by; "
+echo "Welcome to MycroftOS."
 echo
-echo "mycroft-cli-client"
+echo "Please wait a moment while I load the Mycroft CLI client ..."
+echo
+mycroft-cli-client
 
