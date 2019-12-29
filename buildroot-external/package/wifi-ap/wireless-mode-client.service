@@ -1,0 +1,15 @@
+[Unit]
+Description=Wireless mode set client
+Before=wpa_supplicant@.service
+Before=systemd-networkd.service
+Wants=network.target
+
+# check existence of configuration file
+ConditionPathExists=/etc/wpa_supplicant/wpa_supplicant-wlan0.conf
+
+[Service]
+Type=oneshot
+ExecStart=/bin/ln -sf wifi.network.client /etc/systemd/network/wifi.network
+
+[Install]
+WantedBy=multi-user.target

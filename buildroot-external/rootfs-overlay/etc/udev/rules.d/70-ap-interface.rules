@@ -1,0 +1,1 @@
+SUBSYSTEM=="net", KERNEL=="wlan*", ACTION=="add", RUN+="/sbin/iw dev %k interface add ap%n type __ap"
