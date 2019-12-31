@@ -22,6 +22,10 @@ define WIFI_AP_INSTALL_TARGET_CMDS
                 $(TARGET_DIR)/usr/lib/systemd/system/wifi-setup.service
 	ln -fs ../../../../usr/lib/systemd/system/wifi-setup.service \
                 $(TARGET_DIR)/etc/systemd/system/sys-subsystem-net-devices-ap0.device.wants/wifi-setup.service
+	$(INSTALL) -D -m 644 $(@D)/dnsmasq.service \
+                $(TARGET_DIR)/usr/lib/systemd/system/dnsmasq.service
+        ln -fs ../../../../usr/lib/systemd/system/dnsmasq.service \
+                $(TARGET_DIR)/etc/systemd/system/sys-subsystem-net-devices-ap0.device.wants/dnsmasq.service
 
 	$(INSTALL) -D -m 644 $(@D)/wireless-mode-ap.service \
 		$(TARGET_DIR)/usr/lib/systemd/system/wireless-mode-ap.service
@@ -34,6 +38,18 @@ define WIFI_AP_INSTALL_TARGET_CMDS
         mkdir -p $(TARGET_DIR)/etc/systemd/system/multi-user.target.wants
         ln -fs ../../../../usr/lib/systemd/system/wireless-mode-client.service \
                 $(TARGET_DIR)/etc/systemd/system/multi-user.target.wants/wireless-mode-client.service
+
+	$(INSTALL) -D -m 644 $(@D)/nginx.service \
+                $(TARGET_DIR)/usr/lib/systemd/system/nginx.service
+        mkdir -p $(TARGET_DIR)/etc/systemd/system/multi-user.target.wants
+        ln -fs ../../../../usr/lib/systemd/system/nginx.service \
+                $(TARGET_DIR)/etc/systemd/system/multi-user.target.wants/nginx.service
+
+	$(INSTALL) -D -m 644 $(@D)/iptables.service \
+                $(TARGET_DIR)/usr/lib/systemd/system/iptables.service
+        mkdir -p $(TARGET_DIR)/etc/systemd/system/multi-user.target.wants
+        ln -fs ../../../../usr/lib/systemd/system/iptables.service \
+                $(TARGET_DIR)/etc/systemd/system/multi-user.target.wants/iptables.service
 endef
 
 $(eval $(generic-package))
