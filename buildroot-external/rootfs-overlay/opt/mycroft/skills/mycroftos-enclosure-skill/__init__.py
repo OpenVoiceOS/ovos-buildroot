@@ -76,6 +76,7 @@ class MycroftOS(MycroftSkill):
 		except Exception:
 			LOG.exception('In MycroftOS Skill')
 
+		self.settings.set_changed_callback(self.on_websettings_changed)
 
 	# System volume
 	#def on_volume_set(self, message):
@@ -92,7 +93,6 @@ class MycroftOS(MycroftSkill):
 	#def on_volume_unduck(self, message):
 	#	self.muted = False
 	#	call(['pactl', 'set-sink-mute', '0', '0'])
-
 
 	# Cleanup
 	def shutdown(self):
@@ -158,6 +158,8 @@ class MycroftOS(MycroftSkill):
 		self.loading = False
 		if is_paired():
 			os.system("fbv -f -d 1 /opt/mycroft/skills/mycroftos-enclosure-skill/ui/background.png > /dev/null 2>&1")
+			self.speak_dialog('finished.booting')
+
 
 	# System actions
 	def on_shutdown(self, message):
@@ -169,6 +171,26 @@ class MycroftOS(MycroftSkill):
 		self.speak("I'll be right back")
 		sleep(5)
 		os.system("sudo shutdown --reboot now")
+
+	def enable_airplay(self, message):
+		os.system("sudo systemctl enable shairport-sync.service")
+		os.system("sudo systemctl start shairport-sync.service")
+
+	def disable_airplay(self, message):
+                os.system("sudo systemctl disable shairport-sync.service")
+                os.system("sudo systemctl stop shairport-sync.service")
+
+
+	# Intent handlers
+	@intent_handler(IntentBuilder("").require("EnableAirPlay"))
+	def handle_enable_airplay_intent(self, message):
+		self.enable_airplay()
+		self.speak_dialog("EnableAirPlay")
+
+	@intent_handler(IntentBuilder("").require("DisableAirPlay"))
+	def handle_disable_airplay_intent(self, message):
+		self.disable_airplay()
+		self.speak_dialog("DisableAirPlay")
 
 
 def create_skill():
