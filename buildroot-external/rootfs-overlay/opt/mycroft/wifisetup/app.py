@@ -27,7 +27,7 @@ def save_credentials():
     wifi_key = request.form['wifi_key']
 
     create_wpa_supplicant(ssid, wifi_key)
-    
+
     # Call reboot_device() in a thread otherwise the reboot will prevent
     # the response from getting to the browser
     def sleep_and_reboot():
@@ -108,4 +108,5 @@ def reboot_device():
     os.system('reboot')
 
 if __name__ == '__main__':
+    os.system("fbv -f -d 1 /opt/mycroft/wifisetup/static/images/wifi.png > /dev/null 2>&1")
     app.run(host = '0.0.0.0', port = '88')
