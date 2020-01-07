@@ -1,0 +1,32 @@
+{
+    "name": "MycroftOS System",
+    "skillMetadata": {
+        "sections": [
+            {
+                "name": "Enabled services",
+                "fields": [
+                    {
+                        "type": "label",
+                        "label": "Secure Shell (SSH)."
+                    },
+                    {
+                        "name": "sshd",
+                        "type": "checkbox",
+                        "label": "Enabled",
+                        "value": "true"
+                    },
+                    {
+                        "type": "label",
+                        "label": "AirPlay audio player (v1)."
+                    },
+                    {
+                        "name": "airplay",
+                        "type": "checkbox",
+                        "label": "Enabled",
+                        "value": "false"
+                    }
+                ]
+            }
+        ]
+    }
+}
