@@ -1,0 +1,181 @@
+From 74f3635c586b39279f4a1c4f716cba607a160b06 Mon Sep 17 00:00:00 2001
+From: Peter Steenbergen <info@j1nx.nl>
+Date: Fri, 10 Jan 2020 14:49:05 +0100
+Subject: [PATCH 1/1] Upgrade cargo and rust to latest versions and don't
+ bother the offline build / vendor stuff
+
+---
+ package/cargo-bin/cargo-bin.hash |  2 +-
+ package/cargo-bin/cargo-bin.mk   |  2 +-
+ package/cargo/cargo.hash         |  4 ++--
+ package/cargo/cargo.mk           | 34 +++-----------------------------
+ package/rust-bin/rust-bin.hash   |  6 +++---
+ package/rust-bin/rust-bin.mk     |  2 +-
+ package/rust/rust.mk             |  2 +-
+ 7 files changed, 12 insertions(+), 40 deletions(-)
+
+diff --git a/package/cargo-bin/cargo-bin.hash b/package/cargo-bin/cargo-bin.hash
+index 0e9e9c5c61..1d5b600dab 100644
+--- a/package/cargo-bin/cargo-bin.hash
++++ b/package/cargo-bin/cargo-bin.hash
+@@ -6,7 +6,7 @@ sha256 13acdb3c9f2505805ceed8a696f5f62ab8cd73e443cd43d6edd588aad88e1c32  cargo-0
+ sha256 6628db22370f397676195555d768f0449a60f0a694bcac24611f4cd1cfc97cdc  cargo-0.33.0-powerpc64le-unknown-linux-gnu.tar.xz
+ # From https://static.rust-lang.org/dist/cargo-0.33.0-x86_64-unknown-linux-gnu.tar.xz.sha256
+ # Verified using https://static.rust-lang.org/dist/cargo-0.33.0-x86_64-unknown-linux-gnu.tar.xz.asc
+-sha256 c2c31db68c4dcb50ad856a19e6f11489a0d4df1212f31bd068dfbb73c5425761  cargo-0.33.0-x86_64-unknown-linux-gnu.tar.xz
++sha256 9b6ae643fa240c5ecbc1dc390f4020b6a683f25bac6f7437ebd4b9d32a8d0b6c  cargo-0.41.0-x86_64-unknown-linux-gnu.tar.xz
+ # Locally generated
+ sha256 a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2  LICENSE-APACHE
+ sha256 23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3  LICENSE-MIT
+diff --git a/package/cargo-bin/cargo-bin.mk b/package/cargo-bin/cargo-bin.mk
+index 3614f7a53d..87c528a200 100644
+--- a/package/cargo-bin/cargo-bin.mk
++++ b/package/cargo-bin/cargo-bin.mk
+@@ -4,7 +4,7 @@
+ #
+ ################################################################################
+ 
+-CARGO_BIN_VERSION = 0.33.0
++CARGO_BIN_VERSION = 0.41.0
+ CARGO_BIN_SITE = https://static.rust-lang.org/dist
+ CARGO_BIN_SOURCE = cargo-$(CARGO_BIN_VERSION)-$(RUSTC_HOST_NAME).tar.xz
+ CARGO_BIN_LICENSE = Apache-2.0 or MIT
+diff --git a/package/cargo/cargo.hash b/package/cargo/cargo.hash
+index baa2cfbc33..e16d727b61 100644
+--- a/package/cargo/cargo.hash
++++ b/package/cargo/cargo.hash
+@@ -1,6 +1,6 @@
+ # Locally generated
+-sha256 1a4bae6910ca895157a1abe8225eb2b7e9b49ee1ee1e4e72fb81cb8e1446bff9  cargo-0.26.0.tar.gz
+-sha256 dc7240d60a869fa24a68c8734fb7c810c27cca0a6dad52df6279865e4e8e7fae  rust-installer-4f994850808a572e2cc8d43f968893c8e942e9bf.tar.gz
++sha256 77b2e5b5207ed30dd6e6af934663f0c4553968dce575f95ca7e141444b6e9704  cargo-0.41.0.tar.gz
++sha256 531bd9147b15ea9c061e24038c2100c4beac8b023d2877db1bb5d85efeefe76e  rust-installer-9f66c14c3f91a48a118c7817f434167b311c3515.tar.gz
+ sha256 a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2  LICENSE-APACHE
+ sha256 23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3  LICENSE-MIT
+ sha256 8bd89f9222dc80292f4107347103b693ac66f3a083371f0629ccf42338abe880  LICENSE-THIRD-PARTY
+diff --git a/package/cargo/cargo.mk b/package/cargo/cargo.mk
+index a387281b4c..6541d26c44 100644
+--- a/package/cargo/cargo.mk
++++ b/package/cargo/cargo.mk
+@@ -4,22 +4,16 @@
+ #
+ ################################################################################
+ 
+-CARGO_VERSION = 0.26.0
++CARGO_VERSION = 0.41.0
+ CARGO_SITE = $(call github,rust-lang,cargo,$(CARGO_VERSION))
+ CARGO_LICENSE = Apache-2.0 or MIT
+ CARGO_LICENSE_FILES = LICENSE-APACHE LICENSE-MIT
+ 
+-CARGO_DEPS_SHA512 = 6ed2a1644c9b18fc24ddad5350d41b6c36cd5b62de4cf0b748a57b589f4f0ac12f91461989158d58d0892bf6fc2c1626cf574e7e2b9da4b0e35f72dfd88f9048
+-CARGO_DEPS_SITE = https://src.fedoraproject.org/repo/pkgs/cargo/$(CARGO_DEPS_SOURCE)/sha512/$(CARGO_DEPS_SHA512)
+-CARGO_DEPS_SOURCE = cargo-$(CARGO_VERSION)-vendor.tar.xz
+-
+-CARGO_INSTALLER_VERSION = 4f994850808a572e2cc8d43f968893c8e942e9bf
++CARGO_INSTALLER_VERSION = 9f66c14c3f91a48a118c7817f434167b311c3515
+ CARGO_INSTALLER_SITE = $(call github,rust-lang,rust-installer,$(CARGO_INSTALLER_VERSION))
+ CARGO_INSTALLER_SOURCE = rust-installer-$(CARGO_INSTALLER_VERSION).tar.gz
+ 
+-HOST_CARGO_EXTRA_DOWNLOADS = \
+-	$(CARGO_DEPS_SITE)/$(CARGO_DEPS_SOURCE) \
+-	$(CARGO_INSTALLER_SITE)/$(CARGO_INSTALLER_SOURCE)
++HOST_CARGO_EXTRA_DOWNLOADS = $(CARGO_INSTALLER_SITE)/$(CARGO_INSTALLER_SOURCE)
+ 
+ HOST_CARGO_DEPENDENCIES = \
+ 	$(BR2_CMAKE_HOST_DEPENDENCY) \
+@@ -34,15 +28,6 @@ HOST_CARGO_DEPENDENCIES = \
+ HOST_CARGO_SNAP_BIN = $(HOST_CARGO_BIN_DIR)/cargo/bin/cargo
+ HOST_CARGO_HOME = $(HOST_DIR)/share/cargo
+ 
+-define HOST_CARGO_EXTRACT_DEPS
+-	@mkdir -p $(@D)/vendor
+-	$(call suitable-extractor,$(CARGO_DEPS_SOURCE)) \
+-		$(HOST_CARGO_DL_DIR)/$(CARGO_DEPS_SOURCE) | \
+-		$(TAR) --strip-components=1 -C $(@D)/vendor $(TAR_OPTIONS) -
+-endef
+-
+-HOST_CARGO_POST_EXTRACT_HOOKS += HOST_CARGO_EXTRACT_DEPS
+-
+ define HOST_CARGO_EXTRACT_INSTALLER
+ 	@mkdir -p $(@D)/src/rust-installer
+ 	$(call suitable-extractor,$(CARGO_INSTALLER_SOURCE)) \
+@@ -52,19 +37,6 @@ endef
+ 
+ HOST_CARGO_POST_EXTRACT_HOOKS += HOST_CARGO_EXTRACT_INSTALLER
+ 
+-define HOST_CARGO_SETUP_DEPS
+-	mkdir -p $(@D)/.cargo
+-	( \
+-		echo "[source.crates-io]"; \
+-		echo "registry = 'https://github.com/rust-lang/crates.io-index'"; \
+-		echo "replace-with = 'vendored-sources'"; \
+-		echo "[source.vendored-sources]"; \
+-		echo "directory = '$(@D)/vendor'"; \
+-	) > $(@D)/.cargo/config
+-endef
+-
+-HOST_CARGO_PRE_CONFIGURE_HOOKS += HOST_CARGO_SETUP_DEPS
+-
+ HOST_CARGO_SNAP_OPTS = \
+ 	--release \
+ 	$(if $(VERBOSE),--verbose)
+diff --git a/package/rust-bin/rust-bin.hash b/package/rust-bin/rust-bin.hash
+index 96d81a347c..f148032cce 100644
+--- a/package/rust-bin/rust-bin.hash
++++ b/package/rust-bin/rust-bin.hash
+@@ -3,7 +3,7 @@
+ sha256 90b6414eddbce4a245cdcaea8353d3a637ef565d2bd119e25a6c2bf3e38cdf63  rustc-1.33.0-i686-unknown-linux-gnu.tar.xz
+ # From https://static.rust-lang.org/dist/rustc-1.33.0-x86_64-unknown-linux-gnu.tar.xz.sha256
+ # Verified using https://static.rust-lang.org/dist/rustc-1.33.0-x86_64-unknown-linux-gnu.tar.xz.asc
+-sha256 57c5ced1a826d34f26e50adf041528dd0000f2a59e8be32d2359386843382ce1  rustc-1.33.0-x86_64-unknown-linux-gnu.tar.xz
++sha256 b1c00618b7a98156e88b14682508a503284f85748eab23de749a20dcc8847111  rustc-1.40.0-x86_64-unknown-linux-gnu.tar.xz
+ # From https://static.rust-lang.org/dist/rust-std-1.33.0-aarch64-unknown-linux-gnu.tar.xz.sha256
+ # Verified using https://static.rust-lang.org/dist/rust-std-1.33.0-aarch64-unknown-linux-gnu.tar.xz.asc
+ sha256 3e3449dada8306b3ff91f23c7803c7312a47e93af140f757b29b74f1e226a505  rust-std-1.33.0-aarch64-unknown-linux-gnu.tar.xz
+@@ -12,7 +12,7 @@ sha256 3e3449dada8306b3ff91f23c7803c7312a47e93af140f757b29b74f1e226a505  rust-st
+ sha256 ddb372a43fb2ba9949e78643df43d6ae447b70cefd440ccdd6b9f6c2ff929ea7  rust-std-1.33.0-arm-unknown-linux-gnueabi.tar.xz
+ # From https://static.rust-lang.org/dist/rust-std-1.33.0-arm-unknown-linux-gnueabihf.tar.xz.sha256
+ # Verified using https://static.rust-lang.org/dist/rust-std-1.33.0-arm-unknown-linux-gnueabihf.tar.xz.asc
+-sha256 1142d5064d8cbfab16ab71130e5a84804a1ebdfeb10173e6238adc0d757937b6  rust-std-1.33.0-arm-unknown-linux-gnueabihf.tar.xz
++sha256 f16b2cf9103127140f85d21c2753d85d45b90a9309967e3a788867fd7d95a6c1  rust-std-1.40.0-arm-unknown-linux-gnueabihf.tar.xz
+ # From https://static.rust-lang.org/dist/rust-std-1.33.0-armv7-unknown-linux-gnueabihf.tar.xz.sha256
+ # Verified using https://static.rust-lang.org/dist/rust-std-1.33.0-armv7-unknown-linux-gnueabihf.tar.xz.asc
+ sha256 8492b5c91a9ea7ee7e22881382c1b9ad8bb9a4147aff0dfee09940b34783e3d5  rust-std-1.33.0-armv7-unknown-linux-gnueabihf.tar.xz
+@@ -42,7 +42,7 @@ sha256 4bc32bf4660a9fc5cd2af9e09f1bfb668b335442097fed6f3892b50950e97d3c  rust-st
+ sha256 984d3ca2a47db04345a2bddd657761f66d209ef95a02097ad4bd549f45a0dc9f  rust-std-1.33.0-powerpc64le-unknown-linux-gnu.tar.xz
+ # From https://static.rust-lang.org/dist/rust-std-1.33.0-x86_64-unknown-linux-gnu.tar.xz.sha256
+ # Verified using https://static.rust-lang.org/dist/rust-std-1.33.0-x86_64-unknown-linux-gnu.tar.xz.asc
+-sha256 6f20343ed73faf5fdfc423bec38a9bb1910a0a962af6f2dddd7184407543ed0e  rust-std-1.33.0-x86_64-unknown-linux-gnu.tar.xz
++sha256 5a0b14a51f51b0194f70a2023749d9cb49c3b2e11f0d4c8232960b91fad336ac  rust-std-1.40.0-x86_64-unknown-linux-gnu.tar.xz
+ # Locally generated
+ sha256 a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2  LICENSE-APACHE
+ sha256 23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3  LICENSE-MIT
+diff --git a/package/rust-bin/rust-bin.mk b/package/rust-bin/rust-bin.mk
+index a374215e20..8d2f3c9eca 100644
+--- a/package/rust-bin/rust-bin.mk
++++ b/package/rust-bin/rust-bin.mk
+@@ -4,7 +4,7 @@
+ #
+ ################################################################################
+ 
+-RUST_BIN_VERSION = 1.33.0
++RUST_BIN_VERSION = 1.40.0
+ RUST_BIN_SITE = https://static.rust-lang.org/dist
+ RUST_BIN_LICENSE = Apache-2.0 or MIT
+ RUST_BIN_LICENSE_FILES = LICENSE-APACHE LICENSE-MIT
+diff --git a/package/rust/rust.mk b/package/rust/rust.mk
+index 5d14fc6682..74e5c50e59 100644
+--- a/package/rust/rust.mk
++++ b/package/rust/rust.mk
+@@ -4,7 +4,7 @@
+ #
+ ################################################################################
+ 
+-RUST_VERSION = 1.33.0
++RUST_VERSION = 1.40.0
+ RUST_SOURCE = rustc-$(RUST_VERSION)-src.tar.xz
+ RUST_SITE = https://static.rust-lang.org/dist
+ RUST_LICENSE = Apache-2.0 or MIT
+-- 
+2.24.0.rc1
+
