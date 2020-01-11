@@ -1,0 +1,6 @@
+config BR2_PACKAGE_BTSPEAKER
+	bool "btspeaker"
+	help
+	  Service to start a BT Speaker daemon.
+
+	  https://www.j1nx.nl

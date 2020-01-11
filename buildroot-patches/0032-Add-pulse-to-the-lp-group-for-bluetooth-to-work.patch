@@ -1,0 +1,25 @@
+From 7809fc94c259e997cd9010eef83854e78ad4f31a Mon Sep 17 00:00:00 2001
+From: Peter Steenbergen <info@j1nx.nl>
+Date: Sat, 11 Jan 2020 16:36:36 +0100
+Subject: [PATCH 1/1] Add pulse to the lp group for bluetooth to work.
+
+---
+ package/pulseaudio/pulseaudio.mk | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/package/pulseaudio/pulseaudio.mk b/package/pulseaudio/pulseaudio.mk
+index c91af22935..0f7a9e3c21 100644
+--- a/package/pulseaudio/pulseaudio.mk
++++ b/package/pulseaudio/pulseaudio.mk
+@@ -162,7 +162,7 @@ PULSEAUDIO_POST_INSTALL_TARGET_HOOKS += PULSEAUDIO_REMOVE_VALA \
+ 
+ ifeq ($(BR2_PACKAGE_PULSEAUDIO_DAEMON),y)
+ define PULSEAUDIO_USERS
+-	pulse -1 pulse -1 * /var/run/pulse - audio,pulse-access
++	pulse -1 pulse -1 * /var/run/pulse - audio,pulse-access,lp
+ endef
+ 
+ define PULSEAUDIO_INSTALL_INIT_SYSV
+-- 
+2.24.0.rc1
+

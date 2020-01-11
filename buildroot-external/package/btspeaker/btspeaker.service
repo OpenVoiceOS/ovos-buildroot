@@ -1,0 +1,13 @@
+[Unit]
+Description=Bluetooth Auth Agent
+After=bluetooth.service
+PartOf=bluetooth.service
+
+[Service]
+Type=simple
+ExecStartPre=/usr/bin/bt-adapter -s Powered on
+ExecStartPre=/usr/bin/bt-adapter -s Discoverable on
+ExecStart=/usr/bin/bt-agent -c NoInputNoOutput -p /etc/bluetooth/pin.conf
+
+[Install]
+WantedBy=bluetooth.target
