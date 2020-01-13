@@ -33,6 +33,8 @@ class MycroftOS(MycroftSkill):
 		super().__init__('MycroftOS')
 		self.skip_list = ('MycroftOS')
 		self.loading = True
+		self.airplay = self.settings.get("airplay")
+		self.sshd = self.settings.get("sshd")
 
 	def initialize(self):
 		""" Perform initalization.
@@ -81,10 +83,21 @@ class MycroftOS(MycroftSkill):
 			LOG.exception('In MycroftOS Skill')
 
 	def on_websettings_changed(self):
-		if self.settings.get("sshd") is True:
-			self.enable_ssh()
-		if self.settings.get("airplay") is True:
-			self.enable_airplay()
+		if self.sshd != self.settings.get("sshd")
+			if self.settings.get("sshd") is True:
+				self.sshd = True
+				enable_ssh()
+			else:
+				self.sshd = False
+				disable_ssh()
+
+		if self.airplay != self.settings.get("airplay")
+			if self.settings.get("airplay") is True:
+				self.airplay = True
+				enable_airplay()
+			else:
+				self.airplay = False
+				disable_airplay()
 
 	# System volume
 	#def on_volume_set(self, message):
@@ -187,24 +200,28 @@ class MycroftOS(MycroftSkill):
 		os.system("sudo systemctl enable sshd.service")
 		os.system("sudo systemctl start sshd.service")
 		self.speak_dialog("EnableSSH")
+		self.settings["sshd"] = True
 
 	@intent_file_handler("DisableSSH.intent")
 	def disable_ssh(self, message):
 		os.system("sudo systemctl disable sshd.service")
 		os.system("sudo systemctl stop sshd.service")
 		self.speak_dialog("DisableSSH")
+		self.settings["sshd"] = False
 
 	@intent_file_handler("EnableAirPlay.intent")
 	def enable_airplay(self, message):
 		os.system("sudo systemctl enable shairport-sync.service")
 		os.system("sudo systemctl start shairport-sync.service")
 		self.speak_dialog("EnableAirPlay")
+		self.settings["airplay"] = True
 
 	@intent_file_handler("DisableAirPlay.intent")
 	def disable_airplay(self, message):
 		os.system("sudo systemctl disable shairport-sync.service")
 		os.system("sudo systemctl stop shairport-sync.service")
 		self.speak_dialog("DisableAirPlay")
+		self.settings["airplay"] = False
 
 
 def create_skill():
