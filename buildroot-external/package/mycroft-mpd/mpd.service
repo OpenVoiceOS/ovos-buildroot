@@ -1,0 +1,12 @@
+[Unit]
+Description=mpd
+Wants=network.target
+After=network.target sound.target
+
+[Service]
+Type=simple
+User=mycroft
+ExecStart=/bin/mpd --no-daemon
+
+[Install]
+WantedBy=multi-user.target
