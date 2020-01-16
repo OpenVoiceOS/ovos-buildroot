@@ -33,6 +33,13 @@ class MycroftOS(MycroftSkill):
 		super().__init__('MycroftOS')
 		self.skip_list = ('MycroftOS')
 		self.loading = True
+		self.airplay_enabled = False
+		self.sshd_enabled = True
+		self.spotify_enabled = False
+		self.btspeaker_enabled = False
+		self.snapclient_enabled = False
+		self.snapserver_enabled = False
+		self.mpd_enabled = False
 		self.airplay_enabled = self.settings.get('airplay')
 		self.sshd_enabled = self.settings.get('sshd')
 		self.spotify_enabled = self.settings.get('spotifyd')
