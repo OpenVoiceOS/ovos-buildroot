@@ -5,7 +5,6 @@ After=network.target sound.target
 
 [Service]
 Type=simple
-User=mycroft
 ExecStart=/bin/mpd --no-daemon
 
 [Install]

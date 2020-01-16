@@ -10,6 +10,7 @@ define MYCROFT_MPD_INSTALL_EXTRA_FILES
 
 	mkdir -p $(TARGET_DIR)/opt/mpd/playlists
 	mkdir -p $(TARGET_DIR)/opt/mpd/music
+	mkdir -p $(TARGET_DIR)/var/lib/mpd
 
 	cp -r $(BR2_EXTERNAL_MYCROFTOS_PATH)/package/mycroft-mpd/playlists/* \
 		$(TARGET_DIR)/opt/mpd/playlists/
