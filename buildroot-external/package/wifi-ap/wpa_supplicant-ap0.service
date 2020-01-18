@@ -12,7 +12,7 @@ ConditionPathExists=!/etc/wpa_supplicant/wpa_supplicant-wlan0.conf
 
 [Service]
 Type=simple
-ExecStart=/usr/sbin/wpa_supplicant -c/etc/wpa_supplicant/wpa_supplicant-ap0.conf -
+ExecStart=/usr/sbin/wpa_supplicant -c/etc/wpa_supplicant/wpa_supplicant-ap0.conf -iap0
 
 [Install]
 WantedBy=sys-subsystem-net-devices-ap0.device
