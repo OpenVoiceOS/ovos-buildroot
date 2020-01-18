@@ -1,0 +1,18 @@
+[Unit]
+Description=WPA supplicant daemon (interface-specific version)
+Requires=sys-subsystem-net-devices-ap0.device
+After=sys-subsystem-net-devices-ap0.device
+Before=network.target
+Wants=network.target
+
+# check existence of configuration file
+ConditionPathExists=!/etc/wpa_supplicant/wpa_supplicant-wlan0.conf
+
+# NetworkManager users will probably want the dbus version instead.
+
+[Service]
+Type=simple
+ExecStart=/usr/sbin/wpa_supplicant -c/etc/wpa_supplicant/wpa_supplicant-ap0.conf -
+
+[Install]
+WantedBy=sys-subsystem-net-devices-ap0.device
