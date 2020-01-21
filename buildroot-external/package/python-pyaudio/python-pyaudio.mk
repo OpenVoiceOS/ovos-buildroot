@@ -11,4 +11,3 @@ PYTHON_PYAUDIO_SETUP_TYPE = setuptools
 PYTHON_PYAUDIO_LICENSE = 
 
 $(eval $(python-package))
-$(eval $(host-python-package))

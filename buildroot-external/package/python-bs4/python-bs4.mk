@@ -11,4 +11,3 @@ PYTHON_BS4_SETUP_TYPE = setuptools
 PYTHON_BS4_LICENSE = 
 
 $(eval $(python-package))
-$(eval $(host-python-package))

@@ -11,4 +11,3 @@ PYTHON_PYEE_SETUP_TYPE = distutils
 PYTHON_PYEE_LICENSE = MIT
 
 $(eval $(python-package))
-$(eval $(host-python-package))

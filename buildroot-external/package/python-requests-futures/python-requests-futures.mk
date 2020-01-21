@@ -12,4 +12,3 @@ PYTHON_REQUESTS_FUTURES_LICENSE = Apache License v2
 PYTHON_REQUESTS_FUTURES_LICENSE_FILES = LICENSE
 
 $(eval $(python-package))
-$(eval $(host-python-package))
