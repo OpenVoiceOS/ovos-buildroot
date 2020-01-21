@@ -14,6 +14,12 @@ define BTSPEAKER_INSTALL_TARGET_CMDS
 	$(INSTALL) -D -m 644 $(@D)/btspeaker.service \
 		$(TARGET_DIR)/usr/lib/systemd/system/btspeaker.service
 
+	 $(INSTALL) -D -m 644 $(@D)/brcm_bt.service.service \
+                $(TARGET_DIR)/usr/lib/systemd/system/brcm_bt.service.service
+	mkdir -p $(TARGET_DIR)/etc/systemd/system/multi-user.target.wants
+	ln -fs ../../../../usr/lib/systemd/system/brcm_bt.service \
+		$(TARGET_DIR)/etc/systemd/system/multi-user.target.wants/brcm_bt.service
+
 	mkdir -p $(TARGET_DIR)/etc/bluetooth
 	$(INSTALL) -D -m 644 $(@D)/main.conf \
 		$(TARGET_DIR)/etc/bluetooth/main.conf

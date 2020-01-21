@@ -1,0 +1,12 @@
+[Unit]
+Description=Broadcom BCM4343* bluetooth HCI
+ConditionPathIsDirectory=/proc/device-tree/soc/gpio@7e200000/bt_pins
+Before=bluetooth.service
+Before=btspeaker.service
+
+[Service]
+Type=simple
+ExecStart=btattach -B /dev/ttyAMA0 -P bcm -S 921600
+
+[Install]
+WantedBy=multi-user.target
