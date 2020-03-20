@@ -1,42 +1,40 @@
-From 1d3d028e59a115f86fdac8b5bbd39dcc5565561c Mon Sep 17 00:00:00 2001
+From c0ae1185f51d3c19a896d0132975c8d54f67d5b3 Mon Sep 17 00:00:00 2001
 From: Peter Steenbergen <info@j1nx.nl>
-Date: Tue, 29 Oct 2019 19:33:27 +0100
+Date: Tue, 17 Mar 2020 09:53:51 +0100
 Subject: [PATCH 1/1] Downgrade python-urllib3 to 1.24.2
 
 ---
- package/python-urllib3/python-urllib3.hash | 6 +++---
+ package/python-urllib3/python-urllib3.hash | 2 +-
  package/python-urllib3/python-urllib3.mk   | 4 ++--
- 2 files changed, 5 insertions(+), 5 deletions(-)
+ 2 files changed, 3 insertions(+), 3 deletions(-)
 
 diff --git a/package/python-urllib3/python-urllib3.hash b/package/python-urllib3/python-urllib3.hash
-index e61f754aa3..ec075cb4f6 100644
+index 91b9e44622..d020e64a06 100644
 --- a/package/python-urllib3/python-urllib3.hash
 +++ b/package/python-urllib3/python-urllib3.hash
 @@ -1,5 +1,5 @@
  # md5, sha256 from https://pypi.org/pypi/urllib3/json
--md5	f09e95a5c42a7cc7ff7cb6a14c55fb69  urllib3-1.25.3.tar.gz
--sha256	dbe59173209418ae49d485b87d1681aefa36252ee85884c31346debd19463232  urllib3-1.25.3.tar.gz
-+md5	20bb5a170a534bd0acd98bfc007fcc22  urllib3-1.24.2.tar.gz
+ md5	a7504a9fcb7ed4ffa482fe098c80b6d4  urllib3-1.25.6.tar.gz
+-sha256	9a107b99a5393caf59c7aa3c1249c16e6879447533d0887f4336dde834c7be86  urllib3-1.25.6.tar.gz
 +sha256	9a247273df709c4fedb38c711e44292304f73f39ab01beda9f6b9fc375669ac3  urllib3-1.24.2.tar.gz
  # Locally computed sha256 checksums
--sha256	7c0d136ee0585389adf2d25671bb99687a1f75929f465b7f16ee3f01da37255e  LICENSE.txt
-+sha256	11db569430ca5ad793f1399297b8df5041a22137abaf90642ea71da21d59121c  LICENSE.txt
+ sha256	7c0d136ee0585389adf2d25671bb99687a1f75929f465b7f16ee3f01da37255e  LICENSE.txt
 diff --git a/package/python-urllib3/python-urllib3.mk b/package/python-urllib3/python-urllib3.mk
-index 5d8ec34f39..893d32d976 100644
+index 8383cbe8e8..893d32d976 100644
 --- a/package/python-urllib3/python-urllib3.mk
 +++ b/package/python-urllib3/python-urllib3.mk
 @@ -4,9 +4,9 @@
  #
  ################################################################################
  
--PYTHON_URLLIB3_VERSION = 1.25.3
+-PYTHON_URLLIB3_VERSION = 1.25.6
 +PYTHON_URLLIB3_VERSION = 1.24.2
  PYTHON_URLLIB3_SOURCE = urllib3-$(PYTHON_URLLIB3_VERSION).tar.gz
--PYTHON_URLLIB3_SITE = https://files.pythonhosted.org/packages/4c/13/2386233f7ee40aa8444b47f7463338f3cbdf00c316627558784e3f542f07
+-PYTHON_URLLIB3_SITE = https://files.pythonhosted.org/packages/ff/44/29655168da441dff66de03952880c6e2d17b252836ff1aa4421fba556424
 +PYTHON_URLLIB3_SITE = https://files.pythonhosted.org/packages/fd/fa/b21f4f03176463a6cccdb612a5ff71b927e5224e83483012747c12fc5d62
  PYTHON_URLLIB3_LICENSE = MIT
  PYTHON_URLLIB3_LICENSE_FILES = LICENSE.txt
  PYTHON_URLLIB3_SETUP_TYPE = setuptools
 -- 
-2.11.0
+2.25.0
 

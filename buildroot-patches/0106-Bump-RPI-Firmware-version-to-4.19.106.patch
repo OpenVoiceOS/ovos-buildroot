@@ -1,7 +1,7 @@
-From 73a5ad7dbf356f39b4356486e138dcd4f0a2548b Mon Sep 17 00:00:00 2001
+From bced5282a12ad171556f7127e21963d490fc1eab Mon Sep 17 00:00:00 2001
 From: Peter Steenbergen <info@j1nx.nl>
-Date: Tue, 24 Dec 2019 08:30:30 +0100
-Subject: [PATCH 1/1] Bump RPI Firmware version to latest
+Date: Fri, 20 Mar 2020 10:47:44 +0100
+Subject: [PATCH 1/1] Bump RPI Firmware version to 4.19.106
 
 ---
  package/rpi-firmware/rpi-firmware.hash | 2 +-
@@ -9,27 +9,27 @@ Subject: [PATCH 1/1] Bump RPI Firmware version to latest
  2 files changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/package/rpi-firmware/rpi-firmware.hash b/package/rpi-firmware/rpi-firmware.hash
-index 61834f7d42..d21ca9d251 100644
+index 59ab1da0c6..69fcbfea24 100644
 --- a/package/rpi-firmware/rpi-firmware.hash
 +++ b/package/rpi-firmware/rpi-firmware.hash
 @@ -1,3 +1,3 @@
  # Locally computed
--sha256 c82c40cf37fac36160a7f6b9c314506beb942bf113a55d30fa163c56a4f98946 rpi-firmware-bcf40b5c2b94178c7564fb451098d44968e44af5.tar.gz
-+sha256 6f5251c6cd1338947b49cdfa84bd581ef8c52cd9fd69a5fb7905995564a8de49 rpi-firmware-0c01dbefba45a08c47f8538d5a071a0fba6b7e83.tar.gz
- sha256 ba76edfc10a248166d965b8eaf320771c44f4f432d4fce2fd31fd272e7038add boot/LICENCE.broadcom
+-sha256 31a84340be08be319570a9d1439f25c0e3513fed73065a56aa5dd61dd605d5d9 rpi-firmware-01ecfd2ba2b7cf3a2f4aa75ada895ee4a3e729f5.tar.gz
++sha256 32ef9f8dadbc05f3a1da3e9819f261e911f52cd05c4830a34361d989660f23b5 rpi-firmware-bf83b506b4a6f9e592e711d02871a278fad5bd1e.tar.gz
+ sha256 c7283ff51f863d93a275c66e3b4cb08021a5dd4d8c1e7acc47d872fbe52d3d6b boot/LICENCE.broadcom
 diff --git a/package/rpi-firmware/rpi-firmware.mk b/package/rpi-firmware/rpi-firmware.mk
-index 717f705f66..197f3f44bb 100644
+index 6fee60b08c..3a53212138 100644
 --- a/package/rpi-firmware/rpi-firmware.mk
 +++ b/package/rpi-firmware/rpi-firmware.mk
 @@ -4,7 +4,7 @@
  #
  ################################################################################
  
--RPI_FIRMWARE_VERSION = bcf40b5c2b94178c7564fb451098d44968e44af5
-+RPI_FIRMWARE_VERSION = 0c01dbefba45a08c47f8538d5a071a0fba6b7e83
+-RPI_FIRMWARE_VERSION = 01ecfd2ba2b7cf3a2f4aa75ada895ee4a3e729f5
++RPI_FIRMWARE_VERSION = bf83b506b4a6f9e592e711d02871a278fad5bd1e
  RPI_FIRMWARE_SITE = $(call github,raspberrypi,firmware,$(RPI_FIRMWARE_VERSION))
  RPI_FIRMWARE_LICENSE = BSD-3-Clause
  RPI_FIRMWARE_LICENSE_FILES = boot/LICENCE.broadcom
 -- 
-2.24.0.rc1
+2.25.0
 

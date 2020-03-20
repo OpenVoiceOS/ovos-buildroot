@@ -1,0 +1,46 @@
+From 78295577729b988c7414669897ae781462c92962 Mon Sep 17 00:00:00 2001
+From: Peter Steenbergen <info@j1nx.nl>
+Date: Thu, 19 Mar 2020 19:56:31 +0100
+Subject: [PATCH 1/1] Patch setup.py to be compatible
+
+---
+ setup.py | 7 +------
+ 1 file changed, 1 insertion(+), 6 deletions(-)
+
+diff --git a/setup.py b/setup.py
+index ce0be2f..1c5b14f 100644
+--- a/setup.py
++++ b/setup.py
+@@ -22,9 +22,6 @@ def required(requirements_file):
+ 
+ extra_files = package_files('lingua_franca')
+ 
+-with open("readme.md", "r") as fh:
+-    long_description = fh.read()
+-
+ setup(
+     name='lingua_franca',
+     version='0.2.0',
+@@ -33,12 +30,9 @@ setup(
+     license='Apache2.0',
+     package_data={'': extra_files},
+     include_package_data=True,
+-    install_requires=required('requirements.txt'),
+     author='Mycroft AI',
+     author_email='dev@mycroft.ai',
+     description='Mycroft\'s multilingual text parsing and formatting library',
+-    long_description=long_description,
+-    long_description_content_type="text/markdown",
+     classifiers=[
+         'Development Status :: 4 - Beta',
+         'Intended Audience :: Developers',
+@@ -49,5 +43,6 @@ setup(
+         'Programming Language :: Python :: 3.5',
+         'Programming Language :: Python :: 3.6',
+         'Programming Language :: Python :: 3.7',
++	'Programming Language :: Python :: 3.8',
+     ],
+ )
+-- 
+2.25.0
+

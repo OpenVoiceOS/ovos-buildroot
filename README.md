@@ -6,9 +6,9 @@ More information about the development, process, ideas etc. at https://www.j1nx.
 More information about the Mycroft A.I. software stack at https://mycroft.ai
 
 ## System.
-- Linux kernel 4.19.89
-- Buildroot 2019.08.3
-- Mycroft 19.8.5
+- Linux kernel 4.19.106
+- Buildroot 2020.02.0
+- Mycroft 20.02.1
 - Raspberry Pi 3|3b|3b+ (Initial development hardware = 3b)
 - Raspberry Pi 4
 

@@ -1,7 +1,0 @@
-config BR2_PACKAGE_PYTHON_GITDB2
-	bool "python-gitdb2"
-	select BR2_PACKAGE_PYTHON_SMMAP2 # runtime
-	help
-	  Git Object Database.
-
-	  https://github.com/gitpython-developers/gitdb
