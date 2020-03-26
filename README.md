@@ -10,7 +10,7 @@ More information about the Mycroft A.I. software stack at https://mycroft.ai
 - Buildroot 2020.02.0
 - Mycroft 20.02.1
 - Raspberry Pi 3|3b|3b+ (Initial development hardware = 3b)
-- Raspberry Pi 4
+- Raspberry Pi 4 (Current development hardware)
 
 ## Stats:
 
