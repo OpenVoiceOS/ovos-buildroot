@@ -6,7 +6,7 @@ exec 1>/var/log/$(basename $0).log 2>&1
 mkdir -p /boot
 mount -t vfat /dev/mmcblk0p1 /boot
 
-echo performance > /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
+echo ondemand > /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
 
 rm /var/lib/alsa/asound.state
 rm /etc/pulse/default.pa
