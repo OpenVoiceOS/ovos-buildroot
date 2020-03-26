@@ -4,14 +4,16 @@
 
 ### Raspberry Pi
 
-| Device | Status | Board |
-|--------|-----------|-----------|
-| Raspberry Pi A+/B/B+ | Unknown, most likely under powered | N/A |
-| Raspberry Pi Zero | Unknown, most likely under powered | N/A |
-| Raspberry Pi Zero W | Unknown, most likely under powered | N/A |
-| Raspberry Pi 2 B | Unknown, could possibly work | N/A |
-| Raspberry Pi 3 B/B+ | Works | rpi3 |
+| Device | Status | Board | Supported |
+|--------|-----------|-----------|-----------|
+| Raspberry Pi A+/B/B+ | Unknown, most likely under powered | N/A | NO |
+| Raspberry Pi Zero | Unknown, most likely under powered | N/A | NO |
+| Raspberry Pi Zero W | Unknown, most likely under powered | N/A | NO |
+| Raspberry Pi 2 B | Unknown, could possibly work | N/A | YES |
+| Raspberry Pi 3 B/B+ | Works | rpi3 | YES |
+| Raspberry Pi 4 | Works | rpi4 | YES |
 
+<br><br>
 ## Unsupported for now, but perhaps possible in the future
 
 ### Hardkernel
