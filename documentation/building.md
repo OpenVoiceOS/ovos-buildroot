@@ -8,7 +8,7 @@ First, get the code on your system! The simplest method is via git.
 - cd ~/ 
 - git clone --recurse-submodules https://github.com/j1nx/MycroftOS.git 
 - cd MycroftOS 
-(Optional) If you want to switch to the active development branch.
+<br>(Optional) If you want to switch to the active development branch.
 - git checkout develop
 - git submodule update --remote --merge
 
