@@ -3,4 +3,4 @@ Linux kernel version used for supported boards.<br>
  
 | Board | Version |
 |-------|---------|
-| Raspberry Pi | 4.14.78 |
+| Raspberry Pi (3&4) | 4.19.106 |
