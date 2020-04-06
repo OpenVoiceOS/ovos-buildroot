@@ -1,0 +1,5 @@
+config BR2_PACKAGE_HOSTNAME_SERVICE
+	bool "hostname-service"
+	help
+	  A systemd service that adds the last bits
+	  of the MAC address to the hostname.

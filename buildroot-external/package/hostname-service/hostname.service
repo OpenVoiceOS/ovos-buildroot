@@ -1,0 +1,11 @@
+[Unit]
+Description=Set hostname to MycroftOS-[MAC]
+Before=systemd-networkd.service
+Before=avahi-daemon.service
+
+[Service]
+Type=oneshot
+ExecStart=/bin/sh -c "hostnamectl set-hostname MycroftOS-`sed 's/://g' /sys/class/net/eth0/address | tail -c 7`"
+
+[Install]
+WantedBy=multi-user.target
