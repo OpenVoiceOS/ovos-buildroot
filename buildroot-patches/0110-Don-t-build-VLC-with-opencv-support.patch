@@ -1,0 +1,42 @@
+From af17dc03204f359c76d1ec4f6d8db6ac137f2ea7 Mon Sep 17 00:00:00 2001
+From: j1nx <p.steenbergen@j1nx.nl>
+Date: Wed, 8 Apr 2020 14:39:50 +0200
+Subject: [PATCH 1/1] Don't build VLC with opencv support
+
+---
+ package/vlc/vlc.mk | 12 +-----------
+ 1 file changed, 1 insertion(+), 11 deletions(-)
+
+diff --git a/package/vlc/vlc.mk b/package/vlc/vlc.mk
+index 4b1cd68d8b..68fd6b6dae 100644
+--- a/package/vlc/vlc.mk
++++ b/package/vlc/vlc.mk
+@@ -84,6 +84,7 @@ VLC_CONF_OPTS += \
+ 	--disable-wasapi \
+ 	--disable-x262 \
+ 	--disable-zvbi \
++	--disable-opencv \
+ 	--enable-run-as-root
+ 
+ # Uses __atomic_fetch_add_4
+@@ -202,17 +203,6 @@ else
+ VLC_CONF_OPTS += --disable-gles2
+ endif
+ 
+-ifeq ($(BR2_PACKAGE_OPENCV)$(BR2_PACKAGE_OPENCV3),y)
+-VLC_CONF_OPTS += --enable-opencv
+-ifeq ($(BR2_PACKAGE_OPENCV),y)
+-VLC_DEPENDENCIES += opencv
+-else
+-VLC_DEPENDENCIES += opencv3
+-endif
+-else
+-VLC_CONF_OPTS += --disable-opencv
+-endif
+-
+ ifeq ($(BR2_PACKAGE_OPUS),y)
+ VLC_CONF_OPTS += --enable-opus
+ VLC_DEPENDENCIES += libvorbis opus
+-- 
+2.17.1
+
