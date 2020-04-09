@@ -1,8 +1,0 @@
-[Unit]
-Description=Mycroft AI boot splash screen
-
-[Service]
-ExecStart=fbv -f -d 1 /opt/mycroft/splash/boot.png > /dev/null 2>&1
-
-[Install]
-WantedBy=basic.target

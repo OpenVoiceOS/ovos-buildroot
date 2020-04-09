@@ -4,33 +4,31 @@
 #
 ################################################################################
 
-MYCROFT_SPLASH_VERSION = 0.1.0
-MYCROFT_SPLASH_SITE = $(BR2_EXTERNAL_MYCROFTOS_PATH)/package/mycroft-splash
-MYCROFT_SPLASH_SITE_METHOD = local
-MYCROFT_SPLASH_LICENSE = Apache License 2.0
-MYCROFT_SPLASH_LICENSE_FILES = LICENSE
+MYCROFT_SPLASH_SOURCE = psplash-0a902f7cd875ccf018456451be369f05fa55f962.tar.gz
+MYCROFT_SPLASH_SITE = http://git.yoctoproject.org/cgit/cgit.cgi/psplash/snapshot
+MYCROFT_SPLASH_LICENSE = GPL-2.0+
+MYCROFT_SPLASH_LICENSE_FILES = COPYING
+MYCROFT_SPLASH_AUTORECONF = YES
 
-define MYCROFT_SPLASH_INSTALL_TARGET_CMDS
-	$(INSTALL) -D -m 644 $(@D)/boot-splashscreen.service \
-		$(TARGET_DIR)/usr/lib/systemd/system/boot-splashscreen.service
-	mkdir -p $(TARGET_DIR)/etc/systemd/system/basic.target.wants
-	ln -fs ../../../../usr/lib/systemd/system/boot-splashscreen.service \
-		$(TARGET_DIR)/etc/systemd/system/basic.target.wants/boot-splashscreen.service
+define MYCROFT_SPLASH_INSTALL_INIT_SYSTEMD
+	$(INSTALL) -D -m 644 $(BR2_EXTERNAL_MYCROFTOS_PATH)/package/mycroft-splash/mycroft-splash-start.service \
+		$(TARGET_DIR)/usr/lib/systemd/system/mycroft-splash-start.service
+	$(INSTALL) -d $(TARGET_DIR)/etc/systemd/system/sysinit.target.wants
+	ln -sf  ../../../../usr/lib/systemd/system/mycroft-splash-start.service \
+		$(TARGET_DIR)/etc/systemd/system/sysinit.target.wants/
 
-	$(INSTALL) -D -m 644 $(@D)/halt-splashscreen.service \
-                $(TARGET_DIR)/usr/lib/systemd/system/halt-splashscreen.service
-        mkdir -p $(TARGET_DIR)/etc/systemd/system/halt.target.wants
-        ln -fs ../../../../usr/lib/systemd/system/halt-splashscreen.service \
-                $(TARGET_DIR)/etc/systemd/system/halt.target.wants/halt-splashscreen.service
-	mkdir -p $(TARGET_DIR)/etc/systemd/system/poweroff.target.wants
-        ln -fs ../../../../usr/lib/systemd/system/halt-splashscreen.service \
-                $(TARGET_DIR)/etc/systemd/system/poweroff.target.wants/halt-splashscreen.service
-
-	$(INSTALL) -D -m 644 $(@D)/off-splashscreen.service \
-                $(TARGET_DIR)/usr/lib/systemd/system/off-splashscreen.service
-        mkdir -p $(TARGET_DIR)/etc/systemd/system/shutdown.target.wants
-        ln -fs ../../../../usr/lib/systemd/system/off-splashscreen.service \
-                $(TARGET_DIR)/etc/systemd/system/shutdown.target.wants/off-splashscreen.service
+	$(INSTALL) -D -m 644 $(BR2_EXTERNAL_MYCROFTOS_PATH)/package/mycroft-splash/mycroft-splash-quit.service \
+		$(TARGET_DIR)/usr/lib/systemd/system/mycroft-splash-quit.service
+	$(INSTALL) -d $(TARGET_DIR)/etc/systemd/system/multi-user.target.wants
+	ln -sf  ../../../../usr/lib/systemd/system/mycroft-splash-quit.service \
+		$(TARGET_DIR)/etc/systemd/system/multi-user.target.wants/
 endef
 
-$(eval $(generic-package))
+define MYCROFT_SPLASH_CHANGE_IMAGE
+	cp $(BR2_EXTERNAL_MYCROFTOS_PATH)/package/mycroft-splash/psplash-colors.h $(@D)
+	cp $(BR2_EXTERNAL_MYCROFTOS_PATH)/package/mycroft-splash/base-images/* $(@D)/base-images/
+endef
+
+MYCROFT_SPLASH_PRE_CONFIGURE_HOOKS += MYCROFT_SPLASH_CHANGE_IMAGE
+
+$(eval $(autotools-package))
