@@ -26,6 +26,7 @@ endef
 
 define MYCROFT_SPLASH_CHANGE_IMAGE
 	cp $(BR2_EXTERNAL_MYCROFTOS_PATH)/package/mycroft-splash/psplash-colors.h $(@D)
+	cp $(BR2_EXTERNAL_MYCROFTOS_PATH)/package/mycroft-splash/psplash-config.h $(@D)
 	cp $(BR2_EXTERNAL_MYCROFTOS_PATH)/package/mycroft-splash/base-images/* $(@D)/base-images/
 endef
 
