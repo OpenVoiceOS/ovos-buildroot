@@ -1,0 +1,13 @@
+enable wpa_supplicant@wlan0.service
+
+enable firstboot.service
+enable prepare_system.service
+enable hostname.service
+enable mycroft-splash-start.service
+enable mycroft-splash-quit.service
+enable mycroft.service
+enable mycroft-messagebus.service
+enable mycroft-voice.service
+enable mycroft-audio.service
+enable mycroft-skills.service
+enable mycroft-enclosure.service
