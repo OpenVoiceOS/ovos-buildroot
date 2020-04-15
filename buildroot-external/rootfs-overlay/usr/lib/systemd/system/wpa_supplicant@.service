@@ -1,0 +1,16 @@
+[Unit]
+Description=WPA supplicant daemon (interface-specific version)
+Requires=sys-subsystem-net-devices-%i.device
+After=sys-subsystem-net-devices-%i.device
+Before=network.target
+Wants=network.target
+
+# check existence of configuration file
+ConditionPathExists=/etc/wpa_supplicant/wpa_supplicant-%I.conf
+
+[Service]
+Type=simple
+ExecStart=/usr/sbin/wpa_supplicant -c/etc/wpa_supplicant/wpa_supplicant-%I.conf -i%I
+
+[Install]
+Alias=multi-user.target.wants/wpa_supplicant@%i.service
