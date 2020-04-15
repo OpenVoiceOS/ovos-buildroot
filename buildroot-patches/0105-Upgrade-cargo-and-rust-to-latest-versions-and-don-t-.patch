@@ -1,6 +1,6 @@
-From 74f3635c586b39279f4a1c4f716cba607a160b06 Mon Sep 17 00:00:00 2001
-From: Peter Steenbergen <info@j1nx.nl>
-Date: Fri, 10 Jan 2020 14:49:05 +0100
+From 66373ff1dca694571a954fafa1d6a96668eae4d9 Mon Sep 17 00:00:00 2001
+From: j1nx <p.steenbergen@j1nx.nl>
+Date: Sat, 11 Apr 2020 16:36:05 +0200
 Subject: [PATCH 1/1] Upgrade cargo and rust to latest versions and don't
  bother the offline build / vendor stuff
 
@@ -9,10 +9,10 @@ Subject: [PATCH 1/1] Upgrade cargo and rust to latest versions and don't
  package/cargo-bin/cargo-bin.mk   |  2 +-
  package/cargo/cargo.hash         |  4 ++--
  package/cargo/cargo.mk           | 34 +++-----------------------------
- package/rust-bin/rust-bin.hash   |  6 +++---
+ package/rust-bin/rust-bin.hash   |  7 ++++---
  package/rust-bin/rust-bin.mk     |  2 +-
  package/rust/rust.mk             |  2 +-
- 7 files changed, 12 insertions(+), 40 deletions(-)
+ 7 files changed, 13 insertions(+), 40 deletions(-)
 
 diff --git a/package/cargo-bin/cargo-bin.hash b/package/cargo-bin/cargo-bin.hash
 index 0e9e9c5c61..1d5b600dab 100644
@@ -120,7 +120,7 @@ index a387281b4c..6541d26c44 100644
  	--release \
  	$(if $(VERBOSE),--verbose)
 diff --git a/package/rust-bin/rust-bin.hash b/package/rust-bin/rust-bin.hash
-index 96d81a347c..f148032cce 100644
+index 96d81a347c..a4efa14021 100644
 --- a/package/rust-bin/rust-bin.hash
 +++ b/package/rust-bin/rust-bin.hash
 @@ -3,7 +3,7 @@
@@ -141,13 +141,14 @@ index 96d81a347c..f148032cce 100644
  # From https://static.rust-lang.org/dist/rust-std-1.33.0-armv7-unknown-linux-gnueabihf.tar.xz.sha256
  # Verified using https://static.rust-lang.org/dist/rust-std-1.33.0-armv7-unknown-linux-gnueabihf.tar.xz.asc
  sha256 8492b5c91a9ea7ee7e22881382c1b9ad8bb9a4147aff0dfee09940b34783e3d5  rust-std-1.33.0-armv7-unknown-linux-gnueabihf.tar.xz
-@@ -42,7 +42,7 @@ sha256 4bc32bf4660a9fc5cd2af9e09f1bfb668b335442097fed6f3892b50950e97d3c  rust-st
+@@ -42,7 +42,8 @@ sha256 4bc32bf4660a9fc5cd2af9e09f1bfb668b335442097fed6f3892b50950e97d3c  rust-st
  sha256 984d3ca2a47db04345a2bddd657761f66d209ef95a02097ad4bd549f45a0dc9f  rust-std-1.33.0-powerpc64le-unknown-linux-gnu.tar.xz
  # From https://static.rust-lang.org/dist/rust-std-1.33.0-x86_64-unknown-linux-gnu.tar.xz.sha256
  # Verified using https://static.rust-lang.org/dist/rust-std-1.33.0-x86_64-unknown-linux-gnu.tar.xz.asc
 -sha256 6f20343ed73faf5fdfc423bec38a9bb1910a0a962af6f2dddd7184407543ed0e  rust-std-1.33.0-x86_64-unknown-linux-gnu.tar.xz
 +sha256 5a0b14a51f51b0194f70a2023749d9cb49c3b2e11f0d4c8232960b91fad336ac  rust-std-1.40.0-x86_64-unknown-linux-gnu.tar.xz
  # Locally generated
++sha256 1abd1865e8339c2cac6992a11f6f98b66fa2b97f67acaddcf1992e39a7001bfc	 rust-std-1.40.0-aarch64-unknown-linux-gnu.tar.xz
  sha256 a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2  LICENSE-APACHE
  sha256 23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3  LICENSE-MIT
 diff --git a/package/rust-bin/rust-bin.mk b/package/rust-bin/rust-bin.mk
@@ -177,5 +178,5 @@ index 5d14fc6682..74e5c50e59 100644
  RUST_SITE = https://static.rust-lang.org/dist
  RUST_LICENSE = Apache-2.0 or MIT
 -- 
-2.24.0.rc1
+2.17.1
 
