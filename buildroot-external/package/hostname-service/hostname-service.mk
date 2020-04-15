@@ -13,9 +13,6 @@ HOSTNAME_SERVICE_LICENSE_FILES = LICENSE
 define HOSTNAME_SERVICE_INSTALL_TARGET_CMDS
 	$(INSTALL) -D -m 644 $(@D)/hostname.service \
 		$(TARGET_DIR)/usr/lib/systemd/system/hostname.service
-	mkdir -p $(TARGET_DIR)/etc/systemd/system/multi-user.target.wants
-	ln -fs ../../../../usr/lib/systemd/system/hostname.service \
-		$(TARGET_DIR)/etc/systemd/system/multi-user.target.wants/hostname.service
 endef
 
 $(eval $(generic-package))

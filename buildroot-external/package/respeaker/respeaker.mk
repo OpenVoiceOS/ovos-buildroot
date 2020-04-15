@@ -14,9 +14,6 @@ $(eval $(kernel-module))
 define RESPEAKER_INSTALL_TARGET_CMDS
 	$(INSTALL) -D -m 0644 $(BR2_EXTERNAL_MYCROFTOS_PATH)/package/respeaker/seeed-voicecard.service \
 		$(TARGET_DIR)/usr/lib/systemd/system/seeed-voicecard.service
-	mkdir -p $(TARGET_DIR)/etc/systemd/system/sysinit.target.wants
-	ln -fs ../../../../usr/lib/systemd/system/seeed-voicecard.service \
-		$(TARGET_DIR)/etc/systemd/system/sysinit.target.wants/seeed-voicecard.service
 
 	$(INSTALL) -D -m 0644 $(BR2_EXTERNAL_MYCROFTOS_PATH)/package/respeaker/respeaker.conf \
 		$(TARGET_DIR)/etc/modules-load.d/respeaker.conf

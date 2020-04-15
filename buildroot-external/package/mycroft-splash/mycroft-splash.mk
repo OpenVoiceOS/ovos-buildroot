@@ -13,15 +13,9 @@ MYCROFT_SPLASH_AUTORECONF = YES
 define MYCROFT_SPLASH_INSTALL_INIT_SYSTEMD
 	$(INSTALL) -D -m 644 $(BR2_EXTERNAL_MYCROFTOS_PATH)/package/mycroft-splash/mycroft-splash-start.service \
 		$(TARGET_DIR)/usr/lib/systemd/system/mycroft-splash-start.service
-	$(INSTALL) -d $(TARGET_DIR)/etc/systemd/system/sysinit.target.wants
-	ln -sf  ../../../../usr/lib/systemd/system/mycroft-splash-start.service \
-		$(TARGET_DIR)/etc/systemd/system/sysinit.target.wants/
 
 	$(INSTALL) -D -m 644 $(BR2_EXTERNAL_MYCROFTOS_PATH)/package/mycroft-splash/mycroft-splash-quit.service \
 		$(TARGET_DIR)/usr/lib/systemd/system/mycroft-splash-quit.service
-	$(INSTALL) -d $(TARGET_DIR)/etc/systemd/system/multi-user.target.wants
-	ln -sf  ../../../../usr/lib/systemd/system/mycroft-splash-quit.service \
-		$(TARGET_DIR)/etc/systemd/system/multi-user.target.wants/
 endef
 
 define MYCROFT_SPLASH_CHANGE_IMAGE

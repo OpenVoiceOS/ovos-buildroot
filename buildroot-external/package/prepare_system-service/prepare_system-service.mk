@@ -14,9 +14,6 @@ define PREPARE_SYSTEM_SERVICE_INSTALL_TARGET_CMDS
 	$(INSTALL) -m 0755 $(@D)/prepare_system $(TARGET_DIR)/usr/sbin/
 	$(INSTALL) -D -m 644 $(@D)/prepare_system.service \
 		$(TARGET_DIR)/usr/lib/systemd/system/prepare_system.service
-	mkdir -p $(TARGET_DIR)/etc/systemd/system/sysinit.target.wants
-	ln -fs ../../../../usr/lib/systemd/system/prepare_system.service \
-		$(TARGET_DIR)/etc/systemd/system/sysinit.target.wants/prepare_system.service
 endef
 
 $(eval $(generic-package))

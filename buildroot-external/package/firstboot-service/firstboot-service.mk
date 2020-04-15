@@ -15,9 +15,6 @@ define FIRSTBOOT_SERVICE_INSTALL_TARGET_CMDS
 	$(INSTALL) -m 0755 $(@D)/firstboot $(TARGET_DIR)/usr/sbin/
 	$(INSTALL) -D -m 644 $(@D)/firstboot.service \
 		$(TARGET_DIR)/usr/lib/systemd/system/firstboot.service
-	mkdir -p $(TARGET_DIR)/etc/systemd/system/sysinit.target.wants
-	ln -fs ../../../../usr/lib/systemd/system/firstboot.service \
-		$(TARGET_DIR)/etc/systemd/system/sysinit.target.wants/firstboot.service
 	touch $(TARGET_DIR)/etc/firstboot
 endef
 

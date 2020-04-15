@@ -23,19 +23,6 @@ define MYCROFT_SERVICE_INSTALL_TARGET_CMDS
                 $(TARGET_DIR)/usr/lib/systemd/system/mycroft-enclosure.service
 	$(INSTALL) -D -m 644 $(@D)/mycroft-skills.service \
                 $(TARGET_DIR)/usr/lib/systemd/system/mycroft-skills.service
-	mkdir -p $(TARGET_DIR)/etc/systemd/system/multi-user.target.wants
-	ln -fs ../../../../usr/lib/systemd/system/mycroft.service \
-		$(TARGET_DIR)/etc/systemd/system/multi-user.target.wants/mycroft.service
-	ln -fs ../../../../usr/lib/systemd/system/mycroft-messagebus.service \
-                $(TARGET_DIR)/etc/systemd/system/multi-user.target.wants/mycroft-messagebus.service
-	ln -fs ../../../../usr/lib/systemd/system/mycroft-audio.service \
-                $(TARGET_DIR)/etc/systemd/system/multi-user.target.wants/mycroft-audio.service
-	ln -fs ../../../../usr/lib/systemd/system/mycroft-voice.service \
-                $(TARGET_DIR)/etc/systemd/system/multi-user.target.wants/mycroft-voice.service
-	ln -fs ../../../../usr/lib/systemd/system/mycroft-enclosure.service \
-                $(TARGET_DIR)/etc/systemd/system/multi-user.target.wants/mycroft-enclosure.service
-	ln -fs ../../../../usr/lib/systemd/system/mycroft-skills.service \
-                $(TARGET_DIR)/etc/systemd/system/multi-user.target.wants/mycroft-skills.service
 endef
 
 $(eval $(generic-package))
