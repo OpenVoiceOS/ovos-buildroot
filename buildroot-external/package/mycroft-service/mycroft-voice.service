@@ -6,6 +6,8 @@ After=mycroft.service
 [Service]
 User=mycroft
 WorkingDirectory=/home/mycroft
+ExecStartPre=/bin/psplash-write "MSG Starting Mycroft A.I. voice service"
+ExecStartPre=/bin/sleep 2
 ExecStart=mycroft-speech-client
 StandardOutput=file:/var/log/mycroft/voice.log
 StandardError=file:/var/log/mycroft/voice.error.log

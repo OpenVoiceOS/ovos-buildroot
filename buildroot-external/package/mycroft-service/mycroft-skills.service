@@ -6,6 +6,8 @@ After=mycroft.service
 [Service]
 User=mycroft
 WorkingDirectory=/home/mycroft
+ExecStartPre=/bin/psplash-write "MSG Starting Mycroft A.I. skills service"
+ExecStartPre=/bin/sleep 2
 ExecStart=mycroft-skills
 StandardOutput=file:/var/log/mycroft/skills.log
 StandardError=file:/var/log/mycroft/skills.error.log

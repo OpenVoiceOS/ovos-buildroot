@@ -8,6 +8,7 @@ Before=sysinit.target shutdown.target
 [Service]
 Type=oneshot
 RemainAfterExit=yes
+ExecStartPre=/bin/psplash-write "MSG Preparing system"
 ExecStart=/usr/sbin/prepare_system
 
 [Install]

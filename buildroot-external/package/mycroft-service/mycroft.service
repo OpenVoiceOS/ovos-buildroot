@@ -1,17 +1,14 @@
 [Unit]
 Description=Mycroft A.I. Software stack.
 After=pulseaudio.service
-After=network-online.target
 
 [Service]
 User=mycroft
 WorkingDirectory=/home/mycroft
 Type=oneshot
-ExecStartPre=fbv -f -d 1 /opt/mycroft/splash/logo.png > /dev/null 2>&1
-ExecStartPre=/bin/bash -c 'fbv -f -d 1 /opt/mycroft/splash/waiting.png > /dev/null 2>&1;\
-                           while ! ping -q -c 1 -W 1 1.1.1.1 >/dev/null 2>&1; do sleep 1; done'
+ExecStartPre=/bin/psplash-write "MSG Starting Mycroft A.I. software stack"
+ExecStartPre=/bin/sleep 2
 ExecStart=/bin/true
-ExecStartPost=fbv -f -d 1 /opt/mycroft/splash/logo.png > /dev/null 2>&1
 RemainAfterExit=yes
 
 [Install]

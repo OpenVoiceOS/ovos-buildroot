@@ -10,6 +10,7 @@ ConditionPathExists=/etc/firstboot
 [Service]
 Type=oneshot
 RemainAfterExit=yes
+ExecStartPre=/bin/psplash-write "MSG Preparing for first boot"
 ExecStart=/usr/sbin/firstboot
 
 [Install]
