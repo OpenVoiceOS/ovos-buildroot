@@ -11,3 +11,5 @@ enable mycroft-voice.service
 enable mycroft-audio.service
 enable mycroft-skills.service
 enable mycroft-enclosure.service
+
+disable getty@.service
