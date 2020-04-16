@@ -1,0 +1,93 @@
+From 2ffd7619f7e8273f3f68f308766538b400a96268 Mon Sep 17 00:00:00 2001
+From: j1nx <p.steenbergen@j1nx.nl>
+Date: Thu, 16 Apr 2020 08:54:47 +0200
+Subject: [PATCH 1/1] Strip distributed flac binaries code
+
+---
+ MANIFEST.in                    |  1 +
+ setup.py                       | 17 -----------------
+ speech_recognition/__init__.py | 24 +-----------------------
+ 3 files changed, 2 insertions(+), 40 deletions(-)
+
+diff --git a/MANIFEST.in b/MANIFEST.in
+index 4071da5..5d7dd9f 100644
+--- a/MANIFEST.in
++++ b/MANIFEST.in
+@@ -1,6 +1,7 @@
+ graft speech_recognition
+ graft reference
+ recursive-exclude speech_recognition *.pyc
++recursive-exclude speech_recognition flac-*
+ include README.rst
+ include LICENSE.txt
+ include LICENSE-FLAC.txt
+diff --git a/setup.py b/setup.py
+index acb0d04..97b3769 100644
+--- a/setup.py
++++ b/setup.py
+@@ -15,27 +15,10 @@ if sys.version_info < (2, 6):
+     sys.exit(1)
+ 
+ 
+-FILES_TO_MARK_EXECUTABLE = ["flac-linux-x86", "flac-linux-x86_64", "flac-mac", "flac-win32.exe"]
+-
+-
+ class InstallWithExtraSteps(install):
+     def run(self):
+         install.run(self)  # do the original install steps
+ 
+-        # mark the FLAC executables as executable by all users (this fixes occasional issues when file permissions get messed up)
+-        for output_path in self.get_outputs():
+-            if os.path.basename(output_path) in FILES_TO_MARK_EXECUTABLE:
+-                log.info("setting executable permissions on {}".format(output_path))
+-                stat_info = os.stat(output_path)
+-                os.chmod(
+-                    output_path,
+-                    stat_info.st_mode |
+-                    stat.S_IRUSR | stat.S_IXUSR |  # owner can read/execute
+-                    stat.S_IRGRP | stat.S_IXGRP |  # group can read/execute
+-                    stat.S_IROTH | stat.S_IXOTH  # everyone else can read/execute
+-                )
+-
+-
+ setup(
+     name="SpeechRecognition",
+     version=speech_recognition.__version__,
+diff --git a/speech_recognition/__init__.py b/speech_recognition/__init__.py
+index fe197b3..6cd99ef 100644
+--- a/speech_recognition/__init__.py
++++ b/speech_recognition/__init__.py
+@@ -1182,29 +1182,7 @@ def get_flac_converter():
+     """Returns the absolute path of a FLAC converter executable, or raises an OSError if none can be found."""
+     flac_converter = shutil_which("flac")  # check for installed version first
+     if flac_converter is None:  # flac utility is not installed
+-        base_path = os.path.dirname(os.path.abspath(__file__))  # directory of the current module file, where all the FLAC bundled binaries are stored
+-        system, machine = platform.system(), platform.machine()
+-        if system == "Windows" and machine in {"i686", "i786", "x86", "x86_64", "AMD64"}:
+-            flac_converter = os.path.join(base_path, "flac-win32.exe")
+-        elif system == "Darwin" and machine in {"i686", "i786", "x86", "x86_64", "AMD64"}:
+-            flac_converter = os.path.join(base_path, "flac-mac")
+-        elif system == "Linux" and machine in {"i686", "i786", "x86"}:
+-            flac_converter = os.path.join(base_path, "flac-linux-x86")
+-        elif system == "Linux" and machine in {"x86_64", "AMD64"}:
+-            flac_converter = os.path.join(base_path, "flac-linux-x86_64")
+-        else:  # no FLAC converter available
+-            raise OSError("FLAC conversion utility not available - consider installing the FLAC command line application by running `apt-get install flac` or your operating system's equivalent")
+-
+-    # mark FLAC converter as executable if possible
+-    try:
+-        # handle known issue when running on docker:
+-        # run executable right after chmod() may result in OSError "Text file busy"
+-        # fix: flush FS with sync
+-        if not os.access(flac_converter, os.X_OK):
+-            stat_info = os.stat(flac_converter)
+-            os.chmod(flac_converter, stat_info.st_mode | stat.S_IEXEC)
+-            if 'Linux' in platform.system():
+-                os.sync() if sys.version_info >= (3, 3) else os.system('sync')
++        raise OSError("FLAC conversion utility not available - consider installing the FLAC command line application by running `apt-get install flac` or your operating system's equivalent")
+ 
+     except OSError: pass
+ 
+-- 
+2.20.1
+
