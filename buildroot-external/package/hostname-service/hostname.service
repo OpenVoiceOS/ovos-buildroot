@@ -5,7 +5,6 @@ Before=avahi-daemon.service
 
 [Service]
 Type=oneshot
-ExecStartPre=/bin/psplash-write "MSG Setting up hostname"
 ExecStart=/bin/sh -c "hostnamectl set-hostname MycroftOS-`sed 's/://g' /sys/class/net/eth0/address | tail -c 7`"
 
 [Install]

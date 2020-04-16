@@ -6,7 +6,6 @@ After=network.target time-sync.target sound.target avahi-daemon.service
 
 [Service]
 EnvironmentFile=-/etc/snapcast/snapclient
-ExecStartPre=/bin/psplash-write "MSG Starting Snapcast client"
 ExecStart=/usr/bin/snapclient $SNAPCLIENT_OPTS
 # very noisy on stdout
 StandardOutput=null

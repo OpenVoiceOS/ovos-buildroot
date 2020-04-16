@@ -6,8 +6,6 @@ After=mycroft.service
 [Service]
 User=mycroft
 WorkingDirectory=/home/mycroft 
-ExecStartPre=/bin/psplash-write "MSG Starting Mycroft A.I. messagebus service"
-ExecStartPre=/bin/sleep 2
 ExecStart=mycroft-messagebus
 StandardOutput=file:/var/log/mycroft/bus.log
 StandardError=file:/var/log/mycroft/bus.error.log

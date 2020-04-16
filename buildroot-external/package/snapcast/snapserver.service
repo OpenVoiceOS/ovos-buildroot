@@ -6,7 +6,6 @@ After=network.target time-sync.target avahi-daemon.service
 
 [Service]
 EnvironmentFile=-/etc/snapcast/snapserver
-ExecStartPre=/bin/psplash-write "MSG Starting Snapcast server"
 ExecStart=/usr/bin/snapserver $SNAPSERVER_OPTS
 Restart=on-failure
 

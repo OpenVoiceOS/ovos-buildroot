@@ -6,8 +6,6 @@ After=pulseaudio.service
 User=mycroft
 WorkingDirectory=/home/mycroft
 Type=oneshot
-ExecStartPre=/bin/psplash-write "MSG Starting Mycroft A.I. software stack"
-ExecStartPre=/bin/sleep 2
 ExecStart=/bin/true
 RemainAfterExit=yes
 

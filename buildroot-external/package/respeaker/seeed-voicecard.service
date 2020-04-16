@@ -5,9 +5,7 @@ After=alsa-restore.service
 [Service]
 Type=oneshot
 RemainAfterExit=yes
-ExecStartPre=/bin/psplash-write "MSG Preparing respeaker configuration"
 ExecStart=/usr/bin/seeed-voicecard
-User=root
  
 [Install]
 WantedBy=sysinit.target
