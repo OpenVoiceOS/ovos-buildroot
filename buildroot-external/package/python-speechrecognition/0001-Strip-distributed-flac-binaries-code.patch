@@ -1,13 +1,13 @@
-From 2ffd7619f7e8273f3f68f308766538b400a96268 Mon Sep 17 00:00:00 2001
+From 290099e562015b49517ce2af67756b05d82cb92f Mon Sep 17 00:00:00 2001
 From: j1nx <p.steenbergen@j1nx.nl>
-Date: Thu, 16 Apr 2020 08:54:47 +0200
+Date: Fri, 17 Apr 2020 08:35:02 +0200
 Subject: [PATCH 1/1] Strip distributed flac binaries code
 
 ---
  MANIFEST.in                    |  1 +
  setup.py                       | 17 -----------------
- speech_recognition/__init__.py | 24 +-----------------------
- 3 files changed, 2 insertions(+), 40 deletions(-)
+ speech_recognition/__init__.py | 26 +-------------------------
+ 3 files changed, 2 insertions(+), 42 deletions(-)
 
 diff --git a/MANIFEST.in b/MANIFEST.in
 index 4071da5..5d7dd9f 100644
@@ -54,10 +54,10 @@ index acb0d04..97b3769 100644
      name="SpeechRecognition",
      version=speech_recognition.__version__,
 diff --git a/speech_recognition/__init__.py b/speech_recognition/__init__.py
-index fe197b3..6cd99ef 100644
+index fe197b3..c1132bc 100644
 --- a/speech_recognition/__init__.py
 +++ b/speech_recognition/__init__.py
-@@ -1182,29 +1182,7 @@ def get_flac_converter():
+@@ -1182,31 +1182,7 @@ def get_flac_converter():
      """Returns the absolute path of a FLAC converter executable, or raises an OSError if none can be found."""
      flac_converter = shutil_which("flac")  # check for installed version first
      if flac_converter is None:  # flac utility is not installed
@@ -84,9 +84,11 @@ index fe197b3..6cd99ef 100644
 -            os.chmod(flac_converter, stat_info.st_mode | stat.S_IEXEC)
 -            if 'Linux' in platform.system():
 -                os.sync() if sys.version_info >= (3, 3) else os.system('sync')
+-
+-    except OSError: pass
 +        raise OSError("FLAC conversion utility not available - consider installing the FLAC command line application by running `apt-get install flac` or your operating system's equivalent")
  
-     except OSError: pass
+     return flac_converter
  
 -- 
 2.20.1
