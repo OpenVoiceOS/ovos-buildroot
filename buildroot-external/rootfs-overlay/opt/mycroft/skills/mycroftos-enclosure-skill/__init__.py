@@ -169,19 +169,19 @@ class MycroftOS(MycroftSkill):
 	def on_handler_audio_start(self, message):
 		self.speaking = True
 		#framebuffer speaking visual
-		os.system('fbv -f -d 1 /opt/mycroft/skills/mycroftos-enclosure-skill/ui/speaking.png > /dev/null 2>&1')
+		#os.system('fbv -f -d 1 /opt/mycroft/skills/mycroftos-enclosure-skill/ui/speaking.png > /dev/null 2>&1')
 
 	def on_handler_audio_end(self, message):
 		self.speaking = False
 		#framebuffer background
-		os.system('fbv -f -d 1 /opt/mycroft/skills/mycroftos-enclosure-skill/ui/background.png > /dev/null 2>&1')
+		#os.system('fbv -f -d 1 /opt/mycroft/skills/mycroftos-enclosure-skill/ui/background.png > /dev/null 2>&1')
 
 	def on_handler_started(self, message):
 		handler = message.data.get('handler', '')
 		if self._skip_handler(handler):
 			return
 		#framebuffer thinking visual
-		os.system('fbv -f -d 1 /opt/mycroft/skills/mycroftos-enclosure-skill/ui/thinking.png > /dev/null 2>&1')
+		#os.system('fbv -f -d 1 /opt/mycroft/skills/mycroftos-enclosure-skill/ui/thinking.png > /dev/null 2>&1')
 
 	def on_handler_complete(self, message):
 		handler = message.data.get('handler', '')
@@ -192,7 +192,7 @@ class MycroftOS(MycroftSkill):
 		# turn off the framebuffer
 		if not self.speaking:
 			#framebuffer background
-			os.system('fbv -f -d 1 /opt/mycroft/skills/mycroftos-enclosure-skill/ui/background.png > /dev/null 2>&1')
+			#os.system('fbv -f -d 1 /opt/mycroft/skills/mycroftos-enclosure-skill/ui/background.png > /dev/null 2>&1')
 
 	def _skip_handler(self, handler):
 		#Ignoring handlers from this skill
@@ -200,15 +200,15 @@ class MycroftOS(MycroftSkill):
 
 	def handle_listener_started(self, message):
 		#framebuffer listen visual
-		os.system('fbv -f -d 1 /opt/mycroft/skills/mycroftos-enclosure-skill/ui/listen.png > /dev/null 2>&1')
+		#os.system('fbv -f -d 1 /opt/mycroft/skills/mycroftos-enclosure-skill/ui/listen.png > /dev/null 2>&1')
 
 	def handle_listener_ended(self, message):
 		#framebuffer background
-		os.system('fbv -f -d 1 /opt/mycroft/skills/mycroftos-enclosure-skill/ui/background.png > /dev/null 2>&1')
+		#os.system('fbv -f -d 1 /opt/mycroft/skills/mycroftos-enclosure-skill/ui/background.png > /dev/null 2>&1')
 
 	def handle_failed_stt(self, message):
 		#framebuffer background
-		os.system('fbv -f -d 1 /opt/mycroft/skills/mycroftos-enclosure-skill/ui/background.png > /dev/null 2>&1')
+		#os.system('fbv -f -d 1 /opt/mycroft/skills/mycroftos-enclosure-skill/ui/background.png > /dev/null 2>&1')
 
 
 	# Device is fully started
@@ -216,7 +216,7 @@ class MycroftOS(MycroftSkill):
 		"""Triggered after skills are initialized."""
 		self.loading = False
 		if is_paired():
-			os.system('fbv -f -d 1 /opt/mycroft/skills/mycroftos-enclosure-skill/ui/background.png > /dev/null 2>&1')
+			#os.system('fbv -f -d 1 /opt/mycroft/skills/mycroftos-enclosure-skill/ui/background.png > /dev/null 2>&1')
 			self.speak_dialog('finished.booting')
 
 
@@ -233,20 +233,26 @@ class MycroftOS(MycroftSkill):
 
 	# System services
 	def enable_ssh(self):
-		os.system('sudo systemctl enable sshd.service')
-		os.system('sudo systemctl start sshd.service')
 		self.settings['sshd'] = True
-		self.sshd_enabled = True
-		self.sshd_started = True
-		self.speak_dialog('EnabledSSH')
+		if !os.path.isfile('/etc/systemd/system/multi-user.target.wants/sshd.service'):
+			# Service not yet enabled
+			os.system('sudo systemctl enable sshd.service')
+			self.speak_dialog('EnabledSSH')
+			if os.system('sudo systemctl is-active --quiet sshd.service') != 0:
+				# Service not currently running
+				os.system('sudo systemctl start sshd.service')
 
 	def disable_ssh(self):
-		os.system('sudo systemctl disable sshd.service')
-		os.system('sudo systemctl stop sshd.service')
 		self.settings['sshd'] = False
+		if os.path.isfile('/etc/systemd/system/multi-user.target.wants/sshd.service'):
+			# Service is enabled
+			os.system('sudo systemctl disable sshd.service')
+			self.speak_dialog('DisabledSSH')
+		os.system('sudo systemctl stop sshd.service')
+		
 		self.sshd_enabled = False
 		self.sshd_started = True
-		self.speak_dialog('DisabledSSH')
+		
 
 	def enable_airplay(self):
 		os.system('sudo systemctl enable shairport-sync.service')
