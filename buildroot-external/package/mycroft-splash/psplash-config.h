@@ -13,12 +13,12 @@
 
 /* Text to output on program start; if undefined, output nothing */
 #ifndef PSPLASH_DISABLE_STARTUP_MSG
-#define PSPLASH_STARTUP_MSG "Booting MycroftOS"
+#define PSPLASH_STARTUP_MSG ""
 #endif
 
 /* Bool indicating if the image is fullscreen, as opposed to split screen */
 #ifndef PSPLASH_IMG_FULLSCREEN
-#define PSPLASH_IMG_FULLSCREEN 0
+#define PSPLASH_IMG_FULLSCREEN 1
 #endif
 
 /* Position of the image split from top edge, numerator of fraction */
