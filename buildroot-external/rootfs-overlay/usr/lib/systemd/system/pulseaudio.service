@@ -1,0 +1,13 @@
+[Unit]
+Description=PulseAudio Sound System
+After=syslog.target
+After=avahi-daemon.service network.target
+
+[Service]
+Umask=077
+ExecStart=/usr/bin/pulseaudio --system --daemonize=no
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+
