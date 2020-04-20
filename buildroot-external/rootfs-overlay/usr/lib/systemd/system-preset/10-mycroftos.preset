@@ -15,5 +15,6 @@ enable sshd.service
 enable bluetooth.service
 enable pulseaudio.service
 enable avahi-daemon.service
+enable seeed-voicecard.service
 
 disable getty@.service
