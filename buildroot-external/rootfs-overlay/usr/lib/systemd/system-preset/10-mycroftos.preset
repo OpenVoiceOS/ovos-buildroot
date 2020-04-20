@@ -11,5 +11,9 @@ enable mycroft-voice.service
 enable mycroft-audio.service
 enable mycroft-skills.service
 enable mycroft-enclosure.service
+enable sshd.service
+enable bluetooth.service
+enable pulseaudio.service
+enable avahi-daemon.service
 
 disable getty@.service
