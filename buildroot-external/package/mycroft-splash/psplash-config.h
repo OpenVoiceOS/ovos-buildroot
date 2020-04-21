@@ -22,9 +22,9 @@
 #endif
 
 /* Position of the image split from top edge, numerator of fraction */
-#define PSPLASH_IMG_SPLIT_NUMERATOR 5
+#define PSPLASH_IMG_SPLIT_NUMERATOR 6
 
 /* Position of the image split from top edge, denominator of fraction */
-#define PSPLASH_IMG_SPLIT_DENOMINATOR 6
+#define PSPLASH_IMG_SPLIT_DENOMINATOR 7
 
 #endif
