@@ -1,6 +1,6 @@
 [Unit]
 Description=Terminate Mycroft splash boot Screen
-After=psplash-start.service
+After=mycroft-splash-start.service
 
 [Service]
 Type=oneshot

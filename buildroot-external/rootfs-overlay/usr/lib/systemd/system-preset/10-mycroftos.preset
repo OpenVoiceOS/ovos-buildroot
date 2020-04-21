@@ -3,18 +3,30 @@ enable wpa_supplicant@wlan0.service
 enable firstboot.service
 enable prepare_system.service
 enable hostname.service
+enable sshd.service
+enable brcm_bt.service
+enable bluetooth.service
+enable pulseaudio.service
+enable avahi-daemon.service
+enable seeed-voicecard.service
+
 enable mycroft-splash-start.service
-enable mycroft-splash-quit.service
+enable mycroft-splash-40.service
+enable mycroft-splash-60.service
 enable mycroft.service
 enable mycroft-messagebus.service
 enable mycroft-voice.service
 enable mycroft-audio.service
 enable mycroft-skills.service
 enable mycroft-enclosure.service
-enable sshd.service
-enable bluetooth.service
-enable pulseaudio.service
-enable avahi-daemon.service
-enable seeed-voicecard.service
 
 disable getty@.service
+disable mosquitto.service
+disable motion.service
+disable mpd.service
+disable shairport-sync.service
+disable snapclient.service
+disable snapserver.service
+disable spotifyd.service
+disable mycroft-splash-quit.service
+

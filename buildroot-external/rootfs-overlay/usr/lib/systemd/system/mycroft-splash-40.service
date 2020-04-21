@@ -1,0 +1,11 @@
+[Unit]
+Description=Update Mycroft splash boot screen to 40%
+Wants=systemd-networkd.service
+After=systemd-networkd.service
+DefaultDependencies=no
+
+[Service]
+ExecStart=-/usr/bin/psplash-write "PROGRESS 40" 
+
+[Install]
+WantedBy=multi-user.target
