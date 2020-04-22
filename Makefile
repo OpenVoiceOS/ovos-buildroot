@@ -35,9 +35,17 @@ endif
 clean:
 	$(MAKE) -C $(BUILDROOT) BR2_EXTERNAL=../$(BUILDROOT_EXTERNAL) clean
 
+menuconfig:
+	$(MAKE) -C $(BUILDROOT) BR2_EXTERNAL=../$(BUILDROOT_EXTERNAL) menuconfig
+
+savedefconfig:
+	$(MAKE) -C $(BUILDROOT) BR2_EXTERNAL=../$(BUILDROOT_EXTERNAL) savedefconfig
+
 help:
 	@echo "Supported targets: $(TARGETS)"
 	@echo "Run 'make <target>' to build a target image."
 	@echo "Run 'make all' to build all target images."
 	@echo "Run 'make clean' to clean the build output."
-	@echo "Run 'make <target>-config' to configure buildroot for a target."
+	@echo "Run 'make <target>-config' to configure MycroftOS for a target."
+	@echo "Run 'make menuconfig' to update current config utilising a menu based program."
+	@echo "Run 'make savedefconfig' to save current config back to config directory."
