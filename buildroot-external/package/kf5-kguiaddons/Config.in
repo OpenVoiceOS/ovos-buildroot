@@ -1,0 +1,2 @@
+config BR2_PACKAGE_KF5_KGUIADDONS
+	bool "kf5-kguiaddons"

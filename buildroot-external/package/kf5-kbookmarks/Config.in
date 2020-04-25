@@ -1,0 +1,2 @@
+config BR2_PACKAGE_KF5_KBOOKMARKS
+	bool "kf5-kbookmarks"

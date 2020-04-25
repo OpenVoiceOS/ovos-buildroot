@@ -1,0 +1,2 @@
+config BR2_PACKAGE_KF5_KARCHIVE
+	bool "kf5-karchive"

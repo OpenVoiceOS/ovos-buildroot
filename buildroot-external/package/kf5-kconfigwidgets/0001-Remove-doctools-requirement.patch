@@ -1,0 +1,25 @@
+From ce0dd0b4ab5953f88ff573cc6af9a5f3f8d56459 Mon Sep 17 00:00:00 2001
+From: Peter Steenbergen <info@j1nx.nl>
+Date: Fri, 24 Apr 2020 08:39:15 +0200
+Subject: [PATCH 1/1] Remove doctools requirement
+
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 67aa22b..0d29ebc 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -35,7 +35,7 @@ find_package(KF5Auth ${KF5_DEP_VERSION} REQUIRED)
+ find_package(KF5CoreAddons ${KF5_DEP_VERSION} REQUIRED)
+ find_package(KF5Codecs ${KF5_DEP_VERSION} REQUIRED)
+ find_package(KF5Config ${KF5_DEP_VERSION} REQUIRED)
+-find_package(KF5DocTools ${KF5_DEP_VERSION})
++#find_package(KF5DocTools ${KF5_DEP_VERSION})
+ find_package(KF5GuiAddons ${KF5_DEP_VERSION} REQUIRED)
+ find_package(KF5I18n ${KF5_DEP_VERSION} REQUIRED)
+ find_package(KF5WidgetsAddons ${KF5_DEP_VERSION} REQUIRED)
+-- 
+2.26.1
+
