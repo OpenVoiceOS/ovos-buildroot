@@ -1,2 +1,4 @@
 config BR2_PACKAGE_KF5_KGLOBALACCEL
 	bool "kf5-kglobalaccel"
+	select BR2_PACKAGE_KF5_KCRASH
+	select BR2_PACKAGE_KF5_KDBUSADDONS

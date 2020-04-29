@@ -1,2 +1,3 @@
 config BR2_PACKAGE_KF5_KDECLARATIVE
 	bool "kf5-kdeclarative"
+	select BR2_PACKAGE_KF5_KIO
