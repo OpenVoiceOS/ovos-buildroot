@@ -1,6 +1,5 @@
 config BR2_PACKAGE_RESPEAKER
 	bool "respeaker"
-	select BR2_PACKAGE_RPI_USERLAND
 	select BR2_PACKAGE_DTC
 	select BR2_PACKAGE_DTC_PROGRAMS
 	help
