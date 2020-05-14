@@ -1,7 +1,7 @@
-From 46d16b74aa2d8b0f093cb7c954b778a3f7e7e806 Mon Sep 17 00:00:00 2001
-From: Peter Steenbergen <info@j1nx.nl>
-Date: Tue, 17 Mar 2020 08:39:23 +0100
-Subject: [PATCH 1/1] Downgrade python-pillow to 6.2.1
+From 6b95294b24c271290d56bc7356ddb89c4d106804 Mon Sep 17 00:00:00 2001
+From: j1nx <p.steenbergen@j1nx.nl>
+Date: Thu, 14 May 2020 19:46:33 +0200
+Subject: [PATCH 1/1] Upgrade python-pillow to 7.1.2
 
 ---
  package/python-pillow/python-pillow.hash | 2 +-
@@ -9,18 +9,18 @@ Subject: [PATCH 1/1] Downgrade python-pillow to 6.2.1
  2 files changed, 3 insertions(+), 3 deletions(-)
 
 diff --git a/package/python-pillow/python-pillow.hash b/package/python-pillow/python-pillow.hash
-index 0d66c4bb3c..d386286a83 100644
+index 0d66c4bb3c..a5fdaa06ad 100644
 --- a/package/python-pillow/python-pillow.hash
 +++ b/package/python-pillow/python-pillow.hash
 @@ -1,5 +1,5 @@
  # md5, sha256 from https://pypi.org/project/Pillow/
  md5	d099946335c1ba372f5b1fa68ca71645  Pillow-7.0.0.tar.gz
 -sha256	4d9ed9a64095e031435af120d3c910148067087541131e82b3e8db302f4c8946  Pillow-7.0.0.tar.gz
-+sha256	bf4e972a88f8841d8fdc6db1a75e0f8d763e66e3754b03006cbc3854d89f1cb1  Pillow-6.2.1.tar.gz
++sha256	a0b49960110bc6ff5fead46013bcb8825d101026d466f3a4de3476defe0fb0dd  Pillow-7.1.2.tar.gz
  # Locally computed sha256 checksums
  sha256	04a04a908e52921829c7f51528e5619c79becdde99c484ab7d4f235e2927968c  LICENSE
 diff --git a/package/python-pillow/python-pillow.mk b/package/python-pillow/python-pillow.mk
-index 5ff2dcfdb6..8c4db213c6 100644
+index 5ff2dcfdb6..2832eeee0b 100644
 --- a/package/python-pillow/python-pillow.mk
 +++ b/package/python-pillow/python-pillow.mk
 @@ -4,8 +4,8 @@
@@ -29,11 +29,11 @@ index 5ff2dcfdb6..8c4db213c6 100644
  
 -PYTHON_PILLOW_VERSION = 7.0.0
 -PYTHON_PILLOW_SITE = https://files.pythonhosted.org/packages/39/47/f28067b187dd664d205f75b07dcc6e0e95703e134008a14814827eebcaab
-+PYTHON_PILLOW_VERSION = 6.2.1
-+PYTHON_PILLOW_SITE = https://files.pythonhosted.org/packages/5b/bb/cdc8086db1f15d0664dd22a62c69613cdc00f1dd430b5b19df1bea83f2a3
++PYTHON_PILLOW_VERSION = 7.1.2
++PYTHON_PILLOW_SITE = https://files.pythonhosted.org/packages/ce/ef/e793f6ffe245c960c42492d0bb50f8d14e2ba223f1922a5c3c81569cec44
  PYTHON_PILLOW_SOURCE = Pillow-$(PYTHON_PILLOW_VERSION).tar.gz
  PYTHON_PILLOW_LICENSE = PIL Software License
  PYTHON_PILLOW_LICENSE_FILES = LICENSE
 -- 
-2.25.0
+2.20.1
 
