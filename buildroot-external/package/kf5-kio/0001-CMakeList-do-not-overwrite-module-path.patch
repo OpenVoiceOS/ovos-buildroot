@@ -1,0 +1,25 @@
+From f6d020cedc5b5fe30ab9f66e50488452c8259377 Mon Sep 17 00:00:00 2001
+From: Peter Steenbergen <info@j1nx.nl>
+Date: Mon, 27 Apr 2020 12:28:01 +0200
+Subject: [PATCH 1/1] CMakeList: do not overwrite module path
+
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 03921c2..67fcaa3 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -11,7 +11,7 @@ set_package_properties(ECM PROPERTIES TYPE REQUIRED DESCRIPTION "Extra CMake Mod
+ feature_summary(WHAT REQUIRED_PACKAGES_NOT_FOUND FATAL_ON_MISSING_REQUIRED_PACKAGES)
+ 
+ 
+-set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH} ${CMAKE_CURRENT_SOURCE_DIR}/cmake )
++list(APPEND CMAKE_MODULE_PATH ${ECM_MODULE_PATH} ${CMAKE_CURRENT_SOURCE_DIR}/cmake )
+ 
+ include(KDEInstallDirs)
+ include(KDEFrameworkCompilerSettings NO_POLICY_SCOPE)
+-- 
+2.26.1
+

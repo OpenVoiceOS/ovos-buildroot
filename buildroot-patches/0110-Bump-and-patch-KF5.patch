@@ -1,0 +1,69 @@
+From 2ecffef841e3fe7ee6745f48cceeeaee8497de01 Mon Sep 17 00:00:00 2001
+From: Peter Steenbergen <info@j1nx.nl>
+Date: Tue, 12 May 2020 10:38:34 +0200
+Subject: [PATCH 1/1] Bump and patch KF5
+
+---
+ .../kf5/kf5-extra-cmake-modules/kf5-extra-cmake-modules.hash | 1 +
+ .../kf5/kf5-extra-cmake-modules/kf5-extra-cmake-modules.mk   | 1 +
+ package/kf5/kf5-kcoreaddons/kf5-kcoreaddons.hash             | 1 +
+ package/kf5/kf5-kcoreaddons/kf5-kcoreaddons.mk               | 5 +++++
+ package/kf5/kf5.mk                                           | 2 +-
+ 5 files changed, 9 insertions(+), 1 deletion(-)
+
+diff --git a/package/kf5/kf5-extra-cmake-modules/kf5-extra-cmake-modules.hash b/package/kf5/kf5-extra-cmake-modules/kf5-extra-cmake-modules.hash
+index 733e267fdb..99cf3015ca 100644
+--- a/package/kf5/kf5-extra-cmake-modules/kf5-extra-cmake-modules.hash
++++ b/package/kf5/kf5-extra-cmake-modules/kf5-extra-cmake-modules.hash
+@@ -1,3 +1,4 @@
+ # Locally calculated
+ sha256 976d8bd15a0b929376bfaef34602a0fb9614229851c46fac3c4b28938f682195 extra-cmake-modules-5.47.0.tar.xz
++sha256 dacc8e0be8605b6c609ea35bda2d87bf06e1d228bcbf8957b0f0230c4a888359 extra-cmake-modules-5.69.0.tar.xz
+ sha256 46cde7dc11e64c78d650b4851b88f6704b4665ff60f22a1caf68ceb15e217e5b COPYING-CMAKE-SCRIPTS
+diff --git a/package/kf5/kf5-extra-cmake-modules/kf5-extra-cmake-modules.mk b/package/kf5/kf5-extra-cmake-modules/kf5-extra-cmake-modules.mk
+index 3c4281b960..d3aad89264 100644
+--- a/package/kf5/kf5-extra-cmake-modules/kf5-extra-cmake-modules.mk
++++ b/package/kf5/kf5-extra-cmake-modules/kf5-extra-cmake-modules.mk
+@@ -15,3 +15,4 @@ KF5_EXTRA_CMAKE_MODULES_INSTALL_STAGING = YES
+ KF5_EXTRA_CMAKE_MODULES_INSTALL_TARGET = NO
+ 
+ $(eval $(cmake-package))
++$(eval $(host-cmake-package))
+diff --git a/package/kf5/kf5-kcoreaddons/kf5-kcoreaddons.hash b/package/kf5/kf5-kcoreaddons/kf5-kcoreaddons.hash
+index 0cd8dcfc15..a04f8b8a29 100644
+--- a/package/kf5/kf5-kcoreaddons/kf5-kcoreaddons.hash
++++ b/package/kf5/kf5-kcoreaddons/kf5-kcoreaddons.hash
+@@ -1,3 +1,4 @@
+ # Locally calculated
+ sha256 40ff04757e4ac19bc8448940fe18886c894a2069865966cc865fc55ff67b0b46 kcoreaddons-5.47.0.tar.xz
++sha256 e9cc3bc95dd2e3382d0221fbb6ebe8eb8afe5d14fbd2ce8d375eace9e4e74856 kcoreaddons-5.69.0.tar.xz
+ sha256 a9bdde5616ecdd1e980b44f360600ee8783b1f99b8cc83a2beb163a0a390e861 COPYING.LIB
+diff --git a/package/kf5/kf5-kcoreaddons/kf5-kcoreaddons.mk b/package/kf5/kf5-kcoreaddons/kf5-kcoreaddons.mk
+index 76be8876cc..20cf9f80b1 100644
+--- a/package/kf5/kf5-kcoreaddons/kf5-kcoreaddons.mk
++++ b/package/kf5/kf5-kcoreaddons/kf5-kcoreaddons.mk
+@@ -27,3 +27,8 @@ KF5_KCOREADDONS_CONF_OPTS += -DCMAKE_SHARED_LINKER_FLAGS="-Wl,--no-fatal-warning
+ endif
+ 
+ $(eval $(cmake-package))
++HOST_KF5_KCOREADDONS_DEPENDENCIES = host-kf5-extra-cmake-modules
++HOST_KF5_KCOREADDONS_CXXFLAGS = $(HOST_CXXFLAGS)
++HOST_KF5_KCOREADDONS_CONF_OPTS = -DCMAKE_CXX_FLAGS="$(HOST_KF5_KCOREADDONS_CXXFLAGS)"
++
++$(eval $(host-cmake-package))
+diff --git a/package/kf5/kf5.mk b/package/kf5/kf5.mk
+index 8360fc9b63..3386c14ca4 100644
+--- a/package/kf5/kf5.mk
++++ b/package/kf5/kf5.mk
+@@ -4,7 +4,7 @@
+ #
+ ################################################################################
+ 
+-KF5_VERSION_MAJOR = 5.47
++KF5_VERSION_MAJOR = 5.69
+ KF5_VERSION = $(KF5_VERSION_MAJOR).0
+ KF5_SITE = https://download.kde.org/stable/frameworks/$(KF5_VERSION_MAJOR)
+ 
+-- 
+2.26.2
+

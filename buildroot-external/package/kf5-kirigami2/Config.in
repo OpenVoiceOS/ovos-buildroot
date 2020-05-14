@@ -1,0 +1,2 @@
+config BR2_PACKAGE_KF5_KIRIGAMI2
+	bool "kf5-kirigami2"
