@@ -1,0 +1,9 @@
+config BR2_PACKAGE_LOTTIE_QML
+	bool "lottie-qml"
+	help
+	  This provides a QML Item to render Adobe® After Effects™ 
+	  animations exported as JSON with Bodymovin using the Lottie 
+	  Web library.
+
+	  https://github.com/kbroulik/lottie-qml
+

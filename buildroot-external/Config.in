@@ -46,6 +46,7 @@ menu "KF5"
 	source "$BR2_EXTERNAL_MYCROFTOS_PATH/package/kf5-solid/Config.in"
 	source "$BR2_EXTERNAL_MYCROFTOS_PATH/package/kf5-sonnet/Config.in"
 endmenu
+	source "$BR2_EXTERNAL_MYCROFTOS_PATH/package/lottie-qml/Config.in"
 	source "$BR2_EXTERNAL_MYCROFTOS_PATH/package/respeaker/Config.in"
 	source "$BR2_EXTERNAL_MYCROFTOS_PATH/package/snapcast/Config.in"
 	source "$BR2_EXTERNAL_MYCROFTOS_PATH/package/spotifyd/Config.in"
