@@ -13,6 +13,7 @@ enable seeed-voicecard.service
 enable mycroft-splash-start.service
 enable mycroft-splash-40.service
 enable mycroft-splash-60.service
+enable mycroft-splash-quit.service
 enable mycroft.service
 enable mycroft-messagebus.service
 enable mycroft-voice.service
@@ -28,5 +29,4 @@ disable shairport-sync.service
 disable snapclient.service
 disable snapserver.service
 disable spotifyd.service
-disable mycroft-splash-quit.service
 
