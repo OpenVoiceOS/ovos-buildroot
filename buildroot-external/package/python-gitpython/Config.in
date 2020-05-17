@@ -1,6 +1,6 @@
 config BR2_PACKAGE_PYTHON_GITPYTHON
 	bool "python-gitpython"
-	select BR2_PACKAGE_PYTHON_GITDB2 # runtime
+	select BR2_PACKAGE_PYTHON_GITDB # runtime
 	help
 	  Python Git Library.
 
