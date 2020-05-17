@@ -1,0 +1,18 @@
+[Unit]
+Description=Mycroft GUI
+PartOf=mycroft.service
+After=mycroft.service
+After=mycroft-messagebus.service
+
+[Service]
+User=mycroft
+WorkingDirectory=/home/mycroft
+Environment=LD_LIBRARY_PATH=/usr/lib
+Environment=QML2_IMPORT_PATH=/usr/lib/qml
+ExecStartPre=-/usr/bin/sudo /bin/psplash-write QUIT
+ExecStart=mycroft-gui-app
+StandardOutput=null
+Restart=on-failure
+
+[Install]
+WantedBy=mycroft.service
