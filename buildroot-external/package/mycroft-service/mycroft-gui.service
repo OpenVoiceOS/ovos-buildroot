@@ -10,7 +10,7 @@ WorkingDirectory=/home/mycroft
 Environment=LD_LIBRARY_PATH=/usr/lib
 Environment=QML2_IMPORT_PATH=/usr/lib/qml
 ExecStartPre=-/usr/bin/sudo /bin/psplash-write QUIT
-ExecStart=mycroft-gui-app
+ExecStart=mycroft-gui-app --hideTextInput --maximize
 StandardOutput=null
 Restart=on-failure
 
