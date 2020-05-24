@@ -1,8 +1,0 @@
-skillMetadata:
-  sections:
-  - name: Ducking
-    fields:
-    - name: ducking
-      type: checkbox
-      label: Duck while listening
-      value: "true"
