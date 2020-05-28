@@ -1,13 +1,10 @@
 [Unit]
-Description=MycroftOS-WiFiSetup webbased configurator
-BindsTo=sys-subsystem-net-devices-ap0.device
-After=sys-subsystem-net-devices-ap0.device
+Description=MycroftOS WiFi Setup - webbased configurator
+After=wpa_supplicant@ap0.service
+Wants=wpa_supplicant@ap0.service
+Conflicts=wpa_supplicant@wlan0.service
 Before=network.target
 Wants=network.target
-
-# check existence of configuration file
-ConditionPathExists= /etc/wpa_supplicant/wpa_supplicant-ap0.conf
-ConditionPathExists=!/etc/wpa_supplicant/wpa_supplicant-wlan0.conf
 
 [Service]
 Type=idle
@@ -15,4 +12,4 @@ WorkingDirectory=/opt/mycroft/wifisetup
 ExecStart=/usr/bin/python3 app.py > /dev/null 2>&1
 
 [Install]
-WantedBy=sys-subsystem-net-devices-ap0.device
+WantedBy=multi-user.target

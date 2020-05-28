@@ -28,12 +28,12 @@ def save_credentials():
 
     create_wpa_supplicant(ssid, wifi_key)
 
-    # Call reboot_device() in a thread otherwise the reboot will prevent
+    # Call reconfigure_device() in a thread otherwise the reconfigure will prevent
     # the response from getting to the browser
-    def sleep_and_reboot():
+    def sleep_and_reconfigure():
         time.sleep(2)
-        reboot_device()
-    t = Thread(target=sleep_and_reboot)
+        reconfigure_device()
+    t = Thread(target=sleep_and_reconfigure)
     t.start()
 
     return render_template('save_credentials.html', ssid = ssid)
@@ -43,12 +43,12 @@ def skip_wifi():
 
     empty_wpa_supplicant()
 
-    # Call reboot_device() in a thread otherwise the reboot will prevent
+    # Call reconfigure_device() in a thread otherwise the reconfigure will prevent
     # the response from getting to the browser
-    def sleep_and_reboot():
+    def sleep_and_reconfigure():
         time.sleep(2)
-        reboot_device()
-    t = Thread(target=sleep_and_reboot)
+        reconfigure_device()
+    t = Thread(target=sleep_and_reconfigure)
     t.start()
 
     return render_template('cancelled_wifi.html')
@@ -104,9 +104,10 @@ def empty_wpa_supplicant():
     os.system('mv wpa_supplicant-wlan0.conf.tmp /etc/wpa_supplicant/wpa_supplicant-wlan0.conf')
 
 
-def reboot_device():
-    os.system('reboot')
+def reconfigure_device():
+    os.system('systemctl disable wpa_supplicant@ap0.service')
+    os.system('systemctl enable wpa_supplicant@wlan0.service')
+    os.system('systemctl start wpa_supplicant@wlan0.service')
 
 if __name__ == '__main__':
-    os.system("fbv -f -d 1 /opt/mycroft/wifisetup/static/images/wifi.png > /dev/null 2>&1")
     app.run(host = '0.0.0.0', port = '88')

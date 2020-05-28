@@ -1,4 +1,4 @@
-enable wpa_supplicant@wlan0.service
+enable wpa_supplicant@ap0.service
 
 enable firstboot.service
 enable prepare_system.service
@@ -20,8 +20,8 @@ enable mycroft-audio.service
 enable mycroft-skills.service
 enable mycroft-enclosure.service
 enable mycroft-gui.service
+enable mycroft-splash-quit.service
 
-disable mycroft-splash-quit.service
 disable getty@.service
 disable mosquitto.service
 disable motion.service
@@ -31,3 +31,4 @@ disable snapclient.service
 disable snapserver.service
 disable spotifyd.service
 
+disable wpa_supplicant@wlan0.service
