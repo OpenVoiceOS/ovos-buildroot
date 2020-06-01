@@ -3,15 +3,19 @@ Description=Mycroft GUI
 PartOf=mycroft.service
 After=mycroft.service
 After=mycroft-messagebus.service
+Wants=weston.service
+After=weston.service
 
 [Service]
 User=mycroft
 WorkingDirectory=/home/mycroft
+Environment=QT_QPA_PLATFORM=wayland
+Environment=XDG_RUNTIME_DIR=/tmp/weston
 Environment=LD_LIBRARY_PATH=/usr/lib
 Environment=QML2_IMPORT_PATH=/usr/lib/qml
 ExecStartPre=-/usr/bin/sudo /bin/psplash-write QUIT
 ExecStart=mycroft-gui-app --hideTextInput --maximize
-StandardOutput=null
+StandardOutput=journal
 Restart=on-failure
 
 [Install]

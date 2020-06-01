@@ -23,8 +23,14 @@ define MYCROFT_SERVICE_INSTALL_TARGET_CMDS
                 $(TARGET_DIR)/usr/lib/systemd/system/mycroft-enclosure.service
 	$(INSTALL) -D -m 644 $(@D)/mycroft-skills.service \
                 $(TARGET_DIR)/usr/lib/systemd/system/mycroft-skills.service
-	 $(INSTALL) -D -m 644 $(@D)/mycroft-gui.service \
+	$(INSTALL) -D -m 644 $(@D)/mycroft-gui.service \
                 $(TARGET_DIR)/usr/lib/systemd/system/mycroft-gui.service
+	$(INSTALL) -D -m 644 $(@D)/weston.service \
+                $(TARGET_DIR)/usr/lib/systemd/system/weston.service
+
+	mkdir -p $(TARGET_DIR)/etc/xdg/weston
+	$(INSTALL) -D -m 644 $(@D)/weston.ini \
+		$(TARGET_DIR)/etc/xdg/weston/weston.ini
 endef
 
 $(eval $(generic-package))
