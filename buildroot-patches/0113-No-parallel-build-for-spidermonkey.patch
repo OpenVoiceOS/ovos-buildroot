@@ -1,0 +1,23 @@
+From 64916a5b7e9cc3061e97699378fba9ec8c630eaa Mon Sep 17 00:00:00 2001
+From: j1nx <p.steenbergen@j1nx.nl>
+Date: Mon, 1 Jun 2020 20:49:56 +0200
+Subject: [PATCH 1/1] No parallel build for spidermonkey
+
+---
+ package/spidermonkey/spidermonkey.mk | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/package/spidermonkey/spidermonkey.mk b/package/spidermonkey/spidermonkey.mk
+index 50afdc1758..4586137b54 100644
+--- a/package/spidermonkey/spidermonkey.mk
++++ b/package/spidermonkey/spidermonkey.mk
+@@ -61,4 +61,6 @@ define SPIDERMONKEY_CLEANUP
+ endef
+ SPIDERMONKEY_POST_INSTALL_TARGET_HOOKS += SPIDERMONKEY_CLEANUP
+ 
++SPIDERMONKEY_MAKE=$(MAKE1)
++
+ $(eval $(autotools-package))
+-- 
+2.20.1
+
