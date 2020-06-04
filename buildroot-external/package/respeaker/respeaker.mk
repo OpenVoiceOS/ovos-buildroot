@@ -4,7 +4,7 @@
 #
 ################################################################################
 
-RESPEAKER_VERSION = 48463b9a50885da24834ccc26d68705c26242082
+RESPEAKER_VERSION = 6b4133b5f056fd0218f3ffd197df45fab2ae1ef7
 RESPEAKER_SITE = $(call github,respeaker,seeed-voicecard,$(RESPEAKER_VERSION))
 RESPEAKER_LICENSE = GNU General Public License v3.0
 RESPEAKER_DEPENDENCIES = rpi-firmware dtc
