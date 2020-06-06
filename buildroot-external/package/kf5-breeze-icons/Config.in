@@ -1,0 +1,2 @@
+config BR2_PACKAGE_KF5_BREEZE_ICONS
+	bool "kf5-breeze-icons"
