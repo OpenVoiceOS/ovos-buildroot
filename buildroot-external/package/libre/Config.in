@@ -1,0 +1,8 @@
+config BR2_PACKAGE_LIBRE
+	bool "libre"
+	help
+	  Toolkit library for asynchronous network 
+	  IO with protocol stacks including SIP, SDP, 
+	  RTP, STUN, TURN, ICE, BFCP and DNS.
+
+	  http://www.creytiv.com/
