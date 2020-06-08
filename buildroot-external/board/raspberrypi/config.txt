@@ -22,6 +22,7 @@ dtoverlay=vc4-fkms-v3d
 
 # How much memory in MB to assign to the GPU on Pi models having
 # 256, 512 or 1024 MB total memory
+gpu_mem=256
 gpu_mem_256=100
 gpu_mem_512=100
 gpu_mem_1024=100
