@@ -6,9 +6,11 @@ More information about the development, process, ideas etc. at https://www.j1nx.
 More information about the Mycroft A.I. software stack at https://mycroft.ai
 
 ## System.
-- Linux kernel 4.19.106
-- Buildroot 2020.02.0
-- Mycroft 20.02.1
+- MycroftOS - Full 64 Bit distribution
+- Linux kernel 5.4.42
+- Buildroot 2020.02.3 
+- Mycroft 20.02.4
+- Mycroft-GUI 1.0+ (latest dev version)
 - Raspberry Pi 3|3b|3b+ (Initial development hardware = 3b)
 - Raspberry Pi 4 (Current development hardware)
 
@@ -25,7 +27,7 @@ More information about the Mycroft A.I. software stack at https://mycroft.ai
 | I use uptime robot to monitor for things i can't monitor when the connection drops. | If you feel the need, now it's as easy as clicking this button! |
 
 ## Getting started.
-At this moment development is in very early stages and focussed on the Raspberry Pi 3B. As soon as an initial first workable version
+At this moment development is in very early stages and focussed on the Raspberry Pi 3B & 4. As soon as an initial first workable version
 is created, other hardware might be added.
 
 ## Documentation.
