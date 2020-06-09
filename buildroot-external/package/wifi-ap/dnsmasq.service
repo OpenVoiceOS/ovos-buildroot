@@ -5,10 +5,6 @@ After=sys-subsystem-net-devices-ap0.device
 Before=network.target
 Wants=network.target
 
-# check existence of configuration file
-ConditionPathExists= /etc/wpa_supplicant/wpa_supplicant-ap0.conf
-ConditionPathExists=!/etc/wpa_supplicant/wpa_supplicant-wlan0.conf
-
 [Service]
 ExecStart=/usr/sbin/dnsmasq -k --conf-file=/etc/dnsmasq.conf
 ExecReload=/bin/kill -HUP $MAINPID

@@ -2,7 +2,6 @@
 Description=MycroftOS WiFi Setup - webbased configurator
 After=wpa_supplicant@ap0.service
 Wants=wpa_supplicant@ap0.service
-Conflicts=wpa_supplicant@wlan0.service
 Before=network.target
 Wants=network.target
 
@@ -12,4 +11,4 @@ WorkingDirectory=/opt/mycroft/wifisetup
 ExecStart=/usr/bin/python3 app.py > /dev/null 2>&1
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=wpa_supplicant@ap0.service

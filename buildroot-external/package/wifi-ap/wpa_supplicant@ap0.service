@@ -6,8 +6,6 @@ Conflicts=wpa_supplicant@wlan0.service
 Before=network.target
 Wants=network.target
 
-# NetworkManager users will probably want the dbus version instead.
-
 [Service]
 Type=simple
 ExecStartPre=/usr/sbin/iw dev wlan0 interface add ap0 type __ap

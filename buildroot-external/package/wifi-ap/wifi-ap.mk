@@ -17,18 +17,15 @@ define WIFI_AP_INSTALL_TARGET_CMDS
 
 	$(INSTALL) -D -m 644 $(@D)/wpa_supplicant@ap0.service \
                 $(TARGET_DIR)/usr/lib/systemd/system/wpa_supplicant@ap0.service
-	
+
 	$(INSTALL) -D -m 644 $(@D)/wifi-setup.service \
                 $(TARGET_DIR)/usr/lib/systemd/system/wifi-setup.service
-	
+
 	$(INSTALL) -D -m 644 $(@D)/dnsmasq.service \
                 $(TARGET_DIR)/usr/lib/systemd/system/dnsmasq.service
-        
+
 	$(INSTALL) -D -m 644 $(@D)/nginx.service \
                 $(TARGET_DIR)/usr/lib/systemd/system/nginx.service
-        
-	$(INSTALL) -D -m 644 $(@D)/iptables.service \
-                $(TARGET_DIR)/usr/lib/systemd/system/iptables.service
 endef
 
 $(eval $(generic-package))

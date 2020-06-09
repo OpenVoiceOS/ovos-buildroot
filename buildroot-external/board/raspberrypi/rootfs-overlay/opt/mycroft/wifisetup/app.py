@@ -41,8 +41,6 @@ def save_credentials():
 @app.route('/skip_wifi')
 def skip_wifi():
 
-    empty_wpa_supplicant()
-
     # Call reconfigure_device() in a thread otherwise the reconfigure will prevent
     # the response from getting to the browser
     def sleep_and_reconfigure():
@@ -89,25 +87,12 @@ def create_wpa_supplicant(ssid, wifi_key):
 
     os.system('mv wpa_supplicant-wlan0.conf.tmp /etc/wpa_supplicant/wpa_supplicant-wlan0.conf')
 
-def empty_wpa_supplicant():
-    temp_conf_file = open('wpa_supplicant-wlan0.conf.tmp', 'w')
-
-    temp_conf_file.write('ctrl_interface=DIR=/var/run/wpa_supplicant\n')
-    temp_conf_file.write('update_config=1\n')
-    temp_conf_file.write('\n')
-    temp_conf_file.write('network={\n')
-
-    temp_conf_file.write('}\n')
-
-    temp_conf_file.close
-
-    os.system('mv wpa_supplicant-wlan0.conf.tmp /etc/wpa_supplicant/wpa_supplicant-wlan0.conf')
-
-
 def reconfigure_device():
     os.system('systemctl disable wpa_supplicant@ap0.service')
     os.system('systemctl enable wpa_supplicant@wlan0.service')
+    os.system('systemctl stop wpa_supplicant@ap0.service')
+    os.system('sleep 5')
     os.system('systemctl start wpa_supplicant@wlan0.service')
 
 if __name__ == '__main__':
-    app.run(host = '0.0.0.0', port = '88')
+    app.run(host = '172.16.127.1', port = '88')
