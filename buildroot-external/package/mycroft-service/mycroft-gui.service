@@ -13,7 +13,7 @@ Environment=QT_QPA_PLATFORM=wayland
 Environment=QT_PLUGIN_PATH=/usr/lib/qt/plugins:/usr/lib/plugins:/usr/lib/plugins/kf5
 Environment=QT_LOGGING_RULES='*=false'
 Environment=XDG_RUNTIME_DIR=/tmp/weston
-Environment=XDG_DATA_DIRS=/usr/share/kf5:$XDG_DATA_DIRS
+Environment=XDG_DATA_DIRS=/usr/share/icons:/usr/share/kf5:$XDG_DATA_DIRS
 Environment=LD_LIBRARY_PATH=/usr/lib
 Environment=LIBEXEC_PATH=/usr/lib/libexec:/usr/lib/libexec/kf5
 Environment=QML2_IMPORT_PATH=/usr/lib/qml
