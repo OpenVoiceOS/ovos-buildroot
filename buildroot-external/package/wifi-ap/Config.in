@@ -1,7 +1,0 @@
-config BR2_PACKAGE_WIFI_AP
-	bool "wifi-ap"
-	help
-	  Start a wifi AP when there is no wifi
-	  configuration present.
-
-	  https://www.j1nx.nl
