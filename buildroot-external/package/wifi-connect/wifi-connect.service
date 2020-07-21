@@ -1,0 +1,11 @@
+[Unit]
+Description=Mycroft wifi connect service
+After=NetworkManager.service
+
+[Service]
+Type=simple
+ExecStart=/usr/local/sbin/start-wifi-connect
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

@@ -8,6 +8,7 @@ enable pulseaudio.service
 enable avahi-daemon.service
 enable seeed-voicecard.service
 enable NetworkManager.service
+enable wifi-connect.service
 
 enable mycroft-splash-start.service
 enable mycroft-splash-40.service

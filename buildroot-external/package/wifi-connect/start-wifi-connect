@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+iwgetid -r
+
+if [ $? -eq 0 ]; then
+    printf 'Skipping WiFi Connect\n'
+else
+    printf 'Starting WiFi Connect\n'
+    /usr/local/sbin/wifi-connect
+fi
