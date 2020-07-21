@@ -1,0 +1,29 @@
+From 6ad69fd4a9c8ad6a7291328929f405f54c8bd4ed Mon Sep 17 00:00:00 2001
+From: j1nx <p.steenbergen@j1nx.nl>
+Date: Tue, 21 Jul 2020 09:59:54 +0200
+Subject: [PATCH 1/1] Change default settings
+
+---
+ src/config.rs | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/src/config.rs b/src/config.rs
+index 3afad7a..456fb67 100644
+--- a/src/config.rs
++++ b/src/config.rs
+@@ -6,9 +6,9 @@ use std::str::FromStr;
+ use std::path::PathBuf;
+ use std::ffi::OsStr;
+ 
+-const DEFAULT_GATEWAY: &str = "192.168.42.1";
+-const DEFAULT_DHCP_RANGE: &str = "192.168.42.2,192.168.42.254";
+-const DEFAULT_SSID: &str = "WiFi Connect";
++const DEFAULT_GATEWAY: &str = "172.16.127.1";
++const DEFAULT_DHCP_RANGE: &str = "172.16.127.2,172.16.127.27";
++const DEFAULT_SSID: &str = "MYCROFT";
+ const DEFAULT_ACTIVITY_TIMEOUT: &str = "0";
+ const DEFAULT_UI_DIRECTORY: &str = "ui";
+ const DEFAULT_LISTENING_PORT: &str = "80";
+-- 
+2.20.1
+
