@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+export DBUS_SYSTEM_BUS_ADDRESS=unix:path=/run/dbus/system_bus_socket
+sleep 15
 
 iwgetid -r
 
