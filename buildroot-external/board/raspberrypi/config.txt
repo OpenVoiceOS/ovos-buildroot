@@ -20,7 +20,7 @@ disable_overscan=1
 hdmi_group=1
 hdmi_mode=4
 max_framebuffers=2
-dtoverlay=vc4-fkms-v3d
+dtoverlay=vc4-kms-v3d
 
 # uncomment if you get no picture on HDMI for a default "safe" mode
 # hdmi_safe=1
