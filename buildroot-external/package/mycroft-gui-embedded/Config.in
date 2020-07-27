@@ -1,8 +1,0 @@
-config BR2_PACKAGE_MYCROFT_GUI_EMBEDDED
-	bool "mycroft-gui-embedded"
-	help
-	  The KDE-based visual interface for working with Mycroft
-	  based on the Mark-2 version.
-	  
-	  https://github.com/MycroftAI/mycroft-gui-mark-2
-
