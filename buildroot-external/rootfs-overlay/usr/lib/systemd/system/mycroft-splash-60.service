@@ -1,7 +1,7 @@
 [Unit]
 Description=Update Mycroft splash boot screen to 60%
-Wants=systemd-networkd-wait-online.service
-After=systemd-networkd-wait-online.service
+Wants=NetworkManager-wait-online.service
+After=NetworkManager-wait-online.service
 DefaultDependencies=no
 
 [Service]
