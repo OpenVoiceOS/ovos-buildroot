@@ -1,2 +1,0 @@
-config BR2_PACKAGE_KF5_KDOCTOOLS
-	bool "kf5-kdoctools"
