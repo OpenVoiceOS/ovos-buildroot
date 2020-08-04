@@ -1,0 +1,13 @@
+config BR2_PACKAGE_USERLAND_TOOLS
+	bool "userland-tools"
+	depends on BR2_TOOLCHAIN_HAS_THREADS
+	depends on !BR2_STATIC_LIBS
+	help
+	  Raspberry Pi Userland contains the necessary library to use
+	  the VideoCore driver.
+
+	  Includes source for the ARM side code to interface to: EGL,
+	  mmal, GLESv2, vcos, openmaxil, vchiq_arm, bcm_host, WFC,
+	  OpenVG.
+
+	  https://github.com/raspberrypi/userland/

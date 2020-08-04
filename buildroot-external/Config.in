@@ -53,6 +53,7 @@ endmenu
 	source "$BR2_EXTERNAL_MYCROFTOS_PATH/package/respeaker/Config.in"
 	source "$BR2_EXTERNAL_MYCROFTOS_PATH/package/snapcast/Config.in"
 	source "$BR2_EXTERNAL_MYCROFTOS_PATH/package/spotifyd/Config.in"
+	source "$BR2_EXTERNAL_MYCROFTOS_PATH/package/userland-tools/Config.in"
 	source "$BR2_EXTERNAL_MYCROFTOS_PATH/package/wifi-connect/Config.in"
 endmenu
 menu "Additional external python modules"
