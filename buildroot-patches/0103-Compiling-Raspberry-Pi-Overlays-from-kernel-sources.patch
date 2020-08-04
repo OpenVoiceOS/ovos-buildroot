@@ -1,0 +1,75 @@
+From c69b94f5a260dea78f913c70741c034618c5c981 Mon Sep 17 00:00:00 2001
+From: j1nx <p.steenbergen@j1nx.nl>
+Date: Tue, 4 Aug 2020 15:49:45 +0200
+Subject: [PATCH 1/1] Compiling Raspberry Pi Overlays from kernel sources.
+
+---
+ linux/Config.in                | 7 +++++++
+ linux/linux.mk                 | 7 +++++++
+ package/rpi-firmware/Config.in | 7 +++----
+ 3 files changed, 17 insertions(+), 4 deletions(-)
+
+diff --git a/linux/Config.in b/linux/Config.in
+index c19ccb70a8..743b9290aa 100644
+--- a/linux/Config.in
++++ b/linux/Config.in
+@@ -417,6 +417,13 @@ config BR2_LINUX_KERNEL_DTB_OVERLAY_SUPPORT
+ 
+ endif
+ 
++config BR2_LINUX_KERNEL_DTS_OVERLAYS_SUPPORT
++       bool "Build Device Tree Overlays"
++       depends on BR2_LINUX_KERNEL_DTS_SUPPORT
++       help
++         Build in-tree device tree overlays.
++         Currently supports Raspberry Pi kernels.
++
+ config BR2_LINUX_KERNEL_INSTALL_TARGET
+ 	bool "Install kernel image to /boot in target"
+ 	depends on !BR2_TARGET_ROOTFS_INITRAMFS
+diff --git a/linux/linux.mk b/linux/linux.mk
+index ae1edbeb55..7acd1d9998 100644
+--- a/linux/linux.mk
++++ b/linux/linux.mk
+@@ -430,6 +430,12 @@ define LINUX_INSTALL_DTB
+ endef
+ endif # BR2_LINUX_KERNEL_APPENDED_DTB
+ endif # BR2_LINUX_KERNEL_DTB_IS_SELF_BUILT
++ifeq ($(BR2_LINUX_KERNEL_DTS_OVERLAYS_SUPPORT),y)
++define LINUX_INSTALL_DTB_OVERLAYS
++       mkdir -p $(1)
++       cp $(LINUX_ARCH_PATH)/boot/dts/overlays/*.dtbo $(1)
++endef
++endif # BR2_LINUX_KERNEL_DTS_OVERLAYS
+ endif # BR2_LINUX_KERNEL_DTS_SUPPORT
+ 
+ ifeq ($(BR2_LINUX_KERNEL_APPENDED_DTB),y)
+@@ -510,6 +516,7 @@ endef
+ define LINUX_INSTALL_IMAGES_CMDS
+ 	$(call LINUX_INSTALL_IMAGE,$(BINARIES_DIR))
+ 	$(call LINUX_INSTALL_DTB,$(BINARIES_DIR))
++	$(call LINUX_INSTALL_DTB_OVERLAYS,$(BINARIES_DIR)/overlays)
+ endef
+ 
+ ifeq ($(BR2_STRIP_strip),y)
+diff --git a/package/rpi-firmware/Config.in b/package/rpi-firmware/Config.in
+index f5a25c5680..066d32168d 100644
+--- a/package/rpi-firmware/Config.in
++++ b/package/rpi-firmware/Config.in
+@@ -84,10 +84,9 @@ config BR2_PACKAGE_RPI_FIRMWARE_INSTALL_DTBS
+ config BR2_PACKAGE_RPI_FIRMWARE_INSTALL_DTB_OVERLAYS
+ 	bool "Install DTB overlays"
+ 	default y
+-	depends on BR2_PACKAGE_RPI_FIRMWARE_INSTALL_DTBS \
+-		|| BR2_LINUX_KERNEL_DTS_SUPPORT
+-	select BR2_LINUX_KERNEL_DTB_OVERLAY_SUPPORT \
+-		if BR2_LINUX_KERNEL_DTS_SUPPORT
++	depends on (BR2_PACKAGE_RPI_FIRMWARE_INSTALL_DTBS \
++		|| BR2_LINUX_KERNEL_DTS_SUPPORT) && \
++		!BR2_LINUX_KERNEL_DTS_OVERLAYS_SUPPORT
+ 	help
+ 	  Say 'y' here if you need to load one or more of the DTB
+ 	  overlays, to support HATs (Hardware Attached on Top, add-on
+-- 
+2.20.1
+
