@@ -4,7 +4,7 @@
 #
 ################################################################################
 
-ALSA_PLUGINS_VERSION = 1.1.9
+ALSA_PLUGINS_VERSION = 1.2.2
 ALSA_PLUGINS_SOURCE = alsa-plugins-$(ALSA_PLUGINS_VERSION).tar.bz2
 ALSA_PLUGINS_SITE = ftp://ftp.alsa-project.org/pub/plugins
 ALSA_PLUGINS_LICENSE = LGPL-2.1+ (library), GPL-2.0+ (aserver)
