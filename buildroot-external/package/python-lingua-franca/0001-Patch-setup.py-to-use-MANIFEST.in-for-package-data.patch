@@ -1,6 +1,6 @@
-From d0c3fe321f90bfe923b2c26488ad0db56cfad756 Mon Sep 17 00:00:00 2001
+From f7bb1d69c5a4c10948551ac1fc33ffad165dfeca Mon Sep 17 00:00:00 2001
 From: j1nx <p.steenbergen@j1nx.nl>
-Date: Thu, 14 May 2020 20:11:58 +0200
+Date: Tue, 18 Aug 2020 19:42:05 +0200
 Subject: [PATCH 1/1] Patch setup.py to use MANIFEST.in for package data
 
 ---
@@ -17,7 +17,7 @@ index 0000000..97513c5
 @@ -0,0 +1 @@
 +graft lingua_franca
 diff --git a/setup.py b/setup.py
-index c72039e..b927dfa 100644
+index ed9deb0..4591df1 100644
 --- a/setup.py
 +++ b/setup.py
 @@ -3,14 +3,6 @@ import os
@@ -46,7 +46,7 @@ index c72039e..b927dfa 100644
 -
  setup(
      name='lingua_franca',
-     version='0.2.1',
+     version='0.2.2',
      packages=['test', 'lingua_franca', 'lingua_franca.lang'],
      url='https://github.com/MycroftAI/lingua-franca',
      license='Apache2.0',

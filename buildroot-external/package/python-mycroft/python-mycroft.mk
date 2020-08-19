@@ -4,7 +4,7 @@
 #
 ################################################################################
 
-PYTHON_MYCROFT_VERSION = 6f33cc0553235df483dab109778798f0e2e9fbdc
+PYTHON_MYCROFT_VERSION = 7f7c97d0f6e6dc02a3b4af95887294e80092a2eb
 PYTHON_MYCROFT_SITE = $(call github,MycroftAI,mycroft-core,$(PYTHON_MYCROFT_VERSION))
 PYTHON_MYCROFT_SETUP_TYPE = setuptools
 PYTHON_MYCROFT_LICENSE_FILES = LICENSE
