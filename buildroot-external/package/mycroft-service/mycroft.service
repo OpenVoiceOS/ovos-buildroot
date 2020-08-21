@@ -1,6 +1,6 @@
 [Unit]
 Description=Mycroft A.I. Software stack.
-After=pulseaudio.service
+After=pulseaudio.service NetworkManager.service systemd-timesyncd.service
 
 [Service]
 User=mycroft
