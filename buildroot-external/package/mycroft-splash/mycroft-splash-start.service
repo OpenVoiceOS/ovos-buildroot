@@ -5,6 +5,7 @@ After=dev-dri-card0.device
 DefaultDependencies=no
 
 [Service]
+Type=oneshot
 ExecStart=/usr/bin/psplash -n
 
 [Install]
