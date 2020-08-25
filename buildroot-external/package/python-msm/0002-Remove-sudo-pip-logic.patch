@@ -1,0 +1,31 @@
+From 4b856bbe555578f24d625b4e9e8297857ad55f92 Mon Sep 17 00:00:00 2001
+From: j1nx <p.steenbergen@j1nx.nl>
+Date: Tue, 25 Aug 2020 11:04:44 +0200
+Subject: [PATCH 1/1] Remove "sudo" pip logic
+
+---
+ msm/skill_entry.py | 4 ----
+ 1 file changed, 4 deletions(-)
+
+diff --git a/msm/skill_entry.py b/msm/skill_entry.py
+index 3170656..a50c732 100644
+--- a/msm/skill_entry.py
++++ b/msm/skill_entry.py
+@@ -295,14 +295,10 @@ class SkillEntry(object):
+             constraints = DEFAULT_CONSTRAINTS
+ 
+         LOG.info('Installing requirements.txt for ' + self.name)
+-        can_pip = os.access(dirname(sys.executable), os.W_OK | os.X_OK)
+         pip_args = [sys.executable, '-m', 'pip', 'install']
+         if constraints:
+             pip_args += ['-c', constraints]
+ 
+-        if not can_pip:
+-            pip_args = ['sudo', '-n'] + pip_args
+-
+         with self.pip_lock:
+             """
+             Iterate over the individual Python packages and
+-- 
+2.20.1
+
