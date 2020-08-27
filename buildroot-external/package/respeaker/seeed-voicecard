@@ -79,6 +79,8 @@ if [ "x${is_1a}" != "x" ] && [ "x${is_35}" == "x" ] ; then
     echo "install 2mic"
     overlay=seeed-2mic-voicecard
     asound_state=/etc/voicecard/wm8960_asound.state
+    pulse_default=/etc/pulse/seeed-voicecard-2mic-default.pa
+    pulse_daemon=/etc/pulse/seeed-voicecard-2mic-daemon.conf
 fi
 
 if [ "x${is_3b}" != "x" ] && [ "x${is_35}" == "x" ] ; then
