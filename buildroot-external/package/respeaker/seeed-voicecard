@@ -23,26 +23,13 @@
 set -x
 exec 1>/var/log/$(basename $0).log 2>&1
 
+OVERLAYS=/boot/overlays
 #enable i2c interface
-dtparam i2c_arm=on
+dtparam -d $OVERLAYS i2c_arm=on
 modprobe i2c-dev
 
 #enable spi interface
-dtparam spi=on
-
-_VER_RUN=
-function get_kernel_version() {
-    local ZIMAGE IMG_OFFSET
-
-    _VER_RUN=""
-    [ -z "$_VER_RUN" ] && {
-        ZIMAGE=/boot/kernel.img
-        IMG_OFFSET=$(LC_ALL=C grep -abo $'\x1f\x8b\x08\x00' $ZIMAGE | head -n 1 | cut -d ':' -f 1)
-        _VER_RUN=$(dd if=$ZIMAGE obs=64K ibs=4 skip=$(( IMG_OFFSET / 4)) | zcat | grep -a -m1 "Linux version" | strings | awk '{ print $3; }')
-    }
-    echo "$_VER_RUN"
-    return 0
-}
+dtparam -d $OVERLAYS spi=on
 
 CONFIG=/boot/config.txt
 get_overlay() {
@@ -119,12 +106,12 @@ if [ "$overlay" ]; then
     rm /etc/pulse/system.pa
     rm /etc/pulse/daemon.conf
 
-    kernel_ver=$(get_kernel_version)
+    kernel_ver=$(uname -r)
     # echo kernel_ver=$kernel_ver
 
     # TODO: dynamic dtoverlay Bug of v4.19.x
     #       no DT node phandle inserted.
-    if [[ "$kernel_ver" =~ ^4\.19.*$ ]]; then
+    if [[ "$kernel_ver" =~ ^4\.19.*$ || "$kernel_ver" =~ ^5\.*$ ]]; then
         for i in $RPI_HATS; do
             if [ "$i" == "$overlay" ]; then
                 do_overlay $overlay 0
@@ -135,7 +122,7 @@ if [ "$overlay" ]; then
         done
     fi
     #make sure the driver loads correctly
-    dtoverlay $overlay || true
+    dtoverlay -d $OVERLAYS $overlay || true
 
     #install soundstate
     echo "create $overlay asound status file"
