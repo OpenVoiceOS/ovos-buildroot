@@ -3,13 +3,6 @@
 # You should override this file using a post-build script.
 # See http://buildroot.org/manual.html#rootfs-custom
 # and http://elinux.org/RPiconfig for a description of config.txt syntax
-[pi3]
-dtoverlay=vc4-kms-v3d
-
-[pi4]
-dtoverlay=vc4-kms-v3d-pi4
-
-[all]
 # We always use the same names, the real used variant is selected by
 # BR2_PACKAGE_RPI_FIRMWARE_{DEFAULT,X,CD} choice
 start_file=start.elf
@@ -50,4 +43,10 @@ dtparam=i2s=on
 dtparam=spi=on
 
 # Disable GPIO IRQ
-dtoverlay=gpio-no-irq
+# dtoverlay=gpio-no-irq
+
+[pi3]
+dtoverlay=vc4-kms-v3d
+
+[pi4]
+dtoverlay=vc4-kms-v3d-pi4
