@@ -21,7 +21,7 @@ index 8b41dd1..b253459 100644
  ACTION!="change", GOTO="seeedvoicecard_end"
  KERNEL!="card*", GOTO="seeedvoicecard_end"
  
-+ATTR{id}=="seeed4micvoicec",ENV{PULSE_PROFILE_SET}="seeed-voicecard-2mic.conf"
++ATTR{id}=="seeed2micvoicec",ENV{PULSE_PROFILE_SET}="seeed-voicecard-2mic.conf"
  ATTR{id}=="seeed4micvoicec",ENV{PULSE_PROFILE_SET}="seeed-voicecard-4mic.conf"
  ATTR{id}=="seeed8micvoicec",ENV{PULSE_PROFILE_SET}="seeed-voicecard-8mic.conf"
  
