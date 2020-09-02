@@ -44,6 +44,7 @@ menu "KF5"
 	source "$BR2_EXTERNAL_MYCROFTOS_PATH/package/kf5-phonon/Config.in"
 	source "$BR2_EXTERNAL_MYCROFTOS_PATH/package/kf5-plasma-framework/Config.in"
 	source "$BR2_EXTERNAL_MYCROFTOS_PATH/package/kf5-plasma-nano/Config.in"
+	source "$BR2_EXTERNAL_MYCROFTOS_PATH/package/kf5-plasma-wayland-protocols/Config.in"
 	source "$BR2_EXTERNAL_MYCROFTOS_PATH/package/kf5-solid/Config.in"
 	source "$BR2_EXTERNAL_MYCROFTOS_PATH/package/kf5-sonnet/Config.in"
 endmenu
