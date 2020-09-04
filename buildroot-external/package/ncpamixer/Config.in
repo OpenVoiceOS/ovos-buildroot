@@ -1,0 +1,7 @@
+config BR2_PACKAGE_NCPAMIXER
+	bool "ncpamixer"
+	help
+	  An ncurses mixer for PulseAudio inspired by pavucontrol..
+
+	  https://github.com/fulhax/ncpamixer
+
