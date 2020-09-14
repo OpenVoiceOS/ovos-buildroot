@@ -65,8 +65,8 @@ load-module module-position-event-sounds
 ### MycroftOS Audio Settings
 unload-module module-suspend-on-idle
 load-module module-role-ducking
-load-module module-combine-sink sink_name=MycroftOS_ALL
-set-default-sink MycroftOS_ALL
+load-module module-combine-sink sink_name=MycroftOS
+set-default-sink MycroftOS
 
 ### Enable Echo/Noise-Cancellation
 #load-module module-echo-cancel aec_method=webrtc source_name=echoCancel_source sink_name=echoCancel_sink
