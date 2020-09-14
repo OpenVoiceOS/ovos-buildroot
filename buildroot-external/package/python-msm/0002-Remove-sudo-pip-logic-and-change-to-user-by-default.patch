@@ -1,14 +1,14 @@
-From 4b856bbe555578f24d625b4e9e8297857ad55f92 Mon Sep 17 00:00:00 2001
+From 89782d56ed0fa1b63fef350520abea59c79bf283 Mon Sep 17 00:00:00 2001
 From: j1nx <p.steenbergen@j1nx.nl>
-Date: Tue, 25 Aug 2020 11:04:44 +0200
-Subject: [PATCH 1/1] Remove "sudo" pip logic
+Date: Mon, 14 Sep 2020 16:38:58 +0200
+Subject: [PATCH 1/1] Remove "sudo" pip logic and change to --user by default
 
 ---
- msm/skill_entry.py | 4 ----
- 1 file changed, 4 deletions(-)
+ msm/skill_entry.py | 6 +-----
+ 1 file changed, 1 insertion(+), 5 deletions(-)
 
 diff --git a/msm/skill_entry.py b/msm/skill_entry.py
-index 3170656..a50c732 100644
+index 3170656..ec78609 100644
 --- a/msm/skill_entry.py
 +++ b/msm/skill_entry.py
 @@ -295,14 +295,10 @@ class SkillEntry(object):
@@ -16,7 +16,8 @@ index 3170656..a50c732 100644
  
          LOG.info('Installing requirements.txt for ' + self.name)
 -        can_pip = os.access(dirname(sys.executable), os.W_OK | os.X_OK)
-         pip_args = [sys.executable, '-m', 'pip', 'install']
+-        pip_args = [sys.executable, '-m', 'pip', 'install']
++        pip_args = [sys.executable, '-m', 'pip', 'install', '--user']
          if constraints:
              pip_args += ['-c', constraints]
  
