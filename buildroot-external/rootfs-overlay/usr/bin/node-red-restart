@@ -1,0 +1,3 @@
+#!/bin/bash
+sudo systemctl restart nodered
+echo -e "\033[1mRestarted \033[38;5;88mNode-RED\033[0m"
