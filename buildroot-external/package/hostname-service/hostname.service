@@ -1,6 +1,6 @@
 [Unit]
 Description=Set hostname to MycroftOS-[MAC]
-Before=systemd-networkd.service
+Before=NetworkManager.service
 Before=avahi-daemon.service
 
 [Service]
