@@ -2,3 +2,13 @@
 	path = buildroot
 	url = https://github.com/buildroot/buildroot.git
 	branch = 2020.02.x
+
+[submodule "skill-mycroftos-enclosure"]
+        path = buildroot-external/rootfs-overlay/opt/mycroft/skills/skill-mycroftos-enclosure
+        url = https://github.com/j1nx/skill-mycroftos-enclosure.git
+        branch = master
+
+[submodule "skill-mycroftos-gui"]
+        path = buildroot-external/rootfs-overlay/opt/mycroft/skills/skill-mycroftos-gui
+        url = https://github.com/j1nx/skill-mycroftos-gui.git
+        branch = master
