@@ -6,7 +6,9 @@ DefaultDependencies=no
 
 [Service]
 Type=oneshot
-ExecStart=/usr/bin/psplash -n
+ExecStart=/usr/bin/psplash
+RemainAfterExit=yes
+Restart=no
 
 [Install]
 WantedBy=sysinit.target
