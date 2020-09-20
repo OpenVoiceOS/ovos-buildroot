@@ -4,8 +4,9 @@
 #
 #############################################################
 
-BARESIP_VERSION = 0.6.5
-BARESIP_SITE = http://www.creytiv.com/pub
+BARESIP_VERSION = 1.0.0
+BARESIP_SOURCE = v$(BARESIP_VERSION).tar.gz
+BARESIP_SITE = https://github.com/baresip/baresip/archive
 BARESIP_DEPENDENCIES = libre librem zlib
 
 BARESIP_MAKE_ENV = \
