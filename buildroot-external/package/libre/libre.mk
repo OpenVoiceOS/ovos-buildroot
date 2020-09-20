@@ -4,9 +4,9 @@
 #
 #############################################################
 
-LIBRE_VERSION = 0.6.1
-LIBRE_SOURCE = re-$(LIBRE_VERSION).tar.gz
-LIBRE_SITE = http://www.creytiv.com/pub
+LIBRE_VERSION = 1.0.0
+LIBRE_SOURCE = v$(LIBRE_VERSION).tar.gz
+LIBRE_SITE = https://github.com/baresip/re/archive
 LIBRE_INSTALL_STAGING = YES
 
 ifeq ($(BR2_PACKAGE_OPENSSL),y)
