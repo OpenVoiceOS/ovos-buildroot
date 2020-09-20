@@ -6,7 +6,7 @@
 
 LIBREM_VERSION = 0.6.0
 LIBREM_SOURCE = rem-$(LIBREM_VERSION).tar.gz
-LIBREM_SITE = http://www.creytiv.com/pub
+LIBREM_SITE = https://github.com/creytiv/rem/releases/download/v$(LIBREM_VERSION)
 LIBREM_INSTALL_STAGING = YES
 
 ifeq ($(BR2_PACKAGE_LIBRE),y)
