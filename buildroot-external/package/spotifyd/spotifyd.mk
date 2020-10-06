@@ -33,12 +33,12 @@ endef
 define SPOTIFYD_INSTALL_TARGET_CMDS
 	$(INSTALL) -D -m 0755 $(@D)/$(SPOTIFYD_BIN_DIR)/spotifyd \
 		$(TARGET_DIR)/usr/bin/spotifyd
-	$(INSTALL) -D -m 0644 $(BR2_EXTERNAL_MYCROFTOS_PATH)/package/spotifyd/spotifyd.conf \
+	$(INSTALL) -D -m 0644 $(BR2_EXTERNAL_OPENVOICEOS_PATH)/package/spotifyd/spotifyd.conf \
 		$(TARGET_DIR)/etc/spotifyd.conf
 endef
 
 define SPOTIFYD_INSTALL_INIT_SYSTEMD
-	$(INSTALL) -D -m 0644 $(BR2_EXTERNAL_MYCROFTOS_PATH)/package/spotifyd/spotifyd.service \
+	$(INSTALL) -D -m 0644 $(BR2_EXTERNAL_OPENVOICEOS_PATH)/package/spotifyd/spotifyd.service \
 		$(TARGET_DIR)/usr/lib/systemd/system/spotifyd.service
 endef
 

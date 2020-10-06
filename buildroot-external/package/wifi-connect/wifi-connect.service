@@ -1,5 +1,5 @@
 [Unit]
-Description=Mycroft wifi connect service
+Description=OpenVoiceOS wifi-connect service
 After=NetworkManager.service
 StartLimitInterval=200
 StartLimitBurst=5

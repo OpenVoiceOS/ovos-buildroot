@@ -142,12 +142,12 @@ load-module module-filter-apply
 #set-default-source alsa_input.platform-soc_sound.seeed-source
 #set-default-sink alsa_output.platform-soc_sound.seeed-sink
 
-### MycroftOS Audio Settings
+### OpenVoiceOS Audio Settings
 unload-module module-suspend-on-idle
 unload-module module-role-cork
 load-module module-role-ducking
-load-module module-combine-sink sink_name=MycroftOS
-set-default-sink MycroftOS
+load-module module-combine-sink sink_name=OpenVoiceOS
+set-default-sink OpenVoiceOS
 
 ### Enable Echo/Noise-Cancellation
 #load-module module-echo-cancel aec_method=webrtc source_name=echoCancel_source sink_name=echoCancel_sink

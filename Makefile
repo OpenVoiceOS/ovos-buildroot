@@ -23,7 +23,7 @@ $(TARGETS_CONFIG): %-config:
 $(TARGETS): %: $(RELEASE_DIR) %-config
 	@echo "build $@"
 	$(MAKE) -C $(BUILDROOT) BR2_EXTERNAL=../$(BUILDROOT_EXTERNAL) 2>&1 | tee logs/buildroot_$@_output.txt
-	cp -f $(BUILDROOT)/output/images/sdcard.img $(RELEASE_DIR)/MycroftOS_$@.img
+	cp -f $(BUILDROOT)/output/images/sdcard.img $(RELEASE_DIR)/OpenVoiceOS_$@.img
 
 	# Do not clean when building for one target
 ifneq ($(words $(filter $(TARGETS),$(MAKECMDGOALS))), 1)
@@ -46,6 +46,6 @@ help:
 	@echo "Run 'make <target>' to build a target image."
 	@echo "Run 'make all' to build all target images."
 	@echo "Run 'make clean' to clean the build output."
-	@echo "Run 'make <target>-config' to configure MycroftOS for a target."
+	@echo "Run 'make <target>-config' to configure OpenVoiceOS for a target."
 	@echo "Run 'make menuconfig' to update current config utilising a menu based program."
 	@echo "Run 'make savedefconfig' to save current config back to config directory."

@@ -11,17 +11,17 @@ MYCROFT_SPLASH_LICENSE_FILES = COPYING
 MYCROFT_SPLASH_AUTORECONF = YES
 
 define MYCROFT_SPLASH_INSTALL_INIT_SYSTEMD
-	$(INSTALL) -D -m 644 $(BR2_EXTERNAL_MYCROFTOS_PATH)/package/mycroft-splash/mycroft-splash-start.service \
+	$(INSTALL) -D -m 644 $(BR2_EXTERNAL_OPENVOICEOS_PATH)/package/mycroft-splash/mycroft-splash-start.service \
 		$(TARGET_DIR)/usr/lib/systemd/system/mycroft-splash-start.service
 
-	$(INSTALL) -D -m 644 $(BR2_EXTERNAL_MYCROFTOS_PATH)/package/mycroft-splash/mycroft-splash-quit.service \
+	$(INSTALL) -D -m 644 $(BR2_EXTERNAL_OPENVOICEOS_PATH)/package/mycroft-splash/mycroft-splash-quit.service \
 		$(TARGET_DIR)/usr/lib/systemd/system/mycroft-splash-quit.service
 endef
 
 define MYCROFT_SPLASH_CHANGE_IMAGE
-	cp $(BR2_EXTERNAL_MYCROFTOS_PATH)/package/mycroft-splash/psplash-colors.h $(@D)
-	cp $(BR2_EXTERNAL_MYCROFTOS_PATH)/package/mycroft-splash/psplash-config.h $(@D)
-	cp $(BR2_EXTERNAL_MYCROFTOS_PATH)/package/mycroft-splash/base-images/* $(@D)/base-images/
+	cp $(BR2_EXTERNAL_OPENVOICEOS_PATH)/package/mycroft-splash/psplash-colors.h $(@D)
+	cp $(BR2_EXTERNAL_OPENVOICEOS_PATH)/package/mycroft-splash/psplash-config.h $(@D)
+	cp $(BR2_EXTERNAL_OPENVOICEOS_PATH)/package/mycroft-splash/base-images/* $(@D)/base-images/
 endef
 
 MYCROFT_SPLASH_PRE_CONFIGURE_HOOKS += MYCROFT_SPLASH_CHANGE_IMAGE

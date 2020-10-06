@@ -5,7 +5,7 @@
 ################################################################################
 
 MYCROFT_SERVICE_VERSION = 0.1.0
-MYCROFT_SERVICE_SITE = $(BR2_EXTERNAL_MYCROFTOS_PATH)/package/mycroft-service
+MYCROFT_SERVICE_SITE = $(BR2_EXTERNAL_OPENVOICEOS_PATH)/package/mycroft-service
 MYCROFT_SERVICE_SITE_METHOD = local
 MYCROFT_SERVICE_LICENSE = Apache License 2.0
 MYCROFT_SERVICE_LICENSE_FILES = LICENSE

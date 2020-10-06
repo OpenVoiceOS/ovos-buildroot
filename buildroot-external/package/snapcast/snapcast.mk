@@ -31,7 +31,7 @@ define SNAPCLIENT_INSTALL_INIT_SYSV
 endef
 
 define SNAPCLIENT_INSTALL_INIT_SYSTEMD
-	$(INSTALL) -D -m 0644 $(BR2_EXTERNAL_MYCROFTOS_PATH)/package/snapcast/snapclient.service \
+	$(INSTALL) -D -m 0644 $(BR2_EXTERNAL_OPENVOICEOS_PATH)/package/snapcast/snapclient.service \
 		$(TARGET_DIR)/usr/lib/systemd/system/snapclient.service
 endef
 else # !BR2_PACKAGE_SNAPCAST_CLIENT
@@ -47,7 +47,7 @@ define SNAPSERVER_INSTALL_INIT_SYSV
 endef
 
 define SNAPSERVER_INSTALL_INIT_SYSTEMD
-	$(INSTALL) -D -m 0644 $(BR2_EXTERNAL_MYCROFTOS_PATH)/package/snapcast/snapserver.service \
+	$(INSTALL) -D -m 0644 $(BR2_EXTERNAL_OPENVOICEOS_PATH)/package/snapcast/snapserver.service \
 		$(TARGET_DIR)/usr/lib/systemd/system/snapserver.service
 endef
 else # !BR2_PACKAGE_SNAPCAST_SERVER

@@ -7,6 +7,6 @@ export LC_ALL="C"
 alias ll='ls -l'
 
 ######################################################################
-# Initialize MycroftOS CLI Environment
+# Initialize OpenVoiceOS CLI Environment
 ######################################################################
 source cli_login.sh

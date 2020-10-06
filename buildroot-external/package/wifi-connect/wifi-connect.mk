@@ -33,9 +33,9 @@ define WIFI_CONNECT_INSTALL_TARGET_CMDS
 endef
 
 define WIFI_CONNECT_INSTALL_INIT_SYSTEMD
-	$(INSTALL) -D -m 0644 $(BR2_EXTERNAL_MYCROFTOS_PATH)/package/wifi-connect/wifi-connect.service \
+	$(INSTALL) -D -m 0644 $(BR2_EXTERNAL_OPENVOICEOS_PATH)/package/wifi-connect/wifi-connect.service \
 		$(TARGET_DIR)/usr/lib/systemd/system/wifi-connect.service
-	$(INSTALL) -D -m 0755 $(BR2_EXTERNAL_MYCROFTOS_PATH)/package/wifi-connect/start-wifi-connect \
+	$(INSTALL) -D -m 0755 $(BR2_EXTERNAL_OPENVOICEOS_PATH)/package/wifi-connect/start-wifi-connect \
 		$(TARGET_DIR)/usr/local/sbin/start-wifi-connect
 endef
 
