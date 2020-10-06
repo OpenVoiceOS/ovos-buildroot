@@ -4,7 +4,7 @@
 #
 ################################################################################
 
-WIFI_CONNECT_VERSION = 5d27c1478c1efd00800eb6ba340ae17812ac607d
+WIFI_CONNECT_VERSION = 258656bf9b531ff64438ba502166840e48125e33
 WIFI_CONNECT_SITE = $(call github,balena-io,wifi-connect,$(WIFI_CONNECT_VERSION))
 
 WIFI_CONNECT_DEPENDENCIES = host-cargo
