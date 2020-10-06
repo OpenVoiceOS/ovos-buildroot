@@ -1,0 +1,10 @@
+config BR2_PACKAGE_MYCROFT_EMBEDDED_SHELL
+	bool "mycroft-embedded-shell"
+	help
+	  This is a mycroft gui app which is intended 
+	  to run on low power hardware either as "single 
+	  application" on a minimal wayland server or 
+	  with eglfs backend.
+
+	  https://github.com/notmart/mycroft-embedded-shell
+
