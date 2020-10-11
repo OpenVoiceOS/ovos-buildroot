@@ -15,9 +15,10 @@ kernel=zImage
 
 # Disable overscan assuming the display supports displaying the full resolution
 # If the text shown on the screen disappears off the edge, comment this out
-disable_overscan=1
-hdmi_group=1
-hdmi_mode=4
+# disable_overscan=1
+hdmi_drive=2
+hdmi_group=2
+hdmi_mode=14
 max_framebuffers=2
 
 # uncomment if you get no picture on HDMI for a default "safe" mode
