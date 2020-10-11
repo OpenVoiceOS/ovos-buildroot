@@ -30,4 +30,4 @@ disable shairport-sync.service
 disable snapclient.service
 disable snapserver.service
 disable spotifyd.service
-
+disable nodered.service
