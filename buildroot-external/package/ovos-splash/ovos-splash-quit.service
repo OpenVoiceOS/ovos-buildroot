@@ -1,0 +1,12 @@
+[Unit]
+Description=Terminate OVOS splash boot Screen
+After=ovos-splash-start.service
+After=mycroft-messagebus.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/psplash-write QUIT
+TimeoutSec=20
+
+[Install]
+WantedBy=multi-user.target
