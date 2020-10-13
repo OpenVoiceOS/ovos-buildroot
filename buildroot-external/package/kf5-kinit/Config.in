@@ -1,0 +1,2 @@
+config BR2_PACKAGE_KF5_KINIT
+	bool "kf5-kinit"

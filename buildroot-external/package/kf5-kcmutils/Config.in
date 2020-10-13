@@ -1,0 +1,2 @@
+config BR2_PACKAGE_KF5_KCMUTILS
+	bool "kf5-kcmutils"
