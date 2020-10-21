@@ -1,0 +1,33 @@
+From 812a82e51f6aab90ed115db0b43963514ca826e1 Mon Sep 17 00:00:00 2001
+From: j1nx <p.steenbergen@j1nx.nl>
+Date: Fri, 16 Oct 2020 15:27:12 +0200
+Subject: [PATCH 1/1] Remove DocTools dependency
+
+---
+ CMakeLists.txt | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index c2b93e3d9..f7a4917a9 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -26,7 +26,7 @@ include(KDEPackageAppTemplates)
+ include(KDEClangFormat)
+ 
+ find_package(KF5 ${KF5_MIN_VERSION} REQUIRED COMPONENTS
+-                    Plasma DocTools Runner NotifyConfig Su NewStuff Wallet
++                    Plasma Runner NotifyConfig Su NewStuff Wallet
+                     IdleTime Declarative I18n KCMUtils TextWidgets KDELibs4Support Crash GlobalAccel
+                     DBusAddons Wayland CoreAddons People ActivitiesStats)
+ find_package(KDED CONFIG REQUIRED)
+@@ -149,7 +149,6 @@ add_definitions(-DQT_NO_URL_CAST_FROM_STRING)
+ # locate qdbus in the Qt path because not every distro makes a symlink at /usr/bin/qdbus
+ query_qmake(QtBinariesDir QT_INSTALL_BINS)
+ 
+-add_subdirectory(doc)
+ add_subdirectory(libkworkspace)
+ add_subdirectory(libdbusmenuqt)
+ add_subdirectory(appmenu)
+-- 
+2.20.1
+

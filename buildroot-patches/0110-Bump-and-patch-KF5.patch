@@ -1,19 +1,19 @@
-From 62ed523c06d6c5981f7908b1978f53ba018b40df Mon Sep 17 00:00:00 2001
+From 4fc823103b3c7401a30bb3461276c076b446ecdf Mon Sep 17 00:00:00 2001
 From: j1nx <p.steenbergen@j1nx.nl>
-Date: Mon, 20 Jul 2020 11:54:28 +0200
+Date: Mon, 19 Oct 2020 20:18:18 +0200
 Subject: [PATCH 1/1] Bump and patch KF5
 
 ---
- .../kf5/kf5-extra-cmake-modules/kf5-extra-cmake-modules.hash | 1 +
- .../kf5/kf5-extra-cmake-modules/kf5-extra-cmake-modules.mk   | 1 +
- package/kf5/kf5-kcoreaddons/kf5-kcoreaddons.hash             | 1 +
- package/kf5/kf5-kcoreaddons/kf5-kcoreaddons.mk               | 5 +++++
- package/kf5/kf5-networkmanager-qt/kf5-networkmanager-qt.hash | 1 +
- package/kf5/kf5.mk                                           | 2 +-
- 6 files changed, 10 insertions(+), 1 deletion(-)
+ .../kf5-extra-cmake-modules.hash                    |  1 +
+ .../kf5-extra-cmake-modules.mk                      |  1 +
+ package/kf5/kf5-kcoreaddons/kf5-kcoreaddons.hash    |  1 +
+ package/kf5/kf5-kcoreaddons/kf5-kcoreaddons.mk      | 13 ++++++++++++-
+ .../kf5-networkmanager-qt.hash                      |  1 +
+ package/kf5/kf5.mk                                  |  2 +-
+ 6 files changed, 17 insertions(+), 2 deletions(-)
 
 diff --git a/package/kf5/kf5-extra-cmake-modules/kf5-extra-cmake-modules.hash b/package/kf5/kf5-extra-cmake-modules/kf5-extra-cmake-modules.hash
-index 733e267fdb..99cf3015ca 100644
+index 733e267fdb..bf017ed377 100644
 --- a/package/kf5/kf5-extra-cmake-modules/kf5-extra-cmake-modules.hash
 +++ b/package/kf5/kf5-extra-cmake-modules/kf5-extra-cmake-modules.hash
 @@ -1,3 +1,4 @@
@@ -31,7 +31,7 @@ index 3c4281b960..d3aad89264 100644
  $(eval $(cmake-package))
 +$(eval $(host-cmake-package))
 diff --git a/package/kf5/kf5-kcoreaddons/kf5-kcoreaddons.hash b/package/kf5/kf5-kcoreaddons/kf5-kcoreaddons.hash
-index 0cd8dcfc15..a04f8b8a29 100644
+index 0cd8dcfc15..415c084cad 100644
 --- a/package/kf5/kf5-kcoreaddons/kf5-kcoreaddons.hash
 +++ b/package/kf5/kf5-kcoreaddons/kf5-kcoreaddons.hash
 @@ -1,3 +1,4 @@
@@ -40,12 +40,28 @@ index 0cd8dcfc15..a04f8b8a29 100644
 +sha256 24a7713eaef2f40e648a586e22b030192321f9fecdbae77013b00446fa0d6d51 kcoreaddons-5.73.0.tar.xz
  sha256 a9bdde5616ecdd1e980b44f360600ee8783b1f99b8cc83a2beb163a0a390e861 COPYING.LIB
 diff --git a/package/kf5/kf5-kcoreaddons/kf5-kcoreaddons.mk b/package/kf5/kf5-kcoreaddons/kf5-kcoreaddons.mk
-index 76be8876cc..20cf9f80b1 100644
+index 76be8876cc..dbde5d3285 100644
 --- a/package/kf5/kf5-kcoreaddons/kf5-kcoreaddons.mk
 +++ b/package/kf5/kf5-kcoreaddons/kf5-kcoreaddons.mk
-@@ -27,3 +27,8 @@ KF5_KCOREADDONS_CONF_OPTS += -DCMAKE_SHARED_LINKER_FLAGS="-Wl,--no-fatal-warning
+@@ -10,7 +10,7 @@ KF5_KCOREADDONS_SOURCE = kcoreaddons-$(KF5_KCOREADDONS_VERSION).tar.xz
+ KF5_KCOREADDONS_LICENSE = LGPL-2.1
+ KF5_KCOREADDONS_LICENSE_FILES = COPYING.LIB
+ 
+-KF5_KCOREADDONS_DEPENDENCIES = kf5-extra-cmake-modules qt5tools
++KF5_KCOREADDONS_DEPENDENCIES = kf5-extra-cmake-modules qt5tools host-kf5-kcoreaddons
+ KF5_KCOREADDONS_INSTALL_STAGING = YES
+ 
+ KF5_KCOREADDONS_CXXFLAGS = $(TARGET_CXXFLAGS)
+@@ -26,4 +26,15 @@ ifeq ($(BR2_microblaze),y)
+ KF5_KCOREADDONS_CONF_OPTS += -DCMAKE_SHARED_LINKER_FLAGS="-Wl,--no-fatal-warnings"
  endif
  
++KF5_KCOREADDONS_POST_INSTALL_STAGING_HOOKS += KF5_KCOREADDONS_COPY_BINS
++
++define KF5_KCOREADDONS_COPY_BINS
++        cp ${HOST_DIR}/bin/desktoptojson $(STAGING_DIR)/usr/bin
++endef
++
  $(eval $(cmake-package))
 +HOST_KF5_KCOREADDONS_DEPENDENCIES = host-kf5-extra-cmake-modules
 +HOST_KF5_KCOREADDONS_CXXFLAGS = $(HOST_CXXFLAGS)
@@ -53,7 +69,7 @@ index 76be8876cc..20cf9f80b1 100644
 +
 +$(eval $(host-cmake-package))
 diff --git a/package/kf5/kf5-networkmanager-qt/kf5-networkmanager-qt.hash b/package/kf5/kf5-networkmanager-qt/kf5-networkmanager-qt.hash
-index 8ccada455e..4d92be5aa1 100644
+index 8ccada455e..a57d848e07 100644
 --- a/package/kf5/kf5-networkmanager-qt/kf5-networkmanager-qt.hash
 +++ b/package/kf5/kf5-networkmanager-qt/kf5-networkmanager-qt.hash
 @@ -1,3 +1,4 @@
@@ -62,7 +78,7 @@ index 8ccada455e..4d92be5aa1 100644
 +sha256 b909feafc0a9a18b59744e0f1973c5357f67bbd50b59afa82cf55955dae7d41f networkmanager-qt-5.73.0.tar.xz
  sha256 dc626520dcd53a22f727af3ee42c770e56c97a64fe3adb063799d8ab032fe551	COPYING.LIB
 diff --git a/package/kf5/kf5.mk b/package/kf5/kf5.mk
-index 8360fc9b63..3386c14ca4 100644
+index 8360fc9b63..f744939ecf 100644
 --- a/package/kf5/kf5.mk
 +++ b/package/kf5/kf5.mk
 @@ -4,7 +4,7 @@

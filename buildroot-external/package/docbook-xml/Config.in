@@ -1,0 +1,11 @@
+config BR2_PACKAGE_DOCBOOK_XML
+	bool "docbook-xml"
+	help
+	  Document type definitions for verification 
+	  of XML data files against the DocBook rule set, 
+	  it ships with the latest DocBook 4.5 XML DTD, 
+	  as well as a selected set of legacy DTDs for 
+	  use with older documents, including 4.0, 4.1.2, 
+	  4.2, 4.3 and 4.4
+
+	  http://www.docbook.org/xml/

@@ -1,0 +1,2 @@
+config BR2_PACKAGE_KF5_KACTIVITIES_STATS
+	bool "kf5-kactivities-stats"

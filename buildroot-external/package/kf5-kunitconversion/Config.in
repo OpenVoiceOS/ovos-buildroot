@@ -1,0 +1,2 @@
+config BR2_PACKAGE_KF5_KUNITCONVERSION
+	bool "kf5-kunitconversion"
