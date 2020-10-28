@@ -1,0 +1,102 @@
+From ad5ead73536b5558b5f8457f54d8eb9076ac5b7d Mon Sep 17 00:00:00 2001
+From: j1nx <p.steenbergen@j1nx.nl>
+Date: Wed, 28 Oct 2020 10:20:56 +0100
+Subject: [PATCH 1/1] Add and build the qtdesigner tools
+
+---
+ .../qt5tools/0001-Build-designer-tools.patch  | 53 +++++++++++++++++++
+ package/qt5/qt5tools/Config.in                |  5 ++
+ package/qt5/qt5tools/qt5tools.mk              |  3 ++
+ 3 files changed, 61 insertions(+)
+ create mode 100644 package/qt5/qt5tools/0001-Build-designer-tools.patch
+
+diff --git a/package/qt5/qt5tools/0001-Build-designer-tools.patch b/package/qt5/qt5tools/0001-Build-designer-tools.patch
+new file mode 100644
+index 0000000000..2a8389e6a1
+--- /dev/null
++++ b/package/qt5/qt5tools/0001-Build-designer-tools.patch
+@@ -0,0 +1,53 @@
++From 8441d3adeb285862632e4d05c60af2dc17ab31f3 Mon Sep 17 00:00:00 2001
++From: j1nx <p.steenbergen@j1nx.nl>
++Date: Wed, 28 Oct 2020 10:00:30 +0100
++Subject: [PATCH 1/1] Build designer tools
++
++---
++ src/designer/src/src.pro | 30 +++++++++---------------------
++ 1 file changed, 9 insertions(+), 21 deletions(-)
++
++diff --git a/src/designer/src/src.pro b/src/designer/src/src.pro
++index 79e9e64e..8af9edf8 100644
++--- a/src/designer/src/src.pro
+++++ b/src/designer/src/src.pro
++@@ -2,27 +2,15 @@ TEMPLATE = subdirs
++ 
++ SUBDIRS = \
++     uiplugin \
++-    uitools
++-
++-qtConfig(process) {
++-    SUBDIRS += \
++-        lib \
++-        components \
++-        designer
++-
++-    lib.depends = uiplugin
++-    components.depends = lib
++-    designer.depends = components
++-    plugins.depends = lib
+++    uitools \
+++    lib \
+++    components \
+++    designer
++ 
++-    contains(QT_CONFIG, shared): SUBDIRS += plugins
++-}
+++contains(QT_CONFIG, shared): SUBDIRS += plugins
++ 
++ uitools.depends = uiplugin
++-
++-qtNomakeTools( \
++-    lib \
++-    components \
++-    designer \
++-    plugins \
++-)
+++lib.depends = uiplugin
+++components.depends = lib
+++designer.depends = components
+++plugins.depends = lib
++-- 
++2.20.1
++
+diff --git a/package/qt5/qt5tools/Config.in b/package/qt5/qt5tools/Config.in
+index 60106c1ee3..b538c0f05c 100644
+--- a/package/qt5/qt5tools/Config.in
++++ b/package/qt5/qt5tools/Config.in
+@@ -56,4 +56,9 @@ config BR2_PACKAGE_QT5TOOLS_QTPLUGININFO
+ 	help
+ 	  Compile and install the qtplugininfo program.
+ 
++config BR2_PACKAGE_QT5TOOLS_DESIGNER
++        bool "qtdesigner"
++        help
++          Compile and install the qtdesigner programs.
++
+ endif
+diff --git a/package/qt5/qt5tools/qt5tools.mk b/package/qt5/qt5tools/qt5tools.mk
+index 0d00022998..9100d21ccd 100644
+--- a/package/qt5/qt5tools/qt5tools.mk
++++ b/package/qt5/qt5tools/qt5tools.mk
+@@ -50,6 +50,9 @@ QT5TOOLS_INSTALL_TARGET_$(BR2_PACKAGE_QT5TOOLS_QTPATHS) += qtpaths
+ QT5TOOLS_BUILD_DIRS_$(BR2_PACKAGE_QT5TOOLS_QTPLUGININFO) += qtplugininfo
+ QT5TOOLS_INSTALL_TARGET_$(BR2_PACKAGE_QT5TOOLS_QTPLUGININFO) += qtplugininfo
+ 
++QT5TOOLS_BUILD_DIRS_$(BR2_PACKAGE_QT5TOOLS_DESIGNER) += designer
++QT5TOOLS_INSTALL_STAGING_DIR_$(BR2_PACKAGE_QT5TOOLS_DESIGNER) += designer
++
+ define QT5TOOLS_CONFIGURE_CMDS
+ 	(cd $(@D); $(TARGET_MAKE_ENV) $(HOST_DIR)/bin/qmake)
+ endef
+-- 
+2.20.1
+

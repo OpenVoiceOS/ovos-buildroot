@@ -1,0 +1,29 @@
+From 72fd2e1837a5870c925235c3d7056c76abdf22a1 Mon Sep 17 00:00:00 2001
+From: j1nx <p.steenbergen@j1nx.nl>
+Date: Tue, 27 Oct 2020 15:15:11 +0100
+Subject: [PATCH 1/1] No X11
+
+---
+ CMakeLists.txt | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 5a1a7e2..b832f4b 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -22,9 +22,9 @@ include(ECMPoQmTools)
+ set(REQUIRED_QT_VERSION 5.12.0)
+ find_package(Qt5 ${REQUIRED_QT_VERSION} CONFIG REQUIRED Widgets DBus)
+ 
+-if (NOT APPLE)
+-    find_package(X11)
+-endif()
++#if (NOT APPLE)
++#    find_package(X11)
++#endif()
+ 
+ set(HAVE_X11 ${X11_FOUND})
+ 
+-- 
+2.20.1
+

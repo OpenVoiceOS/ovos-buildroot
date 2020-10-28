@@ -36,6 +36,8 @@ HOST_KF5_KDOCTOOLS_CONF_OPTS += -DINSTALL_INTERNAL_TOOLS=ON
 
 define HOST_KF5_KDOCTOOLS_INSTALL_CMDS
 	cp $(@D)/buildroot-build/bin/docbookl10nhelper $(HOST_DIR)/bin
+	cp $(@D)/buildroot-build/bin/meinproc5 $(HOST_DIR)/bin
+	cp $(@D)/buildroot-build/bin/checkXML5 $(HOST_DIR)/bin
 endef
 
 $(eval $(host-cmake-package))

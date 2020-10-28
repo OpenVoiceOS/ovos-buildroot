@@ -1,0 +1,33 @@
+From e7be823455a9b7c3be7abc60c1e757845ae18408 Mon Sep 17 00:00:00 2001
+From: j1nx <p.steenbergen@j1nx.nl>
+Date: Wed, 28 Oct 2020 12:07:34 +0100
+Subject: [PATCH 1/1] No X11
+
+---
+ CMakeLists.txt | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index bed6183..e41e8e4 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -32,12 +32,12 @@ ecm_setup_version(${KF5_VERSION} VARIABLE_PREFIX KINIT
+ include(ConfigureChecks.cmake)
+ 
+ #optional features
+-if (NOT APPLE)
+-    find_package(X11)
+-endif()
++#if (NOT APPLE)
++#    find_package(X11)
++#endif()
+ set(HAVE_X11 ${X11_FOUND})
+ 
+-find_package(XCB MODULE COMPONENTS XCB)
++#find_package(XCB MODULE COMPONENTS XCB)
+ set_package_properties(XCB PROPERTIES TYPE OPTIONAL)
+ set(HAVE_XCB ${XCB_XCB_FOUND})
+ 
+-- 
+2.20.1
+

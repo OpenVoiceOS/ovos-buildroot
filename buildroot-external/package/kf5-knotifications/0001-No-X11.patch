@@ -1,0 +1,29 @@
+From 028fe875e3bedbe17f6e67a358f99bda5115bb9c Mon Sep 17 00:00:00 2001
+From: j1nx <p.steenbergen@j1nx.nl>
+Date: Tue, 27 Oct 2020 15:25:53 +0100
+Subject: [PATCH 1/1] No X11
+
+---
+ CMakeLists.txt | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 6e5b861..5ffb90f 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -59,9 +59,9 @@ include(KDEInstallDirs)
+ include(KDEFrameworkCompilerSettings NO_POLICY_SCOPE)
+ include(KDECMakeSettings)
+ 
+-if (NOT APPLE AND NOT WIN32)
+-    find_package(X11)
+-endif()
++#if (NOT APPLE AND NOT WIN32)
++#    find_package(X11)
++#endif()
+ 
+ set(HAVE_X11 ${X11_FOUND})
+ set(HAVE_XTEST ${X11_XTest_FOUND})
+-- 
+2.20.1
+

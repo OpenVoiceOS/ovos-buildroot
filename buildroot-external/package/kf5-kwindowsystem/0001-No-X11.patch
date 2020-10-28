@@ -1,0 +1,25 @@
+From 7a81f31ac138413c2eb6ff0f3ab0c28e09c5fb8c Mon Sep 17 00:00:00 2001
+From: j1nx <p.steenbergen@j1nx.nl>
+Date: Tue, 27 Oct 2020 14:13:22 +0100
+Subject: [PATCH 1/1] No X11
+
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index b252a39..4098c14 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -59,7 +59,7 @@ if(WIN32)
+ endif()
+ 
+ if (NOT APPLE)
+-    find_package(X11)
++#    find_package(X11)
+ endif()
+ 
+ set(KWINDOWSYSTEM_HAVE_X11 ${X11_FOUND})
+-- 
+2.20.1
+
