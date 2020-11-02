@@ -1,40 +1,57 @@
-From 6ada66130fb2300d9ab7ff14e98e3fc79ecba056 Mon Sep 17 00:00:00 2001
+From 55bbd8b116f02fb714558b82e16e5b190994219f Mon Sep 17 00:00:00 2001
 From: j1nx <p.steenbergen@j1nx.nl>
-Date: Thu, 14 May 2020 19:38:22 +0200
+Date: Thu, 29 Oct 2020 19:47:27 +0100
 Subject: [PATCH 1/1] Downgrade python-psutil to 5.6.6
 
 ---
  package/python-psutil/python-psutil.hash | 2 +-
  package/python-psutil/python-psutil.mk   | 4 ++--
- 2 files changed, 3 insertions(+), 3 deletions(-)
+ package/python3-psutil/python3-psutil.mk | 4 ++--
+ 3 files changed, 5 insertions(+), 5 deletions(-)
 
 diff --git a/package/python-psutil/python-psutil.hash b/package/python-psutil/python-psutil.hash
-index 7f3d629d66..9e273580b7 100644
+index 0000d6033c..e715e3f26f 100644
 --- a/package/python-psutil/python-psutil.hash
 +++ b/package/python-psutil/python-psutil.hash
 @@ -1,5 +1,5 @@
  # md5, sha256 from https://pypi.org/pypi/psutil/json
- md5	b2c94e0368fc6e6f237a7252f8e85ca2  psutil-5.6.7.tar.gz
--sha256	ffad8eb2ac614518bbe3c0b8eb9dffdb3a8d2e3a7d5da51c5b974fb723a5c5aa  psutil-5.6.7.tar.gz
-+sha256	ad21281f7bd6c57578dd53913d2d44218e9e29fd25128d10ff7819ef16fa46e7  psutil-5.6.6.tar.gz
+ md5  ed7b0f11ed214bcabbe76b7cf52f3ae3  psutil-5.7.0.tar.gz
+-sha256  685ec16ca14d079455892f25bd124df26ff9137664af445563c1bd36629b5e0e  psutil-5.7.0.tar.gz
++sha256  ad21281f7bd6c57578dd53913d2d44218e9e29fd25128d10ff7819ef16fa46e7  psutil-5.6.6.tar.gz
  # Locally computed sha256 checksums
- sha256	24c12984500caa07ffdce19eebc06396c5e6d244b573bc6c438f4a6ef8e56c1b  LICENSE
+ sha256  24c12984500caa07ffdce19eebc06396c5e6d244b573bc6c438f4a6ef8e56c1b  LICENSE
 diff --git a/package/python-psutil/python-psutil.mk b/package/python-psutil/python-psutil.mk
-index 62a94f3c41..5d18b6c001 100644
+index 08bb2fd7bd..f1dbf84e20 100644
 --- a/package/python-psutil/python-psutil.mk
 +++ b/package/python-psutil/python-psutil.mk
-@@ -4,9 +4,9 @@
- #
+@@ -5,9 +5,9 @@
  ################################################################################
  
--PYTHON_PSUTIL_VERSION = 5.6.7
+ # Please keep in sync with package/python3-psutil/python3-psutil.mk
+-PYTHON_PSUTIL_VERSION = 5.7.0
 +PYTHON_PSUTIL_VERSION = 5.6.6
  PYTHON_PSUTIL_SOURCE = psutil-$(PYTHON_PSUTIL_VERSION).tar.gz
--PYTHON_PSUTIL_SITE = https://files.pythonhosted.org/packages/73/93/4f8213fbe66fc20cb904f35e6e04e20b47b85bee39845cc66a0bcf5ccdcb
+-PYTHON_PSUTIL_SITE = https://files.pythonhosted.org/packages/c4/b8/3512f0e93e0db23a71d82485ba256071ebef99b227351f0f5540f744af41
 +PYTHON_PSUTIL_SITE = https://files.pythonhosted.org/packages/5f/dc/edf6758183afc7591a16bd4b8a44d8eea80aca1327ea60161dd3bad9ad22
  PYTHON_PSUTIL_SETUP_TYPE = setuptools
  PYTHON_PSUTIL_LICENSE = BSD-3-Clause
  PYTHON_PSUTIL_LICENSE_FILES = LICENSE
+diff --git a/package/python3-psutil/python3-psutil.mk b/package/python3-psutil/python3-psutil.mk
+index ddd4b6b7d3..a368d643a1 100644
+--- a/package/python3-psutil/python3-psutil.mk
++++ b/package/python3-psutil/python3-psutil.mk
+@@ -5,9 +5,9 @@
+ ################################################################################
+ 
+ # Please keep in sync with package/python-psutil/python-psutil.mk
+-PYTHON3_PSUTIL_VERSION = 5.7.0
++PYTHON3_PSUTIL_VERSION = 5.6.6
+ PYTHON3_PSUTIL_SOURCE = psutil-$(PYTHON3_PSUTIL_VERSION).tar.gz
+-PYTHON3_PSUTIL_SITE = https://files.pythonhosted.org/packages/c4/b8/3512f0e93e0db23a71d82485ba256071ebef99b227351f0f5540f744af41
++PYTHON3_PSUTIL_SITE = https://files.pythonhosted.org/packages/5f/dc/edf6758183afc7591a16bd4b8a44d8eea80aca1327ea60161dd3bad9ad22
+ PYTHON3_PSUTIL_SETUP_TYPE = setuptools
+ PYTHON3_PSUTIL_LICENSE = BSD-3-Clause
+ PYTHON3_PSUTIL_LICENSE_FILES = LICENSE
 -- 
 2.20.1
 

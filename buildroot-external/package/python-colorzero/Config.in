@@ -1,6 +1,0 @@
-config BR2_PACKAGE_PYTHON_COLORZERO
-	bool "python-colorzero"
-	help
-	  Yet another Python color library.
-
-	  http://colorzero.readthedocs.io/

@@ -4,7 +4,7 @@
 #
 ################################################################################
 
-KF5_PLASMA_NANO_VERSION = 5.18.5
+KF5_PLASMA_NANO_VERSION = 5.20.2
 KF5_PLASMA_NANO_SITE = https://download.kde.org/stable/plasma/$(KF5_PLASMA_NANO_VERSION)
 KF5_PLASMA_NANO_SOURCE = plasma-nano-$(KF5_PLASMA_NANO_VERSION).tar.xz
 KF5_PLASMA_NANO_LICENSE = BSD-3-Clause

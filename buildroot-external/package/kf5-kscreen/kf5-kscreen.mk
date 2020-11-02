@@ -4,7 +4,7 @@
 #
 ################################################################################
 
-KF5_KSCREEN_VERSION = 5.18.5
+KF5_KSCREEN_VERSION = 5.20.2
 KF5_KSCREEN_SITE = https://download.kde.org/stable/plasma/$(KF5_KSCREEN_VERSION)
 KF5_KSCREEN_SOURCE = kscreen-$(KF5_KSCREEN_VERSION).tar.xz
 KF5_KSCREEN_LICENSE = BSD-3-Clause

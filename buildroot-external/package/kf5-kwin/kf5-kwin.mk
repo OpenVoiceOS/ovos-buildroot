@@ -4,7 +4,7 @@
 #
 ################################################################################
 
-KF5_KWIN_VERSION = 5.18.5
+KF5_KWIN_VERSION = 5.20.2
 KF5_KWIN_SITE = https://download.kde.org/stable/plasma/$(KF5_KWIN_VERSION)
 KF5_KWIN_SOURCE = kwin-$(KF5_KWIN_VERSION).tar.xz
 KF5_KWIN_LICENSE = BSD-3-Clause

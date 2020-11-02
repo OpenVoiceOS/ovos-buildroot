@@ -4,7 +4,7 @@
 #
 ################################################################################
 
-KF5_KSYSGUARD_VERSION = 5.18.5
+KF5_KSYSGUARD_VERSION = 5.20.2
 KF5_KSYSGUARD_SITE = https://download.kde.org/stable/plasma/$(KF5_KSYSGUARD_VERSION)
 KF5_KSYSGUARD_SOURCE = ksysguard-$(KF5_KSYSGUARD_VERSION).tar.xz
 KF5_KSYSGUARD_LICENSE = BSD-3-Clause

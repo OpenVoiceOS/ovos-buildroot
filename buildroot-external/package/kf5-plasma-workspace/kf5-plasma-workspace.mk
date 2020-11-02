@@ -4,7 +4,7 @@
 #
 ################################################################################
 
-KF5_PLASMA_WORKSPACE_VERSION = 5.18.5
+KF5_PLASMA_WORKSPACE_VERSION = 5.20.2
 KF5_PLASMA_WORKSPACE_SITE = https://download.kde.org/stable/plasma/$(KF5_PLASMA_WORKSPACE_VERSION)
 KF5_PLASMA_WORKSPACE_SOURCE = plasma-workspace-$(KF5_PLASMA_WORKSPACE_VERSION).tar.xz
 KF5_PLASMA_WORKSPACE_LICENSE = BSD-3-Clause

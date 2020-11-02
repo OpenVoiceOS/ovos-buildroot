@@ -4,7 +4,7 @@
 #
 ################################################################################
 
-KF5_KDECORATION_VERSION = 5.18.5
+KF5_KDECORATION_VERSION = 5.20.2
 KF5_KDECORATION_SITE = https://download.kde.org/stable/plasma/$(KF5_KDECORATION_VERSION)
 KF5_KDECORATION_SOURCE = kdecoration-$(KF5_KDECORATION_VERSION).tar.xz
 KF5_KDECORATION_LICENSE = BSD-3-Clause

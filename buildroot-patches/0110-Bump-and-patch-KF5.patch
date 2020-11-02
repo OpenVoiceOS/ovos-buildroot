@@ -19,7 +19,7 @@ index 733e267fdb..bf017ed377 100644
 @@ -1,3 +1,4 @@
  # Locally calculated
  sha256 976d8bd15a0b929376bfaef34602a0fb9614229851c46fac3c4b28938f682195 extra-cmake-modules-5.47.0.tar.xz
-+sha256 c5e3ef0253f7d5ab3adf9185950e34fd620a3d5baaf3bcc15892f971fc3274c4 extra-cmake-modules-5.73.0.tar.xz
++sha256 878d47a901056d5303bf37414d787046e1d38fac2bd9f2f5ddd00a9dd6b9f4eb extra-cmake-modules-5.75.0.tar.xz
  sha256 46cde7dc11e64c78d650b4851b88f6704b4665ff60f22a1caf68ceb15e217e5b COPYING-CMAKE-SCRIPTS
 diff --git a/package/kf5/kf5-extra-cmake-modules/kf5-extra-cmake-modules.mk b/package/kf5/kf5-extra-cmake-modules/kf5-extra-cmake-modules.mk
 index 3c4281b960..d3aad89264 100644
@@ -37,7 +37,7 @@ index 0cd8dcfc15..415c084cad 100644
 @@ -1,3 +1,4 @@
  # Locally calculated
  sha256 40ff04757e4ac19bc8448940fe18886c894a2069865966cc865fc55ff67b0b46 kcoreaddons-5.47.0.tar.xz
-+sha256 24a7713eaef2f40e648a586e22b030192321f9fecdbae77013b00446fa0d6d51 kcoreaddons-5.73.0.tar.xz
++sha256 9ca2cf82ddc12e27ff73aaefdf616c3eb6552a3a5531f014b5bf52a34a4c73f9 kcoreaddons-5.75.0.tar.xz
  sha256 a9bdde5616ecdd1e980b44f360600ee8783b1f99b8cc83a2beb163a0a390e861 COPYING.LIB
 diff --git a/package/kf5/kf5-kcoreaddons/kf5-kcoreaddons.mk b/package/kf5/kf5-kcoreaddons/kf5-kcoreaddons.mk
 index 76be8876cc..dbde5d3285 100644
@@ -75,7 +75,7 @@ index 8ccada455e..a57d848e07 100644
 @@ -1,3 +1,4 @@
  # Locally calculated
  sha256 d0b377500ee4cf4f029f4d04d6844bcf3d2d6734982b511a5fffab5165688209 networkmanager-qt-5.47.0.tar.xz
-+sha256 b909feafc0a9a18b59744e0f1973c5357f67bbd50b59afa82cf55955dae7d41f networkmanager-qt-5.73.0.tar.xz
++sha256 ba9d15eb5e0e624ffaac591cdaad43dc62e60ccfa25b98be686b58800b41018b networkmanager-qt-5.75.0.tar.xz
  sha256 dc626520dcd53a22f727af3ee42c770e56c97a64fe3adb063799d8ab032fe551	COPYING.LIB
 diff --git a/package/kf5/kf5.mk b/package/kf5/kf5.mk
 index 8360fc9b63..f744939ecf 100644
@@ -86,7 +86,7 @@ index 8360fc9b63..f744939ecf 100644
  ################################################################################
  
 -KF5_VERSION_MAJOR = 5.47
-+KF5_VERSION_MAJOR = 5.73
++KF5_VERSION_MAJOR = 5.75
  KF5_VERSION = $(KF5_VERSION_MAJOR).0
  KF5_SITE = https://download.kde.org/stable/frameworks/$(KF5_VERSION_MAJOR)
  

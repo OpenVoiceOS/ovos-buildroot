@@ -4,7 +4,7 @@
 #
 ################################################################################
 
-KF5_KSCREENLOCKER_VERSION = 5.18.5
+KF5_KSCREENLOCKER_VERSION = 5.20.2
 KF5_KSCREENLOCKER_SITE = https://download.kde.org/stable/plasma/$(KF5_KSCREENLOCKER_VERSION)
 KF5_KSCREENLOCKER_SOURCE = kscreenlocker-$(KF5_KSCREENLOCKER_VERSION).tar.xz
 KF5_KSCREENLOCKER_LICENSE = BSD-3-Clause

@@ -1,40 +1,57 @@
-From eee6e117ed8af312a85cc0f564146d468c43b1a3 Mon Sep 17 00:00:00 2001
-From: Peter Steenbergen <info@j1nx.nl>
-Date: Mon, 28 Oct 2019 14:24:52 +0100
+From 664c2f65454cf57848eafd133c72517af207e2fe Mon Sep 17 00:00:00 2001
+From: j1nx <p.steenbergen@j1nx.nl>
+Date: Thu, 29 Oct 2020 19:59:59 +0100
 Subject: [PATCH 1/1] Downgrade python-requests to 2.20.0
 
 ---
- package/python-requests/python-requests.hash | 1 +
+ package/python-requests/python-requests.hash | 2 +-
  package/python-requests/python-requests.mk   | 4 ++--
- 2 files changed, 3 insertions(+), 2 deletions(-)
+ package/python3-requests/python3-requests.mk | 4 ++--
+ 3 files changed, 5 insertions(+), 5 deletions(-)
 
 diff --git a/package/python-requests/python-requests.hash b/package/python-requests/python-requests.hash
-index 42f45d3a44..c7c1e0f427 100644
+index b252e3a781..d4ef9e903a 100644
 --- a/package/python-requests/python-requests.hash
 +++ b/package/python-requests/python-requests.hash
-@@ -1,5 +1,6 @@
+@@ -1,5 +1,5 @@
  # md5, sha256 from https://pypi.org/pypi/requests/json
- md5	ee28bee2de76e9198fc41e48f3a7dd47  requests-2.22.0.tar.gz
- sha256	11e007a8a2aa0323f5a921e9e6a2d7e4e67d9877e85773fba9ba6419025cbeb4  requests-2.22.0.tar.gz
-+sha256	99dcfdaaeb17caf6e526f32b6a7b780461512ab3f1d992187801694cba42770c  requests-2.20.0.tar.gz
+ md5  abfdc28db1065bbd0bc32592ac9d27a6  requests-2.23.0.tar.gz
+-sha256  b3f43d496c6daba4493e7c431722aeb7dbc6288f52a6e04e7b6023b0247817e6  requests-2.23.0.tar.gz
++sha256  99dcfdaaeb17caf6e526f32b6a7b780461512ab3f1d992187801694cba42770c  requests-2.20.0.tar.gz
  # Locally computed sha256 checksums
- sha256	be41abac2c40f8530307e8d172c590b476f4a488bc6a68f8de57b7cf64786687  LICENSE
+ sha256  8837a2f33a61bcee175c028ff16d1c160aba48a3aebe1495ace709be4e62636b  LICENSE
 diff --git a/package/python-requests/python-requests.mk b/package/python-requests/python-requests.mk
-index e64db94523..358835d816 100644
+index 9d36346b65..38dae8d8bf 100644
 --- a/package/python-requests/python-requests.mk
 +++ b/package/python-requests/python-requests.mk
-@@ -4,9 +4,9 @@
- #
+@@ -5,9 +5,9 @@
  ################################################################################
  
--PYTHON_REQUESTS_VERSION = 2.22.0
+ # Please keep in sync with package/python3-requests/python3-requests.mk
+-PYTHON_REQUESTS_VERSION = 2.23.0
 +PYTHON_REQUESTS_VERSION = 2.20.0
  PYTHON_REQUESTS_SOURCE = requests-$(PYTHON_REQUESTS_VERSION).tar.gz
--PYTHON_REQUESTS_SITE = https://files.pythonhosted.org/packages/01/62/ddcf76d1d19885e8579acb1b1df26a852b03472c0e46d2b959a714c90608
+-PYTHON_REQUESTS_SITE = https://files.pythonhosted.org/packages/f5/4f/280162d4bd4d8aad241a21aecff7a6e46891b905a4341e7ab549ebaf7915
 +PYTHON_REQUESTS_SITE = https://files.pythonhosted.org/packages/97/10/92d25b93e9c266c94b76a5548f020f3f1dd0eb40649cb1993532c0af8f4c
  PYTHON_REQUESTS_SETUP_TYPE = setuptools
  PYTHON_REQUESTS_LICENSE = Apache-2.0
  PYTHON_REQUESTS_LICENSE_FILES = LICENSE
+diff --git a/package/python3-requests/python3-requests.mk b/package/python3-requests/python3-requests.mk
+index e2bb00eab2..a1f2567115 100644
+--- a/package/python3-requests/python3-requests.mk
++++ b/package/python3-requests/python3-requests.mk
+@@ -5,9 +5,9 @@
+ ################################################################################
+ 
+ # Please keep in sync with package/python-requests/python-requests.mk
+-PYTHON3_REQUESTS_VERSION = 2.23.0
++PYTHON3_REQUESTS_VERSION = 2.20.0
+ PYTHON3_REQUESTS_SOURCE = requests-$(PYTHON3_REQUESTS_VERSION).tar.gz
+-PYTHON3_REQUESTS_SITE = https://files.pythonhosted.org/packages/f5/4f/280162d4bd4d8aad241a21aecff7a6e46891b905a4341e7ab549ebaf7915
++PYTHON3_REQUESTS_SITE = https://files.pythonhosted.org/packages/97/10/92d25b93e9c266c94b76a5548f020f3f1dd0eb40649cb1993532c0af8f4c
+ PYTHON3_REQUESTS_SETUP_TYPE = setuptools
+ PYTHON3_REQUESTS_LICENSE = Apache-2.0
+ PYTHON3_REQUESTS_LICENSE_FILES = LICENSE
 -- 
-2.11.0
+2.20.1
 

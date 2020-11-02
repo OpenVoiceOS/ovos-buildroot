@@ -1,42 +1,36 @@
-From 9ac74c4cd711044959a3e30bda42cc55a55d66ae Mon Sep 17 00:00:00 2001
+From be12f06ce0920419b0e75f94d4f839078cd41b8b Mon Sep 17 00:00:00 2001
 From: j1nx <p.steenbergen@j1nx.nl>
-Date: Mon, 24 Aug 2020 11:15:44 +0200
+Date: Thu, 29 Oct 2020 20:53:35 +0100
 Subject: [PATCH 1/1] Bump python-pip to 20.2.2
 
-Shortly after 19.3.1 PR7002 got merged;
-https://github.com/pypa/pip/pull/7002
-
-This makes sure that pip install defaults to --user in case the
-install folder is not writable as in our case. This prevents MSM
-to switch to sudo pip install.
 ---
  package/python-pip/python-pip.hash | 2 +-
  package/python-pip/python-pip.mk   | 4 ++--
  2 files changed, 3 insertions(+), 3 deletions(-)
 
 diff --git a/package/python-pip/python-pip.hash b/package/python-pip/python-pip.hash
-index 7d02a51023..da969a78cf 100644
+index 58bc239154..39f04e606e 100644
 --- a/package/python-pip/python-pip.hash
 +++ b/package/python-pip/python-pip.hash
 @@ -1,5 +1,5 @@
  # md5, sha256 from https://pypi.org/pypi/pip/json
- md5	1aaaf90fbafc50e7ba1e66ffceb00960  pip-19.3.1.tar.gz
--sha256	21207d76c1031e517668898a6b46a9fb1501c7a4710ef5dfd6a40ad9e6757ea7  pip-19.3.1.tar.gz
+ md5	7d42ba49b809604f0df3d55df1c3fd86  pip-20.0.2.tar.gz
+-sha256	7db0c8ea4c7ea51c8049640e8e6e7fde949de672bfa4949920675563a5a6967f  pip-20.0.2.tar.gz
 +sha256	58a3b0b55ee2278104165c7ee7bc8e2db6f635067f3c66cf637113ec5aa71584  pip-20.2.2.tar.gz
  # Locally computed sha256 checksums
  sha256	5ba21fbb0964f936ad7d15362d1ed6d4931cc8c8f9ff2d4d91190e109be74431  LICENSE.txt
 diff --git a/package/python-pip/python-pip.mk b/package/python-pip/python-pip.mk
-index b8be234d24..e48f923616 100644
+index cc40eecdfe..e48f923616 100644
 --- a/package/python-pip/python-pip.mk
 +++ b/package/python-pip/python-pip.mk
 @@ -4,9 +4,9 @@
  #
  ################################################################################
  
--PYTHON_PIP_VERSION = 19.3.1
+-PYTHON_PIP_VERSION = 20.0.2
 +PYTHON_PIP_VERSION = 20.2.2
  PYTHON_PIP_SOURCE = pip-$(PYTHON_PIP_VERSION).tar.gz
--PYTHON_PIP_SITE = https://files.pythonhosted.org/packages/ce/ea/9b445176a65ae4ba22dce1d93e4b5fe182f953df71a145f557cffaffc1bf
+-PYTHON_PIP_SITE = https://files.pythonhosted.org/packages/8e/76/66066b7bc71817238924c7e4b448abdb17eb0c92d645769c223f9ace478f
 +PYTHON_PIP_SITE = https://files.pythonhosted.org/packages/73/8e/7774190ac616c69194688ffce7c1b2a097749792fea42e390e7ddfdef8bc
  PYTHON_PIP_SETUP_TYPE = setuptools
  PYTHON_PIP_LICENSE = MIT
