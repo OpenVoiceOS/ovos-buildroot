@@ -1,0 +1,27 @@
+From ad500d845a25506ba666a78ed0bc955b4c150b56 Mon Sep 17 00:00:00 2001
+From: j1nx <p.steenbergen@j1nx.nl>
+Date: Wed, 11 Nov 2020 11:06:21 +0100
+Subject: [PATCH 1/1] No designer plugin
+
+---
+ CMakeLists.txt | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 338adfc..b6fe915 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -88,8 +88,8 @@ set(HAVE_X11 ${X11_FOUND})
+ set(HAVE_XRES ${X11_XRes_FOUND})
+ configure_file(config-ksysguard.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/config-ksysguard.h )
+ 
+-option(BUILD_DESIGNERPLUGIN "Build plugin for Qt Designer" ON)
+-add_feature_info(DESIGNERPLUGIN ${BUILD_DESIGNERPLUGIN} "Build plugin for Qt Designer")
++#option(BUILD_DESIGNERPLUGIN "Build plugin for Qt Designer" ON)
++#add_feature_info(DESIGNERPLUGIN ${BUILD_DESIGNERPLUGIN} "Build plugin for Qt Designer")
+ 
+ 
+ add_definitions(-DQT_NO_URL_CAST_FROM_STRING)
+-- 
+2.20.1
+

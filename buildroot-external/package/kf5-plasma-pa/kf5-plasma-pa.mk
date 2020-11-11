@@ -14,6 +14,4 @@ KF5_PLASMA_PA_DEPENDENCIES = host-pkgconf libcanberra kf5-plasma-framework kf5-k
 KF5_PLASMA_PA_INSTALL_STAGING = YES
 KF5_PLASMA_PA_SUPPORTS_IN_SOURCE_BUILD = NO
 
-KF5_PLASMA_PA_CONF_OPTS += -DKF5_HOST_TOOLING="$(HOST_DIR)/lib/x86_64-linux-gnu/cmake"
-
 $(eval $(cmake-package))
