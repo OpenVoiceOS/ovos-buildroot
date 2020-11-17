@@ -1,0 +1,7 @@
+config BR2_PACKAGE_DOCBOOK_XSL
+	bool "docbook-xsl"
+	help
+	  XSL stylesheets for processing DocBook XML 
+	  to various output formats
+
+	  http://docbook.sourceforge.net

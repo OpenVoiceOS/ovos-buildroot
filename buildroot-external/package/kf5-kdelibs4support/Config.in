@@ -1,0 +1,2 @@
+config BR2_PACKAGE_KF5_KDELIBS4SUPPORT
+	bool "kf5-kdelibs4support"

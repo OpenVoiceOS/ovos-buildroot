@@ -1,12 +1,13 @@
-From c6ba7bfcbb098882e62354cfd9979d458c57c71c Mon Sep 17 00:00:00 2001
-From: Peter Steenbergen <info@j1nx.nl>
-Date: Mon, 13 Apr 2020 14:16:48 +0200
+From 04b2b1e2bc267a68b8b377d070a655a47e901744 Mon Sep 17 00:00:00 2001
+From: j1nx <p.steenbergen@j1nx.nl>
+Date: Thu, 29 Oct 2020 20:05:23 +0100
 Subject: [PATCH 1/1] Downgrade python-pyyaml to 5.1.2
 
 ---
  package/python-pyyaml/python-pyyaml.hash | 2 +-
  package/python-pyyaml/python-pyyaml.mk   | 4 ++--
- 2 files changed, 3 insertions(+), 3 deletions(-)
+ package/python3-pyyaml/python3-pyyaml.mk | 4 ++--
+ 3 files changed, 5 insertions(+), 5 deletions(-)
 
 diff --git a/package/python-pyyaml/python-pyyaml.hash b/package/python-pyyaml/python-pyyaml.hash
 index 90e1f2199e..fb6cd3b365 100644
@@ -20,13 +21,13 @@ index 90e1f2199e..fb6cd3b365 100644
  # Locally computed sha256 checksums
  sha256  c40112449f254b9753045925248313e9270efa36d226b22d82d4cc6c43c57f29  LICENSE
 diff --git a/package/python-pyyaml/python-pyyaml.mk b/package/python-pyyaml/python-pyyaml.mk
-index 78506390a4..165a938f11 100644
+index 7bbae309c6..7cdd8edefb 100644
 --- a/package/python-pyyaml/python-pyyaml.mk
 +++ b/package/python-pyyaml/python-pyyaml.mk
-@@ -4,9 +4,9 @@
- #
+@@ -5,9 +5,9 @@
  ################################################################################
  
+ # Please keep in sync package/python3-pyyaml/python3-pyyaml.mk
 -PYTHON_PYYAML_VERSION = 5.3.1
 +PYTHON_PYYAML_VERSION = 5.1.2
  PYTHON_PYYAML_SOURCE = PyYAML-$(PYTHON_PYYAML_VERSION).tar.gz
@@ -35,6 +36,22 @@ index 78506390a4..165a938f11 100644
  PYTHON_PYYAML_SETUP_TYPE = distutils
  PYTHON_PYYAML_LICENSE = MIT
  PYTHON_PYYAML_LICENSE_FILES = LICENSE
+diff --git a/package/python3-pyyaml/python3-pyyaml.mk b/package/python3-pyyaml/python3-pyyaml.mk
+index c0dcebf4fc..6c149168ae 100644
+--- a/package/python3-pyyaml/python3-pyyaml.mk
++++ b/package/python3-pyyaml/python3-pyyaml.mk
+@@ -5,9 +5,9 @@
+ ################################################################################
+ 
+ # Please keep in sync with package/python-pyyaml/python-pyyaml.mk
+-PYTHON3_PYYAML_VERSION = 5.3.1
++PYTHON3_PYYAML_VERSION = 5.1.2
+ PYTHON3_PYYAML_SOURCE = PyYAML-$(PYTHON3_PYYAML_VERSION).tar.gz
+-PYTHON3_PYYAML_SITE = https://files.pythonhosted.org/packages/64/c2/b80047c7ac2478f9501676c988a5411ed5572f35d1beff9cae07d321512c
++PYTHON3_PYYAML_SITE = https://files.pythonhosted.org/packages/e3/e8/b3212641ee2718d556df0f23f78de8303f068fe29cdaa7a91018849582fe
+ PYTHON3_PYYAML_SETUP_TYPE = distutils
+ PYTHON3_PYYAML_LICENSE = MIT
+ PYTHON3_PYYAML_LICENSE_FILES = LICENSE
 -- 
-2.25.0
+2.20.1
 

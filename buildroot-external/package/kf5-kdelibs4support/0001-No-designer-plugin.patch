@@ -1,0 +1,58 @@
+From 070948999d5fb4cc583cc0e796108d55f112b317 Mon Sep 17 00:00:00 2001
+From: j1nx <p.steenbergen@j1nx.nl>
+Date: Wed, 11 Nov 2020 10:21:51 +0100
+Subject: [PATCH 1/1] No designer plugin
+
+---
+ CMakeLists.txt     |  2 +-
+ src/CMakeLists.txt | 21 ---------------------
+ 2 files changed, 1 insertion(+), 22 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 5c19ab59..9f72b46b 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -20,7 +20,7 @@ include(GenerateExportHeader)
+ include(CMakeFindFrameworks)
+ 
+ set(REQUIRED_QT_VERSION 5.12.0)
+-find_package(Qt5 ${REQUIRED_QT_VERSION} CONFIG REQUIRED Network Widgets DBus Test Svg PrintSupport Designer)
++find_package(Qt5 ${REQUIRED_QT_VERSION} CONFIG REQUIRED Network Widgets DBus Test Svg PrintSupport)
+ 
+ find_package(KF5Completion ${KF5_DEP_VERSION} REQUIRED)
+ find_package(KF5Config ${KF5_DEP_VERSION} REQUIRED)
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index b249bd53..04ea9f5f 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -371,27 +371,6 @@ set_target_properties(KF5KDELibs4Support PROPERTIES
+ )
+ 
+ 
+-########## Designer plugin
+-
+-kf5designerplugin_add_plugin(kf5deprecatedwidgets
+-    kdedeprecated.widgets
+-    kdedeprecated.qrc
+-    classpreviews.cpp
+-)
+-
+-target_link_libraries(kf5deprecatedwidgets KF5::KDELibs4Support
+-                                    Qt5::Widgets
+-                                    Qt5::Designer
+-                                    KF5::ConfigCore
+-                                    KF5::Completion
+-                                    KF5::WidgetsAddons
+-                                    KF5::Auth
+-                                    )
+-
+-install(TARGETS kf5deprecatedwidgets DESTINATION ${KDE_INSTALL_QTPLUGINDIR}/designer)
+-
+-##########
+-
+ add_subdirectory(pics)
+ 
+ install(TARGETS KF5KDELibs4Support
+-- 
+2.20.1
+
