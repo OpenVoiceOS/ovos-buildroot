@@ -4,8 +4,8 @@
 #
 ################################################################################
 
-RESPEAKER_VERSION = 8ea751c4e9dd9a9d1d52fa947791276a9da77772
-RESPEAKER_SITE = $(call github,HinTak,seeed-voicecard,$(RESPEAKER_VERSION))
+RESPEAKER_VERSION = 8cce4e8ffa77e1e2b89812e5e2ccf6cfbc1086cf
+RESPEAKER_SITE = $(call github,respeaker,seeed-voicecard,$(RESPEAKER_VERSION))
 RESPEAKER_LICENSE = GNU General Public License v3.0
 RESPEAKER_DEPENDENCIES = rpi-firmware dtc
 

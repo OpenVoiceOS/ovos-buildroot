@@ -16,6 +16,7 @@ kernel=zImage
 # Disable overscan assuming the display supports displaying the full resolution
 # If the text shown on the screen disappears off the edge, comment this out
 # disable_overscan=1
+dtoverlay=vc4-fkms-v3d
 hdmi_drive=2
 hdmi_group=2
 hdmi_mode=14
@@ -46,8 +47,8 @@ dtparam=spi=on
 # Disable GPIO IRQ
 # dtoverlay=gpio-no-irq
 
-[pi3]
-dtoverlay=vc4-kms-v3d
+#[pi3]
+#dtoverlay=vc4-kms-v3d
 
-[pi4]
-dtoverlay=vc4-kms-v3d-pi4
+#[pi4]
+#dtoverlay=vc4-kms-v3d-pi4
