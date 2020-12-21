@@ -1,7 +1,7 @@
 [submodule "buildroot"]
 	path = buildroot
 	url = https://github.com/buildroot/buildroot.git
-	branch = 2020.08.x
+	branch = 2020.11.x
 
 [submodule "skill-mycroftos-enclosure"]
         path = buildroot-external/rootfs-overlay/opt/mycroft/skills/skill-mycroftos-enclosure
