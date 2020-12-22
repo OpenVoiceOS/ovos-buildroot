@@ -1,14 +1,12 @@
 [Unit]
 Description=OpenVoiceOS wifi-connect service
 After=NetworkManager.service
-StartLimitInterval=200
-StartLimitBurst=5
+ConditionPathIsReadWrite=/etc
+ConditionPathExists=/etc/wifi-connect
 
 [Service]
 Type=simple
 ExecStart=/usr/local/sbin/start-wifi-connect
-Restart=on-failure
-RestartSec=30
 
 [Install]
 WantedBy=multi-user.target

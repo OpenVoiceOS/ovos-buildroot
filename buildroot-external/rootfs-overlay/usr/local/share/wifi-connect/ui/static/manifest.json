@@ -1,6 +1,6 @@
 {
-  "short_name": "OVOS",
-  "name": "OpenVoiceOS WiFi setup from your mobile phone or laptop",
+  "short_name": "WiFi Connect",
+  "name": "Easy WiFi setup for Linux devices from your mobile phone or laptop",
   "icons": [
     {
       "src": "favicon.png",

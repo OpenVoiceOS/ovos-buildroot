@@ -10,3 +10,5 @@ else
     printf 'Starting WiFi Connect\n'
     /usr/local/sbin/wifi-connect
 fi
+
+rm /etc/wifi-connect

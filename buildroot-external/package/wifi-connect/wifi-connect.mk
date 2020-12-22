@@ -4,7 +4,7 @@
 #
 ################################################################################
 
-WIFI_CONNECT_VERSION = 258656bf9b531ff64438ba502166840e48125e33
+WIFI_CONNECT_VERSION = ac333eb6a809b4daf3ac2e41f6c56799852caddc
 WIFI_CONNECT_SITE = $(call github,balena-io,wifi-connect,$(WIFI_CONNECT_VERSION))
 
 WIFI_CONNECT_DEPENDENCIES = host-rustc
@@ -37,6 +37,7 @@ define WIFI_CONNECT_INSTALL_INIT_SYSTEMD
 		$(TARGET_DIR)/usr/lib/systemd/system/wifi-connect.service
 	$(INSTALL) -D -m 0755 $(BR2_EXTERNAL_OPENVOICEOS_PATH)/package/wifi-connect/start-wifi-connect \
 		$(TARGET_DIR)/usr/local/sbin/start-wifi-connect
+	touch $(TARGET_DIR)/etc/wifi-connect
 endef
 
 $(eval $(generic-package))
