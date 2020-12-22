@@ -4,9 +4,9 @@
 #
 ################################################################################
 
-PYTHON_PYEE_VERSION = 7.0.1
+PYTHON_PYEE_VERSION = 8.1.0
 PYTHON_PYEE_SOURCE = pyee-$(PYTHON_PYEE_VERSION).tar.gz
-PYTHON_PYEE_SITE = https://files.pythonhosted.org/packages/de/b1/2cf38e5375194f5d041efe66406b8b8282dc37d41b6c98d5f87ec556cb5e
+PYTHON_PYEE_SITE = https://files.pythonhosted.org/packages/fd/f8/d1c597ce15f3fd32ebdec9695da97a1af6e102c1ad8f9de32db84b05986c
 PYTHON_PYEE_SETUP_TYPE = distutils
 PYTHON_PYEE_LICENSE = MIT
 

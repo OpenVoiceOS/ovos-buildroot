@@ -4,7 +4,7 @@
 #
 ################################################################################
 
-MYCROFT_GUI_VERSION = 2212941674de7f23fc0aa076b7051deb5ada0856
+MYCROFT_GUI_VERSION = 59cebdf574bd7500332ca529d792115520314cb6
 MYCROFT_GUI_SITE = $(call github,MycroftAI,mycroft-gui,$(MYCROFT_GUI_VERSION))
 MYCROFT_GUI_LICENSE = Apache License 2.0
 
