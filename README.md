@@ -3,10 +3,9 @@ A minimalistic Linux OS bringing the open source voice assistant Mycroft A.I. to
 
 ## System.
 ### OpenVoiceOS - Full 64 Bit distribution
-- Linux kernel 5.4.68-v8
-- Buildroot 2020.02.6 LTS 
-- Mycroft 20.08.0
-- Mycroft-GUI 1.0+ (latest dev version)
+- Linux kernel 5.10.x
+- Buildroot 2020.11.x 
+- Mycroft 20.08.x
 - Raspberry Pi 3|3b|3b+ (Initial development hardware = 3b)
 - Raspberry Pi 4 (Current development hardware)
 
