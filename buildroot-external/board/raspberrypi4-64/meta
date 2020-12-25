@@ -1,0 +1,3 @@
+BOARD_ID=rpi4-64
+BOARD_NAME="RaspberryPi 4 64bit"
+CHASSIS=embedded

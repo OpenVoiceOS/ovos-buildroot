@@ -3,6 +3,8 @@
 set -u
 set -e
 
+BOARD_DIR="$(dirname $0)"
+
 # Add a console on tty1
 #if [ -e ${TARGET_DIR}/etc/inittab ]; then
 #    grep -qE '^tty1::' ${TARGET_DIR}/etc/inittab || \
