@@ -1,0 +1,24 @@
+From 2342dde59f02b3cab1a961f74eaf06889fb8d175 Mon Sep 17 00:00:00 2001
+From: j1nx <p.steenbergen@j1nx.nl>
+Date: Tue, 29 Dec 2020 10:29:43 +0100
+Subject: [PATCH 1/1] Bump requests requirement to >= 2.24.0 inline with
+ buildroot. This to prevent issues with the urllib3 package in combination
+ with the HASS skill.
+
+---
+ requirements/requirements.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/requirements/requirements.txt b/requirements/requirements.txt
+index abe48fa508..8dc55a9756 100644
+--- a/requirements/requirements.txt
++++ b/requirements/requirements.txt
+@@ -1,4 +1,4 @@
+-requests==2.20.0
++requests>=2.24.0
+ gTTS==2.2.0
+ PyAudio==0.2.11
+ pyee==8.1.0
+-- 
+2.20.1
+
