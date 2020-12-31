@@ -3,14 +3,14 @@
 	url = https://github.com/buildroot/buildroot.git
 	branch = 2020.11.x
 
-[submodule "skill-mycroftos-enclosure"]
-        path = buildroot-external/rootfs-overlay/opt/mycroft/skills/skill-mycroftos-enclosure
-        url = https://github.com/j1nx/skill-mycroftos-enclosure.git
+[submodule "skill-ovos-mycroftgui"]
+        path = buildroot-external/rootfs-overlay/opt/mycroft/skills/skill-ovos-mycroftgui
+        url = https://github.com/OpenVoiceOS/skill-ovos-mycroftgui.git
         branch = master
 
-[submodule "skill-mycroftos-gui"]
-        path = buildroot-external/rootfs-overlay/opt/mycroft/skills/skill-mycroftos-gui
-        url = https://github.com/j1nx/skill-mycroftos-gui.git
+[submodule "skill-ovos-enclosure"]
+        path = buildroot-external/rootfs-overlay/opt/mycroft/skills/skill-ovos-enclosure
+        url = https://github.com/OpenVoiceOS/skill-ovos-enclosure.git
         branch = master
 
 [submodule "skill-balena-wifi-setup"]
