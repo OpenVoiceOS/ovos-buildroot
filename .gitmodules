@@ -12,3 +12,8 @@
         path = buildroot-external/rootfs-overlay/opt/mycroft/skills/skill-mycroftos-gui
         url = https://github.com/j1nx/skill-mycroftos-gui.git
         branch = master
+
+[submodule "skill-balena-wifi-setup"]
+        path = buildroot-external/rootfs-overlay/opt/mycroft/skills/skill-balena-wifi-setup
+        url = https://github.com/OpenVoiceOS/skill-balena-wifi-setup.git
+        branch = master

@@ -20,7 +20,7 @@ index 3afad7a..456fb67 100644
 -const DEFAULT_SSID: &str = "WiFi Connect";
 +const DEFAULT_GATEWAY: &str = "172.16.127.1";
 +const DEFAULT_DHCP_RANGE: &str = "172.16.127.2,172.16.127.27";
-+const DEFAULT_SSID: &str = "MYCROFT";
++const DEFAULT_SSID: &str = "OpenVoiceOS";
  const DEFAULT_ACTIVITY_TIMEOUT: &str = "0";
  const DEFAULT_UI_DIRECTORY: &str = "ui";
  const DEFAULT_LISTENING_PORT: &str = "80";

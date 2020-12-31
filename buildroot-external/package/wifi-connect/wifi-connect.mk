@@ -32,12 +32,4 @@ define WIFI_CONNECT_INSTALL_TARGET_CMDS
 		$(TARGET_DIR)/usr/local/sbin/wifi-connect
 endef
 
-define WIFI_CONNECT_INSTALL_INIT_SYSTEMD
-	$(INSTALL) -D -m 0644 $(BR2_EXTERNAL_OPENVOICEOS_PATH)/package/wifi-connect/wifi-connect.service \
-		$(TARGET_DIR)/usr/lib/systemd/system/wifi-connect.service
-	$(INSTALL) -D -m 0755 $(BR2_EXTERNAL_OPENVOICEOS_PATH)/package/wifi-connect/start-wifi-connect \
-		$(TARGET_DIR)/usr/local/sbin/start-wifi-connect
-	touch $(TARGET_DIR)/etc/wifi-connect
-endef
-
 $(eval $(generic-package))
