@@ -1,0 +1,81 @@
+From 0620620dc7f0a99625a445b2b31b06cf7af8e777 Mon Sep 17 00:00:00 2001
+From: j1nx <p.steenbergen@j1nx.nl>
+Date: Thu, 31 Dec 2020 10:47:08 +0100
+Subject: [PATCH 1/1] Add new device types to python-networkmanager package.
+
+---
+ .../0001-Add-new-device-types.patch           | 62 +++++++++++++++++++
+ 1 file changed, 62 insertions(+)
+ create mode 100644 package/python-networkmanager/0001-Add-new-device-types.patch
+
+diff --git a/package/python-networkmanager/0001-Add-new-device-types.patch b/package/python-networkmanager/0001-Add-new-device-types.patch
+new file mode 100644
+index 0000000000..b06b52fd08
+--- /dev/null
++++ b/package/python-networkmanager/0001-Add-new-device-types.patch
+@@ -0,0 +1,62 @@
++From beeef6f886cacbd95cd573bf5e6df457c0f0388d Mon Sep 17 00:00:00 2001
++From: Sliim <sliim@mailoo.org>
++Date: Fri, 8 May 2020 16:40:04 +0200
++Subject: [PATCH] Add new devices type
++
++According to the NetworkManager documentation:
++https://developer.gnome.org/NetworkManager/stable/nm-dbus-types.html#NMDeviceType
++
++There is 4 new device type:
++NM_DEVICE_TYPE_WPAN      = 27 - a IEEE 802.15.4 (WPAN) MAC Layer Device
++NM_DEVICE_TYPE_6LOWPAN   = 28 - 6LoWPAN interface
++NM_DEVICE_TYPE_WIREGUARD = 29 - a WireGuard interface
++NM_DEVICE_TYPE_WIFI_P2P  = 30 - an 802.11 Wi-Fi P2P device (Since: 1.16)
++
++This changes add contants and classes for these devices and add them
++in the device_class dict.
++
++Fix #68 #76
++See also #80
++---
++ NetworkManager.py | 14 +++++++++++++-
++ 1 file changed, 13 insertions(+), 1 deletion(-)
++
++diff --git a/NetworkManager.py b/NetworkManager.py
++index 3d137fe..b9991b1 100644
++--- a/NetworkManager.py
+++++ b/NetworkManager.py
++@@ -389,7 +389,11 @@ def device_class(typ):
++         NM_DEVICE_TYPE_PPP: PPP,
++         NM_DEVICE_TYPE_OVS_INTERFACE: OvsIf,
++         NM_DEVICE_TYPE_OVS_PORT: OvsPort,
++-        NM_DEVICE_TYPE_OVS_BRIDGE: OvsBridge
+++        NM_DEVICE_TYPE_OVS_BRIDGE: OvsBridge,
+++        NM_DEVICE_TYPE_WPAN: Wpan,
+++        NM_DEVICE_TYPE_6LOWPAN: SixLoWpan,
+++        NM_DEVICE_TYPE_WIREGUARD: WireGuard,
+++        NM_DEVICE_TYPE_WIFI_P2P: WifiP2p
++     }[typ]
++ 
++ class Adsl(Device): pass
++@@ -416,6 +420,10 @@ class PPP(Device): pass
++ class OvsIf(Device): pass
++ class OvsPort(Device): pass
++ class OvsBridge(Device): pass
+++class Wpan(Device): pass
+++class SixLoWpan(Device): pass
+++class WireGuard(Device): pass
+++class WifiP2p(Device): pass
++ 
++ class NSP(TransientNMDbusInterface):
++     interface_names = ['org.freedesktop.NetworkManager.Wimax.NSP']
++@@ -780,6 +788,10 @@ def cert_to_dbus(cert):
++ NM_DEVICE_TYPE_OVS_INTERFACE = 24
++ NM_DEVICE_TYPE_OVS_PORT = 25
++ NM_DEVICE_TYPE_OVS_BRIDGE = 26
+++NM_DEVICE_TYPE_WPAN = 27
+++NM_DEVICE_TYPE_6LOWPAN = 28
+++NM_DEVICE_TYPE_WIREGUARD = 29
+++NM_DEVICE_TYPE_WIFI_P2P = 30
++ NM_DEVICE_CAP_NONE = 0
++ NM_DEVICE_CAP_NM_SUPPORTED = 1
++ NM_DEVICE_CAP_CARRIER_DETECT = 2
+-- 
+2.20.1
+
