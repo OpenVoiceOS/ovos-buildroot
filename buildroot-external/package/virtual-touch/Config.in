@@ -1,0 +1,9 @@
+config BR2_PACKAGE_VIRTUAL_TOUCH
+	bool "virtual-touch"
+	help
+	  Simple virtual input device for 
+	  testing things in Linux. Creates 
+	  a character device and an input 
+	  device.
+
+	  https://github.com/vi/virtual_touchscreen
