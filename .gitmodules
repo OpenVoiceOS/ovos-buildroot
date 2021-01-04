@@ -17,3 +17,13 @@
         path = buildroot-external/rootfs-overlay/opt/mycroft/skills/skill-balena-wifi-setup
         url = https://github.com/OpenVoiceOS/skill-balena-wifi-setup.git
         branch = master
+
+[submodule "skill-ovos-pairing"]
+        path = buildroot-external/rootfs-overlay/opt/mycroft/skills/skill-ovos-pairing
+        url = https://github.com/OpenVoiceOS/skill-ovos-pairing.git
+        branch = master
+
+[submodule "mycroft-skills"]
+        path = buildroot-external/rootfs-overlay/opt/mycroft/.skills-repo
+        url = https://github.com/MycroftAI/mycroft-skills.git
+        branch = 20.08
