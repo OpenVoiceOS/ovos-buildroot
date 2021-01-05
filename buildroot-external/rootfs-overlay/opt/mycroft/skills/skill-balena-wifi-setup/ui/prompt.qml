@@ -28,6 +28,7 @@ Mycroft.ProportionalDelegate {
     property var phone: sessionData.phone_image
     property var prompt: sessionData.prompt
     property var highlight: sessionData.highlight
+    property var color: sessionData.color
 
     Row {
         spacing: spacingUnit
@@ -70,7 +71,7 @@ Mycroft.ProportionalDelegate {
                 font.weight: Font.Bold
                 font.pixelSize: 36
                 visible: !content.visible
-                color: "#22a7f0"
+                color: root.color
                 text: highlight
             }
         }
