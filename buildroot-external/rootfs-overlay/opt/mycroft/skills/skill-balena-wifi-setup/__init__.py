@@ -11,6 +11,7 @@ class WifiConnect(MycroftSkill):
         MycroftSkill.__init__(self)
         self.monitoring = False
         self.in_setup = False
+        self.connected = False
         self.wifi_process = None
         self.debug = False  # dev setting, VERY VERBOSE DIALOGS
         # TODO skill settings
@@ -23,6 +24,10 @@ class WifiConnect(MycroftSkill):
             self.wifi_command += " --portal-passphrase {pswd}"
         if "color" not in self.settings:
             self.settings["color"] = "#FF0000"
+        if "stop_on_internet" not in self.settings:
+            self.settings["stop_on_internet"] = False
+        if "increase_timeout_on_internet" not in self.settings:
+            self.settings["increase_timeout_on_internet"] = 60
 
     def initialize(self):
         self.make_priority()
@@ -82,6 +87,13 @@ class WifiConnect(MycroftSkill):
                         self.log.exception(e)
                 else:
                     self.log.warning("CONNECTED TO WIFI, BUT NO INTERNET!!")
+            elif not self.connected:
+                # once first connected to internet increase time between checks
+                self.connected = True
+                self.time_between_checks += self.settings["increase_timeout_on_internet"]
+                # stop watchdog on internet connection
+                if self.settings["stop_on_internet"]:
+                    self.monitoring = False
             sleep(self.time_between_checks)
 
     # wifi setup
