@@ -1,4 +1,5 @@
 #!/bin/bash
 #
 /usr/sbin/resizeSD &&
+/usr/sbin/gitstash &&
 rm /etc/firstboot

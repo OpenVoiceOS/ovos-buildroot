@@ -1,0 +1,12 @@
+#!/bin/bash
+#
+
+printf "Git stashing pre-installed skills ..."
+cd /opt/mycroft/.skills-rep && git stash
+cd /opt/mycroft/skills/skill-balena-wifi-setup && git stash
+cd /opt/mycroft/skills/skill-ovos-enclosure && git stash
+cd /opt/mycroft/skills/skill-ovos-mycroftgui && git stash
+cd /opt/mycroft/skills/skill-ovos-pairing && git stash
+chown -R mycroft.mycroft /opt/mycroft
+echo "[OK]"
+
