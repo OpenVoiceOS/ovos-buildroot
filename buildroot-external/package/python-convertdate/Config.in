@@ -1,0 +1,11 @@
+config BR2_PACKAGE_PYTHON_CONVERTDATE
+	bool "python-convertdate"
+	select BR2_PACKAGE_PYTHON_PYMEEUS # runtime
+	select BR2_PACKAGE_PYTHON_PYTZ # runtime
+	help
+	  Converts between Gregorian dates and other calendar
+	  systems.Calendars included: Baha'i, French Republican,
+	  Hebrew, Indian Civil, Islamic, ISO, Julian, Mayan and
+	  Persian.
+
+	  https://github.com/fitnr/convertdate

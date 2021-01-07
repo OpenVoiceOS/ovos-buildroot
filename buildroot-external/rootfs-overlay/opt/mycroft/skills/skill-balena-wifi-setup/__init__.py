@@ -1,6 +1,8 @@
 from mycroft import MycroftSkill, intent_handler
 from mycroft.util import create_daemon, connected
 from mycroft.configuration import LocalConf, USER_CONFIG
+from mycroft.api import is_paired
+from mycroft.messagebus.message import Message
 import subprocess
 import pexpect
 from time import sleep
@@ -70,7 +72,6 @@ class WifiConnect(MycroftSkill):
             self.log.info("Wifi watchdog started")
             output = subprocess.check_output("nmcli connection show",
                                              shell=True).decode("utf-8")
-            self.log.warning(output)
             if "wifi" in output:
                 self.log.info("Detected previously configured wifi, starting "
                               "grace period to allow it to connect")
@@ -222,10 +223,10 @@ class WifiConnect(MycroftSkill):
         """Provide instructions for setting up wifi."""
         self.gui.remove_page("status.qml")
         self.gui["phone_image"] = "1_phone_connect-to-ap.png"
-        self.gui["prompt"] = "Connect to the \nWifi network"
+        self.gui["prompt"] = "Connect to the Wi-Fi network"
         self.gui["highlight"] = self.ssid
         self.gui["color"] = self.settings["color"]
-        self.gui.show_page("prompt.qml")
+        self.gui.show_page("prompt.qml", override_idle=True, override_animations=True)
         # allow GUI to linger around for a bit, will block the wifi setup loop
         sleep(2)
 
@@ -234,10 +235,10 @@ class WifiConnect(MycroftSkill):
         self.gui.remove_page("status.qml")
         self.gui.clear()
         self.gui["phone_image"] = "3_phone_choose-wifi.png"
-        self.gui["prompt"] = "Choose the \nWifi network to \nconnect your \ndevice"
-        self.gui["highlight"] = ""
+        self.gui["prompt"] = "Select local Wi-Fi network to connect"
+        self.gui["highlight"] = "OVOS Device"
         self.gui["color"] = self.settings["color"]
-        self.gui.show_page("prompt.qml")
+        self.gui.show_page("prompt.qml", override_idle=True, override_animations=True)
         # allow GUI to linger around for a bit, will block the wifi setup loop
         sleep(2)
 
@@ -255,10 +256,14 @@ class WifiConnect(MycroftSkill):
         self.gui["label"] = "Connected"
         self.gui["bgColor"] = "#40DBB0"
         self.gui.remove_page("prompt.qml")
-        self.gui.show_page("status.qml")
+        self.gui.show_page("status.qml", override_idle=True, override_animations=True)
         # allow GUI to linger around for a bit, will block the wifi setup loop
         sleep(3)
-        self.gui.release()
+        if not is_paired():
+            self.bus.emit(Message("mycroft.not.paired"))
+        else:
+            self.bus.emit(Message("show.not.ready"))
+            self.gui.release()
 
     def report_setup_failed(self, message=None):
         """Wifi setup failed"""
@@ -268,7 +273,7 @@ class WifiConnect(MycroftSkill):
         self.gui["icon"] = "times-circle.svg"
         self.gui["label"] = "Connection Failed"
         self.gui["bgColor"] = "#FF0000"
-        self.gui.show_page("status.qml")
+        self.gui.show_page("status.qml", override_idle=True, override_animations=True)
         # allow GUI to linger around for a bit, will block the wifi setup loop
         sleep(2)
 

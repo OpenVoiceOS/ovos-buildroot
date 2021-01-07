@@ -1,0 +1,10 @@
+config BR2_PACKAGE_PYTHON_HOLIDAYS
+	bool "python-holidays"
+	select BR2_PACKAGE_PYTHON_CONVERTDATE # runtime
+	select BR2_PACKAGE_PYTHON_DATEUTIL # runtime
+	select BR2_PACKAGE_PYTHON_KOREAN_LUNAR_CALENDAR # runtime
+	select BR2_PACKAGE_PYTHON_SIX # runtime
+	help
+	  Generate and work with holidays in Python.
+
+	  https://github.com/dr-prodigy/python-holidays

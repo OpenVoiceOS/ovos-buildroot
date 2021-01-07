@@ -1,0 +1,7 @@
+config BR2_PACKAGE_PYTHON_OVOS_UTILS
+	bool "python-ovos-utils"
+	help
+	  collection of simple utilities for use 
+	  across the mycroft ecosystem
+
+	  https://github.com/OpenVoiceOS/ovos_utils

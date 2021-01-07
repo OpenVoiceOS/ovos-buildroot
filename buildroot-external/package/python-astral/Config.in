@@ -1,0 +1,10 @@
+config BR2_PACKAGE_PYTHON_ASTRAL
+	bool "python-astral"
+	help
+	  This is ‘astral’ a Python module which calculates
+	  - Times for various positions of the sun: dawn, 
+	    sunrise, solar noon, sunset, dusk, solar elevation, 
+	    solar azimuth and rahukaalam.
+	  - The phase of the moon.
+
+	  https://github.com/sffjunkie/astral

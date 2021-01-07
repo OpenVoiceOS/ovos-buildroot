@@ -1,0 +1,6 @@
+config BR2_PACKAGE_PYTHON_KOREAN_LUNAR_CALENDAR
+	bool "python-korean-lunar-calendar"
+	help
+	  Korean Lunar Calendar.
+
+	  https://github.com/usingsky/korean_lunar_calendar_py

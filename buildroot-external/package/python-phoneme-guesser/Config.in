@@ -1,0 +1,7 @@
+config BR2_PACKAGE_PYTHON_PHONEME_GUESSER
+	bool "python-phoneme-guesser"
+	select BR2_PACKAGE_PYTHON_UNIDECODE # runtime
+	help
+	  phonemes from text.
+
+	  https://github.com/OpenJarbas/phoneme_guesser

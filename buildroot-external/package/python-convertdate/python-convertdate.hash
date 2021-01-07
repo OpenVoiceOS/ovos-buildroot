@@ -1,0 +1,4 @@
+# md5, sha256 from https://pypi.org/pypi/convertdate/json
+sha256  9d2b0cd8d5382d2458d4cfa59665abba398a9e9bfd3a01c6f61b7b47768d28bf  convertdate-2.2.0.tar.gz
+# Locally computed sha256 checksums
+sha256  9ba9629594544da774effccbc0d1e7c9ebe17438e860db8a1bf11cf8081aef9f  LICENSE

@@ -2,28 +2,3 @@
 	path = buildroot
 	url = https://github.com/buildroot/buildroot.git
 	branch = 2020.11.x
-
-[submodule "skill-ovos-mycroftgui"]
-        path = buildroot-external/rootfs-overlay/opt/mycroft/skills/skill-ovos-mycroftgui
-        url = https://github.com/OpenVoiceOS/skill-ovos-mycroftgui.git
-        branch = master
-
-[submodule "skill-ovos-enclosure"]
-        path = buildroot-external/rootfs-overlay/opt/mycroft/skills/skill-ovos-enclosure
-        url = https://github.com/OpenVoiceOS/skill-ovos-enclosure.git
-        branch = master
-
-[submodule "skill-balena-wifi-setup"]
-        path = buildroot-external/rootfs-overlay/opt/mycroft/skills/skill-balena-wifi-setup
-        url = https://github.com/OpenVoiceOS/skill-balena-wifi-setup.git
-        branch = master
-
-[submodule "skill-ovos-pairing"]
-        path = buildroot-external/rootfs-overlay/opt/mycroft/skills/skill-ovos-pairing
-        url = https://github.com/OpenVoiceOS/skill-ovos-pairing.git
-        branch = master
-
-[submodule "mycroft-skills"]
-        path = buildroot-external/rootfs-overlay/opt/mycroft/.skills-repo
-        url = https://github.com/MycroftAI/mycroft-skills.git
-        branch = 20.08

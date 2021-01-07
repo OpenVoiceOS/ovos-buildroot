@@ -1,0 +1,7 @@
+config BR2_PACKAGE_PYTHON_RATELIM
+	bool "python-ratelim"
+	select BR2_PACKAGE_PYTHON_DECORATOR # runtime
+	help
+	  Makes it easy to respect rate limits.
+
+	  http://github.com/themiurgo/ratelim

@@ -1,0 +1,5 @@
+# md5, sha256 from https://pypi.org/pypi/korean_lunar_calendar/json
+md5  1fda622625f7b0d6843eb0465a128fca  korean_lunar_calendar-0.2.1.tar.gz
+sha256  12ce54b1392ed45a82dc6cea85ee5f7e33630556e82488f57e37a22482c8275d  korean_lunar_calendar-0.2.1.tar.gz
+# Locally computed sha256 checksums
+sha256  0ba0b32231bea04f4b037b9b138d83e78dc0781a3f568668b921e95dc6ca09f5  LICENSE

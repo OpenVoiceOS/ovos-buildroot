@@ -1,0 +1,168 @@
+From ed8c1bae5f26f7327090ac56a6522c78a914e78c Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?=C3=85ke=20Forslund?= <ake.forslund@gmail.com>
+Date: Mon, 28 Sep 2020 17:53:40 +0200
+Subject: [PATCH 1/2] Only show the pako warning if it's used
+
+---
+ msm/skill_entry.py | 44 ++++++++++++++++++++++++--------------------
+ 1 file changed, 24 insertions(+), 20 deletions(-)
+
+diff --git a/msm/skill_entry.py b/msm/skill_entry.py
+index 3170656..c64e666 100644
+--- a/msm/skill_entry.py
++++ b/msm/skill_entry.py
+@@ -327,6 +327,7 @@ def run_pip(self, constraints=None):
+         return True
+ 
+     def install_system_deps(self):
++        success = True
+         self.run_requirements_sh()
+         system_packages = {
+             exe: (packages or '').split()
+@@ -334,26 +335,29 @@ def install_system_deps(self):
+         }
+         LOG.info('Installing system requirements...')
+         all_deps = system_packages.pop('all', [])
+-        try:
+-            manager = PakoManager()
+-            success = manager.install(all_deps, overrides=system_packages)
+-        except RuntimeError as e:
+-            LOG.warning('Failed to launch package manager: {}'.format(e))
+-            success = False
+-        missing_exes = [
+-            exe for exe in self.dependencies.get('exes') or []
+-            if not shutil.which(exe)
+-        ]
+-        if missing_exes:
+-            if not success:
+-                LOG.warning('Failed to install dependencies.')
+-                if all_deps:
+-                    LOG.warning('Please install manually: {}'.format(
+-                        ' '.join(all_deps)
+-                    ))
+-            raise SkillRequirementsException('Could not find exes: {}'.format(
+-                ', '.join(missing_exes)
+-            ))
++        use_pako = bool(all_deps)
++        if use_pako:  # Only try to install if there are packages to install
++            try:
++                manager = PakoManager()
++                success = manager.install(all_deps, overrides=system_packages)
++            except RuntimeError as e:
++                LOG.warning('Failed to launch package manager: {}'.format(e))
++                success = False
++            missing_exes = [
++                exe for exe in self.dependencies.get('exes') or []
++                if not shutil.which(exe)
++            ]
++            if missing_exes:
++                if use_pako:
++                    # Pako was used and apparently failed.
++                    LOG.warning('Failed to install dependencies.')
++                    if all_deps:
++                        LOG.warning('Please install manually: {}'.format(
++                            ' '.join(all_deps)
++                        ))
++                raise SkillRequirementsException(
++                    'Could not find exes: {}'.format(', '.join(missing_exes))
++                )
+         return success
+ 
+     def run_requirements_sh(self):
+
+From d1cdbb40ed09f067f9fa9295ab6fca654f5f0fe1 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?=C3=85ke=20Forslund?= <ake.forslund@gmail.com>
+Date: Tue, 29 Sep 2020 19:57:35 +0200
+Subject: [PATCH 2/2] Move pako handling into function
+
+---
+ msm/skill_entry.py | 63 ++++++++++++++++++++++++++++------------------
+ 1 file changed, 38 insertions(+), 25 deletions(-)
+
+diff --git a/msm/skill_entry.py b/msm/skill_entry.py
+index c64e666..9268d41 100644
+--- a/msm/skill_entry.py
++++ b/msm/skill_entry.py
+@@ -57,6 +57,23 @@
+ FIVE_MINUTES = 300
+ 
+ 
++def _perform_pako_install(packages):
++    """Install the list of packagess using Pako.
++
++    Arguments:
++        packages (list): list of packages to install.
++    Returns:
++        (bool) True if install completed successfully, else False
++    """
++    try:
++        manager = PakoManager()
++        success = manager.install(packages, overrides=system_packages)
++    except RuntimeError as e:
++        LOG.warning('Failed to launch package manager: {}'.format(e))
++        success = False
++    return success
++
++
+ @contextmanager
+ def work_dir(directory):
+     old_dir = os.getcwd()
+@@ -327,37 +344,33 @@ def run_pip(self, constraints=None):
+         return True
+ 
+     def install_system_deps(self):
+-        success = True
+         self.run_requirements_sh()
+         system_packages = {
+             exe: (packages or '').split()
+             for exe, packages in self.dependent_system_packages.items()
+         }
+         LOG.info('Installing system requirements...')
+-        all_deps = system_packages.pop('all', [])
+-        use_pako = bool(all_deps)
+-        if use_pako:  # Only try to install if there are packages to install
+-            try:
+-                manager = PakoManager()
+-                success = manager.install(all_deps, overrides=system_packages)
+-            except RuntimeError as e:
+-                LOG.warning('Failed to launch package manager: {}'.format(e))
+-                success = False
+-            missing_exes = [
+-                exe for exe in self.dependencies.get('exes') or []
+-                if not shutil.which(exe)
+-            ]
+-            if missing_exes:
+-                if use_pako:
+-                    # Pako was used and apparently failed.
+-                    LOG.warning('Failed to install dependencies.')
+-                    if all_deps:
+-                        LOG.warning('Please install manually: {}'.format(
+-                            ' '.join(all_deps)
+-                        ))
+-                raise SkillRequirementsException(
+-                    'Could not find exes: {}'.format(', '.join(missing_exes))
+-                )
++        packages = system_packages.pop('all', [])
++        if packages:  # Only try to install if there are packages to install
++            success = _perform_pako_install(packages)
++        else:
++            success = True  # No packages to install
++
++        missing_exes = [
++            exe for exe in self.dependencies.get('exes') or []
++            if not shutil.which(exe)
++        ]
++        # If executables are missing on the system inform of the issue.
++        if missing_exes:
++            # Pako was used and apparently failed.
++            LOG.warning('Failed to install dependencies.')
++            if packages:
++                LOG.warning('Please install manually: {}'.format(
++                    ' '.join(all_deps)
++                ))
++            raise SkillRequirementsException(
++                'Could not find exes: {}'.format(', '.join(missing_exes))
++            )
+         return success
+ 
+     def run_requirements_sh(self):

@@ -1,0 +1,6 @@
+config BR2_PACKAGE_PYTHON_PYMEEUS
+	bool "python-pymeeus"
+	help
+	  Python implementation of Jean Meeus astronomical routines.
+
+	  https://github.com/architest/pymeeus

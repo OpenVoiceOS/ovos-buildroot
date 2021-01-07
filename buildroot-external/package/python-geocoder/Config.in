@@ -1,0 +1,11 @@
+config BR2_PACKAGE_PYTHON_GEOCODER
+	bool "python-geocoder"
+	select BR2_PACKAGE_PYTHON_CLICK # runtime
+	select BR2_PACKAGE_PYTHON_FUTURE # runtime
+	select BR2_PACKAGE_PYTHON_RATELIM # runtime
+	select BR2_PACKAGE_PYTHON_REQUESTS # runtime
+	select BR2_PACKAGE_PYTHON_SIX # runtime
+	help
+	  Geocoder is a simple and consistent geocoding library.
+
+	  https://github.com/DenisCarriere/geocoder

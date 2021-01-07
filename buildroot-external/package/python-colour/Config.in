@@ -1,0 +1,7 @@
+config BR2_PACKAGE_PYTHON_COLOUR
+	bool "python-colour"
+	help
+	  Converts and manipulates common color 
+	  representation (RGB, HSL, web, …)
+
+	  https://github.com/vaab/colour

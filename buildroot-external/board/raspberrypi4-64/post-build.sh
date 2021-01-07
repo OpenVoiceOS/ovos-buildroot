@@ -37,3 +37,4 @@ cp -fr ../buildroot-external/rootfs-overlay/opt/mycroft/skills/skill-balena-wifi
 cp -fr ../buildroot-external/rootfs-overlay/opt/mycroft/skills/skill-ovos-enclosure/.git* ${TARGET_DIR}/opt/mycroft/skills/skill-ovos-enclosure/
 cp -fr ../buildroot-external/rootfs-overlay/opt/mycroft/skills/skill-ovos-mycroftgui/.git* ${TARGET_DIR}/opt/mycroft/skills/skill-ovos-mycroftgui/
 cp -fr ../buildroot-external/rootfs-overlay/opt/mycroft/skills/skill-ovos-pairing/.git* ${TARGET_DIR}/opt/mycroft/skills/skill-ovos-pairing/
+cp -fr ../buildroot-external/rootfs-overlay/opt/mycroft/skills/skill-ovos-homescreen/.git* ${TARGET_DIR}/opt/mycroft/skills/skill-ovos-homescreen/

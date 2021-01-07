@@ -1,0 +1,9 @@
+config BR2_PACKAGE_PYTHON_TIMEZONEFINDER
+	bool "python-timezonefinder"
+	help
+	  This is a fast and lightweight python 
+	  package for looking up the corresponding 
+	  timezone for given coordinates on earth 
+	  entirely offline.
+
+	  https://github.com/MrMinimal64/timezonefinder

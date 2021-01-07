@@ -17,6 +17,12 @@ define MYCROFT_GUI_CHANGE_IMAGE
 	$(@D)/application/
 endef
 
+define MYCROFT_GUI_CHANGE_STATUS
+        cp $(BR2_EXTERNAL_OPENVOICEOS_PATH)/package/mycroft-gui/StatusIndicator.qml \
+        $(@D)/import/qml/
+endef
+
 MYCROFT_GUI_PRE_CONFIGURE_HOOKS += MYCROFT_GUI_CHANGE_IMAGE
+MYCROFT_GUI_PRE_CONFIGURE_HOOKS += MYCROFT_GUI_CHANGE_STATUS
 
 $(eval $(cmake-package))

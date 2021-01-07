@@ -1,0 +1,5 @@
+# md5, sha256 from https://pypi.org/pypi/geocoder/json
+md5  360f693a51f7ea4b4078f9ef96222ee8  geocoder-1.38.1.tar.gz
+sha256  c9925374c961577d0aee403b09e6f8ea1971d913f011f00ca70c76beaf7a77e7  geocoder-1.38.1.tar.gz
+# Locally computed sha256 checksums
+sha256  bba08f43391d2c055c1c30db4c8409f345359b03b6c276295db14f1d99de7993  LICENSE
