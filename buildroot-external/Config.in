@@ -158,7 +158,7 @@ menu "Additional external python modules"
 endmenu
 menu "Mycroft A.I. Personal Assistant"
 	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/python-mycroft/Config.in"
-#	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/mycroft-embedded-shell/Config.in"
+	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/mycroft-embedded-shell/Config.in"
 	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/mycroft-gui/Config.in"
 	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/mycroft-service/Config.in"
 	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/mycroft-splash/Config.in"

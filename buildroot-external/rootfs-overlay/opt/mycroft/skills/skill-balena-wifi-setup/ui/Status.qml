@@ -5,33 +5,31 @@ import org.kde.kirigami 2.4 as Kirigami
 
 import Mycroft 1.0 as Mycroft
 
-Mycroft.ProportionalDelegate {
+Rectangle {
     id: root
-    skillBackgroundColorOverlay: sessionData.bgColor
+    anchors.fill: parent
+    color: sessionData.color
+    property bool horizontalMode: root.width > root.height ? 1 : 0
     
     ColumnLayout {
         id: grid
-        anchors.centerIn: parent
-
+        anchors.fill: parent
+            
         Image {
             id: statusIcon
             visible: true
             enabled: true
-            anchors.horizontalCenter: grid.horizontalCenter
-            Layout.preferredWidth: proportionalGridUnit * 50
-            Layout.preferredHeight: proportionalGridUnit * 50
-            source: Qt.resolvedUrl(`icons/${sessionData.icon}`)
-        }
-
-        /* Add some spacing between icon and text */
-        Item {
-            height: Kirigami.Units.largeSpacing
+            Layout.preferredWidth: horizontalMode ? parent.width / 4 : parent.width / 2
+            Layout.preferredHeight: width
+            Layout.alignment: Qt.AlignVCenter | Qt.AlignHCenter
+            source: sessionData.image
         }
 
         Label {
             id: statusLabel
-            Layout.alignment: Qt.AlignHCenter
-            font.pixelSize: 65
+            Layout.alignment: Qt.AlignBottom | Qt.AlignHCenter
+            Layout.bottomMargin: Kirigami.Units.largeSpacing
+            font.pixelSize: parent.width * 0.075
             wrapMode: Text.WordWrap
             renderType: Text.NativeRendering
             font.family: "Noto Sans Display"

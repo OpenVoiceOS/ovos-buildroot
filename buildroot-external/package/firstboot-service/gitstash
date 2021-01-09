@@ -8,7 +8,7 @@ cd /opt/mycroft/skills/skill-ovos-enclosure && git stash
 cd /opt/mycroft/skills/skill-ovos-mycroftgui && git stash
 cd /opt/mycroft/skills/skill-ovos-pairing && git stash
 cd /opt/mycroft/skills/skill-ovos-homescreen && git stash
-cd /opt/mycroft/skills/skill-date-time.mycroftai && git stash
+cd /opt/mycroft/skills/mycroft-date-time.mycroftai && git stash
 chown -R mycroft.mycroft /opt/mycroft
 echo "[OK]"
 
