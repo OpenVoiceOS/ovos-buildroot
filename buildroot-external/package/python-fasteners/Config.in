@@ -1,7 +1,7 @@
 config BR2_PACKAGE_PYTHON_FASTENERS
 	bool "python-fasteners"
-	select BR2_PACKAGE_PYTHON_SIX # runtime
 	select BR2_PACKAGE_PYTHON_MONOTONIC # runtime
+	select BR2_PACKAGE_PYTHON_SIX # runtime
 	help
 	  A python package that provides useful locks.
 

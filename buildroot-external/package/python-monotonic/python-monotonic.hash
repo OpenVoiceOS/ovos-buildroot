@@ -1,5 +1,5 @@
 # md5, sha256 from https://pypi.org/pypi/monotonic/json
-md5	9f81cb0e5966479754453dea2b6822f4  monotonic-1.5.tar.gz
-sha256	23953d55076df038541e648a53676fb24980f7a1be290cdda21300b3bc21dfb0  monotonic-1.5.tar.gz
+md5  9f81cb0e5966479754453dea2b6822f4  monotonic-1.5.tar.gz
+sha256  23953d55076df038541e648a53676fb24980f7a1be290cdda21300b3bc21dfb0  monotonic-1.5.tar.gz
 # Locally computed sha256 checksums
-sha256	cb5e8e7e5f4a3988e1063c142c60dc2df75605f4c46515e776e3aca6df976e14  LICENSE
+sha256  cb5e8e7e5f4a3988e1063c142c60dc2df75605f4c46515e776e3aca6df976e14  LICENSE

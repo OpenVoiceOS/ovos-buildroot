@@ -1,0 +1,6 @@
+# md5, sha256 from https://pypi.org/pypi/Flask-Mail/json
+md5  04b35a42a44ec7aa724ec8ce55e2e08e  Flask-Mail-0.9.1.tar.gz
+sha256  22e5eb9a940bf407bcf30410ecc3708f3c56cc44b29c34e1726fe85006935f41  Flask-Mail-0.9.1.tar.gz
+# Locally computed sha256 checksums
+sha256  e119be7385b7c84a6c0803685aabe6cad3363d448577b6ed0cb77f4a955b1054  LICENSE
+sha256  9c1e620a5cf8e74fe81c1fd4c55e9cc0b189fc04e677cfc7ef915de746c3f59e  docs/_themes/LICENSE

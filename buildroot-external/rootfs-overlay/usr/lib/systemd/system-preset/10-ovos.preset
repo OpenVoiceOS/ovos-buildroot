@@ -21,6 +21,7 @@ enable mycroft-skills.service
 enable mycroft-enclosure.service
 enable mycroft-gui.service
 enable ovos-splash-quit.service
+enable local-backend.service
 
 disable getty@.service
 disable mosquitto.service

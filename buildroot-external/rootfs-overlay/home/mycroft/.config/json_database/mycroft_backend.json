@@ -1,0 +1,12 @@
+{
+  "stt": { "module": "google"},
+  "backend_port": 6712,
+  "geolocate": true,
+  "override_location": false,
+  "api_version": "v1",
+  "data_path": "~",
+  "record_utterances": false,
+  "record_wakewords": false,
+  "wolfram_key": "Y7R353-9HQAAL8KKA",
+  "owm_key": "28fed22898afd4717ce5a1535da1f78c"
+}

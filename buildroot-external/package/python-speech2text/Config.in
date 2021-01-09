@@ -1,0 +1,8 @@
+config BR2_PACKAGE_PYTHON_SPEECH2TEXT
+	bool "python-speech2text"
+	select BR2_PACKAGE_PYTHON_REQUESTS # runtime
+	select BR2_PACKAGE_PYTHON_SPEECHRECOGNITION # runtime
+	help
+	  Mycroft STT engine wrappers.
+
+	  https://github.com/JarbasAl/speech2text

@@ -1,0 +1,8 @@
+config BR2_PACKAGE_PYTHON_JSON_DATABASE
+	bool "python-json-database"
+	select BR2_PACKAGE_PYTHON_FASTENERS # runtime
+	select BR2_PACKAGE_PYTHON_PYXDG # runtime
+	help
+	  searchable json database with persistence.
+
+	  https://github.com/HelloChatterbox/json_database

@@ -1,0 +1,5 @@
+# md5, sha256 from https://pypi.org/pypi/requests_cache/json
+md5  f2fc5a03c5c06496d9d360b1e54f6ea0  requests-cache-0.5.2.tar.gz
+sha256  813023269686045f8e01e2289cc1e7e9ae5ab22ddd1e2849a9093ab3ab7270eb  requests-cache-0.5.2.tar.gz
+# Locally computed sha256 checksums
+sha256  de03298501b3210688994ba5c2eb8d90c53bb8cd4928e218e1105638108957bb  LICENSE

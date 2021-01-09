@@ -1,0 +1,13 @@
+[Unit]
+Description=OVOS Local Backend
+
+[Service]
+User=mycroft
+WorkingDirectory=/home/mycroft 
+ExecStart=ovos-local-backend
+StandardOutput=file:/var/log/mycroft/local-backend.log
+StandardError=file:/var/log/mycroft/local-backend.error.log
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,7 @@
+config BR2_PACKAGE_PYTHON_REQUESTS_CACHE
+	bool "python-requests-cache"
+	select BR2_PACKAGE_PYTHON_REQUESTS # runtime
+	help
+	  Persistent cache for requests library.
+
+	  https://github.com/reclosedev/requests-cache
