@@ -1,6 +1,6 @@
 # Building of MycroftOS from sources.
 
-Flashable images will be provided at mayor, minor and hotfix release tags. However if you want to build the images from source yourself, below instructions will get you on your way.
+Flashable images will be provided at major, minor and hotfix release tags. However if you want to build the images from source yourself, below instructions will get you on your way.
 
 ## Getting the code.
 First, get the code on your system! The simplest method is via git.
