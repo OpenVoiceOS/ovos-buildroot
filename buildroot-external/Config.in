@@ -170,5 +170,6 @@ menu "Mycroft A.I. Personal Assistant"
 	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/mycroft-splash/Config.in"
 menu "Mycroft A.I. Plugins"
 	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/python-jarbas-stt-plugin-chromium/Config.in"
+	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/python-jarbas-wake-word-plugin-precise/Config.in"
 endmenu
 endmenu
