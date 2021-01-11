@@ -1,0 +1,6 @@
+config BR2_PACKAGE_PYTHON_JARBAS_STT_PLUGIN_VOSK
+	bool "python-jarbas-stt-plugin-vosk
+	help
+	  Mycroft STT plugin for Vosk
+
+	  https://github.com/JarbasLingua/jarbas-stt-plugin-vosk
