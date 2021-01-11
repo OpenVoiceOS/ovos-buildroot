@@ -2,4 +2,5 @@
 #
 /usr/sbin/resizeSD &&
 /usr/sbin/gitstash &&
+pip install https://github.com/alphacep/vosk-api/releases/download/0.3.17/vosk-0.3.17-cp38-cp38-linux_aarch64.whl &&
 rm /etc/firstboot
