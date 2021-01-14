@@ -1,5 +1,5 @@
 # md5, sha256 from https://pypi.org/pypi/fasteners/json
-md5  35f400771864c68145fb3a0b47ec99db  fasteners-0.16.tar.gz
-sha256  c995d8c26b017c5d6a6de9ad29a0f9cdd57de61ae1113d28fac26622b06a0933  fasteners-0.16.tar.gz
+md5	fcb13261c9b0039d9b1c4feb9bc75e04  fasteners-0.14.1.tar.gz
+sha256	427c76773fe036ddfa41e57d89086ea03111bbac57c55fc55f3006d027107e18  fasteners-0.14.1.tar.gz
 # Locally computed sha256 checksums
-sha256  d2de2f566d2d0e0b509fb0ea1fa3669f49064ab1de21c57453cab3750a234e8f  LICENSE
+sha256	d2de2f566d2d0e0b509fb0ea1fa3669f49064ab1de21c57453cab3750a234e8f  LICENSE
