@@ -1,26 +1,23 @@
-From c9598b340afb37929b7d5456aef730304fba009b Mon Sep 17 00:00:00 2001
+From f7bb1d69c5a4c10948551ac1fc33ffad165dfeca Mon Sep 17 00:00:00 2001
 From: j1nx <p.steenbergen@j1nx.nl>
-Date: Sun, 10 Jan 2021 18:19:16 +0100
+Date: Tue, 18 Aug 2020 19:42:05 +0200
 Subject: [PATCH 1/1] Patch setup.py to use MANIFEST.in for package data
 
 ---
- MANIFEST.in |  5 +----
+ MANIFEST.in |  1 +
  setup.py    | 16 ----------------
- 2 files changed, 1 insertion(+), 20 deletions(-)
+ 2 files changed, 1 insertion(+), 16 deletions(-)
+ create mode 100644 MANIFEST.in
 
 diff --git a/MANIFEST.in b/MANIFEST.in
-index 1f33302..97513c5 100644
---- a/MANIFEST.in
+new file mode 100644
+index 0000000..97513c5
+--- /dev/null
 +++ b/MANIFEST.in
-@@ -1,4 +1 @@
--include LICENSE
--include readme.md
--include requirements.txt 
--recursive-include lingua_franca/res *
-\ No newline at end of file
+@@ -0,0 +1 @@
 +graft lingua_franca
 diff --git a/setup.py b/setup.py
-index 41d0acc..707eafa 100644
+index ed9deb0..4591df1 100644
 --- a/setup.py
 +++ b/setup.py
 @@ -3,14 +3,6 @@ import os
@@ -49,7 +46,7 @@ index 41d0acc..707eafa 100644
 -
  setup(
      name='lingua_franca',
-     version='0.3.1',
+     version='0.2.2',
      packages=['test', 'lingua_franca', 'lingua_franca.lang'],
      url='https://github.com/MycroftAI/lingua-franca',
      license='Apache2.0',
