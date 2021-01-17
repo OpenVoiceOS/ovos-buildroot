@@ -38,3 +38,5 @@ cp -fr ../buildroot-external/rootfs-overlay/opt/mycroft/skills/skill-ovos-enclos
 cp -fr ../buildroot-external/rootfs-overlay/opt/mycroft/skills/skill-ovos-mycroftgui/.git* ${TARGET_DIR}/opt/mycroft/skills/skill-ovos-mycroftgui/
 cp -fr ../buildroot-external/rootfs-overlay/opt/mycroft/skills/skill-ovos-pairing/.git* ${TARGET_DIR}/opt/mycroft/skills/skill-ovos-pairing/
 cp -fr ../buildroot-external/rootfs-overlay/opt/mycroft/skills/skill-ovos-homescreen/.git* ${TARGET_DIR}/opt/mycroft/skills/skill-ovos-homescreen/
+cp -fr ../buildroot-external/rootfs-overlay/opt/mycroft/skills/mycroft-date-time.mycroftai/.git* ${TARGET_DIR}/opt/mycroft/skills/mycroft-date-time.mycroftai/
+cp -fr ../buildroot-external/rootfs-overlay/opt/mycroft/skills/mycroft-volume.mycroftai/.git* ${TARGET_DIR}/opt/mycroft/skills/mycroft-volume.mycroftai/
