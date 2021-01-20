@@ -1,0 +1,6 @@
+config BR2_PACKAGE_PYTHON_KTHREAD
+	bool "python-kthread"
+	help
+	  Killable threads in Python!.
+
+	  https://github.com/munshigroup/kthread
