@@ -1,0 +1,74 @@
+From 1d29ceca0ac37d881d3755ff65bb11b73d9516a2 Mon Sep 17 00:00:00 2001
+From: Aditya Mehra <aix.m@outlook.com>
+Date: Thu, 21 Jan 2021 17:49:20 +0530
+Subject: [PATCH] Use the correct delegate and fix layouts
+
+---
+ mycroft/res/ui/SYSTEM_TextFrame.qml | 47 +++++++++++++++--------------
+ 1 file changed, 25 insertions(+), 22 deletions(-)
+
+diff --git a/mycroft/res/ui/SYSTEM_TextFrame.qml b/mycroft/res/ui/SYSTEM_TextFrame.qml
+index a2d50ed403c..d542a31eca1 100644
+--- a/mycroft/res/ui/SYSTEM_TextFrame.qml
++++ b/mycroft/res/ui/SYSTEM_TextFrame.qml
+@@ -5,7 +5,7 @@ import org.kde.kirigami 2.4 as Kirigami
+ 
+ import Mycroft 1.0 as Mycroft
+ 
+-Mycroft.ProportionalDelegate {
++Mycroft.Delegate {
+     id: systemTextFrame
+     skillBackgroundColorOverlay: "#000000"
+     property bool hasTitle: sessionData.title.length > 0 ? true : false
+@@ -13,27 +13,30 @@ Mycroft.ProportionalDelegate {
+     Component.onCompleted: {
+         console.log(hasTitle)
+     }
+-    
+-    Mycroft.AutoFitLabel {
+-        id: systemTextFrameTitle
+-        Layout.fillWidth: true
+-        Layout.preferredHeight: proportionalGridUnit * 20
+-        wrapMode: Text.Wrap
+-        visible: hasTitle
+-        enabled: hasTitle
+-        font.family: "Noto Sans"
+-        font.weight: Font.Bold
+-        text: sessionData.title        
+-    }
+-    
+-    Mycroft.AutoFitLabel {
+-        id: systemTextFrameMainBody
+-        Layout.fillWidth: true
+-        Layout.preferredHeight: proportionalGridUnit * 30
+-        wrapMode: Text.Wrap
+-        font.family: "Noto Sans"
+-        font.weight: Font.Bold
+-        text: sessionData.text
++
++    contentItem: ColumnLayout {
++        Label {
++            id: systemTextFrameTitle
++            Layout.fillWidth: true
++            font.pixelSize: Math.min(systemTextFrame.height/4, Math.max(systemTextFrame.height/10, systemTextFrameMainBody.fontInfo.pixelSize * 1.4))
++            wrapMode: Text.Wrap
++            horizontalAlignment: Text.AlignHCenter
++            visible: hasTitle
++            enabled: hasTitle
++            font.family: "Noto Sans"
++            font.weight: Font.Bold
++            text: sessionData.title
++        }
++        
++        Mycroft.AutoFitLabel {
++            id: systemTextFrameMainBody
++            Layout.fillWidth: true
++            Layout.fillHeight: true
++            wrapMode: Text.Wrap
++            font.family: "Noto Sans"
++            font.weight: Font.Bold
++            text: sessionData.text
++        }
+     }
+ }
+  
