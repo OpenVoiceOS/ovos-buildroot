@@ -14,12 +14,12 @@ Environment=QT_PLUGIN_PATH=/usr/lib/qt/plugins:/usr/lib/plugins:/usr/lib/plugins
 Environment=QT_LOGGING_RULES='*=false'
 Environment=QT_IM_MODULE=qtvirtualkeyboard
 Environment=XDG_RUNTIME_DIR=/tmp/weston
-Environment=XDG_DATA_DIRS=/usr/share/icons:/usr/share/kf5:$XDG_DATA_DIRS
+Environment=XDG_DATA_DIRS=/usr/share:/usr/local/share:$XDG_DATA_DIRS
 Environment=LD_LIBRARY_PATH=/usr/lib
-Environment=LIBEXEC_PATH=/usr/lib/libexec:/usr/lib/libexec/kf5
-Environment=QML2_IMPORT_PATH=/usr/lib/qml:/usr/qml
+Environment=LIBEXEC_PATH=/libexec:/usr/libexec:/usr/lib/libexec
+Environment=QML2_IMPORT_PATH=/usr/lib/qml
 ExecStartPre=/usr/bin/sh -c 'export $(dbus-launch)'
-ExecStart=mycroft-embedded-shell --maximize
+ExecStart=mycroft-gui-app --hideTextInput --maximize
 StandardOutput=null
 Restart=on-failure
 
