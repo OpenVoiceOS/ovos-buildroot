@@ -1,0 +1,9 @@
+config BR2_PACKAGE_MYCROFT_SKILLS_REPO
+	bool "mycroft-skills-repo"
+	help
+	  Mycroft AI - Skills Repo
+	  The official home of Skills for the Mycroft 
+	  ecosystem. These Skills are written by both 
+	  the MycroftAI team and others within the Community.
+
+	  https://github.com/MycroftAI/mycroft-skills

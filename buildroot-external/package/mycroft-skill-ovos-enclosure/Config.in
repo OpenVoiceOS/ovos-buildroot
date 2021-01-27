@@ -1,0 +1,8 @@
+config BR2_PACKAGE_MYCROFT_SKILL_OVOS_ENCLOSURE
+	bool "mycroft-skill-ovos-enclosure"
+	help
+	  Mycroft AI - OVOS Enclosure Skill
+	  Mycroft skill to take control of OpenVoiceOS 
+	  it's functions and tools.
+
+	  https://github.com/OpenVoiceOS/skill-ovos-enclosure

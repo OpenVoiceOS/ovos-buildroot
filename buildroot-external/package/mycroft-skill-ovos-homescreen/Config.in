@@ -1,0 +1,7 @@
+config BR2_PACKAGE_MYCROFT_SKILL_OVOS_HOMESCREEN
+	bool "mycroft-skill-ovos-homescreen"
+	help
+	  Mycroft AI - OVOS Homescreen Skill
+	  Provides custom resting face for OVOS
+
+	  https://github.com/OpenVoiceOS/skill-ovos-homescreen

@@ -31,12 +31,3 @@ BOARD_DIR="$(dirname $0)"
 
 cp -f ../buildroot-external/board/raspberrypi/config.txt ${BINARIES_DIR}/rpi-firmware/config.txt
 cp -f ../buildroot-external/board/raspberrypi/cmdline.txt ${BINARIES_DIR}/rpi-firmware/cmdline.txt
-
-cp -fr ../buildroot-external/rootfs-overlay/opt/mycroft/.skills-repo/.git* ${TARGET_DIR}/opt/mycroft/.skills-repo/
-cp -fr ../buildroot-external/rootfs-overlay/opt/mycroft/skills/skill-balena-wifi-setup/.git* ${TARGET_DIR}/opt/mycroft/skills/skill-balena-wifi-setup/
-cp -fr ../buildroot-external/rootfs-overlay/opt/mycroft/skills/skill-ovos-enclosure/.git* ${TARGET_DIR}/opt/mycroft/skills/skill-ovos-enclosure/
-cp -fr ../buildroot-external/rootfs-overlay/opt/mycroft/skills/skill-ovos-mycroftgui/.git* ${TARGET_DIR}/opt/mycroft/skills/skill-ovos-mycroftgui/
-cp -fr ../buildroot-external/rootfs-overlay/opt/mycroft/skills/skill-ovos-pairing/.git* ${TARGET_DIR}/opt/mycroft/skills/skill-ovos-pairing/
-cp -fr ../buildroot-external/rootfs-overlay/opt/mycroft/skills/skill-ovos-homescreen/.git* ${TARGET_DIR}/opt/mycroft/skills/skill-ovos-homescreen/
-cp -fr ../buildroot-external/rootfs-overlay/opt/mycroft/skills/mycroft-date-time.mycroftai/.git* ${TARGET_DIR}/opt/mycroft/skills/mycroft-date-time.mycroftai/
-cp -fr ../buildroot-external/rootfs-overlay/opt/mycroft/skills/mycroft-volume.mycroftai/.git* ${TARGET_DIR}/opt/mycroft/skills/mycroft-volume.mycroftai/

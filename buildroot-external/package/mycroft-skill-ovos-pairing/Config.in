@@ -1,0 +1,7 @@
+config BR2_PACKAGE_MYCROFT_SKILL_OVOS_PAIRING
+	bool "mycroft-skill-ovos-pairing"
+	help
+	  Mycroft AI - OVOS Pairing Skill
+	  Connect your device to the Mycroft server
+
+	  https://github.com/OpenVoiceOS/skill-ovos-pairing
