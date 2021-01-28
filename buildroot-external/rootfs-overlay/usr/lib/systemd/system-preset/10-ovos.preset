@@ -1,4 +1,3 @@
-enable firstboot.service
 enable prepare_system.service
 enable hostname.service
 enable sshd.service
@@ -8,7 +7,6 @@ enable pulseaudio.service
 enable avahi-daemon.service
 enable seeed-voicecard.service
 enable NetworkManager.service
-enable wifi-connect.service
 
 enable ovos-splash-start.service
 enable ovos-splash-40.service
