@@ -1,0 +1,26 @@
+From d34e00b823d88e2883cefe6409f39706b7fcda97 Mon Sep 17 00:00:00 2001
+From: j1nx <p.steenbergen@j1nx.nl>
+Date: Thu, 28 Jan 2021 12:44:07 +0100
+Subject: [PATCH 1/1] Little hack to chown /opt/mycroft to the user mycroft
+
+---
+ support/scripts/mkusers | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/support/scripts/mkusers b/support/scripts/mkusers
+index d00ba33823..2332afcb2c 100755
+--- a/support/scripts/mkusers
++++ b/support/scripts/mkusers
+@@ -362,6 +362,9 @@ add_one_user() {
+     if [ "${home}" != "-" ]; then
+         mkdir -p "${TARGET_DIR}/${home}"
+         printf "chown -h -R %d:%d '%s'\n" "${uid}" "${_gid}" "${TARGET_DIR}/${home}"
++	if [ "${username}" = "mycroft" ]; then
++	    printf "chown -h -R %d:%d '%s'\n" "${uid}" "${_gid}" "${TARGET_DIR}//opt/mycroft"
++	fi
+     fi
+ }
+ 
+-- 
+2.20.1
+
