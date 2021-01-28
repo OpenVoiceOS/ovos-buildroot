@@ -1,5 +1,4 @@
 #!/bin/bash
 #
-/usr/sbin/resizeSD &&
 pip install /home/mycroft/vosk-0.3.17-cp38-cp38-linux_aarch64.whl &&
 rm /etc/firstboot
