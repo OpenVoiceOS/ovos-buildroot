@@ -1,3 +1,4 @@
+enable systemd-repart.service
 enable prepare_system.service
 enable hostname.service
 enable sshd.service
