@@ -29,8 +29,6 @@ define RESPEAKER_INSTALL_TARGET_CMDS
         $(INSTALL) -D -m 0644 $(@D)/seeed-8mic-voicecard.dtbo $(BINARIES_DIR)/rpi-firmware/overlays/
 
 	mkdir -p $(TARGET_DIR)/usr/share/pulseaudio/alsa-mixer/profile-sets/
-        $(INSTALL) -D -m 0644 $(@D)/pulseaudio/pulse_config_2mic/seeed-voicecard.conf \
-                $(TARGET_DIR)/usr/share/pulseaudio/alsa-mixer/profile-sets/seeed-voicecard-2mic.conf
 	$(INSTALL) -D -m 0644 $(@D)/pulseaudio/pulse_config_4mic/seeed-voicecard.conf \
 		$(TARGET_DIR)/usr/share/pulseaudio/alsa-mixer/profile-sets/seeed-voicecard-4mic.conf
 	$(INSTALL) -D -m 0644 $(@D)/pulseaudio/pulse_config_6mic/seeed-voicecard.conf \
@@ -38,10 +36,6 @@ define RESPEAKER_INSTALL_TARGET_CMDS
 	$(INSTALL) -D -m 0644 $(@D)/pulseaudio/91-seeedvoicecard.rules \
 		$(TARGET_DIR)/etc/udev/rules.d/91-seeedvoicecard.rules
 
-        $(INSTALL) -D -m 0644 $(@D)/pulseaudio/pulse_config_2mic/default.pa \
-                $(TARGET_DIR)/etc/pulse/seeed-voicecard-2mic-default.pa
-        $(INSTALL) -D -m 0644 $(@D)/pulseaudio/pulse_config_2mic/daemon.conf \
-                $(TARGET_DIR)/etc/pulse/seeed-voicecard-2mic-daemon.conf
 	$(INSTALL) -D -m 0644 $(@D)/pulseaudio/pulse_config_4mic/default.pa \
 		$(TARGET_DIR)/etc/pulse/seeed-voicecard-4mic-default.pa
 	$(INSTALL) -D -m 0644 $(@D)/pulseaudio/pulse_config_4mic/daemon.conf \
