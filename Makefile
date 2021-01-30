@@ -24,6 +24,8 @@ $(TARGETS): %: $(RELEASE_DIR) %-config
 	@echo "build $@"
 	$(MAKE) -C $(BUILDROOT) BR2_EXTERNAL=../$(BUILDROOT_EXTERNAL) 2>&1 | tee logs/buildroot_$@_output.txt
 	cp -f $(BUILDROOT)/output/images/sdcard.img $(RELEASE_DIR)/OpenVoiceOS_$@.img
+	rm $(RELEASE_DIR)/OpenVoiceOS_$@.img.xz
+	xz -3 -T0 $(RELEASE_DIR)/OpenVoiceOS_$@.img
 
 	# Do not clean when building for one target
 ifneq ($(words $(filter $(TARGETS),$(MAKECMDGOALS))), 1)
