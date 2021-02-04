@@ -1,0 +1,24 @@
+#!/bin/bash
+#
+# Get active block device
+DEVICE_ROOTFS="$(findfs UUID=c0932a41-44cf-463b-8152-d43188553ed4)"
+DEVICE="/dev/$(lsblk -no pkname "${DEVICE_ROOTFS}")"
+
+# Fix GPT header backup file
+sgdisk -e "${DEVICE}" &&
+partprobe "${DEVICE}" &&
+
+# Resize needed?
+UNUSED=$(sfdisk -Fq "${DEVICE}" | cut -d " " -f 3 | tail -1)
+if [ -z "${UNUSED}" ] || [ "${UNUSED}" -le "16384" ]; then
+    echo "[INFO] No resize of rootfs partition needed"
+    exit 0
+else
+    echo "[INFO] Resizing the rootfs partition"
+    parted "${DEVICE}" unit % resizepart 2 100% &&
+    partprobe "${DEVICE}" &&
+    sync &&
+    resize2fs "${DEVICE_ROOTFS}" &&
+    echo "[OK]"
+fi
+

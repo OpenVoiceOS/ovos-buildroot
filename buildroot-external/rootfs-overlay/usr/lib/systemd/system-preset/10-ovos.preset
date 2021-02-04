@@ -1,5 +1,5 @@
-enable systemd-repart.service
 enable prepare_system.service
+enable growdisk.service
 enable hostname.service
 enable sshd.service
 enable brcm_bt.service

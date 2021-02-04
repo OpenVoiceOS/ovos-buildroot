@@ -1,0 +1,14 @@
+[Unit]
+Description=Growdisk service to auto expand the rootfs partition
+DefaultDependencies=no
+Conflicts=shutdown.target
+After=systemd-remount-fs.service
+Before=sysinit.target shutdown.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/sbin/growdisk
+
+[Install]
+WantedBy=sysinit.target
