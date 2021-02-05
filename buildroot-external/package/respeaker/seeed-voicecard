@@ -31,58 +31,33 @@ modprobe i2c-dev
 #enable spi interface
 dtparam -d $OVERLAYS spi=on
 
-CONFIG=/boot/config.txt
-get_overlay() {
-    ov=$1
-    if grep -q -E "^dtoverlay=$ov" $CONFIG; then
-      echo 0
-    else
-      echo 1
-    fi
-}
-
-do_overlay() {
-    ov=$1
-    RET=$2
-    DEFAULT=--defaultno
-    CURRENT=0
-    if [ $(get_overlay $ov) -eq 0 ]; then
-        DEFAULT=
-        CURRENT=1
-    fi
-    if [ $RET -eq $CURRENT ]; then
-        ASK_TO_REBOOT=1
-    fi
-    if [ $RET -eq 0 ]; then
-        sed $CONFIG -i -e "s/^#dtoverlay=$ov/dtoverlay=$ov/"
-        if ! grep -q -E "^dtoverlay=$ov" $CONFIG; then
-            printf "dtoverlay=$ov\n" >> $CONFIG
-        fi
-        STATUS=enabled
-    elif [ $RET -eq 1 ]; then
-        sed $CONFIG -i -e "s/^dtoverlay=$ov/#dtoverlay=$ov/"
-        STATUS=disabled
-    else
-        return $RET
-    fi
-}
-
-
 is_1a=$(i2cdetect -y  1 0x1a 0x1a | egrep "(1a|UU)" | awk '{print $2}')
 is_35=$(i2cdetect -y  1 0x35 0x35 | egrep "(35|UU)" | awk '{print $2}')
 is_3b=$(i2cdetect -y  1 0x3b 0x3b | egrep "(3b|UU)" | awk '{print $2}')
 
+# Set default configurations
 RPI_HATS="seeed-2mic-voicecard seeed-4mic-voicecard seeed-8mic-voicecard"
 overlay=""
+asound_state=/var/lib/alsa/default-asound.state
+pulse_default=/etc/pulse/pulseaudio-system.pa
+pulse_daemon=/etc/pulse/pulseaudio-daemon.conf
+
+# Remove old configurations
+rm /var/lib/alsa/asound.state
+rm /etc/pulse/system.pa
+rm /etc/pulse/daemon.conf
 
 if [ "x${is_1a}" != "x" ] && [ "x${is_35}" == "x" ] ; then
-    echo "install 2mic"
-    overlay=seeed-2mic-voicecard
+    echo "install wm8960"
+    modprobe snd-soc-wm8960
+    overlay=wm8960-soundcard
     asound_state=/etc/voicecard/wm8960_asound.state
 fi
 
 if [ "x${is_3b}" != "x" ] && [ "x${is_35}" == "x" ] ; then
     echo "install 4mic"
+    modprobe snd-soc-seeed-voicecard
+    modprobe snd-soc-ac108
     overlay=seeed-4mic-voicecard
     asound_state=/etc/voicecard/ac108_asound.state
     pulse_default=/etc/pulse/seeed-voicecard-4mic-default.pa
@@ -91,6 +66,8 @@ fi
 
 if [ "x${is_3b}" != "x" ] && [ "x${is_35}" != "x" ] ; then
     echo "install 6mic"
+    modprobe snd-soc-seeed-voicecard
+    modprobe snd-soc-ac108
     overlay=seeed-8mic-voicecard
     asound_state=/etc/voicecard/ac108_6mic.state
     pulse_default=/etc/pulse/seeed-voicecard-8mic-default.pa
@@ -98,39 +75,16 @@ if [ "x${is_3b}" != "x" ] && [ "x${is_35}" != "x" ] ; then
 fi
 
 if [ "$overlay" ]; then
-    echo Install $overlay ...
+    echo Loading $overlay ...
 
-    # Remove old configuration
-    rm /var/lib/alsa/asound.state
-    rm /etc/pulse/default.pa
-    rm /etc/pulse/system.pa
-    rm /etc/pulse/daemon.conf
-
-    kernel_ver=$(uname -r)
-    # echo kernel_ver=$kernel_ver
-
-    # TODO: dynamic dtoverlay Bug of v4.19.x
-    #       no DT node phandle inserted.
-    if [[ "$kernel_ver" =~ ^4\.19.*$ || "$kernel_ver" =~ ^5\.*$ ]]; then
-        for i in $RPI_HATS; do
-            if [ "$i" == "$overlay" ]; then
-                do_overlay $overlay 0
-            else
-                echo Uninstall $i ...
-                do_overlay $i 1
-            fi
-        done
-    fi
-    #make sure the driver loads correctly
+    # Make sure the driver loads correctly
     dtoverlay -d $OVERLAYS $overlay || true
 
-    #install soundstate
+    # Install soundstate
     echo "create $overlay asound status file"
     ln -s $asound_state /var/lib/alsa/asound.state
 
-    #install pulseaudio files
-    echo "create $overlay pulse default file"
-    ln -s $pulse_default /etc/pulse/default.pa
+    # Install pulseaudio files
     echo "create $overlay pulse system file"
     ln -s $pulse_default /etc/pulse/system.pa
     echo "create $overlay pulse daemon file"
@@ -138,5 +92,3 @@ if [ "$overlay" ]; then
 fi
 
 alsactl restore
-
-touch /var/lock/seeed-voicecard

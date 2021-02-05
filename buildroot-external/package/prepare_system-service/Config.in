@@ -1,6 +1,0 @@
-config BR2_PACKAGE_PREPARE_SYSTEM_SERVICE
-	bool "prepare_system-service"
-	help
-	  A systemd service that prepares the system.
-	  Used to change/move files before everything
-	  gets loaded.

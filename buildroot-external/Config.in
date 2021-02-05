@@ -1,5 +1,3 @@
-source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/prepare_system-service/Config.in"
-source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/ovos-splash/Config.in"
 menu "Additional drivers, libraries and/or applications"
 	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/alsa-plugins/Config.in"
 	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/baresip/Config.in"
@@ -82,6 +80,7 @@ endmenu
 	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/librem/Config.in"
 	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/lottie-qml/Config.in"
 	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/ncpamixer/Config.in"
+	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/ovos-splash/Config.in"
 	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/respeaker/Config.in"
 	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/snapcast/Config.in"
 	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/spotifyd/Config.in"
