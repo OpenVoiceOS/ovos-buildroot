@@ -31,4 +31,4 @@ User=mycroft
 StandardInput=tty-fail
 
 [Install]
-WantedBy=mycroft-gui.service
+WantedBy=multiuser.target
