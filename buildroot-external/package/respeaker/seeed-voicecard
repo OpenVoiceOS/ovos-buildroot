@@ -44,6 +44,7 @@ pulse_daemon=/etc/pulse/pulseaudio-daemon.conf
 
 # Remove old configurations
 rm /var/lib/alsa/asound.state
+rm /etc/voicecard/asound.state
 rm /etc/pulse/system.pa
 rm /etc/pulse/daemon.conf
 
@@ -82,7 +83,7 @@ if [ "$overlay" ]; then
 
     # Install soundstate
     echo "create $overlay asound status file"
-    ln -s $asound_state /var/lib/alsa/asound.state
+    ln -s $asound_state /etc/voicecard/asound.state
 
     # Install pulseaudio files
     echo "create $overlay pulse system file"
@@ -91,4 +92,4 @@ if [ "$overlay" ]; then
     ln -s $pulse_daemon /etc/pulse/daemon.conf
 fi
 
-alsactl restore
+alsactl -E HOME=/run/alsa -f /etc/voicecard/asound.state restore
