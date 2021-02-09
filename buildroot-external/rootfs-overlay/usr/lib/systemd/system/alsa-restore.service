@@ -7,7 +7,7 @@
 Description=Save/Restore Sound Card State
 ConditionPathExists=!/etc/alsa/state-daemon.conf
 ConditionPathExistsGlob=/dev/snd/control*
-ConditionPathExists=/var/lib/alsa/asound.state
+ConditionPathExists=/etc/voicecard/asound.state
 
 [Service]
 Type=oneshot
