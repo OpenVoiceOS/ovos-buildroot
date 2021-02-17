@@ -1,0 +1,52 @@
+From 974685cdd66de4ad7b84d58c8759544db8fc9df7 Mon Sep 17 00:00:00 2001
+From: j1nx <p.steenbergen@j1nx.nl>
+Date: Wed, 17 Feb 2021 11:47:20 +0100
+Subject: [PATCH 1/1] Python optimizations
+
+---
+ package/python3/python3.mk | 8 ++++++++
+ 1 file changed, 8 insertions(+)
+
+diff --git a/package/python3/python3.mk b/package/python3/python3.mk
+index af1e5e50d9..7327bb91ba 100644
+--- a/package/python3/python3.mk
++++ b/package/python3/python3.mk
+@@ -26,6 +26,8 @@ HOST_PYTHON3_CONF_OPTS += \
+ 	--enable-unicodedata \
+ 	--disable-test-modules \
+ 	--disable-idle3 \
++	--with-lto \
++	--enable-optimizations \
+ 	--disable-ossaudiodev
+ 
+ # Make sure that LD_LIBRARY_PATH overrides -rpath.
+@@ -37,6 +39,8 @@ HOST_PYTHON3_CONF_ENV += \
+ 	LDFLAGS="$(HOST_LDFLAGS) -Wl,--enable-new-dtags" \
+ 	ac_cv_prog_HAS_HG=/bin/false
+ 
++HOST_PYTHON3_CONF_ENV += CFLAGS="$(HOST_CFLAGS) -fno-semantic-interposition"
++
+ PYTHON3_DEPENDENCIES = host-python3 libffi
+ 
+ HOST_PYTHON3_DEPENDENCIES = host-expat host-zlib host-libffi
+@@ -150,6 +154,8 @@ ifeq ($(BR2_PACKAGE_GETTEXT_PROVIDES_LIBINTL),y)
+ PYTHON3_DEPENDENCIES += gettext
+ endif
+ 
++PYTHON3_CONF_ENV += CFLAGS="$(TARGET_CFLAGS) -fno-semantic-interposition"
++
+ PYTHON3_CONF_OPTS += \
+ 	--without-ensurepip \
+ 	--without-cxx-main \
+@@ -160,6 +166,8 @@ PYTHON3_CONF_OPTS += \
+ 	--disable-tk \
+ 	--disable-nis \
+ 	--disable-idle3 \
++	--enable-optimizations \
++	--with-lto \
+ 	--disable-pyc-build
+ 
+ #
+-- 
+2.20.1
+
