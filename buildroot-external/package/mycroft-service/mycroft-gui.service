@@ -8,10 +8,13 @@ After=mycroft-messagebus.service
 User=mycroft
 WorkingDirectory=/home/mycroft
 Environment=QT_QPA_PLATFORM=eglfs
+Environment=QT_QPA_PLATFORMTHEME=kde
 Environment=QT_PLUGIN_PATH=/usr/lib/qt/plugins:/usr/lib/plugins:/usr/lib/plugins/kf5
+Environment=QT_QUICK_CONTROLS_CONF=/home/mycroft/.config/qtquickcontrols2material.conf
 Environment=QT_LOGGING_RULES='*=false'
 Environment=XDG_RUNTIME_DIR=/tmp/mycroft
 Environment=XDG_DATA_DIRS=/usr/share:/usr/local/share:$XDG_DATA_DIRS
+Environment=XDG_CURRENT_DESKTOP=kde
 Environment=LD_LIBRARY_PATH=/usr/lib
 Environment=LIBEXEC_PATH=/libexec:/usr/libexec:/usr/lib/libexec
 Environment=QML2_IMPORT_PATH=/usr/lib/qml
