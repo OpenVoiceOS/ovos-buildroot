@@ -1,7 +1,7 @@
 From ae33770b5b842b9ac51fa7eefcb9b3808590f2e8 Mon Sep 17 00:00:00 2001
 From: jarbasal <jarbasai@mailfence.com>
 Date: Thu, 18 Feb 2021 18:28:31 +0000
-Subject: [PATCH 1/2] enclosure cleanup
+Subject: [PATCH 1/4] enclosure cleanup
 
 ---
  mycroft/client/enclosure/base.py             |  39 ++++++
@@ -229,7 +229,7 @@ index 3c47a545943..23c4fde794c 100644
 From a5ab14ae5acc5c88fef2dbb23a6729d1eff5ca9e Mon Sep 17 00:00:00 2001
 From: jarbasal <jarbasai@mailfence.com>
 Date: Thu, 18 Feb 2021 19:24:59 +0000
-Subject: [PATCH 2/2] only report ready after pairing
+Subject: [PATCH 2/4] only report ready after pairing
 
 ---
  mycroft/client/enclosure/base.py | 22 +++++++++++++++-------
@@ -291,3 +291,85 @@ index 7d55040d13b..aacefe46449 100644
  
      def check_services_ready(self, services):
          """Report if all specified services are ready.
+
+From 4d67450e0e1b9d86a1d452f7e683500335224d3b Mon Sep 17 00:00:00 2001
+From: jarbasal <jarbasai@mailfence.com>
+Date: Sun, 21 Feb 2021 15:01:30 +0000
+Subject: [PATCH 3/4] pairing non sense
+
+---
+ mycroft/skills/__main__.py | 12 ++++--------
+ mycroft/stt/__init__.py    |  2 +-
+ 2 files changed, 5 insertions(+), 9 deletions(-)
+
+diff --git a/mycroft/skills/__main__.py b/mycroft/skills/__main__.py
+index 0d0cc378edf..bca66ccdfc1 100644
+--- a/mycroft/skills/__main__.py
++++ b/mycroft/skills/__main__.py
+@@ -39,10 +39,10 @@
+ from mycroft.util.lang import set_active_lang
+ from mycroft.util.log import LOG
+ from mycroft.util.process_utils import ProcessStatus, StatusCallbackMap
+-from .core import FallbackSkill
+-from .event_scheduler import EventScheduler
+-from .intent_service import IntentService
+-from .skill_manager import SkillManager
++from mycroft.skills.core import FallbackSkill
++from mycroft.skills.event_scheduler import EventScheduler
++from mycroft.skills.intent_service import IntentService
++from mycroft.skills.skill_manager import SkillManager
+ 
+ RASPBERRY_PI_PLATFORMS = ('mycroft_mark_1', 'picroft', 'mycroft_mark_2pi')
+ 
+@@ -127,10 +127,6 @@ def _ensure_device_is_paired(self):
+         Pairing cannot be performed if there is no connection to the back end.
+         So skip pairing if the backend is down.
+         """
+-        if not self.is_paired and not self.backend_down:
+-            LOG.info('Device not paired, invoking the pairing skill')
+-            payload = dict(utterances=["pair my device"], lang="en-us")
+-            self.bus.emit(Message("recognizer_loop:utterance", payload))
+ 
+     def _update_device_attributes_on_backend(self):
+         """Communicate version information to the backend.
+diff --git a/mycroft/stt/__init__.py b/mycroft/stt/__init__.py
+index 5028f20ea1d..a0d49a6e510 100644
+--- a/mycroft/stt/__init__.py
++++ b/mycroft/stt/__init__.py
+@@ -285,7 +285,7 @@ def wrapper(*args, **kwargs):
+             if e.response.status_code == 401:
+                 LOG.warning('Access Denied at mycroft.ai')
+                 # phrase to start the pairing process
+-                return 'pair my device'
++                return None
+             else:
+                 raise
+     return wrapper
+
+From 87113e92f3909a13c1007d6f935398aa98d96be3 Mon Sep 17 00:00:00 2001
+From: jarbasal <jarbasai@mailfence.com>
+Date: Sun, 21 Feb 2021 20:45:50 +0000
+Subject: [PATCH 4/4] pairing trigger
+
+---
+ mycroft/skills/__main__.py | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/mycroft/skills/__main__.py b/mycroft/skills/__main__.py
+index bca66ccdfc1..609fb0ee932 100644
+--- a/mycroft/skills/__main__.py
++++ b/mycroft/skills/__main__.py
+@@ -123,10 +123,10 @@ def _display_skill_loading_notification(self):
+ 
+     def _ensure_device_is_paired(self):
+         """Determine if device is paired, if not automatically start pairing.
+-
+-        Pairing cannot be performed if there is no connection to the back end.
+-        So skip pairing if the backend is down.
+         """
++        if not self.is_paired:
++            LOG.info('Device not paired, invoking the pairing skill')
++            self.bus.emit(Message("mycroft.not.paired"))
+ 
+     def _update_device_attributes_on_backend(self):
+         """Communicate version information to the backend.
