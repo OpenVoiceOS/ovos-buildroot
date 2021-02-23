@@ -1,0 +1,6 @@
+config BR2_PACKAGE_QT5CT
+	bool "qt5ct"
+	help
+	  Qt5 Configuration Tool
+
+	  https://sourceforge.net/projects/qt5ct/
