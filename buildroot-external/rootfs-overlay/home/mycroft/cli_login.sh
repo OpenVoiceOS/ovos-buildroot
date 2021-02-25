@@ -14,7 +14,6 @@ echo
 echo "Mycroft Tool COMMANDs:"
 echo "  mycroft-cli-client        Command line client, useful for debugging"
 echo "  mycroft-config            Manage your local Mycroft configuration files"
-echo "  mycroft-mic-test          Record and playback to directly test microphone"
 echo "  mycroft-listen            Activate the microphone to listen for a command"
 echo "  mycroft-speak  <phrase>   Have Mycroft speak a phrase to the user"
 echo "  mycroft-say-to <phrase>   Send an utterance to Mycroft as if spoken by a user"
