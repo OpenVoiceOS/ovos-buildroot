@@ -80,16 +80,16 @@ if [ "$overlay" ]; then
 
     # Make sure the driver loads correctly
     dtoverlay -d $OVERLAYS $overlay || true
-
-    # Install soundstate
-    echo "create $overlay asound status file"
-    ln -s $asound_state /etc/voicecard/asound.state
-
-    # Install pulseaudio files
-    echo "create $overlay pulse system file"
-    ln -s $pulse_default /etc/pulse/system.pa
-    echo "create $overlay pulse daemon file"
-    ln -s $pulse_daemon /etc/pulse/daemon.conf
 fi
+
+# Install soundstate
+echo "create $overlay asound status file"
+ln -s $asound_state /etc/voicecard/asound.state
+
+# Install pulseaudio files
+echo "create $overlay pulse system file"
+ln -s $pulse_default /etc/pulse/system.pa
+echo "create $overlay pulse daemon file"
+ln -s $pulse_daemon /etc/pulse/daemon.conf
 
 alsactl -E HOME=/run/alsa -f /etc/voicecard/asound.state restore
