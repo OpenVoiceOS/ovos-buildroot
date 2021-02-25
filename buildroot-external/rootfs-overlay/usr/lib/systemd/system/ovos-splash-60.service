@@ -1,7 +1,6 @@
 [Unit]
 Description=Update OVOS splash boot screen to 60%
-Wants=NetworkManager-wait-online.service
-After=NetworkManager-wait-online.service
+Before=mycroft.service
 DefaultDependencies=no
 
 [Service]
