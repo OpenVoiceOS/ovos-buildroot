@@ -13,7 +13,7 @@ pipeline {
         stage('Patch Assets') {
             agent any
             steps {
-                sh(./scripts/br-patches.sh)
+                sh("./scripts/br-patches.sh")
             }
         }
 	stage('Build Assets') {
