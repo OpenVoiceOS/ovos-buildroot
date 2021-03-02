@@ -35,7 +35,7 @@ while [ "$1" != "" ]; do
 done
 
 # Valide Type
-if [ "$TYPE" != "swap" ]; then
+if [ "$TYPE" != "swap" ] && [ "$TYPE" != "fs" ]; then
     echo "[Error] Type unknown!"
     exit 1
 fi
@@ -43,8 +43,8 @@ fi
 # Lookup device
 if [ "$TYPE" = "swap" ]; then
     DEVICE="/dev/zram0"
-#elif [ "$MOUNT" = "var" ]; then
-#    DEVICE="/dev/zram1"
+elif [ "$MOUNT" = "ramdisk" ]; then
+    DEVICE="/dev/zram1"
 #elif [ "$MOUNT" = "tmp" ]; then
 #    DEVICE="/dev/zram2"
 else
@@ -63,4 +63,9 @@ zramctl "$DEVICE" -s "$SIZE" -a lz4
 # Swap
 if [ "$TYPE" = "swap" ]; then
     mkswap -L "ovos-zramswap" "$DEVICE"
+fi
+
+# FileSystem
+if [ "$TYPE" = "fs" ]; then
+    mkfs.ext4 -L "ovos-$MOUNT" -O ^has_journal "$DEVICE"
 fi
