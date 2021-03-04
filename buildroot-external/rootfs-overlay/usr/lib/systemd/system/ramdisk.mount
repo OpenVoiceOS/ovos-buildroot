@@ -10,7 +10,7 @@ Conflicts=umount.target
 What=/dev/zram1
 Where=/ramdisk
 Type=ext4
-Options=nobarrier,strictatime,nosuid,nodev
+Options=rw,nobarrier,strictatime,nosuid,nodev
 
 [Install]
 WantedBy=local-fs.target
