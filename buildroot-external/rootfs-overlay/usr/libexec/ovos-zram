@@ -45,8 +45,10 @@ if [ "$TYPE" = "swap" ]; then
     DEVICE="/dev/zram0"
 elif [ "$MOUNT" = "ramdisk" ]; then
     DEVICE="/dev/zram1"
+elif [ "$MOUNT" = "var" ]; then
+    DEVICE="/dev/zram2"
 #elif [ "$MOUNT" = "tmp" ]; then
-#    DEVICE="/dev/zram2"
+#    DEVICE="/dev/zram3"
 else
     echo "[Error] No device for lookup!"
     exit 1
@@ -68,4 +70,14 @@ fi
 # FileSystem
 if [ "$TYPE" = "fs" ]; then
     mkfs.ext4 -L "ovos-$MOUNT" -O ^has_journal "$DEVICE"
+fi
+
+# Copy persistent file structures into zram device
+if [ "$MOUNT" = "var" ]; then
+    # Check if this is a first run
+    if [ ! -d /mnt/data/var ]; then
+        mkdir -p /mnt/data/var
+        cp -af /var/* /mnt/data/var/
+    fi
+    cp -af /mnt/data/var/* "$DEVICE"
 fi

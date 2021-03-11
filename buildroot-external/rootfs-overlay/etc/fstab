@@ -1,11 +1,3 @@
 # <file system>	<mount pt>	<type>	<options>	<dump>	<pass>
 PARTUUID=9262aee5-2d23-4e09-baac-280591e2e834	/boot	vfat	defaults,noatime	0	0
 PARTUUID=c0932a41-44cf-463b-8152-d43188553ed4	/	ext4	defaults,noatime	0	1
-proc		/proc		proc	defaults	0	0
-devpts		/dev/pts	devpts	defaults,gid=5,mode=620,ptmxmode=0666	0	0
-tmpfs		/dev/shm	tmpfs	mode=0777	0	0
-tmpfs		/tmp		tmpfs	mode=1777	0	0
-tmpfs		/run		tmpfs	mode=0755,nosuid,nodev	0	0
-sysfs		/sys		sysfs	defaults	0	0
-#tmpfs		/var/log	tmpfs	defaults	0	0
-tmpfs		/var/tmp	tmpfs	defaults	0	0

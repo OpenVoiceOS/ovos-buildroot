@@ -1,0 +1,15 @@
+[Unit]
+Description=OVOS ZRAM var
+DefaultDependencies=no
+Before=var.mount
+RefuseManualStart=true
+RefuseManualStop=true
+
+[Service]
+Type=oneshot
+ExecStart=/usr/libexec/ovos-zram -t fs -m var -s 32M
+RemainAfterExit=true
+StandardOutput=null
+
+[Install]
+WantedBy=ovos-zram.target
