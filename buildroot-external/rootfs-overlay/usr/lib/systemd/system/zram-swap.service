@@ -1,0 +1,15 @@
+[Unit]
+Description=OVOS ZRAM swap
+DefaultDependencies=no
+Before=dev-zram0.swap
+RefuseManualStart=true
+RefuseManualStop=true
+
+[Service]
+Type=oneshot
+ExecStart=/usr/libexec/ovos-zram -t swap
+RemainAfterExit=true
+StandardOutput=null
+
+[Install]
+WantedBy=ovos-zram.target

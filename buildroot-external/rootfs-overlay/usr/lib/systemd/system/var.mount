@@ -1,0 +1,16 @@
+[Unit]
+Description=OVOS ZRAM var
+DefaultDependencies=no
+Requires=zram-var.service
+After=zram-var.service
+Before=umount.target
+Conflicts=umount.target
+
+[Mount]
+What=/dev/zram2
+Where=/var
+Type=ext4
+Options=nobarrier
+
+[Install]
+WantedBy=local-fs.target
