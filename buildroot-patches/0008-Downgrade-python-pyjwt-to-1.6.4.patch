@@ -1,40 +1,40 @@
-From 3bee492eb3f991b66401e4d47730e02dd59bca99 Mon Sep 17 00:00:00 2001
-From: Peter Steenbergen <info@j1nx.nl>
-Date: Mon, 2 Sep 2019 20:37:58 +0200
+From 8f9cad2b43052880a35c4b33bcf20fbf43adf5e6 Mon Sep 17 00:00:00 2001
+From: j1nx <p.steenbergen@j1nx.nl>
+Date: Thu, 18 Mar 2021 15:14:11 +0100
 Subject: [PATCH 1/1] Downgrade python-pyjwt to 1.6.4
 
 ---
- package/python-pyjwt/python-pyjwt.hash | 1 +
+ package/python-pyjwt/python-pyjwt.hash | 2 +-
  package/python-pyjwt/python-pyjwt.mk   | 4 ++--
- 2 files changed, 3 insertions(+), 2 deletions(-)
+ 2 files changed, 3 insertions(+), 3 deletions(-)
 
 diff --git a/package/python-pyjwt/python-pyjwt.hash b/package/python-pyjwt/python-pyjwt.hash
-index 62ec3559af..0842d2d899 100644
+index 10875510f0..249ffa285c 100644
 --- a/package/python-pyjwt/python-pyjwt.hash
 +++ b/package/python-pyjwt/python-pyjwt.hash
-@@ -1,5 +1,6 @@
+@@ -1,5 +1,5 @@
  # md5, sha256 from https://pypi.org/pypi/PyJWT/json
- md5	a4712f980c008696e13e09504120b2a0  PyJWT-1.7.1.tar.gz
- sha256	8d59a976fb773f3e6a39c85636357c4f0e242707394cadadd9814f5cbaa20e96  PyJWT-1.7.1.tar.gz
-+sha256	4ee413b357d53fd3fb44704577afac88e72e878716116270d722723d65b42176  PyJWT-1.6.4.tar.gz
+ md5  7a1b1c8bfeb67c31ee4fdadefe5ff4b8  PyJWT-2.0.0.tar.gz
+-sha256  7a2b271c6dac2fda9e0c33d176c4253faba2c6c6b3a99c7f28a32c3c97522779  PyJWT-2.0.0.tar.gz
++sha256  4ee413b357d53fd3fb44704577afac88e72e878716116270d722723d65b42176  PyJWT-1.6.4.tar.gz
  # Locally computed sha256 checksums
- sha256	ec82af815b5f9da8685afb300cc5beb7949e1c22b79b6c1c054796cefdf6cac6  LICENSE
+ sha256  ec82af815b5f9da8685afb300cc5beb7949e1c22b79b6c1c054796cefdf6cac6  LICENSE
 diff --git a/package/python-pyjwt/python-pyjwt.mk b/package/python-pyjwt/python-pyjwt.mk
-index dfc66e5651..18b7976b19 100644
+index 9215911389..18b7976b19 100644
 --- a/package/python-pyjwt/python-pyjwt.mk
 +++ b/package/python-pyjwt/python-pyjwt.mk
 @@ -4,9 +4,9 @@
  #
  ################################################################################
  
--PYTHON_PYJWT_VERSION = 1.7.1
+-PYTHON_PYJWT_VERSION = 2.0.0
 +PYTHON_PYJWT_VERSION = 1.6.4
  PYTHON_PYJWT_SOURCE = PyJWT-$(PYTHON_PYJWT_VERSION).tar.gz
--PYTHON_PYJWT_SITE = https://files.pythonhosted.org/packages/2f/38/ff37a24c0243c5f45f5798bd120c0f873eeed073994133c084e1cf13b95c
+-PYTHON_PYJWT_SITE = https://files.pythonhosted.org/packages/14/6d/096dc269d105ba374d6bfd3ecb22b516795ca0572499820dadc8178d9ae1
 +PYTHON_PYJWT_SITE = https://files.pythonhosted.org/packages/00/5e/b358c9bb24421e6155799d995b4aa3aa3307ffc7ecae4ad9d29fd7e07a73
  PYTHON_PYJWT_SETUP_TYPE = setuptools
  PYTHON_PYJWT_LICENSE = MIT
  PYTHON_PYJWT_LICENSE_FILES = LICENSE
 -- 
-2.11.0
+2.20.1
 

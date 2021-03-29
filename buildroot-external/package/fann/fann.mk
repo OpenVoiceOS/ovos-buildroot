@@ -4,7 +4,7 @@
 #
 ################################################################################
 
-FANN_VERSION = 7ec1fc7e5bd734f1d3c89b095e630e83c86b9be1
+FANN_VERSION = a3cd24e528d6a865915a4fed6e8fac164ff8bfdc
 FANN_SITE = git://github.com/libfann/fann.git
 FANN_LICENSE = GNU Lesser General Public License v2.1
 FANN_AUTORECONF = YES
