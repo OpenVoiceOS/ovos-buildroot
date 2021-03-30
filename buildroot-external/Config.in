@@ -83,6 +83,7 @@ endmenu
 	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/ovos-splash/Config.in"
 	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/qt5ct/Config.in"
 	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/respeaker/Config.in"
+	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/rpi-eeprom/Config.in"
 	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/snapcast/Config.in"
 	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/spotifyd/Config.in"
 	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/userland-tools/Config.in"
