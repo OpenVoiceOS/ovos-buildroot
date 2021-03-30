@@ -1,0 +1,35 @@
+From 4a26b5d65bcfccaff6d32f751e668d663c883f1e Mon Sep 17 00:00:00 2001
+From: j1nx <p.steenbergen@j1nx.nl>
+Date: Fri, 26 Mar 2021 09:59:24 +0100
+Subject: [PATCH 1/1] Fix qt5webengine host dependencies
+
+---
+ package/qt5/qt5webengine/qt5webengine.mk | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
+
+diff --git a/package/qt5/qt5webengine/qt5webengine.mk b/package/qt5/qt5webengine/qt5webengine.mk
+index 7e557725d3..6ac99823e4 100644
+--- a/package/qt5/qt5webengine/qt5webengine.mk
++++ b/package/qt5/qt5webengine/qt5webengine.mk
+@@ -29,6 +29,18 @@ endif
+ 
+ QT5WEBENGINE_DEPENDENCIES += host-libpng host-libnss libnss
+ 
++ifeq ($(BR2_PACKAGE_QT5BASE_FONTCONFIG),y)
++QT5WEBENGINE_DEPENDENCIES += host-freetype
++endif
++
++ifeq ($(BR2_PACKAGE_QT5BASE_JPEG),y)
++QT5WEBENGINE_DEPENDENCIES += host-libjpeg
++endif
++
++ifeq ($(BR2_PACKAGE_QT5BASE_WIDGETS),y)
++QT5WEBENGINE_DEPENDENCIES += host-harfbuzz
++endif
++
+ QT5WEBENGINE_CONF_OPTS += WEBENGINE_CONFIG+=use_system_ffmpeg
+ 
+ ifeq ($(BR2_PACKAGE_QT5WEBENGINE_PROPRIETARY_CODECS),y)
+-- 
+2.20.1
+

@@ -4,7 +4,7 @@
 #
 ################################################################################
 
-SPOTIFYD_VERSION = v0.2.24
+SPOTIFYD_VERSION = v0.3.0
 SPOTIFYD_SITE = $(call github,Spotifyd,spotifyd,$(SPOTIFYD_VERSION))
 SPOTIFYD_LICENSE = GPL-3.0
 SPOTIFYD_LICENSE_FILES = LICENSE

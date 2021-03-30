@@ -1,40 +1,40 @@
-From b331a66c7cc9efadf2dcb4ae26cd592bbecb4278 Mon Sep 17 00:00:00 2001
-From: Peter Steenbergen <info@j1nx.nl>
-Date: Mon, 7 Jan 2019 14:57:24 +0100
+From 132d418ad686aadf646ba7a8c90774e460f05690 Mon Sep 17 00:00:00 2001
+From: j1nx <p.steenbergen@j1nx.nl>
+Date: Thu, 18 Mar 2021 10:01:14 +0100
 Subject: [PATCH 1/1] Downgrade python-serial to 3.0
 
 ---
- package/python-serial/python-serial.hash | 1 +
+ package/python-serial/python-serial.hash | 2 +-
  package/python-serial/python-serial.mk   | 4 ++--
- 2 files changed, 3 insertions(+), 2 deletions(-)
+ 2 files changed, 3 insertions(+), 3 deletions(-)
 
 diff --git a/package/python-serial/python-serial.hash b/package/python-serial/python-serial.hash
-index 96209a9965..0c68849324 100644
+index d885d3c0c8..dff215eff2 100644
 --- a/package/python-serial/python-serial.hash
 +++ b/package/python-serial/python-serial.hash
-@@ -1,5 +1,6 @@
+@@ -1,5 +1,5 @@
  # md5, sha256 from https://pypi.org/pypi/pyserial/json
- md5     ed6183b15519a0ae96675e9c3330c69b  pyserial-3.4.tar.gz
- sha256  6e2d401fdee0eab996cf734e67773a0143b932772ca8b42451440cfed942c627  pyserial-3.4.tar.gz
-+sha256	056c2d96c83c009d8d04aad43a90f91f10f6a97d42c0d9656c2655c63fb8ff07  pyserial-3.0.tar.gz
+ md5  1cf25a76da59b530dbfc2cf99392dc83  pyserial-3.5.tar.gz
+-sha256  3c77e014170dfffbd816e6ffc205e9842efb10be9f58ec16d3e8675b4925cddb  pyserial-3.5.tar.gz
++sha256  056c2d96c83c009d8d04aad43a90f91f10f6a97d42c0d9656c2655c63fb8ff07  pyserial-3.0.tar.gz
  # Locally computed sha256 checksums
- sha256	a89d951d157e2c199fbbe7ecf8d41bc3bc93de166db524aa6b9b610dbccc832d  LICENSE.txt
+ sha256  f91cb9813de6a5b142b8f7f2dede630b5134160aedaeaf55f4d6a7e2593ca3f3  LICENSE.txt
 diff --git a/package/python-serial/python-serial.mk b/package/python-serial/python-serial.mk
-index d583ac65ab..70cf6452f5 100644
+index 249ea9d5a3..70cf6452f5 100644
 --- a/package/python-serial/python-serial.mk
 +++ b/package/python-serial/python-serial.mk
 @@ -4,9 +4,9 @@
  #
  ################################################################################
  
--PYTHON_SERIAL_VERSION = 3.4
+-PYTHON_SERIAL_VERSION = 3.5
 +PYTHON_SERIAL_VERSION = 3.0
  PYTHON_SERIAL_SOURCE = pyserial-$(PYTHON_SERIAL_VERSION).tar.gz
--PYTHON_SERIAL_SITE = https://files.pythonhosted.org/packages/cc/74/11b04703ec416717b247d789103277269d567db575d2fd88f25d9767fe3d
+-PYTHON_SERIAL_SITE = https://files.pythonhosted.org/packages/1e/7d/ae3f0a63f41e4d2f6cb66a5b57197850f919f59e558159a4dd3a818f5082
 +PYTHON_SERIAL_SITE = https://files.pythonhosted.org/packages/69/89/24fc8c26e23710a0d8fdf9e8134b28ceeab421d3f3e0165ceca6bdb98193
  PYTHON_SERIAL_LICENSE = BSD-3-Clause
  PYTHON_SERIAL_LICENSE_FILES = LICENSE.txt
  PYTHON_SERIAL_SETUP_TYPE = setuptools
 -- 
-2.11.0
+2.20.1
 

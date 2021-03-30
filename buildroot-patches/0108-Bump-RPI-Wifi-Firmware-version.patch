@@ -14,8 +14,8 @@ index b8931d2c45..9afc5a96b0 100644
 +++ b/package/rpi-wifi-firmware/rpi-wifi-firmware.hash
 @@ -1,3 +1,3 @@
  # Locally calculated
--sha256  05db087504be2f6bc1d902cca605114c7f9d458be0adb3b8026369357a329f7a  rpi-wifi-firmware-d4f7087ecbc8eff9cb64a4650765697157821d64.tar.gz
-+sha256  033a21d19fbdc7617b8c5b58d4be5951e29be5be787a45875b615f4d4dcf3f5b   rpi-wifi-firmware-b66ab26cebff689d0d3257f56912b9bb03c20567.tar.gz
+-sha256  cf806f6bdba0f803b90bc210f524a6ac37bac7ad19306c61474bb2dc59875e87  rpi-wifi-firmware-9c0ffe9a7f0753b36ed88f7981905a989d940ea9.tar.gz
++sha256  a942cc52cabf17661675d0877f39b1159fca2c83d57299d2dde06ad6e39ab0ab  rpi-wifi-firmware-83938f78ca2d5a0ffe0c223bb96d72ccc7b71ca5.tar.gz
  sha256  b16056fc91b82a0e3e8de8f86c2dac98201aa9dc3cbd33e8d38f1b087fcec30d   LICENCE.broadcom_bcm43xx
 diff --git a/package/rpi-wifi-firmware/rpi-wifi-firmware.mk b/package/rpi-wifi-firmware/rpi-wifi-firmware.mk
 index 6be02509fe..3277a6e4a0 100644
@@ -25,9 +25,9 @@ index 6be02509fe..3277a6e4a0 100644
  #
  ################################################################################
  
--RPI_WIFI_FIRMWARE_VERSION = d4f7087ecbc8eff9cb64a4650765697157821d64
+-RPI_WIFI_FIRMWARE_VERSION = 9c0ffe9a7f0753b36ed88f7981905a989d940ea9
 -RPI_WIFI_FIRMWARE_SITE = $(call github,LibreELEC,brcmfmac_sdio-firmware-rpi,$(RPI_WIFI_FIRMWARE_VERSION))
-+RPI_WIFI_FIRMWARE_VERSION = b66ab26cebff689d0d3257f56912b9bb03c20567
++RPI_WIFI_FIRMWARE_VERSION = 83938f78ca2d5a0ffe0c223bb96d72ccc7b71ca5
 +RPI_WIFI_FIRMWARE_SITE = $(call github,RPi-Distro,firmware-nonfree,$(RPI_WIFI_FIRMWARE_VERSION))
  RPI_WIFI_FIRMWARE_LICENSE = PROPRIETARY
  RPI_WIFI_FIRMWARE_LICENSE_FILES = LICENCE.broadcom_bcm43xx
