@@ -1,0 +1,10 @@
+#!/bin/sh
+
+# Check for first boot flag file
+if [ -f "/etc/firstboot" ]; then
+   echo "[INFO] Expiring the mycroft user's password!"
+   passwd --expire mycroft
+
+   echo "[INFO] Removing firstboot flag!"
+   rm /etc/firstboot
+fi
