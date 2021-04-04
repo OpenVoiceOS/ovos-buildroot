@@ -1,0 +1,41 @@
+From 002b16ba1f217a0b57e2d89ef51bda0fd94ab4f4 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?=C3=85ke=20Forslund?= <ake.forslund@gmail.com>
+Date: Sat, 6 Mar 2021 11:11:14 +0100
+Subject: [PATCH] Replace multiprocessing with concurrent.futures
+
+This uses the ThreadPoolExecutor from concurrent.futures instead of
+multiprocessings threadpool since the threadpool in multiprocessing
+can't safely be used in a multithreaded context in Python 3.9+
+---
+ msm/mycroft_skills_manager.py | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/msm/mycroft_skills_manager.py b/msm/mycroft_skills_manager.py
+index 82500b4..a1ae41f 100644
+--- a/msm/mycroft_skills_manager.py
++++ b/msm/mycroft_skills_manager.py
+@@ -23,12 +23,12 @@
+ 
+ MSM can be used on the command line but is also used by Mycroft core daemons.
+ """
++from concurrent.futures import ThreadPoolExecutor
+ import time
+ import logging
+ import shutil
+ from functools import wraps
+ from glob import glob
+-from multiprocessing.pool import ThreadPool
+ from os import path
+ from typing import Dict, List
+ 
+@@ -487,8 +487,8 @@ def run_item(skill):
+                     func.__name__, skill.name
+                 ))
+ 
+-        with ThreadPool(max_threads) as tp:
+-            return tp.map(run_item, skills)
++        with ThreadPoolExecutor(max_threads) as executor:
++            return executor.map(run_item, skills)
+ 
+     @save_device_skill_state
+     def install_defaults(self):
