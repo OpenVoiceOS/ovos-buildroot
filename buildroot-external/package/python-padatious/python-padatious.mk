@@ -4,9 +4,9 @@
 #
 ################################################################################
 
-PYTHON_PADATIOUS_VERSION = 0.4.8
-PYTHON_PADATIOUS_SOURCE = padatious-$(PYTHON_PADATIOUS_VERSION).tar.gz
-PYTHON_PADATIOUS_SITE = https://files.pythonhosted.org/packages/d0/e7/70a6eb34b7e67fef5b2645df2ee1f807db2b5a345e4e6adfb2660a56425b
+PYTHON_PADATIOUS_VERSION =311b905683290cce6623251b4b53e43e6f83d5bb
+PYTHON_PADATIOUS_SITE = $(call github,MycroftAI,padatious,$(PYTHON_PADATIOUS_VERSION))
 PYTHON_PADATIOUS_SETUP_TYPE = setuptools
+PYTHON_PADATIOUS_LICENSE_FILES = LICENSE
 
 $(eval $(python-package))

@@ -1,3 +1,2 @@
-# md5, sha256 from https://pypi.org/pypi/padatious/json
-md5	7dd2f1830737dc142aa199f77dacf32e  padatious-0.4.8.tar.gz
-sha256	e471f251b94e8cadf6e4214f0f3b7b36678848aaa8c51cd5638ab23ecb716f75  padatious-0.4.8.tar.gz
+# sha256 locally calculated
+sha256	d9c944c25e069f05da5d3a188df8f011c9c19c3e7e042c0022cf83473ff6f1e7  python-padatious-311b905683290cce6623251b4b53e43e6f83d5bb.tar.gz
