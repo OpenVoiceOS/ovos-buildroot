@@ -1,0 +1,38 @@
+From 9761899ea4d897b2c878d9a7ac300a611a0e4609 Mon Sep 17 00:00:00 2001
+From: j1nx <p.steenbergen@j1nx.nl>
+Date: Mon, 5 Apr 2021 17:05:47 +0200
+Subject: [PATCH 1/1] Workaround of Python3.9+ multiprocessing issues
+
+---
+ mycroft/util/process_utils.py | 15 +++++++++++++++
+ 1 file changed, 15 insertions(+)
+
+diff --git a/mycroft/util/process_utils.py b/mycroft/util/process_utils.py
+index 81f5c90f59..d272b42729 100644
+--- a/mycroft/util/process_utils.py
++++ b/mycroft/util/process_utils.py
+@@ -10,6 +10,21 @@ from time import sleep
+ from .log import LOG
+ 
+ 
++def initialize_mp_context():
++    """Handle import behaviour changes in python 3.9+
++    Pre-import colliding multiprocessing parts.
++    This should be considered a workaround and not a solution of the issue.
++    """
++    LOG.info('Preloading multiprocessing internals...')
++    import multiprocessing.popen_spawn_posix  # noqa
++    import multiprocessing.queues   # noqa
++    import multiprocessing.resource_tracker  # noqa
++    import multiprocessing.synchronize  # noqa
++
++
++initialize_mp_context()
++
++
+ def reset_sigint_handler():
+     """Reset the sigint handler to the default.
+ 
+-- 
+2.20.1
+
