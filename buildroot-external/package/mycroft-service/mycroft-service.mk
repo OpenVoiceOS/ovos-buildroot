@@ -11,6 +11,18 @@ MYCROFT_SERVICE_LICENSE = Apache License 2.0
 MYCROFT_SERVICE_LICENSE_FILES = LICENSE
 
 define MYCROFT_SERVICE_INSTALL_TARGET_CMDS
+	mkdir -p $(TARGET_DIR)/home/mycroft/.local/share/systemd
+	$(INSTALL) -m 0755 $(@D)/mycroft-systemd_audio.py \
+		$(TARGET_DIR)/home/mycroft/.local/share/systemd/mycroft-systemd_audio.py
+	$(INSTALL) -m 0755 $(@D)/mycroft-systemd_enclosure.py \
+                $(TARGET_DIR)/home/mycroft/.local/share/systemd/mycroft-systemd_enclosure.py
+	$(INSTALL) -m 0755 $(@D)/mycroft-systemd_messagebus.py \
+                $(TARGET_DIR)/home/mycroft/.local/share/systemd/mycroft-systemd_messagebus.py
+	$(INSTALL) -m 0755 $(@D)/mycroft-systemd_skills.py \
+                $(TARGET_DIR)/home/mycroft/.local/share/systemd/mycroft-systemd_skills.py
+	$(INSTALL) -m 0755 $(@D)/mycroft-systemd_voice.py \
+                $(TARGET_DIR)/home/mycroft/.local/share/systemd/mycroft-systemd_voice.py
+
 	$(INSTALL) -D -m 644 $(@D)/mycroft.service \
 		$(TARGET_DIR)/usr/lib/systemd/system/mycroft.service
 	$(INSTALL) -D -m 644 $(@D)/mycroft-messagebus.service \

@@ -5,11 +5,19 @@ After=mycroft.service
 
 [Service]
 User=mycroft
+Type=notify
 WorkingDirectory=/home/mycroft 
-ExecStart=mycroft-messagebus
+Environment=PYTHONUNBUFFERED=1
+ExecStart=/home/mycroft/.local/share/systemd/mycroft-systemd_messagebus.py
 StandardOutput=file:/var/log/mycroft/bus.log
 StandardError=file:/var/log/mycroft/bus.error.log
+TimeoutStartSec=1m
+TimeoutStopSec=1m
 Restart=on-failure
+StartLimitInterval=5min
+StartLimitBurst=4
+#StartLimitAction=reboot-force
+#WatchdogSec=30s
 
 [Install]
 WantedBy=mycroft.service

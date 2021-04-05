@@ -2,14 +2,23 @@
 Description=Mycroft Audio
 PartOf=mycroft.service
 After=mycroft.service
+After=mycroft-messagebus.service
 
 [Service]
 User=mycroft
+Type=notify
 WorkingDirectory=/home/mycroft
-ExecStart=mycroft-audio
+Environment=PYTHONUNBUFFERED=1
+ExecStart=/home/mycroft/.local/share/systemd/mycroft-systemd_audio.py
 StandardOutput=file:/var/log/mycroft/audio.log
 StandardError=file:/var/log/mycroft/audio.error.log
+TimeoutStartSec=1m
+TimeoutStopSec=1m
 Restart=on-failure
+StartLimitInterval=5min
+StartLimitBurst=4
+#StartLimitAction=reboot-force
+#WatchdogSec=30s
 
 [Install]
 WantedBy=mycroft.service
