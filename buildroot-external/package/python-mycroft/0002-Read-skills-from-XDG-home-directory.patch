@@ -1,0 +1,314 @@
+From c95ca7898912749f1cbb4b6ffb0d0b9239eb9a46 Mon Sep 17 00:00:00 2001
+From: j1nx <p.steenbergen@j1nx.nl>
+Date: Mon, 5 Apr 2021 15:15:36 +0200
+Subject: [PATCH 1/1] Read skills from XDG home directory
+
+---
+ dev_setup.sh                                  | 23 +++++++++----------
+ mycroft/configuration/mycroft.conf            |  4 +---
+ mycroft/skills/msm_wrapper.py                 | 13 ++++-------
+ mycroft/skills/mycroft_skill/mycroft_skill.py |  2 +-
+ mycroft/skills/settings.py                    |  2 +-
+ mycroft/skills/skill_manager.py               |  9 ++++++--
+ mycroft/skills/skill_updater.py               |  4 +++-
+ pytest.ini                                    |  2 ++
+ requirements/requirements.txt                 |  2 +-
+ requirements/tests.txt                        |  1 +
+ test/unittests/base.py                        |  3 +++
+ test/unittests/skills/test_skill_manager.py   |  8 ++++---
+ 12 files changed, 41 insertions(+), 32 deletions(-)
+
+diff --git a/dev_setup.sh b/dev_setup.sh
+index 4290850bda..96bbbe9ff2 100755
+--- a/dev_setup.sh
++++ b/dev_setup.sh
+@@ -25,6 +25,12 @@ set -Ee
+ cd $(dirname $0)
+ TOP=$(pwd -L)
+ 
++if [ -n "${XDG_DATA_HOME+x}" ]; then
++	datadir="$XDG_DATA_HOME/mycroft"
++else
++	datadir="$HOME/.local/share/mycroft"
++fi
++
+ function clean_mycroft_files() {
+     echo '
+ This will completely remove any files installed by mycroft (including pairing
+@@ -34,6 +40,9 @@ Do you wish to continue? (y/n)'
+         read -N1 -s key
+         case $key in
+         [Yy])
++	    rm -r "$datadir"
++
++	    # Legacy locations
+             sudo rm -rf /var/log/mycroft
+             rm -f /var/tmp/mycroft_web_cache.json
+             rm -rf "${TMPDIR:-/tmp}/mycroft"
+@@ -258,20 +267,10 @@ fi" > ~/.profile_mycroft
+     # Create a link to the 'skills' folder.
+     sleep 0.5
+     echo
+-    echo 'The standard location for Mycroft skills is under /opt/mycroft/skills.'
+-    if [[ ! -d /opt/mycroft/skills ]] ; then
+-        echo 'This script will create that folder for you.  This requires sudo'
+-        echo 'permission and might ask you for a password...'
+-        setup_user=$USER
+-        setup_group=$(id -gn $USER)
+-        $SUDO mkdir -p /opt/mycroft/skills
+-        $SUDO chown -R ${setup_user}:${setup_group} /opt/mycroft
+-        echo 'Created!'
+-    fi
+     if [[ ! -d skills ]] ; then
+-        ln -s /opt/mycroft/skills skills
++        ln -s "$datadir"/skills skills
+         echo "For convenience, a soft link has been created called 'skills' which leads"
+-        echo 'to /opt/mycroft/skills.'
++        echo "to $datadir/skills."
+     fi
+ 
+     # Add PEP8 pre-commit hook
+diff --git a/mycroft/configuration/mycroft.conf b/mycroft/configuration/mycroft.conf
+index 02388be0d8..8040e94356 100644
+--- a/mycroft/configuration/mycroft.conf
++++ b/mycroft/configuration/mycroft.conf
+@@ -106,13 +106,11 @@
+       }
+     },
+     "upload_skill_manifest": true,
+-    // Directory to look for user skills
+-    "directory": "~/.mycroft/skills",
+     // Enable auto update by msm
+     "auto_update": true,
+     // blacklisted skills to not load
+     // NB: This is the basename() of the directory where the skill lives, so if
+-    // the skill you want to blacklist is in /opt/mycroft/skills/mycroft-alarm.mycroftai/
++    // the skill you want to blacklist is in /usr/share/mycroft/skills/mycroft-alarm.mycroftai/
+     // then you should write `["mycroft-alarm.mycroftai"]` below.
+     "blacklisted_skills": [],
+     // priority skills to be loaded first
+diff --git a/mycroft/skills/msm_wrapper.py b/mycroft/skills/msm_wrapper.py
+index 4f579f85ac..27753c678a 100644
+--- a/mycroft/skills/msm_wrapper.py
++++ b/mycroft/skills/msm_wrapper.py
+@@ -22,6 +22,7 @@ frequently.  To improve performance, the MSM instance is cached.
+ from collections import namedtuple
+ from functools import lru_cache
+ from os import path, makedirs
++from xdg import BaseDirectory
+ 
+ from msm import MycroftSkillsManager, SkillRepo
+ 
+@@ -33,9 +34,8 @@ MsmConfig = namedtuple(
+     [
+         'platform',
+         'repo_branch',
+-        'repo_cache',
+         'repo_url',
+-        'skills_dir',
++        'old_skills_dir',
+         'versioned'
+     ]
+ )
+@@ -70,9 +70,8 @@ def build_msm_config(device_config: dict) -> MsmConfig:
+     return MsmConfig(
+         platform=enclosure_config.get('platform', 'default'),
+         repo_branch=msm_repo_config['branch'],
+-        repo_cache=path.join(data_dir, msm_repo_config['cache']),
+         repo_url=msm_repo_config['url'],
+-        skills_dir=path.join(data_dir, msm_config['directory']),
++        old_skills_dir=path.join(data_dir, msm_config['directory']),
+         versioned=msm_config['versioned']
+     )
+ 
+@@ -94,17 +93,15 @@ def create_msm(msm_config: MsmConfig) -> MycroftSkillsManager:
+     msm_lock = _init_msm_lock()
+     LOG.info('Acquiring lock to instantiate MSM')
+     with msm_lock:
+-        if not path.exists(msm_config.skills_dir):
+-            makedirs(msm_config.skills_dir)
++        BaseDirectory.save_data_path('mycroft/skills')
+ 
+         msm_skill_repo = SkillRepo(
+-            msm_config.repo_cache,
+             msm_config.repo_url,
+             msm_config.repo_branch
+         )
+         msm_instance = MycroftSkillsManager(
+             platform=msm_config.platform,
+-            skills_dir=msm_config.skills_dir,
++            old_skills_dir=msm_config.old_skills_dir,
+             repo=msm_skill_repo,
+             versioned=msm_config.versioned
+         )
+diff --git a/mycroft/skills/mycroft_skill/mycroft_skill.py b/mycroft/skills/mycroft_skill/mycroft_skill.py
+index 99f16c99c4..76675ed32b 100644
+--- a/mycroft/skills/mycroft_skill/mycroft_skill.py
++++ b/mycroft/skills/mycroft_skill/mycroft_skill.py
+@@ -124,7 +124,7 @@ class MycroftSkill:
+ 
+         # Get directory of skill
+         #: Member variable containing the absolute path of the skill's root
+-        #: directory. E.g. /opt/mycroft/skills/my-skill.me/
++        #: directory. E.g. $XDG_DATA_HOME/mycroft/skills/my-skill.me/
+         self.root_dir = dirname(abspath(sys.modules[self.__module__].__file__))
+ 
+         self.gui = SkillGUI(self)
+diff --git a/mycroft/skills/settings.py b/mycroft/skills/settings.py
+index c48416afac..6e70783df0 100644
+--- a/mycroft/skills/settings.py
++++ b/mycroft/skills/settings.py
+@@ -99,7 +99,7 @@ def save_settings(skill_dir, skill_settings):
+     """Save skill settings to file."""
+     settings_path = Path(skill_dir).joinpath('settings.json')
+ 
+-    # Either the file already exists in /opt, or we are writing
++    # Either the file already exists or we are writing
+     # to XDG_CONFIG_DIR and always have the permission to make
+     # sure the file always exists
+     if not Path(settings_path).exists():
+diff --git a/mycroft/skills/skill_manager.py b/mycroft/skills/skill_manager.py
+index f6d84c74d2..8d2b415efb 100644
+--- a/mycroft/skills/skill_manager.py
++++ b/mycroft/skills/skill_manager.py
+@@ -18,6 +18,8 @@ from glob import glob
+ from threading import Thread, Event, Lock
+ from time import sleep, time, monotonic
+ from inspect import signature
++import shutil
++from xdg import BaseDirectory
+ 
+ from mycroft.api import is_paired
+ from mycroft.enclosure.api import EnclosureAPI
+@@ -263,7 +265,9 @@ class SkillManager(Thread):
+ 
+     def _remove_git_locks(self):
+         """If git gets killed from an abrupt shutdown it leaves lock files."""
+-        for i in glob(os.path.join(self.msm.skills_dir, '*/.git/index.lock')):
++        for i in glob(os.path.join(
++            BaseDirectory.save_data_path('mycroft/skills'),
++                '*/.git/index.lock')):
+             LOG.warning('Found and removed git lock file: ' + i)
+             os.remove(i)
+ 
+@@ -309,7 +313,8 @@ class SkillManager(Thread):
+         return skill_loader if load_status else None
+ 
+     def _get_skill_directories(self):
+-        skill_glob = glob(os.path.join(self.msm.skills_dir, '*/'))
++        skill_glob = glob(os.path.join(
++            BaseDirectory.save_data_path('mycroft/skills'), '*/'))
+ 
+         skill_directories = []
+         for skill_dir in skill_glob:
+diff --git a/mycroft/skills/skill_updater.py b/mycroft/skills/skill_updater.py
+index ace247e2db..3e7cc9e0b7 100644
+--- a/mycroft/skills/skill_updater.py
++++ b/mycroft/skills/skill_updater.py
+@@ -17,6 +17,7 @@ import os
+ import sys
+ from datetime import datetime
+ from time import time
++from xdg import BaseDirectory
+ 
+ from msm import MsmException
+ 
+@@ -53,7 +54,8 @@ class SkillUpdater:
+         self.config = Configuration.get()
+         update_interval = self.config['skills']['update_interval']
+         self.update_interval = int(update_interval) * ONE_HOUR
+-        self.dot_msm_path = os.path.join(self.msm.skills_dir, '.msm')
++        self.dot_msm_path = os.path.join(
++                BaseDirectory.save_data_path('mycroft/skills'), '.msm')
+         self.next_download = self._determine_next_download_time()
+         self._log_next_download_time()
+         self.installed_skills = set()
+diff --git a/pytest.ini b/pytest.ini
+index 6634fabcb0..92780db4d4 100644
+--- a/pytest.ini
++++ b/pytest.ini
+@@ -1,3 +1,5 @@
+ [pytest]
+ testpaths = test
+ norecursedirs = wake_word
++env =
++    XDG_DATA_HOME=/tmp/mycroft-test
+diff --git a/requirements/requirements.txt b/requirements/requirements.txt
+index dc5c5071cb..4e73baf9ba 100644
+--- a/requirements/requirements.txt
++++ b/requirements/requirements.txt
+@@ -16,7 +16,7 @@ fasteners==0.14.1
+ PyYAML==5.4
+ 
+ lingua-franca==0.2.2
+-msm==0.8.8
++msm==0.9.0
+ msk==0.3.16
+ mycroft-messagebus-client==0.9.1
+ adapt-parser==0.3.7
+diff --git a/requirements/tests.txt b/requirements/tests.txt
+index 9e038123e5..3d2e2b9a4c 100644
+--- a/requirements/tests.txt
++++ b/requirements/tests.txt
+@@ -2,6 +2,7 @@ coveralls==1.8.2
+ flake8==3.7.9
+ pytest==5.2.4
+ pytest-cov==2.8.1
++pytest-env==0.6.2
+ cov-core==1.15.0
+ sphinx==2.2.1
+ sphinx-rtd-theme==0.4.3
+diff --git a/test/unittests/base.py b/test/unittests/base.py
+index fed9394176..ee86778fa1 100644
+--- a/test/unittests/base.py
++++ b/test/unittests/base.py
+@@ -18,6 +18,8 @@ from shutil import rmtree
+ from unittest import TestCase
+ from unittest.mock import patch
+ 
++from xdg import BaseDirectory
++
+ from .mocks import mock_msm, mock_config, MessageBusMock
+ 
+ 
+@@ -54,3 +56,4 @@ class MycroftUnitTestBase(TestCase):
+ 
+     def tearDown(self):
+         rmtree(str(self.temp_dir))
++        rmtree(BaseDirectory.save_data_path('mycroft'))
+diff --git a/test/unittests/skills/test_skill_manager.py b/test/unittests/skills/test_skill_manager.py
+index dfd92718f4..cc6130362e 100644
+--- a/test/unittests/skills/test_skill_manager.py
++++ b/test/unittests/skills/test_skill_manager.py
+@@ -13,6 +13,8 @@
+ # limitations under the License.
+ #
+ from os import path
++from pathlib import Path
++from xdg import BaseDirectory
+ from unittest import TestCase
+ from unittest.mock import Mock, patch
+ 
+@@ -90,7 +92,8 @@ class TestSkillManager(MycroftUnitTestBase):
+         self.skill_updater_mock = skill_updater_patch.start()
+ 
+     def _mock_skill_loader_instance(self):
+-        self.skill_dir = self.temp_dir.joinpath('test_skill')
++        self.skill_dir = (Path(BaseDirectory.save_data_path('mycroft/skills'))
++                          .joinpath('test_skill'))
+         self.skill_loader_mock = Mock(spec=SkillLoader)
+         self.skill_loader_mock.instance = Mock()
+         self.skill_loader_mock.instance.default_shutdown = Mock()
+@@ -123,8 +126,7 @@ class TestSkillManager(MycroftUnitTestBase):
+         )
+ 
+     def test_remove_git_locks(self):
+-        git_dir = self.temp_dir.joinpath('foo/.git')
+-        git_dir.mkdir(parents=True)
++        git_dir = Path(BaseDirectory.save_data_path('mycroft/skills/foo/.git'))
+         git_lock_file_path = str(git_dir.joinpath('index.lock'))
+         with open(git_lock_file_path, 'w') as git_lock_file:
+             git_lock_file.write('foo')
+-- 
+2.20.1
+
