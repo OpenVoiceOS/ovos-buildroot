@@ -1,7 +1,7 @@
 [Unit]
 Description=Terminate Mycroft splash boot Screen
-After=mycroft-splash-start.service
 After=mycroft-messagebus.service
+After=mycroft-gui.service
 
 [Service]
 Type=oneshot
