@@ -1,0 +1,11 @@
+config BR2_PACKAGE_PYTHON_OVOS_SKILL_INSTALLER
+	bool "python-ovos-skill-installer"
+	help
+	  Skills can be installed from github branches or 
+	  releases, from .zip or .tar.gz urls
+
+	  This tool is meant to be used internally by 
+	  ovos_skills_manager, as an end user your probably 
+	  should be using that and not this repository directly.
+
+	  https://github.com/OpenVoiceOS/ovos_skill_installer

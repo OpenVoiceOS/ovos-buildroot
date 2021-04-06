@@ -1,0 +1,12 @@
+config BR2_PACKAGE_PYTHON_OVOS_SKILL_MANAGER
+	bool "python-ovos-skill-manager"
+	help
+	  Skill installer for OVOS. Install skills from any appstore!
+	  
+	  The mycroft-skills-manager alternative that is not vendor locked, 
+	  this means you must use it responsibly!
+
+	  Do not install random skills, different appstores have 
+	  different policies!
+
+	  https://github.com/OpenVoiceOS/ovos_skill_manager

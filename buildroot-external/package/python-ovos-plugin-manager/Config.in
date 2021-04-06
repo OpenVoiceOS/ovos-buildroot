@@ -1,0 +1,7 @@
+config BR2_PACKAGE_PYTHON_OVOS_PLUGIN_MANAGER
+	bool "python-ovos-plugin-manager"
+	help
+	  OPM can be used to search, install, load 
+	  and create plugins for the OpenVoiceOS ecosystem!
+
+	  https://github.com/OpenVoiceOS/OVOS-plugin-manager
