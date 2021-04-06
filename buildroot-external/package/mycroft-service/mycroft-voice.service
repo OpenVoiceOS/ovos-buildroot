@@ -2,14 +2,24 @@
 Description=Mycroft Voice
 PartOf=mycroft.service
 After=mycroft.service
+After=mycroft-messagebus.service
 
 [Service]
 User=mycroft
+Type=notify
 WorkingDirectory=/home/mycroft
-ExecStart=mycroft-speech-client
-StandardOutput=file:/var/log/mycroft/voice.log
+Environment=PYTHONUNBUFFERED=1
+ExecStart=/home/mycroft/.local/share/systemd/mycroft-systemd_voice.py
+StandardOutput=append:/var/log/mycroft/voice.log
 StandardError=file:/var/log/mycroft/voice.error.log
+TimeoutStartSec=1m
+TimeoutStopSec=1m
 Restart=on-failure
+Restart=on-failure
+StartLimitInterval=5min
+StartLimitBurst=4
+#StartLimitAction=reboot-force
+#WatchdogSec=30s
 
 [Install]
 WantedBy=mycroft.service

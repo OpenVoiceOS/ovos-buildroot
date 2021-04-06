@@ -11,7 +11,7 @@ Type=notify
 WorkingDirectory=/home/mycroft
 Environment=PYTHONUNBUFFERED=1
 ExecStart=/home/mycroft/.local/share/systemd/mycroft-systemd_skills.py
-StandardOutput=file:/var/log/mycroft/skills.log
+StandardOutput=append:/var/log/mycroft/skills.log
 StandardError=file:/var/log/mycroft/skills.error.log
 TimeoutStartSec=1m
 TimeoutStopSec=1m

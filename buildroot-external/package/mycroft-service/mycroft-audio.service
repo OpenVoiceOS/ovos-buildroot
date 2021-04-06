@@ -10,7 +10,7 @@ Type=notify
 WorkingDirectory=/home/mycroft
 Environment=PYTHONUNBUFFERED=1
 ExecStart=/home/mycroft/.local/share/systemd/mycroft-systemd_audio.py
-StandardOutput=file:/var/log/mycroft/audio.log
+StandardOutput=append:/var/log/mycroft/audio.log
 StandardError=file:/var/log/mycroft/audio.error.log
 TimeoutStartSec=1m
 TimeoutStopSec=1m
