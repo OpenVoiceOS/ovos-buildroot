@@ -1,6 +1,6 @@
-From d7917b67fa048a032e71cf1668c1cb1178d67520 Mon Sep 17 00:00:00 2001
+From 048dd3f7be74a2155d6742731efe46ee076f7b5d Mon Sep 17 00:00:00 2001
 From: j1nx <p.steenbergen@j1nx.nl>
-Date: Wed, 7 Apr 2021 11:47:39 +0200
+Date: Wed, 7 Apr 2021 17:01:51 +0200
 Subject: [PATCH 1/1] Switch Python3.9.4 to Python3.8.9
 
 ---
@@ -39,8 +39,8 @@ Subject: [PATCH 1/1] Switch Python3.9.4 to Python3.8.9
  ...up-CC-print-multiarch-output-for-mus.patch |  8 ++--
  ...-ng-doesn-t-set-errno-when-encryptio.patch | 40 -------------------
  package/python3/python3.hash                  |  5 +--
- package/python3/python3.mk                    | 10 +++--
- 36 files changed, 206 insertions(+), 254 deletions(-)
+ package/python3/python3.mk                    |  7 +++-
+ 36 files changed, 205 insertions(+), 252 deletions(-)
  delete mode 100644 package/python3/0034-lib-crypt-uClibc-ng-doesn-t-set-errno-when-encryptio.patch
 
 diff --git a/package/python3/0001-Make-the-build-of-pyc-files-conditional.patch b/package/python3/0001-Make-the-build-of-pyc-files-conditional.patch
@@ -1535,7 +1535,7 @@ index 2a0ba6ab4f..b7c3963fa6 100644
 -sha256  599826df92bfdcd2702eac691072498bb096c55af04ee984cf90f70ed77b5a70  LICENSE
 +sha256  5e391f3ec45da2954419cab0beaefd8be38895ea5ce33577c3ec14940c4b9572  Python-3.8.9.tar.xz
 diff --git a/package/python3/python3.mk b/package/python3/python3.mk
-index 345c6a8699..bea7701f9b 100644
+index 345c6a8699..0153a8e90f 100644
 --- a/package/python3/python3.mk
 +++ b/package/python3/python3.mk
 @@ -4,8 +4,8 @@
@@ -1559,23 +1559,6 @@ index 345c6a8699..bea7701f9b 100644
  # This host Python is installed in $(HOST_DIR), as it is needed when
  # cross-compiling third-party Python modules.
  
-@@ -41,7 +44,7 @@ HOST_PYTHON3_CONF_ENV += \
- 
- PYTHON3_DEPENDENCIES = host-python3 libffi
- 
--HOST_PYTHON3_DEPENDENCIES = host-autoconf-archive host-expat host-zlib host-libffi
-+HOST_PYTHON3_DEPENDENCIES = host-expat host-zlib host-libffi
- 
- ifeq ($(BR2_PACKAGE_HOST_PYTHON3_SSL),y)
- HOST_PYTHON3_DEPENDENCIES += host-openssl
-@@ -242,7 +245,6 @@ endef
- PYTHON3_POST_INSTALL_TARGET_HOOKS += PYTHON3_ENSURE_LIBPYTHON_STRIPPED
- 
- PYTHON3_AUTORECONF = YES
--PYTHON3_AUTORECONF_OPTS = --include=$(HOST_DIR)/share/autoconf-archive
- 
- define PYTHON3_INSTALL_SYMLINK
- 	ln -fs python3 $(TARGET_DIR)/usr/bin/python
 -- 
 2.20.1
 
