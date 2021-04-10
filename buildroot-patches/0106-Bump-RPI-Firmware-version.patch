@@ -15,7 +15,7 @@ index 8730ec959b..d10a8b1db9 100644
 @@ -1,3 +1,3 @@
  # Locally computed
 -sha256  ae4e317681995e0f7becd7900ae667cba394e3a0b7ca93a267f3303df7284697  rpi-firmware-d016a6eb01c8c7326a89cb42809fed2a21525de5.tar.gz
-+sha256  x  rpi-firmware-8717598c7eb443c39c28a4b3a66b4d369ae0a83f.tar.gz
++sha256  a942cc52cabf17661675d0877f39b1159fca2c83d57299d2dde06ad6e39ab0ab  rpi-firmware-8717598c7eb443c39c28a4b3a66b4d369ae0a83f.tar.gz
  sha256  c7283ff51f863d93a275c66e3b4cb08021a5dd4d8c1e7acc47d872fbe52d3d6b  boot/LICENCE.broadcom
 diff --git a/package/rpi-firmware/rpi-firmware.mk b/package/rpi-firmware/rpi-firmware.mk
 index 8b2b2c7154..6099e1f170 100644
