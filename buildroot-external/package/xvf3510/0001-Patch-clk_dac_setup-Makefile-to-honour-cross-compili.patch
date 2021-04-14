@@ -1,0 +1,31 @@
+From 9e8e51e22890b6b61672ef08976c91cd8ea73a86 Mon Sep 17 00:00:00 2001
+From: j1nx <p.steenbergen@j1nx.nl>
+Date: Wed, 14 Apr 2021 17:27:34 +0200
+Subject: [PATCH 1/1] Patch clk_dac_setup Makefile to honour cross compiling
+
+---
+ resources/clk_dac_setup/Makefile | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/resources/clk_dac_setup/Makefile b/resources/clk_dac_setup/Makefile
+index 24c7ec0..2f73c18 100644
+--- a/resources/clk_dac_setup/Makefile
++++ b/resources/clk_dac_setup/Makefile
+@@ -1,10 +1,12 @@
++CC = gcc
++
+ default: bclk mclk
+ 
+ bclk: setup_mclk_bclk.c
+-	gcc -g -o setup_bclk setup_mclk_bclk.c
++	$(CC) -g -o setup_bclk setup_mclk_bclk.c
+ 
+ mclk: setup_mclk_bclk.c
+-	gcc -g -DMCLK -o setup_mclk setup_mclk_bclk.c
++	$(CC) -g -DMCLK -o setup_mclk setup_mclk_bclk.c
+ 
+ clean:
+ 	rm -f setup_mclk
+-- 
+2.20.1
+

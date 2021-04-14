@@ -1,0 +1,10 @@
+config BR2_PACKAGE_XVF3510
+	bool "xvf3510"
+	help
+	  xCORE VocalFusion Raspberry Pi
+	  drivers and tools to support the
+	  sj201 daughterboard used in the 
+	  Mark2.
+
+	  https://github.com/xmos/vocalfusion-rpi-setup/
+
