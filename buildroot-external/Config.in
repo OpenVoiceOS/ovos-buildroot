@@ -170,7 +170,7 @@ menu "Additional external python modules"
 	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/python-xxhash/Config.in"
 endmenu
 menu "Mycroft A.I. Personal Assistant"
-	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/python-mycroft/Config.in"
+	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/python-mycroft-lib/Config.in"
 	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/mycroft-embedded-shell/Config.in"
 	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/mycroft-gui/Config.in"
 	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/mycroft-service/Config.in"
