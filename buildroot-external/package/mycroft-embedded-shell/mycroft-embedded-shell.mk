@@ -4,7 +4,7 @@
 #
 ################################################################################
 
-MYCROFT_EMBEDDED_SHELL_VERSION = 2e64a737f4804be20ab3e835afb4142546387abc
+MYCROFT_EMBEDDED_SHELL_VERSION = 02eca59face0aabf3194311245d8bd284e3764ae
 MYCROFT_EMBEDDED_SHELL_SITE = $(call github,OpenVoiceOS,mycroft-embedded-shell,$(MYCROFT_EMBEDDED_SHELL_VERSION))
 MYCROFT_EMBEDDED_SHELL_LICENSE = Apache License 2.0
 
