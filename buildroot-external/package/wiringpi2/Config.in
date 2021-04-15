@@ -1,0 +1,13 @@
+config BR2_PACKAGE_WIRINGPI2
+	bool "wiringpi2"
+	depends on !BR2_STATIC_LIBS
+	depends on BR2_USE_MMU # fork()
+	depends on BR2_TOOLCHAIN_HAS_THREADS
+	help
+	  wiringPi libraries (and gpio command)
+
+	  https://github.com/WiringPi/WiringPi
+
+comment "wiringpi2 needs a toolchain w/ threads, dynamic library"
+	depends on BR2_USE_MMU
+	depends on BR2_STATIC_LIBS || !BR2_TOOLCHAIN_HAS_THREADS
