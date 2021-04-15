@@ -1,0 +1,20 @@
+#! /usr/bin/env sh
+
+modprobe i2s_master_loader
+
+setup_bclk
+setup_mclk
+
+# Startup xvf3510
+XMOS_POWER=16
+XMOS_RESET=27
+gpio -g mode $XMOS_POWER out
+gpio -g mode $XMOS_RESET out
+sleep 0.1
+gpio -g write $XMOS_POWER 1
+gpio -g write $XMOS_RESET 1
+
+sleep 1
+xvf3510-flash --direct "/usr/lib/firmware/xvf3510/app_xvf3510_int_spi_boot_v4_1_0.bin"
+sleep 1
+i2cdetect -y 1

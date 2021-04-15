@@ -1,0 +1,25 @@
+#!/bin/bash
+
+function set_all_leds() {
+  B=$1
+
+  i2cset -y 1 0x04 10 $B $B $B 9 $B $B $B 8 $B $B $B i
+  sleep 0.1
+  i2cset -y 1 0x04 7 $B $B $B 6 $B $B $B 5 $B $B $B i
+  sleep 0.1
+  i2cset -y 1 0x04 4 $B $B $B 3 $B $B $B 2 $B $B $B i
+  sleep 0.1
+  i2cset -y 1 0x04 1 $B $B $B 0 $B $B $B i
+}
+
+set_all_leds 127
+sleep 0.7
+set_all_leds 0
+sleep 0.7
+set_all_leds 63
+sleep 0.7
+set_all_leds 0
+sleep 0.7
+set_all_leds 31
+sleep 0.7
+set_all_leds 0

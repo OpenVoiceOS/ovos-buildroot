@@ -1,0 +1,13 @@
+[Unit]
+Description=Setup audio environment for xvf3510
+After=systemd-modules-load.service
+Requires=systemd-modules-load.service
+
+[Service]
+Type=oneshot
+ExecStart=xvf3510-start
+ExecStop=xvf3510-stop
+RemainAfterExit=True
+
+[Install]
+WantedBy=multi-user.target

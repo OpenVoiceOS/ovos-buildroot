@@ -25,9 +25,23 @@ endef
 
 define XVF3510_INSTALL_TARGET_CMDS
 	$(INSTALL) -D -m 0755 $(@D)/resources/clk_dac_setup/setup_bclk \
-		$(TARGET_DIR)/usr/bin
+		$(TARGET_DIR)/usr/sbin
 	$(INSTALL) -D -m 0755 $(@D)/resources/clk_dac_setup/setup_mclk \
-		$(TARGET_DIR)/usr/bin
+		$(TARGET_DIR)/usr/sbin
+
+	$(INSTALL) -D -m 0644 $(BR2_EXTERNAL_OPENVOICEOS_PATH)/package/xvf3510/xvf3510.service \
+		$(TARGET_DIR)/usr/lib/systemd/system/xvf3510.service
+
+	$(INSTALL) -D -m 755 $(BR2_EXTERNAL_OPENVOICEOS_PATH)/package/xvf3510/xvf3510-start \
+                $(TARGET_DIR)/usr/sbin/xvf3510-start
+	$(INSTALL) -D -m 755 $(BR2_EXTERNAL_OPENVOICEOS_PATH)/package/xvf3510/xvf3510-stop \
+                $(TARGET_DIR)/usr/sbin/xvf3510-stop
+	$(INSTALL) -D -m 755 $(BR2_EXTERNAL_OPENVOICEOS_PATH)/package/xvf3510/xvf3510-flash \
+                $(TARGET_DIR)/usr/sbin/xvf3510-flash
+
+	mkdir -p $(TARGET_DIR)/usr/lib/firmware/xvf3510
+	$(INSTALL) -D -m 0644 $(BR2_EXTERNAL_OPENVOICEOS_PATH)/package/xvf3510/app_xvf3510_int_spi_boot_v4_1_0.bin \
+                $(TARGET_DIR)/usr/lib/firmware/xvf3510/app_xvf3510_int_spi_boot_v4_1_0.bin
 endef
 
 $(eval $(generic-package))
