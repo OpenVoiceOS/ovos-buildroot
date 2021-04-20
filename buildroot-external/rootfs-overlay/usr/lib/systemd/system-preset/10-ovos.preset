@@ -30,3 +30,4 @@ disable snapclient.service
 disable snapserver.service
 disable spotifyd.service
 disable nodered.service
+disable xvf3510.service
