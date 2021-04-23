@@ -4,7 +4,7 @@
 #
 ################################################################################
 
-MYCROFT_SKILL_OVOS_PAIRING_VERSION = 0b17da348c5468ae7b1e59bcb7323a1be004dd5f
+MYCROFT_SKILL_OVOS_PAIRING_VERSION = b2dcbe99db192f7325dc1f9d7e12c7a234c13a47
 MYCROFT_SKILL_OVOS_PAIRING_SITE = git://github.com/OpenVoiceOS/skill-ovos-pairing
 MYCROFT_SKILL_OVOS_PAIRING_SITE_METHOD = git
 MYCROFT_SKILL_OVOS_PAIRING_DIRLOCATION = home/mycroft/.local/share/mycroft/skills
