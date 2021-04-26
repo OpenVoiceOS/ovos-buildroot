@@ -1,0 +1,6 @@
+config BR2_PACKAGE_PYTHON_MOCK_MSM
+	bool "python-mock-msm"
+	help
+	  The sole purpose of this pkg is to mock msm imports 
+
+	  https://github.com/HelloChatterbox/mock-msm
