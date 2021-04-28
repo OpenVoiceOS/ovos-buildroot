@@ -52,17 +52,17 @@ As example to build the rpi3 version;<br>
 Now grab a cup of coffee, go for a walk, sleep and repeat as the build process takes up a long time pulling everything from source and cross compiling everything for the device. Especially the qtwebengine package is taking a LONG time.
 <br>
 (At the moment there is an outstanding issue which prevents the build to run completely to the end. The plasma-workspace package will error out, not finding the libGLESv4 properly linked within QT5GUI. When the build stopped bacause of this error, edit the following file;
-<br>
+<br><br>
 buildroot/output/host/aarch64-buildroot-linux-gnu/sysroot/usr/lib/cmake/Qt5Gui/Qt5GuiConfigExtras.cmake
-<br>
+<br><br>
 at the bottom of the file replace this line;
-<br>
+<br><br>
 _qt5gui_find_extra_libs(OPENGL "GLES" "" "")
-<br>And replace it bit this line;<br>
+<br><br>And replace it bit this line;<br><br>
 _qt5gui_find_extra_libs(OPENGL "${CMAKE_SYSROOT}/usr/lib/libGLESv2.so" "" "${CMAKE_SYSROOT}/usr/include/libdrm")
-<br>
+<br><br>
 Then you can continue the build process by re-running the "make rpi4_64-gui" command. (DO NOT, run "make clean" and/or "make rpi4_64-gui-config" again, or you will start from scratch again !!!)
-<br>
+<br><br>
 When everything goes fine the xz compressed image will be available within the release directory.
 
 ## Documentation.
