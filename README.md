@@ -25,6 +25,46 @@ A minimalistic Linux OS bringing the open source voice assistant Mycroft A.I. to
 At this moment development is in very early stages and focussed on the Raspberry Pi 3B & 4. As soon as an initial first workable version
 is created, other hardware might be added.
 
+### Getting the code.
+First, get the code on your system! The simplest method is via git.
+<br>
+- cd ~/
+- git clone --recurse-submodules https://github.com/OpenVoiceOS/OpenVoiceOS.git
+- cd OpenVoiceOS
+
+### Patching Buildroot.
+*(ONLY at the first clean checkout/clone)* If this is the very first time you are going to build an image, you need to execute the following command once;
+<br>
+- ./scripts/br-patches.sh
+<br>
+This will patch the Buildroot packages.
+
+## Building the image.
+Building the image(s) can be done by utilizing a proper Makefile;
+<br>
+To see the available commands, just run: 'make help'
+<br>
+As example to build the rpi3 version;<br>
+- make clean
+- make rpi4_64-gui-config
+- make rpi4_64-gui
+
+Now grab a cup of coffee, go for a walk, sleep and repeat as the build process takes up a long time pulling everything from source and cross compiling everything for the device. Especially the qtwebengine package is taking a LONG time.
+<br>
+(At the moment there is an outstanding issue which prevents the build to run completely to the end. The plasma-workspace package will error out, not finding the libGLESv4 properly linked within QT5GUI. When the build stopped bacause of this error, edit the following file;
+<br>
+buildroot/output/host/aarch64-buildroot-linux-gnu/sysroot/usr/lib/cmake/Qt5Gui/Qt5GuiConfigExtras.cmake
+<br>
+at the bottom of the file replace this line;
+<br>
+_qt5gui_find_extra_libs(OPENGL "GLES" "" "")
+<br>And replace it bit this line;<br>
+_qt5gui_find_extra_libs(OPENGL "${CMAKE_SYSROOT}/usr/lib/libGLESv2.so" "" "${CMAKE_SYSROOT}/usr/include/libdrm")
+<br>
+Then you can continue the build process by re-running the "make rpi4_64-gui" command. (DO NOT, run "make clean" and/or "make rpi4_64-gui-config" again, or you will start from scratch again !!!)
+<br>
+When everything goes fine the xz compressed image will be available within the release directory.
+
 ## Documentation.
 More information and instructions can be found within the "documentation" folder.
 
@@ -35,4 +75,3 @@ HelloChatterbox (@hellochatterbox)
 
 ### Inspired by;
 HassOS (@home-assistant)<br>
-Recalbox (Gitlab - @recalbox)
