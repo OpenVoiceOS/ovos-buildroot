@@ -1,0 +1,126 @@
+From 4980419c2cbc39c521e171d101a661ad9b21b057 Mon Sep 17 00:00:00 2001
+From: Aditya Mehra <aix.m@outlook.com>
+Date: Fri, 30 Apr 2021 15:47:51 +0530
+Subject: [PATCH 1/2] Fix text resizing issue remove autofit label
+
+---
+ ui/ForecastDelegate.qml | 13 +++++++++----
+ ui/highlow.qml          |  8 ++++++--
+ ui/weather.qml          |  3 ++-
+ 3 files changed, 17 insertions(+), 7 deletions(-)
+
+diff --git a/ui/ForecastDelegate.qml b/ui/ForecastDelegate.qml
+index a4db1ce..a989714 100644
+--- a/ui/ForecastDelegate.qml
++++ b/ui/ForecastDelegate.qml
+@@ -30,27 +30,32 @@ WeatherDelegate {
+                 fillMode: Image.PreserveAspectFit
+                 running: true
+             }
+-            Mycroft.AutoFitLabel {
++            Label {
+                 font.weight: Font.Bold
+-                horizontalAlignment: Text.AlignLeft
++                horizontalAlignment: Text.AlignHCenter
+                 Layout.fillWidth: true
+                 Layout.preferredHeight: proportionalGridUnit * 15
++                font.pixelSize: parent.height * 0.50
+                 text: modelData.date
+             }
+ 
+-            Mycroft.AutoFitLabel {
++            Label {
+                 font.weight: Font.Bold
+                 Layout.fillWidth: true
+                 Layout.preferredHeight: proportionalGridUnit * 20
+                 rightPadding: -font.pixelSize * 0.1
++                font.pixelSize: parent.height * 0.50
++                horizontalAlignment: Text.AlignHCenter
+                 text: modelData.max + "°"
+             }
+ 
+-            Mycroft.AutoFitLabel {
++            Label {
+                 font.styleName: "Thin"
+                 Layout.fillWidth: true
+                 Layout.preferredHeight: proportionalGridUnit * 20
+                 rightPadding: -font.pixelSize * 0.1
++                font.pixelSize: parent.height * 0.50
++                horizontalAlignment: Text.AlignHCenter
+                 text: modelData.min + "°"
+             }
+         }
+diff --git a/ui/highlow.qml b/ui/highlow.qml
+index 60d638d..33e2030 100644
+--- a/ui/highlow.qml
++++ b/ui/highlow.qml
+@@ -9,23 +9,27 @@ import org.kde.lottie 1.0
+ WeatherDelegate {
+     id: root
+ 
+-    Mycroft.AutoFitLabel {
++    Label {
+         id: maxTemp
+         font.weight: Font.Bold
+         Layout.fillWidth: true
+         Layout.preferredHeight: proportionalGridUnit * 40
++        font.pixelSize: parent.height * 0.50
+         //The off-centering to balance the ° should be proportional as well, so we use the computed pixel size
+         rightPadding: -font.pixelSize * 0.1
++        horizontalAlignment: Text.AlignHCenter
+         text: sessionData.max + "°"
+     }
+ 
+-    Mycroft.AutoFitLabel {
++    Label {
+         id: minTemp
+         Layout.fillWidth: true
+         Layout.preferredHeight: proportionalGridUnit * 40
++        font.pixelSize: parent.height * 0.50
+         rightPadding: -font.pixelSize * 0.1
+         font.weight: Font.Thin
+         font.styleName: "Thin"
++        horizontalAlignment: Text.AlignHCenter
+         text: sessionData.min + "°"
+     }
+ }
+diff --git a/ui/weather.qml b/ui/weather.qml
+index 0bd579a..a280a31 100644
+--- a/ui/weather.qml
++++ b/ui/weather.qml
+@@ -32,11 +32,12 @@ WeatherDelegate {
+         }
+     }
+ 
+-    Mycroft.AutoFitLabel {
++    Label {
+         id: temperature
+         font.weight: Font.Bold
+         Layout.fillWidth: true
+         Layout.preferredHeight: proportionalGridUnit * 40
++        font.pixelSize: parent.height * 0.65
+         rightPadding: -font.pixelSize * 0.1
+         text: sessionData.current + "°"
+     }
+
+From aeb638aed01b416b1caa1d7a2639554bb9f8bfb5 Mon Sep 17 00:00:00 2001
+From: Aditya Mehra <aix.m@outlook.com>
+Date: Fri, 30 Apr 2021 17:10:52 +0530
+Subject: [PATCH 2/2] make sure the background is black
+
+---
+ ui/WeatherDelegate.qml | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/ui/WeatherDelegate.qml b/ui/WeatherDelegate.qml
+index 9b37739..540d8c7 100644
+--- a/ui/WeatherDelegate.qml
++++ b/ui/WeatherDelegate.qml
+@@ -7,6 +7,7 @@ import Mycroft 1.0 as Mycroft
+ 
+ Mycroft.ProportionalDelegate {
+     id: root
++    skillBackgroundColorOverlay: Qt.rgba(0, 0, 0, 1)
+ 
+     function getWeatherImagery(weathercode) {
+         switch(weathercode) {
