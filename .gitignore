@@ -1,5 +1,6 @@
 /ccache
 /downloads
 /buildroot
-/release/*
-/logs/*
+/release/*.img
+/release/*.xz
+/logs/*.txt
