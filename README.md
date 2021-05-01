@@ -39,12 +39,20 @@ First, get the code on your system! The simplest method is via git.
 <br>
 This will patch the Buildroot packages.
 
+### Installing System Build Dependencies
+The following system packages are required to build the image:
+- gcc
+- subversion
+- qttools5-dev
+- qttools5-dev-tools
+- python
+
 ## Building the image.
 Building the image(s) can be done by utilizing a proper Makefile;
 <br>
 To see the available commands, just run: 'make help'
 <br>
-As example to build the rpi3 version;<br>
+As example to build the rpi4 version;<br>
 - make clean
 - make rpi4_64-gui-config
 - make rpi4_64-gui
@@ -57,7 +65,7 @@ buildroot/output/host/aarch64-buildroot-linux-gnu/sysroot/usr/lib/cmake/Qt5Gui/Q
 <br><br>
 at the bottom of the file replace this line;
 <br><br>
-_qt5gui_find_extra_libs(OPENGL "GLES" "" "")
+_qt5gui_find_extra_libs(OPENGL "GLESv2" "" "")
 <br><br>And replace it bit this line;<br><br>
 _qt5gui_find_extra_libs(OPENGL "${CMAKE_SYSROOT}/usr/lib/libGLESv2.so" "" "${CMAKE_SYSROOT}/usr/include/libdrm")
 <br><br>
