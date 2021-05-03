@@ -13,7 +13,7 @@ Environment=PYTHONUNBUFFERED=1
 ExecStart=/home/mycroft/.local/share/systemd/mycroft-systemd_skills.py
 StandardOutput=append:/var/log/mycroft/skills.log
 StandardError=file:/var/log/mycroft/skills.error.log
-TimeoutStartSec=1m
+TimeoutStartSec=10m
 TimeoutStopSec=1m
 Restart=on-failure
 StartLimitInterval=5min
