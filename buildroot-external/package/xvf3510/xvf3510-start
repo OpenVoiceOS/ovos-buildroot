@@ -17,4 +17,4 @@ gpio -g write $XMOS_RESET 1
 sleep 1
 xvf3510-flash --direct "/usr/lib/firmware/xvf3510/app_xvf3510_int_spi_boot_v4_1_0.bin"
 sleep 1
-i2cdetect -y 1
+tas5806-init

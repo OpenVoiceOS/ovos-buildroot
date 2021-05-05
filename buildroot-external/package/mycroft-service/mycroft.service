@@ -6,6 +6,7 @@ After=pulseaudio.service NetworkManager.service systemd-timesyncd.service
 User=mycroft
 WorkingDirectory=/home/mycroft
 Type=oneshot
+ExecStartPre=-/usr/bin/sj201-reset-led
 ExecStart=/bin/true
 RemainAfterExit=yes
 
