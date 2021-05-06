@@ -30,7 +30,7 @@ class mycroftSJ201:
         greenVal = colors[1]
         blueVal  = colors[2]
         
-        commandOS =   "i2cset -y 1  %d %d %d %d %d i " % (
+        commandOS =   "i2cset -a -y 1  %d %d %d %d %d i " % (
                     self.DeviceAddr,
                     pixel,
                     redVal,
