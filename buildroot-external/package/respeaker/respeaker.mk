@@ -4,7 +4,7 @@
 #
 ################################################################################
 
-RESPEAKER_VERSION = 50dbe24b7839fb4d82d01693ca15fa631b5a761d
+RESPEAKER_VERSION = c8d97904ceacf848346029f176c23cc74addb733
 RESPEAKER_SITE = $(call github,HinTak,seeed-voicecard,$(RESPEAKER_VERSION))
 RESPEAKER_LICENSE = GNU General Public License v3.0
 RESPEAKER_DEPENDENCIES = rpi-firmware dtc
@@ -12,15 +12,11 @@ RESPEAKER_DEPENDENCIES = rpi-firmware dtc
 $(eval $(kernel-module))
 
 define RESPEAKER_INSTALL_TARGET_CMDS
-	$(INSTALL) -D -m 0644 $(BR2_EXTERNAL_OPENVOICEOS_PATH)/package/respeaker/seeed-voicecard.service \
-		$(TARGET_DIR)/usr/lib/systemd/system/seeed-voicecard.service
 
 	mkdir -p $(TARGET_DIR)/etc/voicecard
 	$(INSTALL) -D -m 0644 $(@D)/*.state $(TARGET_DIR)/etc/voicecard
 
-	$(INSTALL) -D -m 0755 $(BR2_EXTERNAL_OPENVOICEOS_PATH)/package/respeaker/seeed-voicecard \
-		$(TARGET_DIR)/usr/bin
-
+	$(INSTALL) -D -m 0644 $(@D)/seeed-2mic-voicecard.dtbo $(BINARIES_DIR)/overlays/
         $(INSTALL) -D -m 0644 $(@D)/seeed-4mic-voicecard.dtbo $(BINARIES_DIR)/overlays/
         $(INSTALL) -D -m 0644 $(@D)/seeed-8mic-voicecard.dtbo $(BINARIES_DIR)/overlays/
 

@@ -29,9 +29,6 @@ define XVF3510_INSTALL_TARGET_CMDS
 	$(INSTALL) -D -m 0755 $(@D)/resources/clk_dac_setup/setup_mclk \
 		$(TARGET_DIR)/usr/sbin
 
-	$(INSTALL) -D -m 0644 $(BR2_EXTERNAL_OPENVOICEOS_PATH)/package/xvf3510/xvf3510.service \
-		$(TARGET_DIR)/usr/lib/systemd/system/xvf3510.service
-
 	$(INSTALL) -D -m 755 $(BR2_EXTERNAL_OPENVOICEOS_PATH)/package/xvf3510/xvf3510-start \
                 $(TARGET_DIR)/usr/sbin/xvf3510-start
 	$(INSTALL) -D -m 755 $(BR2_EXTERNAL_OPENVOICEOS_PATH)/package/xvf3510/xvf3510-stop \

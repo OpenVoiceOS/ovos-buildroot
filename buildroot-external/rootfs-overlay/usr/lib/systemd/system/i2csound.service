@@ -1,0 +1,12 @@
+[Unit]
+Description=I2C Sound configuration service
+After=alsa-restore.service
+Requires=dev-i2c\x2d1.device
+After=dev-i2c\x2d1.device
+Requires=systemd-modules-load.service
+After=systemd-modules-load.service
+Before=pulseaudio.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/libexec/ovos-i2csound

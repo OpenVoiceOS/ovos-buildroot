@@ -5,7 +5,6 @@ enable brcm_bt.service
 enable bluetooth.service
 enable pulseaudio.service
 enable avahi-daemon.service
-enable seeed-voicecard.service
 enable NetworkManager.service
 
 enable ovos-splash-start.service
@@ -30,4 +29,3 @@ disable snapclient.service
 disable snapserver.service
 disable spotifyd.service
 disable nodered.service
-disable xvf3510.service
