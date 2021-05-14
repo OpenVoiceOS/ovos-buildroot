@@ -27,6 +27,9 @@ from smbus2 import SMBus
 import os
 import time
 import subprocess
+from math import log, exp
+
+MAX_VOL = 84
 
 class tasTest:
     devAddr = 0x2f
@@ -135,12 +138,59 @@ class tasTest:
         self.writeData(0x03,0x03 , "Play") #Play
         self.dumpData()
 
-    def setVolume(self, vol):
-        setVolStr = "Set Volume %s" %( str (vol) )
-        self.writeData(0x4c,vol ,setVolStr) #Set volume
+    def calc_log_y(self, x):
+        """ given x produce y. takes in an int
+        0-100 returns a log oriented hardware
+        value with larger steps for low volumes
+        and smaller steps for loud volumes """
+        if x < 0:
+            x = 0
+
+        if x > 100:
+            x = 100
+
+        x0 = 0      # input range low
+        x1 = 100    # input range hi
+
+        y0 = MAX_VOL    # max hw vol
+        y1 = 210        # min hw val
+
+        p1 = (x - x0) / (x1 - x0)
+        p2 = log(y0) - log(y1)
+        pval = p1 * p2 + log(y1)
+
+        return round(exp(pval))
+
+    def calc_log_x(self, y):
+        """ given y produce x. takes in an int
+        30-210 returns a value from 0-100 """
+        if y < 0:
+            y = MAX_VOL
+
+        if y > 210:
+            y = 210
+
+        x0 = 0      # input range low
+        x1 = 100    # input range hi
+
+        y0 = MAX_VOL    # max hw vol
+        y1 = 210        # min hw val
+
+        x = x1 - x0
+        p1 = (log(y) - log(y0)) / (log(y1) - log(y0))
+
+        return x * p1 + x0        
+        
+    def setVolume(self, vol=1.0):
+        # vol takes a float from 0.0 - 1.0
+        # default vol 0.5 = 50%
+        hw_vol = self.calc_log_y(vol * 100.0)
+        setVolStr = "Set Volume %s" %( str (hw_vol) )
+        self.writeData(0x4c, hw_vol, setVolStr) #Set volume
 
 if __name__ == '__main__':
     tt = tasTest()
     tt.startSequence()
-    tt.setVolume(50)
+    tt.setVolume()
     tt.close()
+

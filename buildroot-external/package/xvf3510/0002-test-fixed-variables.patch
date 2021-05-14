@@ -1,0 +1,36 @@
+From c9e4c64240f9eeeb9a9d0a7ad24949c7d5cc5d78 Mon Sep 17 00:00:00 2001
+From: j1nx <p.steenbergen@j1nx.nl>
+Date: Fri, 14 May 2021 16:59:26 +0200
+Subject: [PATCH 1/1] test fixed variables
+
+---
+ loader/src/loader.c | 13 ++-----------
+ 1 file changed, 2 insertions(+), 11 deletions(-)
+
+diff --git a/loader/src/loader.c b/loader/src/loader.c
+index e5d9029..c26b66b 100644
+--- a/loader/src/loader.c
++++ b/loader/src/loader.c
+@@ -21,17 +21,8 @@ N.B. playback vs capture is determined by the codec choice
+ 
+ void device_release_callback(struct device *dev) { /* do nothing */ };
+ 
+-#ifdef RPI_4B
+-    #define CARD_PLATFORM_STR   "fe203000.i2s"
+-#else
+-    #define CARD_PLATFORM_STR   "3f203000.i2s"
+-#endif
+-
+-#ifdef I2S_MASTER
+-    #define SND_SOC_DAIFMT_CBS_FLAG SND_SOC_DAIFMT_CBS_CFS
+-#else
+-    #define SND_SOC_DAIFMT_CBS_FLAG SND_SOC_DAIFMT_CBM_CFM
+-#endif
++#define CARD_PLATFORM_STR   "fe203000.i2s"
++#define SND_SOC_DAIFMT_CBS_FLAG SND_SOC_DAIFMT_CBS_CFS
+ 
+ static struct asoc_simple_card_info snd_rpi_simple_card_info = {
+     .card = "snd_rpi_simple_card", // -> snd_soc_card.name
+-- 
+2.20.1
+
