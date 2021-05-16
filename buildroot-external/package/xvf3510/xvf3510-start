@@ -1,9 +1,10 @@
 #! /usr/bin/env sh
 
 modprobe i2s_master_loader
+sleep 1
 
-setup_bclk
 setup_mclk
+setup_bclk
 
 # Startup xvf3510
 XMOS_POWER=16
