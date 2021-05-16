@@ -1,5 +1,5 @@
-config BR2_PACKAGE_PYTHON_MYCROFT_LIB
-	bool "python-mycroft-lib"
+config BR2_PACKAGE_PYTHON_HOLMESV
+	bool "python-holmesv"
 	help
 	  Mycroft Core, the Mycroft Artificial Intelligence platform.
 	  packaged as importable library. 

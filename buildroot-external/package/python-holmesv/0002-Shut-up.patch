@@ -1,0 +1,25 @@
+From 24635b3feccacadfbc14151eb108eb92d2ca710e Mon Sep 17 00:00:00 2001
+From: j1nx <p.steenbergen@j1nx.nl>
+Date: Sun, 16 May 2021 11:40:29 +0200
+Subject: [PATCH 1/1] Shut up
+
+---
+ mycroft/skills/skill_updater.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/mycroft/skills/skill_updater.py b/mycroft/skills/skill_updater.py
+index 500e7168..ee7ab5c6 100644
+--- a/mycroft/skills/skill_updater.py
++++ b/mycroft/skills/skill_updater.py
+@@ -121,7 +121,7 @@ class SkillUpdater:
+         platform_default_skills = default_skill_groups.get(self.msm.platform)
+         if platform_default_skills is None:
+             log_msg = 'No default skills found for platform {}'
+-            LOG.info(log_msg.format(self.msm.platform))
++            #LOG.info(log_msg.format(self.msm.platform))
+         else:
+             default_skills.update(platform_default_skills)
+ 
+-- 
+2.20.1
+
