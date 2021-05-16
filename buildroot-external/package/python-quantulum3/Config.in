@@ -1,0 +1,8 @@
+config BR2_PACKAGE_PYTHON_QUANTULUM3
+	bool "python-quantulum3"
+	select BR2_PACKAGE_PYTHON_INFLECT # runtime
+	select BR2_PACKAGE_PYTHON_NUM2WORDS # runtime
+	help
+	  Extract quantities from unstructured text.
+
+	  https://github.com/nielstron/quantulum3

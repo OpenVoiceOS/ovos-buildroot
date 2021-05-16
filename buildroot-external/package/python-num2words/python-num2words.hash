@@ -1,0 +1,5 @@
+# md5, sha256 from https://pypi.org/pypi/num2words/json
+md5  1d0c24b6b789ad6bf91952d92cb6285f  num2words-0.5.10.tar.gz
+sha256  37cd4f60678f7e1045cdc3adf6acf93c8b41bf732da860f97d301f04e611cc57  num2words-0.5.10.tar.gz
+# Locally computed sha256 checksums
+sha256  1457a03d928aeb06af3ea75ef065c517e915d7e41283d550dd4fa18ab20cda12  COPYING

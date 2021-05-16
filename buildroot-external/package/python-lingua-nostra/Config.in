@@ -1,0 +1,7 @@
+config BR2_PACKAGE_PYTHON_LINGUA_NOSTRA
+	bool "python-lingua-nostra"
+	select BR2_PACKAGE_PYTHON_DATEUTIL # runtime
+	help
+	  Mycroft's multilingual text parsing and formatting library.
+
+	  https://github.com/HelloChatterbox/lingua-nostra

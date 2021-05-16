@@ -1,0 +1,7 @@
+config BR2_PACKAGE_PYTHON_INFLECT
+	bool "python-inflect"
+	help
+	  Correctly generate plurals, ordinals, 
+	  indefinite articles; convert numbers to words
+
+	  https://github.com/jaraco/inflect
