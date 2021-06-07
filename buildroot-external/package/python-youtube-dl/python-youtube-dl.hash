@@ -1,0 +1,5 @@
+# md5, sha256 from https://pypi.org/pypi/youtube-dl/json
+md5  8965aeec72bd1edc401fb820564e7678  youtube_dl-2021.6.6.tar.gz
+sha256  cb2d3ee002158ede783e97a82c95f3817594df54367ea6a77ce5ceea4772f0ab  youtube_dl-2021.6.6.tar.gz
+# Locally computed sha256 checksums
+sha256  7e12e5df4bae12cb21581ba157ced20e1986a0508dd10d0e8a4ab9a4cf94e85c  LICENSE

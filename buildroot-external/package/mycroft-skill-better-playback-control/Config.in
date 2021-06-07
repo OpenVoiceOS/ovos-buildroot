@@ -1,0 +1,8 @@
+config BR2_PACKAGE_MYCROFT_SKILL_BETTER_PLAYBACK_CONTROL
+	bool "mycroft-skill-better-playback-control"
+	help
+	  Better Common playback control system
+	  NOTE: this is meant a better alternative to the 
+	  official playback control skill 
+
+	  https://github.com/JarbasSkills/skill-better-playback-control

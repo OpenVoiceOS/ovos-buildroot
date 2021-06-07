@@ -1,0 +1,10 @@
+config BR2_PACKAGE_MYCROFT_SKILL_NAPTIME
+	bool "mycroft-skill-naptime"
+	help
+	  Tell Mycroft to sleep when you don't want 
+	  to be disturbed in any way. This stops all 
+	  calls to Speech to Text system, guaranteeing 
+	  your voice won't be sent anywhere on an 
+	  accidental activation.
+
+	  https://github.com/MycroftAI/skill-naptime

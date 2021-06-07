@@ -1,0 +1,7 @@
+config BR2_PACKAGE_PYTHON_PAFY
+	bool "python-pafy"
+	help
+	  Python library to download YouTube 
+	  content and retrieve metadata
+
+	  https://pypi.org/project/pafy/
