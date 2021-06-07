@@ -1,0 +1,9 @@
+config BR2_PACKAGE_MYCROFT_SKILL_CONFIGURATION
+	bool "mycroft-skill-configuration"
+	help
+	  User and device settings from home.mycroft.ai 
+	  are synchronized with your Devices. This Skill 
+	  performs that synchronization and allows you 
+	  to check your settings.
+
+	  https://github.com/MycroftAI/skill-configuration
