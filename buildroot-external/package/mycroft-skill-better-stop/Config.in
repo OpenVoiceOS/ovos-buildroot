@@ -1,0 +1,7 @@
+config BR2_PACKAGE_MYCROFT_SKILL_BETTER_STOP
+	bool "mycroft-skill-better-stop"
+	help
+	  Provides verbal interfaces for basic framework 
+	  interactions, such as the "Stop" command. 
+
+	  https://github.com/JarbasSkills/skill-better-stop
