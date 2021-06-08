@@ -208,6 +208,7 @@ menu "Mycroft A.I. Skills"
 	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/mycroft-skill-ovos-mycroftgui/Config.in"
 	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/mycroft-skill-ovos-pairing/Config.in"
 	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/mycroft-skill-ovos-volume/Config.in"
+	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/mycroft-skill-speak/Config.in"
 	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/mycroft-skill-weather/Config.in"
 endmenu
 endmenu
