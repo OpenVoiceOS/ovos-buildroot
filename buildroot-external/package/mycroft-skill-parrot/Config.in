@@ -1,0 +1,6 @@
+config BR2_PACKAGE_MYCROFT_SKILL_PARROT
+	bool "mycroft-skill-parrot"
+	help
+	  Turn Mycroft into a echoing parrot!
+
+	  https://github.com/JarbasSkills/skill-parrot

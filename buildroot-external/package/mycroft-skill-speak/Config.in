@@ -1,6 +1,0 @@
-config BR2_PACKAGE_MYCROFT_SKILL_SPEAK
-	bool "mycroft-skill-speak"
-	help
-	  Make Mycroft repeat whatever you want
-
-	  https://github.com/MycroftAI/skill-speak
