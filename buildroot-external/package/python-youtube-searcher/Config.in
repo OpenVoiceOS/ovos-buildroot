@@ -1,0 +1,9 @@
+config BR2_PACKAGE_PYTHON_YOUTUBE_SEARCHER
+	bool "python-youtube-searcher"
+	select BR2_PACKAGE_PYTHON_BS4 # runtime
+	select BR2_PACKAGE_PYTHON_REQUESTS # runtime
+	select BR2_PACKAGE_PYTHON_REQUESTS_CACHE # runtime
+	help
+	  search youtube.
+
+	  https://github.com/HelloChatterbox/youtube_searcher

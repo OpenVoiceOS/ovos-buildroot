@@ -1,0 +1,7 @@
+config BR2_PACKAGE_PYTHON_URL_NORMALIZE
+	bool "python-url-normalize"
+	select BR2_PACKAGE_PYTHON_SIX # runtime
+	help
+	  URL normalization for Python.
+
+	  https://github.com/niksite/url-normalize

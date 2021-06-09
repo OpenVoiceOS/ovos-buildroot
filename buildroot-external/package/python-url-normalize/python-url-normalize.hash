@@ -1,0 +1,5 @@
+# md5, sha256 from https://pypi.org/pypi/url-normalize/json
+md5  3e72f94de0c4a98f8ea76cd99cf105d9  url-normalize-1.4.3.tar.gz
+sha256  d23d3a070ac52a67b83a1c59a0e68f8608d1cd538783b401bc9de2c0fac999b2  url-normalize-1.4.3.tar.gz
+# Locally computed sha256 checksums
+sha256  c7cbebc0c12ff2344959f1f5e39b17becd155388cfada571dbb1d0cd29fbc23e  LICENSE
