@@ -1,0 +1,6 @@
+config BR2_PACKAGE_PYTHON_GOOGLE_TRANS_NEW
+	bool "python-google-trans-new"
+	help
+	  A free and unlimited python tools for google translate api.
+
+	  https://github.com/lushan88a/google_trans_new

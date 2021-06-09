@@ -1,0 +1,7 @@
+config BR2_PACKAGE_PYTHON_RAKEKEYWORDS
+	bool "python-rakekeywords"
+	select BR2_PACKAGE_PYTHON_STOPWORDSISO # runtime
+	help
+	  Implementation of RAKE - Rapid Automatic Keyword Extraction.
+
+	  https://github.com/OpenJarbas/RAKEkeywords

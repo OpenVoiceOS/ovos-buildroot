@@ -1,0 +1,6 @@
+config BR2_PACKAGE_MYCROFT_SKILL_DDG
+	bool "mycroft-skill-ddg"
+	help
+	  Use DuckDuckGo to answer questions 
+
+	  https://github.com/JarbasSkills/skill-ddg

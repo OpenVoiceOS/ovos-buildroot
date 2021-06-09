@@ -1,0 +1,7 @@
+config BR2_PACKAGE_PYTHON_STOPWORDSISO
+	bool "python-stopwordsiso"
+	help
+	  Collection of stopwords for multiple languages. Using ISO
+	  639-1 language code.
+
+	  https://github.com/bact/stopwords-iso
