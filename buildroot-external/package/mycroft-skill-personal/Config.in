@@ -1,0 +1,6 @@
+config BR2_PACKAGE_MYCROFT_SKILL_PERSONAL
+	bool "mycroft-skill-personal"
+	help
+	  Learn history and personality of Mycroft
+
+	  https://github.com/MycroftAI/skill-personal
