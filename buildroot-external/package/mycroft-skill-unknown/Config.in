@@ -1,0 +1,7 @@
+config BR2_PACKAGE_MYCROFT_SKILL_UNKNOWN
+	bool "mycroft-skill-unknown"
+	help
+	  Mycroft AI official Unknown Fallback Skill - 
+	  used if no Intent is matched to an Utterance
+
+	  https://github.com/MycroftAI/fallback-unknown
