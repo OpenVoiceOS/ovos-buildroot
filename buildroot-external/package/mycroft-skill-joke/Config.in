@@ -1,0 +1,6 @@
+config BR2_PACKAGE_MYCROFT_SKILL_JOKE
+	bool "mycroft-skill-joke"
+	help
+	  Let Mycroft brighten your day with a little humor
+
+	  https://github.com/MycroftAI/skill-joke
