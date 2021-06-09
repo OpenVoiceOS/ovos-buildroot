@@ -196,6 +196,7 @@ endmenu
 menu "Mycroft A.I. Skills"
 	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/mycroft-skills-repo/Config.in"
 	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/mycroft-skill-alarm/Config.in"
+	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/mycroft-skill-audio-record/Config.in"
 	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/mycroft-skill-balena-wifi-setup/Config.in"
 	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/mycroft-skill-better-playback-control/Config.in"
 	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/mycroft-skill-better-stop/Config.in"
