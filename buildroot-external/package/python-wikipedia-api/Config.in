@@ -1,0 +1,7 @@
+config BR2_PACKAGE_PYTHON_WIKIPEDIA_API
+	bool "python-wikipedia-api"
+	select BR2_PACKAGE_PYTHON_REQUESTS # runtime
+	help
+	  Python Wrapper for Wikipedia.
+
+	  https://github.com/martin-majlis/Wikipedia-API

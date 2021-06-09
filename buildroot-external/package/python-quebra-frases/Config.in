@@ -1,0 +1,6 @@
+config BR2_PACKAGE_PYTHON_QUEBRA_FRASES
+	bool "python-quebra-frases"
+	help
+	  quebra_frases chunks strings into byte sized pieces.
+
+	  https://github.com/OpenJarbas/quebra_frases

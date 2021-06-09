@@ -1,0 +1,5 @@
+# md5, sha256 from https://pypi.org/pypi/wikipedia-api/json
+md5  e789ba86bcf9cb3492e6bce318e03a33  Wikipedia-API-0.5.4.tar.gz
+sha256  5173d4db641cdb78d96f2b052df2232bcdc00cf32a424c43402958a40f783992  Wikipedia-API-0.5.4.tar.gz
+# Locally computed sha256 checksums
+sha256  b77333e912b18026a9e27136847f79e54f22e73ab7258a628b6096738d575db8  LICENSE

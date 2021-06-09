@@ -1,0 +1,10 @@
+config BR2_PACKAGE_PYTHON_WIKIPEDIA_FOR_HUMANS
+	bool "python-wikipedia-for-humans"
+	select BR2_PACKAGE_PYTHON_INFLECTION # runtime
+	select BR2_PACKAGE_PYTHON_QUEBRA_FRASES # runtime
+	select BR2_PACKAGE_PYTHON_REQUESTS # runtime
+	select BR2_PACKAGE_PYTHON_WIKIPEDIA_API # runtime
+	help
+	  wikipedia for humans.
+
+	  https://github.com/OpenJarbas/wikipedia_for_humans
