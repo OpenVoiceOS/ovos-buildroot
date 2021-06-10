@@ -1,7 +1,7 @@
 config BR2_PACKAGE_MYCROFT_SKILL_WEATHER
 	bool "mycroft-skill-weather"
 	help
-	  Mycroft AI official Weather Skill, providing 
+	  OpenVoiceOS version of Weather Skill, providing 
 	  weather conditions and forecasts.
 
-	  https://github.com/MycroftAI/skill-weather
+	  https://github.com/OpenVoiceOS/skill-weather
