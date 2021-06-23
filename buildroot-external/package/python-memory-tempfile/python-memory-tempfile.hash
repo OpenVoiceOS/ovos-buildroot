@@ -1,0 +1,5 @@
+# md5, sha256 from https://pypi.org/pypi/memory-tempfile/json
+md5  f6a373ab06257702a5df29748332ff85  memory-tempfile-2.2.3.tar.gz
+sha256  4f23842924359e0ef9ecf9194f9e01437e119a96e77c9ad26af0e706aca849d5  memory-tempfile-2.2.3.tar.gz
+# Locally computed sha256 checksums
+sha256  68aad546d017f69099ce597e8f62a2e112a5b208f9aa85a1496341a871f4d769  LICENSE.txt

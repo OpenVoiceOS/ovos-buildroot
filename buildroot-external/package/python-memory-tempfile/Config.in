@@ -1,0 +1,8 @@
+config BR2_PACKAGE_PYTHON_MEMORY_TEMPFILE
+	bool "python-memory-tempfile"
+	help
+	  Helper functions to identify and use paths on the OS
+	  (Linux-only for now) where RAM-based tempfiles can be
+	  created.
+
+	  https://github.com/mbello/memory-tempfile
