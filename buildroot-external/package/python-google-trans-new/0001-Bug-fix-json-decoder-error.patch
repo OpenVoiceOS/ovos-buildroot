@@ -1,0 +1,31 @@
+From e543e86465b43cd54669e4adb48ffa7adddba0f8 Mon Sep 17 00:00:00 2001
+From: Ryota NISHIMURA <sayonari@gmail.com>
+Date: Wed, 30 Jun 2021 18:31:05 +0900
+Subject: [PATCH] bug fix : json.decoder.JSONDecodeError
+
+---
+ google_trans_new/google_trans_new.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/google_trans_new/google_trans_new.py b/google_trans_new/google_trans_new.py
+index b5fc7e4..974787b 100644
+--- a/google_trans_new/google_trans_new.py
++++ b/google_trans_new/google_trans_new.py
+@@ -148,7 +148,7 @@ def translate(self, text, lang_tgt='auto', lang_src='auto', pronounce=False):
+                 decoded_line = line.decode('utf-8')
+                 if "MkEWBc" in decoded_line:
+                     try:
+-                        response = (decoded_line + ']')
++                        response = (decoded_line)
+                         response = json.loads(response)
+                         response = list(response)
+                         response = json.loads(response[0][2])
+@@ -230,7 +230,7 @@ def detect(self, text):
+                     # regex_str = r"\[\[\"wrb.fr\",\"MkEWBc\",\"\[\[(.*).*?,\[\[\["
+                     try:
+                         # data_got = re.search(regex_str,decoded_line).group(1)
+-                        response = (decoded_line + ']')
++                        response = (decoded_line)
+                         response = json.loads(response)
+                         response = list(response)
+                         response = json.loads(response[0][2])
