@@ -1,0 +1,6 @@
+config BR2_PACKAGE_MYCROFT_SKILL_SIMPLE_YOUTUBE
+	bool "mycroft-skill-simple-youtube"
+	help
+	  play music from youtube in mycroft
+
+	  https://github.com/JarbasSkills/skill-simple-youtube
