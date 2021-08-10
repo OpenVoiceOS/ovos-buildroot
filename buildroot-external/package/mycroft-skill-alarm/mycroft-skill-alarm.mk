@@ -4,7 +4,7 @@
 #
 ################################################################################
 
-MYCROFT_SKILL_ALARM_VERSION = 7bce0ee39867b3e1cf81c33c81d7830afd34e1b3
+MYCROFT_SKILL_ALARM_VERSION = b7c728de3d4fa691719a3d37e0197b0f7c031f96
 MYCROFT_SKILL_ALARM_SITE = git://github.com/MycroftAI/skill-alarm
 MYCROFT_SKILL_ALARM_SITE_METHOD = git
 MYCROFT_SKILL_ALARM_DIRLOCATION = home/mycroft/.local/share/mycroft/skills
