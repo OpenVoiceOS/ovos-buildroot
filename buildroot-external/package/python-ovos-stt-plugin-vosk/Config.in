@@ -1,0 +1,6 @@
+config BR2_PACKAGE_PYTHON_OVOS_STT_PLUGIN_VOSK
+	bool "python-ovos-stt-plugin-vosk"
+	help
+	  OVOS STT plugin for Vosk
+
+	  https://github.com/OpenVoiceOS/ovos-stt-plugin-vosk
