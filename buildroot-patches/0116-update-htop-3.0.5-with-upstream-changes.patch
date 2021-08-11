@@ -1,0 +1,44 @@
+From af86c67b797775c20c41c6c6aae4596231c1cd08 Mon Sep 17 00:00:00 2001
+From: Ciaran O'Reilly <ciaran@oreilly.cat>
+Date: Tue, 27 Jul 2021 08:18:56 +0200
+Subject: [PATCH] Patch htop with upstream changes
+
+---
+ package/htop/htop.hash |  2 +-
+ package/htop/htop.mk   | 10 ++++++++--
+ 2 files changed, 9 insertions(+), 3 deletions(-)
+
+diff --git a/package/htop/htop.hash b/package/htop/htop.hash
+index 647feabb8e..34d95eb7a1 100644
+--- a/package/htop/htop.hash
++++ b/package/htop/htop.hash
+@@ -1,3 +1,3 @@
+ # Locally calculated
+-sha256  19535f8f01ac08be2df880c93c9cedfc50fa92320d48e3ef92a30b6edc4d1917  htop-3.0.5.tar.gz
++sha256  123476d56a5e6a219654eebb6b2ec747dfa364f39c01a6475bf8030a25c81bff  htop-ce6d60e7def146c13d0b8bca4642e7401a0a8995.tar.gz
+ sha256  c228cc14df980a23ea0c3c9ac957b904dd6a8514f6283db403de22e9179471be  COPYING
+diff --git a/package/htop/htop.mk b/package/htop/htop.mk
+index aa2ff24750..bb2bcb29ae 100644
+--- a/package/htop/htop.mk
++++ b/package/htop/htop.mk
+@@ -4,9 +4,15 @@
+ #
+ ################################################################################
+ 
+-HTOP_VERSION = 3.0.5
+-HTOP_SITE = https://dl.bintray.com/htop/source
++# This commit hash corresponds to version 3.0.5.
++# htop sources were moved from bintray to github and the sources tar archive
++# was also changed (the build process requires `HTOP_AUTORECONF = YES` now). We
++# use commit hash instead of git tag here to avoid breaking existing source
++# caches
++HTOP_VERSION = ce6d60e7def146c13d0b8bca4642e7401a0a8995
++HTOP_SITE = $(call github,htop-dev,htop,$(HTOP_VERSION))
+ HTOP_DEPENDENCIES = ncurses
++HTOP_AUTORECONF = YES
+ # Prevent htop build system from searching the host paths
+ HTOP_CONF_ENV = HTOP_NCURSES_CONFIG_SCRIPT=$(STAGING_DIR)/usr/bin/$(NCURSES_CONFIG_SCRIPTS)
+ HTOP_LICENSE = GPL-2.0
+-- 
+2.23.0
+
