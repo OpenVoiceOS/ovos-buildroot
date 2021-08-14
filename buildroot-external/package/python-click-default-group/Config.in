@@ -1,0 +1,8 @@
+config BR2_PACKAGE_PYTHON_CLICK_DEFAULT_GROUP
+	bool "python-click-default-group"
+	select BR2_PACKAGE_PYTHON_CLICK # runtime
+	help
+	  Extends click.Group to invoke a command without explicit
+	  subcommand name.
+
+	  https://github.com/sublee/click-default-group/
