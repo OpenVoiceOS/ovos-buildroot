@@ -4,7 +4,7 @@
 #
 ################################################################################
 
-MYCROFT_SKILL_TIMER_VERSION = 9d0a39bd28d25122fd346d80d585cb78f5d2f647
+MYCROFT_SKILL_TIMER_VERSION = ccca4656760f7ae9bdfa4565eedca511d0c4bacc
 MYCROFT_SKILL_TIMER_SITE = git://github.com/MycroftAI/mycroft-timer
 MYCROFT_SKILL_TIMER_SITE_METHOD = git
 MYCROFT_SKILL_TIMER_DIRLOCATION = home/mycroft/.local/share/mycroft/skills

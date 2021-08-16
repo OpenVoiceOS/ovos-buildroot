@@ -4,7 +4,7 @@
 #
 ################################################################################
 
-MYCROFT_SKILL_SIMPLE_YOUTUBE_VERSION = 6a37a8deae4fcbe7db953eec1adc3f6cc0aaabfb
+MYCROFT_SKILL_SIMPLE_YOUTUBE_VERSION = 5c62b78da07d6912ab0c5a0b57d8ae235473d641
 MYCROFT_SKILL_SIMPLE_YOUTUBE_SITE = git://github.com/JarbasSkills/skill-simple-youtube
 MYCROFT_SKILL_SIMPLE_YOUTUBE_SITE_METHOD = git
 MYCROFT_SKILL_SIMPLE_YOUTUBE_DIRLOCATION = home/mycroft/.local/share/mycroft/skills
