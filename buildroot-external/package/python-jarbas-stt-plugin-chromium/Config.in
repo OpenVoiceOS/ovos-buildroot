@@ -1,8 +1,0 @@
-config BR2_PACKAGE_PYTHON_JARBAS_STT_PLUGIN_CHROMIUM
-	bool "python-jarbas-stt-plugin-chromium"
-	select BR2_PACKAGE_PYTHON_REQUESTS # runtime
-	help
-	  A stt plugin for mycroft using the google chrome browser
-	  api.
-
-	  https://github.com/OpenVoiceOS/jarbas-stt-plugin-chromium

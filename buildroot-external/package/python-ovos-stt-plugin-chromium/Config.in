@@ -1,0 +1,8 @@
+config BR2_PACKAGE_PYTHON_OVOS_STT_PLUGIN_CHROMIUM
+	bool "python-ovos-stt-plugin-chromium"
+	select BR2_PACKAGE_PYTHON_REQUESTS # runtime
+	help
+	  A stt plugin for mycroft using the google chrome browser
+	  api.
+
+	  https://github.com/OpenVoiceOS/ovos-stt-plugin-chromium
