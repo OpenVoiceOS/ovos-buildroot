@@ -5,4 +5,4 @@ config BR2_PACKAGE_PYTHON_JARBAS_WAKE_WORD_PLUGIN_PRECISE
 	  official mycroft wake word engine and is supported 
 	  out of the box by core
 
-	  https://github.com/JarbasLingua/jarbas-wake-word-plugin-precise
+	  https://github.com/OpenVoiceOS/jarbas-wake-word-plugin-precise

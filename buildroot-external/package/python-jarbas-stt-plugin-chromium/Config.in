@@ -5,4 +5,4 @@ config BR2_PACKAGE_PYTHON_JARBAS_STT_PLUGIN_CHROMIUM
 	  A stt plugin for mycroft using the google chrome browser
 	  api.
 
-	  https://github.com/JarbasLingua/jarbas-stt-plugin-chromium
+	  https://github.com/OpenVoiceOS/jarbas-stt-plugin-chromium
