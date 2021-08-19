@@ -1,8 +1,0 @@
-config BR2_PACKAGE_PYTHON_JARBAS_WAKE_WORD_PLUGIN_PRECISE
-	bool "python-jarbas-wake-word-plugin-precise"
-	help
-	  This adds a plugin for precise, this is the 
-	  official mycroft wake word engine and is supported 
-	  out of the box by core
-
-	  https://github.com/JarbasLingua/jarbas-wake-word-plugin-precise
