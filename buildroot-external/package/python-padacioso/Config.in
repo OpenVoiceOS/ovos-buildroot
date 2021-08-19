@@ -1,0 +1,7 @@
+config BR2_PACKAGE_PYTHON_PADACIOSO
+	bool "python-padacioso"
+	select BR2_PACKAGE_PYTHON_SIMPLEMATCH # runtime
+	help
+	  dead simple intent parser.
+
+	  https://github.com/OpenJarbas/padacioso

@@ -1,0 +1,6 @@
+config BR2_PACKAGE_PYTHON_SIMPLEMATCH
+	bool "python-simplematch"
+	help
+	  Minimal, super readable string pattern matching.
+
+	  https://github.com/tfeldmann/simplematch

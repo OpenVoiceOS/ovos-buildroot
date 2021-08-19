@@ -1,3 +1,2 @@
-# md5, sha256 from https://pypi.org/pypi/ovos-stt-plugin-chromium/json
-md5  5d910e964c79778b516de225562cdd61  ovos-stt-plugin-chromium-0.1.0.tar.gz
-sha256  2e9164679ab48efdcac392b8b87c0f5a119c1138ad14d6472218a758cc986460 ovos-stt-plugin-chromium-0.1.0.tar.gz
+# md5, sha256 from local
+sha256  5fe7571f793a8bb6092441d69d19e970626fbb300fd137c7a91f3a658a7302c0  python-ovos-stt-plugin-chromium-07c09f1892e50a7204647a5a4a0445697c877a70.tar.gz
