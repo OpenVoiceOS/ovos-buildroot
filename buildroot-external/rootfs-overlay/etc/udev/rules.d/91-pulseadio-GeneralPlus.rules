@@ -1,0 +1,2 @@
+ACTION=="change", SUBSYSTEM=="sound", KERNEL=="card*", \
+ATTRS{subsystem_vendor}=="0x1b3f", ATTRS{subsystem_device}=="0x2008", ENV{PULSE_PROFILE_SET}="GeneralPlus.conf" 
