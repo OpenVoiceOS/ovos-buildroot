@@ -32,10 +32,9 @@ Only use x86_64 based architecture/ hardware to build the image.
 
 The following example Build environment has been tested :
 
-    Architecture: x86_64 
-    Hardware: Intel Core i5 processor, 8GB RAM, 240GB SSD (you can build on 2GB RAM and slower storage but more RAM and faster the storage the quicker the build)
-
-    OS: Ubuntu 20.04 LTS desktop
+- Architecture: x86_64 
+- Hardware: Intel Core i5 processor, 8GB RAM, 240GB SSD (you can build on 2GB RAM and slower storage but more RAM and faster the storage the quicker the build)
+- OS: Ubuntu 20.04 LTS desktop
 
 #### Installing System Build Dependencies
 The following system packages are required to build the image:
