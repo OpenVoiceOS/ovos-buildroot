@@ -33,7 +33,7 @@ Only use x86_64 based architecture/ hardware to build the image.
 The following example Build environment has been tested :
 
 - Architecture: x86_64 
-- Hardware: Intel Core i5 processor, 8GB RAM, 240GB SSD (you can build on 2GB RAM and slower storage but more RAM and faster the storage the quicker the build)
+- Hardware: Intel Core i5 processor, 8GB RAM, 240GB SSD (you can build on less RAM (2GB) and slower storage but more RAM, faster storage =  quicker image building)
 - OS: Ubuntu 20.04 LTS desktop
 
 #### Installing System Build Dependencies
@@ -101,8 +101,9 @@ When everything goes fine the xz compressed image will be available within the r
 
 ### Booting image from sd card for the first time (setting up Wifi and backend).
 1.Ensure all required peripherals (mic, speakers, HDMI, usb mouse etc) are plugged in before powering on your RPI4.
+<br>
 2. Skip this step if RPI4 is using an ethernet cable. Once powered on, the screen will present the Wifi setup screen ( a Wifi HotSpot is created). Connect to the Wifi HotSpot (ssid OVOS) from another device and follow the on-screen instructions to setup Wifi.
-
+<br>
 Once Wifi is setup a choice of Mycroft backend and Local backend is presented. Choose the Mycroft backend for now and follow the on-screen instructions, Local backend is not ready to use yet. After the pairing process has completed and skills downloaded it's time to test/ use it.
 
 
