@@ -7,7 +7,7 @@ A minimalistic Linux OS bringing the open source voice assistant Mycroft A.I. to
 - Buildroot 2021.02.x (LTS)
 - Mycroft 20.08.x (mycroft-lib pip installable version)
 - Raspberry Pi 3|3b|3b+ (Initial development hardware = 3b)
-- Raspberry Pi 4 (Current development hardware)
+- Raspberry Pi 4 (Current development hardware, minimum recommended RAM 2GB)
 
 ## Stats:
 
@@ -21,9 +21,42 @@ A minimalistic Linux OS bringing the open source voice assistant Mycroft A.I. to
 | [![Uptime Robot status](https://img.shields.io/website-up-down-green-red/https/shields.io.svg?label=j1nx.nl)](https://stats.uptimerobot.com/Y5L6rSB07) | [![Buy me a](https://img.shields.io/badge/BuyMeABeer-Paypal-blue.svg)](https://www.paypal.me/j1nxnl) |
 | I use uptime robot to monitor for things i can't monitor when the connection drops. | If you feel the need, now it's as easy as clicking this button! |
 
+  
 ## Getting started.
 At this moment development is in very early stages and focussed on the Raspberry Pi 3B & 4. As soon as an initial first workable version
 is created, other hardware might be added.
+
+### Build Environment
+
+Only use x86_64 based architecture/ hardware to build the image. 
+
+The following example Build environment has been tested :
+
+- Architecture: x86_64 
+- Hardware: Intel Core i5 processor, 8GB RAM, 240GB SSD (you can build on less RAM (2GB) and slower storage but more RAM, faster storage =  quicker image building)
+- OS: Ubuntu 20.04 LTS desktop
+
+#### Installing System Build Dependencies
+The following system packages are required to build the image:
+
+- gcc
+- subversion
+- qttools5-dev
+- qttools5-dev-tools
+- python
+- git
+- make
+- g++
+- curl
+- wget
+- qtdeclarative5-dev
+
+#### The following firewall ports need to be allowed to the internet.
+In addition to the usual http/https ports (tcp 80, tcp 443) a couple of other ports need to be allowed to the internet :
+- tcp 9418 (git).
+- tcp 21 (ftp PASV) and random ports for DATA channel. This can be optional but better to have this allowed along with the corresponding random data channel ports. (knowledge of firewalls required)
+
+
 
 ### Getting the code.
 First, get the code on your system! The simplest method is via git.
@@ -39,13 +72,6 @@ First, get the code on your system! The simplest method is via git.
 <br>
 This will patch the Buildroot packages.
 
-### Installing System Build Dependencies
-The following system packages are required to build the image:
-- gcc
-- subversion
-- qttools5-dev
-- qttools5-dev-tools
-- python
 
 ## Building the image.
 Building the image(s) can be done by utilizing a proper Makefile;
@@ -72,6 +98,21 @@ _qt5gui_find_extra_libs(OPENGL "${CMAKE_SYSROOT}/usr/lib/libGLESv2.so" "" "${CMA
 Then you can continue the build process by re-running the "make rpi4_64-gui" command. (DO NOT, run "make clean" and/or "make rpi4_64-gui-config" again, or you will start from scratch again !!!)
 <br><br>
 When everything goes fine the xz compressed image will be available within the release directory.
+
+
+### Booting image from sd card for the first time (setting up Wifi and backend).
+1.Ensure all required peripherals (mic, speakers, HDMI, usb mouse etc) are plugged in before powering on your RPI4 for the first time.
+<br>
+2. Skip this step if RPI4 is using an ethernet cable. Once powered on, the screen will present the Wifi setup screen ( a Wifi HotSpot is created). Connect to the Wifi HotSpot (ssid OVOS) from another device and follow the on-screen instructions to setup Wifi.
+<br>
+3.Once Wifi is setup a choice of Mycroft backend and Local backend is presented. Choose the Mycroft backend for now and follow the on-screen instructions, Local backend is not ready to use yet. After the pairing process has completed and skills downloaded it's time to test/ use it.
+
+
+### Accessing the CLI.
+
+- SSH to ip address of RPI4 
+- default credentials 'mycroft/mycroft'
+
 
 ## Documentation.
 More information and instructions can be found within the "documentation" folder.
