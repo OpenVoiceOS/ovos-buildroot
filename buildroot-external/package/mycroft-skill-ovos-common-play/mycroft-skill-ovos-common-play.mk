@@ -4,7 +4,7 @@
 #
 ################################################################################
 
-MYCROFT_SKILL_OVOS_COMMON_PLAY_VERSION = dd439f5353b0a8c181df6a051c3f865e8491d1e9
+MYCROFT_SKILL_OVOS_COMMON_PLAY_VERSION = 9f86d4d9becf65986469ba266d041f3847f68627
 MYCROFT_SKILL_OVOS_COMMON_PLAY_SITE = git://github.com/OpenVoiceOS/skill-ovos-common-play
 MYCROFT_SKILL_OVOS_COMMON_PLAY_SITE_METHOD = git
 MYCROFT_SKILL_OVOS_COMMON_PLAY_DIRLOCATION = home/mycroft/.local/share/mycroft/skills
