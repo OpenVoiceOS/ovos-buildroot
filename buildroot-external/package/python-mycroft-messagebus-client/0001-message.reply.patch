@@ -1,0 +1,24 @@
+From a884e8b4655d3fa0788d180390273eb55645231b Mon Sep 17 00:00:00 2001
+From: jarbasal <jarbasai@mailfence.com>
+Date: Sun, 29 Aug 2021 14:01:55 +0100
+Subject: [PATCH 1/2] message.reply
+
+---
+ mycroft_bus_client/message.py | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
+
+diff --git a/mycroft_bus_client/message.py b/mycroft_bus_client/message.py
+index c67fc5a..f2e8859 100644
+--- a/mycroft_bus_client/message.py
++++ b/mycroft_bus_client/message.py
+@@ -145,9 +145,7 @@ def response(self, data=None, context=None):
+         Returns
+             (Message) message with the type modified to match default response
+         """
+-        response_message = Message(self.msg_type + '.response', data or {},
+-                                   context or self.context)
+-        return response_message
++        return self.reply(self.msg_type + '.response', data, context)
+ 
+     def publish(self, msg_type, data, context=None):
+         """
