@@ -1,0 +1,6 @@
+config BR2_PACKAGE_PYTHON_OVOS_STT_PLUGIN_POCKETSPHINX
+	bool "python-ovos-stt-plugin-pocketsphinx"
+	help
+	  OVOS STT plugin for PocketSphinx
+
+	  https://github.com/OpenVoiceOS/ovos-stt-plugin-pocketsphinx
