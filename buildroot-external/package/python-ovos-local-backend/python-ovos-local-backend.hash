@@ -1,2 +1,2 @@
-# md5, sha256 from https://pypi.org/pypi/
-sha256  acd597e4f07a0563bbb6eddc850d1aacfc28ad7695da81c416d4af4a14b87f01  ovos-local-backend-0.1.0.tar.gz
+# sha256 locally computed
+sha256  29e7bdb66f9b82941972d500dda98671db923565261aa414dd5fb0ea0e990eca  python-ovos-local-backend-26e47638ebd941a6dcadc11c333eb2179cbd8182.tar.gz
