@@ -1,0 +1,6 @@
+config BR2_PACKAGE_PYTHON_OVOS_TTS_PLUGIN_PICO
+	bool "python-ovos-tts-plugin-pico"
+	help
+	  OVOS TTS plugin for PicoTTS
+
+	  https://github.com/OpenVoiceOS/ovos-tts-plugin-pico
