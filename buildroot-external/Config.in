@@ -211,6 +211,7 @@ menu "Mycroft A.I. Plugins"
 	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/python-ovos-stt-plugin-pocketsphinx/Config.in"
 	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/python-ovos-stt-plugin-vosk/Config.in"
 	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/python-ovos-tts-plugin-mimic/Config.in"
+	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/python-ovos-tts-plugin-mimic2/Config.in"
 	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/python-ovos-tts-plugin-pico/Config.in"
 	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/python-ovos-wake-word-plugin-precise/Config.in"
 endmenu

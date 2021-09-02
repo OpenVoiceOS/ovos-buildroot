@@ -1,0 +1,6 @@
+config BR2_PACKAGE_PYTHON_OVOS_TTS_PLUGIN_MIMIC2
+	bool "python-ovos-tts-plugin-mimic2"
+	help
+	  OVOS TTS plugin for Mimic2
+
+	  https://github.com/OpenVoiceOS/ovos-tts-plugin-mimic2
