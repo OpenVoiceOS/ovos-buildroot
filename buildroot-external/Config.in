@@ -89,6 +89,7 @@ endmenu
 	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/spotifyd/Config.in"
 	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/userland-tools/Config.in"
 	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/virtual-touch/Config.in"
+	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/vocalfusion/Config.in"
 	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/wifi-connect/Config.in"
 	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/wiringpi2/Config.in"
 	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/xvf3510/Config.in"

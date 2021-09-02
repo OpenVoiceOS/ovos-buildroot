@@ -1,0 +1,9 @@
+config BR2_PACKAGE_VOCALFUSION
+	bool "vocalfusion"
+	help
+	  XMOS VocalFusion Raspberry Pi
+	  drivers to support the sj201 
+	  daughterboard used in the Mark2.
+
+	  https://github.com/OpenVoiceOS/VocalFusionDriver
+
