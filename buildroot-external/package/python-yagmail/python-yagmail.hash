@@ -1,0 +1,5 @@
+# md5, sha256 from https://pypi.org/pypi/yagmail/json
+md5  eb48fb454d1c90b116dfb542d7c153bd  yagmail-0.14.260.tar.gz
+sha256  8be7fee1324ec6fab4ab28d79042a0eec731a40d3b7897e11fcef6e7815a6a11  yagmail-0.14.260.tar.gz
+# Locally computed sha256 checksums
+sha256  9448df54ff69cafec4f52ea4440638bd86dcdf8f39804f6235c4b05fef01bba6  LICENSE

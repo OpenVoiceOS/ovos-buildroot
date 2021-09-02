@@ -1,0 +1,11 @@
+config BR2_PACKAGE_PYTHON_PREMAILER
+	bool "python-premailer"
+	select BR2_PACKAGE_PYTHON_CACHETOOLS # runtime
+	select BR2_PACKAGE_PYTHON_CSSSELECT # runtime
+	select BR2_PACKAGE_PYTHON_CSSUTILS # runtime
+	select BR2_PACKAGE_PYTHON_LXML # runtime
+	select BR2_PACKAGE_PYTHON_REQUESTS # runtime
+	help
+	  Turns CSS blocks into style attributes.
+
+	  http://github.com/peterbe/premailer

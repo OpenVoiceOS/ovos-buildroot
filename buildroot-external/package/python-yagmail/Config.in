@@ -1,0 +1,7 @@
+config BR2_PACKAGE_PYTHON_YAGMAIL
+	bool "python-yagmail"
+	select BR2_PACKAGE_PYTHON_PREMAILER # runtime
+	help
+	  Yet Another GMAIL client.
+
+	  https://github.com/kootenpv/yagmail
