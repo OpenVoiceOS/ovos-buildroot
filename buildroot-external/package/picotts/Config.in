@@ -1,0 +1,7 @@
+config BR2_PACKAGE_PICOTTS
+	bool "picotts"
+	help
+	  Text to speech voice sinthesizer from SVox, 
+	  included in Android AOSP.
+
+	  https://github.com/naggety/picotts
