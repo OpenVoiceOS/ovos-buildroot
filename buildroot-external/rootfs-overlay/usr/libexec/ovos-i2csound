@@ -16,12 +16,8 @@
 ##########################################################################
 
 # Set default configurations
-ASOUND_STATE=/var/lib/alsa/default-asound.state
 PULSE_SYSTEM=/etc/pulse/pulseaudio-system.pa
 PULSE_DAEMON=/etc/pulse/pulseaudio-daemon.conf
-
-# Set known hat overlay variables
-RPI_HATS="seeed-2mic-voicecard seeed-4mic-voicecard seeed-8mic-voicecard"
 
 # Scanning the I2C bus for know addresses 
 is_1a=$(i2cdetect -y 1 0x1a 0x1a | egrep "(1a|UU)" | awk '{print $2}') # ReSpeaker 2-mic / WM8960
@@ -62,12 +58,6 @@ fi
 
 
 # Remove old configurations
-if [ -f /var/lib/alsa/asound.state ] ; then
-    rm /var/lib/alsa/asound.state
-fi
-if [ -f /etc/ovos_asound.state ] ; then
-    rm /etc/ovos_asound.state
-fi
 if [ -f /etc/pulse/system.pa ] ; then
     rm /etc/pulse/system.pa
 fi
@@ -77,27 +67,19 @@ fi
 
 if [ "$RESPEAKER2" == "found" ] && [ "$RESPEAKER4" != "found" ] ; then
     echo "Installing and configuring ReSpeaker 2-mic"
-    modprobe snd-soc-wm8960
-    OVERLAY=seeed-2mic-voicecard
-    ASOUND_STATE=/etc/voicecard/wm8960_asound.state
+    dtoverlay seeed-2mic-voicecard
 fi
 
 if [ "${RESPEAKER6}" == "found" ] && [ "${RESPEAKER4}" != "found" ] ; then
     echo "Installing and configuring ReSpeaker 4-mic"
-    modprobe snd-soc-seeed-voicecard
-    modprobe snd-soc-ac108
-    OVERLAY=seeed-4mic-voicecard
-    ASOUND_STATE=/etc/voicecard/ac108_asound.state
+    dtoverlay seeed-4mic-voicecard
     PULSE_SYSTEM=/etc/pulse/seeed-voicecard-4mic-default.pa
     PULSE_DAEMON=/etc/pulse/seeed-voicecard-4mic-daemon.conf
 fi
 
 if [ "{$RESPEAKER6}" == "found" ] && [ "${RESPEAKER4}" == "found" ] ; then
     echo "Installing and configuring ReSpeaker 6mic"
-    modprobe snd-soc-seeed-voicecard
-    modprobe snd-soc-ac108
-    OVERLAY=seeed-8mic-voicecard
-    ASOUND_STATE=/etc/voicecard/ac108_6mic.state
+    dtoverlay seeed-8mic-voicecard
     PULSE_SYSTEM=/etc/pulse/seeed-voicecard-8mic-default.pa
     PULSE_DAEMON=/etc/pulse/seeed-voicecard-8mic-daemon.conf
 fi
@@ -110,7 +92,8 @@ fi
 if [ "$TAS5806" ] && [ "$SJ201LED" ]; then
     echo "Installing and configuring SJ201"
     # Initializing XMOS xvf3510
-    /usr/sbin/xvf3510-start
+    dtoverlay xvf3510
+    xvf3510-flash --direct "/usr/lib/firmware/xvf3510/app_xvf3510_int_spi_boot_v4_1_0.bin"
     # Initializing Texas Instruments 5806 Amplifier
     /usr/bin/tas5806-init
     # Initializing and resetting LED ring
@@ -118,27 +101,11 @@ if [ "$TAS5806" ] && [ "$SJ201LED" ]; then
     # Reset FAN to low speed
     /usr/sbin/i2cset -a -y 1 0x04 101 30 i
 
-    #PULSE_SYSTEM=/etc/pulse/mycroft-sj201-default.pa
-    #PULSE_DAEMON=/etc/pulse/mycroft-sj201-daemon.conf
+    PULSE_DAEMON=/etc/pulse/mycroft-sj201-daemon.conf
 fi
-
-# Load overlay
-if [ "$OVERLAY" ]; then
-    echo Loading $OVERLAY ...
-
-    # Make sure the driver loads correctly
-    dtoverlay $OVERLAY || true
-fi
-
-# Install soundstate
-echo "create asound status file"
-ln -s $ASOUND_STATE /etc/ovos_asound.state
 
 # Install pulseaudio files
 echo "create pulse system file"
 ln -s $PULSE_SYSTEM /etc/pulse/system.pa
 echo "create pulse daemon file"
 ln -s $PULSE_DAEMON /etc/pulse/daemon.conf
-
-# Restore sound levels
-alsactl -E HOME=/run/alsa -f /etc/ovos_asound.state restore

@@ -1,0 +1,209 @@
+#!/usr/bin/env python3
+# Copyright (c) 2019-2020, XMOS Ltd, All rights reserved
+# requires dtparam=spi=on in /boot/config.txt
+
+"""
+This script configures the XVF3510 board in boot from SPI slave and load a
+binary file. It requires a bin file as input parameter.
+"""
+
+import sys
+import os
+import time
+import argparse
+import spidev
+import RPi.GPIO as GPIO
+from smbus import SMBus
+from pathlib import Path
+
+if sys.version[0] != '3':
+    print("Run this script with Python 3")
+    sys.exit(1)
+
+def bit_reversed_byte(byte_to_reverse):
+    """
+    Function to reverse the bit-order of a byte
+
+    Args:
+        byte_to_reverse: byte to process
+
+    Retruns:
+        byte in reversed order
+    """
+    return int('{:08b}'.format(byte_to_reverse)[::-1], 2)
+
+def set_boot_sel():
+    """
+    Function to set XVF3510 board in SPI slave boot mode
+
+    Args:
+        None
+
+    Returns:
+        None
+    """
+
+    bus = SMBus(1)
+
+    # reset BOOT_SEL
+    bus.write_byte_data(0x20, 3, 0xFE)
+    bus.write_byte_data(0x20, 7, 0xFF)
+
+    state = {}
+    for i in [2, 6]:
+        state[i] = bus.read_byte_data(0x20, i)
+
+    # start reset
+    data_to_write = 0x00 | (state[2] & 0xDF)
+    bus.write_byte_data(0x20, 2, data_to_write)
+    data_to_write = 0x00 | (state[6] & 0xDF)
+    bus.write_byte_data(0x20, 6, data_to_write)
+    # set BOOT_SEL high
+    data_to_write = 0x01
+    bus.write_byte_data(0x20, 3, data_to_write)
+    data_to_write = 0xFE
+    bus.write_byte_data(0x20, 7, data_to_write)
+    # stop reset
+    data_to_write = 0x20 | (state[2] & 0xDF)
+    bus.write_byte_data(0x20, 2, data_to_write)
+    data_to_write = 0x20 | (state[6] & 0xDF)
+    bus.write_byte_data(0x20, 6, data_to_write)
+
+
+
+def send_image(bin_filename, verbose=False, max_spi_speed_mhz = 5, block_transfer_pause_ms = 1, direct = False, delay = False):
+    """
+    Function to send the given image to the device via SPI slave
+
+    Args:
+        bin_filename:   binary file containing the image to boot
+        verbose:        flag to print debug printouts
+        direct:         Use Pi GPIO outputs rather than the XVF3510 Pi HAT
+        delay:          Release BootSel early to delay startup on version 4.0.0 onwards
+
+    Returns:
+        None
+    """
+
+    if direct:
+        #setup GPIO
+        GPIO.setmode(GPIO.BOARD)
+        GPIO.setwarnings(False)
+
+        #boot_sel = 8
+        #rst_n = 10
+        '''
+           Mycroft board update
+        '''
+        #GPIO.setmode(GPIO.BCM)
+
+        boot_sel = 37 #26 #= 25 # fix these numbers to be Wiring Pi
+        rst_n    = 13 #27 #= 2  
+        GPIO.setup(boot_sel, GPIO.IN) # Normally, the Pi should not drive this
+        GPIO.setup(rst_n, GPIO.OUT, initial=GPIO.HIGH)
+
+    #setup SPI
+    spi = spidev.SpiDev()
+    bus_spi = 0
+    device = 0
+    spi.open(bus_spi, device)
+
+    #SPI Settings
+    spi.max_speed_hz = int(max_spi_speed_mhz * 1000000)
+    spi.mode = 0b00 #XMOS supports 00 or 11
+
+    spi_block_size = 4096 #Limitation in spidev and xfer2 doesn't work!
+
+    if direct:
+        GPIO.output(rst_n, 0)
+        GPIO.setup(boot_sel, GPIO.OUT, initial=GPIO.HIGH)
+        GPIO.output(rst_n, 1)
+    else:
+        set_boot_sel()
+
+    # Create a table to map byte values to their bit-reversed values
+    reverse_table  = [bit_reversed_byte(byte) for byte in range(256)]
+
+    data = []
+    with open(bin_filename, "rb") as f:
+        bytes_read = f.read()
+        data = list(bytes_read)
+        binary_size = len(data)
+        block_count = 0
+        print('Read file "{0}" size: {1} Bytes'.format(args.bin_filename, binary_size))
+        if binary_size % spi_block_size != 0:
+            print("Warning - binary file not a multiple of {} - {} remainder".format( \
+                  spi_block_size, binary_size % spi_block_size))
+        while binary_size > 0:
+            block = [reverse_table[byte] for byte in data[:spi_block_size]]
+            del data[:spi_block_size]
+            binary_size = len(data)
+            if verbose:
+                print("Sending {} Bytes in block {} checksum 0x{:X}".format( \
+                      len(block), block_count, sum(block)))
+            spi.xfer(block)
+
+            if block_count == 0:
+                #Long delay for PLL reboot
+                time.sleep(0.1)
+
+                if delay:
+                    # release boot_sel early to prevent startup
+                    if direct:
+                        GPIO.setup(boot_sel, GPIO.IN)
+                    else:
+                        #bus = smbus.SMBus(1)
+                        bus = SMBus(1)
+                        data_to_write = 0xFE
+                        bus.write_byte_data(0x20, 3, data_to_write)
+                        data_to_write = 0xFF
+                        bus.write_byte_data(0x20, 7, data_to_write)
+
+            elif binary_size > 0:
+                time.sleep(block_transfer_pause_ms / 1000)
+            block_count += 1
+    print("Sending complete")
+
+    if direct:
+        GPIO.setup(boot_sel, GPIO.IN) # Once booted, the Pi should not need to drive boot_sel
+        GPIO.setup(rst_n, GPIO.OUT, initial=GPIO.HIGH) # Once booted, the Pi should not need to drive reset
+        #GPIO.cleanup()
+    else:
+        #bus = smbus.SMBus(1)
+        bus = SMBus(1)
+
+        # reset BOOT_SEL
+        data_to_write = 0xFE
+        bus.write_byte_data(0x20, 3, data_to_write)
+        data_to_write = 0xFF
+        bus.write_byte_data(0x20, 7, data_to_write)
+
+
+
+
+if __name__ == "__main__":
+    start_time = time.time()
+    parser = argparse.ArgumentParser(description='Load an image via SPI slave from an RPi')
+    parser.add_argument('bin_filename', help='binary file name')
+    parser.add_argument('--direct', action='store_true', \
+                        help='Use just direct GPIO outputs rather than using the XVF3510 Development Kit Pi HAT')
+    parser.add_argument('--delay', action='store_true', \
+                        help='Delay xvf3510 device start. Release the BootSel pin early to prevent the XVF3510 (V4.0.0 onwards) from starting with the default I2S configuration. This gives AP a chance to configure and start the XVF3510 device.')
+    parser.add_argument('--max-spi-speed-mhz', type=float, default=5, \
+                        help='Max SPI speed in MHz')
+    parser.add_argument('--block-transfer-pause-ms', type=float, default=1, \
+                        help='pause between SPI transfers in milliseconds, default 1ms')
+    parser.add_argument('--verbose', action='store_true', \
+                        help='print debug information')
+
+    args = parser.parse_args()
+
+    if not Path(args.bin_filename).is_file():
+        print("Error: input file {} not found".format(args.bin_filename))
+        exit(1)
+
+    send_image(args.bin_filename, args.verbose, args.max_spi_speed_mhz, args.block_transfer_pause_ms, args.direct, args.delay)
+
+    end_time = time.time()
+    if args.verbose:
+        print("Sending image took {:.3} seconds".format(end_time - start_time))
