@@ -101,6 +101,7 @@ if [ "$TAS5806" ] && [ "$SJ201LED" ]; then
     # Reset FAN to low speed
     /usr/sbin/i2cset -a -y 1 0x04 101 30 i
 
+    PULSE_SYSTEM=/etc/pulse/mycroft-sj201-default.pa
     PULSE_DAEMON=/etc/pulse/mycroft-sj201-daemon.conf
 fi
 
