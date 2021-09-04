@@ -181,7 +181,7 @@ class tasTest:
 
         return x * p1 + x0        
         
-    def setVolume(self, vol=0.5):
+    def setVolume(self, vol=1.0):
         # vol takes a float from 0.0 - 1.0
         # default vol 0.5 = 50%
         hw_vol = self.calc_log_y(vol * 100.0)
