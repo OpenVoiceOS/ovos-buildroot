@@ -4,7 +4,7 @@
 #
 ################################################################################
 
-VOCALFUSION_VERSION = a7685b3ebb919da096f29b5b35f303b5c1a7beaf
+VOCALFUSION_VERSION = c8c29036992a88726dcdfb967cbc1d9f14a95534
 VOCALFUSION_SITE = $(call github,OpenVoiceOS,VocalFusionDriver,$(VOCALFUSION_VERSION))
 VOCALFUSION_MODULE_SUBDIRS = driver
 
