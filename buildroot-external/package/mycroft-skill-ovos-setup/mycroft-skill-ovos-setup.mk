@@ -4,7 +4,7 @@
 #
 ################################################################################
 
-MYCROFT_SKILL_OVOS_SETUP_VERSION = 4f466c163d5760468c46c681c6036fbc192e4d89
+MYCROFT_SKILL_OVOS_SETUP_VERSION = aefa8018085ff2367418c4fde2ee26a9ac3a20cb
 MYCROFT_SKILL_OVOS_SETUP_SITE = git://github.com/OpenVoiceOS/skill-ovos-setup
 MYCROFT_SKILL_OVOS_SETUP_SITE_METHOD = git
 MYCROFT_SKILL_OVOS_SETUP_DIRLOCATION = home/mycroft/.local/share/mycroft/skills
