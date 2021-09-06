@@ -1,0 +1,8 @@
+config BR2_PACKAGE_PYTHON_OVOS_WW_PLUGIN_POCKETSPHINX
+	bool "python-ovos-ww-plugin-pocketsphinx"
+	help
+	  This adds a plugin for pocketsphinx, this is the 
+	  fallback mycroft wake word engine and is supported 
+	  out of the box by core.
+
+	  https://github.com/OpenVoiceOS/ovos-ww-plugin-pocketsphinx
