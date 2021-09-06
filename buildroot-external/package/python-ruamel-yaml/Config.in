@@ -1,0 +1,6 @@
+config BR2_PACKAGE_PYTHON_RUAMEL_YAML
+	bool "python-ruamel-yaml"
+	help
+	  ruamel.yaml is a YAML 1.2 loader/dumper package for Python.
+
+	  https://pypi.org/project/ruamel.yaml/
