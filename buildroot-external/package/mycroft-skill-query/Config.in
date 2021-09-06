@@ -1,7 +1,0 @@
-config BR2_PACKAGE_MYCROFT_SKILL_QUERY
-	bool "mycroft-skill-query"
-	help
-	  Skill Negotiating for the best source for 
-	  an answer via Common QA
-
-	  https://github.com/MycroftAI/skill-query

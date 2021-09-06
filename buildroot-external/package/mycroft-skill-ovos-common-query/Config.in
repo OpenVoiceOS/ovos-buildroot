@@ -1,0 +1,7 @@
+config BR2_PACKAGE_MYCROFT_SKILL_OVOS_COMMON_QUERY
+	bool "mycroft-skill-ovos-common-query"
+	help
+	  Skill Negotiating for the best source for 
+	  an answer via Common QA
+
+	  https://github.com/OpenVoiceOS/skill-ovos-common-query
