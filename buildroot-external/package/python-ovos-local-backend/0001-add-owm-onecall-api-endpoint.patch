@@ -1,0 +1,33 @@
+From b6a6eb40bd1151d76681068fdc54e4af22c6f099 Mon Sep 17 00:00:00 2001
+From: jarbasal <jarbasai@mailfence.com>
+Date: Sun, 5 Sep 2021 17:54:39 +0100
+Subject: [PATCH] add owm onecall api endpoint, so weather works again!
+
+---
+ ovos_local_backend/backend/external_apis.py | 15 +++++++++++++++
+ 1 file changed, 15 insertions(+)
+
+diff --git a/ovos_local_backend/backend/external_apis.py b/ovos_local_backend/backend/external_apis.py
+index 65b6426..0134b86 100644
+--- a/ovos_local_backend/backend/external_apis.py
++++ b/ovos_local_backend/backend/external_apis.py
+@@ -87,4 +87,19 @@ def owm():
+         url = "https://api.openweathermap.org/data/2.5/weather"
+         return requests.get(url, params=params).json()
+ 
++    @app.route("/" + API_VERSION + '/owm/onecall', methods=['GET'])
++    @noindex
++    def owm_onecall():
++        params = dict(request.args)
++        params["appid"] = CONFIGURATION["owm_key"]
++        if not request.args.get("q"):
++            params["lat"] = request.args.get("lat") or \
++                            str(CONFIGURATION["default_location"][
++                                    "coordinate"]["latitude"])
++            params["lon"] = request.args.get("lon") or \
++                            str(CONFIGURATION["default_location"][
++                                    "coordinate"]["longitude"])
++        url = "https://api.openweathermap.org/data/2.5/onecall"
++        return requests.get(url, params=params).json()
++
+     return app
