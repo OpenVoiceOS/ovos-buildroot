@@ -5,8 +5,8 @@ After=network.target
 [Service]
 Environment=SIMPLELOGIN_USERNAME="OVOS"
 Environment=SIMPLELOGIN_PASSWORD=%i
-WorkingDirectory=/home/aix/Remote-Services-Dashboard
-ExecStart=/home/aix/Remote-Services-Dashboard/.venv/bin/python /home/aix/Remote-Services-Dashboard/app.py --serve-in-foreground
+WorkingDirectory=/home/mycroft/ovos-dashboard
+ExecStart=/home/mycroft/ovos-dashboard/.venv/bin/python /home/mycroft/ovos-dashboard/app.py --serve-in-foreground
 Restart=always
 
 [Install]
