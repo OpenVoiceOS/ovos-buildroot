@@ -37,6 +37,10 @@ define MYCROFT_SERVICE_INSTALL_TARGET_CMDS
                 $(TARGET_DIR)/usr/lib/systemd/system/mycroft-skills.service
 	$(INSTALL) -D -m 644 $(@D)/mycroft-gui.service \
                 $(TARGET_DIR)/usr/lib/systemd/system/mycroft-gui.service
+
+        mkdir -p $(TARGET_DIR)/home/mycroft/.config/systemd/user
+        $(INSTALL) -D -m 644 $(@D)/ovos-dashboard.service \
+                $(TARGET_DIR)/home/mycroft/.config/systemd/user/ovos-dashboard.service
 endef
 
 $(eval $(generic-package))

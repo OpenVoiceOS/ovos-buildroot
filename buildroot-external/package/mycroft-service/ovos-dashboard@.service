@@ -1,0 +1,13 @@
+[Unit]
+Description=OVOS Dashboard Service
+After=network.target
+
+[Service]
+Environment=SIMPLELOGIN_USERNAME="OVOS"
+Environment=SIMPLELOGIN_PASSWORD=%i
+WorkingDirectory=/home/aix/Remote-Services-Dashboard
+ExecStart=/home/aix/Remote-Services-Dashboard/.venv/bin/python /home/aix/Remote-Services-Dashboard/app.py --serve-in-foreground
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
