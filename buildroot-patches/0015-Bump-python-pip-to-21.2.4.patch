@@ -1,0 +1,41 @@
+From bb2f5b4eadd153adfad5a1fbffcf3d1e484f6700 Mon Sep 17 00:00:00 2001
+From: Peter Steenbergen <info@j1nx.nl>
+Date: Wed, 8 Sep 2021 12:10:19 +0200
+Subject: [PATCH 1/1] Bump python-pip to 21.2.4
+
+---
+ package/python-pip/python-pip.hash | 7 ++-----
+ package/python-pip/python-pip.mk   | 4 ++--
+ 2 files changed, 4 insertions(+), 7 deletions(-)
+
+diff --git a/package/python-pip/python-pip.hash b/package/python-pip/python-pip.hash
+index 58bc239154..6d53ceb9bb 100644
+--- a/package/python-pip/python-pip.hash
++++ b/package/python-pip/python-pip.hash
+@@ -1,5 +1,2 @@
+-# md5, sha256 from https://pypi.org/pypi/pip/json
+-md5	7d42ba49b809604f0df3d55df1c3fd86  pip-20.0.2.tar.gz
+-sha256	7db0c8ea4c7ea51c8049640e8e6e7fde949de672bfa4949920675563a5a6967f  pip-20.0.2.tar.gz
+-# Locally computed sha256 checksums
+-sha256	5ba21fbb0964f936ad7d15362d1ed6d4931cc8c8f9ff2d4d91190e109be74431  LICENSE.txt
++# sha256 from https://pypi.org/pypi/pip/json
++sha256	0eb8a1516c3d138ae8689c0c1a60fde7143310832f9dc77e11d8a4bc62de193b  pip-21.2.4.tar.gz
+diff --git a/package/python-pip/python-pip.mk b/package/python-pip/python-pip.mk
+index f881a3ce55..81fc87d5f0 100644
+--- a/package/python-pip/python-pip.mk
++++ b/package/python-pip/python-pip.mk
+@@ -4,9 +4,9 @@
+ #
+ ################################################################################
+ 
+-PYTHON_PIP_VERSION = 20.0.2
++PYTHON_PIP_VERSION = 21.2.4
+ PYTHON_PIP_SOURCE = pip-$(PYTHON_PIP_VERSION).tar.gz
+-PYTHON_PIP_SITE = https://files.pythonhosted.org/packages/8e/76/66066b7bc71817238924c7e4b448abdb17eb0c92d645769c223f9ace478f
++PYTHON_PIP_SITE = https://files.pythonhosted.org/packages/52/e1/06c018197d8151383f66ebf6979d951995cf495629fc54149491f5d157d0
+ PYTHON_PIP_SETUP_TYPE = setuptools
+ PYTHON_PIP_LICENSE = MIT
+ PYTHON_PIP_LICENSE_FILES = LICENSE.txt
+-- 
+2.31.0
+
