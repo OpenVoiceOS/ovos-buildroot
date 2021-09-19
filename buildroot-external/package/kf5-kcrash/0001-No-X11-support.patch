@@ -1,0 +1,27 @@
+From 26e5c3f29d911f9bd9bb9b0dceabceb65f2bfedc Mon Sep 17 00:00:00 2001
+From: Peter Steenbergen <info@j1nx.nl>
+Date: Fri, 17 Sep 2021 22:32:57 +0200
+Subject: [PATCH 1/1] No X11 support
+
+---
+ CMakeLists.txt | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 2c4560f..e71fbe1 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -19,8 +19,8 @@ include(KDECMakeSettings)
+ include(KDEGitCommitHooks)
+ 
+ if (UNIX AND NOT APPLE AND NOT ANDROID)
+-    find_package(X11)
+-    find_package(Qt5 ${REQUIRED_QT_VERSION} CONFIG REQUIRED COMPONENTS X11Extras)
++    #find_package(X11)
++    #find_package(Qt5 ${REQUIRED_QT_VERSION} CONFIG REQUIRED COMPONENTS X11Extras)
+ endif()
+ 
+ set(HAVE_X11 ${X11_FOUND})
+-- 
+2.33.0
+
