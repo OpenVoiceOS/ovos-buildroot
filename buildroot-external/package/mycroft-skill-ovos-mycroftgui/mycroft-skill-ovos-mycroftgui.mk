@@ -4,7 +4,7 @@
 #
 ################################################################################
 
-MYCROFT_SKILL_OVOS_MYCROFTGUI_VERSION = a09280c4117fb60243675abf338e7bdf41ae5e3f
+MYCROFT_SKILL_OVOS_MYCROFTGUI_VERSION = 994b8c8b3351971a44fa8fb15f15d1ded744b105
 MYCROFT_SKILL_OVOS_MYCROFTGUI_SITE = git://github.com/OpenVoiceOS/skill-ovos-mycroftgui
 MYCROFT_SKILL_OVOS_MYCROFTGUI_SITE_METHOD = git
 MYCROFT_SKILL_OVOS_MYCROFTGUI_DIRLOCATION = home/mycroft/.local/share/mycroft/skills
