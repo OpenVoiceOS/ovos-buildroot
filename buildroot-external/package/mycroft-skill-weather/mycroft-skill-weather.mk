@@ -4,7 +4,7 @@
 #
 ################################################################################
 
-MYCROFT_SKILL_WEATHER_VERSION = 57af09f795993d7ee65670087a75b051a534ecdc
+MYCROFT_SKILL_WEATHER_VERSION = a7e8da15954cdda403d40d22a65a7a3cc2abe6d7
 MYCROFT_SKILL_WEATHER_SITE = git://github.com/OpenVoiceOS/skill-weather
 MYCROFT_SKILL_WEATHER_SITE_METHOD = git
 MYCROFT_SKILL_WEATHER_DIRLOCATION = home/mycroft/.local/share/mycroft/skills
