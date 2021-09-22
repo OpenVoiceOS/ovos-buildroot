@@ -1,0 +1,6 @@
+config BR2_PACKAGE_PYTHON_PYCPUINFO
+	bool "python-pycpuinfo"
+	help
+	  Get CPU info with pure Python 2 & 3.
+
+	  https://github.com/workhorsy/py-cpuinfo

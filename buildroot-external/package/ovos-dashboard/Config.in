@@ -1,0 +1,6 @@
+config BR2_PACKAGE_OVOS_DASHBOARD
+	bool "ovos-dashboard"
+	help
+	  OpenVoiceOS Dashboard Application
+
+	  https://github.com/OpenVoiceOS/OVOS-Dashboard

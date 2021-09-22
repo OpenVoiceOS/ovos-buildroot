@@ -1,0 +1,6 @@
+config BR2_PACKAGE_PYTHON_FLASK_SOCKETIO
+	bool "python-flask-socketio"
+	help
+	  Socket.IO integration for Flask applications.
+
+	  https://github.com/miguelgrinberg/flask-socketio

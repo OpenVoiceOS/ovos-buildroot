@@ -1,0 +1,5 @@
+# md5, sha256 from https://pypi.org/pypi/tailhead/json
+md5  81f86439720ce9e22660b7edc148dee9  tailhead-1.0.2.tar.gz
+sha256  916f70583494f38009410f178c3aea3f3b5e3f3b9c2d83f643547b2651147a03  tailhead-1.0.2.tar.gz
+# Locally computed sha256 checksums
+sha256  cf3129a39f1c9db825f5c072421c437a1a881c6347fc33177eec74f498cdaf0f  LICENSE
