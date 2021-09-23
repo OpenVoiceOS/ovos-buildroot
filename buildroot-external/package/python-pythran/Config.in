@@ -1,0 +1,10 @@
+config BR2_PACKAGE_PYTHON_PYTHRAN
+	bool "python-pythran"
+	select BR2_PACKAGE_PYTHON_BENIGET # runtime
+	select BR2_PACKAGE_PYTHON_GAST # runtime
+	select BR2_PACKAGE_PYTHON_NUMPY # runtime
+	select BR2_PACKAGE_PYTHON_PLY # runtime
+	help
+	  Ahead of Time compiler for numeric kernels.
+
+	  https://github.com/serge-sans-paille/pythran

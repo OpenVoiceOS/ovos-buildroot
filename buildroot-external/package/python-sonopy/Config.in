@@ -1,0 +1,8 @@
+config BR2_PACKAGE_PYTHON_SONOPY
+	bool "python-sonopy"
+	select BR2_PACKAGE_PYTHON_NUMPY # runtime
+	select BR2_PACKAGE_PYTHON_SCIPY # runtime
+	help
+	  A simple audio feature extraction library.
+
+	  https://github.com/mycroftai/sonopy

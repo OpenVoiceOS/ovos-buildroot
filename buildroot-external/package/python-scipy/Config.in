@@ -1,0 +1,24 @@
+config BR2_PACKAGE_PYTHON_SCIPY
+	bool "python-scipy"
+	depends on BR2_TOOLCHAIN_HAS_FORTRAN
+	depends on BR2_PACKAGE_OPENBLAS_ARCH_SUPPORTS # build
+	depends on BR2_PACKAGE_PYTHON_NUMPY_ARCH_SUPPORTS # python-numpy
+	depends on BR2_TOOLCHAIN_USES_GLIBC || BR2_TOOLCHAIN_USES_MUSL # python-numpy
+	select BR2_PACKAGE_OPENBLAS # build
+	select BR2_PACKAGE_CLAPACK # build
+	select BR2_PACKAGE_PYTHON_NUMPY # runtime
+	help
+	  Scipy is a Python package that includes modules for
+	  statistics, optimization, linear algebra and much
+	  more.
+
+	  http://www.scipy.org/
+
+comment "python-scipy needs toolchain with fortran"
+	  depends on !BR2_TOOLCHAIN_HAS_FORTRAN
+
+comment "python-scipy needs lib openblas"
+	  depends on !BR2_PACKAGE_OPENBLAS_ARCH_SUPPORTS
+
+comment "python-scipy needs python-numpy"
+	depends on !BR2_PACKAGE_PYTHON_NUMPY_ARCH_SUPPORTS
