@@ -1,6 +1,0 @@
-config BR2_PACKAGE_PYTHON_OVOS_GUIPLAYER_PLUGIN
-	bool "python-ovos-guiplayer-plugin"
-	help
-	  OVOS GUI mediaplayer plugin
-
-	  https://github.com/OpenVoiceOS/ovos-guiplayer-plugin
