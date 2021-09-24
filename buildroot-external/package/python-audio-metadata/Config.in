@@ -1,0 +1,15 @@
+config BR2_PACKAGE_PYTHON_AUDIO_METADATA
+	bool "python-audio-metadata"
+	select BR2_PACKAGE_PYTHON_ATTRS # runtime
+	select BR2_PACKAGE_PYTHON_BIDICT # runtime
+	select BR2_PACKAGE_PYTHON_BITSTRUCT # runtime
+	select BR2_PACKAGE_PYTHON_MORE_ITERTOOLS # runtime
+	select BR2_PACKAGE_PYTHON_PENDULUM # runtime
+	select BR2_PACKAGE_PYTHON_PPRINTPP # runtime
+	select BR2_PACKAGE_PYTHON_TBM_UTILS # runtime
+	select BR2_PACKAGE_PYTHON_WRAPT # runtime
+	help
+	  A library for reading and, in the future, writing metadata
+	  from audio files.
+
+	  https://github.com/thebigmunch/audio-metadata

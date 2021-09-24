@@ -1,0 +1,7 @@
+config BR2_PACKAGE_PYTHON_PPRINTPP
+	bool "python-pprintpp"
+	help
+	  pprint++: a drop-in replacement for 
+	  pprint that's actually pretty.
+
+	  https://github.com/wolever/pprintpp

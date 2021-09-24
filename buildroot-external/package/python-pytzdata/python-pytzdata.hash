@@ -1,0 +1,5 @@
+# md5, sha256 from https://pypi.org/pypi/pytzdata/json
+md5  3f8cd323fad2748f08c54a317bd81bc5  pytzdata-2020.1.tar.gz
+sha256  3efa13b335a00a8de1d345ae41ec78dd11c9f8807f522d39850f2dd828681540  pytzdata-2020.1.tar.gz
+# Locally computed sha256 checksums
+sha256  79d76bbec3899d16482163a365c7f65e87a729993a1d65f960f4181e2ecb81a0  LICENSE
