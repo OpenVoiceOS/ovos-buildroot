@@ -11,7 +11,6 @@ Environment=QT_QPA_PLATFORM=eglfs
 Environment=QT_QPA_EGLFS_KMS_ATOMIC=1
 Environment=QT_QPA_PLATFORMTHEME=qt5ct
 Environment=QT_PLUGIN_PATH=/usr/lib/qt/plugins:/usr/lib/plugins:/usr/lib/plugins/kf5
-Environment=QT_QUICK_CONTROLS_CONF=/home/mycroft/.config/qtquickcontrols2material.conf
 Environment=QT_LOGGING_RULES='*=false'
 Environment=QT_FILE_SELECTORS=ovos
 Environment=QT_FONT_DPI=120
