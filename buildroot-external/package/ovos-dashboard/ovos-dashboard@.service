@@ -1,8 +1,11 @@
 [Unit]
 Description=OVOS Dashboard Service
 After=network.target
+Requires=dbus.socket
 
 [Service]
+Type=dbus
+BusName=com.openvoiceos.ovos-dashboard
 Environment=SIMPLELOGIN_USERNAME="OVOS"
 Environment=SIMPLELOGIN_PASSWORD=%i
 Environment=MYCROFT_SKILLS_LOCATION=%h/.local/share/mycroft/skills/
