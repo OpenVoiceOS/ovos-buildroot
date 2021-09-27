@@ -1,0 +1,9 @@
+config BR2_PACKAGE_PYTHON_FLASK_SIMPLELOGIN
+	bool "python-flask-simplelogin"
+	select BR2_PACKAGE_PYTHON_CLICK # runtime
+	select BR2_PACKAGE_PYTHON_FLASK # runtime
+	select BR2_PACKAGE_PYTHON_FLASK_WTF # runtime
+	help
+	  Flask Simple Login - Login Extension for Flask.
+
+	  https://github.com/flask-extensions/Flask-SimpleLogin

@@ -1,0 +1,6 @@
+config BR2_PACKAGE_PYTHON_PRECISE_LITE_RUNNER
+	bool "python-precise-lite-runner"
+	help
+	  Precise-runner utilizing tflite-runtime
+
+	  https://github.com/OpenVoiceOS/precise_lite_runner

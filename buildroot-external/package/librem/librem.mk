@@ -4,9 +4,9 @@
 #
 #############################################################
 
-LIBREM_VERSION = 0.6.0
-LIBREM_SOURCE = rem-$(LIBREM_VERSION).tar.gz
-LIBREM_SITE = https://github.com/creytiv/rem/releases/download/v$(LIBREM_VERSION)
+LIBREM_VERSION = 1.0.0
+LIBREM_SOURCE = v$(LIBREM_VERSION).tar.gz
+LIBREM_SITE = https://github.com/baresip/rem/archive
 LIBREM_INSTALL_STAGING = YES
 
 ifeq ($(BR2_PACKAGE_LIBRE),y)

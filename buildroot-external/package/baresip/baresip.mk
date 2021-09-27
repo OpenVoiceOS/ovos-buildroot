@@ -4,7 +4,7 @@
 #
 #############################################################
 
-BARESIP_VERSION = 1.0.0
+BARESIP_VERSION = 1.1.0
 BARESIP_SOURCE = v$(BARESIP_VERSION).tar.gz
 BARESIP_SITE = https://github.com/baresip/baresip/archive
 BARESIP_DEPENDENCIES = libre librem zlib

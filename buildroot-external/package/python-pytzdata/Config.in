@@ -1,0 +1,6 @@
+config BR2_PACKAGE_PYTHON_PYTZDATA
+	bool "python-pytzdata"
+	help
+	  The Olson timezone database for Python.
+
+	  https://github.com/sdispater/pytzdata

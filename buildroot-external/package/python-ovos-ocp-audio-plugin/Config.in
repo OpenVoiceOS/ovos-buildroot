@@ -1,0 +1,6 @@
+config BR2_PACKAGE_PYTHON_OVOS_OCP_AUDIO_PLUGIN
+	bool "python-ovos-ocp-audio-plugin"
+	help
+	  OVOS GUI mediaplayer plugin
+
+	  https://github.com/OpenVoiceOS/ovos-ocp-audio-plugin

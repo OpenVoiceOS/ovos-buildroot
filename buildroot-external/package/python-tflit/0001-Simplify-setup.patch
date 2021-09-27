@@ -1,0 +1,62 @@
+From 24550245ce0ff45f15200b46f6ec79d392b88957 Mon Sep 17 00:00:00 2001
+From: Peter Steenbergen <info@j1nx.nl>
+Date: Thu, 23 Sep 2021 14:52:05 +0200
+Subject: [PATCH 1/1] Simplify setup
+
+---
+ setup.py | 35 +++++++++--------------------------
+ 1 file changed, 9 insertions(+), 26 deletions(-)
+
+diff --git a/setup.py b/setup.py
+index 9a9cf4a..8b8dbba 100755
+--- a/setup.py
++++ b/setup.py
+@@ -1,36 +1,19 @@
+-import sys
+-import setuptools
++from setuptools import setup
+ 
+-USERNAME = 'beasteers'
+-NAME = 'tflit'
+-VERSION = '0.1.2'
+-
+-
+-from tflit import tflite_install
+-if not (len(sys.argv) > 1 and sys.argv[1] == 'sdist'):
+-    # from importlib.machinery import SourceFileLoader
+-    # version = SourceFileLoader('tflit.tflite_install',
+-    #                            'tflit/tflite_install.py').load_module()
+-    tflite_install.check_install(verbose=True, upgrade=True)
+-
+-setuptools.setup(
+-    name=NAME,
+-    version=VERSION,
++setup(
++    name='tflit',
++    version='0.1.2',
+     description='tflite_runtime, but easier.',
+-    long_description=open('README.md').read().strip(),
+-    long_description_content_type='text/markdown',
+     author='Bea Steers',
+     author_email='bea.steers@gmail.com',
+-    url='https://github.com/{}/{}'.format(USERNAME, NAME),
+-    packages=setuptools.find_packages(),
+-    package_data={NAME: ['*/*.tflite']},
+-    # entry_points={'console_scripts': ['{name}={name}:main'.format(name=NAME)]},
++    packages=['tflit'],
++    url='https://github.com/beasteers/tflit',
+     install_requires=[
+-        'numpy',
+-        # 'tflite_runtime@{}'.format(tflite_install.get_tflite_url())
++        'numpy'
+     ],
+     extras_require={
+         'tests': ['pytest-cov'],
+     },
+     license='MIT License',
+-    keywords='tflite runtime tensorflow keras deep machine learning model edge embedded compute cnn')
++    keywords='tflite runtime tensorflow keras deep machine learning model edge embedded compute cnn'
++)
+-- 
+2.33.0
+

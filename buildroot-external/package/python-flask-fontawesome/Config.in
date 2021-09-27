@@ -1,0 +1,7 @@
+config BR2_PACKAGE_PYTHON_FLASK_FONTAWESOME
+	bool "python-flask-fontawesome"
+	select BR2_PACKAGE_PYTHON_FLASK # runtime
+	help
+	  FontAwesome for Flask.
+
+	  https://github.com/heartsucker/flask-fontawesome

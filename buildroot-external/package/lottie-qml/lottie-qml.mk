@@ -4,7 +4,7 @@
 #
 ################################################################################
 
-LOTTIE_QML_VERSION = 26335df22cfbb23cd238394792f05b94318c24c9
+LOTTIE_QML_VERSION = 0db824cfea0cbefff775c3caa4918719f45762ca
 LOTTIE_QML_SITE = $(call github,kbroulik,lottie-qml,$(LOTTIE_QML_VERSION))
 LOTTIE_QML_LICENSE = Apache License 2.0
 

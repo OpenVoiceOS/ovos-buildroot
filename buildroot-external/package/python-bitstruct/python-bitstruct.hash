@@ -1,0 +1,5 @@
+# md5, sha256 from https://pypi.org/pypi/bitstruct/json
+md5  9b2503b831532ea26381f5a0e2b41253  bitstruct-8.11.1.tar.gz
+sha256  4e7b8769c0f09fee403d0a5f637f8b575b191a79a92e140811aa109ce7461f0c  bitstruct-8.11.1.tar.gz
+# Locally computed sha256 checksums
+sha256  ed3d93b4e2ffa21ef96f74325a3789bbeeaa30e4292579885b485d7712752fe9  LICENSE

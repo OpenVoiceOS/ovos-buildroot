@@ -1,0 +1,5 @@
+# md5, sha256 from https://pypi.org/pypi/tbm-utils/json
+md5  dea59020e9ec0b56a742ded122628bde  tbm-utils-2.6.0.tar.gz
+sha256  235748cceeb22c042e32d2fdfd4d710021bac9b938c4f2c35e1fce1cfd58f7ec  tbm-utils-2.6.0.tar.gz
+# Locally computed sha256 checksums
+sha256  6412eebc25f08501ebf7382216b7b39d97440fb0c5768654d1907dc4d4c9e798  LICENSE

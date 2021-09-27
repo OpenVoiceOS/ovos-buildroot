@@ -1,0 +1,7 @@
+config BR2_PACKAGE_PYTHON_BITSTRUCT
+	bool "python-bitstruct"
+	help
+	  This module performs conversions between Python values and
+	  C bit field structs represented as Python byte strings.
+
+	  https://github.com/eerimoq/bitstruct

@@ -4,7 +4,7 @@
 #
 #############################################################
 
-LIBRE_VERSION = 1.0.0
+LIBRE_VERSION = 2.0.1
 LIBRE_SOURCE = v$(LIBRE_VERSION).tar.gz
 LIBRE_SITE = https://github.com/baresip/re/archive
 LIBRE_INSTALL_STAGING = YES

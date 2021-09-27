@@ -4,7 +4,7 @@
 #
 ################################################################################
 
-MYCROFT_SKILL_BALENA_WIFI_SETUP_VERSION = 1bbc78f88f1480f0b6b0faf13eeda3042e0d66f9
+MYCROFT_SKILL_BALENA_WIFI_SETUP_VERSION = 97c9bf98c6b03948896e49749fbd52832c1c0c79
 MYCROFT_SKILL_BALENA_WIFI_SETUP_SITE = git://github.com/OpenVoiceOS/skill-balena-wifi-setup
 MYCROFT_SKILL_BALENA_WIFI_SETUP_SITE_METHOD = git
 MYCROFT_SKILL_BALENA_WIFI_SETUP_DIRLOCATION = home/mycroft/.local/share/mycroft/skills

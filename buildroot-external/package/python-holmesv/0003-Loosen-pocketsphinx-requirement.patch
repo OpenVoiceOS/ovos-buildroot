@@ -1,0 +1,32 @@
+From 3579e5cf4c09975a4f0fca625f483975723e8f71 Mon Sep 17 00:00:00 2001
+From: Peter Steenbergen <info@j1nx.nl>
+Date: Wed, 22 Sep 2021 10:02:05 +0200
+Subject: [PATCH 1/1] Loosen pocketsphinx requirement
+
+---
+ requirements/requirements.txt | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/requirements/requirements.txt b/requirements/requirements.txt
+index 17a682af..e16bbb17 100644
+--- a/requirements/requirements.txt
++++ b/requirements/requirements.txt
+@@ -8,7 +8,7 @@ websocket-client==0.54.0
+ requests-futures>=0.9.5
+ pyserial>=3.0
+ psutil>=5.6.6
+-pocketsphinx==0.1.0
++pocketsphinx>=0.1.0
+ inflection>=0.3.1
+ pillow==8.2.0
+ python-dateutil>=2.6.0
+@@ -24,4 +24,4 @@ fann2==1.0.7
+ padaos>=0.1.9
+ precise-runner>=0.2.1
+ petact>=0.1.2
+-pyxdg>=0.26
+\ No newline at end of file
++pyxdg>=0.26
+-- 
+2.33.0
+

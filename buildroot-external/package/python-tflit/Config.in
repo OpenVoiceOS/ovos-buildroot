@@ -1,0 +1,6 @@
+config BR2_PACKAGE_PYTHON_TFLIT
+	bool "python-tflit"
+	help
+	  tflite_runtime, but easier.
+
+	  https://github.com/beasteers/tflit
