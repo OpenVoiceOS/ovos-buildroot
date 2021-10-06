@@ -4,7 +4,7 @@
 #
 ################################################################################
 
-MYCROFT_SKILL_NEWS_VERSION = db21971365efd8016301ebe7fc2cf9abdf10cbc9
+MYCROFT_SKILL_NEWS_VERSION = c5edbdc5479aa6aff5a6ba17bfdcf4808e846f57
 MYCROFT_SKILL_NEWS_SITE = git://github.com/JarbasSkills/skill-news
 MYCROFT_SKILL_NEWS_SITE_METHOD = git
 MYCROFT_SKILL_NEWS_DIRLOCATION = home/mycroft/.local/share/mycroft/skills
