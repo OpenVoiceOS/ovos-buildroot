@@ -21,7 +21,7 @@ SPOTIFYD_BIN_DIR = target/$(RUSTC_TARGET_NAME)/release
 
 SPOTIFYD_CARGO_OPTS = --release \
 		      --no-default-features \
-		      --features=pulseaudio_backend \
+		      --features=pulseaudio_backend,dbus_keyring,dbus_mpris \
 		      --target=$(RUSTC_TARGET_NAME) \
 		      --manifest-path=$(@D)/Cargo.toml
 
