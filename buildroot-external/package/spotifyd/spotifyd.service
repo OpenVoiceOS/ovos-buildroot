@@ -8,6 +8,7 @@ After=network-online.target
 After=pulseaudio.service
 
 [Service]
+User=mycroft
 Type=simple
 ExecStart=/usr/bin/spotifyd --no-daemon
 Restart=always
