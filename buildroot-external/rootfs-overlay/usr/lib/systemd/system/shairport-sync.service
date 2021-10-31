@@ -1,11 +1,16 @@
 [Unit]
 Description=Shairport-sync
-Wants=network.target
+Wants=sound.target
+After=sound.target
+Wants=network-online.target
+After=network-online.target
+After=pulseaudio.service
 Requires=avahi-daemon.service
-After=network.target sound.target avahi-daemon.service
+After=avahi-daemon.service
 
 [Service]
 Type=simple
+User=mycroft
 # Avahi daemon needs some time until fully ready
 ExecStartPre=/bin/sleep 3
 ExecStart=/usr/bin/shairport-sync

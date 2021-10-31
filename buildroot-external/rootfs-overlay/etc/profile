@@ -1,0 +1,29 @@
+export PATH="/usr/bin:/usr/sbin"
+
+if [ "$PS1" ]; then
+        if [ "`id -u`" -eq 0 ]; then
+                export PS1='# '
+        else
+                export PS1='$ '
+        fi
+fi
+if test -z "${XDG_RUNTIME_DIR}"; then
+    export XDG_RUNTIME_DIR=/run/user/${UID}
+    if ! test -d "${XDG_RUNTIME_DIR}"; then
+        mkdir "${XDG_RUNTIME_DIR}"
+        chmod 0700 "${XDG_RUNTIME_DIR}"
+    fi
+fi
+if test -z "${DBUS_SESSION_BUS_ADDRESS}"; then
+    export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/${UID}/bus
+fi
+
+export EDITOR='/bin/vi'
+
+# Source configuration files from /etc/profile.d
+for i in /etc/profile.d/*.sh ; do
+        if [ -r "$i" ]; then
+                . $i
+        fi
+done
+unset i
