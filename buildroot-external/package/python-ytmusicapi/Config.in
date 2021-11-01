@@ -1,0 +1,7 @@
+config BR2_PACKAGE_PYTHON_YTMUSICAPI
+	bool "python-ytmusicapi"
+	select BR2_PACKAGE_PYTHON_REQUESTS # runtime
+	help
+	  Unofficial API for YouTube Music.
+
+	  https://github.com/sigma67/ytmusicapi

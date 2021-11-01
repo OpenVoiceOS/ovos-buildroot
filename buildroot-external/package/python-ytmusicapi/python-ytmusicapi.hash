@@ -1,0 +1,5 @@
+# md5, sha256 from https://pypi.org/pypi/ytmusicapi/json
+md5  0bb02d50f8670e9672bb921454b6dae7  ytmusicapi-0.19.4.tar.gz
+sha256  0001947daf757fd6aab8f2d066cf644036d95eb06bc6348115d588af10790ff2  ytmusicapi-0.19.4.tar.gz
+# Locally computed sha256 checksums
+sha256  5e3da7b4964fbdeb57de799e89987d58039b84d7c46bce09e48fb2a2d30a5cc4  LICENSE

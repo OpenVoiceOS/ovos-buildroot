@@ -1,0 +1,10 @@
+config BR2_PACKAGE_PYTHON_TUTUBO
+	bool "python-tutubo"
+	select BR2_PACKAGE_PYTHON_BS4 # runtime
+	select BR2_PACKAGE_PYTHON_PYTUBE # runtime
+	select BR2_PACKAGE_PYTHON_REQUESTS # runtime
+	select BR2_PACKAGE_PYTHON_YTMUSICAPI # runtime
+	help
+	  wrapper around pytube with some new functionality.
+
+	  https://github.com/OpenJarbas/tutubo

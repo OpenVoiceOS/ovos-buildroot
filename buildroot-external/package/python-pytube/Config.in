@@ -1,0 +1,6 @@
+config BR2_PACKAGE_PYTHON_PYTUBE
+	bool "python-pytube"
+	help
+	  Python 3 library for downloading YouTube Videos.
+
+	  https://github.com/pytube/pytube
