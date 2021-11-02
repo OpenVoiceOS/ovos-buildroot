@@ -1,0 +1,120 @@
+From 7c3c982668b9233dd0cd9f8e8eb26f1f112dd1f4 Mon Sep 17 00:00:00 2001
+From: Peter Steenbergen <info@j1nx.nl>
+Date: Tue, 2 Nov 2021 11:48:31 +0100
+Subject: [PATCH 1/1] Fix QT5 GCC-11 build issues
+
+---
+ .../qt5base/0007-Build-fixes-for-GCC-11.patch | 61 +++++++++++++++++++
+ .../0008-Add-missing-limits-include.patch     | 32 ++++++++++
+ 2 files changed, 93 insertions(+)
+ create mode 100644 package/qt5/qt5base/0007-Build-fixes-for-GCC-11.patch
+ create mode 100644 package/qt5/qt5base/0008-Add-missing-limits-include.patch
+
+diff --git a/package/qt5/qt5base/0007-Build-fixes-for-GCC-11.patch b/package/qt5/qt5base/0007-Build-fixes-for-GCC-11.patch
+new file mode 100644
+index 0000000000..d20600c6ce
+--- /dev/null
++++ b/package/qt5/qt5base/0007-Build-fixes-for-GCC-11.patch
+@@ -0,0 +1,61 @@
++From 86494659b2ab14edc653cd2d9260561ad4c4e4e8 Mon Sep 17 00:00:00 2001
++From: Ville Voutilainen <ville.voutilainen@qt.io>
++Date: Mon, 18 Jan 2021 09:58:17 +0200
++Subject: [PATCH] Build fixes for GCC 11
++
++Task-number: QTBUG-89977
++Change-Id: Ic1b7ddbffb8a0a00f8c621d09a868f1d94a52c21
++Reviewed-by: Lars Knoll <lars.knoll@qt.io>
++Reviewed-by: Thiago Macieira <thiago.macieira@intel.com>
++[Retrieved (and backported) from:
++https://github.com/qt/qtbase/commit/813a928c7c3cf98670b6043149880ed5c955efb9]
++Signed-off-by: Maxim Kochetkov <fido_max@inbox.ru>
++---
++ src/corelib/text/qbytearraymatcher.h     | 2 ++
++ src/corelib/tools/qsharedpointer_impl.h  | 3 ---
++ src/plugins/platforms/xcb/qxcbwindow.cpp | 2 +-
++ 3 files changed, 3 insertions(+), 4 deletions(-)
++
++diff --git a/src/corelib/text/qbytearraymatcher.h b/src/corelib/text/qbytearraymatcher.h
++index 0eedfc1d20..f5f9bef7b8 100644
++--- a/src/corelib/text/qbytearraymatcher.h
+++++ b/src/corelib/text/qbytearraymatcher.h
++@@ -42,6 +42,8 @@
++ 
++ #include <QtCore/qbytearray.h>
++ 
+++#include <limits>
+++
++ QT_BEGIN_NAMESPACE
++ 
++ 
++diff --git a/src/corelib/tools/qsharedpointer_impl.h b/src/corelib/tools/qsharedpointer_impl.h
++index 790c187cb9..4aee98af53 100644
++--- a/src/corelib/tools/qsharedpointer_impl.h
+++++ b/src/corelib/tools/qsharedpointer_impl.h
++@@ -155,9 +155,6 @@ namespace QtSharedPointer {
++ #endif
++         inline void checkQObjectShared(...) { }
++         inline void setQObjectShared(...) { }
++-
++-        inline void operator delete(void *ptr) { ::operator delete(ptr); }
++-        inline void operator delete(void *, void *) { }
++     };
++     // sizeof(ExternalRefCountData) = 12 (32-bit) / 16 (64-bit)
++ 
++diff --git a/src/plugins/platforms/xcb/qxcbwindow.cpp b/src/plugins/platforms/xcb/qxcbwindow.cpp
++index 9e7e1a5572..f0866a90ac 100644
++--- a/src/plugins/platforms/xcb/qxcbwindow.cpp
+++++ b/src/plugins/platforms/xcb/qxcbwindow.cpp
++@@ -698,7 +698,7 @@ void QXcbWindow::show()
++         if (isTransient(window())) {
++             const QWindow *tp = window()->transientParent();
++             if (tp && tp->handle())
++-                transientXcbParent = static_cast<const QXcbWindow *>(tp->handle())->winId();
+++                transientXcbParent = tp->handle()->winId();
++             // Default to client leader if there is no transient parent, else modal dialogs can
++             // be hidden by their parents.
++             if (!transientXcbParent)
++-- 
++2.31.1
++
+diff --git a/package/qt5/qt5base/0008-Add-missing-limits-include.patch b/package/qt5/qt5base/0008-Add-missing-limits-include.patch
+new file mode 100644
+index 0000000000..e489f2e551
+--- /dev/null
++++ b/package/qt5/qt5base/0008-Add-missing-limits-include.patch
+@@ -0,0 +1,32 @@
++From 87a869a8404047240cccaa9f101351aeb9417a26 Mon Sep 17 00:00:00 2001
++From: Nicolas Fella <nicolas.fella@kdab.com>
++Date: Sun, 20 Jun 2021 17:36:41 +0200
++Subject: [PATCH] Add missing limits include
++
++The code uses std::numeric_limits but is lacking the appropriate include
++
++Pick-to: 5.15 6.1 6.2
++Change-Id: I41fa5ac4d8c4e06f35b5b1551ef2ad8417df80bd
++Reviewed-by: Giuseppe D'Angelo <giuseppe.dangelo@kdab.com>
++
++[Upstream: https://code.qt.io/cgit/qt/qtbase.git/patch/?id=2b2b3155d9f6ba1e4f859741468fbc47db09292b]
++Signed-off-by: Peter Seiderer <ps.report@gmx.net>
++---
++ src/corelib/tools/qoffsetstringarray_p.h | 1 +
++ 1 file changed, 1 insertion(+)
++
++diff --git a/src/corelib/tools/qoffsetstringarray_p.h b/src/corelib/tools/qoffsetstringarray_p.h
++index 4dd9e960..e26a57ff 100644
++--- a/src/corelib/tools/qoffsetstringarray_p.h
+++++ b/src/corelib/tools/qoffsetstringarray_p.h
++@@ -55,6 +55,7 @@
++ 
++ #include <tuple>
++ #include <array>
+++#include <limits>
++ 
++ QT_BEGIN_NAMESPACE
++ 
++-- 
++2.32.0
++
+-- 
+2.33.1
+
