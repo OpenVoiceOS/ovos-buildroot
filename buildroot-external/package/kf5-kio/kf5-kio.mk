@@ -12,13 +12,13 @@ KF5_KIO_LICENSE_FILES = COPYING-CMAKE-SCRIPTS
 
 KF5_KIO_DEPENDENCIES = host-pkgconf kf5-kservice kf5-solid \
 			kf5-kjobwidgets kf5-ktextwidgets \
-			kf5-knotifications host-kf5-kconfig \
-			host-kf5-kcoreaddons
+			kf5-knotifications kf5-kded #host-kf5-desktoptojson
+			#host-kf5-kcoreaddons
 
 KF5_KIO_INSTALL_STAGING = YES
 KF5_KIO_SUPPORTS_IN_SOURCE_BUILD = NO
 
 KF5_KIO_CONF_OPTS = -DBUILD_DESIGNERPLUGIN=OFF
-KF5_KIO_CONF_OPTS += -DKF5_HOST_TOOLING="$(HOST_DIR)/lib/x86_64-linux-gnu/cmake"
+#KF5_KIO_CONF_OPTS += -DDESKTOPTOJSON_EXECUTABLE=/usr/bin/desktoptojson
 
 $(eval $(cmake-package))
