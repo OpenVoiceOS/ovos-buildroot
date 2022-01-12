@@ -5,7 +5,7 @@
 ################################################################################
 
 OVOS_DASHBOARD_VERSION = 0e311a5ca9aeaa19bcc8a3aec83fb254dc30c152
-OVOS_DASHBOARD_SITE = git://github.com/OpenVoiceOS/OVOS-Dashboard
+OVOS_DASHBOARD_SITE = https://github.com/OpenVoiceOS/OVOS-Dashboard
 OVOS_DASHBOARD_SITE_METHOD = git
 OVOS_DASHBOARD_LOCATION = usr/local/share/ovos-dashboard
 

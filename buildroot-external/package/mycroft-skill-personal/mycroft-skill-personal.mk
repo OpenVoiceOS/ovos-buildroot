@@ -5,7 +5,7 @@
 ################################################################################
 
 MYCROFT_SKILL_PERSONAL_VERSION = ed99a6a26f14383bd1a42beb29f137f1a53c4954
-MYCROFT_SKILL_PERSONAL_SITE = git://github.com/MycroftAI/skill-personal
+MYCROFT_SKILL_PERSONAL_SITE = https://github.com/MycroftAI/skill-personal
 MYCROFT_SKILL_PERSONAL_SITE_METHOD = git
 MYCROFT_SKILL_PERSONAL_DIRLOCATION = home/mycroft/.local/share/mycroft/skills
 MYCROFT_SKILL_PERSONAL_DIRNAME = skill-personal.mycroftai

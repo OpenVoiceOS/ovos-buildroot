@@ -5,7 +5,7 @@
 ################################################################################
 
 MYCROFT_SKILL_UNKNOWN_VERSION = de219550beccaaccb9310b200943ed5a2b2dbaf2
-MYCROFT_SKILL_UNKNOWN_SITE = git://github.com/MycroftAI/fallback-unknown
+MYCROFT_SKILL_UNKNOWN_SITE = https://github.com/MycroftAI/fallback-unknown
 MYCROFT_SKILL_UNKNOWN_SITE_METHOD = git
 MYCROFT_SKILL_UNKNOWN_DIRLOCATION = home/mycroft/.local/share/mycroft/skills
 MYCROFT_SKILL_UNKNOWN_DIRNAME = fallback-unknown.mycroftai

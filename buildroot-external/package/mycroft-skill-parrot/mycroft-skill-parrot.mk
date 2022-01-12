@@ -5,7 +5,7 @@
 ################################################################################
 
 MYCROFT_SKILL_PARROT_VERSION = abef6ff959b622a32dfe6a2bcf8e47fe451a53e6
-MYCROFT_SKILL_PARROT_SITE = git://github.com/JarbasSkills/skill-parrot
+MYCROFT_SKILL_PARROT_SITE = https://github.com/JarbasSkills/skill-parrot
 MYCROFT_SKILL_PARROT_SITE_METHOD = git
 MYCROFT_SKILL_PARROT_DIRLOCATION = home/mycroft/.local/share/mycroft/skills
 MYCROFT_SKILL_PARROT_DIRNAME = skill-parrot.jarbasskills

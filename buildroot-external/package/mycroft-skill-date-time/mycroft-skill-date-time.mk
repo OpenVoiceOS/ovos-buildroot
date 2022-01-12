@@ -5,7 +5,7 @@
 ################################################################################
 
 MYCROFT_SKILL_DATE_TIME_VERSION = 62dcf10169a72af83cde9cf8daa0887c0a38c459
-MYCROFT_SKILL_DATE_TIME_SITE = git://github.com/MycroftAI/skill-date-time
+MYCROFT_SKILL_DATE_TIME_SITE = https://github.com/MycroftAI/skill-date-time
 MYCROFT_SKILL_DATE_TIME_SITE_METHOD = git
 MYCROFT_SKILL_DATE_TIME_DIRLOCATION = home/mycroft/.local/share/mycroft/skills
 MYCROFT_SKILL_DATE_TIME_DIRNAME = skill-date-time.mycroftai
