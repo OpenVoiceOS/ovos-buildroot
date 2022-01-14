@@ -22,7 +22,6 @@ KF5_KDELIBS4SUPPORT_DEPENDENCIES = host-pkgconf qt5base qt5svg \
 				   kf5-kglobalaccel \
 				   kf5-kiconthemes \
 				   kf5-kio \
-				   host-kf5-kcoreaddons \
 				   host-kf5-kconfig \
 				   host-kf5-kauth \
 				   kf5-knotifications \
