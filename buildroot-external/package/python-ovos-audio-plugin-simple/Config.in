@@ -1,0 +1,7 @@
+config BR2_PACKAGE_PYTHON_OVOS_AUDIO_PLUGIN_SIMPLE
+	bool "python-ovos-audio-plugin-simple"
+	select BR2_PACKAGE_PYTHON_OVOS_PLUGIN_MANAGER # runtime
+	help
+	  simple audio plugin for ovos.
+
+	  https://github.com/OpenVoiceOS/ovos-audio-plugin-simple
