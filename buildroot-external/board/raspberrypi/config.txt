@@ -54,4 +54,4 @@ dtoverlay=gpio-no-irq
 #[pi4]
 #dtoverlay=vc4-kms-v3d-pi4
 
-dtoverlay=disable-wifi
+#dtoverlay=disable-wifi
