@@ -5,7 +5,7 @@
 ################################################################################
 
 MYCROFT_SKILL_IP_VERSION = 0e836fb98d8113475c808c64bc10424e8436d5ef
-MYCROFT_SKILL_IP_SITE = git://github.com/MycroftAI/skill-ip
+MYCROFT_SKILL_IP_SITE = https://github.com/MycroftAI/skill-ip
 MYCROFT_SKILL_IP_SITE_METHOD = git
 MYCROFT_SKILL_IP_DIRLOCATION = home/mycroft/.local/share/mycroft/skills
 MYCROFT_SKILL_IP_DIRNAME = skill-ip.mycroftai

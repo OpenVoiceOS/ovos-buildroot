@@ -5,7 +5,7 @@
 ################################################################################
 
 MYCROFT_SKILL_SPELLING_VERSION = 89c154850cf79f3b2544337e42874adc9e0c7520
-MYCROFT_SKILL_SPELLING_SITE = git://github.com/MycroftAI/skill-spelling
+MYCROFT_SKILL_SPELLING_SITE = https://github.com/MycroftAI/skill-spelling
 MYCROFT_SKILL_SPELLING_SITE_METHOD = git
 MYCROFT_SKILL_SPELLING_DIRLOCATION = home/mycroft/.local/share/mycroft/skills
 MYCROFT_SKILL_SPELLING_DIRNAME = skill-spelling.mycroftai

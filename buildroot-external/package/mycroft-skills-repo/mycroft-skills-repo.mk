@@ -4,7 +4,7 @@
 #
 ################################################################################
 
-MYCROFT_SKILLS_REPO_VERSION = 20.08
+MYCROFT_SKILLS_REPO_VERSION = 21.02
 MYCROFT_SKILLS_REPO_SITE = git://github.com/MycroftAI/mycroft-skills
 MYCROFT_SKILLS_REPO_SITE_METHOD = git
 #MYCROFT_SKILLS_REPO_GIT_SUBMODULES = yes

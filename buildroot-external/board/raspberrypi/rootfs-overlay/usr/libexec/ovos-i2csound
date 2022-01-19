@@ -1,0 +1,112 @@
+#!/bin/bash
+##########################################################################
+# ovos-i2csound
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#    http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+##########################################################################
+
+# Set default configurations
+PULSE_SYSTEM=/etc/pulse/pulseaudio-system.pa
+PULSE_DAEMON=/etc/pulse/pulseaudio-daemon.conf
+
+# Scanning the I2C bus for know addresses 
+is_1a=$(i2cdetect -y 1 0x1a 0x1a | egrep "(1a|UU)" | awk '{print $2}') # ReSpeaker 2-mic / WM8960
+if [ "${is_1a}" == "1a" ] || [ "${is_1a}" == "UU" ] ; then
+    RESPEAKER2=found
+    echo "ReSpeaker 2-mic $RESPEAKER2"
+fi
+
+is_35=$(i2cdetect -y 1 0x35 0x35 | egrep "(35|UU)" | awk '{print $2}') # ReSpeaker 4-mic squared
+if [ "${is_35}" == "35" ] || [ "${is_35}" == "UU" ] ; then
+    RESPEAKER4=found
+    echo "ReSpeaker 4-mic $RESPEAKER4"
+fi
+
+is_3b=$(i2cdetect -y 1 0x3b 0x3b | egrep "(3b|UU)" | awk '{print $2}') # ReSpeaker 4-mic lineair / 6-mic
+if [ "${is_3b}" == "3b" ] || [ "${is_3b}" == "UU" ] ; then
+    RESPEAKER6=found
+    echo "ReSpeaker 6-mic $RESPEAKER6"
+fi
+
+is_4b=$(i2cdetect -y 1 0x4b 0x4b | egrep "(4b|UU)" | awk '{print $2}') # Adafruit
+if [ "${is_4b}" == "4b" ] || [ "${is_4b}" == "UU" ] ; then
+    ADAFRUIT=found
+    echo "Adafruit $ADAFRUIT"
+fi
+
+is_2f=$(i2cdetect -y 1 0x2f 0x2f | egrep "(2f|UU)" | awk '{print $2}') # TAS5806
+if [ "${is_2f}" == "2f" ] || [ "${is_2f}" == "UU" ] ; then
+    TAS5806=found
+    echo "Texas Instruments 5806 $TAS5806"
+fi
+
+is_04=$(i2cdetect -y -a 1 0x04 0x04 | egrep "(04|UU)" | awk '{print $2}') # SJ201 Led Ring
+if [ "${is_04}" == "04" ] || [ "${is_04}" == "UU" ] ; then
+    SJ201LED=found
+    echo "Mark2 SJ201 Leds $SJ201LED"
+fi
+
+
+# Remove old configurations
+if [ -f /etc/pulse/system.pa ] ; then
+    rm /etc/pulse/system.pa
+fi
+if [ -f /etc/pulse/daemon.conf ] ; then
+    rm /etc/pulse/daemon.conf
+fi
+
+if [ "$RESPEAKER2" == "found" ] && [ "$RESPEAKER4" != "found" ] ; then
+    echo "Installing and configuring ReSpeaker 2-mic"
+    dtoverlay seeed-2mic-voicecard
+fi
+
+if [ "${RESPEAKER6}" == "found" ] && [ "${RESPEAKER4}" != "found" ] ; then
+    echo "Installing and configuring ReSpeaker 4-mic"
+    dtoverlay seeed-4mic-voicecard
+    PULSE_SYSTEM=/etc/pulse/seeed-voicecard-4mic-default.pa
+    PULSE_DAEMON=/etc/pulse/seeed-voicecard-4mic-daemon.conf
+fi
+
+if [ "{$RESPEAKER6}" == "found" ] && [ "${RESPEAKER4}" == "found" ] ; then
+    echo "Installing and configuring ReSpeaker 6mic"
+    dtoverlay seeed-8mic-voicecard
+    PULSE_SYSTEM=/etc/pulse/seeed-voicecard-8mic-default.pa
+    PULSE_DAEMON=/etc/pulse/seeed-voicecard-8mic-daemon.conf
+fi
+
+if [ "$ADAFRUIT" ] ; then
+    echo "Installing and configuring Adafruit"
+    /usr/sbin/i2cset -y 1 0x4b 30 # Set maximum volume to 30
+fi
+
+if [ "$TAS5806" ] && [ "$SJ201LED" ]; then
+    echo "Installing and configuring SJ201"
+    # Initializing XMOS xvf3510
+    dtoverlay xvf3510
+    xvf3510-flash --direct "/usr/lib/firmware/xvf3510/app_xvf3510_int_spi_boot_v4_1_0.bin"
+    # Initializing Texas Instruments 5806 Amplifier
+    /usr/bin/tas5806-init
+    # Initializing and resetting LED ring
+    /usr/bin/sj201-reset-led
+    # Reset FAN to low speed
+    /usr/sbin/i2cset -a -y 1 0x04 101 30 i
+
+    PULSE_SYSTEM=/etc/pulse/mycroft-sj201-default.pa
+    PULSE_DAEMON=/etc/pulse/mycroft-sj201-daemon.conf
+fi
+
+# Install pulseaudio files
+echo "create pulse system file"
+ln -s $PULSE_SYSTEM /etc/pulse/system.pa
+echo "create pulse daemon file"
+ln -s $PULSE_DAEMON /etc/pulse/daemon.conf

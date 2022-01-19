@@ -1,0 +1,9 @@
+config BR2_PACKAGE_PYTHON_YT_DLP
+	bool "python-yt-dlp"
+	select BR2_PACKAGE_PYTHON_MUTAGEN # runtime
+	select BR2_PACKAGE_PYTHON_PYCRYPTODOMEX # runtime
+	select BR2_PACKAGE_PYTHON_WEBSOCKETS # runtime
+	help
+	  A youtube-dl fork with additional features and patches.
+
+	  https://github.com/yt-dlp/yt-dlp
