@@ -1,0 +1,7 @@
+config BR2_PACKAGE_PYTHON_OVOS_CORE
+	bool "python-ovos-core"
+	help
+	  OVOS-core is a backwards-compatible descendant of 
+	  Mycroft-core, the central component of Mycroft 
+
+	  https://github.com/OpenVoiceOS/ovos-core
