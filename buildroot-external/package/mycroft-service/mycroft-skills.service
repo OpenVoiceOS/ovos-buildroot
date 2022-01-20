@@ -3,7 +3,6 @@ Description=Mycroft Skills
 PartOf=mycroft.service
 After=mycroft.service
 After=mycroft-messagebus.service
-After=mycroft-audio.service
 
 [Service]
 User=mycroft
