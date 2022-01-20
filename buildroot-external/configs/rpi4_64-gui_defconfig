@@ -1,7 +1,7 @@
 BR2_aarch64=y
 BR2_cortex_a72=y
 BR2_ARM_FPU_VFPV4=y
-BR2_DL_DIR="../downloads"
+BR2_DL_DIR="../../downloads"
 BR2_CCACHE=y
 BR2_CCACHE_DIR="../ccache"
 BR2_OPTIMIZE_3=y
