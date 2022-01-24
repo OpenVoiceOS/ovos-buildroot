@@ -1,0 +1,24 @@
+[Unit]
+Description=Mycroft Enclosure
+PartOf=mycroft.service
+After=mycroft.service
+After=mycroft-messagebus.service
+
+[Service]
+User=mycroft
+Type=notify
+WorkingDirectory=/home/mycroft
+Environment=PYTHONUNBUFFERED=1
+ExecStart=/home/mycroft/.local/share/systemd/mycroft-systemd_gui.py
+StandardOutput=append:/var/log/mycroft/enclosure_gui.log
+StandardError=file:/var/log/mycroft/enclosure_gui.error.log
+TimeoutStartSec=1m
+TimeoutStopSec=1m
+Restart=on-failure
+StartLimitInterval=5min
+StartLimitBurst=4
+#StartLimitAction=reboot-force
+#WatchdogSec=30s
+
+[Install]
+WantedBy=mycroft.service

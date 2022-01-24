@@ -17,6 +17,7 @@ enable mycroft-audio.service
 enable mycroft-skills.service
 enable mycroft-enclosure.service
 enable mycroft-gui.service
+enable mycroft-enclosure-gui.service
 enable ovos-splash-quit.service
 enable local-backend.service
 

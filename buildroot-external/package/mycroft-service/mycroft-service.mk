@@ -22,6 +22,8 @@ define MYCROFT_SERVICE_INSTALL_TARGET_CMDS
                 $(TARGET_DIR)/home/mycroft/.local/share/systemd/mycroft-systemd_skills.py
 	$(INSTALL) -m 0755 $(@D)/mycroft-systemd_voice.py \
                 $(TARGET_DIR)/home/mycroft/.local/share/systemd/mycroft-systemd_voice.py
+	$(INSTALL) -m 0755 $(@D)/mycroft-systemd_gui.py \
+                $(TARGET_DIR)/home/mycroft/.local/share/systemd/mycroft-systemd_gui.py
 
 	$(INSTALL) -D -m 644 $(@D)/mycroft.service \
 		$(TARGET_DIR)/usr/lib/systemd/system/mycroft.service
@@ -37,6 +39,8 @@ define MYCROFT_SERVICE_INSTALL_TARGET_CMDS
                 $(TARGET_DIR)/usr/lib/systemd/system/mycroft-skills.service
 	$(INSTALL) -D -m 644 $(@D)/mycroft-gui.service \
                 $(TARGET_DIR)/usr/lib/systemd/system/mycroft-gui.service
+	$(INSTALL) -D -m 644 $(@D)/mycroft-enclosure-gui.service \
+                $(TARGET_DIR)/usr/lib/systemd/system/mycroft-enclosure-gui.service
 endef
 
 $(eval $(generic-package))
