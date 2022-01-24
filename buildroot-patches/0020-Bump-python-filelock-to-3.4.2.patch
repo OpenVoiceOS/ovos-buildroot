@@ -1,0 +1,71 @@
+From 8ec2e51cb1d1378358ea616b0225d5dd71c4adf9 Mon Sep 17 00:00:00 2001
+From: j1nx <p.steenbergen@j1nx.nl>
+Date: Mon, 24 Jan 2022 19:23:11 +0100
+Subject: [PATCH 1/1] Bump python-filelock to 3.4.2
+
+---
+ .../0001-Add-hardcoded-version.patch          | 23 +++++++++++++++++++
+ package/python-filelock/python-filelock.hash  |  5 +---
+ package/python-filelock/python-filelock.mk    |  4 ++--
+ 3 files changed, 26 insertions(+), 6 deletions(-)
+ create mode 100644 package/python-filelock/0001-Add-hardcoded-version.patch
+
+diff --git a/package/python-filelock/0001-Add-hardcoded-version.patch b/package/python-filelock/0001-Add-hardcoded-version.patch
+new file mode 100644
+index 0000000000..a4d7619d72
+--- /dev/null
++++ b/package/python-filelock/0001-Add-hardcoded-version.patch
+@@ -0,0 +1,23 @@
++From 4ab85a0bf4fbfcbefcefd20009fd768e0585c129 Mon Sep 17 00:00:00 2001
++From: j1nx <p.steenbergen@j1nx.nl>
++Date: Mon, 24 Jan 2022 19:18:01 +0100
++Subject: [PATCH 1/1] Add hardcoded version
++
++---
++ setup.cfg | 1 +
++ 1 file changed, 1 insertion(+)
++
++diff --git a/setup.cfg b/setup.cfg
++index fdbc33a..52d36c0 100644
++--- a/setup.cfg
+++++ b/setup.cfg
++@@ -1,5 +1,6 @@
++ [metadata]
++ name = filelock
+++version = 3.4.2
++ description = A platform independent file lock.
++ long_description = file: README.md
++ long_description_content_type = text/markdown
++-- 
++2.20.1
++
+diff --git a/package/python-filelock/python-filelock.hash b/package/python-filelock/python-filelock.hash
+index d50d2d561c..593b2756e8 100644
+--- a/package/python-filelock/python-filelock.hash
++++ b/package/python-filelock/python-filelock.hash
+@@ -1,5 +1,2 @@
+ # md5, sha256 from https://pypi.org/pypi/filelock/json
+-md5  c1fe6d9a7433a7ca6ce4f36e273317d1  filelock-3.0.12.tar.gz
+-sha256  18d82244ee114f543149c66a6e0c14e9c4f8a1044b5cdaadd0f82159d6a6ff59  filelock-3.0.12.tar.gz
+-# Locally computed sha256 checksums
+-sha256  88d9b4eb60579c191ec391ca04c16130572d7eedc4a86daa58bf28c6e14c9bcd  LICENSE
++sha256  38b4f4c989f9d06d44524df1b24bd19e167d851f19b50bf3e3559952dddc5b80  filelock-3.4.2.tar.gz
+diff --git a/package/python-filelock/python-filelock.mk b/package/python-filelock/python-filelock.mk
+index 35b3374d29..e8ebc7540b 100644
+--- a/package/python-filelock/python-filelock.mk
++++ b/package/python-filelock/python-filelock.mk
+@@ -4,9 +4,9 @@
+ #
+ ################################################################################
+ 
+-PYTHON_FILELOCK_VERSION = 3.0.12
++PYTHON_FILELOCK_VERSION = 3.4.2
+ PYTHON_FILELOCK_SOURCE = filelock-$(PYTHON_FILELOCK_VERSION).tar.gz
+-PYTHON_FILELOCK_SITE = https://files.pythonhosted.org/packages/14/ec/6ee2168387ce0154632f856d5cc5592328e9cf93127c5c9aeca92c8c16cb
++PYTHON_FILELOCK_SITE = https://files.pythonhosted.org/packages/11/d1/22318a1b5bb06c9be4c065ad6a09cb7bfade737758dc08235c99cd6cf216
+ PYTHON_FILELOCK_SETUP_TYPE = setuptools
+ PYTHON_FILELOCK_LICENSE = Public Domain
+ PYTHON_FILELOCK_LICENSE_FILES = LICENSE
+-- 
+2.20.1
+
