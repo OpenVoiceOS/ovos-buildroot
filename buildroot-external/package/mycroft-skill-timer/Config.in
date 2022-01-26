@@ -1,7 +1,0 @@
-config BR2_PACKAGE_MYCROFT_SKILL_TIMER
-	bool "mycroft-skill-timer"
-	help
-	  Set named timers for cooking, watering 
-	  plants, brewing tea and more.
-
-	  https://github.com/MycroftAI/mycroft-timer
