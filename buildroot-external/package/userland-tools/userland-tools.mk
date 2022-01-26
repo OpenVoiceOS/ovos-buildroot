@@ -4,7 +4,7 @@
 #
 ################################################################################
 
-USERLAND_TOOLS_VERSION = 3e59217bd93b8024fb8fc1c6530b00cbae64bc73
+USERLAND_TOOLS_VERSION = 14b90ff9d9f031391a299e6e006965d02bfd1bb1
 USERLAND_TOOLS_SITE = $(call github,raspberrypi,userland,$(USERLAND_TOOLS_VERSION))
 USERLAND_TOOLS_LICENSE = BSD-3-Clause
 USERLAND_TOOLS_LICENSE_FILES = LICENCE
