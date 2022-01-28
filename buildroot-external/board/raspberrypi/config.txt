@@ -21,6 +21,7 @@ hdmi_drive=2
 hdmi_group=2
 hdmi_mode=14
 max_framebuffers=2
+enable_tvout=0
 
 # uncomment if you get no picture on HDMI for a default "safe" mode
 # hdmi_safe=1
