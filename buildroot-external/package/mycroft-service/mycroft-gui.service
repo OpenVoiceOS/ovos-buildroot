@@ -20,6 +20,7 @@ Environment=XDG_CURRENT_DESKTOP=kde
 Environment=LD_LIBRARY_PATH=/usr/lib
 Environment=LIBEXEC_PATH=/libexec:/usr/libexec:/usr/lib/libexec
 Environment=QML2_IMPORT_PATH=/usr/lib/qml
+ExecCondition=/usr/sbin/screencheck
 ExecStartPre=-/usr/bin/kbuildsycoca5
 ExecStart=mycroft-embedded-shell --maximize
 StandardOutput=null
