@@ -1,0 +1,2 @@
+config BR2_PACKAGE_KF5_QCA
+	bool "kf5-qca"

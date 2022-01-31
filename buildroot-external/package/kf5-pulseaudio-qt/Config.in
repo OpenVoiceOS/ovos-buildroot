@@ -1,0 +1,2 @@
+config BR2_PACKAGE_KF5_PULSEAUDIO_QT
+	bool "kf5-pulseaudio-qt"

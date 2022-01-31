@@ -1,0 +1,4 @@
+config BR2_PACKAGE_KF5_KDECONNECT
+	bool "kf5-kdeconnect"
+	select BR2_PACKAGE_KF5_QCA
+	select BR2_PACKAGE_KF5_PULSEAUDIO_QT
