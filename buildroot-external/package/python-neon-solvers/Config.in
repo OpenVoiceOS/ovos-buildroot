@@ -1,0 +1,6 @@
+config BR2_PACKAGE_PYTHON_NEON_SOLVERS
+	bool "python-neon-solvers"
+	help
+	  neon solvers package 
+
+	  https://github.com/NeonGeckoCom/neon_solvers

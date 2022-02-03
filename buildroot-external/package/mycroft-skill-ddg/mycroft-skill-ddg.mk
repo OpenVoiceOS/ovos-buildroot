@@ -4,8 +4,8 @@
 #
 ################################################################################
 
-MYCROFT_SKILL_DDG_VERSION = 42753538e8fc15b38aec84bf44ecf1645c8bde95
-MYCROFT_SKILL_DDG_SITE = https://github.com/JarbasSkills/skill-ddg
+MYCROFT_SKILL_DDG_VERSION = c58f55ca45a48bb7ef44a61113fe3b144ef8f55a
+MYCROFT_SKILL_DDG_SITE = https://github.com/NeonJarbas/skill-ddg
 MYCROFT_SKILL_DDG_SITE_METHOD = git
 MYCROFT_SKILL_DDG_DIRLOCATION = home/mycroft/.local/share/mycroft/skills
 MYCROFT_SKILL_DDG_DIRNAME = skill-ddg.jarbasskills

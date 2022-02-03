@@ -1,0 +1,7 @@
+config BR2_PACKAGE_PYTHON_NEON_LANG_PLUGIN_LIBRETRANSLATE
+	bool "python-neon-lang-plugin-libretranslate"
+	help
+	  Language Plugin for LibreTranslate language 
+	  detection and translation 
+
+	  https://github.com/NeonGeckoCom/neon-lang-plugin-libretranslate
