@@ -1,0 +1,7 @@
+config BR2_PACKAGE_MYCROFT_SKILL_OVOS_SETTINGS
+	bool "mycroft-skill-ovos-settings"
+	help
+	  Skill to take control of OpenVoiceOS functions 
+	  via websettings interface
+
+	  https://github.com/OpenVoiceOS/skill-ovos-settings
