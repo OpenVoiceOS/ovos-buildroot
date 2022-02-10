@@ -1,0 +1,111 @@
+From 304e4972c4f515bf9cd8ec5df99cab73d2e9fc31 Mon Sep 17 00:00:00 2001
+From: jarbasai <jarbasai@mailfence.com>
+Date: Wed, 9 Feb 2022 23:17:22 +0000
+Subject: [PATCH 1/3] fail earlier
+
+---
+ ovos_plugin_manager/templates/tts.py | 8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
+
+diff --git a/ovos_plugin_manager/templates/tts.py b/ovos_plugin_manager/templates/tts.py
+index 558e341..9dd11a0 100644
+--- a/ovos_plugin_manager/templates/tts.py
++++ b/ovos_plugin_manager/templates/tts.py
+@@ -115,7 +115,7 @@ def _play(self):
+         except Empty:
+             pass
+         except Exception as e:
+-            LOG.exception(e)
++            LOG.exception(f"TTS execution failed: {e}")
+             if self._processing_queue:
+                 self.on_end(listen)
+         self._now_playing = None
+@@ -503,7 +503,11 @@ def _synth(self, sentence, sentence_hash=None, **kwargs):
+                   and k not in ["sentence", "wav_file"]}
+ 
+         # finally do the TTS synth
+-        audio.path, phonemes = self.get_tts(sentence, str(audio), **kwargs)
++        path, phonemes = self.get_tts(sentence, str(audio), **kwargs)
++        if not path:
++            self.add_metric({"metric_type": "tts.synth.failed"})
++            raise FileNotFoundError("TTS synth failed, no audio to playback")
++        audio.path = path
+         self.add_metric({"metric_type": "tts.synth.finished"})
+         # cache sentence + phonemes
+         self._cache_sentence(sentence, audio, phonemes, sentence_hash)
+
+From 681ade0adbee56f55790fd965284c2ffde650a77 Mon Sep 17 00:00:00 2001
+From: jarbasai <jarbasai@mailfence.com>
+Date: Thu, 10 Feb 2022 00:02:38 +0000
+Subject: [PATCH 2/3] debug logs for cache paths
+
+---
+ ovos_plugin_manager/templates/tts.py | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/ovos_plugin_manager/templates/tts.py b/ovos_plugin_manager/templates/tts.py
+index 9dd11a0..423daab 100644
+--- a/ovos_plugin_manager/templates/tts.py
++++ b/ovos_plugin_manager/templates/tts.py
+@@ -241,6 +241,8 @@ def __init__(self, lang="en-us", config=None, validator=None,
+         self.cache = TextToSpeechCache(
+             self.config, tts_id, self.audio_ext
+         )
++        LOG.debug(f"{self.tts_name} persistent cache: {self.cache.persistent_cache_dir}")
++        LOG.debug(f"{self.tts_name} temporary cache: {self.cache.temporary_cache_dir}")
+         self.cache.curate()
+         self.g2p = OVOSG2PFactory.create(config_core)
+         self.add_metric({"metric_type": "tts.init"})
+
+From 47cadef2aa61474f64b33b87cb084123446bfd20 Mon Sep 17 00:00:00 2001
+From: jarbasai <jarbasai@mailfence.com>
+Date: Thu, 10 Feb 2022 00:15:24 +0000
+Subject: [PATCH 3/3] plugin mapping improvements (and moar logs!)
+
+---
+ ovos_plugin_manager/tts.py | 15 ++++++++++++---
+ 1 file changed, 12 insertions(+), 3 deletions(-)
+
+diff --git a/ovos_plugin_manager/tts.py b/ovos_plugin_manager/tts.py
+index 1614575..e2d17f9 100644
+--- a/ovos_plugin_manager/tts.py
++++ b/ovos_plugin_manager/tts.py
+@@ -16,6 +16,7 @@ def load_tts_plugin(module_name):
+     Returns:
+         class: found tts plugin class
+     """
++    module_name = OVOSTTSFactory.get_equivalent_plugin(module_name) or module_name
+     return load_plugin(module_name, PluginTypes.TTS)
+ 
+ 
+@@ -55,10 +56,16 @@ def get_class(config=None):
+         tts_module = config.get("module") or "dummy"
+         if tts_module == "dummy":
+             return TTS
+-        if tts_module in OVOSTTSFactory.MAPPINGS:
+-            tts_module = OVOSTTSFactory.MAPPINGS[tts_module]
+         return load_tts_plugin(tts_module)
+ 
++    @staticmethod
++    def get_equivalent_plugin(tts_module):
++        if tts_module in OVOSTTSFactory.MAPPINGS:
++            plug = OVOSTTSFactory.MAPPINGS[tts_module]
++            LOG.debug(f"tts module {tts_module} mapped to plugin {plug}")
++            return plug
++        return None
++
+     @staticmethod
+     def create(config=None):
+         """Factory method to create a TTS engine based on configuration.
+@@ -71,8 +78,10 @@ def create(config=None):
+         }
+         """
+         tts_config = get_tts_config(config)
+-        tts_lang = tts_config["lang"]
++        tts_lang = tts_config.get("lang", "en-us")
+         tts_module = tts_config.get('module', 'mimic')
++        tts_module = OVOSTTSFactory.get_equivalent_plugin(tts_module) or tts_module
++        tts_config["module"] = tts_module  # avoid a re-read of mappings
+         try:
+             clazz = OVOSTTSFactory.get_class(tts_config)
+             LOG.info(f'Found plugin {tts_module}')
