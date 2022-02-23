@@ -1,0 +1,6 @@
+config BR2_PACKAGE_PYTHON_OVOS_PHAL_PLUGIN_DISPLAY_MANAGER_IPC
+	bool "python-ovos-phal-plugin-display-manager-ipc"
+	help
+	  OVOS-PHAL Display Manager IPC
+
+	  https://github.com/OpenVoiceOS/ovos-PHAL-plugin-display-manager-ipc
