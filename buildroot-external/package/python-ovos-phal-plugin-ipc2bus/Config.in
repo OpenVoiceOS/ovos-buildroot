@@ -1,0 +1,6 @@
+config BR2_PACKAGE_PYTHON_OVOS_PHAL_PLUGIN_IPC2BUS
+	bool "python-ovos-phal-plugin-ipc2bus"
+	help
+	  OVOS-PHAL IPC2Bus
+
+	  https://github.com/OpenVoiceOS/ovos-PHAL-plugin-ipc2bus
