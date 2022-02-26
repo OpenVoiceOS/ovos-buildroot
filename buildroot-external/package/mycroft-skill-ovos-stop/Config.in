@@ -1,0 +1,7 @@
+config BR2_PACKAGE_MYCROFT_SKILL_OVOS_STOP
+	bool "mycroft-skill-ovos-stop"
+	help
+	  Provides verbal interfaces for basic framework 
+	  interactions, such as the "Stop" command. 
+
+	  https://github.com/OpenVoiceOS/skill-ovos-stop
