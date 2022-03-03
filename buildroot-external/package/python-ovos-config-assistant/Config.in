@@ -1,0 +1,6 @@
+config BR2_PACKAGE_PYTHON_OVOS_CONFIG_ASSISTANT
+	bool "python-ovos-config-assistant"
+	help
+	  ovos config assistant library
+
+	  https://github.com/OpenVoiceOS/ovos-config-assistant
