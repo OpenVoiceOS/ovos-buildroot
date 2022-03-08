@@ -1,0 +1,8 @@
+config BR2_PACKAGE_PYTHON_OVOS_LINGUA_FRANCA
+	bool "python-ovos-lingua-franca"
+	select BR2_PACKAGE_PYTHON_DATEUTIL # runtime
+	help
+	  OpenVoiceOS's multilingual text parsing and formatting library.
+	  This project has been forked from mycroft-core, it replaces it!
+
+	  https://github.com/OpenVoiceOS/ovos-lingua-franca
