@@ -4,7 +4,7 @@
 #
 ################################################################################
 
-MYCROFT_SKILL_NAPTIME_VERSION = bb99f118444fa3fc71422aaa22ee1d82fa0c851e
+MYCROFT_SKILL_NAPTIME_VERSION = 7a178b1ac7dc438235d09aadeb289a0a19c6aa0a
 MYCROFT_SKILL_NAPTIME_SITE = https://github.com/OpenVoiceOS/skill-naptime
 MYCROFT_SKILL_NAPTIME_SITE_METHOD = git
 MYCROFT_SKILL_NAPTIME_DIRLOCATION = home/mycroft/.local/share/mycroft/skills

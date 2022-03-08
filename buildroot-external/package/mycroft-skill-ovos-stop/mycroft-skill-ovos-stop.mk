@@ -4,7 +4,7 @@
 #
 ################################################################################
 
-MYCROFT_SKILL_OVOS_STOP_VERSION = 2ad88b54e3348b5c61c0b4be9b3360b33b840a97
+MYCROFT_SKILL_OVOS_STOP_VERSION = 008caa082d25bd9d4c7535b41ccf627c27df9c08
 MYCROFT_SKILL_OVOS_STOP_SITE = https://github.com/OpenVoiceOS/skill-ovos-stop
 MYCROFT_SKILL_OVOS_STOP_SITE_METHOD = git
 MYCROFT_SKILL_OVOS_STOP_DIRLOCATION = home/mycroft/.local/share/mycroft/skills
