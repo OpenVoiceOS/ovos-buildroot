@@ -297,12 +297,12 @@ menu "Mycroft A.I. Skills"
 	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/mycroft-skill-parrot/Config.in"
 	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/mycroft-skill-personal/Config.in"
 	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/mycroft-skill-reminder/Config.in"
-	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/mycroft-skill-simple-youtube/Config.in"
 	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/mycroft-skill-singing/Config.in"
 	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/mycroft-skill-spelling/Config.in"
 	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/mycroft-skill-unknown/Config.in"
 	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/mycroft-skill-weather/Config.in"
 	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/mycroft-skill-wikipedia-for-humans/Config.in"
 	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/mycroft-skill-wolfie/Config.in"
+	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/mycroft-skill-youtube-music/Config.in"
 endmenu
 endmenu

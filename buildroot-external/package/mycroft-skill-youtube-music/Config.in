@@ -1,0 +1,6 @@
+config BR2_PACKAGE_MYCROFT_SKILL_YOUTUBE_MUSIC
+	bool "mycroft-skill-youtube-music"
+	help
+	  play music from youtube in mycroft
+
+	  https://github.com/JarbasSkills/skill-youtube-music
