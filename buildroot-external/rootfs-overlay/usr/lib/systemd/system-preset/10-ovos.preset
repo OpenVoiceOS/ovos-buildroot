@@ -15,7 +15,6 @@ enable mycroft-messagebus.service
 enable mycroft-voice.service
 enable mycroft-audio.service
 enable mycroft-skills.service
-enable mycroft-enclosure.service
 enable mycroft-gui.service
 enable mycroft-enclosure-gui.service
 enable ovos-splash-quit.service
@@ -29,3 +28,4 @@ disable snapclient.service
 disable snapserver.service
 disable spotifyd.service
 disable nodered.service
+disable mycroft-enclosure.service
