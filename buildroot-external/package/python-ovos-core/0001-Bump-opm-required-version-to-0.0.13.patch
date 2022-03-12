@@ -1,0 +1,25 @@
+From 867f2fcc08435bfce888e55e5a727237dec60d35 Mon Sep 17 00:00:00 2001
+From: j1nx <p.steenbergen@j1nx.nl>
+Date: Sat, 12 Mar 2022 13:03:57 +0100
+Subject: [PATCH 1/1] Bump opm required version to 0.0.13
+
+---
+ requirements/requirements.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/requirements/requirements.txt b/requirements/requirements.txt
+index d0116c7203..2b4b101bee 100644
+--- a/requirements/requirements.txt
++++ b/requirements/requirements.txt
+@@ -9,7 +9,7 @@ combo-lock~=0.2
+ PyYAML~=5.4
+ 
+ ovos-utils~=0.0.18
+-ovos-plugin-manager~=0.0.11a1
++ovos-plugin-manager~=0.0.13
+ ovos-tts-plugin-mimic>=0.2.6
+ ovos-tts-plugin-mimic2>=0.1.4
+ ovos-tts-plugin-google-tx>=0.0.3
+-- 
+2.20.1
+
