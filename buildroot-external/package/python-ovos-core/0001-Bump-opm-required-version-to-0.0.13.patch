@@ -18,7 +18,7 @@ index 6e1c6856a2..c7d17622b7 100644
  ovos-utils~=0.0.18
 -ovos-plugin-manager~=0.0.11a1
 \ No newline at end of file
-+ovos-plugin-manager~=0.0.13
++ovos-plugin-manager~=0.0.13a1
 diff --git a/requirements/requirements.txt b/requirements/requirements.txt
 index d0116c7203..2b4b101bee 100644
 --- a/requirements/requirements.txt
@@ -28,7 +28,7 @@ index d0116c7203..2b4b101bee 100644
  
  ovos-utils~=0.0.18
 -ovos-plugin-manager~=0.0.11a1
-+ovos-plugin-manager~=0.0.13
++ovos-plugin-manager~=0.0.13a1
  ovos-tts-plugin-mimic>=0.2.6
  ovos-tts-plugin-mimic2>=0.1.4
  ovos-tts-plugin-google-tx>=0.0.3
