@@ -4,7 +4,7 @@
 #
 ################################################################################
 
-MYCROFT_SKILL_CAMERA_VERSION = 1b6d108d41eac814cc5e46a7eb3c123791d16668
+MYCROFT_SKILL_CAMERA_VERSION = f7409e01f0b4e05e12e18e989dfdd1ae5dea099d
 MYCROFT_SKILL_CAMERA_SITE = https://github.com/OpenVoiceOS/skill-camera
 MYCROFT_SKILL_CAMERA_SITE_METHOD = git
 MYCROFT_SKILL_CAMERA_DIRLOCATION = home/mycroft/.local/share/mycroft/skills

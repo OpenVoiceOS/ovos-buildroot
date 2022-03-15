@@ -4,7 +4,7 @@
 #
 ################################################################################
 
-MYCROFT_SKILL_OVOS_VOLUME_VERSION = 826905f7dcd68c3bcbdd2249e4350b1e0d9fe6b1
+MYCROFT_SKILL_OVOS_VOLUME_VERSION = c36d2e85654fd128821af57856e028700fd8255c
 MYCROFT_SKILL_OVOS_VOLUME_SITE = https://github.com/OpenVoiceOS/skill-ovos-volume
 MYCROFT_SKILL_OVOS_VOLUME_SITE_METHOD = git
 MYCROFT_SKILL_OVOS_VOLUME_DIRLOCATION = home/mycroft/.local/share/mycroft/skills
