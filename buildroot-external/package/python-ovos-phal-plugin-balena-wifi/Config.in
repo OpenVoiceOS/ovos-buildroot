@@ -1,0 +1,6 @@
+config BR2_PACKAGE_PYTHON_OVOS_PHAL_PLUGIN_BALENA_WIFI
+	bool "python-ovos-phal-plugin-balena-wifi"
+	help
+	  OVOS-PHAL Balena WIFI setup
+
+	  https://github.com/OpenVoiceOS/ovos-PHAL-plugin-balena-wifi
