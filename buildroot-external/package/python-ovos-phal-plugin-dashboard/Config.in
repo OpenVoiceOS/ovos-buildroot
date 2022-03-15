@@ -1,0 +1,6 @@
+config BR2_PACKAGE_PYTHON_OVOS_PHAL_PLUGIN_DASHBOARD
+	bool "python-ovos-phal-plugin-dashboard"
+	help
+	  OVOS-PHAL Dashboard
+
+	  https://github.com/OpenVoiceOS/ovos-PHAL-plugin-dashboard
