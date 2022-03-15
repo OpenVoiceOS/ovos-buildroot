@@ -17,6 +17,7 @@ enable mycroft-audio.service
 enable mycroft-skills.service
 enable mycroft-gui.service
 enable mycroft-enclosure-gui.service
+enable mycroft-enclosure-client.service
 enable ovos-splash-quit.service
 enable local-backend.service
 
@@ -28,4 +29,3 @@ disable snapclient.service
 disable snapserver.service
 disable spotifyd.service
 disable nodered.service
-disable mycroft-enclosure.service
