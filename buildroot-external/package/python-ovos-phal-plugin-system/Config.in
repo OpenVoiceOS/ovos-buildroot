@@ -1,0 +1,6 @@
+config BR2_PACKAGE_PYTHON_OVOS_PHAL_PLUGIN_SYSTEM
+	bool "python-ovos-phal-plugin-system"
+	help
+	  OVOS-PHAL System events
+
+	  https://github.com/OpenVoiceOS/ovos-PHAL-plugin-system
