@@ -16,10 +16,11 @@
 ##########################################################################
 
 # Set default configurations
+ASOUND_STATE=/var/lib/alsa/default-asound.state
 PULSE_SYSTEM=/etc/pulse/pulseaudio-system.pa
 PULSE_DAEMON=/etc/pulse/pulseaudio-daemon.conf
 
-# Scanning the I2C bus for know addresses 
+# Scanning the I2C bus for know addresses
 is_1a=$(i2cdetect -y 1 0x1a 0x1a | egrep "(1a|UU)" | awk '{print $2}') # ReSpeaker 2-mic / WM8960
 if [ "${is_1a}" == "1a" ] || [ "${is_1a}" == "UU" ] ; then
     RESPEAKER2=found
@@ -64,15 +65,23 @@ fi
 if [ -f /etc/pulse/daemon.conf ] ; then
     rm /etc/pulse/daemon.conf
 fi
+if [ -f /var/lib/alsa/asound.state ] ; then
+    rm /var/lib/alsa/asound.state
+fi
+if [ -f /etc/ovos_asound.state ] ; then
+    rm /etc/ovos_asound.state
+fi
 
 if [ "$RESPEAKER2" == "found" ] && [ "$RESPEAKER4" != "found" ] ; then
     echo "Installing and configuring ReSpeaker 2-mic"
     dtoverlay seeed-2mic-voicecard
+    ASOUND_STATE=/etc/voicecard/wm8960_asound.state
 fi
 
 if [ "${RESPEAKER6}" == "found" ] && [ "${RESPEAKER4}" != "found" ] ; then
     echo "Installing and configuring ReSpeaker 4-mic"
     dtoverlay seeed-4mic-voicecard
+    ASOUND_STATE=/etc/voicecard/ac108_asound.state
     PULSE_SYSTEM=/etc/pulse/seeed-voicecard-4mic-default.pa
     PULSE_DAEMON=/etc/pulse/seeed-voicecard-4mic-daemon.conf
 fi
@@ -80,6 +89,7 @@ fi
 if [ "{$RESPEAKER6}" == "found" ] && [ "${RESPEAKER4}" == "found" ] ; then
     echo "Installing and configuring ReSpeaker 6mic"
     dtoverlay seeed-8mic-voicecard
+    ASOUND_STATE=/etc/voicecard/ac108_6mic.state
     PULSE_SYSTEM=/etc/pulse/seeed-voicecard-8mic-default.pa
     PULSE_DAEMON=/etc/pulse/seeed-voicecard-8mic-daemon.conf
 fi
@@ -105,8 +115,16 @@ if [ "$TAS5806" ] && [ "$SJ201LED" ]; then
     PULSE_DAEMON=/etc/pulse/mycroft-sj201-daemon.conf
 fi
 
+# Install soundstate
+echo "create asound status file"
+ln -s $ASOUND_STATE /etc/ovos_asound.state
+ln -s $ASOUND_STATE /var/lib/alsa/asound.state
+
 # Install pulseaudio files
 echo "create pulse system file"
 ln -s $PULSE_SYSTEM /etc/pulse/system.pa
 echo "create pulse daemon file"
 ln -s $PULSE_DAEMON /etc/pulse/daemon.conf
+
+# Restore sound levels
+alsactl -E HOME=/run/alsa -f /etc/ovos_asound.state restore
