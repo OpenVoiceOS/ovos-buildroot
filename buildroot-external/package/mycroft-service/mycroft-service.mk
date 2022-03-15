@@ -33,8 +33,8 @@ define MYCROFT_SERVICE_INSTALL_TARGET_CMDS
                 $(TARGET_DIR)/usr/lib/systemd/system/mycroft-audio.service
 	$(INSTALL) -D -m 644 $(@D)/mycroft-voice.service \
                 $(TARGET_DIR)/usr/lib/systemd/system/mycroft-voice.service
-	$(INSTALL) -D -m 644 $(@D)/mycroft-enclosure.service \
-                $(TARGET_DIR)/usr/lib/systemd/system/mycroft-enclosure.service
+	$(INSTALL) -D -m 644 $(@D)/mycroft-enclosure-client.service \
+                $(TARGET_DIR)/usr/lib/systemd/system/mycroft-enclosure-client.service
 	$(INSTALL) -D -m 644 $(@D)/mycroft-skills.service \
                 $(TARGET_DIR)/usr/lib/systemd/system/mycroft-skills.service
 	$(INSTALL) -D -m 644 $(@D)/mycroft-gui.service \
