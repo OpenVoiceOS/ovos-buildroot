@@ -1,5 +1,5 @@
 [Unit]
-Description=Mycroft Enclosure
+Description=Mycroft PHAL
 PartOf=mycroft.service
 After=mycroft.service
 After=mycroft-messagebus.service
@@ -9,9 +9,9 @@ User=mycroft
 Type=notify
 WorkingDirectory=/home/mycroft
 Environment=PYTHONUNBUFFERED=1
-ExecStart=/home/mycroft/.local/share/systemd/mycroft-systemd_enclosure.py
-StandardOutput=append:/var/log/mycroft/enclosure_client.log
-StandardError=file:/var/log/mycroft/enclosure_client.error.log
+ExecStart=/home/mycroft/.local/share/systemd/mycroft-systemd_phal.py
+StandardOutput=append:/var/log/mycroft/phal.log
+StandardError=file:/var/log/mycroft/phal.error.log
 TimeoutStartSec=1m
 TimeoutStopSec=1m
 Restart=on-failure

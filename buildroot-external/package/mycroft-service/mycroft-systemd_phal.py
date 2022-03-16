@@ -15,7 +15,7 @@
 # limitations under the License.
 ##########################################################################
 import sdnotify
-from mycroft.client.enclosure.__main__ import main
+from ovos_PHAL.__main__ import main
 
 n = sdnotify.SystemdNotifier()
 

@@ -14,8 +14,8 @@ define MYCROFT_SERVICE_INSTALL_TARGET_CMDS
 	mkdir -p $(TARGET_DIR)/home/mycroft/.local/share/systemd
 	$(INSTALL) -m 0755 $(@D)/mycroft-systemd_audio.py \
 		$(TARGET_DIR)/home/mycroft/.local/share/systemd/mycroft-systemd_audio.py
-	$(INSTALL) -m 0755 $(@D)/mycroft-systemd_enclosure.py \
-                $(TARGET_DIR)/home/mycroft/.local/share/systemd/mycroft-systemd_enclosure.py
+	$(INSTALL) -m 0755 $(@D)/mycroft-systemd_phal.py \
+                $(TARGET_DIR)/home/mycroft/.local/share/systemd/mycroft-systemd_phal.py
 	$(INSTALL) -m 0755 $(@D)/mycroft-systemd_messagebus.py \
                 $(TARGET_DIR)/home/mycroft/.local/share/systemd/mycroft-systemd_messagebus.py
 	$(INSTALL) -m 0755 $(@D)/mycroft-systemd_skills.py \
@@ -33,8 +33,8 @@ define MYCROFT_SERVICE_INSTALL_TARGET_CMDS
                 $(TARGET_DIR)/usr/lib/systemd/system/mycroft-audio.service
 	$(INSTALL) -D -m 644 $(@D)/mycroft-voice.service \
                 $(TARGET_DIR)/usr/lib/systemd/system/mycroft-voice.service
-	$(INSTALL) -D -m 644 $(@D)/mycroft-enclosure-client.service \
-                $(TARGET_DIR)/usr/lib/systemd/system/mycroft-enclosure-client.service
+	$(INSTALL) -D -m 644 $(@D)/mycroft-phal.service \
+                $(TARGET_DIR)/usr/lib/systemd/system/mycroft-phal.service
 	$(INSTALL) -D -m 644 $(@D)/mycroft-skills.service \
                 $(TARGET_DIR)/usr/lib/systemd/system/mycroft-skills.service
 	$(INSTALL) -D -m 644 $(@D)/mycroft-gui.service \
