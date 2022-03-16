@@ -6,17 +6,17 @@ After=mycroft-messagebus.service
 
 [Service]
 User=mycroft
-Type=notify
+Type=simple
 WorkingDirectory=/home/mycroft
 Environment=PYTHONUNBUFFERED=1
-ExecStart=/home/mycroft/.local/share/systemd/mycroft-systemd_enclosure.py
+ExecStart=mycroft-enclosure-client
 StandardOutput=append:/var/log/mycroft/enclosure_client.log
 StandardError=file:/var/log/mycroft/enclosure_client.error.log
-TimeoutStartSec=1m
-TimeoutStopSec=1m
+#TimeoutStartSec=1m
+#TimeoutStopSec=1m
 Restart=on-failure
-StartLimitInterval=5min
-StartLimitBurst=4
+#StartLimitInterval=5min
+#StartLimitBurst=4
 #StartLimitAction=reboot-force
 #WatchdogSec=30s
 
