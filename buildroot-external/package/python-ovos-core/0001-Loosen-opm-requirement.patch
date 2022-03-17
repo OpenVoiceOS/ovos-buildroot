@@ -1,7 +1,7 @@
-From 5040b1a0ad33f51a66afc7f62ad45e45c47941e1 Mon Sep 17 00:00:00 2001
+From 2e1e899044533f0e2a3ffd85cf2f1771a7f3de97 Mon Sep 17 00:00:00 2001
 From: j1nx <p.steenbergen@j1nx.nl>
-Date: Sat, 12 Mar 2022 19:40:48 +0100
-Subject: [PATCH 1/1] Bump opm required version to 0.0.13
+Date: Thu, 17 Mar 2022 20:23:42 +0100
+Subject: [PATCH 1/1] Loosen opm requirement
 
 ---
  requirements/minimal.txt      | 2 +-
@@ -9,26 +9,26 @@ Subject: [PATCH 1/1] Bump opm required version to 0.0.13
  2 files changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/requirements/minimal.txt b/requirements/minimal.txt
-index 6e1c6856a2..c7d17622b7 100644
+index 3c24f7db5f..f11adf46bf 100644
 --- a/requirements/minimal.txt
 +++ b/requirements/minimal.txt
 @@ -4,4 +4,4 @@ mycroft-messagebus-client~=0.9.1,!=0.9.2,!=0.9.3
  psutil~=5.6.6
  combo-lock~=0.2
- ovos-utils~=0.0.18
--ovos-plugin-manager~=0.0.11a1
+ ovos-utils~=0.0.20a2
+-ovos-plugin-manager~=0.0.12
 \ No newline at end of file
-+ovos-plugin-manager~=0.0.13a1
++ovos-plugin-manager>=0.0.12
 diff --git a/requirements/requirements.txt b/requirements/requirements.txt
-index d0116c7203..2b4b101bee 100644
+index c562dc9ef2..c0620c7894 100644
 --- a/requirements/requirements.txt
 +++ b/requirements/requirements.txt
 @@ -9,7 +9,7 @@ combo-lock~=0.2
  PyYAML~=5.4
  
- ovos-utils~=0.0.18
--ovos-plugin-manager~=0.0.11a1
-+ovos-plugin-manager~=0.0.13a1
+ ovos-utils~=0.0.20a2
+-ovos-plugin-manager~=0.0.12
++ovos-plugin-manager>=0.0.12
  ovos-tts-plugin-mimic>=0.2.6
  ovos-tts-plugin-mimic2>=0.1.4
  ovos-tts-plugin-google-tx>=0.0.3
