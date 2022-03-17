@@ -1,0 +1,6 @@
+config BR2_PACKAGE_PYTHON_OVOS_PHAL_PLUGIN_MK2
+	bool "python-ovos-phal-plugin-mk2"
+	help
+	  OVOS-PHAL Mark-2
+
+	  https://github.com/OpenVoiceOS/ovos-PHAL-plugin-mk2
