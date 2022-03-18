@@ -1,0 +1,23 @@
+From 1bedf054e5e89a25e9f04b8834f15fdfb717d926 Mon Sep 17 00:00:00 2001
+From: j1nx <p.steenbergen@j1nx.nl>
+Date: Fri, 18 Mar 2022 21:34:23 +0100
+Subject: [PATCH 1/1] Remove 32bit only dependency
+
+---
+ package/python-gpiozero/Config.in | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/package/python-gpiozero/Config.in b/package/python-gpiozero/Config.in
+index 1e2735be45..4d82bb082b 100644
+--- a/package/python-gpiozero/Config.in
++++ b/package/python-gpiozero/Config.in
+@@ -1,6 +1,5 @@
+ config BR2_PACKAGE_PYTHON_GPIOZERO
+ 	bool "python-gpiozero"
+-	depends on BR2_arm
+ 	select BR2_PACKAGE_PYTHON_COLORZERO # runtime
+ 	select BR2_PACKAGE_PYTHON_RPI_GPIO # runtime
+ 	help
+-- 
+2.20.1
+
