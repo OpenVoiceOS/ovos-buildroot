@@ -14,6 +14,4 @@ KF5_KCMUTILS_DEPENDENCIES = host-pkgconf kf5-kservice kf5-kdeclarative
 KF5_KCMUTILS_INSTALL_STAGING = YES
 KF5_KCMUTILS_SUPPORTS_IN_SOURCE_BUILD = NO
 
-KF5_KCMUTILS_CONF_OPTS += -DKF5_HOST_TOOLING="$(HOST_DIR)/lib/x86_64-linux-gnu/cmake"
-
 $(eval $(cmake-package))
