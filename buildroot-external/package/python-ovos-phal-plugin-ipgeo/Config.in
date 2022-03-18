@@ -1,0 +1,6 @@
+config BR2_PACKAGE_PYTHON_OVOS_PHAL_PLUGIN_IPGEO
+	bool "python-ovos-phal-plugin-ipgeo"
+	help
+	  OVOS-PHAL IP geolocation
+
+	  https://github.com/OpenVoiceOS/ovos-PHAL-plugin-ipgeo
