@@ -1,0 +1,6 @@
+config BR2_PACKAGE_PYTHON_OVOS_PHAL_PLUGIN_RESPEAKER_4MIC
+	bool "python-ovos-phal-plugin-respeaker-4mic"
+	help
+	  OVOS-PHAL ReSpeaker 4mic
+
+	  https://github.com/OpenVoiceOS/ovos-PHAL-plugin-respeaker-4mic
