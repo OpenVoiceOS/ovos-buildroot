@@ -1,0 +1,9 @@
+config BR2_PACKAGE_PYTHON_GEOIP_GEOLITE2
+	bool "python-geoip-geolite2"
+	select BR2_PACKAGE_PYTHON_GEOIP # runtime
+	help
+	  Provides access to the geolite2 database.  This product
+	  includes GeoLite2 data created by MaxMind, available from
+	  http://www.maxmind.com/.
+
+	  http://github.com/mitsuhiko/python-geoip

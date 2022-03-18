@@ -1,0 +1,6 @@
+config BR2_PACKAGE_PYTHON_GEOIP
+	bool "python-geoip"
+	help
+	  Provides GeoIP functionality for Python.
+
+	  http://github.com/mitsuhiko/python-geoip

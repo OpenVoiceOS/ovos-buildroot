@@ -1,0 +1,5 @@
+# md5, sha256 from https://pypi.org/pypi/python-geoip/json
+md5  a1803c8224fbe738eb2fd338feae2799  python-geoip-1.2.tar.gz
+sha256  b7b11dab42bffba56943b3199e3441f41cea145244d215844ecb6de3d5fb2df5  python-geoip-1.2.tar.gz
+# Locally computed sha256 checksums
+sha256  c3b77c38c25c0e38f866e3a560eb54be98d276ef189f80817890c8c89466cca7  LICENSE
