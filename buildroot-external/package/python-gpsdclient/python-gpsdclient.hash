@@ -1,0 +1,5 @@
+# md5, sha256 from https://pypi.org/pypi/gpsdclient/json
+md5  5a6a6e069189c8096dabbfa17c249957  gpsdclient-1.2.1.tar.gz
+sha256  fab354984ba3cccfdb45c8ac93a98c01fefe0fbd679e100e8684425fd6976882  gpsdclient-1.2.1.tar.gz
+# Locally computed sha256 checksums
+sha256  1b3012a4666fc2790746db623cafa86a1731b51745a534b07a3a109a0700fb03  LICENSE.txt
