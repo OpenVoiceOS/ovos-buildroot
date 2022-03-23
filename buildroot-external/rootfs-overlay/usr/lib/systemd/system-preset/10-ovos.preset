@@ -6,7 +6,7 @@ enable bluetooth.service
 enable pulseaudio.service
 enable avahi-daemon.service
 enable NetworkManager.service
-enable getty@tty1.service
+enable getty@tty2.service
 enable ovos-splash-start.service
 enable ovos-splash-40.service
 enable ovos-splash-60.service
