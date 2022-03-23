@@ -29,3 +29,4 @@ disable snapclient.service
 disable snapserver.service
 disable spotifyd.service
 disable nodered.service
+disable btspeaker.service
