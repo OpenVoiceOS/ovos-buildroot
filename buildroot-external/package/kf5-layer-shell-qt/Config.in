@@ -1,0 +1,2 @@
+config BR2_PACKAGE_KF5_LAYER_SHELL_QT
+	bool "kf5-layer-shell-qt"

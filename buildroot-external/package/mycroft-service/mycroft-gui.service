@@ -1,8 +1,5 @@
 [Unit]
 Description=Mycroft GUI
-PartOf=mycroft.service
-After=mycroft.service
-After=mycroft-messagebus.service
 
 [Service]
 User=mycroft
@@ -14,6 +11,7 @@ Environment=QT_PLUGIN_PATH=/usr/lib/qt/plugins:/usr/lib/plugins:/usr/lib/plugins
 Environment=QT_LOGGING_RULES='*=false'
 Environment=QT_FILE_SELECTORS=ovos
 Environment=QT_FONT_DPI=120
+Environment=QT_QUICK_CONTROLS_STYLE=OpenVoiceStyle
 Environment=XDG_RUNTIME_DIR=/tmp/mycroft
 Environment=XDG_DATA_DIRS=/usr/share:/usr/local/share:$XDG_DATA_DIRS
 Environment=XDG_CURRENT_DESKTOP=kde

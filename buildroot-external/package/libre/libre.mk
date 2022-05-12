@@ -4,7 +4,7 @@
 #
 #############################################################
 
-LIBRE_VERSION = 2.0.1
+LIBRE_VERSION = 2.3.0
 LIBRE_SOURCE = v$(LIBRE_VERSION).tar.gz
 LIBRE_SITE = https://github.com/baresip/re/archive
 LIBRE_INSTALL_STAGING = YES
@@ -33,7 +33,6 @@ define LIBRE_BUILD_CMDS
 			OS=linux \
 			all install
 endef
-
 
 define LIBRE_INSTALL_TARGET_CMDS
         $(INSTALL) -m 644 -D $(@D)/libre.so $(TARGET_DIR)/usr/lib/libre.so

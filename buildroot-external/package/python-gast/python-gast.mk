@@ -4,11 +4,11 @@
 #
 ################################################################################
 
-PYTHON_GAST_VERSION = 0.5.2
+PYTHON_GAST_VERSION = 0.5.3
 PYTHON_GAST_SOURCE = gast-$(PYTHON_GAST_VERSION).tar.gz
-PYTHON_GAST_SITE = https://files.pythonhosted.org/packages/53/88/e12484298c9c913b68c1de191fa673f8a976036d98efbdcb60014f14c65c
+PYTHON_GAST_SITE = https://files.pythonhosted.org/packages/48/a3/0bd844c54ae8141642088b7ae09dd38fec2ec7faa9b7d25bb6a23c1f266f
 PYTHON_GAST_SETUP_TYPE = setuptools
-PYTHON_GAST_LICENSE = FIXME: please specify the exact BSD version
+PYTHON_GAST_LICENSE = BSD-3-Clause
 PYTHON_GAST_LICENSE_FILES = LICENSE
 
 $(eval $(python-package))

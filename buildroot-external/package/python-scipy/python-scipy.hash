@@ -1,2 +1,9 @@
-# Locally calculated
-sha256  6b47d5fa7ea651054362561a28b1ccc8da9368a39514c1bbf6c0977a1c376764  scipy-1.7.1.tar.gz
+# Locally generated
+sha256  4042211bed8e6c658b9e2a4ca829806f0b33437faa7878c8dc6d6f72845b1694  scipy-1.7.3.tar.xz
+sha256  32b2f41fb8c1193a066c1686bb3237e79f918685bf545cb6dfcb68753ac35152  LICENSE.txt
+sha256  37e64a498894ac7c3b070023e3689e954a8ecf8a23b90968d09a455f1b4f7b35  scipy/linalg/src/lapack_deprecations/LICENSE
+sha256  606209a000716c5f66e33e180ce08434b96ed17db4975ab9723c6b5fbcc89609  scipy/ndimage/LICENSE.txt
+sha256  3df9207af2fdb861af0ae3b22026f163b9bcfab4e525dc4943afe2ffa3f77624  scipy/optimize/tnc/LICENSE
+sha256  f0cedf52503b2d42b83411a0a16e6fefac346dfad8fddc66f50050150123470c  scipy/sparse/linalg/dsolve/SuperLU/License.txt
+sha256  0926566f9f406178d1214f8cc796e166b1213dd7c05e0c5b461a8b8ac9e50bbe  scipy/sparse/linalg/eigen/arpack/ARPACK/COPYING
+sha256  34db0c0c4f931861d720555c9cd7a2e228d1290ba29af0f2ee80c41bb2038afb  scipy/spatial/qhull_src/COPYING.txt

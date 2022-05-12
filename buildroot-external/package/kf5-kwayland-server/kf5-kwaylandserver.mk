@@ -4,7 +4,7 @@
 #
 ################################################################################
 
-KF5_KWAYLAND_SERVER_VERSION = 5.20.2
+KF5_KWAYLAND_SERVER_VERSION = 5.24.5
 KF5_KWAYLAND_SERVER_SITE = https://download.kde.org/stable/plasma/$(KF5_KWAYLAND_SERVER_VERSION)
 KF5_KWAYLAND_SERVER_SOURCE = kwayland-server-$(KF5_KWAYLAND_SERVER_VERSION).tar.xz
 KF5_KWAYLAND_SERVER_LICENSE = BSD-3-Clause

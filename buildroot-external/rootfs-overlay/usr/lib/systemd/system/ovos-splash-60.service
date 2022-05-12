@@ -1,6 +1,6 @@
 [Unit]
 Description=Update OVOS splash boot screen to 60%
-Before=mycroft.service
+Before=mycroft-gui.service
 DefaultDependencies=no
 
 [Service]

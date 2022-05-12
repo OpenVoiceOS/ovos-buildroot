@@ -4,7 +4,7 @@
 #
 ################################################################################
 
-RESPEAKER_VERSION = c8d97904ceacf848346029f176c23cc74addb733
+RESPEAKER_VERSION = 6bf1dbd04e55d412abbba3832eccbcecb3f09810
 RESPEAKER_SITE = $(call github,HinTak,seeed-voicecard,$(RESPEAKER_VERSION))
 RESPEAKER_LICENSE = GNU General Public License v3.0
 RESPEAKER_DEPENDENCIES = rpi-firmware dtc
@@ -16,9 +16,10 @@ define RESPEAKER_INSTALL_TARGET_CMDS
 	mkdir -p $(TARGET_DIR)/etc/voicecard
 	$(INSTALL) -D -m 0644 $(@D)/*.state $(TARGET_DIR)/etc/voicecard
 
-	$(INSTALL) -D -m 0644 $(@D)/seeed-2mic-voicecard.dtbo $(BINARIES_DIR)/overlays/
-        $(INSTALL) -D -m 0644 $(@D)/seeed-4mic-voicecard.dtbo $(BINARIES_DIR)/overlays/
-        $(INSTALL) -D -m 0644 $(@D)/seeed-8mic-voicecard.dtbo $(BINARIES_DIR)/overlays/
+	mkdir -p $(BINARIES_DIR)/rpi-firmware/overlays
+	$(INSTALL) -D -m 0644 $(@D)/seeed-2mic-voicecard.dtbo $(BINARIES_DIR)/rpi-firmware/overlays/
+        $(INSTALL) -D -m 0644 $(@D)/seeed-4mic-voicecard.dtbo $(BINARIES_DIR)/rpi-firmware/overlays/
+        $(INSTALL) -D -m 0644 $(@D)/seeed-8mic-voicecard.dtbo $(BINARIES_DIR)/rpi-firmware/overlays/
 
 	mkdir -p $(TARGET_DIR)/usr/share/pulseaudio/alsa-mixer/profile-sets/
 	$(INSTALL) -D -m 0644 $(@D)/pulseaudio/pulse_config_4mic/seeed-voicecard.conf \
