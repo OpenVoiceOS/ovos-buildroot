@@ -1,0 +1,25 @@
+From a4dc9c913d1bd908a5e508e7a09d882c8390b9ec Mon Sep 17 00:00:00 2001
+From: j1nx <p.steenbergen@j1nx.nl>
+Date: Mon, 9 May 2022 10:38:32 +0200
+Subject: [PATCH 1/1] Enable pulseaudio alsa-plugin
+
+---
+ package/alsa-plugins/alsa-plugins.mk | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/package/alsa-plugins/alsa-plugins.mk b/package/alsa-plugins/alsa-plugins.mk
+index 396f47adaf..b905d30eac 100644
+--- a/package/alsa-plugins/alsa-plugins.mk
++++ b/package/alsa-plugins/alsa-plugins.mk
+@@ -14,8 +14,6 @@ ALSA_PLUGINS_DEPENDENCIES = host-pkgconf alsa-lib
+ ALSA_PLUGINS_CONF_OPTS = \
+ 	--disable-jack \
+ 	--disable-usbstream \
+-	--disable-pulseaudio \
+-	--disable-libav \
+ 	--disable-maemo-plugin \
+ 	--disable-maemo-resource-manager \
+ 	--with-speex=no
+-- 
+2.34.1
+

@@ -1,0 +1,51 @@
+diff --git a/package/qt5/Config.in b/package/qt5/Config.in
+index 5751d6cb70..143926b743 100644
+--- a/package/qt5/Config.in
++++ b/package/qt5/Config.in
+@@ -68,6 +68,7 @@ source "package/qt5/qt5wayland/Config.in"
+ source "package/qt5/qt5webchannel/Config.in"
+ source "package/qt5/qt5webkit/Config.in"
+ source "package/qt5/qt5webengine/Config.in"
++source "package/qt5/qt5webengine-chromium-catapult/Config.in"
+ source "package/qt5/qt5websockets/Config.in"
+ source "package/qt5/qt5webview/Config.in"
+ source "package/qt5/qt5x11extras/Config.in"
+diff --git a/package/qt5/qt5webengine-chromium-catapult/Config.in b/package/qt5/qt5webengine-chromium-catapult/Config.in
+new file mode 100644
+index 0000000000..471c2a2dbc
+--- /dev/null
++++ b/package/qt5/qt5webengine-chromium-catapult/Config.in
+@@ -0,0 +1,4 @@
++# Not user-selectable, it is only needed to be copied
++# into the chromium source tree.
++config BR2_PACKAGE_QT5WEBENGINE_CHROMIUM_CATAPULT
++	bool
+diff --git a/package/qt5/qt5webengine-chromium-catapult/qt5webengine-chromium-catapult.hash b/package/qt5/qt5webengine-chromium-catapult/qt5webengine-chromium-catapult.hash
+new file mode 100644
+index 0000000000..8190a6dd5d
+--- /dev/null
++++ b/package/qt5/qt5webengine-chromium-catapult/qt5webengine-chromium-catapult.hash
+@@ -0,0 +1,3 @@
++# Locally calculated
++sha256  66b8593e665c4236f7b1c487548d41d3826eddbf486ff985dbdfd01cddcaa1a8  qt5webengine-chromium-catapult-5eedfe23148a234211ba477f76fc2ea2e8529189-br1.tar.gz
++sha256  f0df289ba9d03d857ad1c2f5918861376b1510b71588ffc60eff5c7a7bfedb09  LICENSE
+diff --git a/package/qt5/qt5webengine-chromium-catapult/qt5webengine-chromium-catapult.mk b/package/qt5/qt5webengine-chromium-catapult/qt5webengine-chromium-catapult.mk
+new file mode 100644
+index 0000000000..5d0db1e790
+--- /dev/null
++++ b/package/qt5/qt5webengine-chromium-catapult/qt5webengine-chromium-catapult.mk
+@@ -0,0 +1,14 @@
++################################################################################
++#
++# qt5webengine-chromium-catapult
++#
++################################################################################
++
++QT5WEBENGINE_CHROMIUM_CATAPULT_VERSION = 5eedfe23148a234211ba477f76fc2ea2e8529189
++QT5WEBENGINE_CHROMIUM_CATAPULT_SITE = https://chromium.googlesource.com/catapult.git
++QT5WEBENGINE_CHROMIUM_CATAPULT_SITE_METHOD = git
++QT5WEBENGINE_CHROMIUM_CATAPULT_LICENSE = BSD-3-Clause
++QT5WEBENGINE_CHROMIUM_CATAPULT_LICENSE_FILES = LICENSE
++QT5WEBENGINE_CHROMIUM_CATAPULT_INSTALL_TARGET = NO
++
++$(eval $(generic-package))
