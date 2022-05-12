@@ -1,0 +1,6 @@
+config BR2_PACKAGE_PYTHON_OVOS_TTS_SERVER_PLUGIN
+	bool "python-ovos-tts-server-plugin"
+	help
+	  OpenVoiceOS companion plugin for OpenVoiceOS TTS Server
+
+	  https://github.com/OpenVoiceOS/ovos-tts-server-plugin

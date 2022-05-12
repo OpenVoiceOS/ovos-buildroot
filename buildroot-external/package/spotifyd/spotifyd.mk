@@ -4,31 +4,22 @@
 #
 ################################################################################
 
-SPOTIFYD_VERSION = 4dd5a6010a5dbff5aac5e06f236f84e83d71c597
-SPOTIFYD_SITE = $(call github,capnfabs,spotifyd,$(SPOTIFYD_VERSION))
+SPOTIFYD_VERSION = ae6dac7a54f899316674ba57ce4a0f9890cd2b1c
+SPOTIFYD_SITE = $(call github,Spotifyd,spotifyd,$(SPOTIFYD_VERSION))
 SPOTIFYD_LICENSE = GPL-3.0
 SPOTIFYD_LICENSE_FILES = LICENSE
 
-SPOTIFYD_DEPENDENCIES = host-rustc
+SPOTIFYD_DEPENDENCIES = host-rustc host-pkgconf
 
-SPOTIFYD_CARGO_ENV = CARGO_HOME=$(HOST_DIR)/share/cargo \
-		     CC=$(TARGET_CC) \
-                     HOST_CC=gcc \
-		     PKG_CONFIG_ALLOW_CROSS=1 \
-		     OPENSSL_LIB_DIR=$(HOST_DIR)/lib \
-		     OPENSSL_INCLUDE_DIR=$(HOST_DIR)/include
+SPOTIFYD_CARGO_ENV = \
+	PKG_CONFIG_ALLOW_CROSS=1 \
+	OPENSSL_LIB_DIR=$(HOST_DIR)/lib \
+        OPENSSL_INCLUDE_DIR=$(HOST_DIR)/include
+
 SPOTIFYD_BIN_DIR = target/$(RUSTC_TARGET_NAME)/release
 
-SPOTIFYD_CARGO_OPTS = --release \
-		      --no-default-features \
-		      --features=pulseaudio_backend,dbus_keyring,dbus_mpris \
-		      --target=$(RUSTC_TARGET_NAME) \
-		      --manifest-path=$(@D)/Cargo.toml
-
-define SPOTIFYD_BUILD_CMDS
-	$(TARGET_MAKE_ENV) $(SPOTIFYD_CARGO_ENV) \
-	cargo build $(SPOTIFYD_CARGO_OPTS)
-endef
+SPOTIFYD_CARGO_BUILD_OPTS = --no-default-features \
+		      --features=pulseaudio_backend,dbus_keyring,dbus_mpris
 
 define SPOTIFYD_INSTALL_TARGET_CMDS
 	$(INSTALL) -D -m 0755 $(@D)/$(SPOTIFYD_BIN_DIR)/spotifyd \
@@ -42,4 +33,4 @@ define SPOTIFYD_INSTALL_INIT_SYSTEMD
 		$(TARGET_DIR)/usr/lib/systemd/system/spotifyd.service
 endef
 
-$(eval $(generic-package))
+$(eval $(cargo-package))

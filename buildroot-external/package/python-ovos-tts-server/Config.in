@@ -1,0 +1,6 @@
+config BR2_PACKAGE_PYTHON_OVOS_TTS_SERVER
+	bool "python-ovos-tts-server"
+	help
+	  Turn any OVOS TTS plugin into a micro service
+
+	  https://github.com/OpenVoiceOS/ovos-tts-server

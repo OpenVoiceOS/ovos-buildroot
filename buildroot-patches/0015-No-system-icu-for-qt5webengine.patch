@@ -1,0 +1,24 @@
+From 678531a2fbec870613eec7eed646b4422a4f9684 Mon Sep 17 00:00:00 2001
+From: j1nx <p.steenbergen@j1nx.nl>
+Date: Thu, 7 Apr 2022 14:17:28 +0200
+Subject: [PATCH 1/1] No system-icu for qt5webengine
+
+---
+ package/qt5/qt5webengine/qt5webengine.mk | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/package/qt5/qt5webengine/qt5webengine.mk b/package/qt5/qt5webengine/qt5webengine.mk
+index 836ba62189..c028246589 100644
+--- a/package/qt5/qt5webengine/qt5webengine.mk
++++ b/package/qt5/qt5webengine/qt5webengine.mk
+@@ -87,7 +87,6 @@ QT5WEBENGINE_DEPENDENCIES += \
+ QT5WEBENGINE_CONF_OPTS += \
+ 	-webengine-embedded-build \
+ 	-webengine-ffmpeg \
+-	-webengine-icu \
+ 	-webengine-opus \
+ 	-webengine-webchannel \
+ 	-webengine-webp \
+-- 
+2.20.1
+

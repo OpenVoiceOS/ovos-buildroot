@@ -1,0 +1,9 @@
+[ColorScheme]
+name=OVOS Color Scheme
+primaryColor=#FF252525
+secondaryColor=#FFAD050E
+textColor=#FFF1F1F1
+
+[SelectedScheme]
+name=OVOS Color Scheme
+path=/usr/share/OVOS/ColorSchemes/ovos_scheme.json

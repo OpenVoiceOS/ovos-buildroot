@@ -4,7 +4,7 @@
 #
 #############################################################
 
-LIBREM_VERSION = 1.0.0
+LIBREM_VERSION = 2.3.0
 LIBREM_SOURCE = v$(LIBREM_VERSION).tar.gz
 LIBREM_SITE = https://github.com/baresip/rem/archive
 LIBREM_INSTALL_STAGING = YES

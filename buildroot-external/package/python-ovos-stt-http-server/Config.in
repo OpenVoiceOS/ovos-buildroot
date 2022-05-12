@@ -1,0 +1,6 @@
+config BR2_PACKAGE_PYTHON_OVOS_STT_HTTP_SERVER
+	bool "python-ovos-stt-http-server"
+	help
+	  Turn any OVOS STT plugin into a micro service
+
+	  https://github.com/OpenVoiceOS/ovos-stt-http-server

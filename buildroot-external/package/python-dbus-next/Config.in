@@ -1,7 +1,0 @@
-config BR2_PACKAGE_PYTHON_DBUS_NEXT
-	bool "python-dbus-next"
-	help
-	  A zero-dependency DBus library for Python with asyncio
-	  support.
-
-	  https://github.com/altdesktop/python-dbus-next

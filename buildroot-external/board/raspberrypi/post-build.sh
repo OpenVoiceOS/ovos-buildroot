@@ -29,5 +29,17 @@ BOARD_DIR="$(dirname $0)"
     echo "DEPLOYMENT=${DEPLOYMENT}"
 } > "${TARGET_DIR}/etc/machine-info"
 
-cp -f ../buildroot-external/board/raspberrypi/config.txt ${BINARIES_DIR}/rpi-firmware/config.txt
 cp -f ../buildroot-external/board/raspberrypi/cmdline.txt ${BINARIES_DIR}/rpi-firmware/cmdline.txt
+
+# Copy the right config.txt file
+for arg in "$@"
+do
+    case "${arg}" in
+        --rpi3)
+        cp -f ../buildroot-external/board/raspberrypi/config_3_64bit.txt ${BINARIES_DIR}/rpi-firmware/config.txt
+        ;;
+        --rpi4)
+        cp -f ../buildroot-external/board/raspberrypi/config_4_64bit.txt ${BINARIES_DIR}/rpi-firmware/config.txt
+        ;;
+    esac
+done

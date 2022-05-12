@@ -1,0 +1,25 @@
+From dc2d5a8bd7a5f9d6531438a0c600995bb54bc925 Mon Sep 17 00:00:00 2001
+From: j1nx <p.steenbergen@j1nx.nl>
+Date: Sat, 7 May 2022 18:56:08 +0200
+Subject: [PATCH 1/1] Loosen some requirements
+
+---
+ setup.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/setup.py b/setup.py
+index 4d7deee..61fae6d 100755
+--- a/setup.py
++++ b/setup.py
+@@ -26,7 +26,7 @@ setup(
+     package_data={'': package_files('ovos_PHAL_plugin_respeaker_4mic')},
+     install_requires=["ovos-plugin-manager>=0.0.1",
+                       "spidev",
+-                      "pyusb==1.1.0",
++                      "pyusb>=1.1.0",
+                       "gpiozero"],
+     zip_safe=True,
+     include_package_data=True,
+-- 
+2.34.1
+

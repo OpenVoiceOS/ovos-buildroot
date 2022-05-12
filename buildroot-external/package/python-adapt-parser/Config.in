@@ -1,6 +1,5 @@
 config BR2_PACKAGE_PYTHON_ADAPT_PARSER
 	bool "python-adapt-parser"
-	select BR2_PACKAGE_PYTHON_PYEE # runtime
 	select BR2_PACKAGE_PYTHON_SIX # runtime
 	help
 	  A text-to-intent parsing framework.

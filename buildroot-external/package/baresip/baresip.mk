@@ -4,18 +4,16 @@
 #
 #############################################################
 
-BARESIP_VERSION = 1.1.0
+BARESIP_VERSION = 2.3.0
 BARESIP_SOURCE = v$(BARESIP_VERSION).tar.gz
 BARESIP_SITE = https://github.com/baresip/baresip/archive
 BARESIP_DEPENDENCIES = libre librem zlib
 
-BARESIP_MAKE_ENV = \
+BARESIP_MAKE_ENV += \
         $(TARGET_CONFIGURE_OPTS) \
         SYSROOT=$(STAGING_DIR)/usr \
-        LD="$(TARGET_CC)" \
-        LFLAGS="$(TARGET_LDFLAGS)"
 
-BARESIP_MAKE_ARGS = \
+BARESIP_MAKE_OPTS += \
         LIBRE_MK="$(STAGING_DIR)/usr/share/re/re.mk" \
         LIBRE_INC="$(STAGING_DIR)/usr/include/re" \
         LIBRE_SO="$(STAGING_DIR)/usr/lib" \
@@ -50,11 +48,11 @@ BARESIP_DEPENDENCIES += xlib_libXext
 endif
 
 define BARESIP_BUILD_CMDS
-        $(BARESIP_MAKE_ENV) $(MAKE) $(BARESIP_MAKE_ARGS) -C $(@D) all
+        $(BARESIP_MAKE_ENV) $(MAKE) $(BARESIP_MAKE_OPTS) -C $(@D) all
 endef
 
-define BARESIP_INSTALL_TARGET_CMDS
-        $(BARESIP_MAKE_ENV) DESTDIR=$(TARGET_DIR) $(MAKE) $(BARESIP_MAKE_ARGS) -C $(@D) install
-endef
+#define BARESIP_INSTALL_TARGET_CMDS
+#        $(BARESIP_MAKE_ENV) DESTDIR=$(TARGET_DIR) $(MAKE) $(BARESIP_MAKE_ARGS) -C $(@D) install
+#endef
 
-$(eval $(generic-package))
+$(eval $(cmake-package))

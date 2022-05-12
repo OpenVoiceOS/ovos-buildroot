@@ -1,0 +1,6 @@
+config BR2_PACKAGE_PYTHON_OVOS_CLI_CLIENT
+	bool "python-ovos-cli-client"
+	help
+	  mycroft-core cli client extracted into a standalone component
+
+	  https://github.com/OpenVoiceOS/ovos_cli_client

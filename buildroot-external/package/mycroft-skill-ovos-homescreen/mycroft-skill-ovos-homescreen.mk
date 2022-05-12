@@ -4,7 +4,7 @@
 #
 ################################################################################
 
-MYCROFT_SKILL_OVOS_HOMESCREEN_VERSION = eb5e0eca6ec7f8f58149c889e72dd372752e0632
+MYCROFT_SKILL_OVOS_HOMESCREEN_VERSION = 41ef324b65922f8703f0687ab4a27e8051ae42ee
 MYCROFT_SKILL_OVOS_HOMESCREEN_SITE = https://github.com/OpenVoiceOS/skill-ovos-homescreen
 MYCROFT_SKILL_OVOS_HOMESCREEN_SITE_METHOD = git
 MYCROFT_SKILL_OVOS_HOMESCREEN_DIRLOCATION = home/mycroft/.local/share/mycroft/skills
