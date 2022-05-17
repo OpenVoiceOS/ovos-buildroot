@@ -48,7 +48,7 @@ dtparam=audio=on
 
 # Enable camera driver
 # dtoverlay=imx219
-dtoverlay=ov5647
+# dtoverlay=ov5647
 # camera_auto_detect=1
 
 # Disable rainbow color splash
