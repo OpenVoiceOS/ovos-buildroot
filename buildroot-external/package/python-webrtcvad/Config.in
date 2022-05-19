@@ -1,0 +1,7 @@
+config BR2_PACKAGE_PYTHON_WEBRTCVAD
+	bool "python-webrtcvad"
+	help
+	  This is a python interface to the 
+	  WebRTC Voice Activity Detector (VAD).
+
+	  https://pypi.org/project/webrtcvad/
