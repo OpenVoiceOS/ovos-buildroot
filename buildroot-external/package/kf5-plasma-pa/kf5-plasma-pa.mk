@@ -4,7 +4,7 @@
 #
 ################################################################################
 
-KF5_PLASMA_PA_VERSION = 5.20.2
+KF5_PLASMA_PA_VERSION = 5.24.5
 KF5_PLASMA_PA_SITE = https://download.kde.org/stable/plasma/$(KF5_PLASMA_PA_VERSION)
 KF5_PLASMA_PA_SOURCE = plasma-pa-$(KF5_PLASMA_PA_VERSION).tar.xz
 KF5_PLASMA_PA_LICENSE = BSD-3-Clause
