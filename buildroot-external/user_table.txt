@@ -1,2 +1,2 @@
 
-mycroft -1 mycroft -1 =mycroft /home/mycroft /bin/sh input,i2c,spi,gpio,audio,video,pulse,pulse-access,lp,weston-launch Mycroft user
+mycroft -2 mycroft -2 =mycroft /home/mycroft /bin/sh input,i2c,spi,gpio,audio,video,pulse,pulse-access,lp Mycroft user
