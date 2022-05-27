@@ -1,0 +1,6 @@
+config BR2_PACKAGE_PYTHON_OVOS_PHAL_PLUGIN_GUI_NETWORK_CLIENT
+	bool "python-ovos-phal-plugin-gui-network-client"
+	help
+	  A GUI Network Client For PHAL
+
+	  https://github.com/OpenVoiceOS/ovos-PHAL-plugin-gui-network-client
