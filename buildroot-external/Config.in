@@ -94,6 +94,7 @@ endmenu
 	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/rpi-eeprom/Config.in"
 	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/snapcast/Config.in"
 	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/spotifyd/Config.in"
+	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/tensorflow-lite/Config.in"
 	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/userland-tools/Config.in"
 	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/virtual-touch/Config.in"
 	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/vocalfusion/Config.in"
