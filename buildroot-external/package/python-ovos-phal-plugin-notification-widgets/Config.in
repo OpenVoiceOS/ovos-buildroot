@@ -1,0 +1,6 @@
+config BR2_PACKAGE_PYTHON_OVOS_PHAL_PLUGIN_NOTIFICATION_WIDGETS
+	bool "python-ovos-phal-plugin-notification-widgets"
+	help
+	  Notifications and Widgets PHAL plugin
+
+	  https://github.com/OpenVoiceOS/ovos-PHAL-plugin-notification-widgets
