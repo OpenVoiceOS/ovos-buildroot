@@ -1,0 +1,6 @@
+config BR2_PACKAGE_PYTHON_OVOS_PHAL_PLUGIN_WIFI_SETUP
+	bool "python-ovos-phal-plugin-wifi-setup"
+	help
+	  Central Wifi Setup Plugin for PHAL
+
+	  https://github.com/OpenVoiceOS/ovos-PHAL-plugin-wifi-setup
