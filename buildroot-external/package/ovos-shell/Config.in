@@ -1,0 +1,10 @@
+config BR2_PACKAGE_OVOS_SHELL
+	bool "ovos-shell"
+	help
+	  This is a minimal shell which is intended 
+	  to run on low power hardware either as "single 
+	  application" on a minimal wayland server or 
+	  with eglfs backend.
+
+	  https://github.com/OpenVoiceOS/ovos-shell
+
