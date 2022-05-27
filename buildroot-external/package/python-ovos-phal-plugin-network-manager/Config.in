@@ -1,0 +1,6 @@
+config BR2_PACKAGE_PYTHON_OVOS_PHAL_PLUGIN_NETWORK_MANAGER
+	bool "python-ovos-phal-plugin-network-manager"
+	help
+	  NetworkManager plugin for PHAL
+
+	  https://github.com/OpenVoiceOS/ovos-PHAL-plugin-network-manager
