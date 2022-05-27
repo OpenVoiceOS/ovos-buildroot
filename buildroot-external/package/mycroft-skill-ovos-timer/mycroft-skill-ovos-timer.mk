@@ -4,7 +4,7 @@
 #
 ################################################################################
 
-MYCROFT_SKILL_OVOS_TIMER_VERSION = c9a18ac1b14f953b75a0f5e1e9f99913b0a7b5bc
+MYCROFT_SKILL_OVOS_TIMER_VERSION = 6d0d4df1678cb956d4b36f42b3783f997a723b78
 MYCROFT_SKILL_OVOS_TIMER_SITE = https://github.com/OpenVoiceOS/skill-ovos-timer
 MYCROFT_SKILL_OVOS_TIMER_SITE_METHOD = git
 MYCROFT_SKILL_OVOS_TIMER_DIRLOCATION = home/mycroft/.local/share/mycroft/skills
