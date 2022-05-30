@@ -20,9 +20,9 @@ kernel=Image
 # Automatically load overlays for detected DSI displays
 dtoverlay=vc4-fkms-v3d
 # dtoverlay=vc4-kms-v3d
-hdmi_drive=2
-hdmi_group=2
-hdmi_mode=14
+# hdmi_drive=2
+# hdmi_group=2
+# hdmi_mode=14
 max_framebuffers=2
 # uncomment if you get no picture on HDMI for a default "safe" mode
 # hdmi_safe=1
