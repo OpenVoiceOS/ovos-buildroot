@@ -4,7 +4,7 @@
 #
 ################################################################################
 
-MYCROFT_SKILL_OVOS_ALARM_VERSION = 
+MYCROFT_SKILL_OVOS_ALARM_VERSION = ce6d366dae5c5cb34205149b9a88fa891d6b67c8
 MYCROFT_SKILL_OVOS_ALARM_SITE = https://github.com/OpenVoiceOS/skill-ovos-alarm
 MYCROFT_SKILL_OVOS_ALARM_SITE_METHOD = git
 MYCROFT_SKILL_OVOS_ALARM_DIRLOCATION = home/mycroft/.local/share/mycroft/skills
