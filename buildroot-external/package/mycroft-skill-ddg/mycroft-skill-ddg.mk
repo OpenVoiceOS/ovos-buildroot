@@ -4,11 +4,11 @@
 #
 ################################################################################
 
-MYCROFT_SKILL_DDG_VERSION = c58f55ca45a48bb7ef44a61113fe3b144ef8f55a
-MYCROFT_SKILL_DDG_SITE = https://github.com/NeonJarbas/skill-ddg
+MYCROFT_SKILL_DDG_VERSION = 72dc55998fd7d2817259f2d757fd0f7e5b9b14e1
+MYCROFT_SKILL_DDG_SITE = https://github.com/OpenVoiceOS/skill-ddg
 MYCROFT_SKILL_DDG_SITE_METHOD = git
 MYCROFT_SKILL_DDG_DIRLOCATION = home/mycroft/.local/share/mycroft/skills
-MYCROFT_SKILL_DDG_DIRNAME = skill-ddg.jarbasskills
+MYCROFT_SKILL_DDG_DIRNAME = skill-ddg.openvoiceos
 
 define MYCROFT_SKILL_DDG_INSTALL_TARGET_CMDS
 	mkdir -p $(TARGET_DIR)/$(MYCROFT_SKILL_DDG_DIRLOCATION)/$(MYCROFT_SKILL_DDG_DIRNAME)
