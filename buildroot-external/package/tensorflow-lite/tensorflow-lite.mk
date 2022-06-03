@@ -14,12 +14,19 @@ TENSORFLOW_LITE_INSTALL_STAGING = YES
 TENSORFLOW_LITE_DEPENDENCIES = host-pkgconf
 TENSORFLOW_LITE_SUPPORTS_IN_SOURCE_BUILD = NO
 
-TENSORFLOW_LITE_CONF_OPTS += -DCMAKE_C_FLAGS="-I$(STAGING_DIR)/usr/include/python$(PYTHON3_VERSION_MAJOR) \
+#TENSORFLOW_LITE_CONF_OPTS += CFLAGS="$(TARGET_CFLAGS) -funsafe-math-optimizations
+#TENSORFLOW_LITE_CONF_OPTS += CXXFLAGS="$(TARGET_CFLAGS) -funsafe-math-optimizations
+
+TENSORFLOW_LITE_CONF_OPTS += -DCMAKE_C_FLAGS="$(TARGET_CFLAGS) -funsafe-math-optimizations \
+				-I$(STAGING_DIR)/usr/include/python$(PYTHON3_VERSION_MAJOR) \
 				-I$(STAGING_DIR)/usr/lib/python$(PYTHON3_VERSION_MAJOR)/site-packages/numpy/core/include \
 				-I$(STAGING_DIR)/usr/include/pybind11" \
-			     -DCMAKE_CXX_FLAGS="-I$(STAGING_DIR)/usr/include/python$(PYTHON3_VERSION_MAJOR) \
-                                -I$(STAGING_DIR)/usr/lib/python$(PYTHON3_VERSION_MAJOR)/site-packages/numpy/core/include \
-                                -I$(STAGING_DIR)/usr/include/pybind11"
+			     -DCMAKE_CXX_FLAGS="$(TARGET_CXXFLAGS) -funsafe-math-optimizations \
+				-I$(STAGING_DIR)/usr/include/python$(PYTHON3_VERSION_MAJOR) \
+				-I$(STAGING_DIR)/usr/lib/python$(PYTHON3_VERSION_MAJOR)/site-packages/numpy/core/include \
+				-I$(STAGING_DIR)/usr/include/pybind11" \
+			     -DCMAKE_SYSTEM_NAME=Linux \
+			     -DCMAKE_SYSTEM_PROCESSOR=aarch64
 
 TENSORFLOW_LITE_MAKE_OPTS += _pywrap_tensorflow_interpreter_wrapper
 
