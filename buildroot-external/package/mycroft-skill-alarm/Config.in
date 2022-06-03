@@ -1,7 +1,0 @@
-config BR2_PACKAGE_MYCROFT_SKILL_ALARM
-	bool "mycroft-skill-alarm"
-	help
-	  Mycroft AI official Alarm Skill - Set single 
-	  and recurring alarms, with a choice of alarm sounds
-
-	  https://github.com/MycroftAI/skill-alarm

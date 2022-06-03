@@ -1,0 +1,7 @@
+config BR2_PACKAGE_MYCROFT_SKILL_OVOS_ALARM
+	bool "mycroft-skill-ovos-alarm"
+	help
+	  OVOS Alarm Skill - Set single 
+	  and recurring alarms, with a choice of alarm sounds
+
+	  https://github.com/OpenVoiceOS/skill-ovos-alarm
