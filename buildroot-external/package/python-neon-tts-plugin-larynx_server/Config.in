@@ -1,0 +1,6 @@
+config BR2_PACKAGE_PYTHON_NEON_TTS_PLUGIN_LARYNX_SERVER
+	bool "python-neon-tts-plugin-larynx_server"
+	help
+	  TTS plugin for Larynx
+
+	  https://github.com/NeonGeckoCom/neon-tts-plugin-larynx_server
