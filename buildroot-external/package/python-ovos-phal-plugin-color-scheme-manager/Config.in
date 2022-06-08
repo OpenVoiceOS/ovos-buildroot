@@ -1,0 +1,6 @@
+config BR2_PACKAGE_PYTHON_OVOS_PHAL_PLUGIN_COLOR_SCHEME_MANAGER
+	bool "python-ovos-phal-plugin-color-scheme-manager"
+	help
+	  OVOS Shell ColorScheme Manager Plugin for OVOS PHAL
+
+	  https://github.com/OpenVoiceOS/ovos-PHAL-plugin-color-scheme-manager
