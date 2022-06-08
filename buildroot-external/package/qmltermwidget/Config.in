@@ -1,0 +1,6 @@
+config BR2_PACKAGE_QMLTERMWIDGET
+	bool "qmltermwidget"
+	help
+	  QML port of qtermwidget
+
+	  https://github.com/Swordfish90/qmltermwidget
