@@ -1,5 +1,5 @@
-# <img src='https://camo.githubusercontent.com/48b782bbddb51b97cf2971fda5817080075f7799/68747470733a2f2f7261772e6769746861636b2e636f6d2f466f7274417765736f6d652f466f6e742d417765736f6d652f6d61737465722f737667732f736f6c69642f636f67732e737667' width='50' height='50' style='vertical-align:bottom'/> OpenVoiceOS - Mycroft Edition
-A minimalistic Linux OS bringing the open source voice assistant Mycroft A.I. to embbeded, low-spec headless and/or small (touch)screen devices.
+# <img src='https://camo.githubusercontent.com/48b782bbddb51b97cf2971fda5817080075f7799/68747470733a2f2f7261772e6769746861636b2e636f6d2f466f7274417765736f6d652f466f6e742d417765736f6d652f6d61737465722f737667732f736f6c69642f636f67732e737667' width='50' height='50' style='vertical-align:bottom'/> Open Voice Operating System - Buildroot Edition
+A minimalistic Linux OS bringing the open source voice assistant ovos-core to embbeded, low-spec headless and/or small (touch)screen devices.
 
 ## System.
 ### OpenVoiceOS - Full 64 Bit distribution
