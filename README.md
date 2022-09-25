@@ -3,9 +3,9 @@ A minimalistic Linux OS bringing the open source voice assistant [ovos-core](htt
 
 ## System.
 ### OpenVoiceOS - Full 64 Bit distribution
-- Linux kernel 5.10.x (LTS)
-- Buildroot 2021.02.x (LTS)
-- Mycroft 20.08.x (mycroft-lib pip installable version)
+- Linux kernel 5.15.x (LTS)
+- Buildroot 2022.02.x (LTS)
+- OVOS-Core (Latest development version)
 - Raspberry Pi 3|3b|3b+ (Initial development hardware = 3b)
 - Raspberry Pi 4 (Current development hardware, minimum recommended RAM 2GB)
 
@@ -34,7 +34,7 @@ The following example Build environment has been tested :
 
 - Architecture: x86_64 
 - Hardware: Intel Core i5 processor, 8GB RAM, 240GB SSD (you can build on less RAM (2GB) and slower storage but more RAM, faster storage =  quicker image building)
-- OS: Ubuntu 20.04 LTS desktop
+- OS: Ubuntu 22.04 LTS desktop
 
 #### Installing System Build Dependencies
 The following system packages are required to build the image:
