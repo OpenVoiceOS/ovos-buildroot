@@ -1,0 +1,35 @@
+From 31f716dd58053529d84f289559ea13ff309418d4 Mon Sep 17 00:00:00 2001
+From: j1nx <p.steenbergen@j1nx.nl>
+Date: Wed, 7 Sep 2022 09:01:59 +0200
+Subject: [PATCH 1/1] Bump rpi-firmware to version to 1.20220830
+
+---
+ package/rpi-firmware/rpi-firmware.hash | 2 +-
+ package/rpi-firmware/rpi-firmware.mk   | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/package/rpi-firmware/rpi-firmware.hash b/package/rpi-firmware/rpi-firmware.hash
+index ec13115f3b..db5a374219 100644
+--- a/package/rpi-firmware/rpi-firmware.hash
++++ b/package/rpi-firmware/rpi-firmware.hash
+@@ -1,3 +1,3 @@
+ # Locally computed
+-sha256  33aea2cb9c3be94c3dd6a96fbb3443eee5af1dc5fc9140e1fadc50832983064e  rpi-firmware-3f20b832b27cd730deb6419b570f31a98167eef6.tar.gz
++sha256  19df9f4d4a08628d0a5627f26a8b15cc78964a1fedfda98219a1d9b3214b4118  rpi-firmware-48cd70fe84432c5d050637b61e4b7b9c831c98bf.tar.gz
+ sha256  c7283ff51f863d93a275c66e3b4cb08021a5dd4d8c1e7acc47d872fbe52d3d6b  boot/LICENCE.broadcom
+diff --git a/package/rpi-firmware/rpi-firmware.mk b/package/rpi-firmware/rpi-firmware.mk
+index d4d1d07b3f..1028237a90 100644
+--- a/package/rpi-firmware/rpi-firmware.mk
++++ b/package/rpi-firmware/rpi-firmware.mk
+@@ -4,7 +4,7 @@
+ #
+ ################################################################################
+ 
+-RPI_FIRMWARE_VERSION = 3f20b832b27cd730deb6419b570f31a98167eef6
++RPI_FIRMWARE_VERSION = 48cd70fe84432c5d050637b61e4b7b9c831c98bf
+ RPI_FIRMWARE_SITE = $(call github,raspberrypi,firmware,$(RPI_FIRMWARE_VERSION))
+ RPI_FIRMWARE_LICENSE = BSD-3-Clause
+ RPI_FIRMWARE_LICENSE_FILES = boot/LICENCE.broadcom
+-- 
+2.34.1
+

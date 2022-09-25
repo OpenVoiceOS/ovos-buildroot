@@ -1,0 +1,6 @@
+config BR2_PACKAGE_SKILL_OVOS_PERSONAL
+	bool "skill-ovos-personal"
+	help
+	  Learn history and personality of Mycroft
+
+	  https://github.com/MycroftAI/skill-personal

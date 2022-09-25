@@ -1,0 +1,7 @@
+config BR2_PACKAGE_SKILL_CAMERA
+	bool "skill-camera"
+	help
+	  OVOS official camera Skill - Take 
+	  singleshot photographs with the Camera Skill.
+
+	  https://github.com/OpenVoiceOS/skill-camera

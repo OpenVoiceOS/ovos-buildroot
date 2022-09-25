@@ -1,0 +1,7 @@
+config BR2_PACKAGE_SKILL_OVOS_HOMESCREEN
+	bool "skill-ovos-homescreen"
+	help
+	  OVOS Homescreen Skill
+	  Provides custom resting face for OVOS
+
+	  https://github.com/OpenVoiceOS/skill-ovos-homescreen

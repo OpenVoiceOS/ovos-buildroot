@@ -1,0 +1,6 @@
+config BR2_PACKAGE_PYTHON_OVOS_CONFIG
+	bool "python-ovos-config"
+	help
+	  helper package to interact with mycroft config 
+
+	  https://github.com/OpenVoiceOS/ovos-config

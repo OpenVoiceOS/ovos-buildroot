@@ -1,8 +1,0 @@
-config BR2_PACKAGE_MYCROFT_SKILL_DATE_TIME
-	bool "mycroft-skill-date-time"
-	help
-	  Mycroft AI official Date and Time Skill, providing 
-	  the current time, date and day of week for cities 
-	  around the world.
-
-	  https://github.com/MycroftAI/skill-date-time

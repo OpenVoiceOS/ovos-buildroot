@@ -1,6 +1,0 @@
-config BR2_PACKAGE_MYCROFT_SKILL_OVOS_SETUP
-	bool "mycroft-skill-ovos-setup"
-	help
-	  OVOS Setup Skill
-
-	  https://github.com/OpenVoiceOS/skill-ovos-setup

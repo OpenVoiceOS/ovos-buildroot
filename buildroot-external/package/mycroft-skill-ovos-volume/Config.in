@@ -1,7 +1,0 @@
-config BR2_PACKAGE_MYCROFT_SKILL_OVOS_VOLUME
-	bool "mycroft-skill-ovos-volume"
-	help
-	  OVOS Volume Skill
-	  Control the volume of your Device
-
-	  https://github.com/OpenVoiceOS/skill-ovos-volume

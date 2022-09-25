@@ -1,0 +1,6 @@
+config BR2_PACKAGE_SKILL_NEWS
+	bool "skill-news"
+	help
+	  News Streams from around the globe 
+
+	  https://github.com/JarbasSkills/skill-news

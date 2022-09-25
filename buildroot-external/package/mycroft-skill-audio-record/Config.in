@@ -1,7 +1,0 @@
-config BR2_PACKAGE_MYCROFT_SKILL_AUDIO_RECORD
-	bool "mycroft-skill-audio-record"
-	help
-	  Mycroft AI official Audio Record Skill - 
-	  record audio and play it back
-
-	  https://github.com/MycroftAI/skill-audio-record

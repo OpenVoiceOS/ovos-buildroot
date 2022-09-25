@@ -1,0 +1,28 @@
+From c6bfc053ad79a02a3e623e90549ed480ccb2a9de Mon Sep 17 00:00:00 2001
+From: j1nx <p.steenbergen@j1nx.nl>
+Date: Mon, 12 Sep 2022 09:14:02 +0200
+Subject: [PATCH 1/1] Bump url package to 1.7.2
+
+---
+ Cargo.lock | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/Cargo.lock b/Cargo.lock
+index 23a0c8d..8869e8c 100644
+--- a/Cargo.lock
++++ b/Cargo.lock
+@@ -900,9 +900,9 @@ dependencies = [
+ 
+ [[package]]
+ name = "url"
+-version = "1.7.0"
++version = "1.7.2"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "f808aadd8cfec6ef90e4a14eb46f24511824d1ac596b9682703c87056c8678b7"
++checksum = "dd4e7c0d531266369519a4aa4f399d748bd37043b00bde1e4ff1f60a120b355a"
+ dependencies = [
+  "idna",
+  "matches",
+-- 
+2.34.1
+

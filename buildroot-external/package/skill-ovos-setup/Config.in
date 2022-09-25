@@ -1,0 +1,6 @@
+config BR2_PACKAGE_SKILL_OVOS_SETUP
+	bool "skill-ovos-setup"
+	help
+	  OVOS Setup Skill
+
+	  https://github.com/OpenVoiceOS/skill-ovos-setup

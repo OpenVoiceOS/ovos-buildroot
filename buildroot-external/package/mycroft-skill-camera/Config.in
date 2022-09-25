@@ -1,7 +1,0 @@
-config BR2_PACKAGE_MYCROFT_SKILL_CAMERA
-	bool "mycroft-skill-camera"
-	help
-	  Mycroft AI official camera Skill - Take 
-	  singleshot photographs with the Camera Skill.
-
-	  https://github.com/MycroftAI/skill-camera

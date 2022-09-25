@@ -1,6 +1,0 @@
-config BR2_PACKAGE_MYCROFT_SKILL_REMINDER
-	bool "mycroft-skill-reminder"
-	help
-	  Set single and repeating reminders for tasks
-
-	  https://github.com/MycroftAI/skill-reminder

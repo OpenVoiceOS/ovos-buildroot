@@ -1,6 +1,0 @@
-config BR2_PACKAGE_MYCROFT_SKILL_SPELLING
-	bool "mycroft-skill-spelling"
-	help
-	  Let Mycroft help you spell words
-
-	  https://github.com/MycroftAI/skill-spelling

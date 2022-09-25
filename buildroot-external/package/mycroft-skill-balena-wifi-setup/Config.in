@@ -1,8 +1,0 @@
-config BR2_PACKAGE_MYCROFT_SKILL_BALENA_WIFI_SETUP
-	bool "mycroft-skill-balena-wifi-setup"
-	help
-	  Mycroft AI - OVOS WiFI Setup Skill
-	  Provides the audio and visual elements for Connecting 
-	  to Wifi via a secondary mobile device or computer.
-
-	  https://github.com/OpenVoiceOS/skill-balena-wifi-setup

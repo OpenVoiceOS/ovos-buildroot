@@ -1,7 +1,0 @@
-config BR2_PACKAGE_MYCROFT_SKILL_WEATHER
-	bool "mycroft-skill-weather"
-	help
-	  OpenVoiceOS version of Weather Skill, providing 
-	  weather conditions and forecasts.
-
-	  https://github.com/OpenVoiceOS/skill-weather

@@ -1,7 +1,0 @@
-config BR2_PACKAGE_MYCROFT_SKILL_OVOS_NOTES
-	bool "mycroft-skill-ovos-notes"
-	help
-	  Take personal notes to keep track of appointments, 
-	  to-do items, etc.
-
-	  https://github.com/OpenVoiceOS/skill-ovos-notes

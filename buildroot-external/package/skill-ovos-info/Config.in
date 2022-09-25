@@ -1,0 +1,6 @@
+config BR2_PACKAGE_SKILL_OVOS_INFO
+	bool "skill-ovos-info"
+	help
+	  Skill information parser support skill
+
+	  https://github.com/OpenVoiceOS/ovos-skills-info

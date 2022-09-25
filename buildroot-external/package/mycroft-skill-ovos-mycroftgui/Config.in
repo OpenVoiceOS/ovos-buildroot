@@ -1,8 +1,0 @@
-config BR2_PACKAGE_MYCROFT_SKILL_OVOS_MYCROFTGUI
-	bool "mycroft-skill-ovos-mycroftgui"
-	help
-	  Mycroft AI - OVOS MycroftGUI Skill
-	  Mycroft skill to take control of the Mycroft 
-	  GUI QT application.
-
-	  https://github.com/OpenVoiceOS/skill-ovos-mycroftgui

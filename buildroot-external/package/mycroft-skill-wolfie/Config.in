@@ -1,6 +1,0 @@
-config BR2_PACKAGE_MYCROFT_SKILL_WOLFIE
-	bool "mycroft-skill-wolfie"
-	help
-	  Use Wolfram Alpha for general knowledge questions 
-
-	  https://github.com/JarbasSkills/skill-wolfie

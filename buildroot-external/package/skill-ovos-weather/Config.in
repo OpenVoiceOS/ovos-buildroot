@@ -1,0 +1,7 @@
+config BR2_PACKAGE_SKILL_OVOS_WEATHER
+	bool "skill-ovos-weather"
+	help
+	  OpenVoiceOS version of Weather Skill, providing 
+	  weather conditions and forecasts.
+
+	  https://github.com/OpenVoiceOS/skill-weather

@@ -1,0 +1,6 @@
+config BR2_PACKAGE_SKILL_WOLFIE
+	bool "skill-wolfie"
+	help
+	  Use Wolfram Alpha for general knowledge questions 
+
+	  https://github.com/OpenVoiceOS/skill-wolfie

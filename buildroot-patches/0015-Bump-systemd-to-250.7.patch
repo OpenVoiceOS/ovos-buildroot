@@ -1,0 +1,76 @@
+From 2083b579304d373a20dd295812a3c6e36e24717a Mon Sep 17 00:00:00 2001
+From: Stefan Agner <stefan@agner.ch>
+Date: Fri, 12 Aug 2022 18:07:44 +0200
+Subject: [PATCH] package/systemd: bump to version 250.7
+
+Signed-off-by: Stefan Agner <stefan@agner.ch>
+---
+ ...define-MOVE_MOUNT_T_EMPTY_PATH-if-mi.patch | 33 -------------------
+ package/systemd/systemd.hash                  |  2 +-
+ package/systemd/systemd.mk                    |  2 +-
+ 3 files changed, 2 insertions(+), 35 deletions(-)
+ delete mode 100644 package/systemd/0001-missing-syscall-define-MOVE_MOUNT_T_EMPTY_PATH-if-mi.patch
+
+diff --git a/package/systemd/0001-missing-syscall-define-MOVE_MOUNT_T_EMPTY_PATH-if-mi.patch b/package/systemd/0001-missing-syscall-define-MOVE_MOUNT_T_EMPTY_PATH-if-mi.patch
+deleted file mode 100644
+index 0934886acb..0000000000
+--- a/package/systemd/0001-missing-syscall-define-MOVE_MOUNT_T_EMPTY_PATH-if-mi.patch
++++ /dev/null
+@@ -1,33 +0,0 @@
+-From 16c132a6a0389e0eaea70c4ad95dbfd1637ec5ba Mon Sep 17 00:00:00 2001
+-From: Romain Naour <romain.naour@smile.fr>
+-Date: Fri, 7 Jan 2022 22:25:23 +0100
+-Subject: [PATCH] missing-syscall: define MOVE_MOUNT_T_EMPTY_PATH if missing
+-
+-MOVE_MOUNT_T_EMPTY_PATH has been added to systemd 250 by [1]
+-but it's defined in kernel headers since version 5.2.
+-
+-[1] c7bf079bbc19e3b409acc0c7acc3e14749211fe2
+-
+-Signed-off-by: Romain Naour <romain.naour@smile.fr>
+----
+- src/basic/missing_syscall.h | 4 ++++
+- 1 file changed, 4 insertions(+)
+-
+-diff --git a/src/basic/missing_syscall.h b/src/basic/missing_syscall.h
+-index 8267b1a90c..793d111c55 100644
+---- a/src/basic/missing_syscall.h
+-+++ b/src/basic/missing_syscall.h
+-@@ -569,6 +569,10 @@ static inline int missing_open_tree(
+- #define MOVE_MOUNT_F_EMPTY_PATH 0x00000004 /* Empty from path permitted */
+- #endif
+- 
+-+#ifndef MOVE_MOUNT_T_EMPTY_PATH
+-+#define MOVE_MOUNT_T_EMPTY_PATH 0x00000040 /* Empty to path permitted */
+-+#endif
+-+
+- static inline int missing_move_mount(
+-                 int from_dfd,
+-                 const char *from_pathname,
+--- 
+-2.31.1
+-
+diff --git a/package/systemd/systemd.hash b/package/systemd/systemd.hash
+index 3572b25965..75f62e8bef 100644
+--- a/package/systemd/systemd.hash
++++ b/package/systemd/systemd.hash
+@@ -1,5 +1,5 @@
+ # sha256 locally computed
+-sha256  d2bda9d225da11dc9ff48b48e59fc36798d3e66902ed400a9f78fa370c596864  systemd-250.4.tar.gz
++sha256  14348e1a3b2eef01ad62f996757400256008e5f8e655b4ffd5a60e5124e20eee  systemd-250.7.tar.gz
+ sha256  ab15fd526bd8dd18a9e77ebc139656bf4d33e97fc7238cd11bf60e2b9b8666c6  LICENSE.GPL2
+ sha256  dc626520dcd53a22f727af3ee42c770e56c97a64fe3adb063799d8ab032fe551  LICENSE.LGPL2.1
+ sha256  e5a8645ad94aab24e312dd0c6be2aa54236eb9374480b1b14ea5c61598874fd5  LICENSES/BSD-2-Clause.txt
+diff --git a/package/systemd/systemd.mk b/package/systemd/systemd.mk
+index 14b0b065bc..09e0a7dcc2 100644
+--- a/package/systemd/systemd.mk
++++ b/package/systemd/systemd.mk
+@@ -19,7 +19,7 @@
+ # - Diff sysusers.d with the previous version
+ # - Diff factory/etc/nsswitch.conf with the previous version
+ #   (details are often sprinkled around in README and manpages)
+-SYSTEMD_VERSION = 250.4
++SYSTEMD_VERSION = 250.7
+ SYSTEMD_SITE = $(call github,systemd,systemd-stable,v$(SYSTEMD_VERSION))
+ SYSTEMD_LICENSE = \
+ 	LGPL-2.1+, \

@@ -1,0 +1,7 @@
+config BR2_PACKAGE_SKILL_OVOS_NOTES
+	bool "skill-ovos-notes"
+	help
+	  Take personal notes to keep track of appointments, 
+	  to-do items, etc.
+
+	  https://github.com/OpenVoiceOS/skill-ovos-notes

@@ -4,7 +4,7 @@
 #
 ################################################################################
 
-TENSORFLOW_LITE_VERSION = v2.9.1
+TENSORFLOW_LITE_VERSION = v2.10.0
 TENSORFLOW_LITE_SITE = $(call github,tensorflow,tensorflow,$(TENSORFLOW_LITE_VERSION))
 TENSORFLOW_LITE_SUBDIR = tensorflow/lite
 TENSORFLOW_LITE_LICENSE = Apache License 2.0
@@ -134,7 +134,7 @@ $(INSTALL) -D -m 755 $(@D)/$(TENSORFLOW_LITE_SUBDIR)/buildroot-build/libtensorfl
 $(TARGET_DIR)/usr/lib/
 
 mkdir -p $(TARGET_DIR)/usr/lib/python$(PYTHON3_VERSION_MAJOR)/site-packages/tflite_runtime
-mkdir -p $(TARGET_DIR)/usr/lib/python$(PYTHON3_VERSION_MAJOR)/site-packages/tflite_runtime-2.9.1-py3.10.egg-info
+mkdir -p $(TARGET_DIR)/usr/lib/python$(PYTHON3_VERSION_MAJOR)/site-packages/tflite_runtime-2.10.0-py3.10.egg-info
 
 $(INSTALL) -D -m 755 $(@D)/$(TENSORFLOW_LITE_SUBDIR)/buildroot-build/_pywrap_tensorflow_interpreter_wrapper.so \
 $(TARGET_DIR)/usr/lib/python$(PYTHON3_VERSION_MAJOR)/site-packages/tflite_runtime/
@@ -154,20 +154,20 @@ $(TARGET_DIR)/usr/lib/python$(PYTHON3_VERSION_MAJOR)/site-packages/tflite_runtim
 $(INSTALL) -D -m 755 $(BR2_EXTERNAL_OPENVOICEOS_PATH)/package/tensorflow-lite/tflite_runtime/MANIFEST.in \
 $(TARGET_DIR)/usr/lib/python$(PYTHON3_VERSION_MAJOR)/site-packages/tflite_runtime/
 
-$(INSTALL) -D -m 644 $(BR2_EXTERNAL_OPENVOICEOS_PATH)/package/tensorflow-lite/tflite_runtime-2.9.1-py3.10.egg-info/dependency_links.txt \
-$(TARGET_DIR)/usr/lib/python$(PYTHON3_VERSION_MAJOR)/site-packages/tflite_runtime-2.9.1-py3.10.egg-info/
+$(INSTALL) -D -m 644 $(BR2_EXTERNAL_OPENVOICEOS_PATH)/package/tensorflow-lite/tflite_runtime-2.10.0-py3.10.egg-info/dependency_links.txt \
+$(TARGET_DIR)/usr/lib/python$(PYTHON3_VERSION_MAJOR)/site-packages/tflite_runtime-2.10.0-py3.10.egg-info/
 
-$(INSTALL) -D -m 644 $(BR2_EXTERNAL_OPENVOICEOS_PATH)/package/tensorflow-lite/tflite_runtime-2.9.1-py3.10.egg-info/PKG-INFO \
-$(TARGET_DIR)/usr/lib/python$(PYTHON3_VERSION_MAJOR)/site-packages/tflite_runtime-2.9.1-py3.10.egg-info/
+$(INSTALL) -D -m 644 $(BR2_EXTERNAL_OPENVOICEOS_PATH)/package/tensorflow-lite/tflite_runtime-2.10.0-py3.10.egg-info/PKG-INFO \
+$(TARGET_DIR)/usr/lib/python$(PYTHON3_VERSION_MAJOR)/site-packages/tflite_runtime-2.10.0-py3.10.egg-info/
 
-$(INSTALL) -D -m 644 $(BR2_EXTERNAL_OPENVOICEOS_PATH)/package/tensorflow-lite/tflite_runtime-2.9.1-py3.10.egg-info/requires.txt \
-$(TARGET_DIR)/usr/lib/python$(PYTHON3_VERSION_MAJOR)/site-packages/tflite_runtime-2.9.1-py3.10.egg-info/
+$(INSTALL) -D -m 644 $(BR2_EXTERNAL_OPENVOICEOS_PATH)/package/tensorflow-lite/tflite_runtime-2.10.0-py3.10.egg-info/requires.txt \
+$(TARGET_DIR)/usr/lib/python$(PYTHON3_VERSION_MAJOR)/site-packages/tflite_runtime-2.10.0-py3.10.egg-info/
 
-$(INSTALL) -D -m 644 $(BR2_EXTERNAL_OPENVOICEOS_PATH)/package/tensorflow-lite/tflite_runtime-2.9.1-py3.10.egg-info/SOURCES.txt \
-$(TARGET_DIR)/usr/lib/python$(PYTHON3_VERSION_MAJOR)/site-packages/tflite_runtime-2.9.1-py3.10.egg-info/
+$(INSTALL) -D -m 644 $(BR2_EXTERNAL_OPENVOICEOS_PATH)/package/tensorflow-lite/tflite_runtime-2.10.0-py3.10.egg-info/SOURCES.txt \
+$(TARGET_DIR)/usr/lib/python$(PYTHON3_VERSION_MAJOR)/site-packages/tflite_runtime-2.10.0-py3.10.egg-info/
 
-$(INSTALL) -D -m 644 $(BR2_EXTERNAL_OPENVOICEOS_PATH)/package/tensorflow-lite/tflite_runtime-2.9.1-py3.10.egg-info/top_level.txt \
-$(TARGET_DIR)/usr/lib/python$(PYTHON3_VERSION_MAJOR)/site-packages/tflite_runtime-2.9.1-py3.10.egg-info/
+$(INSTALL) -D -m 644 $(BR2_EXTERNAL_OPENVOICEOS_PATH)/package/tensorflow-lite/tflite_runtime-2.10.0-py3.10.egg-info/top_level.txt \
+$(TARGET_DIR)/usr/lib/python$(PYTHON3_VERSION_MAJOR)/site-packages/tflite_runtime-2.10.0-py3.10.egg-info/
 
 endef
 

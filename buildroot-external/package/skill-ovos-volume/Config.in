@@ -1,0 +1,7 @@
+config BR2_PACKAGE_SKILL_OVOS_VOLUME
+	bool "skill-ovos-volume"
+	help
+	  OVOS Volume Skill
+	  Control the volume of your Device
+
+	  https://github.com/OpenVoiceOS/skill-ovos-volume

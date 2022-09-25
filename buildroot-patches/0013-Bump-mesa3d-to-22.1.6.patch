@@ -1,0 +1,916 @@
+From a3774189661cb372d766c6e0064760c371029329 Mon Sep 17 00:00:00 2001
+From: j1nx <p.steenbergen@j1nx.nl>
+Date: Mon, 12 Sep 2022 15:26:50 +0200
+Subject: [PATCH 1/1] Bump mesa3d to 22.1.6
+
+---
+ Config.in.legacy                              |  31 +++++
+ package/clang/Config.in                       |  10 +-
+ package/compiler-rt/Config.in                 |  15 +++
+ package/libclc/Config.in                      |   5 +
+ package/lld/Config.in.host                    |   5 +
+ package/llvm/Config.in                        |  10 +-
+ package/llvm/llvm.hash                        |   4 +-
+ package/llvm/llvm.mk                          |  20 +--
+ package/mesa3d-headers/mesa3d-headers.mk      |  12 +-
+ package/mesa3d/0006-fix-valist.patch          |  37 -----
+ ...emove-needless-c99-compat-h-includes.patch | 126 ++++++++++++++++++
+ package/mesa3d/0007-fix-cpp-detection.patch   |  40 ------
+ .../0007-include-drop-c11-compat-h.patch      | 100 ++++++++++++++
+ package/mesa3d/0008-Fix-uClibc-build.patch    |  65 +++++++++
+ package/mesa3d/Config.in                      |  79 ++---------
+ package/mesa3d/mesa3d.hash                    |   9 +-
+ package/mesa3d/mesa3d.mk                      |  16 +--
+ package/qt5/qt5tools/Config.in                |   3 +-
+ 18 files changed, 386 insertions(+), 201 deletions(-)
+ create mode 100644 package/compiler-rt/Config.in
+ delete mode 100644 package/mesa3d/0006-fix-valist.patch
+ create mode 100644 package/mesa3d/0006-util-remove-needless-c99-compat-h-includes.patch
+ delete mode 100644 package/mesa3d/0007-fix-cpp-detection.patch
+ create mode 100644 package/mesa3d/0007-include-drop-c11-compat-h.patch
+ create mode 100644 package/mesa3d/0008-Fix-uClibc-build.patch
+
+diff --git a/Config.in.legacy b/Config.in.legacy
+index 97d6197aeb..13082dd2c0 100644
+--- a/Config.in.legacy
++++ b/Config.in.legacy
+@@ -146,6 +146,37 @@ endif
+ 
+ comment "Legacy options removed in 2022.02"
+ 
++config BR2_PACKAGE_MESA3D_DRI_DRIVER_I915
++	bool "mesa DRI i915 driver removed"
++	select BR2_LEGACY
++	help
++	  The DRI i915 driver was removed upstream.
++
++config BR2_PACKAGE_MESA3D_DRI_DRIVER_I965
++	bool "mesa DRI i965 driver removed"
++	select BR2_LEGACY
++	help
++	  The DRI i965 driver was removed upstream.
++
++config BR2_PACKAGE_MESA3D_DRI_DRIVER_NOUVEAU
++	bool "mesa DRI nouveau driver removed"
++	select BR2_LEGACY
++	help
++	  The DRI radeon nouveau was removed upstream.
++
++config BR2_PACKAGE_MESA3D_DRI_DRIVER_RADEON
++	bool "mesa DRI radeon r100 driver removed"
++	select BR2_LEGACY
++	help
++	  The DRI radeon r100 driver was removed upstream.
++
++config BR2_GCC_VERSION_9_X
++	bool "gcc 9.x support removed"
++	select BR2_LEGACY
++	help
++	  Support for gcc version 9.x has been removed. The current
++	  default version (11.x or later) has been selected instead.
++
+ config BR2_PACKAGE_PHP_EXT_WDDX
+ 	bool "php wddx removed"
+ 	select BR2_LEGACY
+diff --git a/package/clang/Config.in b/package/clang/Config.in
+index a67e7631a8..e4d455781e 100644
+--- a/package/clang/Config.in
++++ b/package/clang/Config.in
+@@ -1,12 +1,13 @@
+ config BR2_PACKAGE_CLANG
+ 	bool "clang"
+ 	depends on BR2_PACKAGE_LLVM_ARCH_SUPPORTS
+-	depends on BR2_TOOLCHAIN_GCC_AT_LEAST_4_8
++	depends on BR2_TOOLCHAIN_GCC_AT_LEAST_5
+ 	depends on BR2_TOOLCHAIN_HAS_THREADS
+ 	depends on BR2_INSTALL_LIBSTDCPP
+ 	depends on !BR2_TOOLCHAIN_HAS_GCC_BUG_64735 # std::shared_future
+ 	depends on !BR2_STATIC_LIBS
+ 	depends on BR2_USE_WCHAR # std::wstring
++	depends on BR2_HOST_GCC_AT_LEAST_5
+ 	select BR2_PACKAGE_LLVM
+ 	help
+ 	  Clang is a C/C++, Objective C/C++ and OpenCL C front-end
+@@ -14,11 +15,12 @@ config BR2_PACKAGE_CLANG
+ 
+ 	  http://clang.llvm.org
+ 
+-comment "clang needs a toolchain w/ wchar, threads, C++, gcc >= 4.8, dynamic library"
++comment "clang needs a toolchain w/ wchar, threads, C++, gcc >= 5, dynamic library, host gcc >= 5"
+ 	depends on BR2_PACKAGE_LLVM_ARCH_SUPPORTS
+ 	depends on !BR2_TOOLCHAIN_HAS_THREADS || !BR2_INSTALL_LIBSTDCPP || \
+-		!BR2_TOOLCHAIN_GCC_AT_LEAST_4_8 \
+-		|| BR2_STATIC_LIBS || !BR2_USE_WCHAR
++		!BR2_TOOLCHAIN_GCC_AT_LEAST_5 \
++		|| BR2_STATIC_LIBS || !BR2_USE_WCHAR \
++		|| !BR2_HOST_GCC_AT_LEAST_5
+ 
+ comment "clang needs a toolchain not affected by GCC bug 64735"
+ 	depends on BR2_PACKAGE_LLVM_ARCH_SUPPORTS
+diff --git a/package/compiler-rt/Config.in b/package/compiler-rt/Config.in
+new file mode 100644
+index 0000000000..02169b66c0
+--- /dev/null
++++ b/package/compiler-rt/Config.in
+@@ -0,0 +1,15 @@
++config BR2_PACKAGE_COMPILER_RT
++	bool "compiler-rt"
++	depends on BR2_PACKAGE_LLVM
++	depends on BR2_TOOLCHAIN_USES_GLIBC # asan lib requires
++	depends on BR2_HOST_GCC_AT_LEAST_5 # host-clang
++	help
++	  A collection of runtime libraries primarily used by clang and
++	  llvm to provide builtins, sanitizer runtimes, and profiling
++	  at runtime.
++
++	  https://compiler-rt.llvm.org/
++
++comment "compiler-rt requires llvm to be enabled, a glibc toolchain, host gcc >= 5"
++	depends on !BR2_PACKAGE_LLVM
++	depends on !BR2_TOOLCHAIN_USES_GLIBC ||	!BR2_HOST_GCC_AT_LEAST_5
+diff --git a/package/libclc/Config.in b/package/libclc/Config.in
+index 797f090bfc..938933fdd3 100644
+--- a/package/libclc/Config.in
++++ b/package/libclc/Config.in
+@@ -1,9 +1,14 @@
+ config BR2_PACKAGE_LIBCLC
+ 	bool "libclc"
+ 	depends on BR2_PACKAGE_LLVM_ARCH_SUPPORTS
++	depends on BR2_HOST_GCC_AT_LEAST_5 # host-llvm
+ 	help
+ 	  libclc is an open source, BSD licensed implementation of
+ 	  the library requirements of the OpenCL C programming language,
+ 	  as specified by the OpenCL 1.1 Specification.
+ 
+ 	  http://libclc.llvm.org/
++
++comment "libclc needs host gcc >= 5"
++	depends on BR2_PACKAGE_LLVM_ARCH_SUPPORTS
++	depends on !BR2_HOST_GCC_AT_LEAST_5
+diff --git a/package/lld/Config.in.host b/package/lld/Config.in.host
+index f016f3445e..d015fdd520 100644
+--- a/package/lld/Config.in.host
++++ b/package/lld/Config.in.host
+@@ -1,6 +1,7 @@
+ config BR2_PACKAGE_HOST_LLD
+ 	bool "host lld"
+ 	depends on BR2_PACKAGE_LLVM_ARCH_SUPPORTS # llvm
++	depends on BR2_HOST_GCC_AT_LEAST_5 # host-llvm
+ 	help
+ 	  LLD is a linker from the LLVM project that is a drop-in
+ 	  replacement for system linkers, and runs much faster than
+@@ -8,3 +9,7 @@ config BR2_PACKAGE_HOST_LLD
+ 	  toolchain developers.
+ 
+ 	  https://lld.llvm.org/
++
++comment "host lld needs host gcc >= 5"
++	depends on BR2_PACKAGE_LLVM_ARCH_SUPPORTS
++	depends on !BR2_HOST_GCC_AT_LEAST_5
+diff --git a/package/llvm/Config.in b/package/llvm/Config.in
+index 6ec2ffcfe6..8aefc483d8 100644
+--- a/package/llvm/Config.in
++++ b/package/llvm/Config.in
+@@ -14,12 +14,13 @@ config BR2_PACKAGE_LLVM_TARGET_ARCH
+ config BR2_PACKAGE_LLVM
+ 	bool "llvm"
+ 	depends on BR2_PACKAGE_LLVM_ARCH_SUPPORTS
+-	depends on BR2_TOOLCHAIN_GCC_AT_LEAST_4_8
++	depends on BR2_TOOLCHAIN_GCC_AT_LEAST_5
+ 	depends on BR2_TOOLCHAIN_HAS_THREADS
+ 	depends on BR2_INSTALL_LIBSTDCPP
+ 	depends on !BR2_TOOLCHAIN_HAS_GCC_BUG_64735 # std::shared_future
+ 	depends on !BR2_STATIC_LIBS
+ 	depends on BR2_USE_WCHAR # std::wstring
++	depends on BR2_HOST_GCC_AT_LEAST_5 # host-llvm
+ 	help
+ 	  The LLVM Project is a collection of modular and reusable
+ 	  compiler and toolchain technologies.
+@@ -55,11 +56,12 @@ config BR2_PACKAGE_LLVM_BPF
+ 
+ endif
+ 
+-comment "llvm needs a toolchain w/ wchar, threads, C++, gcc >= 4.8, dynamic library"
++comment "llvm needs a toolchain w/ wchar, threads, C++, gcc >= 5, dynamic library, host gcc >= 5"
+ 	depends on BR2_PACKAGE_LLVM_ARCH_SUPPORTS
+ 	depends on !BR2_TOOLCHAIN_HAS_THREADS || !BR2_INSTALL_LIBSTDCPP || \
+-		!BR2_TOOLCHAIN_GCC_AT_LEAST_4_8 \
+-		|| BR2_STATIC_LIBS || !BR2_USE_WCHAR
++		!BR2_TOOLCHAIN_GCC_AT_LEAST_5 \
++		|| BR2_STATIC_LIBS || !BR2_USE_WCHAR \
++		|| !BR2_HOST_GCC_AT_LEAST_5
+ 
+ comment "llvm needs a toolchain not affected by GCC bug 64735"
+ 	depends on BR2_PACKAGE_LLVM_ARCH_SUPPORTS
+diff --git a/package/llvm/llvm.hash b/package/llvm/llvm.hash
+index 6bf2755777..e7f79492de 100644
+--- a/package/llvm/llvm.hash
++++ b/package/llvm/llvm.hash
+@@ -1,3 +1,3 @@
+ # locally calculated
+-sha256 00a1ee1f389f81e9979f3a640a01c431b3021de0d42278f6508391a2f0b81c9a llvm-9.0.1.src.tar.xz
+-sha256 8d85c1057d742e597985c7d4e6320b015a9139385cff4cbae06ffc0ebe89afee LICENSE.TXT
++sha256  ce8508e318a01a63d4e8b3090ab2ded3c598a50258cc49e2625b9120d4c03ea5  llvm-11.1.0.src.tar.xz
++sha256  8d85c1057d742e597985c7d4e6320b015a9139385cff4cbae06ffc0ebe89afee  LICENSE.TXT
+diff --git a/package/llvm/llvm.mk b/package/llvm/llvm.mk
+index 6c721c30b9..825de96392 100644
+--- a/package/llvm/llvm.mk
++++ b/package/llvm/llvm.mk
+@@ -5,7 +5,7 @@
+ ################################################################################
+ 
+ # LLVM, Clang and lld should be version bumped together
+-LLVM_VERSION = 9.0.1
++LLVM_VERSION = 11.1.0
+ LLVM_SITE = https://github.com/llvm/llvm-project/releases/download/llvmorg-$(LLVM_VERSION)
+ LLVM_SOURCE = llvm-$(LLVM_VERSION).src.tar.xz
+ LLVM_LICENSE = Apache-2.0 with exceptions
+@@ -157,15 +157,9 @@ LLVM_CONF_OPTS += -DLLVM_ENABLE_PIC=ON
+ HOST_LLVM_CONF_OPTS += -DCMAKE_BUILD_TYPE=Release
+ LLVM_CONF_OPTS += -DCMAKE_BUILD_TYPE=Release
+ 
+-# Disable C++1y (ISO C++ 2014 standard)
+-# Disable C++1z (ISO C++ 2017 standard)
+-# Compile llvm with the C++11 (ISO C++ 2011 standard) which is the fallback.
+-HOST_LLVM_CONF_OPTS += \
+-	-DLLVM_ENABLE_CXX1Y=OFF \
+-	-DLLVM_ENABLE_CXX1Z=OFF
+-LLVM_CONF_OPTS += \
+-	-DLLVM_ENABLE_CXX1Y=OFF \
+-	-DLLVM_ENABLE_CXX1Z=OFF
++# Compile llvm with the C++14 (ISO C++ 2014 standard).
++HOST_LLVM_CONF_OPTS += -DCMAKE_CXX_STANDARD=14
++LLVM_CONF_OPTS += -DCMAKE_CXX_STANDARD=14
+ 
+ # Disabled, requires sys/ndir.h header
+ # Disable debug in module
+@@ -237,13 +231,11 @@ endif
+ HOST_LLVM_CONF_OPTS += \
+ 	-DLLVM_BUILD_EXTERNAL_COMPILER_RT=OFF \
+ 	-DLLVM_BUILD_RUNTIME=OFF \
+-	-DLLVM_INCLUDE_RUNTIMES=OFF \
+-	-DLLVM_POLLY_BUILD=OFF
++	-DLLVM_INCLUDE_RUNTIMES=OFF
+ LLVM_CONF_OPTS += \
+ 	-DLLVM_BUILD_EXTERNAL_COMPILER_RT=OFF \
+ 	-DLLVM_BUILD_RUNTIME=OFF \
+-	-DLLVM_INCLUDE_RUNTIMES=OFF \
+-	-DLLVM_POLLY_BUILD=OFF
++	-DLLVM_INCLUDE_RUNTIMES=OFF
+ 
+ HOST_LLVM_CONF_OPTS += \
+ 	-DLLVM_ENABLE_WARNINGS=ON \
+diff --git a/package/mesa3d-headers/mesa3d-headers.mk b/package/mesa3d-headers/mesa3d-headers.mk
+index 871cf2f495..448a244b9f 100644
+--- a/package/mesa3d-headers/mesa3d-headers.mk
++++ b/package/mesa3d-headers/mesa3d-headers.mk
+@@ -12,7 +12,7 @@ endif
+ 
+ # Not possible to directly refer to mesa3d variables, because of
+ # first/second expansion trickery...
+-MESA3D_HEADERS_VERSION = 21.3.5
++MESA3D_HEADERS_VERSION = 22.1.6
+ MESA3D_HEADERS_SOURCE = mesa-$(MESA3D_HEADERS_VERSION).tar.xz
+ MESA3D_HEADERS_SITE = https://archive.mesa3d.org
+ MESA3D_HEADERS_DL_SUBDIR = mesa3d
+@@ -33,19 +33,9 @@ MESA3D_HEADERS_DIRS += GL
+ 
+ ifeq ($(BR2_PACKAGE_XORG7),y)
+ 
+-# Not using $(SED) because we do not want to work in-place, and $(SED)
+-# contains -i.
+-define MESA3D_HEADERS_BUILD_DRI_PC
+-	sed -e 's:@VERSION@:$(MESA3D_HEADERS_VERSION):' \
+-	    package/mesa3d-headers/dri.pc \
+-	    >$(@D)/src/mesa/drivers/dri/dri.pc
+-endef
+-
+ define MESA3D_HEADERS_INSTALL_DRI_PC
+ 	$(INSTALL) -D -m 0644 $(@D)/include/GL/internal/dri_interface.h \
+ 		$(STAGING_DIR)/usr/include/GL/internal/dri_interface.h
+-	$(INSTALL) -D -m 0644 $(@D)/src/mesa/drivers/dri/dri.pc \
+-		$(STAGING_DIR)/usr/lib/pkgconfig/dri.pc
+ endef
+ 
+ endif # Xorg
+diff --git a/package/mesa3d/0006-fix-valist.patch b/package/mesa3d/0006-fix-valist.patch
+deleted file mode 100644
+index 84a254cec5..0000000000
+--- a/package/mesa3d/0006-fix-valist.patch
++++ /dev/null
+@@ -1,37 +0,0 @@
+-From f6892df8eb115fa712fd69068432b48b028e1e54 Mon Sep 17 00:00:00 2001
+-From: Bernd Kuhls <bernd.kuhls@t-online.de>
+-Date: Sat, 20 Nov 2021 22:48:54 +0100
+-Subject: [PATCH] util/u_printf.h: fix build
+-MIME-Version: 1.0
+-Content-Type: text/plain; charset=UTF-8
+-Content-Transfer-Encoding: 8bit
+-
+-Fixes build error with uClibc and gcc-9.3.0:
+-
+-In file included from ../src/util/u_printf.cpp:24:
+-../src/util/u_printf.h:43:41: error: ‘va_list’ has not been declared
+-   43 | size_t u_printf_length(const char *fmt, va_list untouched_args);
+-
+-Patch sent upstream:
+-https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/13897
+-
+-Signed-off-by: Bernd Kuhls <bernd.kuhls@t-online.de>
+----
+- src/util/u_printf.h | 1 +
+- 1 file changed, 1 insertion(+)
+-
+-diff --git a/src/util/u_printf.h b/src/util/u_printf.h
+-index 44dcce5529f..14f324de10c 100644
+---- a/src/util/u_printf.h
+-+++ b/src/util/u_printf.h
+-@@ -25,6 +25,7 @@
+- #ifdef __cplusplus
+- 
+- #include <string>
+-+#include <stdarg.h>
+- 
+- /* find next valid printf specifier in a C++ std::string */
+- size_t util_printf_next_spec_pos(const std::string &s, size_t pos);
+--- 
+-GitLab
+-
+diff --git a/package/mesa3d/0006-util-remove-needless-c99-compat-h-includes.patch b/package/mesa3d/0006-util-remove-needless-c99-compat-h-includes.patch
+new file mode 100644
+index 0000000000..cac61b351a
+--- /dev/null
++++ b/package/mesa3d/0006-util-remove-needless-c99-compat-h-includes.patch
+@@ -0,0 +1,126 @@
++From 9f717b5f23cbf24dc4c58bc688c931af91975e80 Mon Sep 17 00:00:00 2001
++From: Erik Faye-Lund <erik.faye-lund@collabora.com>
++Date: Wed, 1 Jun 2022 14:17:43 +0200
++Subject: util: remove needless c99_compat.h includes
++
++Reviewed-by: Jesse Natalie <jenatali@microsoft.com>
++Reviewed-by: Alyssa Rosenzweig <alyssa@collabora.com>
++Reviewed-by: Eric Engestrom <eric@engestrom.ch>
++Part-of: <https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/16812>
++
++Downloaded from upstream commit
++https://cgit.freedesktop.org/mesa/mesa/patch/?id=9f717b5f23cbf24dc4c58bc688c931af91975e80
++
++Signed-off-by: Bernd Kuhls <bernd.kuhls@t-online.de>
++---
++ src/util/bitscan.h     | 2 --
++ src/util/compiler.h    | 2 --
++ src/util/format_srgb.h | 1 -
++ src/util/hash_table.h  | 1 -
++ src/util/list.h        | 1 -
++ src/util/macros.h      | 1 -
++ src/util/mesa-sha1.h   | 1 -
++ src/util/ptralloc.h    | 1 -
++ 8 files changed, 10 deletions(-)
++
++diff --git a/src/util/bitscan.h b/src/util/bitscan.h
++index 726d2d2c385..53cbb91e98c 100644
++--- a/src/util/bitscan.h
+++++ b/src/util/bitscan.h
++@@ -42,8 +42,6 @@
++ #include <popcntintrin.h>
++ #endif
++ 
++-#include "c99_compat.h"
++-
++ #ifdef __cplusplus
++ extern "C" {
++ #endif
++diff --git a/src/util/compiler.h b/src/util/compiler.h
++index 83f8e346a08..d184ad455af 100644
++--- a/src/util/compiler.h
+++++ b/src/util/compiler.h
++@@ -38,8 +38,6 @@
++ 
++ #include "util/macros.h"
++ 
++-#include "c99_compat.h" /* inline, __func__, etc. */
++-
++ 
++ /**
++  * Either define MESA_BIG_ENDIAN or MESA_LITTLE_ENDIAN, and CPU_TO_LE32.
++diff --git a/src/util/format_srgb.h b/src/util/format_srgb.h
++index 596af56f4cd..5861b238270 100644
++--- a/src/util/format_srgb.h
+++++ b/src/util/format_srgb.h
++@@ -39,7 +39,6 @@
++ 
++ #include <stdint.h>
++ #include <math.h>
++-#include "c99_compat.h"
++ 
++ extern const float
++ util_format_srgb_8unorm_to_linear_float_table[256];
++diff --git a/src/util/hash_table.h b/src/util/hash_table.h
++index c8a96b79edf..002d6c58873 100644
++--- a/src/util/hash_table.h
+++++ b/src/util/hash_table.h
++@@ -31,7 +31,6 @@
++ #include <stdlib.h>
++ #include <inttypes.h>
++ #include <stdbool.h>
++-#include "c99_compat.h"
++ #include "macros.h"
++ 
++ #ifdef __cplusplus
++diff --git a/src/util/list.h b/src/util/list.h
++index 5ef49e4e955..edc596f3d2d 100644
++--- a/src/util/list.h
+++++ b/src/util/list.h
++@@ -41,7 +41,6 @@
++ #include <stdbool.h>
++ #include <stddef.h>
++ #include <assert.h>
++-#include "c99_compat.h"
++ 
++ #ifdef DEBUG
++ #  define list_assert(cond, msg)  assert(cond && msg)
++diff --git a/src/util/macros.h b/src/util/macros.h
++index 2138f5d662d..a5dc4846211 100644
++--- a/src/util/macros.h
+++++ b/src/util/macros.h
++@@ -27,7 +27,6 @@
++ #include <stdio.h>
++ #include <assert.h>
++ 
++-#include "c99_compat.h"
++ #include "c11_compat.h"
++ 
++ #include <stdint.h>
++diff --git a/src/util/mesa-sha1.h b/src/util/mesa-sha1.h
++index 9d174fd9b99..809fabc525f 100644
++--- a/src/util/mesa-sha1.h
+++++ b/src/util/mesa-sha1.h
++@@ -26,7 +26,6 @@
++ #include <stdlib.h>
++ #include <stdio.h>
++ #include <stdbool.h>
++-#include "c99_compat.h"
++ #include "sha1/sha1.h"
++ 
++ #ifdef __cplusplus
++diff --git a/src/util/ptralloc.h b/src/util/ptralloc.h
++index f74d8c3645d..ca6ded82a2d 100644
++--- a/src/util/ptralloc.h
+++++ b/src/util/ptralloc.h
++@@ -29,7 +29,6 @@
++ #include <stdlib.h>
++ #include <inttypes.h>
++ #include <stdbool.h>
++-#include "c99_compat.h"
++ #include "macros.h"
++ 
++ #ifdef __cplusplus
++-- 
++cgit v1.2.1
++
+diff --git a/package/mesa3d/0007-fix-cpp-detection.patch b/package/mesa3d/0007-fix-cpp-detection.patch
+deleted file mode 100644
+index 2e097277de..0000000000
+--- a/package/mesa3d/0007-fix-cpp-detection.patch
++++ /dev/null
+@@ -1,40 +0,0 @@
+-From ab5519971a090863f8c559907766e0b2382e0471 Mon Sep 17 00:00:00 2001
+-From: Bernd Kuhls <bernd.kuhls@t-online.de>
+-Date: Sat, 20 Nov 2021 23:02:18 +0100
+-Subject: [PATCH] c11_compat.h: fix uClibc build
+-MIME-Version: 1.0
+-Content-Type: text/plain; charset=UTF-8
+-Content-Transfer-Encoding: 8bit
+-
+-Fixes build error with uClibc and gcc-9.3.0:
+-
+-../src/egl/main/egldisplay.c: In function ‘_eglGetNativePlatformFromEnv’:
+-../src/egl/main/egldisplay.c:101:4: error: implicit declaration of function ‘static_assert’ [-Werror=implicit-function-declaration]
+-  101 |    static_assert(ARRAY_SIZE(egl_platforms) == _EGL_NUM_PLATFORMS,
+-
+-CC: 21.3 <mesa-stable>
+-
+-Patch sent upstream:
+-https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/13898
+-
+-Signed-off-by: Bernd Kuhls <bernd.kuhls@t-online.de>
+----
+- include/c11_compat.h | 2 --
+- 1 file changed, 2 deletions(-)
+-
+-diff --git a/include/c11_compat.h b/include/c11_compat.h
+-index d35740f47a4..cdcd3f1f52f 100644
+---- a/include/c11_compat.h
+-+++ b/include/c11_compat.h
+-@@ -8,8 +8,6 @@
+- 
+- #if defined(__cplusplus)
+-    /* This is C++ code, not C */
+--#elif (__STDC_VERSION__ >= 201112L)
+--   /* Already C11 */
+- #else
+- 
+- 
+--- 
+-GitLab
+-
+diff --git a/package/mesa3d/0007-include-drop-c11-compat-h.patch b/package/mesa3d/0007-include-drop-c11-compat-h.patch
+new file mode 100644
+index 0000000000..64cdb8074b
+--- /dev/null
++++ b/package/mesa3d/0007-include-drop-c11-compat-h.patch
+@@ -0,0 +1,100 @@
++From df2dd474c73982e89d0ed71951ff723eb7060ce6 Mon Sep 17 00:00:00 2001
++From: Erik Faye-Lund <erik.faye-lund@collabora.com>
++Date: Wed, 1 Jun 2022 13:38:39 +0200
++Subject: include: drop c11_compat.h
++
++We now require C11, and C++ supports static_assert just fine, which is
++the only thing this header ever added support for. So let's get rid of
++this needless header.
++
++Reviewed-by: Jesse Natalie <jenatali@microsoft.com>
++Reviewed-by: Alyssa Rosenzweig <alyssa@collabora.com>
++Reviewed-by: Eric Engestrom <eric@engestrom.ch>
++Part-of: <https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/16812>
++
++Downloaded from upstream commit
++https://cgit.freedesktop.org/mesa/mesa/commit/?id=df2dd474c73982e89d0ed71951ff723eb7060ce6
++
++Signed-off-by: Bernd Kuhls <bernd.kuhls@t-online.de>
++---
++ include/c11_compat.h                    | 27 ---------------------------
++ src/amd/common/ac_sqtt.h                |  1 -
++ src/imagination/vulkan/pvr_cmd_buffer.c |  1 -
++ src/util/macros.h                       |  3 ---
++ 4 files changed, 32 deletions(-)
++ delete mode 100644 include/c11_compat.h
++
++diff --git a/include/c11_compat.h b/include/c11_compat.h
++deleted file mode 100644
++index d35740f47a4..00000000000
++--- a/include/c11_compat.h
+++++ /dev/null
++@@ -1,27 +0,0 @@
++-/* Copyright 2019 Intel Corporation */
++-/* SPDX-License-Identifier: MIT */
++-
++-#include "no_extern_c.h"
++-
++-#ifndef _C11_COMPAT_H_
++-#define _C11_COMPAT_H_
++-
++-#if defined(__cplusplus)
++-   /* This is C++ code, not C */
++-#elif (__STDC_VERSION__ >= 201112L)
++-   /* Already C11 */
++-#else
++-
++-
++-/*
++- * C11 static_assert() macro
++- * assert.h only defines that name for C11 and above
++- */
++-#ifndef static_assert
++-#define static_assert _Static_assert
++-#endif
++-
++-
++-#endif /* !C++ && !C11 */
++-
++-#endif /* _C11_COMPAT_H_ */
++diff --git a/src/amd/common/ac_sqtt.h b/src/amd/common/ac_sqtt.h
++index 55130aa2221..05798b7e1da 100644
++--- a/src/amd/common/ac_sqtt.h
+++++ b/src/amd/common/ac_sqtt.h
++@@ -30,7 +30,6 @@
++ #include <stdbool.h>
++ 
++ #include <assert.h>
++-#include "c11_compat.h"
++ #include "ac_rgp.h"
++ 
++ struct radeon_cmdbuf;
++diff --git a/src/imagination/vulkan/pvr_cmd_buffer.c b/src/imagination/vulkan/pvr_cmd_buffer.c
++index 0afd463e2fb..4fe224f481d 100644
++--- a/src/imagination/vulkan/pvr_cmd_buffer.c
+++++ b/src/imagination/vulkan/pvr_cmd_buffer.c
++@@ -29,7 +29,6 @@
++ #include <string.h>
++ #include <vulkan/vulkan.h>
++ 
++-#include "c11_compat.h"
++ #include "hwdef/rogue_hw_defs.h"
++ #include "hwdef/rogue_hw_utils.h"
++ #include "pvr_bo.h"
++diff --git a/src/util/macros.h b/src/util/macros.h
++index a5dc4846211..dd8af86bcf8 100644
++--- a/src/util/macros.h
+++++ b/src/util/macros.h
++@@ -26,9 +26,6 @@
++ 
++ #include <stdio.h>
++ #include <assert.h>
++-
++-#include "c11_compat.h"
++-
++ #include <stdint.h>
++ 
++ /* Compute the size of an array */
++-- 
++cgit v1.2.1
++
+diff --git a/package/mesa3d/0008-Fix-uClibc-build.patch b/package/mesa3d/0008-Fix-uClibc-build.patch
+new file mode 100644
+index 0000000000..70ff5e2b4c
+--- /dev/null
++++ b/package/mesa3d/0008-Fix-uClibc-build.patch
+@@ -0,0 +1,65 @@
++From 09ce52fe375a6fc1ccf51b6b691aaa2c3f53fbd5 Mon Sep 17 00:00:00 2001
++From: Bernd Kuhls <bernd.kuhls@t-online.de>
++Date: Fri, 3 Jun 2022 16:26:03 +0200
++Subject: [PATCH] Fix uClibc build
++MIME-Version: 1.0
++Content-Type: text/plain; charset=UTF-8
++Content-Transfer-Encoding: 8bit
++
++Fixes build errors with uClibc and gcc-9.3.0:
++
++../src/gallium/drivers/lima/lima_texture.c:47:15: error: expected
++ declaration specifiers or ‘...’ before ‘__builtin_offsetof’
++   47 | static_assert(offsetof(lima_tex_desc, va) == 24,
++ "lima_tex_desc->va offset isn't 24");
++
++../src/egl/main/egldisplay.c: In function ‘_eglGetNativePlatformFromEnv’:
++ ../src/egl/main/egldisplay.c:101:4: error: implicit declaration of
++ function ‘static_assert’ [-Werror=implicit-function-declaration] 101 |
++ static_assert(ARRAY_SIZE(egl_platforms) == _EGL_NUM_PLATFORMS,
++
++Patch sent upstream:
++https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/13898
++
++Signed-off-by: Bernd Kuhls <bernd.kuhls@t-online.de>
++---
++ src/egl/main/egldisplay.c |  1 +
++ src/util/compiler.h       | 10 ++++++++++
++ 2 files changed, 11 insertions(+)
++
++diff --git a/src/egl/main/egldisplay.c b/src/egl/main/egldisplay.c
++index 131fc22786f9..d3e2bb96e2f6 100644
++--- a/src/egl/main/egldisplay.c
+++++ b/src/egl/main/egldisplay.c
++@@ -42,6 +42,7 @@
++ #endif
++ #include <fcntl.h>
++ #include "c11/threads.h"
+++#include "util/compiler.h"
++ #include "util/macros.h"
++ #include "util/os_file.h"
++ #include "util/u_atomic.h"
++diff --git a/src/util/compiler.h b/src/util/compiler.h
++index d184ad455af9..b5c56807acc6 100644
++--- a/src/util/compiler.h
+++++ b/src/util/compiler.h
++@@ -36,6 +36,16 @@
++ 
++ #include <assert.h>
++ 
+++/*
+++ * C11 static_assert() macro
+++ * assert.h only defines that name for C11 and above
+++ */
+++#if !defined(__cplusplus)
+++#ifndef static_assert
+++#define static_assert _Static_assert
+++#endif
+++#endif
+++
++ #include "util/macros.h"
++ 
++ 
++-- 
++GitLab
++
+diff --git a/package/mesa3d/Config.in b/package/mesa3d/Config.in
+index e41da562dc..40f7009492 100644
+--- a/package/mesa3d/Config.in
++++ b/package/mesa3d/Config.in
+@@ -24,19 +24,21 @@ config BR2_PACKAGE_MESA3D_NEEDS_ELFUTILS
+ config BR2_PACKAGE_MESA3D_LLVM
+ 	bool "llvm support"
+ 	depends on BR2_PACKAGE_LLVM_ARCH_SUPPORTS
+-	depends on BR2_TOOLCHAIN_GCC_AT_LEAST_4_8
++	depends on BR2_TOOLCHAIN_GCC_AT_LEAST_5
+ 	depends on BR2_TOOLCHAIN_HAS_THREADS
+ 	depends on BR2_INSTALL_LIBSTDCPP
+ 	depends on !BR2_TOOLCHAIN_HAS_GCC_BUG_64735 # std::shared_future
+ 	depends on !BR2_STATIC_LIBS
+ 	depends on BR2_USE_WCHAR # std::wstring
++	depends on BR2_HOST_GCC_AT_LEAST_5 # host-llvm
+ 	select BR2_PACKAGE_LLVM
+ 
+-comment "llvm support needs a toolchain w/ wchar, threads, C++, gcc >= 4.8, dynamic library"
++comment "llvm support needs a toolchain w/ wchar, threads, C++, gcc >= 5, dynamic library, host gcc >= 5"
+ 	depends on BR2_PACKAGE_LLVM_ARCH_SUPPORTS
+ 	depends on !BR2_TOOLCHAIN_HAS_THREADS || !BR2_INSTALL_LIBSTDCPP || \
+-		!BR2_TOOLCHAIN_GCC_AT_LEAST_4_8 \
+-		|| BR2_STATIC_LIBS || !BR2_USE_WCHAR
++		!BR2_TOOLCHAIN_GCC_AT_LEAST_5 \
++		|| BR2_STATIC_LIBS || !BR2_USE_WCHAR \
++		|| !BR2_HOST_GCC_AT_LEAST_5
+ 
+ comment "llvm support needs a toolchain not affected by GCC bug 64735"
+ 	depends on BR2_PACKAGE_LLVM_ARCH_SUPPORTS
+@@ -63,16 +65,6 @@ config BR2_PACKAGE_MESA3D_GALLIUM_DRIVER
+ 	bool
+ 	select BR2_PACKAGE_MESA3D_DRIVER
+ 
+-config BR2_PACKAGE_MESA3D_DRI_DRIVER
+-	bool
+-	select BR2_PACKAGE_MESA3D_DRI3 if \
+-		(BR2_PACKAGE_XORG7 && BR2_TOOLCHAIN_HAS_SYNC_4 && \
+-			!BR2_RISCV_32)
+-	select BR2_PACKAGE_MESA3D_DRIVER
+-	select BR2_PACKAGE_MESA3D_GBM if \
+-		!BR2_PACKAGE_MESA3D_OPENGL_GLX && \
+-		!BR2_PACKAGE_MESA3D_OPENGL_EGL
+-
+ config BR2_PACKAGE_MESA3D_VULKAN_DRIVER
+ 	bool
+ 	select BR2_PACKAGE_MESA3D_DRIVER
+@@ -134,16 +126,11 @@ config BR2_PACKAGE_MESA3D_GALLIUM_DRIVER_FREEDRENO
+ config BR2_PACKAGE_MESA3D_GALLIUM_DRIVER_I915
+ 	bool "Gallium i915 driver"
+ 	depends on BR2_i386 || BR2_x86_64
+-	depends on !BR2_PACKAGE_MESA3D_DRI_DRIVER_I915
+ 	select BR2_PACKAGE_MESA3D_GALLIUM_DRIVER
+ 	select BR2_PACKAGE_LIBDRM_INTEL
+ 	help
+ 	  Support for i915-based Intel GPUs.
+ 
+-comment "Gallium i915: Only one i915 provider can be built"
+-	depends on BR2_i386 || BR2_x86_64
+-	depends on BR2_PACKAGE_MESA3D_DRI_DRIVER_I915
+-
+ config BR2_PACKAGE_MESA3D_GALLIUM_DRIVER_IRIS
+ 	bool "Gallium iris driver"
+ 	depends on BR2_i386 || BR2_x86_64
+@@ -330,49 +317,6 @@ comment "Gallium XvMC state tracker needs X.org and gallium drivers r600 or nouv
+ 		!(BR2_PACKAGE_MESA3D_GALLIUM_DRIVER_NOUVEAU \
+ 		|| BR2_PACKAGE_MESA3D_GALLIUM_DRIVER_R600)
+ 
+-comment "DRI drivers"
+-
+-config BR2_PACKAGE_MESA3D_DRI_DRIVER_I915
+-	bool "DRI i915 driver"
+-	depends on BR2_i386 || BR2_x86_64
+-	select BR2_PACKAGE_MESA3D_DRI_DRIVER
+-	select BR2_PACKAGE_LIBDRM_INTEL
+-	help
+-	  Support for i915-based Intel GPUs.
+-
+-config BR2_PACKAGE_MESA3D_DRI_DRIVER_I965
+-	bool "DRI i965 driver"
+-	depends on BR2_i386 || BR2_x86_64
+-	depends on BR2_TOOLCHAIN_HEADERS_AT_LEAST_3_17 # memfd.h
+-	select BR2_PACKAGE_MESA3D_DRI_DRIVER
+-	select BR2_PACKAGE_LIBDRM_INTEL
+-	help
+-	  Support for i965-based Intel GPUs.
+-
+-comment "DRI i965 driver needs a toolchain w/ headers >= 3.17"
+-	depends on BR2_i386 || BR2_x86_64
+-	depends on !BR2_TOOLCHAIN_HEADERS_AT_LEAST_3_17
+-
+-config BR2_PACKAGE_MESA3D_DRI_DRIVER_NOUVEAU
+-	bool "DRI nouveau driver"
+-	select BR2_PACKAGE_MESA3D_DRI_DRIVER
+-	select BR2_PACKAGE_LIBDRM_NOUVEAU
+-	help
+-	  Support for Nvidia-based GPUs.
+-
+-config BR2_PACKAGE_MESA3D_DRI_DRIVER_RADEON
+-	bool "DRI radeon r100 driver"
+-	depends on BR2_i386 || BR2_x86_64
+-	# libdrm's radeon option depends on LIBDRM_HAS_ATOMIC. Propagating
+-	# that dependency here causes a circular dependency that Kconfig
+-	# can't see is just spurious. However, that dependency is about
+-	# the toolchain having sync4 primitives, which is always a given
+-	# for i386 and x86_64.
+-	select BR2_PACKAGE_MESA3D_DRI_DRIVER
+-	select BR2_PACKAGE_LIBDRM_RADEON
+-	help
+-	  Legacy Radeon driver for R100 series GPUs.
+-
+ comment "Vulkan drivers"
+ 
+ config BR2_PACKAGE_MESA3D_VULKAN_DRIVER_INTEL
+@@ -406,17 +350,16 @@ comment "OpenGL API Support"
+ 
+ config BR2_PACKAGE_MESA3D_GBM
+ 	bool "gbm"
+-	depends on BR2_PACKAGE_MESA3D_DRI_DRIVER \
+-		|| (BR2_PACKAGE_MESA3D_GALLIUM_DRIVER && BR2_PACKAGE_MESA3D_OPENGL_EGL)
++	depends on BR2_PACKAGE_MESA3D_GALLIUM_DRIVER && \
++		BR2_PACKAGE_MESA3D_OPENGL_EGL
+ 	select BR2_PACKAGE_HAS_LIBGBM
+ 	select BR2_PACKAGE_LIBGBM_HAS_FEATURE_FORMAT_MODIFIER_PLANE_COUNT
+ 	select BR2_PACKAGE_LIBGBM_HAS_FEATURE_DMA_BUF
+ 	help
+ 	  Enable Generic Buffer Management (gbm)
+ 
+-comment "gbm support needs a dri driver or a gallium driver w/ EGL support."
+-	depends on !BR2_PACKAGE_MESA3D_DRI_DRIVER \
+-		&& !(BR2_PACKAGE_MESA3D_GALLIUM_DRIVER && BR2_PACKAGE_MESA3D_OPENGL_EGL)
++comment "gbm support needs a gallium driver w/ EGL support."
++	depends on !(BR2_PACKAGE_MESA3D_GALLIUM_DRIVER && BR2_PACKAGE_MESA3D_OPENGL_EGL)
+ 
+ config BR2_PACKAGE_MESA3D_OPENGL_GLX
+ 	bool "OpenGL GLX"
+@@ -432,7 +375,7 @@ comment "OpenGL GLX support needs X11"
+ 
+ config BR2_PACKAGE_MESA3D_OPENGL_EGL
+ 	bool "OpenGL EGL"
+-	depends on BR2_PACKAGE_MESA3D_DRI_DRIVER || BR2_PACKAGE_MESA3D_GALLIUM_DRIVER
++	depends on BR2_PACKAGE_MESA3D_GALLIUM_DRIVER
+ 	select BR2_PACKAGE_HAS_LIBEGL if !BR2_PACKAGE_LIBGLVND
+ 	select BR2_PACKAGE_LIBGLVND_DISPATCH_EGL if BR2_PACKAGE_LIBGLVND
+ 	select BR2_PACKAGE_HAS_LIBEGL_WAYLAND
+diff --git a/package/mesa3d/mesa3d.hash b/package/mesa3d/mesa3d.hash
+index e36d798e21..ab20063cd9 100644
+--- a/package/mesa3d/mesa3d.hash
++++ b/package/mesa3d/mesa3d.hash
+@@ -1,6 +1,5 @@
+-# From https://lists.freedesktop.org/archives/mesa-announce/2022-January/000660.html
+-sha256  d93b2a9d2464ee856d7637a07dff6b7cd950f295ad58518bb959f76882cf4a4c  mesa-21.3.5.tar.xz
+-sha512  417d1787f8177567f0c547dde3e24212f7497f2fe7cdaa945fe998cd61ec0e9eb9388feb444e377c4fd8794b056af02aac28d1bbfb9527844391ba49e6893933  mesa-21.3.5.tar.xz
+-
++# From https://lists.freedesktop.org/archives/mesa-announce/2022-August/000683.html
++sha256  22ced061eb9adab8ea35368246c1995c09723f3f71653cd5050c5cec376e671a  mesa-22.1.6.tar.xz
++sha512  3b2a0bb781c3d540401e6f51e3cf0d87d4e22923b6a5a4ea9d8ce5c79b4a2d5e8b1c237a36325d7d7178448ae102470ebefb312644dc09818cce91fd5439cb07  mesa-22.1.6.tar.xz
+ # License
+-sha256  998437f3f75f0c542046f83c1cb349408122268168fb13eb4ae6967aa18b7d98  docs/license.rst
++sha256  4bc15d14dcc134b024cbdca3b5330010136ce8a427b6f8353440ce2ad7aab037  docs/license.rst
+diff --git a/package/mesa3d/mesa3d.mk b/package/mesa3d/mesa3d.mk
+index 5f080ff5fc..0630f43df1 100644
+--- a/package/mesa3d/mesa3d.mk
++++ b/package/mesa3d/mesa3d.mk
+@@ -5,7 +5,7 @@
+ ################################################################################
+ 
+ # When updating the version, please also update mesa3d-headers
+-MESA3D_VERSION = 21.3.5
++MESA3D_VERSION = 22.1.6
+ MESA3D_SOURCE = mesa-$(MESA3D_VERSION).tar.xz
+ MESA3D_SITE = https://archive.mesa3d.org
+ MESA3D_LICENSE = MIT, SGI, Khronos
+@@ -114,11 +114,6 @@ MESA3D_GALLIUM_DRIVERS-$(BR2_PACKAGE_MESA3D_GALLIUM_DRIVER_TEGRA)    += tegra
+ MESA3D_GALLIUM_DRIVERS-$(BR2_PACKAGE_MESA3D_GALLIUM_DRIVER_V3D)      += v3d
+ MESA3D_GALLIUM_DRIVERS-$(BR2_PACKAGE_MESA3D_GALLIUM_DRIVER_VC4)      += vc4
+ MESA3D_GALLIUM_DRIVERS-$(BR2_PACKAGE_MESA3D_GALLIUM_DRIVER_VIRGL)    += virgl
+-# DRI Drivers
+-MESA3D_DRI_DRIVERS-$(BR2_PACKAGE_MESA3D_DRI_DRIVER_I915)   += i915
+-MESA3D_DRI_DRIVERS-$(BR2_PACKAGE_MESA3D_DRI_DRIVER_I965)   += i965
+-MESA3D_DRI_DRIVERS-$(BR2_PACKAGE_MESA3D_DRI_DRIVER_NOUVEAU) += nouveau
+-MESA3D_DRI_DRIVERS-$(BR2_PACKAGE_MESA3D_DRI_DRIVER_RADEON) += r100
+ # Vulkan Drivers
+ MESA3D_VULKAN_DRIVERS-$(BR2_PACKAGE_MESA3D_VULKAN_DRIVER_INTEL)   += intel
+ 
+@@ -133,15 +128,6 @@ MESA3D_CONF_OPTS += \
+ 	-Dgallium-extra-hud=true
+ endif
+ 
+-ifeq ($(BR2_PACKAGE_MESA3D_DRI_DRIVER),)
+-MESA3D_CONF_OPTS += \
+-	-Ddri-drivers=
+-else
+-MESA3D_CONF_OPTS += \
+-	-Dshared-glapi=enabled \
+-	-Ddri-drivers=$(subst $(space),$(comma),$(MESA3D_DRI_DRIVERS-y))
+-endif
+-
+ ifeq ($(BR2_PACKAGE_MESA3D_VULKAN_DRIVER),)
+ MESA3D_CONF_OPTS += \
+ 	-Dvulkan-drivers=
+diff --git a/package/qt5/qt5tools/Config.in b/package/qt5/qt5tools/Config.in
+index 428413d5e2..46585e1e04 100644
+--- a/package/qt5/qt5tools/Config.in
++++ b/package/qt5/qt5tools/Config.in
+@@ -23,12 +23,13 @@ config BR2_PACKAGE_QT5TOOLS_QDOC_TOOL
+ 	# currently supported in Buildroot, unless the target is
+ 	# already supported by llvm.
+ 	depends on BR2_PACKAGE_LLVM_ARCH_SUPPORTS # llvm, clang
+-	depends on BR2_TOOLCHAIN_GCC_AT_LEAST_4_8 # llvm, clang
++	depends on BR2_TOOLCHAIN_GCC_AT_LEAST_5 # llvm, clang
+ 	depends on BR2_TOOLCHAIN_HAS_THREADS # llvm, clang
+ 	depends on BR2_INSTALL_LIBSTDCPP # llvm, clang
+ 	depends on !BR2_TOOLCHAIN_HAS_GCC_BUG_64735 # llvm, clang
+ 	depends on !BR2_STATIC_LIBS # llvm, clang
+ 	depends on BR2_USE_WCHAR # llvm, clang
++	depends on BR2_HOST_GCC_AT_LEAST_5 # llvm, clang
+ 	help
+ 	  This option enables the qdoc host tool.
+ 
+-- 
+2.34.1
+
