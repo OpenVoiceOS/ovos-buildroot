@@ -1,3 +1,4 @@
-# <file system>	<mount pt>	<type>	<options>	<dump>	<pass>
-PARTUUID=9262aee5-2d23-4e09-baac-280591e2e834	/boot	vfat	defaults,noatime	0	0
-PARTUUID=c0932a41-44cf-463b-8152-d43188553ed4	/	ext4	defaults,noatime	0	1
+# <file system>					<mount pt>	<type>		<options>		<dump>	<pass>
+#PARTUUID=9262aee5-2d23-4e09-baac-280591e2e834	/boot		vfat		defaults,noatime	0	0
+#PARTUUID=c0932a41-44cf-463b-8152-d43188553ed4	/		squashfs	defaults,noatime	0	1
+#PARTUUID=f1326040-5236-40eb-b683-aaa100a9afcf	/mnt/overlay	ext4		defaults,noatime        0       1

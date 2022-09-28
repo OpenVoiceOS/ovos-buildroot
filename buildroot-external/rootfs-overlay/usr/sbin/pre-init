@@ -1,0 +1,50 @@
+#!/bin/sh
+
+set -euo pipefail
+
+PATH=/sbin:/bin:/usr/sbin:/usr/bin
+
+/bin/mount -t proc proc /proc
+/bin/mount -t sysfs sysfs /sys
+grep -w "/dev" /proc/mounts >/dev/null || /bin/mount -t devtmpfs none /dev
+
+[ -z "${CMDLINE+x}" ] && CMDLINE=`cat /proc/cmdline`
+for arg in $CMDLINE; do
+	optarg=`expr "x$arg" : 'x[^=]*=\(.*\)' || echo ''`
+	case $arg in
+		root=*)
+			ROOT_RODEVICE=$optarg ;;
+		rootfstype=*)
+			ROOT_ROFSTYPE=$optarg ;;
+	esac
+done
+
+ROOT_ROMOUNTPARAMS="-t $ROOT_ROFSTYPE -o noatime,nodiratime $ROOT_RODEVICE"
+if ! /bin/mount $ROOT_ROMOUNTPARAMS /media/rfs/ro 2>/dev/null && \
+	[ "x-o bind /" == "x$ROOT_ROMOUNTPARAMS" ] || \
+	log "Could not mount $ROOT_RODEVICE, bind mounting..." && \
+	! /bin/mount -o bind / /media/rfs/ro; then
+	fatal "Could not mount read-only rootfs"
+fi
+
+if ! /bin/mount -o remount,ro /media/rfs/ro; then
+	fatal "Could not remount read-only rootfs as read only"
+fi
+
+if ! /bin/mount PARTUUID=f1326040-5236-40eb-b683-aaa100a9afcf /media/rfs/rw -t auto -o relatime,nosuid,nodev ; then
+	fatal "Could not mount read-write rootfs"
+fi
+
+mkdir -p /media/rfs/rw/upperdir /media/rfs/rw/work
+/bin/mount -t overlay overlay -o lowerdir=/media/rfs/ro,upperdir=/media/rfs/rw/upperdir,workdir=/media/rfs/rw/work /mnt
+
+mkdir -p /mnt/media/rfs/ro /mnt/media/rfs/rw
+/bin/mount -n --move /media/rfs/ro /mnt/media/rfs/ro
+/bin/mount -n --move /media/rfs/rw /mnt/media/rfs/rw
+
+/bin/mount -n --move /proc /mnt/proc
+/bin/mount -n --move /sys /mnt/sys
+/bin/mount -n --move /dev /mnt/dev
+
+cd /mnt
+exec chroot /mnt /sbin/init || fatal "Couldn't chroot, dropping to shell"
