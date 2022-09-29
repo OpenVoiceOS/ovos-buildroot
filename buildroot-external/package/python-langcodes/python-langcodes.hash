@@ -1,0 +1,5 @@
+# md5, sha256 from https://pypi.org/pypi/langcodes/json
+md5  c257046ae26f6af4097a14d7612fc8f3  langcodes-3.3.0.tar.gz
+sha256  794d07d5a28781231ac335a1561b8442f8648ca07cd518310aeb45d6f0807ef6  langcodes-3.3.0.tar.gz
+# Locally computed sha256 checksums
+sha256  a0cceca169e5eed22f00f4c001c3851026e56cb60632904548889eb79a3c226d  LICENSE.txt

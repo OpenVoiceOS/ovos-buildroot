@@ -66,3 +66,6 @@ dtoverlay=gpio-no-irq
 
 # enable 64bits support
 arm_64bit=1
+
+# Enable boost from 1.5Ghz to 1.8Ghz on compatible models
+arm_boost=1

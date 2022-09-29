@@ -3,10 +3,10 @@
 # Credits to hassos-expand original script
 # https://github.com/home-assistant/operating-system/
 
-DEVICE_ROOTFS="$(findfs UUID=c0932a41-44cf-463b-8152-d43188553ed4)"
-DEVICE_ROOTFS_NAME="$(basename "${DEVICE_ROOTFS}")"
-DEVICE="/dev/$(lsblk -no pkname "${DEVICE_ROOTFS}")"
-PART_NUM="$(cat "/sys/class/block/${DEVICE_ROOTFS_NAME}/partition")"
+DEVICE_OVERLAYFS="$(findfs PARTUUID=f1326040-5236-40eb-b683-aaa100a9afcf)"
+DEVICE_OVERLAYFS_NAME="$(basename "${DEVICE_OVERLAYFS}")"
+DEVICE="/dev/$(lsblk -no pkname "${DEVICE_OVERLAYFS}")"
+PART_NUM="$(cat "/sys/class/block/${DEVICE_OVERLAYFS_NAME}/partition")"
 PART_TABLE="$(sfdisk -lqJ "${DEVICE}")"
 
 if sfdisk --verify "${DEVICE}" 2>&1 | grep "The backup GPT table is not on the end of the device."; then
@@ -20,23 +20,23 @@ LAST_USABLE_LBA="$(echo "${PART_TABLE}" | jq -r '.partitiontable.lastlba')"
 
 echo "[INFO] Last usable logical block ${LAST_USABLE_LBA}"
 
-JQ_FILTER=".partitiontable.partitions[] | select ( .node == \"${DEVICE_ROOTFS}\" ) | .start + .size"
-ROOTFS_PARTITION_END="$(echo "${PART_TABLE}" | jq "${JQ_FILTER}")"
-echo "[INFO] Rootfs partition end block ${ROOTFS_PARTITION_END}"
+JQ_FILTER=".partitiontable.partitions[] | select ( .node == \"${DEVICE_OVERLAYFS}\" ) | .start + .size"
+OVERLAYFS_PARTITION_END="$(echo "${PART_TABLE}" | jq "${JQ_FILTER}")"
+echo "[INFO] Overlayfs partition end block ${OVERLAYFS_PARTITION_END}"
 
 UNUSED_BLOCKS=$(( LAST_USABLE_LBA - DATA_PARTITION_END ))
 if [ "${UNUSED_BLOCKS}" -le "16384" ]; then
-    echo "[INFO] No resize of rootfs partition needed"
+    echo "[INFO] No resize of overlayfs partition needed"
     exit 0
 fi
 
-echo "[INFO] Update rootfs partition ${PART_NUM}"
+echo "[INFO] Update Overlayfs partition ${PART_NUM}"
 echo ", +" | sfdisk --no-reread --no-tell-kernel -N "${PART_NUM}" "${DEVICE}"
 sfdisk -V "${DEVICE}"
 partx -u "${DEVICE}"
 udevadm settle
 partprobe "${DEVICE}"
 
-echo "[INFO] Resizing the rootfs partition"
-resize2fs "${DEVICE_ROOTFS}"
+echo "[INFO] Resizing the overlayfs partition"
+resize2fs "${DEVICE_OVERLAYFS}"
 echo "[OK]"

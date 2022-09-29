@@ -1,0 +1,6 @@
+config BR2_PACKAGE_PYTHON_LANGCODES
+	bool "python-langcodes"
+	help
+	  Tools for labeling human languages with IETF language tags.
+
+	  https://github.com/rspeer/langcodes
