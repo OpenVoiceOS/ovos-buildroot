@@ -10,6 +10,13 @@ OVOS_SPLASH_LICENSE = GPL-2.0+
 OVOS_SPLASH_LICENSE_FILES = COPYING
 OVOS_SPLASH_AUTORECONF = YES
 
+ifeq ($(BR2_PACKAGE_SYSTEMD),y)
+OVOS_SPLASH_DEPENDENCIES += systemd
+OVOS_SPLASH_CONF_OPTS += --with-systemd
+else
+OVOS_SPLASH_CONF_OPTS += --without-systemd
+endif
+
 define OVOS_SPLASH_INSTALL_INIT_SYSTEMD
 	$(INSTALL) -D -m 644 $(BR2_EXTERNAL_OPENVOICEOS_PATH)/package/ovos-splash/ovos-splash-start.service \
 		$(TARGET_DIR)/usr/lib/systemd/system/ovos-splash-start.service
