@@ -1,3 +1,2 @@
-# md5, sha256 from https://pypi.org/pypi/pyaudio/json
-md5	7e4c88139284033f67b4336c74eda3b8  PyAudio-0.2.11.tar.gz
-sha256	93bfde30e0b64e63a46f2fd77e85c41fd51182a4a3413d9edfaf9ffaa26efb74  PyAudio-0.2.11.tar.gz
+# sha256 from https://pypi.org/pypi/pyaudio/json
+sha256	55ddf5db72bc537bba5f5dbca3ab9f0222ee5b842bda83978eab0b7b8f60fb9e  PyAudio-0.2.12.tar.gz

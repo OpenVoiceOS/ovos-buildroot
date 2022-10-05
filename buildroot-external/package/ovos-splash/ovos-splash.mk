@@ -23,6 +23,9 @@ define OVOS_SPLASH_INSTALL_INIT_SYSTEMD
 
 	$(INSTALL) -D -m 644 $(BR2_EXTERNAL_OPENVOICEOS_PATH)/package/ovos-splash/ovos-splash-quit.service \
 		$(TARGET_DIR)/usr/lib/systemd/system/ovos-splash-quit.service
+
+	$(INSTALL) -D -m 644 $(BR2_EXTERNAL_OPENVOICEOS_PATH)/package/ovos-splash/ovos-splash-systemd.service \
+                $(TARGET_DIR)/usr/lib/systemd/system/ovos-splash-systemd.service
 endef
 
 define OVOS_SPLASH_CHANGE_IMAGE

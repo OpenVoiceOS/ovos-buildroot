@@ -8,8 +8,7 @@ enable avahi-daemon.service
 enable NetworkManager.service
 enable getty@tty2.service
 enable ovos-splash-start.service
-enable ovos-splash-40.service
-enable ovos-splash-60.service
+enable ovos-splash-systemd.service
 enable mycroft.service
 enable mycroft-messagebus.service
 enable mycroft-voice.service
@@ -30,3 +29,4 @@ disable snapserver.service
 disable spotifyd.service
 disable nodered.service
 disable btspeaker.service
+disable telnetd.service
