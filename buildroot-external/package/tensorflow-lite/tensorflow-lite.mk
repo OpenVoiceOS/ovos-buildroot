@@ -50,6 +50,8 @@ $(INSTALL) -D -m 755 $(@D)/$(TENSORFLOW_LITE_SUBDIR)/buildroot-build/_deps/absei
 $(TARGET_DIR)/usr/lib/
 $(INSTALL) -D -m 755 $(@D)/$(TENSORFLOW_LITE_SUBDIR)/buildroot-build/_deps/abseil-cpp-build/absl/base/libabsl_throw_delegate.so \
 $(TARGET_DIR)/usr/lib/
+$(INSTALL) -D -m 755 $(@D)/$(TENSORFLOW_LITE_SUBDIR)/buildroot-build/_deps/abseil-cpp-build/absl/base/libabsl_strerror.so \
+$(TARGET_DIR)/usr/lib/
 $(INSTALL) -D -m 755 $(@D)/$(TENSORFLOW_LITE_SUBDIR)/buildroot-build/_deps/abseil-cpp-build/absl/hash/libabsl_city.so \
 $(TARGET_DIR)/usr/lib/
 $(INSTALL) -D -m 755 $(@D)/$(TENSORFLOW_LITE_SUBDIR)/buildroot-build/_deps/abseil-cpp-build/absl/hash/libabsl_hash.so \

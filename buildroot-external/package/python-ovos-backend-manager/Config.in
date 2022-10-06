@@ -1,0 +1,6 @@
+config BR2_PACKAGE_PYTHON_OVOS_BACKEND_MANAGER
+	bool "python-ovos-backend-manager"
+	help
+	  A simple web UI for personal backend, powered by PyWebIO
+
+	  https://github.com/OpenVoiceOS/ovos-backend-manager

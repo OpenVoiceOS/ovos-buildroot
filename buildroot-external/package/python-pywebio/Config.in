@@ -1,0 +1,8 @@
+config BR2_PACKAGE_PYTHON_PYWEBIO
+	bool "python-pywebio"
+	select BR2_PACKAGE_PYTHON_TORNADO # runtime
+	select BR2_PACKAGE_PYTHON_USER_AGENTS # runtime
+	help
+	  Write interactive web app in script way.
+
+	  https://pywebio.readthedocs.io

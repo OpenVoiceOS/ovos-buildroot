@@ -1,0 +1,6 @@
+config BR2_PACKAGE_PYTHON_CUTECHARTS
+	bool "python-cutecharts"
+	help
+	  Hand drawing style charts library for Python 
+
+	  https://github.com/cutecharts/cutecharts.py

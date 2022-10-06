@@ -1,0 +1,8 @@
+config BR2_PACKAGE_PYTHON_USER_AGENTS
+	bool "python-user-agents"
+	select BR2_PACKAGE_PYTHON_UA_PARSER # runtime
+	help
+	  A library to identify devices (phones, tablets) and their
+	  capabilities by parsing browser user agent strings.
+
+	  https://github.com/selwin/python-user-agents

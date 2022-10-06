@@ -1,0 +1,5 @@
+# md5, sha256 from https://pypi.org/pypi/ua-parser/json
+md5  1ecaff946ee849c7bd4a95d786087968  ua-parser-0.16.1.tar.gz
+sha256  ed3efc695f475ffe56248c9789b3016247e9c20e3556cfa4d5aadc78ab4b26c6  ua-parser-0.16.1.tar.gz
+# Locally computed sha256 checksums
+sha256  625f8d116d73e716ae03fd5aae4c03f58efa4ac5d483c00cdf74bec6ea5ea3fc  ua_parser/LICENSE

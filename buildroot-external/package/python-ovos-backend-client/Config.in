@@ -1,0 +1,8 @@
+config BR2_PACKAGE_PYTHON_OVOS_BACKEND_CLIENT
+	bool "python-ovos-backend-client"
+	help
+	  Unofficial python api for interaction with 
+	  https://api.mycroft.ai , also compatible with 
+	  ovos-local-backend 
+
+	  https://github.com/OpenVoiceOS/ovos-backend-client

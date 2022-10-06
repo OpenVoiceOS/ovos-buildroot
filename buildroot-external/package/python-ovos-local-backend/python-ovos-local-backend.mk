@@ -4,7 +4,7 @@
 #
 ################################################################################
 
-PYTHON_OVOS_LOCAL_BACKEND_VERSION = a04aafb682c67dbc50e79a81ce4cdeab99e8d824
+PYTHON_OVOS_LOCAL_BACKEND_VERSION = f181053e2592be94a66e622a963f1da99f4b0ee7
 PYTHON_OVOS_LOCAL_BACKEND_SITE = $(call github,OpenVoiceOS,OVOS-local-backend,$(PYTHON_OVOS_LOCAL_BACKEND_VERSION))
 PYTHON_OVOS_LOCAL_BACKEND_SETUP_TYPE = setuptools
 
