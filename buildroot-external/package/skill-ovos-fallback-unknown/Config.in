@@ -1,0 +1,7 @@
+config BR2_PACKAGE_SKILL_OVOS_FALLBACK_UNKNOWN
+	bool "skill-ovos-fallback-unknown"
+	help
+	  Mycroft AI official Unknown Fallback Skill - 
+	  used if no Intent is matched to an Utterance
+
+	  https://github.com/OpenVoiceOS/ovos-skill-fallback-unknown
