@@ -1,15 +1,14 @@
 [Unit]
-Description=Mycroft Enclosure
+Description=Mycroft Skills
 PartOf=mycroft.service
 After=mycroft.service
 After=mycroft-messagebus.service
 
 [Service]
-Type=notify
-ExecStart=/usr/libexec/mycroft-systemd-gui
-StandardOutput=append:/home/mycroft/.local/state/mycroft/enclosure_gui.log
-#StandardError=file:/home/mycroft/.local/state/mycroft/enclosure_gui.error.log
-TimeoutStartSec=1m
+ExecStart=ovos-local-backend
+StandardOutput=append:/home/mycroft/.local/state/mycroft/local-backend.log
+#StandardError=file:/home/mycroft/.local/state/mycroft/local-backend.error.log
+TimeoutStartSec=10m
 TimeoutStopSec=1m
 Restart=on-failure
 StartLimitInterval=5min

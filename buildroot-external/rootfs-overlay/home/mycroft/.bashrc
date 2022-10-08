@@ -5,4 +5,4 @@ alias ll='ls -la'
 ######################################################################
 # Initialize OpenVoiceOS CLI Environment
 ######################################################################
-source cli_login.sh
+#source cli_login.sh
