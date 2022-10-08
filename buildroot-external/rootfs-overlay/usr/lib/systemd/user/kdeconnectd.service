@@ -4,3 +4,6 @@ Description=Connect your OVOS-Device to your smartphone or tablet
 [Service]
 ExecStart=/usr/lib/libexec/kdeconnectd -platform offscreen
 BusName=org.kde.kdeconnect
+
+[Install]
+WantedBy=default.target

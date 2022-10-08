@@ -1,0 +1,21 @@
+[Unit]
+Description=Mycroft Skills
+PartOf=mycroft.service
+After=mycroft.service
+After=mycroft-messagebus.service
+
+[Service]
+Type=notify
+ExecStart=/usr/libexec/mycroft-systemd-skills
+StandardOutput=append:/home/mycroft/.local/state/mycroft/skills.log
+StandardError=file:/home/mycroft/.local/state/mycroft/skills.error.log
+TimeoutStartSec=10m
+TimeoutStopSec=1m
+Restart=on-failure
+StartLimitInterval=5min
+StartLimitBurst=4
+#StartLimitAction=reboot-force
+#WatchdogSec=30s
+
+[Install]
+WantedBy=mycroft.service

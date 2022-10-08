@@ -1,8 +1,0 @@
-#!/bin/bash
-echo -e '\033]2;'Node-RED console'\007'
-echo -e "\033[1mStop \033[38;5;88mNode-RED\033[0m"
-echo " "
-echo -e "Use   \033[0;36mnode-red-start\033[0m   to start Node-RED again"
-sudo systemctl stop nodered
-echo " "
-exit

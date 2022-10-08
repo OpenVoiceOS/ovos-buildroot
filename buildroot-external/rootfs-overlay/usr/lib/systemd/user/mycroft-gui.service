@@ -1,0 +1,11 @@
+[Unit]
+Description=Mycroft GUI
+
+[Service]
+ExecStartPre=-/usr/bin/kbuildsycoca5
+ExecStart=ovos-shell --maximize
+StandardOutput=null
+Restart=on-failure
+
+[Install]
+WantedBy=mycroft.service

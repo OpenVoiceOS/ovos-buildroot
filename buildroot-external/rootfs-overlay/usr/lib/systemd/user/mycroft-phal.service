@@ -1,0 +1,21 @@
+[Unit]
+Description=Mycroft PHAL
+PartOf=mycroft.service
+After=mycroft.service
+After=mycroft-messagebus.service
+
+[Service]
+Type=notify
+ExecStart=/usr/libexec/mycroft-systemd-phal
+StandardOutput=append:/home/mycroft/.local/state/mycroft/phal.log
+StandardError=file:/home/mycroft/.local/state/mycroft/phal.error.log
+TimeoutStartSec=1m
+TimeoutStopSec=1m
+Restart=on-failure
+StartLimitInterval=5min
+StartLimitBurst=4
+#StartLimitAction=reboot-force
+#WatchdogSec=30s
+
+[Install]
+WantedBy=mycroft.service

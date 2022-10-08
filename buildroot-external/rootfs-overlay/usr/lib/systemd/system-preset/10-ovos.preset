@@ -9,14 +9,6 @@ enable NetworkManager.service
 enable getty@tty1.service
 enable ovos-splash-start.service
 enable ovos-splash-systemd.service
-enable mycroft.service
-enable mycroft-messagebus.service
-enable mycroft-voice.service
-enable mycroft-audio.service
-enable mycroft-skills.service
-enable mycroft-gui.service
-enable mycroft-enclosure-gui.service
-enable mycroft-phal.service
 enable ovos-splash-quit.service
 enable local-backend.service
 

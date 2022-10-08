@@ -1,0 +1,10 @@
+[Unit]
+Description=Mycroft A.I. Software stack.
+
+[Service]
+Type=oneshot
+ExecStart=/bin/true
+RemainAfterExit=yes
+
+[Install]
+WantedBy=default.target
