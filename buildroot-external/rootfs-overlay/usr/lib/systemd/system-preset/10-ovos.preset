@@ -10,6 +10,7 @@ enable getty@tty1.service
 enable ovos-splash-start.service
 enable ovos-splash-systemd.service
 
+disable getty@.service
 disable ovos-splash-quit.service
 disable mosquitto.service
 disable motion.service
