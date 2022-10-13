@@ -1,5 +1,5 @@
-config BR2_PACKAGE_SKILL_NAPTIME
-	bool "skill-naptime"
+config BR2_PACKAGE_SKILL_OVOS_NAPTIME
+	bool "skill-ovos-naptime"
 	help
 	  Tell me to sleep when you don't want 
 	  to be disturbed in any way. This stops all 
@@ -7,4 +7,4 @@ config BR2_PACKAGE_SKILL_NAPTIME
 	  your voice won't be sent anywhere on an 
 	  accidental activation.
 
-	  https://github.com/OpenVoiceOS/ovos-skill-naptime
+	  https://github.com/OpenVoiceOS/skill-ovos-naptime

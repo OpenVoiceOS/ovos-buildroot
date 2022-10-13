@@ -1,8 +1,8 @@
-config BR2_PACKAGE_SKILL_DATE_TIME
-	bool "skill-date-time"
+config BR2_PACKAGE_SKILL_OVOS_DATE_TIME
+	bool "skill-ovos-date-time"
 	help
 	  OVOS official Date and Time Skill, providing 
 	  the current time, date and day of week for cities 
 	  around the world.
 
-	  https://github.com/OpenVoiceOS/skill-date-time
+	  https://github.com/OpenVoiceOS/skill-ovos-date-time

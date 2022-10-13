@@ -1,0 +1,6 @@
+config BR2_PACKAGE_SKILL_OVOS_NEWS
+	bool "skill-ovos-news"
+	help
+	  News Streams from around the globe 
+
+	  https://github.com/OpenVoiceOS/skill-ovos-news
