@@ -6,4 +6,4 @@ ExecStart=/usr/lib/libexec/kdeconnectd -platform offscreen
 BusName=org.kde.kdeconnect
 
 [Install]
-WantedBy=default.target
+WantedBy=multi-user.target

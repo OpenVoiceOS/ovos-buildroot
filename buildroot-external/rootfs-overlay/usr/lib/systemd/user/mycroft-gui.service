@@ -1,5 +1,7 @@
 [Unit]
 Description=Mycroft GUI
+After=mycroft-enclosure-gui.service
+Requires=mycroft-enclosure-gui.service
 
 [Service]
 ExecStartPre=-/usr/bin/kbuildsycoca5
@@ -8,4 +10,4 @@ StandardOutput=null
 Restart=on-failure
 
 [Install]
-WantedBy=mycroft.service
+WantedBy=gui.target
