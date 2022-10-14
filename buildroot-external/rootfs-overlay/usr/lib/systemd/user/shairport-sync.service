@@ -1,0 +1,15 @@
+[Unit]
+Description=Shairport-sync
+After=sound.target
+Wants=network-online.target
+After=network-online.target
+After=pulseaudio.service
+After=avahi-daemon.service
+
+[Service]
+ExecStart=/usr/bin/shairport-sync
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

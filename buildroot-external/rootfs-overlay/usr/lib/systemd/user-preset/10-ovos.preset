@@ -10,6 +10,7 @@ enable mycroft-gui.service
 enable mycroft-enclosure-gui.service
 enable mycroft-phal.service
 
-enable local-backend.service
+disable local-backend.service
 
 enable kdeconnectd.service
+enable shairport-sync.service
