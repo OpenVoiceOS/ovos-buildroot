@@ -1,5 +1,6 @@
 [Unit]
 Description=Mycroft Enclosure
+PartOf=mycroft.service
 After=mycroft.service
 After=mycroft-messagebus.service
 
@@ -17,4 +18,4 @@ StartLimitBurst=4
 #WatchdogSec=30s
 
 [Install]
-WantedBy=gui.target
+WantedBy=mycroft.service
