@@ -4,7 +4,7 @@
 #
 ################################################################################
 
-SKILL_OVOS_TIMER_VERSION = 7cedc9e8c3055bcc212fd5bb2b53b8383382c7e1
+SKILL_OVOS_TIMER_VERSION = 24c38ec3d6744d9fffed9b581d90d62188824310
 SKILL_OVOS_TIMER_SITE = $(call github,OpenVoiceOS,skill-ovos-timer,$(SKILL_OVOS_TIMER_VERSION))
 SKILL_OVOS_TIMER_SETUP_TYPE = setuptools
 SKILL_OVOS_TIMER_LICENSE_FILES = LICENSE
