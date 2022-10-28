@@ -1,5 +1,5 @@
 # md5, sha256 from https://pypi.org/pypi/pymeeus/json
-md5  47dd9b52aa30a096bf25029e087fb793  PyMeeus-0.3.7.tar.gz
-sha256  56430209e6f9a039f1ba73f107ab0b23121548e2a67ed2855f2416c3749a5662  PyMeeus-0.3.7.tar.gz
+md5  2ed0d0b4dbb20abdf63a33cc2fa37db0  PyMeeus-0.5.11.tar.gz
+sha256  bb9d670818d8b0594317b48a7dadea02a0594e5344263bf2054e1a011c8fed55  PyMeeus-0.5.11.tar.gz
 # Locally computed sha256 checksums
 sha256  e79e9c8a0c85d735ff98185918ec94ed7d175efc377012787aebcf3b80f0d90b  LICENSE.txt
