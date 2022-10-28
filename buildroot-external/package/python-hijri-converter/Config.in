@@ -1,0 +1,7 @@
+config BR2_PACKAGE_PYTHON_HIJRI_CONVERTER
+	bool "python-hijri-converter"
+	help
+	  Accurate Hijri-Gregorian dates converter based on the Umm
+	  al-Qura calendar.
+
+	  https://github.com/mhalshehri/hijri-converter
