@@ -1,0 +1,7 @@
+config BR2_PACKAGE_PYTHON_ADAFRUIT_PLATFORMDETECT
+	bool "python-adafruit-platformdetect"
+	help
+	  Platform detection for use by libraries like Adafruit-
+	  Blinka.
+
+	  https://github.com/adafruit/Adafruit_Python_PlatformDetect

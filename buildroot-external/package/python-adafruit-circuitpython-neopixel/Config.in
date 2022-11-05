@@ -1,0 +1,8 @@
+config BR2_PACKAGE_PYTHON_ADAFRUIT_CIRCUITPYTHON_NEOPIXEL
+	bool "python-adafruit-circuitpython-neopixel"
+	help
+	  Higher level NeoPixel driver that presents the strip 
+	  as a sequence. This is a supercharged version of the 
+	  original MicroPython driver. 
+
+	  https://github.com/adafruit/Adafruit_CircuitPython_NeoPixel
