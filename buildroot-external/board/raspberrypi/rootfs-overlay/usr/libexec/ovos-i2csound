@@ -62,6 +62,9 @@ fi
 if [ -f /etc/pulse/system.pa ] ; then
     rm /etc/pulse/system.pa
 fi
+if [ -f /etc/pulse/default.pa ] ; then
+    rm /etc/pulse/default.pa
+fi
 if [ -f /etc/pulse/daemon.conf ] ; then
     rm /etc/pulse/daemon.conf
 fi
@@ -123,6 +126,8 @@ ln -s $ASOUND_STATE /var/lib/alsa/asound.state
 # Install pulseaudio files
 echo "create pulse system file"
 ln -s $PULSE_SYSTEM /etc/pulse/system.pa
+echo "create pulse default file"
+ln -s $PULSE_SYSTEM /etc/pulse/default.pa
 echo "create pulse daemon file"
 ln -s $PULSE_DAEMON /etc/pulse/daemon.conf
 
