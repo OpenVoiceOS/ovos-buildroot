@@ -1,5 +1,5 @@
-disable pulseaudio.service
-disable pulseaudio.socket
+enable pulseaudio.service
+enable pulseaudio.socket
 
 enable mycroft.service
 enable mycroft-messagebus.service

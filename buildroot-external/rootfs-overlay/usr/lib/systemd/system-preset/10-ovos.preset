@@ -3,13 +3,13 @@ enable hostname.service
 enable sshd.service
 enable brcm_bt.service
 enable bluetooth.service
-enable pulseaudio.service
 enable avahi-daemon.service
 enable NetworkManager.service
 enable getty@tty1.service
 enable ovos-splash-start.service
 enable ovos-splash-systemd.service
 
+disable pulseaudio.service
 disable getty@.service
 disable ovos-splash-quit.service
 disable mosquitto.service
