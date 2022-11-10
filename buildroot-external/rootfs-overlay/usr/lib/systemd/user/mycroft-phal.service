@@ -7,8 +7,7 @@ After=mycroft-messagebus.service
 [Service]
 Type=notify
 ExecStart=/usr/libexec/mycroft-systemd-phal
-StandardOutput=append:/home/mycroft/.local/state/mycroft/phal.log
-#StandardError=file:/home/mycroft/.local/state/mycroft/phal.error.log
+StandardOutput=null
 TimeoutStartSec=1m
 TimeoutStopSec=1m
 Restart=on-failure
