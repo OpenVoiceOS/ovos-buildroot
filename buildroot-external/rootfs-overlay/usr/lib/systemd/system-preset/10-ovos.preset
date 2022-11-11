@@ -8,6 +8,7 @@ enable NetworkManager.service
 enable getty@tty1.service
 enable ovos-splash-start.service
 enable ovos-splash-systemd.service
+enable mycroft-admin-phal.service
 
 disable pulseaudio.service
 disable getty@.service

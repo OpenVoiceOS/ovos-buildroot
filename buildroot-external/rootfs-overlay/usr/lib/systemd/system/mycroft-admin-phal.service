@@ -1,0 +1,16 @@
+[Unit]
+Description=Admin PHAL
+
+[Service]
+Type=notify
+ExecStart=/usr/libexec/mycroft-systemd-admin-phal
+TimeoutStartSec=1m
+TimeoutStopSec=1m
+Restart=on-failure
+StartLimitInterval=5min
+StartLimitBurst=4
+#StartLimitAction=reboot-force
+#WatchdogSec=30s
+
+[Install]
+WantedBy=multi-user.target
