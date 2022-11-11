@@ -1,0 +1,6 @@
+config BR2_PACKAGE_PYTHON_OVOS_TTS_PLUGIN_MIMIC3_SERVER
+	bool "python-ovos-tts-plugin-mimic3-server"
+	help
+	  OVOS Server TTS plugin for Mimic3
+
+	  https://github.com/OpenVoiceOS/ovos-tts-plugin-mimic3-server
