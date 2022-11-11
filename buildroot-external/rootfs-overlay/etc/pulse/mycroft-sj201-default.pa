@@ -64,8 +64,8 @@ load-module module-position-event-sounds
 ### OpenVoiceOS Audio Settings
 load-module module-role-ducking
 load-module module-combine-sink sink_name=OpenVoiceOS
-load-module module-remap-source source_name=VF_ASR_L source_properties="device.description='VocalFusion ASR recording'" master=alsa_input.platform-asoc-simple-card.0.stereo-fallback remix=no master_channel_map=front-right channel_map=mono
-load-module module-remap-source source_name=VF_Comms_R source_properties="device.description='VocalFusion Comms recording'" master=alsa_input.platform-asoc-simple-card.0.stereo-fallback remix=no master_channel_map=front-left channel_map=mono
+load-module module-remap-source source_name=VF_ASR_L source_properties="device.description='VocalFusion ASR recording'" master=alsa_input.platform-asoc-simple-card.0.stereo-fallback remix=no master_channel_map=front-left channel_map=mono
+load-module module-remap-source source_name=VF_Comms_R source_properties="device.description='VocalFusion Comms recording'" master=alsa_input.platform-asoc-simple-card.0.stereo-fallback remix=no master_channel_map=front-right channel_map=mono
 set-default-source VF_ASR_L
 set-default-sink OpenVoiceOS
 
