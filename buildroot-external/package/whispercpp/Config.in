@@ -1,0 +1,8 @@
+config BR2_PACKAGE_WHISPERCPP
+	bool "whispercpp"
+	help
+	  High-performance inference of OpenAI's Whisper 
+	  automatic speech recognition (ASR) model
+
+	  https://github.com/ggerganov/whisper.cpp
+
