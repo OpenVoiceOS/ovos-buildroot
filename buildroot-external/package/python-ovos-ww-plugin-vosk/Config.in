@@ -1,0 +1,6 @@
+config BR2_PACKAGE_PYTHON_OVOS_WW_PLUGIN_VOSK
+	bool "python-ovos-ww-plugin-vosk"
+	help
+	  wake word plugin for Vosk
+
+	  https://github.com/OpenVoiceOS/ovos-ww-plugin-vosk

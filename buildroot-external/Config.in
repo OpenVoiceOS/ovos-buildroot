@@ -311,6 +311,7 @@ menu "Plugins"
 	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/python-ovos-ww-plugin-pocketsphinx/Config.in"
 	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/python-ovos-ww-plugin-precise/Config.in"
 	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/python-ovos-ww-plugin-precise-lite/Config.in"
+	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/python-ovos-ww-plugin-vosk/Config.in"
 endmenu
 menu "Skills"
 	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/skill-camera/Config.in"
