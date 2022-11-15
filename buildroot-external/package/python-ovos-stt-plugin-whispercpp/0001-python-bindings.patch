@@ -1,0 +1,340 @@
+From 23942ff3134d3897a40a62ed3a69e7a5c78392df Mon Sep 17 00:00:00 2001
+From: jarbasai <jarbasai@mailfence.com>
+Date: Tue, 25 Oct 2022 00:45:13 +0100
+Subject: [PATCH 1/2] feat/python_bindings
+
+---
+ README.md                              |  20 ++--
+ build_lib.sh                           |   8 ++
+ ovos_stt_plugin_whispercpp/__init__.py | 130 ++++++++++++++++++++-----
+ 3 files changed, 127 insertions(+), 31 deletions(-)
+ create mode 100644 build_lib.sh
+
+diff --git a/README.md b/README.md
+index 0eea31d..f41d8de 100644
+--- a/README.md
++++ b/README.md
+@@ -19,16 +19,19 @@ High-performance inference of [OpenAI's Whisper](https://github.com/openai/whisp
+ 
+ ### WhisperCPP
+ 
+-First let's install whisper.cpp from source and move the binary to the plugin expected default path
++First let's build whisper.cpp from source and move the shared library to the plugin expected default path
+ 
+ ```bash
+-git clone https://github.com/ggerganov/whisper.cpp
+-cd whisper.cpp
+-make
+-cp main ~/.local/bin/whispercpp
++# build shared libwhisper.so
++git clone https://github.com/ggerganov/whisper.cpp /tmp/whispercpp
++cd /tmp/whispercpp
++# last commit before a breaking change
++git checkout d6b84b2a23220dd8b8792872a3ab6802cd24b424
++gcc -O3 -std=c11   -pthread -mavx -mavx2 -mfma -mf16c -fPIC -c ggml.c
++g++ -O3 -std=c++11 -pthread --shared -fPIC -static-libstdc++ whisper.cpp ggml.o -o libwhisper.so
++cp libwhisper.so ~/.local/bin/libwhisper.so
+ ```
+ 
+-Models will be autodownloaded to `/home/user/.local/share/whispercpp/{model_name}` when plugin is loaded
+ 
+ ## Configuration
+ 
+@@ -42,7 +45,7 @@ available models are `"tiny.en", "tiny", "base.en", "base", "small.en", "small",
+   "stt": {
+     "module": "ovos-stt-plugin-whispercpp",
+     "ovos-stt-plugin-whispercpp": {
+-        "bin": "/home/user/.local/bin/whispercpp",
++        "lib": "~/.local/bin/libwhisper.so",
+         "model": "tiny"
+     }
+   }
+@@ -51,6 +54,9 @@ available models are `"tiny.en", "tiny", "base.en", "base", "small.en", "small",
+ 
+ ## Models
+ 
++Models will be autodownloaded to `/home/user/.local/share/whispercpp/{model_name}` when plugin is loaded
++
++
+ Memory usage
+ 
+ | Model  | Disk   | Mem     |
+diff --git a/build_lib.sh b/build_lib.sh
+new file mode 100644
+index 0000000..2b69c5e
+--- /dev/null
++++ b/build_lib.sh
+@@ -0,0 +1,8 @@
++# build shared libwhisper.so
++git clone https://github.com/ggerganov/whisper.cpp /tmp/whispercpp
++cd /tmp/whispercpp
++# last commit before a breaking change
++git checkout d6b84b2a23220dd8b8792872a3ab6802cd24b424
++gcc -O3 -std=c11   -pthread -mavx -mavx2 -mfma -mf16c -fPIC -c ggml.c
++g++ -O3 -std=c++11 -pthread --shared -fPIC -static-libstdc++ whisper.cpp ggml.o -o libwhisper.so
++cp libwhisper.so $HOME/.local/bin/libwhisper.so
+\ No newline at end of file
+diff --git a/ovos_stt_plugin_whispercpp/__init__.py b/ovos_stt_plugin_whispercpp/__init__.py
+index d347898..91982eb 100644
+--- a/ovos_stt_plugin_whispercpp/__init__.py
++++ b/ovos_stt_plugin_whispercpp/__init__.py
+@@ -1,11 +1,101 @@
++import ctypes
+ import os
+-import subprocess
+-from tempfile import NamedTemporaryFile
++import pathlib
+ 
++# this is needed to read the WAV file properly
++import numpy
+ import requests
+ from ovos_plugin_manager.templates.stt import STT
+ from ovos_utils.log import LOG
+ from ovos_utils.xdg_utils import xdg_data_home
++from speech_recognition import AudioData
++
++
++# this needs to match the C struct in whisper.h
++class WhisperFullParams(ctypes.Structure):
++    _fields_ = [
++        ("strategy", ctypes.c_int),
++        ("n_threads", ctypes.c_int),
++        ("offset_ms", ctypes.c_int),
++        ("translate", ctypes.c_bool),
++        ("no_context", ctypes.c_bool),
++        ("print_special_tokens", ctypes.c_bool),
++        ("print_progress", ctypes.c_bool),
++        ("print_realtime", ctypes.c_bool),
++        ("print_timestamps", ctypes.c_bool),
++        ("language", ctypes.c_char_p),
++        ("greedy", ctypes.c_int * 1),
++    ]
++
++
++class WhisperEngine:
++    def __init__(self, libname, model_path):
++        # load library and model
++        self.libname = pathlib.Path().absolute() / libname
++        self.whisper = ctypes.CDLL(libname)
++
++        # tell Python what are the return types of the functions
++        self.whisper.whisper_init.restype = ctypes.c_void_p
++        self.whisper.whisper_full_default_params.restype = WhisperFullParams
++        self.whisper.whisper_full_get_segment_text.restype = ctypes.c_char_p
++
++        # initialize whisper.cpp context
++        self.ctx = self.whisper.whisper_init(model_path.encode("utf-8"))
++
++        # get default whisper parameters and adjust as needed
++        self.params = self.whisper.whisper_full_default_params(0)
++        self.params.print_realtime = True
++        self.params.print_progress = False
++        self.params.print_timestamps = False
++        self.params.n_threads = os.cpu_count() - 1
++        self.params.translate = False
++
++    def audiodata2array(self, audio_data):
++        assert isinstance(audio_data, AudioData)
++        # Convert buffer to float32 using NumPy
++        audio_as_np_int16 = numpy.frombuffer(audio_data.get_wav_data(), dtype=numpy.int16)
++        audio_as_np_float32 = audio_as_np_int16.astype(numpy.float32)
++
++        # Normalise float32 array so that values are between -1.0 and +1.0
++        max_int16 = 2 ** 15
++        data = audio_as_np_float32 / max_int16
++        return data
++
++    def transcribe_wav(self, wav, lang="en"):
++        self.params.language = lang.encode()
++
++        if isinstance(wav, str):
++            with AudioFile(wav) as source:
++                audio = Recognizer().record(source)
++        elif isinstance(wav, AudioData):
++            audio = wav
++        else:
++            raise ValueError(f"invalid audio: {wav}")
++
++        return self.transcribe_audio(audio, lang)
++
++    def transcribe_audio(self, audio, lang="en"):
++        self.params.language = lang.encode()
++
++        data = self.audiodata2array(audio)
++
++        # run the inference
++        result = self.whisper.whisper_full(ctypes.c_void_p(self.ctx), self.params,
++                                           data.ctypes.data_as(ctypes.POINTER(ctypes.c_float)),
++                                           len(data))
++        if result != 0:
++            raise RuntimeError(f"Error: {result}")
++
++        # print results from Python
++        n_segments = self.whisper.whisper_full_n_segments(ctypes.c_void_p(self.ctx))
++        txt = b""
++        for i in range(n_segments):
++            txt += self.whisper.whisper_full_get_segment_text(ctypes.c_void_p(self.ctx), i)
++        return txt.decode("utf-8")
++
++    def shutdown(self):
++        # free the memory
++        self.whisper.whisper_free(ctypes.c_void_p(self.ctx))
+ 
+ 
+ class WhispercppSTT(STT):
+@@ -115,11 +205,12 @@ class WhispercppSTT(STT):
+ 
+     def __init__(self, *args, **kwargs):
+         super().__init__(*args, **kwargs)
+-        self.bin = self.config.get("binary") or os.path.expanduser("~/.local/bin/whispercpp")
++        lib = self.config.get("lib") or "~/.local/bin/libwhisper.so"
++        self.lib = os.path.expanduser(lib)
+         # self.bin = os.path.expanduser("~/whisper.cpp/main")
+-        if not self.bin:
+-            LOG.error(
+-                "you need to manually install whisper.cpp, please provide full path to ./main binary generated by compiling https://github.com/ggerganov/whisper.cpp")
++        if not os.path.isfile(self.lib):
++            LOG.error("you need to provicde libwhisper.so, please follow the README.md instructions")
++            raise ImportError("libwhisper.so not found")
+ 
+         self.model_folder = self.config.get("model_folder") or f"{xdg_data_home()}/whispercpp"
+         model = self.config.get("model")
+@@ -129,7 +220,8 @@ def __init__(self, *args, **kwargs):
+             else:
+                 model = "tiny"
+         os.makedirs(self.model_folder, exist_ok=True)
+-        self.model_path = self.get_model(model)
++        model_path = self.get_model(model)
++        self.engine = WhisperEngine(self.lib, model_path)
+ 
+     def get_model(self, model_name):
+         if os.path.isfile(model_name):
+@@ -145,27 +237,18 @@ def get_model(self, model_name):
+                 f.write(data)
+         return model_path
+ 
+-    def execute(self, audio, language=None, model=None):
++    def execute(self, audio, language=None):
+         lang = language or self.lang
+-        if model:
+-            if not os.path.isfile(model):
+-                model = self.get_model(model)
+-
+-        model = model or self.model_path
+-
+-        with NamedTemporaryFile() as f:
+-            f.write(audio.get_wav_data())
+-            lang = lang.split('-')[0].lower()
+-            cmd = f"{self.bin} -m {model} -l {lang} -f {f.name}"
+-            t = subprocess.check_output(cmd, shell=True, stderr=subprocess.PIPE).decode("utf-8")
+-            transcript = t.split("] ")[-1].strip()
+-
+-        return transcript
++        return self.engine.transcribe_audio(audio, lang)
+ 
+     @property
+     def available_languages(self) -> set:
+         return set(self.LANGUAGES.keys())
+ 
++    def __del__(self):
++        if self.engine:
++            self.engine.shutdown()
++
+ 
+ WhispercppSTTConfig = {
+     lang: [{"model": "tiny",
+@@ -195,12 +278,11 @@ def available_languages(self) -> set:
+ 
+ if __name__ == "__main__":
+     b = WhispercppSTT()
+-
+     from speech_recognition import Recognizer, AudioFile
+ 
+     with AudioFile("/home/user/PycharmProjects/selene_api/test/test.wav") as source:
+         audio = Recognizer().record(source)
+ 
+-    a = b.execute(audio, model="base")
++    a = b.execute(audio)
+ 
+     print(a)
+
+From ed15bfab9643d68a39f91c621e21ab450a03a628 Mon Sep 17 00:00:00 2001
+From: jarbasai <jarbasai@mailfence.com>
+Date: Tue, 25 Oct 2022 01:20:07 +0100
+Subject: [PATCH 2/2] remove print
+
+---
+ ovos_stt_plugin_whispercpp/__init__.py | 29 +++++++++-----------------
+ 1 file changed, 10 insertions(+), 19 deletions(-)
+
+diff --git a/ovos_stt_plugin_whispercpp/__init__.py b/ovos_stt_plugin_whispercpp/__init__.py
+index 91982eb..7daf309 100644
+--- a/ovos_stt_plugin_whispercpp/__init__.py
++++ b/ovos_stt_plugin_whispercpp/__init__.py
+@@ -44,7 +44,7 @@ def __init__(self, libname, model_path):
+ 
+         # get default whisper parameters and adjust as needed
+         self.params = self.whisper.whisper_full_default_params(0)
+-        self.params.print_realtime = True
++        self.params.print_realtime = False
+         self.params.print_progress = False
+         self.params.print_timestamps = False
+         self.params.n_threads = os.cpu_count() - 1
+@@ -62,19 +62,12 @@ def audiodata2array(self, audio_data):
+         return data
+ 
+     def transcribe_wav(self, wav, lang="en"):
+-        self.params.language = lang.encode()
+-
+-        if isinstance(wav, str):
+-            with AudioFile(wav) as source:
+-                audio = Recognizer().record(source)
+-        elif isinstance(wav, AudioData):
+-            audio = wav
+-        else:
+-            raise ValueError(f"invalid audio: {wav}")
+-
++        with AudioFile(wav) as source:
++            audio = Recognizer().record(source)
+         return self.transcribe_audio(audio, lang)
+ 
+     def transcribe_audio(self, audio, lang="en"):
++        lang = lang.lower().split("-")[0]
+         self.params.language = lang.encode()
+ 
+         data = self.audiodata2array(audio)
+@@ -91,7 +84,7 @@ def transcribe_audio(self, audio, lang="en"):
+         txt = b""
+         for i in range(n_segments):
+             txt += self.whisper.whisper_full_get_segment_text(ctypes.c_void_p(self.ctx), i)
+-        return txt.decode("utf-8")
++        return txt.decode("utf-8").strip()
+ 
+     def shutdown(self):
+         # free the memory
+@@ -215,10 +208,7 @@ def __init__(self, *args, **kwargs):
+         self.model_folder = self.config.get("model_folder") or f"{xdg_data_home()}/whispercpp"
+         model = self.config.get("model")
+         if not model:
+-            if self.lang.startswith("en"):
+-                model = "tiny.en"
+-            else:
+-                model = "tiny"
++            model = "tiny"
+         os.makedirs(self.model_folder, exist_ok=True)
+         model_path = self.get_model(model)
+         self.engine = WhisperEngine(self.lib, model_path)
+@@ -280,9 +270,10 @@ def __del__(self):
+     b = WhispercppSTT()
+     from speech_recognition import Recognizer, AudioFile
+ 
+-    with AudioFile("/home/user/PycharmProjects/selene_api/test/test.wav") as source:
++    jfk = "/home/user/whisper.cpp/samples/jfk.wav"
++    with AudioFile(jfk) as source:
+         audio = Recognizer().record(source)
+ 
+-    a = b.execute(audio)
+-
++    a = b.execute(audio, language="en")
+     print(a)
++

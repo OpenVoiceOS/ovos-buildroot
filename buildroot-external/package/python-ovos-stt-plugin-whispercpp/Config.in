@@ -1,0 +1,6 @@
+config BR2_PACKAGE_PYTHON_OVOS_STT_PLUGIN_WHISPERCPP
+	bool "python-ovos-stt-plugin-whispercpp"
+	help
+	  OVOS STT plugin for whispercpp
+
+	  https://github.com/OpenVoiceOS/ovos-stt-plugin-whispercpp
