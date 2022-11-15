@@ -7,7 +7,7 @@ After=pulseaudio.service
 After=avahi-daemon.service
 
 [Service]
-ExecStart=/usr/bin/shairport-sync
+ExecStart=/usr/bin/shairport-sync -c %h/.config/shairport-sync/shairport-sync.conf
 Restart=always
 RestartSec=5
 
