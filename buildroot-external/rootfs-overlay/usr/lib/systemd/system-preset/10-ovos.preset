@@ -9,6 +9,8 @@ enable getty@tty1.service
 enable ovos-splash-start.service
 enable ovos-splash-systemd.service
 enable mycroft-admin-phal.service
+enable smb.service
+enable nmb.service
 
 disable pulseaudio.service
 disable getty@.service
@@ -23,3 +25,5 @@ disable spotifyd.service
 disable nodered.service
 disable btspeaker.service
 disable telnetd.service
+disable samba.service
+disable winbind.service
