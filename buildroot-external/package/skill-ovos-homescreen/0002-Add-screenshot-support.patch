@@ -1,0 +1,58 @@
+From 85ef78b02e5ed6313c459e5a8f071e0d3f17e501 Mon Sep 17 00:00:00 2001
+From: j1nx <p.steenbergen@j1nx.nl>
+Date: Wed, 16 Nov 2022 13:32:57 +0100
+Subject: [PATCH 1/1] Add screenshot support
+
+---
+ __init__.py                         | 18 +++++++++++++++++-
+ locale/en-us/take.screenshot.intent |  2 ++
+ 2 files changed, 19 insertions(+), 1 deletion(-)
+ create mode 100644 locale/en-us/take.screenshot.intent
+
+diff --git a/__init__.py b/__init__.py
+index d546d35..6016156 100644
+--- a/__init__.py
++++ b/__init__.py
+@@ -133,7 +133,11 @@ class OVOSHomescreenSkill(MycroftSkill):
+         self.bus.on("ovos.common_play.track_info.response",
+                     self.handle_media_player_widget_update)
+ 
+-        self.collect_wallpapers()
++        # Handle Screenshot Response
++        self.bus.on("ovos.display.screenshot.get.response",
++                    self.screenshot_taken)
++
++	self.collect_wallpapers()
+         self._load_skill_apis()
+ 
+         self.schedule_repeating_event(self.update_weather, callback_time, 900)
+@@ -531,6 +535,18 @@ class OVOSHomescreenSkill(MycroftSkill):
+         collection = {"collection": cards}
+         return collection
+ 
++    ######################################################################
++    # Handle Screenshot
++
++    @intent_file_handler("take.screenshot.intent")
++    def take_screenshot(self, message):
++        folder_path = os.path.expanduser('~') + "/Pictures"
++        self.bus.emit(Message("ovos.display.screenshot.get", {"folderpath": folder_path}))
++
++    def screenshot_taken(self, message):
++        result = message.data.get("result")
++        display_message = f"Screenshot saved to {result}"
++        self.gui.show_notification(display_message)
+ 
+ def create_skill():
+     return OVOSHomescreenSkill()
+diff --git a/locale/en-us/take.screenshot.intent b/locale/en-us/take.screenshot.intent
+new file mode 100644
+index 0000000..ca86262
+--- /dev/null
++++ b/locale/en-us/take.screenshot.intent
+@@ -0,0 +1,2 @@
++take screenshot
++take a screenshot
+-- 
+2.34.1
+
