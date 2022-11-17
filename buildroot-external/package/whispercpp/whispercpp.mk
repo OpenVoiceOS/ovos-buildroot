@@ -4,7 +4,7 @@
 #
 ################################################################################
 
-WHISPERCPP_VERSION = 83c742f1a78a018c4eac790fabab91f174d92c3a
+WHISPERCPP_VERSION = d6b84b2a23220dd8b8792872a3ab6802cd24b424
 WHISPERCPP_SITE = $(call github,ggerganov,whisper.cpp,$(WHISPERCPP_VERSION))
 WHISPERCPP_LICENSE = Apache License 2.0
 
