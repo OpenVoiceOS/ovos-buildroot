@@ -3,6 +3,7 @@ Description=Mycroft Skills
 PartOf=mycroft.service
 After=mycroft.service
 After=mycroft-messagebus.service
+After=pulseaudio.service
 
 [Service]
 Type=notify

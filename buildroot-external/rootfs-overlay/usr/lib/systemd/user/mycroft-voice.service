@@ -3,6 +3,7 @@ Description=Mycroft Voice
 PartOf=mycroft.service
 After=mycroft.service
 After=mycroft-messagebus.service
+After=pulseaudio.service
 
 [Service]
 Type=notify
@@ -19,4 +20,3 @@ StartLimitBurst=4
 
 [Install]
 WantedBy=mycroft.service
-

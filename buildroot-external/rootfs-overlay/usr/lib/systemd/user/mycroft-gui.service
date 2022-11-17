@@ -19,4 +19,4 @@ StandardOutput=null
 Restart=on-failure
 
 [Install]
-WantedBy=mycroft.service
+WantedBy=default.target
