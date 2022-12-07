@@ -1,0 +1,25 @@
+From 5eda69438b8f8bcd00865c70d58fdc7916969b60 Mon Sep 17 00:00:00 2001
+From: j1nx <p.steenbergen@j1nx.nl>
+Date: Sat, 3 Dec 2022 17:34:47 +0100
+Subject: [PATCH 1/1] Fix deletion of headers by mesa3d
+
+---
+ package/qt5/qt5webengine/qt5webengine.mk | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/package/qt5/qt5webengine/qt5webengine.mk b/package/qt5/qt5webengine/qt5webengine.mk
+index 836ba62189..8a0757fccc 100644
+--- a/package/qt5/qt5webengine/qt5webengine.mk
++++ b/package/qt5/qt5webengine/qt5webengine.mk
+@@ -7,7 +7,7 @@
+ QT5WEBENGINE_VERSION = $(QT5_VERSION)
+ QT5WEBENGINE_SITE = $(QT5_SITE)/qtwebengine/-/archive/v$(QT5WEBENGINE_VERSION)-lts
+ QT5WEBENGINE_SOURCE = qtwebengine-v$(QT5WEBENGINE_VERSION)-lts.tar.bz2
+-QT5WEBENGINE_DEPENDENCIES = qt5declarative qt5webchannel
++QT5WEBENGINE_DEPENDENCIES = qt5declarative qt5webchannel xorgproto-mesafix
+ QT5WEBENGINE_PATCH_DEPENDENCIES = qt5webengine-chromium
+ QT5WEBENGINE_INSTALL_STAGING = YES
+ QT5WEBENGINE_SYNC_QT_HEADERS = YES
+-- 
+2.34.1
+

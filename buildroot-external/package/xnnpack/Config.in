@@ -1,0 +1,11 @@
+config BR2_PACKAGE_XNNPACK
+	bool "xnnpack"
+	select BR2_PACKAGE_CLOG
+	select BR2_PACKAGE_CPUINFO
+	select BR2_PACKAGE_PTHREADPOOL
+	select BR2_PACKAGE_FP16
+	help
+	  High-efficiency floating-point neural network 
+	  inference operators for mobile, server, and Web
+
+	  https://github.com/google/XNNPACK

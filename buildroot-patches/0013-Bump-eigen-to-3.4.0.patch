@@ -1,0 +1,152 @@
+From 31086b9e6ea8d816ee988981bbb09715d7ba5cb8 Mon Sep 17 00:00:00 2001
+From: j1nx <p.steenbergen@j1nx.nl>
+Date: Wed, 7 Dec 2022 09:24:26 +0100
+Subject: [PATCH 1/1] Bump eigen to 3.4.0
+
+---
+ ...ons-for-controlling-build-components.patch | 85 +++++++++++++++++++
+ package/eigen/eigen.hash                      |  4 +-
+ package/eigen/eigen.mk                        | 16 +++-
+ 3 files changed, 100 insertions(+), 5 deletions(-)
+ create mode 100644 package/eigen/0001-Adds-new-CMake-Options-for-controlling-build-components.patch
+
+diff --git a/package/eigen/0001-Adds-new-CMake-Options-for-controlling-build-components.patch b/package/eigen/0001-Adds-new-CMake-Options-for-controlling-build-components.patch
+new file mode 100644
+index 0000000000..693e610d0a
+--- /dev/null
++++ b/package/eigen/0001-Adds-new-CMake-Options-for-controlling-build-components.patch
+@@ -0,0 +1,85 @@
++From cf82186416d04ea5df2a397d8fe09dc78d40ca65 Mon Sep 17 00:00:00 2001
++From: =?UTF-8?q?Antonio=20S=C3=A1nchez?= <cantonios@google.com>
++Date: Sat, 5 Mar 2022 05:49:45 +0000
++Subject: [PATCH] Adds new CMake Options for controlling build components.
++
++[Retrieved from:
++https://gitlab.com/libeigen/eigen/-/commit/cf82186416d04ea5df2a397d8fe09dc78d40ca65]
++Signed-off-by: Fabrice Fontaine <fontaine.fabrice@gmail.com>
++---
++ CMakeLists.txt        | 6 ++++++
++ blas/CMakeLists.txt   | 3 ++-
++ lapack/CMakeLists.txt | 5 +++++
++ 3 files changed, 13 insertions(+), 1 deletion(-)
++
++diff --git a/CMakeLists.txt b/CMakeLists.txt
++index de1c23e91..0af36a53a 100644
++--- a/CMakeLists.txt
+++++ b/CMakeLists.txt
++@@ -477,6 +477,9 @@ if(EIGEN_BUILD_TESTING)
++   add_subdirectory(failtest)
++ endif()
++ 
+++include(CMakeDetermineFortranCompiler)
+++option(EIGEN_BUILD_BLAS "Toggles the building of the Eigen Blas library" ${CMAKE_Fortran_COMPILER})
+++option(EIGEN_BUILD_LAPACK "Toggles the building of the included Eigen LAPACK library" ${CMAKE_Fortran_COMPILER})
++ if(EIGEN_LEAVE_TEST_IN_ALL_TARGET)
++   add_subdirectory(blas)
++   add_subdirectory(lapack)
++@@ -611,6 +614,8 @@ set_target_properties (eigen PROPERTIES EXPORT_NAME Eigen)
++ 
++ install (TARGETS eigen EXPORT Eigen3Targets)
++ 
+++option(EIGEN_BUILD_CMAKE_PACKAGE "Enables the creation of EigenConfig.cmake and related files" ON)
+++if(EIGEN_BUILD_CMAKE_PACKAGE)
++ configure_package_config_file (
++   ${CMAKE_CURRENT_SOURCE_DIR}/cmake/Eigen3Config.cmake.in
++   ${CMAKE_CURRENT_BINARY_DIR}/Eigen3Config.cmake
++@@ -655,6 +660,7 @@ install (FILES ${CMAKE_CURRENT_BINARY_DIR}/Eigen3Config.cmake
++ # Add uninstall target
++ add_custom_target ( uninstall
++     COMMAND ${CMAKE_COMMAND} -P ${CMAKE_CURRENT_SOURCE_DIR}/cmake/EigenUninstall.cmake)
+++endif()
++ 
++ if (EIGEN_SPLIT_TESTSUITE)
++   ei_split_testsuite("${EIGEN_SPLIT_TESTSUITE}")
++diff --git a/blas/CMakeLists.txt b/blas/CMakeLists.txt
++index 8d3cb86dc..c530957fb 100644
++--- a/blas/CMakeLists.txt
+++++ b/blas/CMakeLists.txt
++@@ -1,6 +1,7 @@
++ 
++ project(EigenBlas CXX)
++ 
+++if(EIGEN_BUILD_BLAS)
++ include(CheckLanguage)
++ check_language(Fortran)
++ if(CMAKE_Fortran_COMPILER)
++@@ -59,4 +60,4 @@ if(EIGEN_BUILD_TESTING)
++ endif()
++ 
++ endif()
++-
+++endif()
++diff --git a/lapack/CMakeLists.txt b/lapack/CMakeLists.txt
++index c8ca64001..8d6d75401 100644
++--- a/lapack/CMakeLists.txt
+++++ b/lapack/CMakeLists.txt
++@@ -1,5 +1,7 @@
++ project(EigenLapack CXX)
++ 
+++if(EIGEN_BUILD_LAPACK AND EIGEN_BUILD_BLAS)
+++
++ include(CheckLanguage)
++ check_language(Fortran)
++ if(CMAKE_Fortran_COMPILER)
++@@ -457,3 +459,6 @@ if(EXISTS ${eigen_full_path_to_testing_lapack})
++ 
++ endif()
++ 
+++elseif(EIGEN_BUILD_LAPACK AND NOT EIGEN_BUILD_BLAS)
+++ message(FATAL_ERROR "EIGEN_BUILD_LAPACK requires EIGEN_BUILD_BLAS")
+++endif() #EIGEN_BUILD_LAPACK
++-- 
++GitLab
++
+diff --git a/package/eigen/eigen.hash b/package/eigen/eigen.hash
+index 5ec561ad10..ad7d6da9dc 100644
+--- a/package/eigen/eigen.hash
++++ b/package/eigen/eigen.hash
+@@ -1,6 +1,6 @@
+ # Locally computed
+-sha256  685adf14bd8e9c015b78097c1dc22f2f01343756f196acdc76a678e1ae352e11  eigen-3.3.7.tar.bz2
+-sha256  4f877e5ae4672568ef82cfd0023e2cef4a7cf55d867ab249efc9569a7eb9e5b1  COPYING.BSD
++sha256  b4c198460eba6f28d34894e3a5710998818515104d6e74e5cc331ce31e46e626  eigen-3.4.0.tar.bz2
++sha256  51928dce36213c5333ba3172e847d735d4c6e9b7ff2722a326c49067155b82eb  COPYING.BSD
+ sha256  8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903  COPYING.GPL
+ sha256  dc626520dcd53a22f727af3ee42c770e56c97a64fe3adb063799d8ab032fe551  COPYING.LGPL
+ sha256  f5b330efdad110cdd84d585ec61220b0650461fa599e36b13e1726c9346dcfb9  COPYING.MINPACK
+diff --git a/package/eigen/eigen.mk b/package/eigen/eigen.mk
+index 98e6c61e38..7fe3fbdac6 100644
+--- a/package/eigen/eigen.mk
++++ b/package/eigen/eigen.mk
+@@ -4,7 +4,7 @@
+ #
+ ################################################################################
+ 
+-EIGEN_VERSION = 3.3.7
++EIGEN_VERSION = 3.4.0
+ EIGEN_SOURCE = eigen-$(EIGEN_VERSION).tar.bz2
+ EIGEN_SITE = $(call gitlab,libeigen,eigen,$(EIGEN_VERSION))
+ EIGEN_LICENSE = MPL2, BSD-3-Clause, LGPL-2.1
+@@ -15,7 +15,17 @@ EIGEN_SUPPORTS_IN_SOURCE_BUILD = NO
+ 
+ # Default Eigen CMake installs .pc file in /usr/share/pkgconfig
+ # change it to /usr/lib/pkgconfig, to be consistent with other packages.
+-EIGEN_CONF_OPTS = -DPKGCONFIG_INSTALL_DIR=/usr/lib/pkgconfig \
+-	-DCMAKE_Fortran_COMPILER=$(TARGET_FC)
++EIGEN_CONF_OPTS = -DPKGCONFIG_INSTALL_DIR=/usr/lib/pkgconfig
++
++ifeq ($(BR2_TOOLCHAIN_HAS_FORTRAN),y)
++EIGEN_CONF_OPTS += \
++	-DCMAKE_Fortran_COMPILER=$(TARGET_FC) \
++	-DEIGEN_BUILD_BLAS=ON \
++	-DEIGEN_BUILD_LAPACK=ON
++else
++EIGEN_CONF_OPTS += \
++	-DEIGEN_BUILD_BLAS=OFF \
++	-DEIGEN_BUILD_LAPACK=OFF
++endif
+ 
+ $(eval $(cmake-package))
+-- 
+2.34.1
+

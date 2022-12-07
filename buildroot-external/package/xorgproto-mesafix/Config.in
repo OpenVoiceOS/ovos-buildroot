@@ -1,0 +1,5 @@
+config BR2_PACKAGE_XORGPROTO_MESAFIX
+	bool "xorgproto-mesafix"
+	help
+	  This package combines the protocol headers, which were
+	  formerly scattered in individual packages.

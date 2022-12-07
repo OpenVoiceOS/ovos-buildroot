@@ -1,0 +1,7 @@
+config BR2_PACKAGE_PTHREADPOOL
+	bool "pthreadpool"
+	select BR2_PACKAGE_FXDIV
+	help
+	  Portable (POSIX/Windows/Emscripten) thread pool for C/C++
+
+	  https://github.com/Maratyszcza/pthreadpool/

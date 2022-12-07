@@ -1,0 +1,7 @@
+config BR2_PACKAGE_GEMMLOWP
+	bool "gemmlowp"
+	depends on BR2_INSTALL_LIBSTDCPP
+	help
+	  Low-precision matrix multiplication.
+
+	  https://github.com/google/gemmlowp

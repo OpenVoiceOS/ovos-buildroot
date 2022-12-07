@@ -1,0 +1,13 @@
+config BR2_PACKAGE_RUY
+	bool "ruy"
+	depends on BR2_INSTALL_LIBSTDCPP
+        select BR2_PACKAGE_CPUINFO
+	help
+	  ruy is a matrix multiplication library. 
+	  Its focus is to cover the matrix multiplication 
+	  needs of neural network inference engines. 
+
+	  Its initial user has been TensorFlow Lite, where 
+	  it is used by default on the ARM CPU architecture.
+
+	  https://github.com/google/ruy

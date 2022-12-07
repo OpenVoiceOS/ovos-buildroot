@@ -1,10 +1,33 @@
 config BR2_PACKAGE_TENSORFLOW_LITE
-	bool "tensorflow-lite"
-	help
-	  TensorFlow Lite is the official solution for running
-          machine learning models on mobile and embedded devices.
-          It enables on-device machine learning inference with
-          low latency and a small binary size on Android, iOS,
-          and other operating systems.
+        bool "tensorflow-lite"
+        depends on BR2_TOOLCHAIN_GCC_AT_LEAST_9
+        depends on BR2_TOOLCHAIN_USES_GLIBC
+        depends on BR2_INSTALL_LIBSTDCPP
+        depends on BR2_TOOLCHAIN_HAS_THREADS
+        depends on BR2_SHARED_LIBS
+        depends on ( BR2_arm && BR2_ARM_CPU_ARMV7A ) || ( BR2_aarch64 && BR2_ARM_CPU_ARMV8A )
+        select BR2_PACKAGE_CPUINFO
+        select BR2_PACKAGE_EIGEN
+        select BR2_PACKAGE_FARMHASH
+        select BR2_PACKAGE_FFT2D
+        select BR2_PACKAGE_FLATBUFFERS
+        select BR2_PACKAGE_GEMMLOWP
+        select BR2_PACKAGE_LIBABSEIL_CPP
+        select BR2_PACKAGE_NEON2SSE
+        select BR2_PACKAGE_RUY
+	select BR2_PACKAGE_XNNPACK
+        help
+          Tensorflow Lite dynamic library and headers: Inference engine to run previously trained machine learning models.
 
-	  https://www.tensorflow.org/lite/
+comment "tensorflow-lite needs needs a toolchain w/ gcc >= 9"
+        depends on !BR2_TOOLCHAIN_GCC_AT_LEAST_9
+
+comment "tensorflow-lite needs a toolchain w/ glibc, C++, threads"
+        depends on !BR2_TOOLCHAIN_USES_GLIBC || !BR2_INSTALL_LIBSTDCPP || \
+                        !BR2_TOOLCHAIN_HAS_THREADS
+
+comment "tensorflow-lite needs a toolchain w/ shared libraries"
+        depends on !BR2_SHARED_LIBS
+
+comment "tensorflow-lite in buildroot currently only supports arm + armv7a cpu or arm64 + armv8a cpu targets"
+        depends on ( BR2_arm && !BR2_ARM_CPU_ARMV7A ) || ( BR2_aarch64 && !BR2_ARM_CPU_ARMV8A) || (!BR2_arm && !BR2_aarch64)

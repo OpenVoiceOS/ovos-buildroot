@@ -23,4 +23,10 @@ endif
 
 KF5_KCONFIG_CONF_OPTS = -DCMAKE_CXX_FLAGS="$(KF5_KCONFIG_CXXFLAGS)"
 
+KF5_KCONFIG_POST_INSTALL_STAGING_HOOKS = KF5_KCONFIG_COMPILER_FIX
+
+define KF5_KCONFIG_COMPILER_FIX
+	cp /usr/lib/libexec/kf5/kconfig_compiler_kf5 $(STAGING_DIR)/usr/lib/libexec/
+endef
+
 $(eval $(cmake-package))

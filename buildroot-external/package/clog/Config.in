@@ -1,0 +1,7 @@
+config BR2_PACKAGE_CLOG
+	bool "clog"
+	help
+	  C-style library for logging errors, warnings,
+	  information notes, and debug information.
+
+	  https://github.com/pytorch/cpuinfo/tree/master/deps/clog

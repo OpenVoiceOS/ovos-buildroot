@@ -1,0 +1,7 @@
+config BR2_PACKAGE_FARMHASH
+	bool "farmhash"
+	depends on BR2_INSTALL_LIBSTDCPP
+	help
+	  FarmHash, a family of hash functions.
+
+	  https://github.com/google/farmhash

@@ -1,0 +1,8 @@
+config BR2_PACKAGE_CPUINFO
+	bool "cpuinfo"
+	depends on BR2_INSTALL_LIBSTDCPP
+	help
+	  cpuinfo is a library to detect essential for performance
+	  optimization information about host CPU.
+
+	  https://github.com/pytorch/cpuinfo

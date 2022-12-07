@@ -1,0 +1,6 @@
+config BR2_PACKAGE_NEON2SSE
+	bool "neon2sse"
+	help
+	  NEON_2_SSE.h file is intended to simplify ARM->IA32 porting.
+
+	  https://github.com/intel/ARM_NEON_2_x86_SSE
