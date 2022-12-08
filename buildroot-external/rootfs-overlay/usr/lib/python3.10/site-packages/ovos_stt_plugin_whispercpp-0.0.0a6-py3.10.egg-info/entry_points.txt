@@ -1,0 +1,6 @@
+[mycroft.plugin.stt]
+ovos-stt-plugin-whispercpp = ovos_stt_plugin_whispercpp:WhispercppSTT
+
+[mycroft.plugin.stt.config]
+ovos-stt-plugin-whispercpp.config = ovos_stt_plugin_whispercpp:WhispercppSTTConfig
+

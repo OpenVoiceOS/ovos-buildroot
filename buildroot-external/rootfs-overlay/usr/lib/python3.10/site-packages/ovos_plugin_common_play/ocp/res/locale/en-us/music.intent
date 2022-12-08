@@ -1,0 +1,4 @@
+(play|start) (music|song) {{query}}
+(play|start) (music|song)
+(play|start) {{query}} (music|song)
+(play|start) (some|a) (music|song)

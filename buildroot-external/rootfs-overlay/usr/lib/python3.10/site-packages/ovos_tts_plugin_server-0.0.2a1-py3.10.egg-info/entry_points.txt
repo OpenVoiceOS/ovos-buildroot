@@ -1,0 +1,6 @@
+[mycroft.plugin.tts]
+ovos-tts-plugin-server = ovos_tts_plugin_server:OVOSServerTTS
+
+[mycroft.plugin.tts.config]
+ovos-tts-plugin-server.config = ovos_tts_plugin_server:OVOSServerTTSConfig
+

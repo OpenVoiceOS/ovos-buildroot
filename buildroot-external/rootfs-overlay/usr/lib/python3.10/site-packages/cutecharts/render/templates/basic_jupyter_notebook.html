@@ -1,0 +1,11 @@
+{% import 'macro' as macro %}
+
+<script>
+    require.config({
+        paths: {
+            {{ chart.notebook_cfg | join(', ') }}
+        }
+    });
+</script>
+
+{{ macro.render_chart_notebook(chart) }}

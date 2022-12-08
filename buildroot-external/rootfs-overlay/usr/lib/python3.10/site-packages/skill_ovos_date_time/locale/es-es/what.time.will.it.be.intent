@@ -1,0 +1,6 @@
+que hora será (en|de aquí a|) {offset} (horas|minutos|segundos) (desde ahora|)
+qué hora tendremos en {offset} (horas|minutos|segundos) (desde ahora|)
+qué hora será (en|) {offset} (horas|minutos|segundos) (desde ahora|) en {location}
+qué hora tendremos en {offset} (horas|minutos|segundos) (desde ahora|) en {location}
+que hora será en {location} (en|de aquí a|) {offset} (horas|minutos|segundos) (desde ahora|)
+qué hora tendremos en {location} en {offset} (horas|minutos|segundos) (desde ahora|)

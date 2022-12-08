@@ -1,0 +1,3 @@
+Currently, the wind is from the {direction} at {speed} {speed_unit} in {location}, a good day to stay inside
+The wind is very strong from the {direction} in {location} today, {speed} {speed_unit}
+{location} will have strong winds today, {speed} {speed_unit}

@@ -1,0 +1,3 @@
+ovos-plugin-manager>=0.0.1
+ovos_utils
+mycroft-messagebus-client

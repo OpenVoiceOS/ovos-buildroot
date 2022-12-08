@@ -1,0 +1,11 @@
+LICENSE
+setup.py
+ovos_tts_plugin_mimic/__init__.py
+ovos_tts_plugin_mimic/version.py
+ovos_tts_plugin_mimic.egg-info/PKG-INFO
+ovos_tts_plugin_mimic.egg-info/SOURCES.txt
+ovos_tts_plugin_mimic.egg-info/dependency_links.txt
+ovos_tts_plugin_mimic.egg-info/entry_points.txt
+ovos_tts_plugin_mimic.egg-info/requires.txt
+ovos_tts_plugin_mimic.egg-info/top_level.txt
+ovos_tts_plugin_mimic.egg-info/zip-safe

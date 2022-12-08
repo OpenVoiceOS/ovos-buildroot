@@ -1,0 +1,16 @@
+LICENSE
+MANIFEST.in
+README.rst
+setup.cfg
+setup.py
+premailer/__init__.py
+premailer/__main__.py
+premailer/cache.py
+premailer/merge_style.py
+premailer/premailer.py
+premailer.egg-info/PKG-INFO
+premailer.egg-info/SOURCES.txt
+premailer.egg-info/dependency_links.txt
+premailer.egg-info/not-zip-safe
+premailer.egg-info/requires.txt
+premailer.egg-info/top_level.txt

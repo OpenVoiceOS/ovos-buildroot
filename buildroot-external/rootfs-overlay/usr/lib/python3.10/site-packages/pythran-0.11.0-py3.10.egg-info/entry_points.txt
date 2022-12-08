@@ -1,0 +1,4 @@
+[console_scripts]
+pythran = pythran.run:run
+pythran-config = pythran.config:run
+

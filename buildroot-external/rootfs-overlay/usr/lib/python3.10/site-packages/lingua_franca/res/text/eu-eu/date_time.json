@@ -1,0 +1,112 @@
+{
+  "decade_format": {
+    "default": "{number}"
+  },
+    "hundreds_format": {
+    "default": "{number}"
+  },
+    "thousand_format": {
+    "default": "{number}"
+  },
+    "year_format": {
+    "default": "{year} {bc}",
+    "bc": "k.a."
+  },
+    "date_format": {
+    "date_full": "{weekday}, {formatted_year}ko {month}ren {day}",
+    "date_full_no_year": "{weekday}, {month}ren {day}",
+    "date_full_no_year_month": "{weekday}, {day}",
+    "today": "gaur",
+    "tomorrow": "bihar",
+    "yesterday": "atzo"
+  },
+    "date_time_format": {
+    "date_time": "{formatted_date} {formatted_time}tan"
+  },
+    "weekday": {
+    "0": "astelehena",
+    "1": "asteartea",
+    "2": "asteazkena",
+    "3": "osteguna",
+    "4": "ostirala",
+    "5": "larunbata",
+    "6": "igandea"
+  },
+  "date": {
+    "1": "bat",
+    "2": "bi",
+    "3": "hiru",
+    "4": "lau",
+    "5": "bost",
+    "6": "sei",
+    "7": "zazpi",
+    "8": "zortzi",
+    "9": "bederatzi",
+    "10": "hamar",
+    "11": "hamaika",
+    "12": "hamabi",
+    "13": "hamahiru",
+    "14": "hamalau",
+    "15": "hamabost",
+    "16": "hamasei",
+    "17": "hamazazpi",
+    "18": "hemezortzi",
+    "19": "hemeretzi",
+    "20": "hogei",
+    "21": "hogeita bat",
+    "22": "hogeita bi",
+    "23": "hogeita hiru",
+    "24": "hogeita lau",
+    "25": "hogeita bost",
+    "26": "hogeita sei",
+    "27": "hogeita zazpi",
+    "28": "hogeita zorti",
+    "29": "hogeita bederatzi",
+    "30": "hogeita hamar",
+    "31": "hogeita hamaika"
+  },
+  "month": {
+    "1": "urtarrila",
+    "2": "otsaila",
+    "3": "martxoa",
+    "4": "apirila",
+    "5": "maiatza",
+    "6": "ekaina",
+    "7": "uztaila",
+    "8": "abuztua",
+    "9": "iraula",
+    "10": "urria",
+    "11": "azaroa",
+    "12": "abendua"
+  },
+  "number": {
+    "0": "zero",
+    "1": "bat",
+    "2": "bi",
+    "3": "hiru",
+    "4": "lau",
+    "5": "bost",
+    "6": "sei",
+    "7": "zazpi",
+    "8": "zortzi",
+    "9": "bederatzi",
+    "10": "hamar",
+    "11": "hamaika",
+    "12": "hamabi",
+    "13": "hamahiru",
+    "14": "hamalau",
+    "15": "hamabost",
+    "16": "hamasei",
+    "17": "hamazazpi",
+    "18": "hemezortzi",
+    "19": "hemeretzi",
+    "20": "hogei",
+    "30": "hogeita hamar",
+    "40": "berrogei",
+    "50": "berrogeita hamar",
+    "60": "hirurogei",
+    "70": "hirurogeita hamar",
+    "80": "laurogei",
+    "90": "laurogeita hamar"
+  }
+}

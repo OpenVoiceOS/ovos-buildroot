@@ -1,0 +1,3 @@
+delete note {number}
+remove note {number}
+wipe note {number}

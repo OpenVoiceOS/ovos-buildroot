@@ -1,0 +1,3 @@
+[mycroft.plugin.wake_word]
+ovos-ww-plugin-pocketsphinx=ovos_ww_plugin_pocketsphinx:PocketsphinxHotWordPlugin
+

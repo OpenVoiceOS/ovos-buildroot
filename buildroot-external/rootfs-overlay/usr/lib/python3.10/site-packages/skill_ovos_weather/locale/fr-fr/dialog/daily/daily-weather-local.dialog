@@ -1,0 +1,3 @@
+{{day}} il fera {{condition}}, avec des températures comprises entre {{temp_max}} et {{temp_min}} degrés
+{{day}} il fera entre {{temp_max}} et {{temp_min}} degrés, avec des conditions de {{condition}}
+les prévisions pour {{day}} annoncent des températures comprises entre {{temp_max}} et {{temp_min}} degrés

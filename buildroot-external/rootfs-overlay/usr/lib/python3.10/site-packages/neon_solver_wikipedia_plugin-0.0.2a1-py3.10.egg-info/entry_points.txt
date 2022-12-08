@@ -1,0 +1,3 @@
+[neon.plugin.solver]
+neon_solver_wikipedia_plugin=neon_solver_wikipedia_plugin:WikipediaSolver
+

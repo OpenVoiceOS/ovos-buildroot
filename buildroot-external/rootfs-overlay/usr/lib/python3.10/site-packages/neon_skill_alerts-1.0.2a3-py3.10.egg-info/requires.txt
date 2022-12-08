@@ -1,0 +1,3 @@
+json_database~=0.5
+neon-utils<=2.0.0,>=0.6
+combo_lock~=0.2

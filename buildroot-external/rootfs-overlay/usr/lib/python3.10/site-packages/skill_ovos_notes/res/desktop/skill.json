@@ -1,0 +1,77 @@
+{
+    "authorname": "OpenVoiceOS",
+    "foldername": "skill-ovos-notes",
+    "url": "https://github.com/OpenVoiceOS/skill-ovos-notes",
+    "branch": "dev",
+    "license": "apache-2.0",
+    "tags": [
+        "notes",
+        "productivity",
+        "Daily",
+        "permissive-license"
+    ],
+    "short_description": "Take personal notes to keep track of appointments, to-do items, etc.",
+    "last_updated": "2022-10-19T02:09:22Z",
+    "icon": "https://raw.githack.com/FortAwesome/Font-Awesome/master/svgs/solid/sticky-note.svg",
+    "skillname": "Notes",
+    "description": "Use OVOS when your hands are busy and you want to quickly take a note.",
+    "examples": [
+        "edit note",
+        "wipe note {number}",
+        "remove note",
+        "speak my last {number} of notes",
+        "show all my notes",
+        "read all my notes",
+        "read my previous note",
+        "change note",
+        "speak my first {number} notes",
+        "speak my previous note",
+        "speak note {number}",
+        "delete the current note",
+        "read my first {number} notes",
+        "read all notes",
+        "speak my last note",
+        "show all my personal notes",
+        "remove the current note",
+        "read my first {number} of notes",
+        "delete note",
+        "open all my notes",
+        "edit the current note",
+        "read note {number}",
+        "speak all notes",
+        "read my last {number} of notes",
+        "speak my first {number} of notes",
+        "take a personal note",
+        "show all personal notes",
+        "open all notes",
+        "tell me about my last note",
+        "read my last {number} notes",
+        "read my last note",
+        "checkout note {number}",
+        "show all notes",
+        "open note {number}",
+        "show note {number}",
+        "delete note {number}",
+        "change the current note",
+        "speak all my notes",
+        "tell me about note {number}",
+        "remove note {number}",
+        "speak my last {number} notes",
+        "take a note"
+    ],
+    "credits": [
+        "Aix (@AIIX)"
+    ],
+    "category": "Daily",
+    "categories": [
+        "Daily"
+    ],
+    "requirements": {
+        "python": [
+            "json-database"
+        ],
+        "skill": [],
+        "system": {}
+    },
+    "desktopFile": false
+}

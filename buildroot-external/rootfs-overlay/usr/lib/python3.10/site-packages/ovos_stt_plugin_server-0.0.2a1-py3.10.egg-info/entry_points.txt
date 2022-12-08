@@ -1,0 +1,7 @@
+[mycroft.plugin.stt]
+ovos-stt-plugin-server = ovos_stt_plugin_server:OVOSHTTPServerSTT
+ovos-stt-plugin-server-streaming = ovos_stt_plugin_server:OVOSHTTPStreamServerSTT
+
+[mycroft.plugin.stt.config]
+ovos-stt-plugin-server.config = ovos_stt_plugin_server:OVOSHTTPServerSTTConfig
+

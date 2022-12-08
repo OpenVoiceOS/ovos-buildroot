@@ -1,0 +1,11 @@
+LICENSE
+MANIFEST.in
+README
+geoip.py
+setup.cfg
+setup.py
+python_geoip.egg-info/PKG-INFO
+python_geoip.egg-info/SOURCES.txt
+python_geoip.egg-info/dependency_links.txt
+python_geoip.egg-info/not-zip-safe
+python_geoip.egg-info/top_level.txt

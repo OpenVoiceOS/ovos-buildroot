@@ -1,0 +1,3 @@
+[ovos.plugin.phal]
+ovos-PHAL-plugin-notification-widgets=ovos_PHAL_plugin_notification_widgets:OVOSNotificationWidgetsPlugin
+

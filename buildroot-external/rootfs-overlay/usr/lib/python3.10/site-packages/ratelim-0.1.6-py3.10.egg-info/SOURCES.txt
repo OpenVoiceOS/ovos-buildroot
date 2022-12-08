@@ -1,0 +1,12 @@
+HISTORY.rst
+MANIFEST.in
+README.rst
+requirements.txt
+setup.cfg
+setup.py
+ratelim/__init__.py
+ratelim.egg-info/PKG-INFO
+ratelim.egg-info/SOURCES.txt
+ratelim.egg-info/dependency_links.txt
+ratelim.egg-info/requires.txt
+ratelim.egg-info/top_level.txt

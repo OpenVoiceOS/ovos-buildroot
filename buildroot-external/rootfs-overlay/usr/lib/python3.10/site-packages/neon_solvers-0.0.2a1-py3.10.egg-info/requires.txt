@@ -1,0 +1,4 @@
+quebra_frases
+json_database
+ovos_plugin_manager
+neon-lang-plugin-libretranslate

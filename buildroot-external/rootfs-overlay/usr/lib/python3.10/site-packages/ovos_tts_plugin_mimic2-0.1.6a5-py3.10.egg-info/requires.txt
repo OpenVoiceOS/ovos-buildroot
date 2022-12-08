@@ -1,0 +1,3 @@
+requests~=2.26
+ovos-plugin-manager>=0.0.1
+ovos-utils>=0.0.14

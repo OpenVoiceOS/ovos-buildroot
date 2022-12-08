@@ -1,0 +1,44 @@
+{
+    "authorname": "OpenVoiceOS",
+    "foldername": "skill-ovos-weather",
+    "url": "https://github.com/OpenVoiceOS/skill-ovos-weather",
+    "branch": "dev",
+    "license": "apache-2.0",
+    "tags": [
+        "Daily",
+        "weather",
+        "temperature",
+        "rain",
+        "forecast",
+        "humidity",
+        "snow",
+        "permissive-license"
+    ],
+    "short_description": "Weather conditions and forecasts",
+    "last_updated": "2022-10-14T21:41:18Z",
+    "icon": "https://rawgithub.com/FortAwesome/Font-Awesome/master/svgs/solid/sun.svg",
+    "skillname": "Weather",
+    "description": "Get weather conditions, forecasts, expected precipitation and more!  By default, it will tell\nyou about your device's configured location. You can also ask for other cities around the world. \n\nCurrent conditions and weather forecasts come from [Open Weather Map](https://openweathermap.org).\n\nThe temperature is shown in Celsius or Fahrenheit depending on the preferences \nset in your [https://home.mycroft.ai](https://home.mycroft.ai) account.  You can ask \nspecifically for a unit that differs from your configuration.",
+    "examples": [
+        "do I need a rain jacket",
+        "should I bring a rain coat",
+        "do I need an umbrella",
+        "should I bring an umbrella"
+    ],
+    "credits": [
+        "Mycroft AI (@MycroftAI)"
+    ],
+    "category": "Daily",
+    "categories": [
+        "Daily"
+    ],
+    "requirements": {
+        "python": [
+            "requests",
+            "pytz"
+        ],
+        "skill": [],
+        "system": {}
+    },
+    "desktopFile": false
+}

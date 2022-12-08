@@ -1,0 +1,3 @@
+[console_scripts]
+padatious = padatious.__main__:main
+

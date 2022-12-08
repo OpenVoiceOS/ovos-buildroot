@@ -1,0 +1,14 @@
+CHANGELOG.md
+LICENSE
+MANIFEST.in
+setup.py
+ovos_tts_plugin_mimic2/__init__.py
+ovos_tts_plugin_mimic2/version.py
+ovos_tts_plugin_mimic2.egg-info/PKG-INFO
+ovos_tts_plugin_mimic2.egg-info/SOURCES.txt
+ovos_tts_plugin_mimic2.egg-info/dependency_links.txt
+ovos_tts_plugin_mimic2.egg-info/entry_points.txt
+ovos_tts_plugin_mimic2.egg-info/requires.txt
+ovos_tts_plugin_mimic2.egg-info/top_level.txt
+ovos_tts_plugin_mimic2.egg-info/zip-safe
+requirements/requirements.txt

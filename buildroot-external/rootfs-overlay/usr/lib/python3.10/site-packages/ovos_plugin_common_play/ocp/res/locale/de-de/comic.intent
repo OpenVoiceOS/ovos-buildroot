@@ -1,0 +1,3 @@
+(spiel|spiele|beginn|beginne|start|starte) (comic|animation|animationsfilm|animierter film|gezeichneter film) {{query}}
+(spiel|spiele|beginn|beginne|start|starte) {{query}} (comic|animation|animationsfilm|animierter film|gezeichneter film)
+(spiel|spiele|beginn|beginne|start|starte)  (comic|animation|animationsfilm|animierter film|gezeichneter film)

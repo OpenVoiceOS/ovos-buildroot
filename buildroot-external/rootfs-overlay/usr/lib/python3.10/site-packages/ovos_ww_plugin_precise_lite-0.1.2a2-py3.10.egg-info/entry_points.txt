@@ -1,0 +1,4 @@
+[mycroft.plugin.wake_word]
+ovos-precise-lite = ovos_ww_plugin_precise_lite:PreciseLiteHotwordPlugin
+ovos-ww-plugin-precise-lite = ovos_ww_plugin_precise_lite:PreciseLiteHotwordPlugin
+

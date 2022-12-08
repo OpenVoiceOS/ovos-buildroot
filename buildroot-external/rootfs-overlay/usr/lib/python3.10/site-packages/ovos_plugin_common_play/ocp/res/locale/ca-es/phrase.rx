@@ -1,0 +1,3 @@
+reprodueix (?P<Phrase>.*)
+(comença|inicia|posa) (?P<Phrase>.*)
+(atura|pausa) (?P<Phrase>.*)

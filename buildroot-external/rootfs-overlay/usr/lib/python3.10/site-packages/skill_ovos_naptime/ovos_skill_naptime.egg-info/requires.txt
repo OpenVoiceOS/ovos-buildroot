@@ -1,0 +1,2 @@
+ovos_workshop>=0.0.5
+ovos_utils>=0.0.18

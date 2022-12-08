@@ -1,0 +1,3 @@
+ovos-plugin-manager
+smbus2
+RPi.GPIO

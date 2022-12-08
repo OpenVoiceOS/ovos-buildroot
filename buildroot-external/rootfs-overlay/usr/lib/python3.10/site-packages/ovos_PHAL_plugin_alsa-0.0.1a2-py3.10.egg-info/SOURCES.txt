@@ -1,0 +1,11 @@
+setup.py
+ovos_PHAL_plugin_alsa/__init__.py
+ovos_PHAL_plugin_alsa/blop-mark-diangelo.wav
+ovos_PHAL_plugin_alsa/version.py
+ovos_PHAL_plugin_alsa.egg-info/PKG-INFO
+ovos_PHAL_plugin_alsa.egg-info/SOURCES.txt
+ovos_PHAL_plugin_alsa.egg-info/dependency_links.txt
+ovos_PHAL_plugin_alsa.egg-info/entry_points.txt
+ovos_PHAL_plugin_alsa.egg-info/requires.txt
+ovos_PHAL_plugin_alsa.egg-info/top_level.txt
+ovos_PHAL_plugin_alsa.egg-info/zip-safe

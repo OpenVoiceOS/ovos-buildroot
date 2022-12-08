@@ -1,0 +1,3 @@
+[ovos.plugin.skill]
+skill-ovos-weather.openvoiceos=skill_ovos_weather:WeatherSkill
+

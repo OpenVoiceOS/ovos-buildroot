@@ -1,0 +1,4 @@
+# It will be {wind} {wind_unit} in {location} {day}
+Det vil være {wind} {wind_unit} i {location} {day}  
+# The wind will be as strong as {wind} {wind_unit} in {location} {day}
+Vinden vil være så stærk som {wind} {wind_unit} i {location} {day}  

@@ -1,0 +1,6 @@
+[mycroft.plugin.audioservice]
+ovos_vlc=ovos_plugin_vlc
+
+[mycroft.plugin.audioservice.config]
+ovos_vlc.config=ovos_plugin_vlc:VLCAudioPluginConfig
+

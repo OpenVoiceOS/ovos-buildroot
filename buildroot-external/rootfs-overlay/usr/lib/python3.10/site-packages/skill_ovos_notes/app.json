@@ -1,0 +1,5 @@
+{
+    "icon": "/res/icon/sticky-note.svg",
+    "name": "Notes",
+    "action": "ovos.notes.skill.show.all.notes"
+}

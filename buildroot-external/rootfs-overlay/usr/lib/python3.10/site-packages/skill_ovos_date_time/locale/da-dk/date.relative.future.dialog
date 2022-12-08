@@ -1,0 +1,4 @@
+{{date}}, {{num_days}} fra nu
+det er {{date}}, om {{num_days}}
+Det bliver {{date}}, om {{num_days}}
+{{date}}, om {{num_days}}

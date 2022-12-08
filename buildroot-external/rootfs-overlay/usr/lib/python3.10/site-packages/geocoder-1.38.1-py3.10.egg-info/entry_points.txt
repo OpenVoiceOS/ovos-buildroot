@@ -1,0 +1,4 @@
+
+        [console_scripts]
+        geocode=geocoder.cli:cli
+    

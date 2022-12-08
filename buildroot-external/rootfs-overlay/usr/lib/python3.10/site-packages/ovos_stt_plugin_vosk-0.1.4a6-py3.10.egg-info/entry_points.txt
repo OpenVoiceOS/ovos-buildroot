@@ -1,0 +1,8 @@
+[mycroft.plugin.stt]
+ovos-stt-plugin-vosk = ovos_stt_plugin_vosk:VoskKaldiSTT
+ovos-stt-plugin-vosk-streaming = ovos_stt_plugin_vosk:VoskKaldiStreamingSTT
+
+[mycroft.plugin.stt.config]
+ovos-stt-plugin-vosk-streaming.config = ovos_stt_plugin_vosk:VoskSTTConfig
+ovos-stt-plugin-vosk.config = ovos_stt_plugin_vosk:VoskSTTConfig
+

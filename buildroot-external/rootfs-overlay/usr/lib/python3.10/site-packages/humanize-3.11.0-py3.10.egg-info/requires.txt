@@ -1,0 +1,6 @@
+setuptools
+
+[tests]
+freezegun
+pytest
+pytest-cov

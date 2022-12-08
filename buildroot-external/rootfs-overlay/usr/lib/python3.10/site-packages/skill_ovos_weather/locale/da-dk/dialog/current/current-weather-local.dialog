@@ -1,0 +1,6 @@
+# It's currently {condition} and {temp} degrees {scale}. 
+Det er i øjeblikket {condition} og {temp} grader {scale}.   
+# It's currently {condition} and {temp} degrees.
+Det er i øjeblikket {condition} og {temp} grader.  
+# Right now, it's {condition} and {temp} degrees.
+Lige nu, det er {condition} og {temp} grader.  

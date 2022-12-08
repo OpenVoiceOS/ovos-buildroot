@@ -1,0 +1,26 @@
+{
+    "platform": "Linux-5.4.0-58-generic-x86_64-with-glibc2.29",
+    "enclosure": "OpenVoiceOS",
+    "python_version": "3.8.5",
+    "system": "Linux",
+    "version": "#64-Ubuntu SMP Wed Dec 9 08:16:25 UTC 2020",
+    "arch": "x86_64",
+    "release": "5.4.0-58-generic",
+    "node": "user-Predator-PH315-51",
+    "desktop_env": "xfce4",
+    "ipc_path": "/ramdisk/mycroft/ipc/",
+    "input_device_name": "OpenVoiceOS",
+    "input_device_index": null,
+    "default_audio_backend": "vlc",
+    "msm_skills_dir": "skills",
+    "data_dir": "/opt/mycroft",
+    "priority_skills": [
+        "mycroft-pairing",
+        "mycroft-volume"
+    ],
+    "backend_url": "https://api.mycroft.ai",
+    "mycroft_core_location": null,
+    "can_display": true,
+    "is_gui_installed": true,
+    "pulseaudio_running": true
+}

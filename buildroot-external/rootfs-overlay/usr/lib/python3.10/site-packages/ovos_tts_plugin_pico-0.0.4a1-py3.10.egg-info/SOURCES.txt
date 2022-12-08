@@ -1,0 +1,9 @@
+setup.py
+ovos_tts_plugin_pico/__init__.py
+ovos_tts_plugin_pico.egg-info/PKG-INFO
+ovos_tts_plugin_pico.egg-info/SOURCES.txt
+ovos_tts_plugin_pico.egg-info/dependency_links.txt
+ovos_tts_plugin_pico.egg-info/entry_points.txt
+ovos_tts_plugin_pico.egg-info/requires.txt
+ovos_tts_plugin_pico.egg-info/top_level.txt
+ovos_tts_plugin_pico.egg-info/zip-safe

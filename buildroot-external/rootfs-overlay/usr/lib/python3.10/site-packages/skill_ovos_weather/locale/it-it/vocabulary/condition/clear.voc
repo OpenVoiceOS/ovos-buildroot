@@ -1,0 +1,3 @@
+# Clear weather types used in handler for "sta per essere tempo chiaro"
+(sereno|soleggiato|sole)
+tempo (buono|bello)

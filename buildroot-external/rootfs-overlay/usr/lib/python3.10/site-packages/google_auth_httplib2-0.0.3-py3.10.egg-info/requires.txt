@@ -1,0 +1,2 @@
+google-auth
+httplib2>=0.9.1

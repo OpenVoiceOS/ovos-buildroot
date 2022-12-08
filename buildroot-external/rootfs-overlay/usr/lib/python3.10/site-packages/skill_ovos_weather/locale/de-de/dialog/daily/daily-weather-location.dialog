@@ -1,0 +1,3 @@
+{day} wird es {condition}, mit maximal {temp_max} und minimal {temp_min} Grad in {location}
+{day}, {location} wird Höchstwerte von {temp_max} und Minimalwerte von {temp_min} Grad haben, mit {condition}
+Die Vorhersage für {day} in {location} ist {temp_max} Grad als höchster und {temp_min} Grad als niedrigster Wert

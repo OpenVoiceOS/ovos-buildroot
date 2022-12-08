@@ -1,0 +1,6 @@
+[mycroft.plugin.stt]
+ovos-stt-plugin-chromium = ovos_stt_plugin_chromium:ChromiumSTT
+
+[mycroft.plugin.stt.config]
+ovos-stt-plugin-chromium.config = ovos_stt_plugin_chromium:ChromiumSTTConfig
+

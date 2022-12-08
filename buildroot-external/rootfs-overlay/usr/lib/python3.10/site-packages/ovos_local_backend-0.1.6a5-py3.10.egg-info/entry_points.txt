@@ -1,0 +1,3 @@
+[console_scripts]
+ovos-local-backend = ovos_local_backend.__main__:main
+

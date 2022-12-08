@@ -1,0 +1,3 @@
+[ovos.plugin.skill]
+skill-ovos-stop.openvoiceos=skill_ovos_stop:StopSkill
+

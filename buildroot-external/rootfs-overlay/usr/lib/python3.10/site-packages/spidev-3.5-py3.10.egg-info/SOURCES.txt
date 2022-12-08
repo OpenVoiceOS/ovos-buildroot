@@ -1,0 +1,11 @@
+CHANGELOG.md
+LICENSE
+MANIFEST.in
+README.md
+setup.cfg
+setup.py
+spidev_module.c
+spidev.egg-info/PKG-INFO
+spidev.egg-info/SOURCES.txt
+spidev.egg-info/dependency_links.txt
+spidev.egg-info/top_level.txt

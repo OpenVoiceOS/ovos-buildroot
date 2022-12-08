@@ -1,0 +1,15 @@
+COPYING
+MANIFEST.in
+README.rst
+pyproject.toml
+setup.cfg
+setup.py
+zeroconf/__init__.py
+zeroconf/py.typed
+zeroconf/test.py
+zeroconf.egg-info/PKG-INFO
+zeroconf.egg-info/SOURCES.txt
+zeroconf.egg-info/dependency_links.txt
+zeroconf.egg-info/not-zip-safe
+zeroconf.egg-info/requires.txt
+zeroconf.egg-info/top_level.txt

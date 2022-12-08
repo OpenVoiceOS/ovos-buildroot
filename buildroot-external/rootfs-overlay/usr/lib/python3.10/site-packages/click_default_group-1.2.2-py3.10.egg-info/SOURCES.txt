@@ -1,0 +1,9 @@
+README.md
+click_default_group.py
+setup.cfg
+setup.py
+click_default_group.egg-info/PKG-INFO
+click_default_group.egg-info/SOURCES.txt
+click_default_group.egg-info/dependency_links.txt
+click_default_group.egg-info/requires.txt
+click_default_group.egg-info/top_level.txt

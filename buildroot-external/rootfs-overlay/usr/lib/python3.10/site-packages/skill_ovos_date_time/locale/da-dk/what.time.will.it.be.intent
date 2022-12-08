@@ -1,0 +1,2 @@
+hvad er klokken om {offset} (time|timer|minut|minutter|sekund|sekunder)
+hvad er klokken om {offset} (timtimer|minut|minutter|sekund|sekunder) (i|op) {location}

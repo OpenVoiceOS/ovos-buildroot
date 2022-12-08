@@ -1,0 +1,3 @@
+[ovos.plugin.skill]
+skill-ovos-ddg.openvoiceos=skill_ovos_ddg:DuckDuckGoSkill
+

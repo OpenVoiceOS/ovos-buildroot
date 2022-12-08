@@ -1,0 +1,12 @@
+
+[docs]
+sphinx>=1.5.3
+
+[qa]
+flake8
+
+[test]
+nose
+
+[test:python_version < "3.3"]
+mock

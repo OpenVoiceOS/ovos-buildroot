@@ -1,0 +1,6 @@
+# It's {wind} {wind_unit}, might be good to stay inside today
+Det er {wind} {wind_unit}, kan være godt at være inde i dag  
+# The wind is very strong today, {wind} {wind_unit}
+Vinden er meget stærk i dag, {wind} {wind_unit}  
+# It's very windy today, {wind} {wind_unit}
+Det er meget blæsende i dag, {wind} {wind_unit}  

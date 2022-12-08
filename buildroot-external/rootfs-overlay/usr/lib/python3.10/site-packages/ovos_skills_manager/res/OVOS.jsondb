@@ -1,0 +1,472 @@
+{
+    "OVOS": [
+        {
+            "title": "CaffeineWiz",
+            "url": "https://github.com/NeonGeckoCom/caffeinewiz.neon",
+            "summary": "Provides the caffeine content of various drinks on request. Multiple drinks in a row are possible.",
+            "short_description": "Provides the caffeine content of various drinks on request. Multiple drinks in a row are possible.",
+            "description": "The skill provides the functionality to inform the user of the caffeine content of the requested drink by collecting the required information from two data sources: 1.  [http://caffeinewiz.com/](http://caffeinewiz.com/) - the main source of information for the drink’s database 2.  [https://www.caffeineinformer.com/the-caffeine-database](https://www.caffeineinformer.com/the-caffeine-database) - secondary source for any non-duplicate drinks CaffeineWiz uses [BeautifulSoup](https://www.crummy.com/software/BeautifulSoup/bs4/doc/) to pull the tables from the websites above, then strips the html tags, and later formats the results into the comprehensive list. That object is pickled for the future use. The skill will check for updates periodically. You can modify that time period by changing `TIME_TO_CHECK` parameter on top of the file in the init.",
+            "examples": [
+                "tell me caffeine content of pepsi.",
+                "how much caffeine is in starbucks blonde?",
+                "tell me caffeine content of rocket chocolate.",
+                "Tell me caffeine content of Pepsi.",
+                "How much caffeine is in Starbucks Blonde?",
+                "Tell me caffeine content of Rocket Chocolate."
+            ],
+            "desktopFile": false,
+            "warning": "",
+            "systemDeps": false,
+            "platforms": [
+                "i386",
+                "x86_64",
+                "ia64",
+                "arm64",
+                "arm"
+            ],
+            "branch": "v0.1.1",
+            "license": "NeonAI License v1.0",
+            "icon": "logo.svg",
+            "category": "Information",
+            "categories": [
+                "Information",
+                "Daily"
+            ],
+            "tags": [
+                "NeonGecko",
+                "NeonAI",
+                "caffeine",
+                "coffee",
+                "Information",
+                "Daily"
+            ],
+            "skillname": "CaffeineWiz",
+            "authorname": "NeonGeckoCom",
+            "foldername": "caffeinewiz.neon",
+            "appstore": "OpenVoiceOS",
+            "appstore_url": "https://openvoiceos.github.io/OVOS-skills-store/caffeineWiz.json",
+            "last_updated": "2021-08-10T22:09:37Z",
+            "version": "v0.1.1",
+            "credits": [
+                "@NeonGeckoCom\n@reginaneon\n@NeonDaniel"
+            ],
+            "requirements": {
+                "python": [
+                    "git+https://github.com/neongeckocom/neon-skill-utils"
+                ],
+                "skill": [],
+                "system": {}
+            },
+            "android": {
+                "android_icon": null,
+                "android_name": "Caffeinewiz.Neon Skill",
+                "android_handler": "caffeinewiz.neon.neongeckocom.home"
+            },
+            "desktop": {}
+        },
+        {
+            "skillname": "skill-ddg",
+            "authorname": "JarbasSkills",
+            "foldername": "skill-ddg",
+            "url": "https://github.com/JarbasSkills/skill-ddg",
+            "branch": "v0.1.0",
+            "desktopFile": false,
+            "warning": "",
+            "systemDeps": false,
+            "platforms": [
+                "i386",
+                "x86_64",
+                "ia64",
+                "arm64",
+                "arm"
+            ],
+            "examples": [
+                "ask the duck about the big bang",
+                "who is elon musk",
+                "tell me more",
+                "when was stephen hawking born",
+                "continue"
+            ],
+            "license": "apache-2.0",
+            "requirements": {
+                "python": [
+                    "google_trans_new",
+                    "requests",
+                    "RAKEkeywords"
+                ],
+                "system": {},
+                "skill": []
+            },
+            "download_url": "https://github.com/JarbasSkills/skill-ddg/archive/v0.1.0.tar.gz",
+            "icon": "https://github.com/JarbasSkills/skill-ddg/res/icon/ddg.png",
+            "description": "Uses the [DuckDuckGo API](https://duckduckgo.com/api) to provide information. \n\nNOTE: this is meant a better alternative to the official duck duck go skill, it will be blacklisted",
+            "short_description": "Use DuckDuckGo to answer questions",
+            "category": "Information",
+            "categories": [
+                "Information"
+            ],
+            "tags": [
+                "searchengine",
+                "search-engine",
+                "duckduckgo",
+                "query",
+                "Information",
+                "permissive-license"
+            ],
+            "appstore": "OpenVoiceOS",
+            "appstore_url": "https://openvoiceos.github.io/OVOS-skills-store/skill-ddg.json",
+            "last_updated": "2021-05-18T16:48:25Z",
+            "version": "v0.1.0",
+            "logo": "https://raw.githubusercontent.com/JarbasSkills/skill-ddg/v0.1.0/ui/logo.png",
+            "android": {
+                "android_icon": "https://raw.githubusercontent.com/JarbasSkills/skill-ddg/v0.1.0/res/icon/ddg.png",
+                "android_name": "Ddg Skill",
+                "android_handler": "skill-ddg.jarbasskills.home"
+            },
+            "desktop": {
+                "Terminal": "false",
+                "Type": "Application",
+                "Name": "DuckDuckGo Skill",
+                "Exec": "mycroft-gui-app --hideTextInput --skill=skill-ddg.jarbasskills.home",
+                "Icon": "ddg.png",
+                "Categories": "VoiceApp",
+                "StartupNotify": "false",
+                "X-DBUS-StartupType": "None",
+                "X-KDE-StartupNotify": "false"
+            },
+            "name": "DuckDuckGo"
+        },
+        {
+            "title": "Launcher",
+            "url": "https://github.com/NeonGeckoCom/launcher.neon",
+            "summary": "Skill used to launch programs in Ubuntu",
+            "short_description": "Launcher skill",
+            "description": "This example skill is used to launch desktop applications.",
+            "examples": [
+                "launch chrome",
+                "avigate to google.com"
+            ],
+            "desktopFile": true,
+            "warning": "",
+            "systemDeps": false,
+            "platforms": [
+                "i386",
+                "x86_64",
+                "ia64",
+                "arm64",
+                "arm"
+            ],
+            "branch": "v0.1.0",
+            "license": "other",
+            "icon": "https://0000.us/klatchat/app/files/neon_images/icons/neon_paw.png",
+            "category": null,
+            "categories": [
+                ""
+            ],
+            "tags": [
+                ""
+            ],
+            "skillname": "Launcher",
+            "authorname": "NeonGeckoCom",
+            "foldername": "launcher.neon",
+            "appstore": "OpenVoiceOS",
+            "appstore_url": "https://openvoiceos.github.io/OVOS-skills-store/Launcher.json",
+            "last_updated": "2021-08-10T21:58:43Z",
+            "requirements": {
+                "python": [],
+                "skill": [],
+                "system": {}
+            },
+            "android": {
+                "android_icon": null,
+                "android_name": "Launcher.Neon Skill",
+                "android_handler": "launcher.neon.neongeckocom.home"
+            },
+            "desktop": {}
+        },
+        {
+            "name": "Wolfram Alpha",
+            "skillname": "skill-wolfie",
+            "authorname": "JarbasSkills",
+            "foldername": "skill-wolfie",
+            "url": "https://github.com/JarbasSkills/skill-wolfie",
+            "branch": "v0.1",
+            "desktopFile": false,
+            "warning": "",
+            "systemDeps": false,
+            "platforms": [
+                "arm",
+                "arm64",
+                "i386",
+                "x86_64",
+                "ia64"
+            ],
+            "download_url": "https://github.com/JarbasSkills/skill-wolfie/archive/v0.1.tar.gz",
+            "examples": [
+                "ask the wolf what is the speed of light",
+                "How tall is Mount Everest?",
+                "When was The Rocky Horror Picture Show released?",
+                "What is Madonna's real name?",
+                "What's 18 times 4?",
+                "How many inches in a meter?"
+            ],
+            "appstore": "OpenVoiceOS",
+            "appstore_url": "https://openvoiceos.github.io/OVOS-skills-store/skill-wolfie.json",
+            "license": "apache-2.0",
+            "tags": [
+                "general-knowledge",
+                "Information",
+                "wolfram-alpha",
+                "query",
+                "information",
+                "no-license"
+            ],
+            "version": "v0.1",
+            "icon": "https://github.com/JarbasSkills/skill-wolfie/res/icon/wolfie.png",
+            "description": "Ask general-knowledge queries of your Mycroft device. \nCommonQuery skill for [Wolfram Alpha](https://wolframalpha.com). \nYou'll be surprised by how much it knows!\n\nYou can also explicitly request to \"ask the wolf\"\n\nNOTE: this is meant to be a better alternative to the official mycroft skill, it will blacklist the official skill!!",
+            "short_description": "Use Wolfram Alpha for general knowledge questions",
+            "category": "Information",
+            "categories": [
+                "Information"
+            ],
+            "logo": "https://raw.githubusercontent.com/JarbasSkills/skill-wolfie/v0.1/ui/logo.png",
+            "requirements": {
+                "python": [
+                    "google_trans_new",
+                    "requests>=2.13.0"
+                ],
+                "skill": [],
+                "system": {}
+            },
+            "android": {
+                "android_icon": "https://raw.githubusercontent.com/JarbasSkills/skill-wolfie/v0.1/res/icon/wolfie.png",
+                "android_name": "Wolfie Skill",
+                "android_handler": "skill-wolfie.jarbasskills.home"
+            },
+            "desktop": {
+                "Terminal": "false",
+                "Type": "Application",
+                "Name": "Wolfram Alpha Skill",
+                "Exec": "mycroft-gui-app --hideTextInput --skill=skill-wolfie.jarbasskills.home",
+                "Icon": "wolfie.png",
+                "Categories": "VoiceApp",
+                "StartupNotify": "false",
+                "X-DBUS-StartupType": "None",
+                "X-KDE-StartupNotify": "false"
+            }
+        },
+        {
+            "title": "Alerts",
+            "url": "https://github.com/NeonGeckoCom/alerts.neon",
+            "summary": "A skill to schedule alarms, timers, and reminders",
+            "short_description": "A skill to schedule alarms, timers, and reminders",
+            "description": "The skill provides functionality to create alarms, timers and reminders, remove them by name, time, or type, and ask for what is active. You may also silence all alerts and ask for a summary of what was missed if you were away, your device was off, or you had quiet hours enabled. Alarms and reminders may be set to recur daily or weekly. An active alert may be snoozed for a specified amount of time while it is active. Any alerts that are not acknowledged will be added to a list of missed alerts that may be read and cleared when requested.",
+            "examples": [
+                "set an alarm for 8 am",
+                "when is my next alarm",
+                "cancel my 8 am alarm",
+                "set a 5 minute timer",
+                "how much time is left",
+                "remind me to go home at 6",
+                "remind me to take out the trash every thursday at 7 pm",
+                "what are my reminders",
+                "cancel all (alarms/timers/reminders)",
+                "go to sleep",
+                "quiet hours",
+                "stop",
+                "snooze",
+                "snooze for 1 minute",
+                "wake up",
+                "what did i miss",
+                "did i miss anything"
+            ],
+            "desktopFile": false,
+            "warning": "",
+            "systemDeps": false,
+            "requirements": {
+                "python": [
+                    "lingua-franca~=0.3.1",
+                    "spacy~=2.3.1",
+                    "https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-2.3.1/en_core_web_sm-2.3.1.tar.gz",
+                    "json_database~=0.5.5",
+                    "git+https://github.com/neongeckocom/neon-skill-utils"
+                ],
+                "system": {},
+                "skill": []
+            },
+            "incompatible_skills": [
+                "https://github.com/mycroftai/skill-reminder",
+                "https://github.com/mycroftai/skill-alarm",
+                "https://github.com/mycroftai/mycroft-timer"
+            ],
+            "platforms": [
+                "i386",
+                "x86_64",
+                "ia64",
+                "arm64",
+                "arm"
+            ],
+            "branch": "v0.1.0",
+            "license": "NeonAI License v1.0",
+            "icon": "logo.svg",
+            "category": "Productivity",
+            "categories": [
+                "Productivity",
+                "Daily"
+            ],
+            "tags": [
+                "NeonGecko",
+                "NeonAI",
+                "alert",
+                "alarm",
+                "timer",
+                "reminder",
+                "schedule",
+                "Productivity",
+                "Daily",
+                "no-license"
+            ],
+            "skillname": "Alerts",
+            "authorname": "Neon",
+            "foldername": "alerts.neon",
+            "download_url": "https://api.github.com/repos/NeonGeckoCom/alerts.neon/zipball/master",
+            "appstore": "OpenVoiceOS",
+            "appstore_url": "https://openvoiceos.github.io/OVOS-skills-store/Alerts.json",
+            "version": "v0.1.0",
+            "credits": [
+                "@NeonGeckoCom\n@NeonDaniel"
+            ],
+            "android": {
+                "android_icon": null,
+                "android_name": "Alerts.Neon Skill",
+                "android_handler": "alerts.neon.neongeckocom.home"
+            },
+            "desktop": {}
+        },
+        {
+            "url": "https://github.com/JarbasSkills/skill-icanhazdadjokes",
+            "branch": "v0.1.0",
+            "appstore": "OpenVoiceOS",
+            "appstore_url": "https://openvoiceos.github.io/OVOS-skills-store/skill-icanhazdadjokes.json",
+            "authorname": "JarbasSkills",
+            "foldername": "skill-icanhazdadjokes",
+            "license": "apache-2.0",
+            "tags": [
+                "funny",
+                "humor",
+                "joke",
+                "jokes",
+                "Entertainment",
+                "humour",
+                "no-license"
+            ],
+            "version": "v0.1.0",
+            "icon": "https://github.com/JarbasSkills/skill-icanhazdadjokes/res/icon/dadjokes.png",
+            "skillname": "skill-icanhazdadjokes",
+            "description": "Brighten your day with dad humor.  \n\n _WARNING:  Laughter is not guaranteed, but eye rolls are likely._\n\nWorks in all languages\n\nNOTE: this will automatically blacklist the official mycroft skill",
+            "short_description": "Let Mycroft brighten your day with a little humor from [icanhazdadjoke](icanhazdadjoke.com)",
+            "examples": [
+                "tell me a joke",
+                "say a joke",
+                "do you know any jokes",
+                "can you tell jokes",
+                "make me laugh",
+                "tell me a joke about dentists",
+                "do you know any chuck norris jokes"
+            ],
+            "category": "Entertainment",
+            "categories": [
+                "Entertainment"
+            ],
+            "logo": "https://raw.githubusercontent.com/JarbasSkills/skill-icanhazdadjokes/v0.1.0/ui/logo.png",
+            "requirements": {
+                "python": [
+                    "google_trans_new",
+                    "pyjokes"
+                ],
+                "skill": [],
+                "system": {}
+            },
+            "android": {
+                "android_icon": "https://raw.githubusercontent.com/JarbasSkills/skill-icanhazdadjokes/v0.1.0/res/icon/dadjokes.png",
+                "android_name": "Icanhazdadjokes Skill",
+                "android_handler": "skill-icanhazdadjokes.jarbasskills.home"
+            },
+            "desktop": {
+                "Terminal": "false",
+                "Type": "Application",
+                "Name": "Jokes Skill",
+                "Exec": "mycroft-gui-app --hideTextInput --skill=skill-icanhazdadjokes.jarbasskills.home",
+                "Icon": "dadjokes.png",
+                "Categories": "VoiceApp",
+                "StartupNotify": "false",
+                "X-DBUS-StartupType": "None",
+                "X-KDE-StartupNotify": "false"
+            },
+            "desktopFile": false,
+            "name": "Jokes",
+            "systemDeps": false,
+            "platforms": [
+                "arm",
+                "arm64",
+                "i386",
+                "x86_64",
+                "ia64"
+            ]
+        },
+        {
+            "title": "Speed Test",
+            "url": "https://github.com/NeonGeckoCom/speed-test.neon",
+            "summary": "Skill used to test your internet speed",
+            "short_description": "Skill used to test your internet speed",
+            "description": "This skill uses speedtest.net to check your internet speed",
+            "examples": [
+                "run a speed test"
+            ],
+            "desktopFile": false,
+            "warning": "",
+            "systemDeps": false,
+            "platforms": [
+                "i386",
+                "x86_64",
+                "ia64",
+                "arm64",
+                "arm"
+            ],
+            "branch": "v0.1.0",
+            "license": "NeonAI Licensed",
+            "icon": "https://0000.us/klatchat/app/files/neon_images/icons/neon_paw.png",
+            "category": null,
+            "categories": [
+                ""
+            ],
+            "tags": [
+                "",
+                "no-license"
+            ],
+            "skillname": "Speed Test",
+            "authorname": "NeonGeckoCom",
+            "foldername": "speed-test.neon",
+            "appstore": "OpenVoiceOS",
+            "appstore_url": "https://openvoiceos.github.io/OVOS-skills-store/speed-test.json",
+            "version": "v0.1.0",
+            "credits": [
+                "reginaneon [neongeckocom](https://neongecko.com/) Mycroft AI"
+            ],
+            "requirements": {
+                "python": [
+                    "git+https://github.com/neongeckocom/neon-skill-utils",
+                    "speedtest-cli"
+                ],
+                "skill": [],
+                "system": {}
+            },
+            "android": {
+                "android_icon": null,
+                "android_name": "Speed Test.Neon Skill",
+                "android_handler": "speed-test.neon.neongeckocom.home"
+            },
+            "desktop": {}
+        }
+    ]
+}

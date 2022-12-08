@@ -1,0 +1,3 @@
+El vent no serà gaire fort a {location}, aproximadament {wind} {wind_unit} el {day}
+La previsió de {day} a {location} diu que farà {wind} {wind_unit}, gens malament
+Podeu esperar un vent d'aproximadament {wind} {wind_unit} el {day} a {location}

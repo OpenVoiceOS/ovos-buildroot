@@ -1,0 +1,24 @@
+attrs>=16.0.0
+pyasn1-modules
+pyasn1
+cryptography
+
+[:python_version < "3.3"]
+ipaddress
+
+[dev]
+coverage>=4.2.0
+pytest
+sphinx
+idna
+pyOpenSSL
+
+[docs]
+sphinx
+
+[idna]
+idna
+
+[tests]
+coverage>=4.2.0
+pytest

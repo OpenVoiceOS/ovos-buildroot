@@ -1,0 +1,35 @@
+six>=1.11.0
+more_itertools>=2.6
+jaraco.functools
+
+[:python_version < "3.3"]
+backports.functools_lru_cache
+
+[docs]
+sphinx>=1.8.2
+rst.linker>=1.9
+jaraco.packaging>=3.2
+sphinx-tabs>=1.1.0
+docutils
+alabaster
+collective.checkdocs
+
+[testing]
+pytest>=2.8
+pytest-mock>=1.11.0
+pytest-sugar>=0.9.1
+pytest-testmon>=0.9.7
+pytest-watch==4.2.0
+pytest-xdist>=1.28.0
+coverage==4.5.3
+codecov==2.0.15
+pytest-cov==2.7.1
+trustme>=0.4.0
+pyopenssl
+requests-unixsocket
+
+[testing:python_version != "3.4"]
+urllib3>=1.25
+
+[testing:python_version == "3.4"]
+urllib3<1.25

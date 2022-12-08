@@ -1,0 +1,14 @@
+LICENSE
+MANIFEST.in
+README.rst
+setup.cfg
+setup.py
+src_py2/test_typing_extensions.py
+src_py2/typing_extensions.py
+src_py3/test_typing_extensions.py
+src_py3/typing_extensions.py
+src_py3/typing_extensions.egg-info/PKG-INFO
+src_py3/typing_extensions.egg-info/SOURCES.txt
+src_py3/typing_extensions.egg-info/dependency_links.txt
+src_py3/typing_extensions.egg-info/requires.txt
+src_py3/typing_extensions.egg-info/top_level.txt

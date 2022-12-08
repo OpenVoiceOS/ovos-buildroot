@@ -1,0 +1,13 @@
+LICENSE
+MANIFEST.in
+setup.py
+ovos_cli_client/__init__.py
+ovos_cli_client/__main__.py
+ovos_cli_client/gui_server.py
+ovos_cli_client/text_client.py
+ovos_cli_client.egg-info/PKG-INFO
+ovos_cli_client.egg-info/SOURCES.txt
+ovos_cli_client.egg-info/dependency_links.txt
+ovos_cli_client.egg-info/entry_points.txt
+ovos_cli_client.egg-info/requires.txt
+ovos_cli_client.egg-info/top_level.txt
