@@ -1,0 +1,11 @@
+__init__.py
+_pywrap_tensorflow_interpreter_wrapper.so
+interpreter.py
+MANIFEST.in
+metrics_interface.py
+metrics_portable.py
+tflite_runtime.egg-info/PKG-INFO
+tflite_runtime.egg-info/SOURCES.txt
+tflite_runtime.egg-info/dependency_links.txt
+tflite_runtime.egg-info/requires.txt
+tflite_runtime.egg-info/top_level.txt

@@ -1,0 +1,3 @@
+[neon.plugin.solver]
+neon_solver_wolfram_alpha_plugin=neon_solver_wolfram_alpha_plugin:WolframAlpha
+

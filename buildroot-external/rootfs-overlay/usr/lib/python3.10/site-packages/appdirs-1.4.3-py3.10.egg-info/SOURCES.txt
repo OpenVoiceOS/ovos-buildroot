@@ -1,0 +1,13 @@
+CHANGES.rst
+LICENSE.txt
+MANIFEST.in
+README.rst
+appdirs.py
+setup.cfg
+setup.py
+appdirs.egg-info/PKG-INFO
+appdirs.egg-info/SOURCES.txt
+appdirs.egg-info/dependency_links.txt
+appdirs.egg-info/top_level.txt
+test/__init__.py
+test/test_api.py

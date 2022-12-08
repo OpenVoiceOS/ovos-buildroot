@@ -1,0 +1,8 @@
+CurrentWeather 1.0 CurrentWeather.qml
+DailyForecast 1.0 DailyForecast.qml
+HourlyForecast 1.0 HourlyForecast.qml
+SingleDay 1.0 SingleDay.qml
+WeatherDelegate 1.0 WeatherDelegate.qml
+DailyForecastColumnDelegate 1.0 DailyForecastColumnDelegate.qml
+HourlyForecastColumnDelegate 1.0 HourlyForecastColumnDelegate.qml
+SunriseSunset 1.0 SunriseSunset.qml

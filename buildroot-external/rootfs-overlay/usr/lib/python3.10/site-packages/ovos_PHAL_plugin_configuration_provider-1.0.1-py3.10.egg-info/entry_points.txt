@@ -1,0 +1,3 @@
+[ovos.plugin.phal]
+ovos-PHAL-plugin-configuration-provider=ovos_PHAL_plugin_configuration_provider:ConfigurationProviderPlugin
+

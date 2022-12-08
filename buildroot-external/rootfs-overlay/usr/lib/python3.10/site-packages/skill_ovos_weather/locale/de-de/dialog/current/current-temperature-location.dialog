@@ -1,0 +1,3 @@
+Es sind aktuell {temperature} Grad {temperature_unit} in {location}. 
+Es sind aktuell {temperature} Grad in {location}.
+Aktuell haben wir {temperature} Grad in {location}.

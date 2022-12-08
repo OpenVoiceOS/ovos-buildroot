@@ -1,0 +1,3 @@
+play (?P<Phrase>.*)
+start (?P<Phrase>.*)
+bork (?P<Phrase>.*)

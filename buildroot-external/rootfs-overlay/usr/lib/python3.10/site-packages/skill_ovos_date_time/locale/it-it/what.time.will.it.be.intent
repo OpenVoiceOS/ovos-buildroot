@@ -1,0 +1,6 @@
+che ora sarà (in|) {offset} (ore|minuti|secondi) (da adesso|)
+qual è il tempo in {offset} (ore|minuti|secondi) (da adesso|)
+che ora sarà (in|) {offset} (ore|minuti|secondi) (da ora|) in {location}
+qual è l'ora in {offset} (ore|minuti|secondi) (da ora|) in {location}
+che ora sarà (in|a) {location} (in|) {offset} (ore|minuti|secondi) (da adesso|)
+qual è l'ora (in|a) {location} in {offset} (ore|minuti|secondi) (da adesso!)

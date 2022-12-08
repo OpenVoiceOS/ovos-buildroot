@@ -1,0 +1,3 @@
+(spiel|spiele|beginn|beginne|start|starte) (film) {{query}}
+(spiel|spiele|beginn|beginne|start|starte) {{query}} (film|filme)
+(spiel|spiele|beginn|beginne|start|starte) (einen film|filme)

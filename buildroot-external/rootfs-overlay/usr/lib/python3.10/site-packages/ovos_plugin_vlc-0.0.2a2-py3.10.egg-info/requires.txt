@@ -1,0 +1,2 @@
+ovos-plugin-manager
+python-vlc>=1.1.2

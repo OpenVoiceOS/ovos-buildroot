@@ -1,0 +1,4 @@
+numpy>=1.16
+
+[numba]
+numba>=0.48

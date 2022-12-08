@@ -1,0 +1,2 @@
+# Clear weather types used in handler for "is it going to be cloudy"
+(cloudy|cloud|clouds|few clouds|scattered clouds)

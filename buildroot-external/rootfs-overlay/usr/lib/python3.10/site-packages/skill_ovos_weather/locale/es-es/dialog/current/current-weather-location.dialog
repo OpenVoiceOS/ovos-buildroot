@@ -1,0 +1,3 @@
+Con una máxima {{temp_max}} y una mínima de {{temp_min}}, {{location}} está {{condition}} con una temperatura en estos momentos de {{temp}} grados.
+En este momento el tiempo es {{condition}} con una temperatura de {{temp}} grados {{scale}} en {{location}}. La previsión para hoy es de máximas de {{temp_max}} grados y {{temp_min}} de mínimas.
+Ahora mismo {{condition}} con {{temp}} grados, con máximas de {{temp_max}} y mínimas de {{temp_min}} en {{location}}.

@@ -1,0 +1,3 @@
+It's currently {condition} and {temperature} degrees {temperature_unit}.
+It's currently {condition} and {temperature} degrees.
+Right now, it's {condition} and {temperature} degrees.

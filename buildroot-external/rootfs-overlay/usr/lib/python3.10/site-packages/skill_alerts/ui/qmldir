@@ -1,0 +1,8 @@
+AlarmBoxControl 1.0 AlarmBoxControl.qml
+AlarmBoxView 1.0 AlarmBoxView.qml
+AlarmButtonView 1.0 AlarmButtonView.qml
+AlarmCard 1.0 AlarmCard.qml
+AlarmsOverviewCard 1.0 AlarmsOverviewCard.qml
+RoundProgress 1.0 RoundProgress.qml
+Timer 1.0 Timer.qml
+TimerCard 1.0 TimerCard.qml

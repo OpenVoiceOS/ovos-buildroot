@@ -1,0 +1,17 @@
+CHANGES.rst
+COPYING
+MANIFEST.in
+README.rst
+setup.cfg
+setup.py
+pulsectl/__init__.py
+pulsectl/_pulsectl.py
+pulsectl/pulsectl.py
+pulsectl.egg-info/PKG-INFO
+pulsectl.egg-info/SOURCES.txt
+pulsectl.egg-info/dependency_links.txt
+pulsectl.egg-info/requires.txt
+pulsectl.egg-info/top_level.txt
+pulsectl/tests/__init__.py
+pulsectl/tests/all.py
+pulsectl/tests/dummy_instance.py

@@ -1,0 +1,8 @@
+
+[doc]
+mkdocs
+
+[test]
+pytest
+coverage
+tox

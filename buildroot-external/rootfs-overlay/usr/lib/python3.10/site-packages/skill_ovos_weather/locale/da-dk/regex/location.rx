@@ -1,0 +1,2 @@
+# .*\b(at|in) (?P<Location>(?!\bcelsius\b|\bfahrenheit\b) *.+)
+.*\b(på|i) (?P<Location>(?!\bcelsius\b|\bfahrenheit\b) *.+)  

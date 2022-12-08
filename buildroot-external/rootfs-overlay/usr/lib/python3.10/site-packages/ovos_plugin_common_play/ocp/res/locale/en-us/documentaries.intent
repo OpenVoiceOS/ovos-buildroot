@@ -1,0 +1,5 @@
+(play|start) (documentary|documentaries) {{query}}
+(play|start) a (documentary|documentaries) {{query}}
+(play|start) {{query}} (documentary|documentaries)
+(play|start) (documentary|documentaries)
+(play|start) a (documentary|documentaries)

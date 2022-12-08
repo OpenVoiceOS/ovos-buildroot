@@ -1,0 +1,17 @@
+setup.py
+ovos_PHAL_plugin_system/__init__.py
+ovos_PHAL_plugin_system/version.py
+ovos_PHAL_plugin_system.egg-info/PKG-INFO
+ovos_PHAL_plugin_system.egg-info/SOURCES.txt
+ovos_PHAL_plugin_system.egg-info/dependency_links.txt
+ovos_PHAL_plugin_system.egg-info/entry_points.txt
+ovos_PHAL_plugin_system.egg-info/requires.txt
+ovos_PHAL_plugin_system.egg-info/top_level.txt
+ovos_PHAL_plugin_system.egg-info/zip-safe
+ovos_PHAL_plugin_system/ui/Reboot.qml
+ovos_PHAL_plugin_system/ui/Restart.qml
+ovos_PHAL_plugin_system/ui/Shutdown.qml
+ovos_PHAL_plugin_system/ui/Status.qml
+ovos_PHAL_plugin_system/ui/animations/loading.json
+ovos_PHAL_plugin_system/ui/animations/status-fail.json
+ovos_PHAL_plugin_system/ui/animations/status-success.json

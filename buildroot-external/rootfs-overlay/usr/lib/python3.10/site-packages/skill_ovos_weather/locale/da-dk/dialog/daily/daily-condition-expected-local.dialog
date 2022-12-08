@@ -1,0 +1,5 @@
+# Affirmative response to questions like "is it going to snow tomorrow" 
+# Yes, expect {condition}
+Ja, forventer {condition}  
+# Yes, the forecast calls for {condition}
+Ja, prognosen kræver {condition}  

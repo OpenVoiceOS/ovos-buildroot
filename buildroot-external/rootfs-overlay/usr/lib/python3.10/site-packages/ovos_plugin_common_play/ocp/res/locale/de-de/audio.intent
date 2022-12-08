@@ -1,0 +1,3 @@
+(spiel|spiele|beginn|beginne|start|starte) nur (audio|musik|ton|sound) {{query}}
+(spiel|spiele|beginn|beginne|start|starte) {{query}} nur (audio|musik|ton|sound)
+(spiel|spiele|beginn|beginne|start|starte) (audio|musik|ton|sound|nur audio|nur musik|nur ton|nur sound)

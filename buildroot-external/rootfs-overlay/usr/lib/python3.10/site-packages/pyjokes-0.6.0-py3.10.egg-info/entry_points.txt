@@ -1,0 +1,4 @@
+[console_scripts]
+pyjoke = pyjokescli.pyjoke:main
+pyjokes = pyjokescli.pyjokes:main
+

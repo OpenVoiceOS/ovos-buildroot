@@ -1,0 +1,11 @@
+LICENSE.md
+setup.py
+ovos_tts_server/__init__.py
+ovos_tts_server/__main__.py
+ovos_tts_server.egg-info/PKG-INFO
+ovos_tts_server.egg-info/SOURCES.txt
+ovos_tts_server.egg-info/dependency_links.txt
+ovos_tts_server.egg-info/entry_points.txt
+ovos_tts_server.egg-info/requires.txt
+ovos_tts_server.egg-info/top_level.txt
+ovos_tts_server.egg-info/zip-safe

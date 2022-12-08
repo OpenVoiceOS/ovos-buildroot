@@ -1,0 +1,19 @@
+{
+  "yes": [
+    "prego",
+    "si",
+    "certo",
+    "sicuro",
+    "si",
+    "affermativo",
+    "certamente",
+    "va bene",
+    "corretto"
+  ],
+  "no": [
+    "no",
+    "naah",
+    "negativo",
+    "no no"
+  ]
+}

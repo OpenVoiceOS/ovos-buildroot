@@ -1,0 +1,4 @@
+{{date}}, {{num_days}} a partir de agora
+Será {{date}}, en {{num_days}}
+Será {{date}}, {{num_days}} a partir de agora
+{{date}}, en {{num_days}}

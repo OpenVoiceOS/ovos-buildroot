@@ -1,0 +1,6 @@
+# The wind will not be too bad in {location}, about {wind} {wind_unit} {day}
+Vinden vil ikke være for dårlig ind {location}, om {wind} {wind_unit} {day}  
+# The forecast {day} says {location} will have {wind} {wind_unit}, not too bad
+Prognosen {day} siger {location} vil have {wind} {wind_unit}, ikke dårligt  
+# You can expect a wind of about {wind} {wind_unit} in {location} {day}
+Du kan forvente en vind på omkring {wind} {wind_unit} i {location} {day}  

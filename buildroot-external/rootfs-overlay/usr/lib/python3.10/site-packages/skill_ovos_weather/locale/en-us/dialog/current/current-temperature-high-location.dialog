@@ -1,0 +1,4 @@
+A high of {temperature} degrees {temperature_unit} is expected in {location}.
+A high of {temperature} degrees can be expected in {location}.
+Today a the temperature will reach {temperature} degrees in {location}.
+

@@ -1,0 +1,23 @@
+{
+    "skillMetadata": {
+        "sections": [
+            {
+                "name": "Api Settings",
+                "fields": [
+                    {
+                        "name": "use_selene",
+                        "label": "use mycroft backend proxy",
+                        "type": "checkbox",
+                        "value": "true"
+                    },
+                    {
+                        "name": "appid",
+                        "label": "your api key, if not using proxy",
+                        "type": "text",
+                        "value": "Y7R353-9HQAAL8KKA"
+                    }
+                ]
+            }
+        ]
+    }
+}

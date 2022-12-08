@@ -1,0 +1,4 @@
+(play|start) (black and white|black white) (movie|movies|film) {{query}}
+(play|start) {{query}} (black and white|black white)(movie|movies|film|films)
+(play|start) (black and white|black white) (movie|movie|movies|film|films)
+(play|start) a (black and white|black white) (movie|movie|movies|film|films)

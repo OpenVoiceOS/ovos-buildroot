@@ -1,0 +1,16 @@
+setup.cfg
+setup.py
+flatbuffers/__init__.py
+flatbuffers/_version.py
+flatbuffers/builder.py
+flatbuffers/compat.py
+flatbuffers/encode.py
+flatbuffers/flexbuffers.py
+flatbuffers/number_types.py
+flatbuffers/packer.py
+flatbuffers/table.py
+flatbuffers/util.py
+flatbuffers.egg-info/PKG-INFO
+flatbuffers.egg-info/SOURCES.txt
+flatbuffers.egg-info/dependency_links.txt
+flatbuffers.egg-info/top_level.txt

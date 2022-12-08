@@ -1,0 +1,3 @@
+[ovos.plugin.phal]
+ovos-phal-mk2=ovos_PHAL_plugin_mk2:MycroftMark2
+

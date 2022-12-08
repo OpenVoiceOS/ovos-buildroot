@@ -1,0 +1,12 @@
+LICENSE
+README.md
+setup.py
+ovos_PHAL_plugin_color_scheme_manager/__init__.py
+ovos_PHAL_plugin_color_scheme_manager/version.py
+ovos_PHAL_plugin_color_scheme_manager.egg-info/PKG-INFO
+ovos_PHAL_plugin_color_scheme_manager.egg-info/SOURCES.txt
+ovos_PHAL_plugin_color_scheme_manager.egg-info/dependency_links.txt
+ovos_PHAL_plugin_color_scheme_manager.egg-info/entry_points.txt
+ovos_PHAL_plugin_color_scheme_manager.egg-info/requires.txt
+ovos_PHAL_plugin_color_scheme_manager.egg-info/top_level.txt
+ovos_PHAL_plugin_color_scheme_manager.egg-info/zip-safe

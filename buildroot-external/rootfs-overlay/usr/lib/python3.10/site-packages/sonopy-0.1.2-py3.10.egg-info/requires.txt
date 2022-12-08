@@ -1,0 +1,14 @@
+scipy
+numpy
+
+[comparison]
+arriz
+requests
+wavio
+librosa
+speechpy
+python_speech_features
+
+[example]
+arriz
+pylisten

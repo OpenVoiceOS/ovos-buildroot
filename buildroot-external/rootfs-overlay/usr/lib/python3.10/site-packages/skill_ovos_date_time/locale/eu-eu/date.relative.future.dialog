@@ -1,0 +1,4 @@
+{{date}}, gaurtik {{num_days}}
+{{date}} izango da, {{num_days}} egunetan
+{{date}} izango da, gaurtik hasi eta {{num_days}} egunera
+{{date}}, {{num_days}} egunera

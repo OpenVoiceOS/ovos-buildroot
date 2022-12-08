@@ -1,0 +1,3 @@
+(spiel|spiele|beginn|beginne|start|starte) (nachrichten|neuigkeiten) {{query}}
+(spiel|spiele|beginn|beginne|start|starte) {{query}} (nachrichten|neuigkeiten)
+(spiel|spiele|beginn|beginne|start|starte) (die nachrichten|nachrichten|neuigkeiten|euronews)

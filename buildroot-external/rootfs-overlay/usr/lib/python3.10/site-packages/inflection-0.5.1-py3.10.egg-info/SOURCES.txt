@@ -1,0 +1,17 @@
+LICENSE
+MANIFEST.in
+README.rst
+setup.cfg
+setup.py
+test_inflection.py
+docs/Makefile
+docs/conf.py
+docs/index.rst
+docs/__pycache__/conf.cpython-38.pyc
+inflection/__init__.py
+inflection/py.typed
+inflection.egg-info/PKG-INFO
+inflection.egg-info/SOURCES.txt
+inflection.egg-info/dependency_links.txt
+inflection.egg-info/not-zip-safe
+inflection.egg-info/top_level.txt

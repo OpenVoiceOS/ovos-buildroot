@@ -1,0 +1,10 @@
+setup.py
+ovos_ww_plugin_vosk/__init__.py
+ovos_ww_plugin_vosk/version.py
+ovos_ww_plugin_vosk.egg-info/PKG-INFO
+ovos_ww_plugin_vosk.egg-info/SOURCES.txt
+ovos_ww_plugin_vosk.egg-info/dependency_links.txt
+ovos_ww_plugin_vosk.egg-info/entry_points.txt
+ovos_ww_plugin_vosk.egg-info/requires.txt
+ovos_ww_plugin_vosk.egg-info/top_level.txt
+ovos_ww_plugin_vosk.egg-info/zip-safe

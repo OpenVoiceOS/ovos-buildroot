@@ -1,0 +1,4 @@
+
+        [console_scripts]
+        osm=ovos_skills_manager.commands:osm_commands
+    

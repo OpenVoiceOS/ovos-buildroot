@@ -1,0 +1,3 @@
+(spiel|spiele|beginn|beginne|start|starte) (tv|ip tv|internet fehrnsehen|fehrnsehen|ip ferhnsehen|channel|fehrnsehkanal|fehrnsehen kanal) {{query}}
+(spiel|spiele|beginn|beginne|start|starte) {{query}} (tv|ip tv|internet fernsehen|fernsehen|ip fehrnsehen|channel|fehrnsehkanal| fernsehen kanal)
+(spiel|spiele|beginn|beginne|start|starte) (tv|ip tv|internet fernsehen|fernsehen|ip fernsehen|tv kanal| fehrnsehkanal| fehrnsehen kanal)

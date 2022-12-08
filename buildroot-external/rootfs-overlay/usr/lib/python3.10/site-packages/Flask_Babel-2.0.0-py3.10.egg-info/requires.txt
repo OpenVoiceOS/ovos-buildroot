@@ -1,0 +1,12 @@
+pytz
+Flask
+Babel>=2.3
+Jinja2>=2.5
+
+[dev]
+pytest
+pytest-mock
+bumpversion
+ghp-import
+sphinx
+Pallets-Sphinx-Themes

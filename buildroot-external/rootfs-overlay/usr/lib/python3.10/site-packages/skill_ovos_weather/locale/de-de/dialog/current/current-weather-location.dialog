@@ -1,0 +1,3 @@
+{condition} bei {temperature} Grad {temperature_unit} in {location}. Der heutige Höchstwert beträgt {high_temperature} und der Tiefstwert {low_temperature} Grad.
+{condition} bei {temperature} Grad, mit einem Höchstwert von {high_temperature} und einem Tiefstwert von {low_temperature} in {location}.
+Mit einem Höchstwert von {high_temperature} und einem Tiefstwert von {low_temperature} Grad, wird in {location} {condition} bei {temperature} Grad erwartet.

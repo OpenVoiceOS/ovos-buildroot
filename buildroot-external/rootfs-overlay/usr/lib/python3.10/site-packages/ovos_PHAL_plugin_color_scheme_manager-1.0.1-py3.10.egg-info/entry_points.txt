@@ -1,0 +1,3 @@
+[ovos.plugin.phal]
+ovos-PHAL-plugin-color-scheme-manager=ovos_PHAL_plugin_color_scheme_manager:ColorSchemeManager
+

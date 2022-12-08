@@ -1,0 +1,16 @@
+LICENSE.txt
+MANIFEST.in
+README.rst
+dataclass_tools.py
+dataclasses.py
+setup.cfg
+setup.py
+dataclasses.egg-info/PKG-INFO
+dataclasses.egg-info/SOURCES.txt
+dataclasses.egg-info/dependency_links.txt
+dataclasses.egg-info/top_level.txt
+test/dataclass_module_1.py
+test/dataclass_module_1_str.py
+test/dataclass_module_2.py
+test/dataclass_module_2_str.py
+test/test_dataclasses.py

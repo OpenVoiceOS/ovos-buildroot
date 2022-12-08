@@ -1,0 +1,21 @@
+{
+    "authorname": "OpenVoiceOS",
+    "foldername": "skill-ovos-settings",
+    "url": "https://github.com/OpenVoiceOS/skill-ovos-settings",
+    "branch": "dev",
+    "license": "apache-2.0",
+    "tags": [
+        "permissive-license"
+    ],
+    "short_description": "Skill to take control of OpenVoiceOS functions via websettings interface and via intents (TODO)",
+    "last_updated": "2022-10-14T21:41:29Z",
+    "skillname": "OpenVoiceOSSettings",
+    "description": "Skill to take control of OpenVoiceOS functions via websettings interface and via intents (TODO)",
+    "requirements": {
+        "python": [],
+        "skill": [],
+        "system": {}
+    },
+    "desktopFile": false,
+    "examples": []
+}

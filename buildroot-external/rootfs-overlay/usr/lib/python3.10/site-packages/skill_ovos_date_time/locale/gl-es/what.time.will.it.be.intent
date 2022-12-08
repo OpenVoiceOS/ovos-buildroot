@@ -1,0 +1,13 @@
+que hora será (en|) {offset} (horas|minutos|segundos) (a partir de agora|)
+que hora será (en|) {offset} (horas|minutos|segundos) (a partir de agora|)(en|no|na) {location}
+(cal é|cantas|cal|que|cal será) (a|as) hora(s) en {offset} (horas|minutos|segundos) (a partir de agora|desde xa|)
+que hora é en {offset} (horas|minutos|segundos) (a partir de agora|) (en|no|na) {location}
+que hora será en {offset} (horas|minutos|segundos) (a partir de agora|)
+que hora será en {offset} (horas|minutos|segundos) (a partir de agora|) (en|no|na) {location}
+(en|) {offset} (horas|minutos|segundos) que hora será
+(en|) {offset} (horas|minutos|segundos) (a partir de agora|) que hora será (en|para) {location} 
+que hora será en {offset} (horas|minutos|segundos) (a partir de agora|)
+que hora será en {offset} (horas|minutos|segundos) (a partir de agora|) (en|no|na) {location}
+que hora será (en|no|na) {location} (en|) {offset} (horas|minutos|segundos) (a partir de agora|)
+que hora é (en|no|na) {location} (en|) {offset} (horas|minutos|segundos) (a partir de agora|)
+(en|no|na) {location} que hora é (en|) {offset} (horas|minutos|segundos)

@@ -1,0 +1,12 @@
+
+[dev]
+pytest
+pytest-timeout
+coverage
+tox
+sphinx
+pallets-sphinx-themes
+sphinx-issues
+
+[watchdog]
+watchdog

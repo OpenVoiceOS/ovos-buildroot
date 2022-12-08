@@ -1,0 +1,5 @@
+# Informing that an alternative to a condition will occur 
+# No, the {time} forecast calls for {condition} today
+Ingen, det {time} prognose kræver {condition} i dag  
+# Doesn't seem so, the {time} forecast suggests it will be {condition}
+Ser ikke ud til, det {time} prognose antyder, at det bliver {condition}  

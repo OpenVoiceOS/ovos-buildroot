@@ -1,0 +1,6 @@
+(play|start) (pod cast|podcast) {{query}}
+(play|start) {{query}} (pod cast|podcast)
+(play|start) (pod cast|podcast)
+(play|start) (pod cast|podcast) {{query}} (episode|number) {{number}}
+(play|start) {{query}} (pod cast|podcast) (episode|number) {{number}}
+(play|start) (pod cast|podcast) (episode|number) {{number}}

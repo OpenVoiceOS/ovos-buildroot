@@ -1,0 +1,4 @@
+{{date}}, {{num_days}} von jetzt
+Es ist {{date}} in {{num_days}}
+Es ist {{date}}, {{num_days}} von jetzt an
+{{date}}, in {{num_days}}

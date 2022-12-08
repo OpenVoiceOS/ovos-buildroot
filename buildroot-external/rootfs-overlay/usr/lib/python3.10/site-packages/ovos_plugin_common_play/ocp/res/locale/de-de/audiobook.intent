@@ -1,0 +1,5 @@
+(spiel|spiele|beginn|beginne|start|starte|lese|lies vor|vorlesen|lies|lesen) (audiobook|hörbuch|hör buch|ton theater|theater|book|drama|geschichte) {{query}}
+(lese|lies|lies vor|lesen|audiobook|hörbuch|hör buch|ton theater|theater|buch|drama|geschichte) {{query}}
+(spiel|spiele|beginn|beginne|start|starte|lese|lies vor|vorlesen|lies|lesen) {{query}} (audiobook|hörbuch|hör buch|ton theater|theater|book|drama|geschichte)
+(spiel|spiele|beginn|beginne|start|starte|lese|lies vor|vorlesen|lies|lesen) (audiobook|hörbuch|hör buch|ton theater|theater|book|drama|geschichte)
+{{query}} (audiobook|hörbuch|hör buch|ton theater|theater|book|drama|geschichte)

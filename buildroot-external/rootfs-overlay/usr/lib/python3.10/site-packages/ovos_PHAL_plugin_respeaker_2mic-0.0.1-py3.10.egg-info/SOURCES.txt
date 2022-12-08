@@ -1,0 +1,13 @@
+setup.py
+ovos_PHAL_plugin_respeaker_2mic/__init__.py
+ovos_PHAL_plugin_respeaker_2mic.egg-info/PKG-INFO
+ovos_PHAL_plugin_respeaker_2mic.egg-info/SOURCES.txt
+ovos_PHAL_plugin_respeaker_2mic.egg-info/dependency_links.txt
+ovos_PHAL_plugin_respeaker_2mic.egg-info/entry_points.txt
+ovos_PHAL_plugin_respeaker_2mic.egg-info/requires.txt
+ovos_PHAL_plugin_respeaker_2mic.egg-info/top_level.txt
+ovos_PHAL_plugin_respeaker_2mic.egg-info/zip-safe
+ovos_PHAL_plugin_respeaker_2mic/drivers/__init__.py
+ovos_PHAL_plugin_respeaker_2mic/drivers/apa102.py
+ovos_PHAL_plugin_respeaker_2mic/drivers/button.py
+ovos_PHAL_plugin_respeaker_2mic/drivers/pixels.py

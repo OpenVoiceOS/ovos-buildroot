@@ -1,0 +1,3 @@
+(play|start) (behind the scenes|behind scenes|behind the scene) {{query}}
+(play|start) {{query}} (behind the scenes|behind scenes|behind the scene)
+(play|start) (behind the scenes|behind scenes|behind the scene)

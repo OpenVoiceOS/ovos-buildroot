@@ -1,0 +1,16 @@
+adafruit_blinka
+analogio
+bitbangio
+board
+busio
+digitalio
+keypad
+microcontroller
+micropython
+micropython-stubs
+neopixel_write
+onewireio
+pulseio
+pwmio
+rainbowio
+usb_hid

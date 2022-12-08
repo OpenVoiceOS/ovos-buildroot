@@ -1,0 +1,3 @@
+(play|start) (radio|radio station|internet radio|web radio) {{query}}
+(play|start) {{query}} (radio|radio station|internet radio|web radio)
+(play|start) (the radio|the radio station|radio|radio station|internet radio|web radio)

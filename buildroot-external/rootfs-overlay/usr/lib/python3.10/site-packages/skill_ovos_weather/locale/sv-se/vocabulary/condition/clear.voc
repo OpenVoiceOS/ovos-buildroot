@@ -1,0 +1,3 @@
+# Clear weather types used in handler for "is it going to be clear weather"
+(klart|soligt|sol)
+(bra|trevligt|fint) väder

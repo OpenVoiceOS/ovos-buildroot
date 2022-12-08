@@ -1,0 +1,3 @@
+[ovos.plugin.skill]
+skill-ovos-volume.openvoiceos=skill_ovos_volume:VolumeSkill
+

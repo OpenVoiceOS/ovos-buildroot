@@ -1,0 +1,12 @@
+MarkupSafe
+
+[email]
+email_validator
+
+[ipaddress]
+
+[ipaddress:python_version < "3.3"]
+ipaddress
+
+[locale]
+Babel>=1.3

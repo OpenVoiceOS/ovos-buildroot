@@ -1,0 +1,14 @@
+{
+  "yes": [
+    "sí",
+    "si",
+    "por supuesto"
+  ],
+  "no": [
+    "no",
+    "nop",
+    "negativo",
+    "nah"
+  ],
+  "neutral_yes": ["por favor"]
+}

@@ -1,0 +1,12 @@
+(która|jaka|jaki) (będzie|jest) (czas|godzina) (za {offset}|) (godzin|godziny|minut|minuty|sekund|sekundy)( od teraz|)
+(która|jaka|jaki) (będzie|jest) (czas|godzina) (za {offset}|) (godzin|godziny|minut|minuty|sekund|sekundy)( od teraz|) (w|we) {location}
+(która|jaka|jaki) (godzina|czas) (będzie|jest) (za {offset}|) (godzin|godziny|minut|minuty|sekund|sekundy)( od teraz|)
+(która|jaka|jaki) (godzina|czas) (będzie|jest) (za {offset}|) (godzin|godziny|minut|minuty|sekund|sekundy)( od teraz|) (w|we) {location}
+(podaj|powiedz) (godzinę|czas) (za {offset}|) (godzin|godziny|minut|minuty|sekund|sekundy)( od teraz|)
+(podaj|powiedz) (godzinę|czas) (za {offset}|) (godzin|godziny|minut|minuty|sekund|sekundy)( od teraz|) (w|we) {location
+(o której|kiedy) (minie|miną) {offset} (godzin|godziny|minut|minuty|sekund|sekundy)( od teraz|)
+(o której|kiedy) (minie|miną) {offset} (godzin|godziny|minut|minuty|sekund|sekundy)( od teraz|) (w|we) {location}
+((za|) {offset}|) (godzin|godziny|minut|minuty|sekund|sekundy)( od teraz|) (która|jaka|jaki) (będzie|jest) (czas|godzina)
+((za|) {offset}|) (godzin|godziny|minut|minuty|sekund|sekundy)( od teraz|) (która|jaka|jaki) (będzie|jest) (czas|godzina) (w|we) {location}
+(która|jaka|jaki) (będzie|jest) (czas|godzina) (w|we) {location} ((za|) {offset}|) (godzin|godziny|minut|minuty|sekund|sekundy)( od teraz|)
+(w|we) {location} (która|jaka|jaki) (będzie|jest) (czas|godzina) ((za|) {offset}|) (godzin|godziny|minut|minuty|sekund|sekundy)( od teraz|)

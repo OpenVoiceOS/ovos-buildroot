@@ -1,0 +1,1 @@
+ovos_stt_plugin_server

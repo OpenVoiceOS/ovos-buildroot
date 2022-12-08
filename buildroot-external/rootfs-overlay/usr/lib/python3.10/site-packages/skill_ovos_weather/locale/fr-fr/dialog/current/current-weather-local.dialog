@@ -1,0 +1,4 @@
+En ce moment il fait {{condition}} avec {{temp}} degrés {{scale}}. La prévision d'aujourd'hui annonce un maximum de {{temp_max}} degrés et un minimum de {{temp_min}} degrés.
+Il fait {{condition}} et {{temp}} degrés. La prévision du jour annonce une température maximale de {{temp_max}} dégrés et un minimum de {{temp_min}} degrés.
+En ce moment, il fait {{condition}} avec {{temp}} degrés, avec des températures comprises entre {{temp_min}} et {{temp_max}} degrés.
+Avec un maximum de {{temp_max}} et un minimum de {{temp_min}} degrés, à {{location}} il fait {{condition}} avec une température actuelle de {{temp}} degrés.

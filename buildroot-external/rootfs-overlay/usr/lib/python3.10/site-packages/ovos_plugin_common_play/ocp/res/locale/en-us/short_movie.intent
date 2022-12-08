@@ -1,0 +1,3 @@
+(play|start) (a short|short) (movie|movies|film) {{query}}
+(play|start) {{query}} short (movie|movies|film|films)
+(play|start) (a short|short) (movie|movies|film)

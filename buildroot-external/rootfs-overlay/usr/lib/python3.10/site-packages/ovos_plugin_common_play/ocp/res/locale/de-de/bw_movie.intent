@@ -1,0 +1,4 @@
+(spiel|spiele|beginn|beginne|start|starte) (schwarz und weiß|schwarz weiß|schwarz weis|schwarz und weis) (film) {{query}}
+(spiel|spiele|beginn|beginne|start|starte) {{query}} (schwarz und weiß|schwarz weiß|schwarz weis|schwarz und weis) (film|filme)
+(spiel|spiele|beginn|beginne|start|starte) (schwarz und weiß|schwarz weiß|schwarz weis|schwarz und weis) (movie|movie|movies|film|filme)
+(spiel|spiele|beginn|beginne|start|starte) (den|die|der|das) (schwarz und weiß|schwarz weiß|schwarz weis|schwarz und weis) (film|filme)

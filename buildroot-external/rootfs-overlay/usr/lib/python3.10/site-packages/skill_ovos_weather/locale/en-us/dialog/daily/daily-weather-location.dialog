@@ -1,0 +1,3 @@
+{day} it will be {condition}, with a high of {high_temperature} and a low of {low_temperature} in {location}
+{day}, {location} will have a high of {high_temperature} and a low of {low_temperature}, with {condition}
+The forecast {day} is {high_temperature} for a high and {low_temperature} for a low in {location}

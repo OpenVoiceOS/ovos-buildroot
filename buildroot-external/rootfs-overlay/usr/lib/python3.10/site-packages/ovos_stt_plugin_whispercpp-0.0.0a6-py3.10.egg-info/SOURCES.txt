@@ -1,0 +1,11 @@
+README.md
+setup.py
+ovos_stt_plugin_whispercpp/__init__.py
+ovos_stt_plugin_whispercpp/version.py
+ovos_stt_plugin_whispercpp.egg-info/PKG-INFO
+ovos_stt_plugin_whispercpp.egg-info/SOURCES.txt
+ovos_stt_plugin_whispercpp.egg-info/dependency_links.txt
+ovos_stt_plugin_whispercpp.egg-info/entry_points.txt
+ovos_stt_plugin_whispercpp.egg-info/requires.txt
+ovos_stt_plugin_whispercpp.egg-info/top_level.txt
+ovos_stt_plugin_whispercpp.egg-info/zip-safe

@@ -1,0 +1,8 @@
+# A high of {temp_max} degrees {scale} is expected. 
+En høj af {temp_max} grader {scale} er forventet.   
+# A high of {temp_max} degrees can be expected.
+En høj af {temp_max} grader kan forventes.  
+# Today the temperature will reach {temp_max} degrees.
+I dag vil temperaturen nå {temp_max} grader.  
+# 
+  

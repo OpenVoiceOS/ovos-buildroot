@@ -1,0 +1,2 @@
+que horas serão em {offset} (horas|minutos|segundos) (a partir de agora|)
+que horas são em {offset} (horas|minutos|segundos) (a partir de agora|) (em|no|na) {location}

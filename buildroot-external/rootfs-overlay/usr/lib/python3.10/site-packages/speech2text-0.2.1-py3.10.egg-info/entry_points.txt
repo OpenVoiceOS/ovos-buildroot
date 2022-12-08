@@ -1,0 +1,18 @@
+[mycroft.plugin.stt]
+chatterbox_bing_stt_plug = speech2text.engines.bing:BingSTT
+chatterbox_chromium_stt_plug = speech2text.engines.google:GoogleSTT
+chatterbox_deepspeech_server_streaming_stt_plug = speech2text.engines.ds:DeepSpeechStreamServerSTT
+chatterbox_deepspeech_server_stt_plug = speech2text.engines.ds:DeepSpeechServerSTT
+chatterbox_deepspeech_streaming_stt_plug = speech2text.engines.ds:DeepSpeechStreamSTT
+chatterbox_deepspeech_stt_plug = speech2text.engines.ds:DeepSpeechSTT
+chatterbox_google_streaming_stt_plug = speech2text.engines.google:GoogleCloudStreamingSTT
+chatterbox_google_stt_plug = speech2text.engines.google:GoogleCloudSTT
+chatterbox_govivace_stt_plug = speech2text.engines.govivace:GoVivaceSTT
+chatterbox_houndify_stt_plug = speech2text.engines.houndify:HoundifySTT
+chatterbox_ibm_stt_plug = speech2text.engines.ibm:IBMSTT
+chatterbox_kaldiserver_stt_plug = speech2text.engines.kaldi:KaldiServerSTT
+chatterbox_vosk_streaming_stt_plug = speech2text.engines.kaldi:VoskKaldiStreamingSTT
+chatterbox_vosk_stt_plug = speech2text.engines.kaldi:VoskKaldiSTT
+chatterbox_wit_stt_plug = speech2text.engines.wit:WITSTT
+chatterbox_yandex_stt_plug = speech2text.engines.yandex:YandexSTT
+

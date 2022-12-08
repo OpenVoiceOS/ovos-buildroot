@@ -1,0 +1,9 @@
+setup.py
+ovos_stt_plugin_selene/__init__.py
+ovos_stt_plugin_selene.egg-info/PKG-INFO
+ovos_stt_plugin_selene.egg-info/SOURCES.txt
+ovos_stt_plugin_selene.egg-info/dependency_links.txt
+ovos_stt_plugin_selene.egg-info/entry_points.txt
+ovos_stt_plugin_selene.egg-info/requires.txt
+ovos_stt_plugin_selene.egg-info/top_level.txt
+ovos_stt_plugin_selene.egg-info/zip-safe

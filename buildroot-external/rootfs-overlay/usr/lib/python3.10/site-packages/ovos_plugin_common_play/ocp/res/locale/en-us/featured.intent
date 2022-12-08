@@ -1,0 +1,2 @@
+(open|show|display) featured {media}
+(open|show|display) (featured|) {media} (catalog|collection|playlist)

@@ -1,0 +1,9 @@
+requests>=2.22
+
+[dev]
+pre-commit
+flake8
+yapf
+coverage
+sphinx
+sphinx-rtd-theme

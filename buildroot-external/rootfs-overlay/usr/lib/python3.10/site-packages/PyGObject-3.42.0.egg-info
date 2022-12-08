@@ -1,0 +1,21 @@
+Metadata-Version: 1.2
+Name: PyGObject
+Version: 3.42.0
+Summary: Python bindings for GObject Introspection
+Home-page: https://pygobject.readthedocs.io
+Author: James Henstridge
+Author-email: james@daa.com.au
+Maintainer: Simon Feltman
+Maintainer-email: sfeltman@src.gnome.org
+License: GNU LGPL
+Description: Python bindings for GObject Introspection
+Platform: POSIX, Windows
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: GNU Lesser General Public License v2 or later (LGPLv2+)
+Classifier: Operating System :: POSIX
+Classifier: Operating System :: Microsoft :: Windows
+Classifier: Programming Language :: C
+Classifier: Programming Language :: Python
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Requires-Python: >=3.6, <4

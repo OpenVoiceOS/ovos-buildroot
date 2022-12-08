@@ -1,0 +1,4 @@
+Будет {{condition}}, с температурами около {{temp_max}}
+Позднее будет {{condition}} и около {{temp_max}} градусов
+Позднее будет {{condition}} и {{temp_max}} градусов
+Около {{temp_max}} градусов с {{condition}} условиями
