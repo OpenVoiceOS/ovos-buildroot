@@ -1,0 +1,9 @@
+config BR2_PACKAGE_WHISPER_TFLITE
+	bool "whisper-tflite"
+	help
+	  TensorFlow Lite C++ to run inference on 
+	  whisper.tflite(~40 MB hybrid model weights 
+	  are in int8 and activations are in float32)
+
+	  https://github.com/usefulsensors/openai-whisper
+
