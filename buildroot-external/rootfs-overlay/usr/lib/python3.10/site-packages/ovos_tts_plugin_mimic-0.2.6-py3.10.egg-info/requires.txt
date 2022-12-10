@@ -1,1 +1,0 @@
-ovos-plugin-manager>=0.0.5

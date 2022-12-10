@@ -1,3 +1,0 @@
-[console_scripts]
-gtts-cli = gtts.cli:tts_cli
-

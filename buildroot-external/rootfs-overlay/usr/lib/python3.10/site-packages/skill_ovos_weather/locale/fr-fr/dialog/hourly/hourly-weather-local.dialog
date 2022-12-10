@@ -1,4 +1,0 @@
-Il fera {{condition}}, avec des températures voisines de {{temp_max}}
-Plus tard il fera {{condition}} et environ {{temp_max}} degrés
-Plus tard il fera {{condition}} et {{temp_max}} degrés
-Environ {{temp_max}} degrés avec de la {{condition}}

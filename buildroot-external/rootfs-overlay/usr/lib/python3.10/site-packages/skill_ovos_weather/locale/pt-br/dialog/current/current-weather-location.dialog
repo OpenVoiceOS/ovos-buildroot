@@ -1,3 +1,0 @@
-Atualmente, está {condition} e faz {temp} graus {scale} em {location}. A previsão para hoje é máxima de {temp_max} graus e mínima de {temp_min} graus.
-No momento, está {condition} e faz {temp} graus, com máxima de {temp_max} e uma mínima de {temp_min} em {location}.
-Com máxima de {temp_max} e mínima de {temp_min}, {location} tem {condition} e no momento faz {temp} graus.

@@ -1,1 +1,0 @@
-ovos_tts_plugin_mimic2

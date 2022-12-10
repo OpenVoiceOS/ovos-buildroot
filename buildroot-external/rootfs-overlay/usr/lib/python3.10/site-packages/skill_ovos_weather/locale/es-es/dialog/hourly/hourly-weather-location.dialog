@@ -1,4 +1,0 @@
-El clima en {{location}} en las próximas horas será {{condition}} y {{temp_max}} grados
-Más tarde estará {{condición}} en {{ubicación}}, con temperaturas alrededor de {{temp_max}}
-{{location}} rondará los {{temp_max}} con {{condition}}
-{{location}} tendrá aproximadamente {{temp_max}} grados con {{condition}}

@@ -1,2 +1,0 @@
-characteristic
-test_characteristic

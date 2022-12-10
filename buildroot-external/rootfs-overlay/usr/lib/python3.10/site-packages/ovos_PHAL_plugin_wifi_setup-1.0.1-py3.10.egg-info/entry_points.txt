@@ -1,3 +1,0 @@
-[ovos.plugin.phal]
-ovos-PHAL-plugin-wifi-setup=ovos_PHAL_plugin_wifi_setup:WifiSetupPlugin
-

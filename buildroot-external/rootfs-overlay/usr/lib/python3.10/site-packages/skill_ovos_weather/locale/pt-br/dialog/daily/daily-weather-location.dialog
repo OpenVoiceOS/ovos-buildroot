@@ -1,3 +1,0 @@
-{day} teremos {condition}, com máxima de {temp_max} e mínima de {temp_min} em {location}
-{day}, {location} terá uma máxima de {temp_max} e uma mínima de {temp_min}, com {condition}
-A previsão para {day} é {temp_max} para máxima e {temp_min} para a mínima em {location}

@@ -1,3 +1,0 @@
-[ovos.plugin.skill]
-ovos-skill-personal.OpenVoiceOS=ovos_skill_personal:PersonalSkill
-

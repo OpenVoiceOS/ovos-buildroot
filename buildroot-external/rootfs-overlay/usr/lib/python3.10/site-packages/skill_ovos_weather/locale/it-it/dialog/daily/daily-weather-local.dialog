@@ -1,3 +1,0 @@
-{{day}} il tempo sarà {{condition}}, con una massima di {{temp_max}} e una minima di {{temp_min}}
-{{day}} massima sarà di {{temp_max}} e la minima di {{temp_min}}, con condizioni{{condition}}
-la previsione di {{day} è {{temp_max}} per la massima e {{temp_min}} per la minima

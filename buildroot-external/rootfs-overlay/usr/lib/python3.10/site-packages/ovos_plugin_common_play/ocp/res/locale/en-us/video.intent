@@ -1,3 +1,0 @@
-(play|start) video {{query}}
-(play|start) {{query}} (with video|video)
-(play|start) video

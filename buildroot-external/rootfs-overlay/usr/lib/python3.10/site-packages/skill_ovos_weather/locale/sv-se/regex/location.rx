@@ -1,1 +1,0 @@
-.*\b(på|i) (?P<Location>(?!\bcelsius\b|\bfahrenheit\b) *.+)

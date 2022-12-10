@@ -1,6 +1,0 @@
-[mycroft.plugin.tts]
-ovos-tts-plugin-mimic3-server = ovos_tts_plugin_mimic3_server:Mimic3ServerTTSPlugin
-
-[mycroft.plugin.tts.config]
-ovos-tts-plugin-mimic3-server.config = ovos_tts_plugin_mimic3_server:Mimic3ServerTTSPluginConfig
-

@@ -1,8 +1,0 @@
-# A high of {temp_max} degrees {scale} is expected in {location}. 
-En høj af {temp_max} grader {scale} forventes i {location}.   
-# A high of {temp_max} degrees can be expected in {location}.
-En høj af {temp_max} grader kan forventes i {location}.  
-# Today a the temperature will reach {temp_max} degrees in {location}.
-I dag når temperaturen {temp_max} grader i {location}.  
-# 
-  

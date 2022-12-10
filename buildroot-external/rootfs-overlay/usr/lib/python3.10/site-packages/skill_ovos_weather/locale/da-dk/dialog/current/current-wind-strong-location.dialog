@@ -1,6 +1,0 @@
-# It's {wind} {wind_unit} in {location}, a good day to stay inside
-Det er {wind} {wind_unit} i {location}, en god dag at bo inden i  
-# The wind is very strong in {location} today, {wind} {wind_unit}
-Vinden er meget kraftig {location} i dag, {wind} {wind_unit}  
-# {location} will have quite strong winds today, {wind} {wind_unit}
-{location} vil have ret kraftig vind i dag, {wind} {wind_unit}  

@@ -1,3 +1,0 @@
-[ovos.plugin.VAD]
-ovos-vad-plugin-webrtcvad = ovos_vad_plugin_webrtcvad:WebRTCVAD
-

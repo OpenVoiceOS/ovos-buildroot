@@ -1,3 +1,0 @@
-[ovos.plugin.phal]
-ovos-PHAL-plugin-alsa=ovos_PHAL_plugin_alsa:AlsaVolumeControlPlugin
-

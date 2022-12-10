@@ -1,2 +1,0 @@
-class CoverallsException(Exception):
-    pass

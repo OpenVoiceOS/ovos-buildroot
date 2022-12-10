@@ -1,3 +1,0 @@
-{{day}} будет {{condition}}, с максимумом {{temp_max}} и минимумом {{temp_min}}
-{{day}} максимум будет {{temp_max}} и минимум {{temp_min}}, при условиях {{condition}}
-Прогноз на {{day}} - {{temp_max}} как максимум и {{temp_min}} как минимум
