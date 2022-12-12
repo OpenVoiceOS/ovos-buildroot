@@ -20,6 +20,7 @@ define SNAPSERVER_INSTALL_CONFIG
 	mkdir -p $(TARGET_DIR)/etc/snapcast
 	$(INSTALL) -m 0755 -D $(@D)/debian/snapserver.default $(TARGET_DIR)/etc/snapcast/snapserver
 	$(INSTALL) -m 0755 -D $(@D)/server/etc/snapserver.conf $(TARGET_DIR)/etc/
+	chmod +r $(TARGET_DIR)/usr/share/snapserver/plug-ins/meta_mpd.py
 endef
 
 
