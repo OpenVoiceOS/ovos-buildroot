@@ -1,2 +1,0 @@
-http://sourceforge.net/projects/fann/files/fann/2.2.0/FANN-2.2.0-Source.zip/download
-http://www.swig.org/download.html

@@ -1,3 +1,0 @@
-(play|start) (tv|ip tv|network television|television|ip television|channel|tv channel) {{query}}
-(play|start) {{query}} (tv|ip tv|network television|television|ip television|channel|tv channel)
-(play|start) (tv|ip tv|network television|television|ip television|tv channel)

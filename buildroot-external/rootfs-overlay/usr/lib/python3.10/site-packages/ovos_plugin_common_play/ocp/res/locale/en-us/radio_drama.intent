@@ -1,3 +1,0 @@
-(play|start) (radio theatre|radio drama) {{query}}
-(play|start) {{query}} (radio theatre|radio drama)
-(play|start) (radio theatre|radio drama)

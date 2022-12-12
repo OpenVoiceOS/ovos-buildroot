@@ -1,4 +1,0 @@
-# It will be as high as {temp_max} degrees in {location} {day}
-Det vil være så højt som {temp_max} grader i {location} {day}  
-# {location} will have a high of {temp_max} degrees {day}
-{location} vil have en højde af {temp_max} grader {day}  

@@ -1,3 +1,0 @@
-read note {number}
-speak note {number}
-tell me about note {number}

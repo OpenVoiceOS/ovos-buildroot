@@ -1,3 +1,0 @@
-
-[unicode_backport]
-unicodedata2

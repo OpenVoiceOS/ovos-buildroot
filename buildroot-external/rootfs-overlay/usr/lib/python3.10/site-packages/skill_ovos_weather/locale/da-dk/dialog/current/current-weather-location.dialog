@@ -1,6 +1,0 @@
-# It's currently {condition} and {temp} degrees {scale} in {location}. Today's forecast is for a high of {temp_max} and a low of {temp_min}.
-Det er i øjeblikket {condition} og {temp} grader {scale} i {location}. Dagens prognose er for en højde af {temp_max} og en lav af {temp_min}.  
-# Right now, it's {condition} and {temp} degrees, for a high of {temp_max} and a low of {temp_min} in {location}.
-Lige nu, det er {condition} og {temp} grader, for en højde af {temp_max} og en lav af {temp_min} i {location}.  
-# With a high of {temp_max} and a low of {temp_min}, {location} has {condition} and is currently {temp} degrees.
-Med en høj af {temp_max} og en lav af {temp_min}, {location} har {condition} og er i øjeblikket {temp} grader.  

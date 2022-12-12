@@ -1,3 +1,0 @@
-[ovos.plugin.phal]
-ovos-phal-plugin-ipgeo=ovos_phal_plugin_ipgeo:IPGeoPlugin
-

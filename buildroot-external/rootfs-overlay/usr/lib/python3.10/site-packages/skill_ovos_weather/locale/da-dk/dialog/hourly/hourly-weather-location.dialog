@@ -1,8 +1,0 @@
-# {location} weather in the next few hours will be {condition} and {temp} degrees
-{location} vejret i de næste par timer {condition} og {temp} grader  
-# Later it will be {condition} in {location}, with temperatures around {temp}
-Senere bliver det {condition} i {location}, med temperaturer omkring {temp}  
-# {location} will be around {temp} with {condition}
-{location} vil være omkring {temp} med {condition}  
-# {location} will be about {temp} degrees with {condition}
-{location} vil handle om {temp} grader med {condition}  

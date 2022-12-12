@@ -1,8 +1,0 @@
-
-[dev]
-nose
-check-manifest
-unittest2
-zest.releaser
-psutil
-memory_profiler

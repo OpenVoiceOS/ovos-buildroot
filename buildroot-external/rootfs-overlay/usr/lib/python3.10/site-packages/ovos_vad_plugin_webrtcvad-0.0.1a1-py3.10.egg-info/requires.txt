@@ -1,2 +1,0 @@
-ovos-plugin-manager>=0.0.11
-webrtcvad

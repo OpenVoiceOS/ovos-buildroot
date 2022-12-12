@@ -1,3 +1,0 @@
-{{day}} zal het {{condition}} zijn, met een maximum van {{temp_max}} graden en minimum van {{temp_min}} graden
-{{day}}, {{location}} zal de temperatuur liggen tussen de {{temp_min}} en {{temp_max}} graden, hoofdzakelijk {{condition}}
-De verwachting voor {{day}} is een temperatuur tussen de {{temp_min}} en {{temp_max}} graden

@@ -1,3 +1,0 @@
-[ovos.plugin.phal]
-ovos-PHAL-plugin-balena-wifi=ovos_PHAL_plugin_balena_wifi:BalenaWifiSetupPlugin
-

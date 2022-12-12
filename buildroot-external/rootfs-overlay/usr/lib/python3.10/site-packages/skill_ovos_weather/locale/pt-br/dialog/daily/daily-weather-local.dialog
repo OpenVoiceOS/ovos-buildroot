@@ -1,5 +1,0 @@
-{day} espera-se {condition}, com uma máxima de {temp_max} e uma mínima de {temp_min}
-{day} espera {condition}, com uma máxima de {temp_max} e uma mínima de {temp_min}
-{day} a máxima será de {temp_max} e a mínima {temp_min}, com {condition}
-{day} estará {condition}, com uma máxima de {temp_max} e uma mínima de {temp_min}
-A previsão para {day} é máxima de {temp_max} e mínima de {temp_min}.

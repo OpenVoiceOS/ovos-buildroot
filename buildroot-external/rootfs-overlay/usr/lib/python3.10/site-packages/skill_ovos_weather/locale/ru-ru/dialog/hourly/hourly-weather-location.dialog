@@ -1,4 +1,0 @@
-{{location}} погода в ближайшие несколько часов будет {{condition}} и {{temp_max}} градусов
-Позже будет {{condition}} в {{location}}, с температурами около {{temp_max}}
-{{location}} будет около {{temp_max}} с {{condition}}
-{{location}} будет около {{temp_max}} градусов с {{condition}}

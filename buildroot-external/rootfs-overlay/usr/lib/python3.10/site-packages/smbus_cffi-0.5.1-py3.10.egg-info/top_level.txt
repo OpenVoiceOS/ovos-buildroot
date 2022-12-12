@@ -1,2 +1,0 @@
-_smbus_cffi
-smbus

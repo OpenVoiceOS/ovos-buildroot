@@ -1,3 +1,0 @@
-{day} farà {condition} a {location}, amb una màxima de {temp_max} i una mínima de {temp_min}
-{day}, {location} arribarà a un màxim de {temp_max} i un mínim de {temp_min}, amb {condition}
-La previsió de {day} és de {temp_max} de màxim i {temp_min} de mínim a {location}

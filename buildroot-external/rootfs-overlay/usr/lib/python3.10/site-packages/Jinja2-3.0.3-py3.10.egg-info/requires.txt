@@ -1,4 +1,0 @@
-MarkupSafe>=2.0
-
-[i18n]
-Babel>=2.7
