@@ -5,8 +5,8 @@
 # and http://elinux.org/RPiconfig for a description of config.txt syntax
 # We always use the same names, the real used variant is selected by
 # BR2_PACKAGE_RPI_FIRMWARE_{DEFAULT,X,CD} choice
-start_file=startx.elf
-fixup_file=fixupx.dat
+start_file=start_x.elf
+fixup_file=fixup_x.dat
 
 kernel=Image
 
