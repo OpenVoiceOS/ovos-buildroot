@@ -1,7 +1,7 @@
 From bdf1875bcd4e34766d45a6514ec9fed9d2cf1a9a Mon Sep 17 00:00:00 2001
 From: j1nx <p.steenbergen@j1nx.nl>
 Date: Wed, 8 Jun 2022 11:44:11 +0200
-Subject: [PATCH 1/1] Try to use 4 threads Tensorflow v2.3.0+ supports
+Subject: [PATCH 1/1] Try to use 2 threads Tensorflow v2.3.0+ supports
  multithreading.
 
 ---
@@ -17,7 +17,7 @@ index 7e56a30..0aadf73 100644
          #  Setup tflite environment
          self.interpreter = tflite.Interpreter(model_path=model_name)
 +        try:
-+            self.interpreter.set_num_threads(4)
++            self.interpreter.set_num_threads(2)
 +        except:
 +            pass
 +

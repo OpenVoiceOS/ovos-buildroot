@@ -1,0 +1,25 @@
+From 4aa7797f8f043df84104b76ceca423832824ea13 Mon Sep 17 00:00:00 2001
+From: j1nx <p.steenbergen@j1nx.nl>
+Date: Fri, 9 Dec 2022 20:25:46 +0100
+Subject: [PATCH 1/1] Add multithread support
+
+---
+ tflite_minimal/minimal.cc | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/tflite_minimal/minimal.cc b/tflite_minimal/minimal.cc
+index cd045e0..82e9b11 100644
+--- a/tflite_minimal/minimal.cc
++++ b/tflite_minimal/minimal.cc
+@@ -200,6 +200,8 @@ int main(int argc, char* argv[]) {
+   else if (argc == 3) {
+     memcpy(input, mel.data.data(), mel.n_mel*mel.n_len*sizeof(float));
+   }
++  interpreter->SetNumThreads(2);
++
+   // Fill input buffers
+   // TODO(user): Insert code to fill input tensors.
+   // Note: The buffer of the input tensor with index `i` of type T can
+-- 
+2.34.1
+
