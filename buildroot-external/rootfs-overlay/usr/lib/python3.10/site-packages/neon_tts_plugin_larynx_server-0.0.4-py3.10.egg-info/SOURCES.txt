@@ -1,0 +1,13 @@
+MANIFEST.in
+README.md
+setup.py
+neon_tts_plugin_larynx_server/__init__.py
+neon_tts_plugin_larynx_server.egg-info/PKG-INFO
+neon_tts_plugin_larynx_server.egg-info/SOURCES.txt
+neon_tts_plugin_larynx_server.egg-info/dependency_links.txt
+neon_tts_plugin_larynx_server.egg-info/entry_points.txt
+neon_tts_plugin_larynx_server.egg-info/requires.txt
+neon_tts_plugin_larynx_server.egg-info/top_level.txt
+neon_tts_plugin_larynx_server.egg-info/zip-safe
+requirements/requirements.txt
+requirements/test_requirements.txt

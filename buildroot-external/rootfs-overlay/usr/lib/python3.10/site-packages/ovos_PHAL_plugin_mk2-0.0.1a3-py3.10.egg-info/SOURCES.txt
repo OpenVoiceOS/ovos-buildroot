@@ -1,0 +1,13 @@
+setup.py
+ovos_PHAL_plugin_mk2/__init__.py
+ovos_PHAL_plugin_mk2/fan.py
+ovos_PHAL_plugin_mk2/leds.py
+ovos_PHAL_plugin_mk2/switch.py
+ovos_PHAL_plugin_mk2/version.py
+ovos_PHAL_plugin_mk2.egg-info/PKG-INFO
+ovos_PHAL_plugin_mk2.egg-info/SOURCES.txt
+ovos_PHAL_plugin_mk2.egg-info/dependency_links.txt
+ovos_PHAL_plugin_mk2.egg-info/entry_points.txt
+ovos_PHAL_plugin_mk2.egg-info/requires.txt
+ovos_PHAL_plugin_mk2.egg-info/top_level.txt
+ovos_PHAL_plugin_mk2.egg-info/zip-safe

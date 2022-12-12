@@ -1,0 +1,3 @@
+# Borrar tipos de clima usados no manipulador por "vai haber un tempo despexado?"
+(borro|soleado|con sol)
+clima bo

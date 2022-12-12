@@ -1,0 +1,3 @@
+[ovos.plugin.skill]
+skill-ovos-setup.openvoiceos=skill_ovos_setup:PairingSkill
+

@@ -1,0 +1,38 @@
+{
+  "yes": [
+    "yeah",
+    "yep",
+    "confirm",
+    "affirmative",
+    "yes",
+    "confirmed",
+    "correct"
+  ],
+  "no": [
+    "no",
+    "not",
+    "negative",
+    "nope",
+    "nah"
+  ],
+  "neutral_yes": [
+    "please",
+    "sure",
+    "surely",
+    "certainly",
+    "appropriate",
+    "appropriated",
+    "obviously",
+    "indeed"
+  ],
+  "neutral_no": [
+    "undesirable",
+    "unwanted",
+    "inappropriate",
+    "lie",
+    "lying",
+    "mistake",
+    "mistaken",
+    "wrong"
+  ]
+}

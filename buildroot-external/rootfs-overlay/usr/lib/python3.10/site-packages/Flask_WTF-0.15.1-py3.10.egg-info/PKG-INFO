@@ -1,0 +1,55 @@
+Metadata-Version: 2.1
+Name: Flask-WTF
+Version: 0.15.1
+Summary: Simple integration of Flask and WTForms.
+Home-page: https://github.com/wtforms/flask-wtf
+Author: Dan Jacob
+Author-email: danjac354@gmail.com
+Maintainer: Hsiaoming Yang
+Maintainer-email: me@lepture.com
+License: BSD
+Platform: any
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Environment :: Web Environment
+Classifier: Framework :: Flask
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: Implementation :: CPython
+Classifier: Programming Language :: Python :: Implementation :: PyPy
+Classifier: Topic :: Internet :: WWW/HTTP :: Dynamic Content
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Requires-Python: >= 3.6
+Description-Content-Type: text/x-rst
+Provides-Extra: email
+License-File: LICENSE
+
+Flask-WTF
+=========
+
+.. image:: https://github.com/wtforms/flask-wtf/actions/workflows/tests.yaml/badge.svg
+    :target: https://github.com/wtforms/flask-wtf/actions/
+    :alt: Test Status
+.. image:: https://codecov.io/gh/wtforms/flask-wtf/branch/master/graph/badge.svg
+    :target: https://codecov.io/gh/wtforms/flask-wtf
+    :alt: Coverage Status
+.. image:: https://readthedocs.org/projects/flask-wtf/badge/?version=latest
+    :target: https://flask-wtf.readthedocs.io/
+    :alt: Documentation
+
+Simple integration of Flask and WTForms, including CSRF, file upload, and reCAPTCHA.
+
+Links
+-----
+
+* `Documentation <https://flask-wtf.readthedocs.io>`_
+* `PyPI <https://pypi.python.org/pypi/Flask-WTF>`_
+* `GitHub <https://github.com/wtforms/flask-wtf>`_
+
+

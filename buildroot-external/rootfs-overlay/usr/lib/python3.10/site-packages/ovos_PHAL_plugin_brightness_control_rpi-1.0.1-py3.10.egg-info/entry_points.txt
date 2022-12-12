@@ -1,0 +1,3 @@
+[ovos.plugin.phal]
+ovos-PHAL-plugin-brightness-control-rpi=ovos_PHAL_plugin_brightness_control_rpi:BrightnessControlRPIPlugin
+

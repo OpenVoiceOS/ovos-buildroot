@@ -1,0 +1,3 @@
+(play|start) silent (movie|movies|film) {{query}}
+(play|start) {{query}} silent (movie|movies|film|films)
+(play|start) (a silent|silent) (movie|movie|movies|film|films)

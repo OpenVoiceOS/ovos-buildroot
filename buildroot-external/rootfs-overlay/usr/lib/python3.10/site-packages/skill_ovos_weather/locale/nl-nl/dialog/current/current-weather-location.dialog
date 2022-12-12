@@ -1,0 +1,3 @@
+Met een maximum van {{temp_max}} graden en een minimum van {{temp_max}} graden, is het in {{location}} {{condition}} en is het momenteel {{temp}} graden.
+Het is momenteel {{condition}} en {{temp}} graden {{scale}} in {{location}}. Verwachting voor vandaag is een temperatuur tussen de {{temp_min}} en {{temp_max}} graden.
+Het is nu {{condition}} en {{temp}} graden met een maximum van {{temp_max}} graden en een minimum van {{temp_min}} graden in {{location}}.

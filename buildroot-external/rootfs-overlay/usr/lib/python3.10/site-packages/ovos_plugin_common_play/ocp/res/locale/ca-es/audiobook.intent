@@ -1,0 +1,5 @@
+(reprodueix|comença|inicia|llegeix|posa)('m|-me|) (un |una |el |la |l')(audiobook|àudio book|àudio llibre|audiollibre|radionovel·la|ràdio novel·la) {{query}}
+llegeix(-me|) (audiobook|àudio book|àudio llibre|audiollibre|radionovel·la|ràdio novel·la) {{query}}
+(reprodueix|comença|inicia|llegeix|posa)('m|-me|) {{query}} (audiobook|àudio book|àudio llibre|audiollibre|radionovel·la|ràdio novel·la)
+(reprodueix|comença|inicia|llegeix|pasa)('m|-me|) (audiobook|àudio book|àudio llibre|audiollibre|radionovel·la|ràdio novel·la)
+{{query}} (audiobook|àudio book|àudio llibre|audiollibre|radionovel·la|ràdio novel·la)

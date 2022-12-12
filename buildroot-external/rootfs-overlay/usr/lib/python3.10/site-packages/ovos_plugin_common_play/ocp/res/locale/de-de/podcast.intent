@@ -1,0 +1,6 @@
+(spiel|spiele|beginn|beginne|start|starte) (pod cast|podcast) {{query}}
+(spiel|spiele|beginn|beginne|start|starte) {{query}} (pod cast|podcast)
+(spiel|spiele|beginn|beginne|start|starte) (pod cast|podcast)
+(spiel|spiele|beginn|beginne|start|starte) (pod cast|podcast) {{query}} (episode|nummer|folge) {{number}}
+(spiel|spiele|beginn|beginne|start|starte) {{query}} (pod cast|podcast) (episode|nummer|folge) {{number}}
+(spiel|spiele|beginn|beginne|start|starte) (pod cast|podcast) (episode|number) {{number}}

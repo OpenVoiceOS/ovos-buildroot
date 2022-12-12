@@ -1,0 +1,10 @@
+[Desktop Entry]
+Terminal=false
+Type=Application
+Name=Euro News Skill
+Exec=mycroft-gui-app --hideTextInput --skill=skill-news.jarbasskills.home
+Icon=news.png
+Categories=VoiceApp
+StartupNotify=false
+X-DBUS-StartupType=None
+X-KDE-StartupNotify=false

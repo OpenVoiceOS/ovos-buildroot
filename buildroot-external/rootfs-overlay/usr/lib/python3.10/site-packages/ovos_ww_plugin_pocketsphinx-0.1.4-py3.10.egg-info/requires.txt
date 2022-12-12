@@ -1,0 +1,4 @@
+pocketsphinx~=0.1
+ovos-plugin-manager>=0.0.1
+phoneme_guesser~=0.1.1
+SpeechRecognition>=3.8.1

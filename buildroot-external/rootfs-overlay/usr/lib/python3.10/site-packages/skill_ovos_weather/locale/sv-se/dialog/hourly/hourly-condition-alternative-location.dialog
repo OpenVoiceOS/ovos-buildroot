@@ -1,0 +1,3 @@
+# Informera om att vid ett visst tillfälle kommer ett alternativ till vissa tillstånd att inträffa
+Nej, prognosen för {time} verkar bli {condition} i {location}
+Det verkar inte så, tiden {time} prognosen antyder att det kommer att vara {condition} på {location}

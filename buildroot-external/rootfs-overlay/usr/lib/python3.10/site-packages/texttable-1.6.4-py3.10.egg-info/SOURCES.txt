@@ -1,0 +1,15 @@
+.coveragerc
+CHANGELOG.md
+LICENSE
+MANIFEST.in
+README.md
+setup.cfg
+setup.py
+tests.py
+texttable.py
+texttable.pyi
+tox.ini
+texttable.egg-info/PKG-INFO
+texttable.egg-info/SOURCES.txt
+texttable.egg-info/dependency_links.txt
+texttable.egg-info/top_level.txt

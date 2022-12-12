@@ -1,0 +1,19 @@
+Metadata-Version: 2.1
+Name: ovos-PHAL-plugin-dashboard
+Version: 0.0.1
+Summary: A plugin for OpenVoiceOS hardware abstraction layer
+Home-page: https://github.com/OpenVoiceOS/ovos-PHAL-plugin-dashboard
+Author: AIIX
+Author-email: aix.m@outlook.com
+License: Apache-2.0
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Text Processing :: Linguistic
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+License-File: LICENSE
+
+UNKNOWN
+

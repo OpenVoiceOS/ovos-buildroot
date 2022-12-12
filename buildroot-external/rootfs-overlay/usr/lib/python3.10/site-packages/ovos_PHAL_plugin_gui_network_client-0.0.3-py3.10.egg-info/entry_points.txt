@@ -1,0 +1,3 @@
+[ovos.plugin.phal]
+ovos-PHAL-plugin-gui-network-client=ovos_PHAL_plugin_gui_network_client:GuiNetworkClientPlugin
+

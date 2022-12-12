@@ -1,0 +1,6 @@
+[mycroft.plugin.audioservice]
+ovos_common_play=ovos_plugin_common_play
+
+[mycroft.plugin.audioservice.config]
+ovos_common_play.config=ovos_plugin_common_play:OCPPluginConfig
+

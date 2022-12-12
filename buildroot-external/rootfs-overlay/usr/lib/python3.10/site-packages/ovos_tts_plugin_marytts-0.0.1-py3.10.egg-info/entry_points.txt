@@ -1,0 +1,6 @@
+[mycroft.plugin.tts]
+ovos-tts-plugin-marytts = ovos_tts_plugin_marytts:MaryTTS
+
+[mycroft.plugin.tts.config]
+ovos-tts-plugin-marytts.config = ovos_tts_plugin_marytts:MaryTTSPluginConfig
+

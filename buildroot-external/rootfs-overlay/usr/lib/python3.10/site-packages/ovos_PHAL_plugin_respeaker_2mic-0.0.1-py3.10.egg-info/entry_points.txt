@@ -1,0 +1,3 @@
+[ovos.plugin.phal]
+ovos-PHAL-plugin-respeaker-2mic=ovos_PHAL_plugin_respeaker_2mic:Respeaker2MicControlPlugin
+

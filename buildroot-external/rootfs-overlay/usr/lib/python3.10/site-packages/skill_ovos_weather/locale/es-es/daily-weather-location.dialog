@@ -1,0 +1,4 @@
+# auto translated from en-us to es-es
+{day}, {location} tendrá un alto de {high_temperature} y un bajo de {low_temperature}, con {condición}
+{day} será {condition}, con un alto de {high_temperature} y un bajo de {low_temperature} en {location}
+El pronóstico {day} es {high_temperature} para un alto y {low_temperature} para un bajo en {location}

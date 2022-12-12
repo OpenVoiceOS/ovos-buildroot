@@ -1,0 +1,12 @@
+LICENSE
+MANIFEST.in
+README.rst
+daemonize.py
+setup.cfg
+setup.py
+daemonize.egg-info/PKG-INFO
+daemonize.egg-info/SOURCES.txt
+daemonize.egg-info/dependency_links.txt
+daemonize.egg-info/top_level.txt
+docs/conf.py
+docs/index.rst

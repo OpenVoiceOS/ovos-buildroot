@@ -1,0 +1,14 @@
+{
+  "yes": [
+    "souhlasím",
+    "ano",
+    "povrzuji",
+    "jistě",
+    "prosím",
+    "potvrzeno"
+  ],
+  "no": [
+    "nechci",
+    "ne"
+  ]
+}

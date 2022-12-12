@@ -1,0 +1,2293 @@
+{
+    "Neon": [
+        {
+            "title": "About",
+            "url": "https://github.com/NeonGeckoCom/about.neon",
+            "summary": "Skill used to provide information about Neon",
+            "short_description": "Skill used to provide information about Neon",
+            "description": "This skill provides information about Neon. You can ask about licensing and your Neon installation.",
+            "examples": [
+                "tell me my license",
+                "tell me my skills",
+                "neon tell me my skills",
+                "neon tell me my license"
+            ],
+            "desktopFile": true,
+            "warning": "",
+            "systemDeps": false,
+            "platforms": [
+                "arm",
+                "i386",
+                "arm64",
+                "x86_64",
+                "ia64"
+            ],
+            "branch": "master",
+            "license": "NeonAI License v1.0",
+            "icon": "https://0000.us/klatchat/app/files/neon_images/icons/neon_skill.png",
+            "category": "",
+            "categories": [
+                ""
+            ],
+            "tags": [
+                "",
+                "no-license"
+            ],
+            "skillname": "About",
+            "authorname": "Neon",
+            "foldername": "about.neon",
+            "appstore": "Neon",
+            "appstore_url": "https://api.github.com/repos/NeonGeckoCom/neon-skills-submodules/contents/skill-metadata.json",
+            "last_updated": "2021-02-12T23:04:18Z",
+            "credits": [
+                "reginaneon [neongeckocom](https://neongecko.com/) Mycroft AI"
+            ],
+            "requirements": {
+                "python": [],
+                "skill": [],
+                "system": {}
+            },
+            "android": {
+                "android_icon": null,
+                "android_name": "About.Neon Skill",
+                "android_handler": "about.neon.neongeckocom.home"
+            },
+            "download_url": "https://api.github.com/repos/NeonGeckoCom/about.neon/zipball/master"
+        },
+        {
+            "title": "Alerts",
+            "url": "https://github.com/NeonGeckoCom/alerts.neon",
+            "summary": "A skill to schedule alarms, timers, and reminders",
+            "short_description": "A skill to schedule alarms, timers, and reminders",
+            "description": "The skill provides functionality to create alarms, timers and reminders, remove them by name, time, or type, and ask for what is active. You may also silence all alerts and ask for a summary of what was missed if you were away, your device was off, or you had quiet hours enabled. Alarms and reminders may be set to recur daily or weekly. An active alert may be snoozed for a specified amount of time while it is active. Any alerts that are not acknowledged will be added to a list of missed alerts that may be read and cleared when requested.",
+            "examples": [
+                "stop",
+                "remind me to go home at 6",
+                "set a 5 minute timer",
+                "how much time is left",
+                "cancel all (alarms/timers/reminders)",
+                "did i miss anything",
+                "when is my next alarm",
+                "remind me to take out the trash every thursday at 7 pm",
+                "what are my reminders",
+                "quiet hours",
+                "snooze",
+                "snooze for 1 minute",
+                "what did i miss",
+                "wake up",
+                "go to sleep",
+                "cancel my 8 am alarm",
+                "set an alarm for 8 am"
+            ],
+            "desktopFile": true,
+            "warning": "",
+            "systemDeps": false,
+            "platforms": [
+                "arm",
+                "i386",
+                "arm64",
+                "x86_64",
+                "ia64"
+            ],
+            "branch": "master",
+            "license": "NeonAI License v1.0",
+            "icon": "https://0000.us/klatchat/app/files/neon_images/icons/neon_skill.png",
+            "category": "",
+            "categories": [
+                ""
+            ],
+            "tags": [
+                "",
+                "no-license"
+            ],
+            "skillname": "Alerts",
+            "authorname": "NeonGeckoCom",
+            "foldername": "alerts.neon",
+            "appstore": "Neon",
+            "appstore_url": "https://api.github.com/repos/NeonGeckoCom/neon-skills-submodules/contents/skill-metadata.json",
+            "last_updated": "2021-01-22T00:14:21Z",
+            "credits": [
+                "reginaneon djmcknight358 [neongeckocom](https://neongecko.com/)"
+            ],
+            "requirements": {
+                "python": [
+                    "lingua-franca~=0.3.1"
+                ],
+                "skill": [],
+                "system": {}
+            },
+            "android": {
+                "android_icon": null,
+                "android_name": "Alerts.Neon Skill",
+                "android_handler": "alerts.neon.neongeckocom.home"
+            }
+        },
+        {
+            "title": "Audio Record",
+            "url": "https://github.com/NeonGeckoCom/audio-record.neon",
+            "summary": "Record and playback short audio clips with Neon.",
+            "short_description": "Record and playback short audio clips with Neon.",
+            "description": "This Skill records audio from the microphone and allows you to play back that recording. Note that this Skill is particularly useful when trying to diagnose microphone issues because it allows you to \"hear\" what Neon is hearing - For example, if you have multiple audio inputs or are working on the new skill that requires pure microphone feed.",
+            "examples": [
+                "record my daily prescriptions",
+                "record my daily prescriptions for 1 minute",
+                "record audio for 30 seconds",
+                "record audio"
+            ],
+            "desktopFile": true,
+            "warning": "",
+            "systemDeps": false,
+            "platforms": [
+                "arm",
+                "i386",
+                "arm64",
+                "x86_64",
+                "ia64"
+            ],
+            "branch": "master",
+            "license": "NeonAI License v1.0",
+            "icon": "https://0000.us/klatchat/app/files/neon_images/icons/neon_skill.png",
+            "category": "",
+            "categories": [
+                ""
+            ],
+            "tags": [
+                "",
+                "permissive-license"
+            ],
+            "skillname": "Audio Record",
+            "authorname": "Neon",
+            "foldername": "audio-record.neon",
+            "appstore": "Neon",
+            "appstore_url": "https://api.github.com/repos/NeonGeckoCom/neon-skills-submodules/contents/skill-metadata.json",
+            "last_updated": "2021-02-12T23:01:12Z",
+            "credits": [
+                "MycroftAI reginaneon [neongeckocom](https://neongecko.com/)"
+            ],
+            "requirements": {
+                "python": [
+                    "psutil~=5.7.2"
+                ],
+                "skill": [],
+                "system": {}
+            },
+            "android": {
+                "android_icon": null,
+                "android_name": "Audio Record.Neon Skill",
+                "android_handler": "audio-record.neon.neongeckocom.home"
+            },
+            "download_url": "https://api.github.com/repos/NeonGeckoCom/audio-record.neon/zipball/master"
+        },
+        {
+            "title": "AVmusic",
+            "url": "https://github.com/NeonGeckoCom/avmusic.neon",
+            "summary": "Provides the video/audio playback of any music or video request made by the user. No need to specify the location of the files or register any accounts. Just say what you would like to listen to and enjoy.",
+            "short_description": "AV Music Skill",
+            "description": "The skill provides the functionality to playback any audio or video requested by the user. AVmusic implements full integration of youtube_dl services and supports requests including but not limited to: - Music bands - Albums - Playlists - Specific songs - Radio - News clips - Tutorials - Mixes - Publicly available episodes of TV shows - Publicly available movies - Short clips AVmusic supports audio commands to stop, pause, and resume the playback of the currently playing video. If you requested a playlist, [you will see a list of available titles](#picture) on the left side of your opened video-player window. As of now, you can only have one instance (window) of MPV open at a time. If you invoke another playback request while watching something else, your current window will be closed and the new one will popup in its place. If you are typing your command in the terminal instead of audibly speaking it, don’t worry about the typos or spelling - AVmusic will correct it for you.",
+            "examples": [
+                "play some imagine dragons music on repeat",
+                "av play study music playlist",
+                "play a cookie baking tutorial video"
+            ],
+            "desktopFile": true,
+            "warning": "",
+            "systemDeps": false,
+            "platforms": [
+                "i386",
+                "x86_64",
+                "ia64",
+                "arm64",
+                "arm"
+            ],
+            "branch": "master",
+            "license": "unknown",
+            "icon": "https://0000.us/klatchat/app/files/neon_images/icons/neon_skill.png",
+            "category": "",
+            "categories": [
+                ""
+            ],
+            "tags": [
+                "",
+                "no-license"
+            ],
+            "skillname": "![](https://0000.us/klatchat/app/files/neon_images/icons/neon_paw.png)AVmusic",
+            "authorname": "NeonGeckoCom",
+            "foldername": "avmusic.neon",
+            "appstore": "Neon",
+            "appstore_url": "https://api.github.com/repos/NeonGeckoCom/neon-skills-submodules/contents/skill-metadata.json",
+            "last_updated": "2021-01-06T00:41:42Z",
+            "credits": [
+                "reginaneon [neongeckocom](https://neongecko.com/) augustnmonteiro"
+            ],
+            "requirements": {
+                "python": [
+                    "youtube-dl>=2018.6.18",
+                    "git+https://github.com/neondaniel/youtube_searcher"
+                ],
+                "skill": [],
+                "system": {}
+            },
+            "android": {
+                "android_icon": null,
+                "android_name": "Avmusic.Neon Skill",
+                "android_handler": "avmusic.neon.neongeckocom.home"
+            }
+        },
+        {
+            "title": "CaffeineWiz",
+            "url": "https://github.com/NeonGeckoCom/caffeinewiz.neon",
+            "summary": "Provides the caffeine content of various drinks on request. Multiple drinks in a row are possible.",
+            "short_description": "Provides the caffeine content of various drinks on request. Multiple drinks in a row are possible.",
+            "description": "The skill provides the functionality to inform the user of the caffeine content of the requested drink by collecting the required information from two data sources: 1.  [http://caffeinewiz.com/](http://caffeinewiz.com/) - the main source of information for the drink’s database 2.  [https://www.caffeineinformer.com/the-caffeine-database](https://www.caffeineinformer.com/the-caffeine-database) - secondary source for any non-duplicate drinks CaffeineWiz uses [BeautifulSoup](https://www.crummy.com/software/BeautifulSoup/bs4/doc/) to pull the tables from the websites above, then strips the html tags, and later formats the results into the comprehensive list. That object is pickled for the future use. The skill will check for updates periodically. You can modify that time period by changing `TIME_TO_CHECK` parameter on top of the file in the init.",
+            "examples": [
+                "tell me caffeine content of pepsi.",
+                "how much caffeine is in starbucks blonde?",
+                "Tell me caffeine content of Pepsi.",
+                "tell me caffeine content of rocket chocolate.",
+                "How much caffeine is in Starbucks Blonde?",
+                "Tell me caffeine content of Rocket Chocolate."
+            ],
+            "desktopFile": true,
+            "warning": "",
+            "systemDeps": false,
+            "platforms": [
+                "arm",
+                "i386",
+                "arm64",
+                "x86_64",
+                "ia64"
+            ],
+            "branch": "master",
+            "license": "NeonAI License v1.0",
+            "icon": "logo.svg",
+            "category": "Information",
+            "categories": [
+                "Information",
+                "Daily"
+            ],
+            "tags": [
+                "Information",
+                "NeonAI",
+                "coffee",
+                "Daily",
+                "caffeine",
+                "NeonGecko"
+            ],
+            "skillname": "CaffeineWiz",
+            "authorname": "Neon",
+            "foldername": "caffeinewiz.neon",
+            "appstore": "Neon",
+            "appstore_url": "https://api.github.com/repos/NeonGeckoCom/neon-skills-submodules/contents/skill-metadata.json",
+            "last_updated": "2021-02-13T00:24:54Z",
+            "credits": [
+                "@NeonGeckoCom\n@reginaneon\n@NeonDaniel"
+            ],
+            "requirements": {
+                "python": [
+                    "git+https://github.com/neongeckocom/neon-skill-utils"
+                ],
+                "skill": [],
+                "system": {}
+            },
+            "android": {
+                "android_icon": null,
+                "android_name": "Caffeinewiz.Neon Skill",
+                "android_handler": "caffeinewiz.neon.neongeckocom.home"
+            },
+            "download_url": "https://api.github.com/repos/NeonGeckoCom/caffeinewiz.neon/zipball/master"
+        },
+        {
+            "title": "Communication",
+            "url": "https://github.com/NeonGeckoCom/Communication.neon",
+            "summary": "Skill for the Common Message Skill framework.",
+            "short_description": "Skill for the Common Message Skill framework.",
+            "description": "This handles requests to send messages and place calls by communicating with all call and message handling skills and selecting the appropriate one to handle a request",
+            "examples": [
+                "send a sip message to neongecko@sip.antisip.com hi",
+                "Send a sip message to neongecko@sip.antisip.com hi",
+                "call daniel",
+                "Send a text message to Daniel that says hello",
+                "call 555-555-5555",
+                "send a text message to daniel that says hello",
+                "call Daniel"
+            ],
+            "desktopFile": true,
+            "warning": "",
+            "systemDeps": false,
+            "platforms": [
+                "arm",
+                "i386",
+                "arm64",
+                "x86_64",
+                "ia64"
+            ],
+            "branch": "master",
+            "license": "NeonAI License v1.0",
+            "icon": "https://0000.us/klatchat/app/files/neon_images/icons/neon_skill.png",
+            "category": "",
+            "categories": [
+                ""
+            ],
+            "tags": [
+                "",
+                "no-license"
+            ],
+            "skillname": "Communication",
+            "authorname": "Neon",
+            "foldername": "Communication.neon",
+            "appstore": "Neon",
+            "appstore_url": "https://api.github.com/repos/NeonGeckoCom/neon-skills-submodules/contents/skill-metadata.json",
+            "last_updated": "2021-02-12T23:00:53Z",
+            "credits": [
+                "[NeonDaniel](https://github.com/NeonDaniel) [neongeckocom](https://neongecko.com/) Mycroft AI"
+            ],
+            "requirements": {
+                "python": [],
+                "skill": [],
+                "system": {}
+            },
+            "android": {
+                "android_icon": null,
+                "android_name": "Communication.Neon Skill",
+                "android_handler": "Communication.neon.neongeckocom.home"
+            },
+            "download_url": "https://api.github.com/repos/NeonGeckoCom/Communication.neon/zipball/master"
+        },
+        {
+            "title": "Controls",
+            "url": "https://github.com/NeonGeckoCom/controls.neon",
+            "summary": "Have Neon help you change and control your user settings.",
+            "short_description": "Control Skill to handle profile settings",
+            "description": "Neon can help you control your user preference settings via this skill.",
+            "examples": [
+                "change my units to (metric/imperial)",
+                "able listening confirmation",
+                "(enable/disable) clap commands",
+                "talk to me (faster/slower/normally)",
+                "change my wakeword to \"okay computer\"",
+                "(enable/disable) (audio recording/transcriptions)",
+                "change my location to (seattle)",
+                "change clap commands to my (home/audio/default) set",
+                "show neon brain"
+            ],
+            "desktopFile": true,
+            "warning": "",
+            "systemDeps": false,
+            "platforms": [
+                "i386",
+                "x86_64",
+                "ia64",
+                "arm64",
+                "arm"
+            ],
+            "branch": "master",
+            "license": "unknown",
+            "icon": "https://0000.us/klatchat/app/files/neon_images/icons/neon_skill.png",
+            "category": "",
+            "categories": [
+                ""
+            ],
+            "tags": [
+                "",
+                "no-license"
+            ],
+            "skillname": "![](https://0000.us/klatchat/app/files/neon_images/icons/neon_paw.png)Controls",
+            "authorname": "NeonGeckoCom",
+            "foldername": "controls.neon",
+            "appstore": "Neon",
+            "appstore_url": "https://api.github.com/repos/NeonGeckoCom/neon-skills-submodules/contents/skill-metadata.json",
+            "last_updated": "2020-10-15T23:44:55Z",
+            "credits": [
+                "reginaneon [neongeckocom](https://neongecko.com/) Mycroft AI"
+            ],
+            "requirements": {
+                "python": [],
+                "skill": [],
+                "system": {}
+            },
+            "android": {
+                "android_icon": null,
+                "android_name": "Controls.Neon Skill",
+                "android_handler": "controls.neon.neongeckocom.home"
+            }
+        },
+        {
+            "title": "Custom Conversations",
+            "url": "https://github.com/NeonGeckoCom/custom-conversation.neon",
+            "summary": "Create your own or use text script files shared by other users.",
+            "short_description": "Custom Conversation (Conversation Scripts) skill",
+            "description": "Skill, which works using the custom text parsing implementation, provides the functionality to create, share, modify, and use any script files obtained from the shared library.",
+            "examples": [
+                "run my (script name) skill file",
+                "run my (script name) skill file at (tag name)",
+                "update my scripts",
+                "mail me my (script name) script"
+            ],
+            "desktopFile": true,
+            "warning": "",
+            "systemDeps": false,
+            "platforms": [
+                "i386",
+                "x86_64",
+                "ia64",
+                "arm64",
+                "arm"
+            ],
+            "branch": "master",
+            "license": "unknown",
+            "icon": "https://0000.us/klatchat/app/files/neon_images/icons/neon_skill.png",
+            "category": "",
+            "categories": [
+                ""
+            ],
+            "tags": [
+                "",
+                "no-license"
+            ],
+            "skillname": "Custom Conversations",
+            "authorname": "NeonGeckoCom",
+            "foldername": "custom-conversation.neon",
+            "appstore": "Neon",
+            "appstore_url": "https://api.github.com/repos/NeonGeckoCom/neon-skills-submodules/contents/skill-metadata.json",
+            "last_updated": "2021-01-19T23:47:51Z",
+            "credits": [
+                "[reginaneon](https://github.com/reginaneon) [NeonDaniel](https://github.com/neondaniel) [neongeckocom](https://neongecko.com/)"
+            ],
+            "requirements": {
+                "python": [
+                    "bs4",
+                    "git+https://github.com/neongeckocom/neon-skill-utils"
+                ],
+                "skill": [],
+                "system": {}
+            },
+            "android": {
+                "android_icon": null,
+                "android_name": "Custom Conversation.Neon Skill",
+                "android_handler": "custom-conversation.neon.neongeckocom.home"
+            }
+        },
+        {
+            "title": "Date Time",
+            "url": "https://github.com/NeonGeckoCom/date-time.neon",
+            "summary": "Get Neon to speak the time, date, or day of the week of any city around the globe.",
+            "short_description": "Date Time Skill",
+            "description": "Get the local time or time for major cities around the world by prompting Neon. Times are given in 12-hour (2:30 pm) or 24-hour format (14:30) based on your settings in your user yaml file.",
+            "examples": [
+                "what time is it in paris",
+                "tell me the time in seattle"
+            ],
+            "desktopFile": true,
+            "warning": "",
+            "systemDeps": false,
+            "platforms": [
+                "i386",
+                "x86_64",
+                "ia64",
+                "arm64",
+                "arm"
+            ],
+            "branch": "master",
+            "license": "apache-2.0",
+            "icon": "https://0000.us/klatchat/app/files/neon_images/icons/neon_skill.png",
+            "category": "",
+            "categories": [
+                ""
+            ],
+            "tags": [
+                "",
+                "permissive-license"
+            ],
+            "skillname": "![](https://0000.us/klatchat/app/files/neon_images/icons/neon_paw.png)Date Time",
+            "authorname": "NeonGeckoCom",
+            "foldername": "date-time.neon",
+            "appstore": "Neon",
+            "appstore_url": "https://api.github.com/repos/NeonGeckoCom/neon-skills-submodules/contents/skill-metadata.json",
+            "last_updated": "2020-10-24T01:49:53Z",
+            "credits": [
+                "reginaneon [neongeckocom](https://neongecko.com/) Mycroft AI"
+            ],
+            "requirements": {
+                "python": [
+                    "tzlocal==1.3",
+                    "geopy",
+                    "pytz==2017.2",
+                    "astral==1.4",
+                    "timezonefinder"
+                ],
+                "skill": [],
+                "system": {}
+            },
+            "android": {
+                "android_icon": null,
+                "android_name": "Date Time.Neon Skill",
+                "android_handler": "date-time.neon.neongeckocom.home"
+            }
+        },
+        {
+            "title": "Device Control Center",
+            "url": "https://github.com/NeonGeckoCom/device-control-center.neon",
+            "summary": "Primary core device skill responsible for handling multiple system commands.",
+            "short_description": "Primary core device skill responsible for handling multiple system commands.",
+            "description": "Device Control skill is the primary and one of the most important and complex skills for Neon’s internal controls. It goes hand-in-hand with Neon’s User Settings Control skill. Those two skills provide similar functionality but are separated logically. Device Control skill is the “brain” behind customization and control of Neon’s device. It is responsible for: -   Changing dialog modes; -   Clearing recorded likes, audio, selected and full text transcriptions, and the rest of the user’s data; -   Audible commands to switch between skipping and requiring wake words in two modes: dev and user; -   Enabling, disabling, and configuring gestures; -   Shutting down the whole device; -   Exiting from Neon’s process; -   Showing and cancelling demo, including the question of the first startup; -   Manual updates requests;",
+            "examples": [
+                "Change your dialog mode to (random/default)",
+                "I want you to (exit/shutdown)",
+                "change your dialog mode to (random/default)",
+                "(skip/require) wake words",
+                "clear my user (profile/transcripts/likes/media/preferences/languages)\"",
+                "(enable/disable) (blink/clap) commands",
+                "show me the demo",
+                "clear my user (profile/transcripts/likes/media/preferences/languages)",
+                "i want you to (exit/shutdown)",
+                "check for updates"
+            ],
+            "desktopFile": true,
+            "warning": "",
+            "systemDeps": false,
+            "platforms": [
+                "arm",
+                "i386",
+                "arm64",
+                "x86_64",
+                "ia64"
+            ],
+            "branch": "master",
+            "license": "NeonAI License v1.0",
+            "icon": "https://0000.us/klatchat/app/files/neon_images/icons/neon_skill.png",
+            "category": "",
+            "categories": [
+                ""
+            ],
+            "tags": [
+                "",
+                "no-license"
+            ],
+            "skillname": "Device Control Center",
+            "authorname": "Neon",
+            "foldername": "device-control-center.neon",
+            "appstore": "Neon",
+            "appstore_url": "https://api.github.com/repos/NeonGeckoCom/neon-skills-submodules/contents/skill-metadata.json",
+            "last_updated": "2021-02-16T05:58:10Z",
+            "credits": [
+                "reginaneon [neongeckocom](https://neongecko.com/)"
+            ],
+            "requirements": {
+                "python": [],
+                "skill": [],
+                "system": {}
+            },
+            "android": {
+                "android_icon": null,
+                "android_name": "Device Control Center.Neon Skill",
+                "android_handler": "device-control-center.neon.neongeckocom.home"
+            },
+            "download_url": "https://api.github.com/repos/NeonGeckoCom/device-control-center.neon/zipball/master"
+        },
+        {
+            "title": "fallback-duck-duck-go",
+            "url": "https://github.com/NeonGeckoCom/fallback-duck-duck-go.neon",
+            "summary": "Use of DuckDuckGo services asa fallback to answer questions.",
+            "short_description": "Use of DuckDuckGo services asa fallback to answer questions.",
+            "description": "Query DuckDuckGo as a fallback when no other Skill can answer the question. Uses the [DuckDuckGo API](https://duckduckgo.com/api) to provide information.",
+            "examples": [
+                "Who is george washington?",
+                "Who's madonna?",
+                "who is george washington?",
+                "who's madonna?",
+                "What is plasma?",
+                "what is plasma?"
+            ],
+            "desktopFile": true,
+            "warning": "",
+            "systemDeps": false,
+            "platforms": [
+                "arm",
+                "i386",
+                "arm64",
+                "x86_64",
+                "ia64"
+            ],
+            "branch": "master",
+            "license": "NeonAI License v1.0",
+            "icon": "https://0000.us/klatchat/app/files/neon_images/icons/neon_skill.png",
+            "category": "",
+            "categories": [
+                ""
+            ],
+            "tags": [
+                "",
+                "permissive-license"
+            ],
+            "skillname": "fallback-duck-duck-go",
+            "authorname": "Neon",
+            "foldername": "fallback-duck-duck-go.neon",
+            "appstore": "Neon",
+            "appstore_url": "https://api.github.com/repos/NeonGeckoCom/neon-skills-submodules/contents/skill-metadata.json",
+            "last_updated": "2021-02-12T23:00:28Z",
+            "credits": [
+                "reginaneon [neongeckocom](https://neongecko.com/) Mycroft AI"
+            ],
+            "requirements": {
+                "python": [
+                    "ddg3"
+                ],
+                "skill": [],
+                "system": {}
+            },
+            "android": {
+                "android_icon": null,
+                "android_name": "Fallback Duck Duck Go.Neon Skill",
+                "android_handler": "fallback-duck-duck-go.neon.neongeckocom.home"
+            },
+            "download_url": "https://api.github.com/repos/NeonGeckoCom/fallback-duck-duck-go.neon/zipball/master"
+        },
+        {
+            "title": "fallback-unknown",
+            "url": "https://github.com/NeonGeckoCom/fallback-unknown.neon",
+            "summary": "Unknown request fallback handler. Executes if every other step failed to answer the question.",
+            "short_description": "Unknown request fallback handler. Executes if every other step failed to answer the question.",
+            "description": "This fallback is how Neon would let you know if he can't help with what you said and answer your question. This skill will execute as a last resort, and only if you are currently in the wakewords-required mode. If you are skipping wakewords, the failed utterances will be ignored. Neon will try to match the request to Adapt skills, Padatious skills, and all of Fallbacks before finally l reaching it here.",
+            "examples": [],
+            "desktopFile": true,
+            "warning": "",
+            "systemDeps": false,
+            "platforms": [
+                "arm",
+                "i386",
+                "arm64",
+                "x86_64",
+                "ia64"
+            ],
+            "branch": "master",
+            "license": "NeonAI License v1.0",
+            "icon": "https://0000.us/klatchat/app/files/neon_images/icons/neon_skill.png",
+            "category": "",
+            "categories": [
+                ""
+            ],
+            "tags": [
+                "",
+                "permissive-license"
+            ],
+            "skillname": "fallback-unknown",
+            "authorname": "Neon",
+            "foldername": "fallback-unknown.neon",
+            "appstore": "Neon",
+            "appstore_url": "https://api.github.com/repos/NeonGeckoCom/neon-skills-submodules/contents/skill-metadata.json",
+            "last_updated": "2021-02-12T23:00:40Z",
+            "credits": [
+                "reginaneon [neongeckocom](https://neongecko.com/) Mycroft AI"
+            ],
+            "requirements": {
+                "python": [],
+                "skill": [],
+                "system": {}
+            },
+            "android": {
+                "android_icon": null,
+                "android_name": "Fallback Unknown.Neon Skill",
+                "android_handler": "fallback-unknown.neon.neongeckocom.home"
+            },
+            "download_url": "https://api.github.com/repos/NeonGeckoCom/fallback-unknown.neon/zipball/master"
+        },
+        {
+            "title": "fallback-wolfram-alpha",
+            "url": "https://github.com/NeonGeckoCom/fallback-wolfram-alpha.neon",
+            "summary": "General knowledge fallback handler based on [Wolfram Alpha](https://wolframalpha.com) services",
+            "short_description": "General knowledge fallback handler based on [Wolfram Alpha](https://wolframalpha.com) services",
+            "description": "Answers general knowledge, math, and definition questions by using Wolfram Alpha Api services. If the user is interested in knowing where the information for the spoken answer came from, Neon can send the most recent source of the spoken details to user’s email. Lengthy responses are cached and saved for later use.",
+            "examples": [
+                "How far away is the moon",
+                "Send me the source for that",
+                "what is 2 + 2",
+                "Who won best picture in 2006",
+                "send me the source for that",
+                "how far away is the moon",
+                "who won best picture in 2006",
+                "What is 2 + 2"
+            ],
+            "desktopFile": true,
+            "warning": "",
+            "systemDeps": false,
+            "platforms": [
+                "arm",
+                "i386",
+                "arm64",
+                "x86_64",
+                "ia64"
+            ],
+            "branch": "master",
+            "license": "NeonAI License v1.0",
+            "icon": "https://0000.us/klatchat/app/files/neon_images/icons/neon_skill.png",
+            "category": "",
+            "categories": [
+                ""
+            ],
+            "tags": [
+                "",
+                "permissive-license"
+            ],
+            "skillname": "fallback-wolfram-alpha",
+            "authorname": "Neon",
+            "foldername": "fallback-wolfram-alpha.neon",
+            "appstore": "Neon",
+            "appstore_url": "https://api.github.com/repos/NeonGeckoCom/neon-skills-submodules/contents/skill-metadata.json",
+            "last_updated": "2021-02-13T00:25:09Z",
+            "credits": [
+                "reginaneon [neongeckocom](https://neongecko.com/) Mycroft AI"
+            ],
+            "requirements": {
+                "python": [
+                    "wolframalpha==3.0",
+                    "requests>=2.13.0"
+                ],
+                "skill": [],
+                "system": {}
+            },
+            "android": {
+                "android_icon": null,
+                "android_name": "Fallback Wolfram Alpha.Neon Skill",
+                "android_handler": "fallback-wolfram-alpha.neon.neongeckocom.home"
+            },
+            "download_url": "https://api.github.com/repos/NeonGeckoCom/fallback-wolfram-alpha.neon/zipball/master"
+        },
+        {
+            "title": "I Like Brands",
+            "url": "https://github.com/NeonGeckoCom/i-like-brands.neon",
+            "summary": "Skill that lets Neon catch user’s preferences from the list of available brands.",
+            "short_description": "Skill that lets Neon catch user’s preferences from the list of available brands.",
+            "description": "This is a skill that acts as a support for Neon’s coupons generation. I-like-brands is listening for user’s utterances mentioning preferred brands anywhere in the speech throughout the day, given appropriate permissions. Obtained information is then saved as a part of the selected transcriptions - `ts_selected_transcripts` - accessible to the user, along with the associated user’s audio file, which can be found at `ts_transcript_audio_segments`. Every match will be announced with the “ding” sound. Then, if requested, those lines that should follow the pattern of `I like *brandname*` are exported to the internal Coupons.py class to generate coupons for discounts and good offers for the user. That request can be made through my-coupons skill. Before generating any new responses, Neon will check with our remote server to see if any new brands became available for processing. This skill is a good demonstration on Neon’s handling for information acquisition and work with the remote server.",
+            "examples": [
+                "i don't like alpha",
+                "I like Neon",
+                "I don't like Alpha",
+                "i like neon"
+            ],
+            "desktopFile": true,
+            "warning": "",
+            "systemDeps": false,
+            "platforms": [
+                "arm",
+                "i386",
+                "arm64",
+                "x86_64",
+                "ia64"
+            ],
+            "branch": "master",
+            "license": "NeonAI License v1.0",
+            "icon": "https://0000.us/klatchat/app/files/neon_images/icons/neon_skill.png",
+            "category": "",
+            "categories": [
+                ""
+            ],
+            "tags": [
+                "",
+                "no-license"
+            ],
+            "skillname": "I Like Brands",
+            "authorname": "Neon",
+            "foldername": "i-like-brands.neon",
+            "appstore": "Neon",
+            "appstore_url": "https://api.github.com/repos/NeonGeckoCom/neon-skills-submodules/contents/skill-metadata.json",
+            "last_updated": "2021-02-13T00:26:58Z",
+            "credits": [
+                "reginaneon [neongeckocom](https://neongecko.com/)"
+            ],
+            "requirements": {
+                "python": [
+                    "git+https://github.com/neongeckocom/neon-skill-utils"
+                ],
+                "skill": [],
+                "system": {}
+            },
+            "android": {
+                "android_icon": null,
+                "android_name": "I Like Brands.Neon Skill",
+                "android_handler": "i-like-brands.neon.neongeckocom.home"
+            },
+            "download_url": "https://api.github.com/repos/NeonGeckoCom/i-like-brands.neon/zipball/master"
+        },
+        {
+            "title": "I Like Coupons",
+            "url": "https://github.com/NeonGeckoCom/i-like-coupons.neon",
+            "summary": "Request the list of coupons, relevant to your current interests.",
+            "short_description": "Request the list of coupons, relevant to your current interests.",
+            "description": "Skill, which works using [track my brands](http://trackmybrands.com/) database and goes in pair with “i-like-brands” skill, provides the user with a list of the current coupons relevant to the user's areas of interests. Generated coupons, along with transcriptions, can be emailed via `send me my coupons` command. Coupons are generated based on the information from selected transcripts file, which gets populater from “i-like-brands” skill. Alternatively, user can ask for specific brand-based coupons, such as `tell me coupons for Neon` if they do not wish to use “i-like-brands” skill recordings or transcriptions. In addition, upon request, Neon could recite text or replay audio in user’s voice saying the list of brands that the user showed interest in. The data is collected via “i-like-brands” skill, same as previously. For example: - List the brands I like - Here are your brands: *list of names of the brand in the user's voice*",
+            "examples": [
+                "Tell me my coupons",
+                "tell me coupons for neon",
+                "read me my likes",
+                "tell me my likes",
+                "Email me my coupons",
+                "Tell me my likes",
+                "tell me my coupons",
+                "Read me my likes",
+                "Tell me coupons for Neon",
+                "mail me my coupons"
+            ],
+            "desktopFile": true,
+            "warning": "",
+            "systemDeps": false,
+            "platforms": [
+                "arm",
+                "i386",
+                "arm64",
+                "x86_64",
+                "ia64"
+            ],
+            "branch": "master",
+            "license": "NeonAI License v1.0",
+            "icon": "https://0000.us/klatchat/app/files/neon_images/icons/neon_skill.png",
+            "category": "",
+            "categories": [
+                ""
+            ],
+            "tags": [
+                "",
+                "no-license"
+            ],
+            "skillname": "I Like Coupons",
+            "authorname": "Neon",
+            "foldername": "i-like-coupons.neon",
+            "appstore": "Neon",
+            "appstore_url": "https://api.github.com/repos/NeonGeckoCom/neon-skills-submodules/contents/skill-metadata.json",
+            "last_updated": "2021-02-13T00:35:01Z",
+            "credits": [
+                "reginaneon [neongeckocom](https://neongecko.com/)"
+            ],
+            "requirements": {
+                "python": [
+                    "git+https://github.com/neongeckocom/neon-skill-utils"
+                ],
+                "skill": [],
+                "system": {}
+            },
+            "android": {
+                "android_icon": null,
+                "android_name": "I Like Coupons.Neon Skill",
+                "android_handler": "i-like-coupons.neon.neongeckocom.home"
+            },
+            "download_url": "https://api.github.com/repos/NeonGeckoCom/i-like-coupons.neon/zipball/master"
+        },
+        {
+            "title": "IP Address",
+            "url": "https://github.com/NeonGeckoCom/ip-address.neon",
+            "summary": "Retrieve the [IP address](https://en.wikipedia.org/wiki/IP_address), also known as the \"network address\" of the Device and respond verbally to the user, and if the Device supports it, display the IP address.",
+            "short_description": "Retrieve the [IP address](https://en.wikipedia.org/wiki/IP_address), also known as the \"network address\" of the Device and respond verbally to the user, and if the Device supports it, display the IP address.",
+            "description": "Returns the known IP addresses to the user, if requested. Useful for testing.",
+            "examples": [
+                "Tell me your IP address.",
+                "tell me your ip address.",
+                "what is my public ip address?",
+                "What is my public IP address?",
+                "What's your IP address?",
+                "what's your ip address?"
+            ],
+            "desktopFile": true,
+            "warning": "",
+            "systemDeps": false,
+            "platforms": [
+                "arm",
+                "i386",
+                "arm64",
+                "x86_64",
+                "ia64"
+            ],
+            "branch": "master",
+            "license": "NeonAI License v1.0",
+            "icon": "https://0000.us/klatchat/app/files/neon_images/icons/neon_skill.png",
+            "category": "",
+            "categories": [
+                ""
+            ],
+            "tags": [
+                "",
+                "permissive-license"
+            ],
+            "skillname": "IP Address",
+            "authorname": "Neon",
+            "foldername": "ip-address.neon",
+            "appstore": "Neon",
+            "appstore_url": "https://api.github.com/repos/NeonGeckoCom/neon-skills-submodules/contents/skill-metadata.json",
+            "last_updated": "2021-02-12T23:01:22Z",
+            "credits": [
+                "reginaneon [neongeckocom](https://neongecko.com/) Mycroft AI"
+            ],
+            "requirements": {
+                "python": [
+                    "netifaces==0.10.6"
+                ],
+                "skill": [],
+                "system": {}
+            },
+            "android": {
+                "android_icon": null,
+                "android_name": "Ip Address.Neon Skill",
+                "android_handler": "ip-address.neon.neongeckocom.home"
+            },
+            "download_url": "https://api.github.com/repos/NeonGeckoCom/ip-address.neon/zipball/master"
+        },
+        {
+            "title": "Joke",
+            "url": "https://github.com/NeonGeckoCom/joke.neon",
+            "summary": "Let Neon tell you a joke or a small humorous saying.",
+            "short_description": "Let Neon tell you a joke or a small humorous saying.",
+            "description": "Brighten your day with a little humor. This draws on the jokes collected by the [PyJokes project](https://github.com/pyjokes/pyjokes) to give you a chuckle. The joke categories are: * Neutral -- jokes that are safe for work, kids or your grandmother * Adult -- nothing horrible, but be ready to cover some ears * Chuck Norris -- jokes only a geek can love By default it will give you clean and/or geeky jokes, but you can ask a little adult humor if you feel that way. _WARNING: Laughter is not guaranteed, but eye rolls are likely._",
+            "examples": [
+                "Make me laugh",
+                "tell me a joke",
+                "i want to hear a raunchy joke",
+                "tell me a chuck norris joke",
+                "Tell me a Chuck Norris joke",
+                "make me laugh",
+                "Tell me a joke",
+                "How about a neutral joke",
+                "I want to hear a raunchy joke",
+                "how about a neutral joke"
+            ],
+            "desktopFile": true,
+            "warning": "",
+            "systemDeps": false,
+            "platforms": [
+                "arm",
+                "i386",
+                "arm64",
+                "x86_64",
+                "ia64"
+            ],
+            "branch": "master",
+            "license": "NeonAI License v1.0",
+            "icon": "https://0000.us/klatchat/app/files/neon_images/icons/neon_skill.png",
+            "category": "",
+            "categories": [
+                ""
+            ],
+            "tags": [
+                "",
+                "permissive-license"
+            ],
+            "skillname": "Joke",
+            "authorname": "Neon",
+            "foldername": "joke.neon",
+            "appstore": "Neon",
+            "appstore_url": "https://api.github.com/repos/NeonGeckoCom/neon-skills-submodules/contents/skill-metadata.json",
+            "last_updated": "2021-02-12T23:04:40Z",
+            "credits": [
+                "reginaneon [neongeckocom](https://neongecko.com/) Mycroft AI"
+            ],
+            "requirements": {
+                "python": [
+                    "pyjokes==0.5.0"
+                ],
+                "skill": [],
+                "system": {}
+            },
+            "android": {
+                "android_icon": null,
+                "android_name": "Joke.Neon Skill",
+                "android_handler": "joke.neon.neongeckocom.home"
+            },
+            "download_url": "https://api.github.com/repos/NeonGeckoCom/joke.neon/zipball/master"
+        },
+        {
+            "title": "Launcher",
+            "url": "https://github.com/NeonGeckoCom/launcher.neon",
+            "summary": "Skill used to launch programs and navigate websites",
+            "short_description": "Skill used to launch programs and navigate websites",
+            "description": "This example skill is used to launch desktop applications and browse web pages.",
+            "examples": [
+                "pen notepad.",
+                "Browse to neon.ai",
+                "Navigate to google.com",
+                "launch terminal.",
+                "avigate to google.com",
+                "Open notepad.",
+                "browse to neon.ai",
+                "launch chrome",
+                "Launch terminal."
+            ],
+            "desktopFile": true,
+            "warning": "",
+            "systemDeps": false,
+            "platforms": [
+                "arm",
+                "i386",
+                "arm64",
+                "x86_64",
+                "ia64"
+            ],
+            "branch": "master",
+            "license": "NeonAI License v1.0",
+            "icon": "logo.svg",
+            "category": "Productivity",
+            "categories": [
+                "",
+                "Productivity",
+                "Daily"
+            ],
+            "tags": [
+                "",
+                "Productivity",
+                "NeonAI",
+                "web",
+                "browser",
+                "Daily",
+                "NeonGecko",
+                "desktop"
+            ],
+            "skillname": "Launcher",
+            "authorname": "Neon",
+            "foldername": "launcher.neon",
+            "appstore": "Neon",
+            "appstore_url": "https://api.github.com/repos/NeonGeckoCom/neon-skills-submodules/contents/skill-metadata.json",
+            "last_updated": "2021-02-13T00:25:27Z",
+            "credits": [
+                "@NeonGeckoCom\n@NeonDaniel\n@reginaneon"
+            ],
+            "requirements": {
+                "python": [
+                    "git+https://github.com/neongeckocom/neon-skill-utils"
+                ],
+                "skill": [],
+                "system": {}
+            },
+            "android": {
+                "android_icon": null,
+                "android_name": "Launcher.Neon Skill",
+                "android_handler": "launcher.neon.neongeckocom.home"
+            },
+            "download_url": "https://api.github.com/repos/NeonGeckoCom/launcher.neon/zipball/master"
+        },
+        {
+            "title": "Messaging",
+            "url": "https://github.com/NeonGeckoCom/messaging.neon",
+            "summary": "Handles mobile requests for phone calls, SMS, and emails.",
+            "short_description": "Handles mobile requests for phone calls, SMS, and emails.",
+            "description": "This handles SMS, phone call, and email requests.",
+            "examples": [
+                "call daniel",
+                "Send an email to demo@neongecko.com with the subject Test Email",
+                "Send a text message to Daniel that says hello",
+                "call 555-555-5555",
+                "send an email to demo@neongecko.com with the subject test email",
+                "send a text message to daniel that says hello",
+                "call Daniel"
+            ],
+            "desktopFile": true,
+            "warning": "",
+            "systemDeps": false,
+            "platforms": [
+                "arm",
+                "i386",
+                "arm64",
+                "x86_64",
+                "ia64"
+            ],
+            "branch": "master",
+            "license": "NeonAI License v1.0",
+            "icon": "https://0000.us/klatchat/app/files/neon_images/icons/neon_skill.png",
+            "category": "",
+            "categories": [
+                ""
+            ],
+            "tags": [
+                "",
+                "no-license"
+            ],
+            "skillname": "Messaging",
+            "authorname": "Neon",
+            "foldername": "messaging.neon",
+            "appstore": "Neon",
+            "appstore_url": "https://api.github.com/repos/NeonGeckoCom/neon-skills-submodules/contents/skill-metadata.json",
+            "last_updated": "2021-02-13T00:35:47Z",
+            "credits": [
+                "[NeonDaniel](https://github.com/NeonDaniel) [neongeckocom](https://neongecko.com/) Mycroft AI"
+            ],
+            "requirements": {
+                "python": [
+                    "phonenumbers>=8.12.0"
+                ],
+                "skill": [],
+                "system": {}
+            },
+            "android": {
+                "android_icon": null,
+                "android_name": "Messaging.Neon Skill",
+                "android_handler": "messaging.neon.neongeckocom.home"
+            },
+            "download_url": "https://api.github.com/repos/NeonGeckoCom/messaging.neon/zipball/master"
+        },
+        {
+            "title": "Latest News",
+            "url": "https://github.com/NeonGeckoCom/news.neon",
+            "summary": "Listen to the latest news report from your favorite broadcast",
+            "short_description": "Listen to the latest news report from your favorite broadcast",
+            "description": "Play the latest news from an RSS audio feed. Your device location will be used to provide a local feed from your country if available. Otherwise, the National Public Radio (NPR) Hourly News will be used. You can also choose your own default or add a custom audio feed at: [home.mycroft.ai](https://home.mycroft.ai/#/skill). Supported stations include: - Associated Press (AP) Hourly Radio News - [AU] ABC News Australia - [BE] VRT Nieuws - [CA] CBC News - [DE] DLF - [DE] WDR - [FI] YLE - [SE] Ekot - [UK] BBC News - [US] Fox News - [US] NPR News Now - [US] PBS NewsHour",
+            "examples": [
+                "Restart news",
+                "Tell me the news",
+                "tell me the news",
+                "What's the news?",
+                "Play the news",
+                "restart news",
+                "play the news",
+                "Play the BBC news",
+                "play the bbc news",
+                "what's the news?"
+            ],
+            "desktopFile": true,
+            "warning": "",
+            "systemDeps": false,
+            "platforms": [
+                "arm",
+                "i386",
+                "arm64",
+                "x86_64",
+                "ia64"
+            ],
+            "branch": "master",
+            "license": "NeonAI License v1.0",
+            "icon": "https://raw.githack.com/FortAwesome/Font-Awesome/master/svgs/solid/newspaper.svg",
+            "category": "Daily",
+            "categories": [
+                "Information",
+                "Daily"
+            ],
+            "tags": [
+                "Information",
+                "Daily",
+                "headlines",
+                "news",
+                "no-license"
+            ],
+            "skillname": "Latest News",
+            "authorname": "Neon",
+            "foldername": "news.neon",
+            "appstore": "Neon",
+            "appstore_url": "https://api.github.com/repos/NeonGeckoCom/neon-skills-submodules/contents/skill-metadata.json",
+            "last_updated": "2021-02-12T23:05:03Z",
+            "credits": [
+                "Mycroft AI (@MycroftAI)"
+            ],
+            "requirements": {
+                "python": [
+                    "feedparser==5.2.1"
+                ],
+                "skill": [],
+                "system": {}
+            },
+            "android": {
+                "android_icon": null,
+                "android_name": "News.Neon Skill",
+                "android_handler": "news.neon.neongeckocom.home"
+            },
+            "download_url": "https://api.github.com/repos/NeonGeckoCom/news.neon/zipball/master"
+        },
+        {
+            "title": "openHAB",
+            "url": "https://github.com/NeonGeckoCom/openhab.neon",
+            "summary": "Provides control of smart devices connected to an openHAB server running on the same network.",
+            "short_description": "Provides control of smart devices connected to an openHAB server running on the same network.",
+            "description": "The skill provides the functionality to control Lighting, Thermostat, Current Temperature, and Homekit devices attached to an openHAB server. TPLink and Belkin devices may also be discovered on the network via skill and device names may be updated.",
+            "examples": [
+                "list my home control items",
+                "“rename desk outlet to space heater”",
+                "“toggle desk outlet”",
+                "refresh my home control devices",
+                "dim room light to 20 percent",
+                "toggle desk outlet",
+                "turn on desk lamp",
+                "rename desk outlet to space heater"
+            ],
+            "desktopFile": true,
+            "warning": "",
+            "systemDeps": false,
+            "platforms": [
+                "arm",
+                "i386",
+                "arm64",
+                "x86_64",
+                "ia64"
+            ],
+            "branch": "master",
+            "license": "NeonAI License v1.0",
+            "icon": "https://0000.us/klatchat/app/files/neon_images/icons/neon_skill.png",
+            "category": "",
+            "categories": [
+                ""
+            ],
+            "tags": [
+                "",
+                "viral-license"
+            ],
+            "skillname": "openHAB",
+            "authorname": "Neon",
+            "foldername": "openhab.neon",
+            "appstore": "Neon",
+            "appstore_url": "https://api.github.com/repos/NeonGeckoCom/neon-skills-submodules/contents/skill-metadata.json",
+            "last_updated": "2021-02-12T23:03:31Z",
+            "credits": [
+                "djmcknight358 [neongeckocom](https://neongecko.com/) mortommy"
+            ],
+            "requirements": {
+                "python": [
+                    "requests>=2.10.0",
+                    "fuzzywuzzy==0.14.0",
+                    "python-Levenshtein==0.12.0"
+                ],
+                "skill": [],
+                "system": {}
+            },
+            "android": {
+                "android_icon": null,
+                "android_name": "Openhab.Neon Skill",
+                "android_handler": "openhab.neon.neongeckocom.home"
+            },
+            "download_url": "https://api.github.com/repos/NeonGeckoCom/openhab.neon/zipball/master"
+        },
+        {
+            "title": "Personal",
+            "url": "https://github.com/NeonGeckoCom/personal.neon",
+            "summary": "Skill used for introduction between the user and Neon.",
+            "short_description": "Skill used for introduction between the user and Neon.",
+            "description": "Personal skill is responsible for introductions and information-acquiring communications between Neon and the user. Neon will use it to introduce himself, explain what and who he is, where he was born, and when it happened. In addition, it will obtain the user’s full, partial, or just a first name, along with the email address, in order to use it for coupons and transcriptions.",
+            "examples": [
+                "who are you",
+                "my email address is...",
+                "my password is...",
+                "my klat username is...",
+                "who made you",
+                "my name is..."
+            ],
+            "desktopFile": true,
+            "warning": "",
+            "systemDeps": false,
+            "platforms": [
+                "arm",
+                "i386",
+                "arm64",
+                "x86_64",
+                "ia64"
+            ],
+            "branch": "master",
+            "license": "NeonAI License v1.0",
+            "icon": "https://0000.us/klatchat/app/files/neon_images/icons/neon_skill.png",
+            "category": "",
+            "categories": [
+                ""
+            ],
+            "tags": [
+                "",
+                "no-license"
+            ],
+            "skillname": "Personal",
+            "authorname": "Neon",
+            "foldername": "personal.neon",
+            "appstore": "Neon",
+            "appstore_url": "https://api.github.com/repos/NeonGeckoCom/neon-skills-submodules/contents/skill-metadata.json",
+            "last_updated": "2021-02-13T00:36:30Z",
+            "credits": [
+                "reginaneon [neongeckocom](https://neongecko.com/) Mycroft AI"
+            ],
+            "requirements": {
+                "python": [],
+                "skill": [],
+                "system": {}
+            },
+            "android": {
+                "android_icon": null,
+                "android_name": "Personal.Neon Skill",
+                "android_handler": "personal.neon.neongeckocom.home"
+            },
+            "download_url": "https://api.github.com/repos/NeonGeckoCom/personal.neon/zipball/master"
+        },
+        {
+            "title": "Playback Control",
+            "url": "https://github.com/NeonGeckoCom/Playback-Control.neon",
+            "summary": "Common playback control system",
+            "short_description": "Common playback control system",
+            "description": "This Skill doesn't do anything by itself, but it provides an important common language for audio playback skills.  By handling simple phrases like 'pause', this one Skill can turn around and rebroadcast the [messagebus](https://mycroft.ai/documentation/message-bus/) command `mycroft.audio.service.pause`, allowing several music services to share common terminology such as \"pause\". Additionally, this implements the common Play handler.  This allows playback services to negotiate which is best suited to play back a specific request. This capability is used by the [Spotify](https://github.com/forslund/spotify-skill) and [Pandora](https://github.com/mycroftai/pianobar-skill) Skills, among others.",
+            "examples": [
+                "Play my summer playlist",
+                "previous track",
+                "Next track",
+                "play my summer playlist",
+                "Previous track",
+                "Previous song",
+                "xt track",
+                "Resume",
+                "Next song",
+                "play pandora",
+                "resume",
+                "previous song",
+                "Pause",
+                "Play Pandora",
+                "xt song",
+                "pause"
+            ],
+            "desktopFile": true,
+            "warning": "",
+            "systemDeps": false,
+            "platforms": [
+                "arm",
+                "i386",
+                "arm64",
+                "x86_64",
+                "ia64"
+            ],
+            "branch": "master",
+            "license": "NeonAI License v1.0",
+            "icon": "https://raw.githack.com/FortAwesome/Font-Awesome/master/svgs/solid/play.svg",
+            "category": "Music",
+            "categories": [
+                "Music"
+            ],
+            "tags": [
+                "system",
+                "playback",
+                "next",
+                "music",
+                "Music",
+                "resume",
+                "pause",
+                "play",
+                "permissive-license"
+            ],
+            "skillname": "Playback Control",
+            "authorname": "Neon",
+            "foldername": "Playback-Control.neon",
+            "appstore": "Neon",
+            "appstore_url": "https://api.github.com/repos/NeonGeckoCom/neon-skills-submodules/contents/skill-metadata.json",
+            "last_updated": "2021-02-13T00:16:35Z",
+            "credits": [
+                "Mycroft AI (@MycroftAI)"
+            ],
+            "requirements": {
+                "python": [],
+                "skill": [],
+                "system": {}
+            },
+            "android": {
+                "android_icon": null,
+                "android_name": "Playback Control.Neon Skill",
+                "android_handler": "Playback-Control.neon.neongeckocom.home"
+            },
+            "download_url": "https://api.github.com/repos/NeonGeckoCom/Playback-Control.neon/zipball/master"
+        },
+        {
+            "title": "SIP skill",
+            "url": "https://github.com/NeonGeckoCom/sip.neon",
+            "summary": "Add VOIP capabilities to Mycroft using Baresip ![](./voip.gif)",
+            "short_description": "SIP skill",
+            "description": "Skill for placing and receiving SIP calls.",
+            "examples": [
+                "answer all calls with Y",
+                "reject call",
+                "mute call",
+                "Do not handle calls automatically",
+                "reject all calls",
+                "unmute call",
+                "call X",
+                "accept call",
+                "Call status",
+                "how many contacts",
+                "call X and say Y",
+                "resume call",
+                "sip login",
+                "restart sip",
+                "hang up",
+                "accept call and say Y",
+                "answer all calls",
+                "hold call",
+                "List contacts"
+            ],
+            "desktopFile": true,
+            "warning": "",
+            "systemDeps": false,
+            "platforms": [
+                "i386",
+                "x86_64",
+                "ia64",
+                "arm64",
+                "arm"
+            ],
+            "branch": "master",
+            "license": "apache-2.0",
+            "icon": "https://0000.us/klatchat/app/files/neon_images/icons/neon_skill.png",
+            "category": "",
+            "categories": [
+                ""
+            ],
+            "tags": [
+                "",
+                "permissive-license"
+            ],
+            "skillname": "![](https://0000.us/klatchat/app/files/neon_images/icons/neon_paw.png)SIP skill",
+            "authorname": "NeonGeckoCom",
+            "foldername": "sip.neon",
+            "appstore": "Neon",
+            "appstore_url": "https://api.github.com/repos/NeonGeckoCom/neon-skills-submodules/contents/skill-metadata.json",
+            "last_updated": "2021-01-06T00:38:11Z",
+            "credits": [
+                "This work as been sponsored by Matt Keys, [eZuce Inc](https://ezuce.com/)\n\nThe GUI was made by [AIIX](https://github.com/AIIX/)"
+            ],
+            "requirements": {
+                "python": [
+                    "json_database>=0.1.3",
+                    "git+https://github.com/NeonDaniel/baresipy"
+                ],
+                "skill": [],
+                "system": {}
+            },
+            "android": {
+                "android_icon": null,
+                "android_name": "Sip.Neon Skill",
+                "android_handler": "sip.neon.neongeckocom.home"
+            }
+        },
+        {
+            "title": "Speak",
+            "url": "https://github.com/NeonGeckoCom/speak.neon",
+            "summary": "Have Neon repeat and say what you want.",
+            "short_description": "Have Neon repeat and say what you want.",
+            "description": "Turn Neon into a parrot. Speak a phrase and listen to it repeated in Neon’s selected voice.",
+            "examples": [
+                "say hello",
+                "say \"hello\""
+            ],
+            "desktopFile": true,
+            "warning": "",
+            "systemDeps": false,
+            "platforms": [
+                "arm",
+                "i386",
+                "arm64",
+                "x86_64",
+                "ia64"
+            ],
+            "branch": "master",
+            "license": "NeonAI License v1.0",
+            "icon": "https://0000.us/klatchat/app/files/neon_images/icons/neon_skill.png",
+            "category": "",
+            "categories": [
+                ""
+            ],
+            "tags": [
+                "",
+                "permissive-license"
+            ],
+            "skillname": "Speak",
+            "authorname": "Neon",
+            "foldername": "speak.neon",
+            "appstore": "Neon",
+            "appstore_url": "https://api.github.com/repos/NeonGeckoCom/neon-skills-submodules/contents/skill-metadata.json",
+            "last_updated": "2021-02-12T23:04:09Z",
+            "credits": [
+                "reginaneon [neongeckocom](https://neongecko.com/) Mycroft AI"
+            ],
+            "requirements": {
+                "python": [],
+                "skill": [],
+                "system": {}
+            },
+            "android": {
+                "android_icon": null,
+                "android_name": "Speak.Neon Skill",
+                "android_handler": "speak.neon.neongeckocom.home"
+            },
+            "download_url": "https://api.github.com/repos/NeonGeckoCom/speak.neon/zipball/master"
+        },
+        {
+            "title": "Speed Test",
+            "url": "https://github.com/NeonGeckoCom/speed-test.neon",
+            "summary": "Skill used to test your internet speed",
+            "short_description": "Skill used to test your internet speed",
+            "description": "This skill uses speedtest.net to check your internet speed",
+            "examples": [
+                "run a speed test"
+            ],
+            "desktopFile": true,
+            "warning": "",
+            "systemDeps": false,
+            "platforms": [
+                "arm",
+                "i386",
+                "arm64",
+                "x86_64",
+                "ia64"
+            ],
+            "branch": "master",
+            "license": "NeonAI License v1.0",
+            "icon": "https://0000.us/klatchat/app/files/neon_images/icons/neon_skill.png",
+            "category": "Daily",
+            "categories": [
+                "",
+                "Productivity",
+                "Daily"
+            ],
+            "tags": [
+                "",
+                "Productivity",
+                "NeonAI",
+                "Internet",
+                "Daily",
+                "Utilities",
+                "NeonGecko"
+            ],
+            "skillname": "Speed Test",
+            "authorname": "Neon",
+            "foldername": "speed-test.neon",
+            "appstore": "Neon",
+            "appstore_url": "https://api.github.com/repos/NeonGeckoCom/neon-skills-submodules/contents/skill-metadata.json",
+            "last_updated": "2021-02-13T00:17:05Z",
+            "credits": [
+                "@neongeckocom\n@neondaniel\n@reginaneon"
+            ],
+            "requirements": {
+                "python": [
+                    "git+https://github.com/neongeckocom/neon-skill-utils",
+                    "speedtest-cli"
+                ],
+                "skill": [],
+                "system": {}
+            },
+            "android": {
+                "android_icon": null,
+                "android_name": "Speed Test.Neon Skill",
+                "android_handler": "speed-test.neon.neongeckocom.home"
+            },
+            "download_url": "https://api.github.com/repos/NeonGeckoCom/speed-test.neon/zipball/master"
+        },
+        {
+            "title": "Spelling",
+            "url": "https://github.com/NeonGeckoCom/spelling.neon",
+            "summary": "Have Neon help you spell words.",
+            "short_description": "Have Neon help you spell words.",
+            "description": "Neon can spell any word which is understood by speech-to-text and he can do so my citing it back to you per request.",
+            "examples": [
+                "spell \"aardvark\"",
+                "spell aardvark",
+                "Neon spell aardvark"
+            ],
+            "desktopFile": true,
+            "warning": "",
+            "systemDeps": false,
+            "platforms": [
+                "arm",
+                "i386",
+                "arm64",
+                "x86_64",
+                "ia64"
+            ],
+            "branch": "master",
+            "license": "NeonAI License v1.0",
+            "icon": "https://0000.us/klatchat/app/files/neon_images/icons/neon_skill.png",
+            "category": "",
+            "categories": [
+                ""
+            ],
+            "tags": [
+                "",
+                "permissive-license"
+            ],
+            "skillname": "Spelling",
+            "authorname": "Neon",
+            "foldername": "spelling.neon",
+            "appstore": "Neon",
+            "appstore_url": "https://api.github.com/repos/NeonGeckoCom/neon-skills-submodules/contents/skill-metadata.json",
+            "last_updated": "2021-02-12T23:01:49Z",
+            "credits": [
+                "reginaneon [neongeckocom](https://neongecko.com/) Mycroft AI"
+            ],
+            "requirements": {
+                "python": [],
+                "skill": [],
+                "system": {}
+            },
+            "android": {
+                "android_icon": null,
+                "android_name": "Spelling.Neon Skill",
+                "android_handler": "spelling.neon.neongeckocom.home"
+            },
+            "download_url": "https://api.github.com/repos/NeonGeckoCom/spelling.neon/zipball/master"
+        },
+        {
+            "title": "Stock",
+            "url": "https://github.com/NeonGeckoCom/stock.neon",
+            "summary": "This skill provides stock values.",
+            "short_description": "This skill provides stock values.",
+            "description": "Use this skill to lookup stock prices",
+            "examples": [
+                "what is * trading at",
+                "what is the stock price for *"
+            ],
+            "desktopFile": true,
+            "warning": "",
+            "systemDeps": false,
+            "platforms": [
+                "arm",
+                "i386",
+                "arm64",
+                "x86_64",
+                "ia64"
+            ],
+            "branch": "master",
+            "license": "NeonAI License v1.0",
+            "icon": "https://0000.us/klatchat/app/files/neon_images/icons/neon_skill.png",
+            "category": "",
+            "categories": [
+                ""
+            ],
+            "tags": [
+                "",
+                "permissive-license"
+            ],
+            "skillname": "Stock",
+            "authorname": "Neon",
+            "foldername": "stock.neon",
+            "appstore": "Neon",
+            "appstore_url": "https://api.github.com/repos/NeonGeckoCom/neon-skills-submodules/contents/skill-metadata.json",
+            "last_updated": "2021-02-12T23:03:59Z",
+            "credits": [
+                "reginaneon MycroftAI djmcknight358 [neongeckocom](https://neongecko.com/)"
+            ],
+            "requirements": {
+                "python": [
+                    "requests>=2.13.0"
+                ],
+                "skill": [],
+                "system": {}
+            },
+            "android": {
+                "android_icon": null,
+                "android_name": "Stock.Neon Skill",
+                "android_handler": "stock.neon.neongeckocom.home"
+            },
+            "download_url": "https://api.github.com/repos/NeonGeckoCom/stock.neon/zipball/master"
+        },
+        {
+            "title": "Stop",
+            "url": "https://github.com/NeonGeckoCom/stop.neon",
+            "summary": "Stop the actions of any skill that is in progress.",
+            "short_description": "Stop the actions of any skill that is in progress.",
+            "description": "This skill is used by other skills to stop any active intent handlers.",
+            "examples": [
+                "stop",
+                "be quiet",
+                "shut up",
+                "Silence",
+                "Stop",
+                "Neon shut up",
+                "Be quiet",
+                "silence"
+            ],
+            "desktopFile": true,
+            "warning": "",
+            "systemDeps": false,
+            "platforms": [
+                "arm",
+                "i386",
+                "arm64",
+                "x86_64",
+                "ia64"
+            ],
+            "branch": "master",
+            "license": "NeonAI License v1.0",
+            "icon": "https://0000.us/klatchat/app/files/neon_images/icons/neon_skill.png",
+            "category": "",
+            "categories": [
+                ""
+            ],
+            "tags": [
+                "",
+                "permissive-license"
+            ],
+            "skillname": "Stop",
+            "authorname": "Neon",
+            "foldername": "stop.neon",
+            "appstore": "Neon",
+            "appstore_url": "https://api.github.com/repos/NeonGeckoCom/neon-skills-submodules/contents/skill-metadata.json",
+            "last_updated": "2021-02-12T23:04:49Z",
+            "credits": [
+                "reginaneon [neongeckocom](https://neongecko.com/) Mycroft AI"
+            ],
+            "requirements": {
+                "python": [],
+                "skill": [],
+                "system": {}
+            },
+            "android": {
+                "android_icon": null,
+                "android_name": "Stop.Neon Skill",
+                "android_handler": "stop.neon.neongeckocom.home"
+            },
+            "download_url": "https://api.github.com/repos/NeonGeckoCom/stop.neon/zipball/master"
+        },
+        {
+            "title": "Support Helper",
+            "url": "https://github.com/NeonGeckoCom/support-helper.neon",
+            "summary": "Provides an option to send current logs via email.",
+            "short_description": "Provides an option to send current logs via email.",
+            "description": "The skill provides the functionality to truncate and upload Neon logs that are then sent to the user email configured in `ngi_user_info.yml`.",
+            "examples": [
+                "create a troubleshooting package"
+            ],
+            "desktopFile": true,
+            "warning": "",
+            "systemDeps": false,
+            "platforms": [
+                "arm",
+                "i386",
+                "arm64",
+                "x86_64",
+                "ia64"
+            ],
+            "branch": "master",
+            "license": "NeonAI License v1.0",
+            "icon": "https://0000.us/klatchat/app/files/neon_images/icons/neon_skill.png",
+            "category": "",
+            "categories": [
+                ""
+            ],
+            "tags": [
+                "",
+                "permissive-license"
+            ],
+            "skillname": "Support Helper",
+            "authorname": "Neon",
+            "foldername": "support-helper.neon",
+            "appstore": "Neon",
+            "appstore_url": "https://api.github.com/repos/NeonGeckoCom/neon-skills-submodules/contents/skill-metadata.json",
+            "last_updated": "2021-02-13T00:26:15Z",
+            "credits": [
+                "reginaneon [neongeckocom](https://neongecko.com/) Mycroft AI djmcknight358"
+            ],
+            "requirements": {
+                "python": [],
+                "skill": [],
+                "system": {}
+            },
+            "android": {
+                "android_icon": null,
+                "android_name": "Support Helper.Neon Skill",
+                "android_handler": "support-helper.neon.neongeckocom.home"
+            },
+            "download_url": "https://api.github.com/repos/NeonGeckoCom/support-helper.neon/zipball/master"
+        },
+        {
+            "title": "Synonyms",
+            "url": "https://github.com/NeonGeckoCom/synonyms.neon",
+            "summary": "This skill handles setting and calling synonym commands",
+            "short_description": "This skill handles setting and calling synonym commands",
+            "description": "You may define a phrase as a synonym for a Neon command. This skill handles creating synonym phrases as well as handling heard synonyms",
+            "examples": [
+                "make 'good morning' a synonym for what is the weather.",
+                "Make 'good morning' a synonym for what is the weather."
+            ],
+            "desktopFile": true,
+            "warning": "",
+            "systemDeps": false,
+            "platforms": [
+                "arm",
+                "i386",
+                "arm64",
+                "x86_64",
+                "ia64"
+            ],
+            "branch": "master",
+            "license": "NeonAI License v1.0",
+            "icon": "https://0000.us/klatchat/app/files/neon_images/icons/neon_skill.png",
+            "category": "",
+            "categories": [
+                ""
+            ],
+            "tags": [
+                "",
+                "no-license"
+            ],
+            "skillname": "Synonyms",
+            "authorname": "Neon",
+            "foldername": "synonyms.neon",
+            "appstore": "Neon",
+            "appstore_url": "https://api.github.com/repos/NeonGeckoCom/neon-skills-submodules/contents/skill-metadata.json",
+            "last_updated": "2021-02-13T00:37:52Z",
+            "credits": [
+                "[NeonDaniel](https://github.com/neondaniel) [reginaneon](https://github.com/reginaneon) [neongeckocom](https://neongecko.com/) Mycroft AI"
+            ],
+            "requirements": {
+                "python": [],
+                "skill": [],
+                "system": {}
+            },
+            "android": {
+                "android_icon": null,
+                "android_name": "Synonyms.Neon Skill",
+                "android_handler": "synonyms.neon.neongeckocom.home"
+            },
+            "download_url": "https://api.github.com/repos/NeonGeckoCom/synonyms.neon/zipball/master"
+        },
+        {
+            "title": "Translation",
+            "url": "https://github.com/NeonGeckoCom/translation.neon",
+            "summary": "This skill provides translation and switching TTS/STT languages functionality.",
+            "short_description": "This skill provides translation and switching TTS/STT languages functionality.",
+            "description": "Use this skill to switch between languages for your TTS or STT preferences and to get individual words or sentences translations. Note you can have two STT languages active at the same time. They are called `primary` and `secondary` languages. For example, you can have Neon reply to you in both English and Russian at the same time. The order will be determined by which language is set to primary. TTS (Neon Speech) options are: Danish Dutch English, Australian English, British English, Indian English, US English, Welsh French French, Canadian German Italian Japanese Korean Polish Portuguese, Brazilian Portuguese, European Russian Spanish, European Spanish, Mexican Spanish, US Swedish Turkish Chinese STT (User Speech) options are: Arabic Chinese (Simplified) Chinese (Traditional) Czech Danish Dutch English Finnish French German Hebrew Indonesian Italian Japanese Korean Polish Portuguese Russian Spanish Swedish Turkish",
+            "examples": [
+                "what are my language settings",
+                "translate * to *",
+                "speak to me in * (and *)",
+                "i prefer ...",
+                "I prefer ...",
+                "my language is *"
+            ],
+            "desktopFile": true,
+            "warning": "",
+            "systemDeps": false,
+            "platforms": [
+                "arm",
+                "i386",
+                "arm64",
+                "x86_64",
+                "ia64"
+            ],
+            "branch": "master",
+            "license": "NeonAI License v1.0",
+            "icon": "https://0000.us/klatchat/app/files/neon_images/icons/neon_skill.png",
+            "category": "",
+            "categories": [
+                ""
+            ],
+            "tags": [
+                "",
+                "no-license"
+            ],
+            "skillname": "Translation",
+            "authorname": "Neon",
+            "foldername": "translation.neon",
+            "appstore": "Neon",
+            "appstore_url": "https://api.github.com/repos/NeonGeckoCom/neon-skills-submodules/contents/skill-metadata.json",
+            "last_updated": "2021-02-13T01:31:03Z",
+            "credits": [
+                "reginaneon [neongeckocom](https://neongecko.com/)"
+            ],
+            "requirements": {
+                "python": [
+                    "git+https://github.com/neongeckocom/neon-skill-utils"
+                ],
+                "skill": [],
+                "system": {}
+            },
+            "android": {
+                "android_icon": null,
+                "android_name": "Translation.Neon Skill",
+                "android_handler": "translation.neon.neongeckocom.home"
+            },
+            "download_url": "https://api.github.com/repos/NeonGeckoCom/translation.neon/zipball/master"
+        },
+        {
+            "title": "USB-Cam",
+            "url": "https://github.com/NeonGeckoCom/usb-cam.neon",
+            "summary": "Take pictures and videos.",
+            "short_description": "Take pictures and videos.",
+            "description": "The skill allows you to capture pictures and videos and saves them to your local device.",
+            "examples": [
+                "“neon record for 30 seconds”",
+                "take a video",
+                "neon take a picture",
+                "neon take a video",
+                "neon show me my last picture",
+                "record for 30 seconds",
+                "show me my last picture",
+                "take a picture"
+            ],
+            "desktopFile": true,
+            "warning": "",
+            "systemDeps": false,
+            "platforms": [
+                "arm",
+                "i386",
+                "arm64",
+                "x86_64",
+                "ia64"
+            ],
+            "branch": "master",
+            "license": "NeonAI License v1.0",
+            "icon": "https://0000.us/klatchat/app/files/neon_images/icons/neon_skill.png",
+            "category": "",
+            "categories": [
+                ""
+            ],
+            "tags": [
+                "",
+                "viral-license"
+            ],
+            "skillname": "USB-Cam",
+            "authorname": "Neon",
+            "foldername": "usb-cam.neon",
+            "appstore": "Neon",
+            "appstore_url": "https://api.github.com/repos/NeonGeckoCom/neon-skills-submodules/contents/skill-metadata.json",
+            "last_updated": "2021-02-16T18:48:48Z",
+            "credits": [
+                "reginaneon [neongeckocom](https://neongecko.com/)"
+            ],
+            "requirements": {
+                "python": [],
+                "skill": [],
+                "system": {}
+            },
+            "android": {
+                "android_icon": null,
+                "android_name": "Usb Cam.Neon Skill",
+                "android_handler": "usb-cam.neon.neongeckocom.home"
+            },
+            "download_url": "https://api.github.com/repos/NeonGeckoCom/usb-cam.neon/zipball/master"
+        },
+        {
+            "title": "Volume",
+            "url": "https://github.com/NeonGeckoCom/volume.neon",
+            "summary": "Control microphone and speaker audio levels.",
+            "short_description": "Control microphone and speaker audio levels.",
+            "description": "This skill controls the audio level and mute status for the default input and output device. You may increment volume, set to a specified level, or mute/unmute. You may also query the current volume and microphone level.",
+            "examples": [
+                "mute speakers",
+                "what is the volume",
+                "“decrease volume”",
+                "set microphone to 70 percent",
+                "“set microphone to 70 percent”",
+                "decrease volume",
+                "unmute speakers"
+            ],
+            "desktopFile": true,
+            "warning": "",
+            "systemDeps": false,
+            "platforms": [
+                "arm",
+                "i386",
+                "arm64",
+                "x86_64",
+                "ia64"
+            ],
+            "branch": "master",
+            "license": "NeonAI License v1.0",
+            "icon": "https://0000.us/klatchat/app/files/neon_images/icons/neon_skill.png",
+            "category": "",
+            "categories": [
+                ""
+            ],
+            "tags": [
+                "",
+                "permissive-license"
+            ],
+            "skillname": "Volume",
+            "authorname": "Neon",
+            "foldername": "volume.neon",
+            "appstore": "Neon",
+            "appstore_url": "https://api.github.com/repos/NeonGeckoCom/neon-skills-submodules/contents/skill-metadata.json",
+            "last_updated": "2021-02-12T23:03:49Z",
+            "credits": [
+                "reginaneon [neongeckocom](https://neongecko.com/) djmcknight358 Mycroft AI"
+            ],
+            "requirements": {
+                "python": [],
+                "skill": [],
+                "system": {}
+            },
+            "android": {
+                "android_icon": null,
+                "android_name": "Volume.Neon Skill",
+                "android_handler": "volume.neon.neongeckocom.home"
+            },
+            "download_url": "https://api.github.com/repos/NeonGeckoCom/volume.neon/zipball/master"
+        },
+        {
+            "title": "Weather",
+            "url": "https://github.com/NeonGeckoCom/weather.neon",
+            "summary": "Get current weather and forecast info.",
+            "short_description": "Get current weather and forecast info.",
+            "description": "This skill provides current weather information at different locations and forecasts up to 5 days.",
+            "examples": [
+                "what is the weather in Los Angeles",
+                "what is the forecast for Friday",
+                "what is the weather in los angeles",
+                "what is the forecast for friday"
+            ],
+            "desktopFile": true,
+            "warning": "",
+            "systemDeps": false,
+            "platforms": [
+                "arm",
+                "i386",
+                "arm64",
+                "x86_64",
+                "ia64"
+            ],
+            "branch": "master",
+            "license": "NeonAI License v1.0",
+            "icon": "https://0000.us/klatchat/app/files/neon_images/icons/neon_skill.png",
+            "category": "",
+            "categories": [
+                ""
+            ],
+            "tags": [
+                "",
+                "permissive-license"
+            ],
+            "skillname": "Weather",
+            "authorname": "Neon",
+            "foldername": "weather.neon",
+            "appstore": "Neon",
+            "appstore_url": "https://api.github.com/repos/NeonGeckoCom/neon-skills-submodules/contents/skill-metadata.json",
+            "last_updated": "2021-02-13T01:27:26Z",
+            "credits": [
+                "reginaneon [neongeckocom](https://neongecko.com/) djmcknight358 Mycroft AI"
+            ],
+            "requirements": {
+                "python": [
+                    "multi-key-dict==2.0.3",
+                    "pyowm==2.6.1",
+                    "requests>=2.13.0"
+                ],
+                "skill": [],
+                "system": {}
+            },
+            "android": {
+                "android_icon": null,
+                "android_name": "Weather.Neon Skill",
+                "android_handler": "weather.neon.neongeckocom.home"
+            },
+            "download_url": "https://api.github.com/repos/NeonGeckoCom/weather.neon/zipball/master"
+        },
+        {
+            "title": "WiFi Setup",
+            "url": "https://github.com/NeonGeckoCom/wifi-setup.neon",
+            "summary": "Have Neon help you change and control your wifi settings.",
+            "short_description": "Have Neon help you change and control your wifi settings.",
+            "description": "Neon can help you control your wifi settings via this skill.",
+            "examples": [
+                "my password is *",
+                "Start wifi setup",
+                "start wifi setup",
+                "my network name is *"
+            ],
+            "desktopFile": true,
+            "warning": "",
+            "systemDeps": false,
+            "platforms": [
+                "arm",
+                "i386",
+                "arm64",
+                "x86_64",
+                "ia64"
+            ],
+            "branch": "master",
+            "license": "NeonAI License v1.0",
+            "icon": "https://0000.us/klatchat/app/files/neon_images/icons/neon_skill.png",
+            "category": "",
+            "categories": [
+                ""
+            ],
+            "tags": [
+                "",
+                "no-license"
+            ],
+            "skillname": "WiFi Setup",
+            "authorname": "Neon",
+            "foldername": "wifi-setup.neon",
+            "appstore": "Neon",
+            "appstore_url": "https://api.github.com/repos/NeonGeckoCom/neon-skills-submodules/contents/skill-metadata.json",
+            "last_updated": "2021-02-12T23:01:35Z",
+            "credits": [
+                "reginaneon [neongeckocom](https://neongecko.com/) Mycroft AI"
+            ],
+            "requirements": {
+                "python": [],
+                "skill": [],
+                "system": {}
+            },
+            "android": {
+                "android_icon": null,
+                "android_name": "Wifi Setup.Neon Skill",
+                "android_handler": "wifi-setup.neon.neongeckocom.home"
+            },
+            "download_url": "https://api.github.com/repos/NeonGeckoCom/wifi-setup.neon/zipball/master"
+        },
+        {
+            "title": "Wiki",
+            "url": "https://github.com/NeonGeckoCom/wiki.neon",
+            "summary": "Query [Wikipedia](https://www.wikipedia.org) for answers to all your questions.",
+            "short_description": "Query [Wikipedia](https://www.wikipedia.org) for answers to all your questions.",
+            "description": "Get just a summary, or ask for more to get in-depth information. This Skill uses the [Wikimedia API](https://en.wikipedia.org/w/api.php).",
+            "examples": [
+                "search for chocolate",
+                "\"tell me more\" (followup after an initial summary)",
+                "Tell me about Elon Musk",
+                "Tell me about the Pembroke Welsh Corgi",
+                "More information (followup after an initial summary)",
+                "Search for chocolate",
+                "tell me about elon musk",
+                "tell me about the pembroke welsh corgi",
+                "check wikipedia for beans",
+                "tell me about beans",
+                "Tell me More (followup after an initial summary)",
+                "Check Wikipedia for beans",
+                "\"more information\" (followup after an initial summary)",
+                "Tell me about beans"
+            ],
+            "desktopFile": true,
+            "warning": "",
+            "systemDeps": false,
+            "platforms": [
+                "arm",
+                "i386",
+                "arm64",
+                "x86_64",
+                "ia64"
+            ],
+            "branch": "master",
+            "license": "NeonAI License v1.0",
+            "icon": "https://0000.us/klatchat/app/files/neon_images/icons/neon_skill.png",
+            "category": "",
+            "categories": [
+                ""
+            ],
+            "tags": [
+                "",
+                "permissive-license"
+            ],
+            "skillname": "Wiki",
+            "authorname": "Neon",
+            "foldername": "wiki.neon",
+            "appstore": "Neon",
+            "appstore_url": "https://api.github.com/repos/NeonGeckoCom/neon-skills-submodules/contents/skill-metadata.json",
+            "last_updated": "2021-02-12T23:04:29Z",
+            "credits": [
+                "reginaneon [neongeckocom](https://neongecko.com/) Mycroft AI"
+            ],
+            "requirements": {
+                "python": [
+                    "wikipedia==1.4.0"
+                ],
+                "skill": [],
+                "system": {}
+            },
+            "android": {
+                "android_icon": null,
+                "android_name": "Wiki.Neon Skill",
+                "android_handler": "wiki.neon.neongeckocom.home"
+            },
+            "download_url": "https://api.github.com/repos/NeonGeckoCom/wiki.neon/zipball/master"
+        },
+        {
+            "title": "Query",
+            "url": "https://github.com/neongeckocom/Query.neon",
+            "summary": "Negotiates the best answer to a question",
+            "short_description": "Negotiates the best answer to a question",
+            "description": "Negotiates handling of questions by calling all registered Common Query Skills. This is done by sending a `question:query` message with the utterance to give the skills the posibility to report back if they can answer the question and at which confidence.",
+            "examples": [
+                "what is an aardwark?",
+                "how tall is abraham lincoln?",
+                "What is an Aardwark?",
+                "How tall is Abraham Lincoln?",
+                "why is the sky blue?",
+                "Why is the sky blue?"
+            ],
+            "desktopFile": true,
+            "warning": "",
+            "systemDeps": false,
+            "platforms": [
+                "arm",
+                "i386",
+                "arm64",
+                "x86_64",
+                "ia64"
+            ],
+            "branch": "master",
+            "license": "NeonAI License v1.0",
+            "icon": "https://raw.githack.com/FortAwesome/Font-Awesome/master/svgs/solid/question.svg",
+            "category": "Information",
+            "categories": [
+                "Information"
+            ],
+            "tags": [
+                "system",
+                "permissive-license",
+                "Information"
+            ],
+            "skillname": "Query",
+            "authorname": "Neon",
+            "foldername": "Query.neon",
+            "appstore": "Neon",
+            "appstore_url": "https://api.github.com/repos/NeonGeckoCom/neon-skills-submodules/contents/skill-metadata.json",
+            "last_updated": "2021-02-13T00:25:38Z",
+            "credits": [
+                "Mycroft AI (@MycroftAI)"
+            ],
+            "requirements": {
+                "python": [],
+                "skill": [],
+                "system": {}
+            },
+            "android": {
+                "android_icon": null,
+                "android_name": "Query.Neon Skill",
+                "android_handler": "Query.neon.neongeckocom.home"
+            },
+            "download_url": "https://api.github.com/repos/neongeckocom/Query.neon/zipball/master"
+        },
+        {
+            "title": "Klat",
+            "url": "https://github.com/neongeckocom/klat.neon",
+            "summary": "Skill that acts as a connector to klat.com via the klat_api",
+            "short_description": "Skill that acts as a connector to klat.com via the klat_api",
+            "description": "Enables logging in to klat.com, navigating to conversations, and sending/receiving shouts.",
+            "examples": [
+                "(enable/disable) Klat connection",
+                "(enable/disable) klat connection"
+            ],
+            "desktopFile": true,
+            "warning": "",
+            "systemDeps": false,
+            "platforms": [
+                "arm",
+                "i386",
+                "arm64",
+                "x86_64",
+                "ia64"
+            ],
+            "branch": "master",
+            "license": "NeonAI License v1.0",
+            "icon": "https://0000.us/klatchat/app/files/neon_images/icons/neon_paw.png",
+            "category": "",
+            "categories": [
+                ""
+            ],
+            "tags": [
+                "",
+                "no-license"
+            ],
+            "skillname": "Klat",
+            "authorname": "Neon",
+            "foldername": "klat.neon",
+            "appstore": "Neon",
+            "appstore_url": "https://api.github.com/repos/NeonGeckoCom/neon-skills-submodules/contents/skill-metadata.json",
+            "last_updated": "2021-02-16T18:04:59Z",
+            "credits": [
+                "[NeonDaniel](https://github.com/neondaniel) [neongeckocom](https://neongecko.com/) Mycroft AI"
+            ],
+            "requirements": {
+                "python": [
+                    "git+https://github.com/neongeckocom/klat-connector"
+                ],
+                "skill": [],
+                "system": {}
+            },
+            "android": {
+                "android_icon": null,
+                "android_name": "Klat.Neon Skill",
+                "android_handler": "klat.neon.neongeckocom.home"
+            },
+            "download_url": "https://api.github.com/repos/neongeckocom/klat.neon/zipball/master"
+        }
+    ]
+}

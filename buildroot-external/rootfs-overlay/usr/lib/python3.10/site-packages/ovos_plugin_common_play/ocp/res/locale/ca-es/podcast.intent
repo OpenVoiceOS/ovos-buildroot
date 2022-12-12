@@ -1,0 +1,5 @@
+(reprodueix|inicia|comença|posa)('m|-me|) (un|el|) (pod cast|podcast) {{query}}
+(reprodueix|inicia|comença|posa)('m|-me|) (un|el|) (pod cast|podcast)
+(reprodueix|inicia|comença|posa)('m|-me|) (un|el|) (pod cast|podcast) {{query}} (episodi|número|nombre) {{number}}
+(reprodueix|inicia|comença|posa)('m|-me|) (l'|el |)(episodi|número|nombre) {{number}} (de|del|) (pod cast|podcast) {{query}}
+(reprodueix|inicia|comença|posa)('m|-me|) (l'|el |)(episodi|número|nombre) {{number}}

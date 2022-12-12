@@ -1,0 +1,3 @@
+[ovos.plugin.skill]
+skill-ovos-news.openvoiceos=skill_ovos_news:NewsSkill
+

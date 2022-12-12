@@ -1,0 +1,5 @@
+# Informing that at a specified time an alternative to some condition will occur 
+# No, the {time} forecast calls for {condition} in {location}
+Ingen, det {time} prognose kræver {condition} i {location}  
+# Doesn't seem so, the {time} forecast suggests it's going to be {condition} in {location}
+Ser ikke ud til, det {time} prognosen antyder, at det bliver {condition} i {location}  

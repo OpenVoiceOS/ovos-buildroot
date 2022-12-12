@@ -1,0 +1,2 @@
+# Borrar tipos de clima usados no manipulador por "vai haber tempestade"
+(tempestade|tormentoso|tormenta)

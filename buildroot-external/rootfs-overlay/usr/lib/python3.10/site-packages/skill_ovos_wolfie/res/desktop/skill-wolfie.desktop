@@ -1,0 +1,10 @@
+[Desktop Entry]
+Terminal=false
+Type=Application
+Name=Wolfram Alpha Skill
+Exec=mycroft-gui-app --hideTextInput --skill=skill-wolfie.jarbasskills.home
+Icon=wolfie.png
+Categories=VoiceApp
+StartupNotify=false
+X-DBUS-StartupType=None
+X-KDE-StartupNotify=false

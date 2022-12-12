@@ -1,0 +1,12 @@
+LICENSE
+README.md
+setup.py
+ovos_PHAL_plugin_brightness_control_rpi/__init__.py
+ovos_PHAL_plugin_brightness_control_rpi/version.py
+ovos_PHAL_plugin_brightness_control_rpi.egg-info/PKG-INFO
+ovos_PHAL_plugin_brightness_control_rpi.egg-info/SOURCES.txt
+ovos_PHAL_plugin_brightness_control_rpi.egg-info/dependency_links.txt
+ovos_PHAL_plugin_brightness_control_rpi.egg-info/entry_points.txt
+ovos_PHAL_plugin_brightness_control_rpi.egg-info/requires.txt
+ovos_PHAL_plugin_brightness_control_rpi.egg-info/top_level.txt
+ovos_PHAL_plugin_brightness_control_rpi.egg-info/zip-safe

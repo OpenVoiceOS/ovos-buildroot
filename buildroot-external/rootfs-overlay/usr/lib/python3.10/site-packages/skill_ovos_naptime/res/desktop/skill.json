@@ -1,0 +1,40 @@
+{
+    "authorname": "OpenVoiceOS",
+    "foldername": "ovos-skill-naptime",
+    "url": "https://github.com/OpenVoiceOS/ovos-skill-naptime",
+    "branch": "dev",
+    "license": "apache-2.0",
+    "tags": [
+        "Configuration",
+        "naptime",
+        "nap",
+        "sleep",
+        "Daily",
+        "do-not-disturb",
+        "donotdisturb",
+        "permissive-license"
+    ],
+    "short_description": "Put Mycroft to sleep when you don't want to be disturbed",
+    "last_updated": "2022-03-02T03:24:46Z",
+    "icon": "https://raw.githack.com/FortAwesome/Font-Awesome/master/svgs/solid/bed.svg",
+    "skillname": "Naptime",
+    "description": "Tell Mycroft to sleep when you don't want to be disturbed in any way.\nThis stops all calls to Speech to Text system, guaranteeing your voice won't\nbe sent anywhere on an accidental activation.\n\nWhen sleeping, Mycroft will only listen locally for the phrase \"Hey Mycroft,\nwake up\". Otherwise the system will be totally silent and won't bother you.\n\nOn a Mark 1 this also dims the eyes.",
+    "examples": [],
+    "credits": [
+        "Mycroft AI (@MycroftAI)"
+    ],
+    "category": "Daily",
+    "categories": [
+        "Daily",
+        "Configuration"
+    ],
+    "requirements": {
+        "python": [
+            "ovos_utils>=0.0.18",
+            "ovos_workshop>=0.0.5"
+        ],
+        "skill": [],
+        "system": {}
+    },
+    "desktopFile": false
+}

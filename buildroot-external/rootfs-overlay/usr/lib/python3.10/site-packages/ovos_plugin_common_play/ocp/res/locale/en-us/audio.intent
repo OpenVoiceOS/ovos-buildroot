@@ -1,0 +1,3 @@
+(play|start) audio only {{query}}
+(play|start) {{query}} audio only
+(play|start) (audio|audio only)

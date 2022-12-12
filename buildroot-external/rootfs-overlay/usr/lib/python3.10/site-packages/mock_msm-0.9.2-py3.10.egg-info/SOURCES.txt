@@ -1,0 +1,14 @@
+LICENSE
+README.md
+setup.py
+mock_msm/__init__.py
+mock_msm/exceptions.py
+mock_msm/mycroft_skills_manager.py
+mock_msm/skill_entry.py
+mock_msm/skill_repo.py
+mock_msm/skill_state.py
+mock_msm/util.py
+mock_msm.egg-info/PKG-INFO
+mock_msm.egg-info/SOURCES.txt
+mock_msm.egg-info/dependency_links.txt
+mock_msm.egg-info/top_level.txt

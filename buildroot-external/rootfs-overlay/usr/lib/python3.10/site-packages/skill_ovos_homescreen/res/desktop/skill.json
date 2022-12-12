@@ -1,0 +1,23 @@
+{
+    "authorname": "OpenVoiceOS",
+    "foldername": "skill-ovos-homescreen",
+    "url": "https://github.com/OpenVoiceOS/skill-ovos-homescreen",
+    "branch": "dev",
+    "license": "apache-2.0",
+    "tags": [
+        "permissive-license"
+    ],
+    "short_description": "Provides the resting screen for OVOS",
+    "last_updated": "2022-10-13T20:46:20Z",
+    "requirements": {
+        "python": [
+            "requests>=2.26.0",
+            "pillow==7.1.2",
+            "ovos_utils>=0.0.6"
+        ],
+        "skill": [],
+        "system": {}
+    },
+    "desktopFile": false,
+    "examples": []
+}

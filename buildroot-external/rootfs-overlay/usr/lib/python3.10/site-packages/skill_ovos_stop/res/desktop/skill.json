@@ -1,0 +1,21 @@
+{
+    "name": "Stop",
+    "skillname": "skill-ovos-stop",
+    "authorname": "OpenVoiceOS",
+    "foldername": "",
+    "url": "https://github.com/OpenVoiceOS/skill-ovos-stop",
+    "branch": "dev",
+    "desktopFile": false,
+    "warning": "",
+    "systemDeps": false,
+    "platforms": [
+        "arm",
+        "arm64",
+        "i386",
+        "x86_64",
+        "ia64"
+    ],
+    "examples": [
+        "stop"
+    ]
+}

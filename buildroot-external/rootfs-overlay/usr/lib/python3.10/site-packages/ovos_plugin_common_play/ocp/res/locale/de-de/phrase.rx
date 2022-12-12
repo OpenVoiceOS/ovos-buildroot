@@ -1,0 +1,6 @@
+start (?P<Phrase>.*)
+starte (?P<Phrase>.*)
+beginn (?P<Phrase>.*)
+beginne (?P<Phrase>.*)
+spiel (?P<Phrase>.*)
+spiele (?P<Phrase>.*)

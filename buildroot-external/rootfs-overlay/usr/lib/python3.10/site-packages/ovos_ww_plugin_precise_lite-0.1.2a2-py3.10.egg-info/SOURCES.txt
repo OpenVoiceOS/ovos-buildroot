@@ -1,0 +1,15 @@
+CHANGELOG.md
+LICENSE
+MANIFEST.in
+README.md
+setup.py
+ovos_ww_plugin_precise_lite/__init__.py
+ovos_ww_plugin_precise_lite/version.py
+ovos_ww_plugin_precise_lite.egg-info/PKG-INFO
+ovos_ww_plugin_precise_lite.egg-info/SOURCES.txt
+ovos_ww_plugin_precise_lite.egg-info/dependency_links.txt
+ovos_ww_plugin_precise_lite.egg-info/entry_points.txt
+ovos_ww_plugin_precise_lite.egg-info/requires.txt
+ovos_ww_plugin_precise_lite.egg-info/top_level.txt
+ovos_ww_plugin_precise_lite.egg-info/zip-safe
+requirements/requirements.txt

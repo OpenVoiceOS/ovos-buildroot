@@ -1,0 +1,3 @@
+{day} wird {condition} vorausgesagt, mit maximal {high_temperature} und minimal {low_temperature}
+{day} werden wir maximal {high_temperature} und minimal {low_temperature} Grad haben, {condition} wird erwartet
+Die Vorhersage {day} sieht ein Maximum von {high_temperature} und ein Minimum von {low_temperature}, {condition} ist vorausgesagt

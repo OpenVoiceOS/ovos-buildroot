@@ -1,0 +1,4 @@
+
+    [console_scripts]
+    pytail=tailhead.__main__:main
+    

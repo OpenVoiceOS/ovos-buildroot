@@ -1,0 +1,3 @@
+(play previous|previous|go back)
+(play previous|previous) (music|song|track|video|media)
+(play previous|go back one) (music|song|track|video|media)

@@ -1,0 +1,10 @@
+# {day} expect {condition}, with a high of {temp_max} and a low of {temp_min}
+{day} forventer {condition}, med en højde af {temp_max} og en lav af {temp_min}  
+# Expect {condition}, with a high of {temp_max} and a low of {temp_min} {day}
+Forventer {condition}, med en højde af {temp_max} og en lav af {temp_min} {day}  
+# {day} the high will be {temp_max} and the low {temp_min}, with {condition}
+{day} det høje vil være {temp_max} og det lave {temp_min}, med {condition}  
+# {day} it will be {condition} with a high of {temp_max} and a low of {temp_min}
+{day} det vil være {condition} med en højde af {temp_max} og en lav af {temp_min}  
+# The forecast {day} is a high of {temp_max} and a low of {temp_min}
+Prognosen {day} er en højde af {temp_max} og en lav af {temp_min}  

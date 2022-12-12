@@ -1,0 +1,9 @@
+docopt>=0.6.1
+coverage>=3.6
+requests>=1.0.0
+
+[:python_version < "3"]
+urllib3[secure]
+
+[yaml]
+PyYAML>=3.10

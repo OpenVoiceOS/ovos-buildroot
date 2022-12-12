@@ -1,0 +1,25 @@
+{
+    "collection": [
+        {
+            "url": "ui/boxes/SetAlarmBox.qml",
+            "verticalSize": "standard",
+            "horizontalSize": "standard"
+
+        },
+        {
+            "url": "ui/boxes/PlayTheNews.qml",
+            "verticalSize": "standard",
+            "horizontalSize": "standard"
+        },
+        {
+            "url": "ui/boxes/PlayRelaxingMusic.qml",
+            "verticalSize": "long",
+            "horizontalSize": "standard"
+        },
+        {
+            "url": "ui/boxes/TakeNoteBox.qml",
+            "verticalSize": "standard",
+            "horizontalSize": "standard"
+        }
+    ]
+}

@@ -1,0 +1,15 @@
+pymeeus<=1,>=0.3.13
+
+[dev]
+build
+black
+isort
+pylint
+
+[docs]
+sphinx
+sphinx_rtd_theme
+myst_parser
+
+[tests]
+coverage

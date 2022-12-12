@@ -1,0 +1,2 @@
+(play|start) game {{query}}
+(play|start) (some game|game|a game)

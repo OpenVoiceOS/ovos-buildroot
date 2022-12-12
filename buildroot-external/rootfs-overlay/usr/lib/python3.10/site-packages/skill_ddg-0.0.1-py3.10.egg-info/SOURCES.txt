@@ -1,0 +1,60 @@
+LICENSE
+MANIFEST.in
+README.md
+__init__.py
+setup.py
+version.py
+locale/ca-es/More.voc
+locale/ca-es/birthdate.intent
+locale/ca-es/no_answer.dialog
+locale/ca-es/search_duck.intent
+locale/ca-es/thats all.dialog
+locale/ca-es/who.intent
+locale/de-de/More.voc
+locale/de-de/birthdate.intent
+locale/de-de/no_answer.dialog
+locale/de-de/search_duck.intent
+locale/de-de/thats all.dialog
+locale/de-de/who.intent
+locale/en-us/More.voc
+locale/en-us/birthdate.intent
+locale/en-us/no_answer.dialog
+locale/en-us/search_duck.intent
+locale/en-us/thats all.dialog
+locale/en-us/who.intent
+locale/es-es/More.voc
+locale/es-es/birthdate.intent
+locale/es-es/no_answer.dialog
+locale/es-es/search_duck.intent
+locale/es-es/thats all.dialog
+locale/es-es/who.intent
+locale/fr-fr/More.voc
+locale/fr-fr/birthdate.intent
+locale/fr-fr/no_answer.dialog
+locale/fr-fr/search_duck.intent
+locale/fr-fr/thats all.dialog
+locale/fr-fr/who.intent
+locale/it-it/More.voc
+locale/it-it/birthdate.intent
+locale/it-it/no_answer.dialog
+locale/it-it/search_duck.intent
+locale/it-it/thats all.dialog
+locale/it-it/who.intent
+locale/pt-pt/More.voc
+locale/pt-pt/birthdate.intent
+locale/pt-pt/no_answer.dialog
+locale/pt-pt/search_duck.intent
+locale/pt-pt/search_wolfie.intent
+locale/pt-pt/thats all.dialog
+locale/pt-pt/who.intent
+res/desktop/skill-ddg.desktop
+res/desktop/skill.json
+res/icon/ddg.png
+skill_ddg.egg-info/PKG-INFO
+skill_ddg.egg-info/SOURCES.txt
+skill_ddg.egg-info/dependency_links.txt
+skill_ddg.egg-info/entry_points.txt
+skill_ddg.egg-info/requires.txt
+skill_ddg.egg-info/top_level.txt
+ui/DuckDelegate.qml
+ui/logo.png

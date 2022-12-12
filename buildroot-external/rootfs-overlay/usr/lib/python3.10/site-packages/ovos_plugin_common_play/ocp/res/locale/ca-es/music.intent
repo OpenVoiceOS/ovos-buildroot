@@ -1,0 +1,4 @@
+(reprodueix|inicia|comença|posa)('m|-me|) (la|una|alguna|) (música|cançó|peça) {{query}}
+(reprodueix|inicia|comença|posa)('m|-me|) (la|una|alguna|) (música|cançó|peça)
+(reprodueix|inicia|comença|posa)('m|-me|) {{query}} (la|una|alguna|) (música|cançó|peça)
+(reprodueix|inicia|comença|posa)('m|-me|) (la|una|una mica de|alguna) (música|cançó|peça)

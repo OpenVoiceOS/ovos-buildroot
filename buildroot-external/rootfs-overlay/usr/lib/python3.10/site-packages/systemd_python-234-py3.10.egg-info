@@ -1,0 +1,15 @@
+Metadata-Version: 1.1
+Name: systemd-python
+Version: 234
+Summary: Python interface for libsystemd
+Home-page: https://github.com/systemd/python-systemd
+Author: systemd developers
+Author-email: systemd-devel@lists.freedesktop.org
+License: LGPLv2+
+Description: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 3
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Classifier: Topic :: System :: Logging
+Classifier: License :: OSI Approved :: GNU Lesser General Public License v2 or later (LGPLv2+)

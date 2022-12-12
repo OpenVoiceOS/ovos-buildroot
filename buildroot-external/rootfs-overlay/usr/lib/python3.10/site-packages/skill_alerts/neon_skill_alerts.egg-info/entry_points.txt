@@ -1,0 +1,3 @@
+[ovos.plugin.skill]
+skill-alerts.neongeckocom=skill_alerts:AlertSkill
+

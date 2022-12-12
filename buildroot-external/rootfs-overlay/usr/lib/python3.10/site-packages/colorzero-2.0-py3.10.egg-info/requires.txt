@@ -1,0 +1,10 @@
+setuptools
+
+[doc]
+pkginfo
+sphinx
+sphinx-rtd-theme
+
+[test]
+pytest
+pytest-cov

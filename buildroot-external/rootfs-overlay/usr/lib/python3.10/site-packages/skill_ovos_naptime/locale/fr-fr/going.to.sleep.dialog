@@ -1,0 +1,3 @@
+Je vais me coucher. Dites '{{wake_word}}, réveille-toi' pour attirer à nouveau mon attention.
+Je vais dormir maintenant. Dites '{{wake_word}}, réveille-toi' pour me réveiller.
+D'accord, je vais me coucher. Vous pouvez me réveiller en disant '{{wake_word}}, réveille-toi'.

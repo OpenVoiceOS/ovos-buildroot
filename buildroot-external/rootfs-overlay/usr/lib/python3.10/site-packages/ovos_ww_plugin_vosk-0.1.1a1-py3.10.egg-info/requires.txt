@@ -1,0 +1,4 @@
+numpy
+vosk
+ovos-plugin-manager>=0.0.1,~=0.0
+ovos-skill-installer~=0.0

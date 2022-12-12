@@ -1,0 +1,6 @@
+Flask
+WTForms
+itsdangerous
+
+[email]
+email-validator

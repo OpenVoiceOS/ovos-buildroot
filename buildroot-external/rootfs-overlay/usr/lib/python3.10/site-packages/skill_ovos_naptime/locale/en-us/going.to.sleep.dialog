@@ -1,0 +1,4 @@
+I'm going to sleep.  Say '{{wake_word}}, wake up' to get my attention again.
+Going to sleep now.  Say '{{wake_word}},  wake up' to get me up.
+Alright, going to sleep.  You can rouse me by saying '{{wake_word}},  wake up'.
+

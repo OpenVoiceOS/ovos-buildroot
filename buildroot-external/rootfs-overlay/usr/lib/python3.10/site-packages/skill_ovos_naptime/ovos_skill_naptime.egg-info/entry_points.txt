@@ -1,0 +1,3 @@
+[ovos.plugin.skill]
+skill-ovos-naptime.openvoiceos=skill_ovos_naptime:NapTimeSkill
+

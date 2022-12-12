@@ -1,0 +1,3 @@
+(play|start) (trailer|movie preview) {{query}}
+(play|start) {{query}} (trailer|movie preview)
+(play|start) (a movie|movie|movies|film|films) (trailer|preview)

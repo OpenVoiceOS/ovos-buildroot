@@ -1,0 +1,3 @@
+(lese|lies|lesen) (buch|höhrbuch|audio buch) {{query}}
+(lese|lies|lesen) {{query}} (buch|höhrbuch|audio buch)
+(lese|lies|lesen) {{query}}

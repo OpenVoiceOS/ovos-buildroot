@@ -1,0 +1,30 @@
+[
+  {
+    "req": "I walked 5k miles",
+    "res": "I walked five thousand miles"
+  },
+  {
+    "req": "The facility produced 20e9 GW this year",
+    "res": "The facility produced twenty billion gigawatts this year"
+  },
+  {
+    "req": "The distance to Munich is 1km",
+    "res": "The distance to Munich is one kilometre"
+  },
+  {
+    "req": "I want 5!",
+    "res": "I want five!"
+  },
+  {
+    "req": "That's $2.45",
+    "res": "That's two dollars, forty-five cents"
+  },
+  {
+    "req": "That's 2.45 yen",
+    "res": "That's two point four five japanese yens"
+  },
+  {
+    "req": "The solar production is 20 Wh/m²",
+    "res": "The solar production is twenty watt hours per square metre"
+  }
+]

@@ -1,0 +1,26 @@
+{
+    "name": "News Streams Skill",
+    "skillname": "skill-news",
+    "authorname": "JarbasSkills",
+    "foldername": "",
+    "url": "https://github.com/JarbasSkills/skill-news",
+    "branch": "dev",
+    "desktopFile": false,
+    "warning": "",
+    "systemDeps": false,
+    "platforms": [
+        "arm",
+        "arm64",
+        "i386",
+        "x86_64",
+        "ia64"
+    ],
+    "examples": [
+        "play the news",
+        "play npr news",
+        "play euronews",
+        "play catalan news",
+        "play portuguese news",
+        "play news in spanish"
+    ]
+}

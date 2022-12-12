@@ -1,0 +1,3 @@
+(spiel|spiele|beginn|beginne|start|starte) (trailer|film preview|preview) {{query}}
+(spiel|spiele|beginn|beginne|start|starte) {{query}} (trailer|film preview|preview)
+(spiel|spiele|beginn|beginne|start|starte) (einen film|film|filme) (trailer|film preview|preview)

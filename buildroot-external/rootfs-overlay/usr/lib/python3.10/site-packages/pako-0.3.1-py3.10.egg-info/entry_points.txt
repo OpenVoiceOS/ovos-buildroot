@@ -1,0 +1,3 @@
+[console_scripts]
+pako = pako.__main__:main
+

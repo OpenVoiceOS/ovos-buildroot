@@ -1,0 +1,10 @@
+setup.py
+ovos_vad_plugin_webrtcvad/__init__.py
+ovos_vad_plugin_webrtcvad/version.py
+ovos_vad_plugin_webrtcvad.egg-info/PKG-INFO
+ovos_vad_plugin_webrtcvad.egg-info/SOURCES.txt
+ovos_vad_plugin_webrtcvad.egg-info/dependency_links.txt
+ovos_vad_plugin_webrtcvad.egg-info/entry_points.txt
+ovos_vad_plugin_webrtcvad.egg-info/requires.txt
+ovos_vad_plugin_webrtcvad.egg-info/top_level.txt
+ovos_vad_plugin_webrtcvad.egg-info/zip-safe

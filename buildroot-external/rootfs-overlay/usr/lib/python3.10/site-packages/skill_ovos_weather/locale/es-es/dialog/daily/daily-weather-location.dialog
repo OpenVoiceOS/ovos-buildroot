@@ -1,0 +1,3 @@
+El {{day}} será {{condition}}, con máximas de {{temp_max}} y mínimas de {{temp_min}}
+El {{day}} tendremos en {{location}} temperaturas máximas de {{temp_max}} y mínimas de {{temp_min}}, y el tiempo será {{condition}}
+El pronóstico para {{day}} es de {{temp_max}} de máximas y {{temp_min}} de mínimas

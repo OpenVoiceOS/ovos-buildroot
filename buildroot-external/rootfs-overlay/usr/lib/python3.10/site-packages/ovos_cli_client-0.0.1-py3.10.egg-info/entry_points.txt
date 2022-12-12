@@ -1,0 +1,3 @@
+[console_scripts]
+ovos-cli-client = ovos_cli_client.__main__:main
+

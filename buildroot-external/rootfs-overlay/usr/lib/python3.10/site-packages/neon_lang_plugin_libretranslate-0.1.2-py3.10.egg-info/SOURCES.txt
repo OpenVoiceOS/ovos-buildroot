@@ -1,0 +1,13 @@
+LICENSE.md
+README.md
+setup.py
+libretranslate_neon_plugin/__init__.py
+libretranslate_neon_plugin/constants/__init__.py
+libretranslate_neon_plugin/constants/url_constants.py
+neon_lang_plugin_libretranslate.egg-info/PKG-INFO
+neon_lang_plugin_libretranslate.egg-info/SOURCES.txt
+neon_lang_plugin_libretranslate.egg-info/dependency_links.txt
+neon_lang_plugin_libretranslate.egg-info/entry_points.txt
+neon_lang_plugin_libretranslate.egg-info/requires.txt
+neon_lang_plugin_libretranslate.egg-info/top_level.txt
+neon_lang_plugin_libretranslate.egg-info/zip-safe

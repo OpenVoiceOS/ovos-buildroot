@@ -1,0 +1,14 @@
+LICENSE
+MANIFEST.in
+README.rst
+google_auth_httplib2.py
+setup.cfg
+setup.py
+google_auth_httplib2.egg-info/PKG-INFO
+google_auth_httplib2.egg-info/SOURCES.txt
+google_auth_httplib2.egg-info/dependency_links.txt
+google_auth_httplib2.egg-info/requires.txt
+google_auth_httplib2.egg-info/top_level.txt
+tests/__init__.py
+tests/compliance.py
+tests/test_google_auth_httplib2.py

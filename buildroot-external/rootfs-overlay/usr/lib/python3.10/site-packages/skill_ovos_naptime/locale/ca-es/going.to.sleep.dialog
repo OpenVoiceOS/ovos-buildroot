@@ -1,0 +1,3 @@
+Vaig a dormir.   Digueu '{{wake_word}}, desperta' per tornar a cridar la meva atenció.
+Vaig a dormir ara.  Digueu '{{wake_word}},  desperta' per aixecar-me.
+D'acord, vaig a dormir.  Podeu despertar-me dient '{{wake_word}},  desperta'.

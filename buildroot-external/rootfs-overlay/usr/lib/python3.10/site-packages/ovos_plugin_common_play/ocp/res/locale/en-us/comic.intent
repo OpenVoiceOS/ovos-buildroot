@@ -1,0 +1,3 @@
+(play|start) (comic|motion comic|visual story|visual comic|motion comic|animated comic) {{query}}
+(play|start) {{query}} (comic|motion comic|visual story|visual comic|motion comic|animated comic)
+(play|start) (comic|motion comic|visual story|visual comic|motion comic|animated comic)

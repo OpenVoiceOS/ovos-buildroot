@@ -1,0 +1,10 @@
+setup.cfg
+setup.py
+xmlrunner/__init__.py
+xmlrunner/version.py
+xmlrunner/xmlrunner.py
+xmlrunner.egg-info/PKG-INFO
+xmlrunner.egg-info/SOURCES.txt
+xmlrunner.egg-info/dependency_links.txt
+xmlrunner.egg-info/top_level.txt
+xmlrunner.egg-info/zip-safe

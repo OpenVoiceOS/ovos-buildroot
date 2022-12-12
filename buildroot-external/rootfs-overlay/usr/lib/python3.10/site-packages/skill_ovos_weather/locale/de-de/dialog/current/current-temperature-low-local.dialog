@@ -1,0 +1,3 @@
+Als Tiefstwert wird {temperature} Grad {temperature_unit} erwartet.
+Als Tiefstwert kann {temperature} Grad erwartet werden.
+Heute wird es bis zu {temperature} Grad kalt.

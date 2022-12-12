@@ -1,0 +1,13 @@
+quina hora (hora|) serà (en|de aqui a|) {offset} (hores|minuts|segons) (des d'ara|)
+quina hora (hora|) serà (en|d'aquí a|) {offset} (hores|minuts|segons) (des d'ara|) a {location}
+(quina és|quina hora serà) (hora|) (en|d'aquí a|) {offset} (hores|minuts|segons) (des d'ara|)
+(quina és|quina hora serà) (hora|) (en|d'aquí a|) {offset} (hores|minuts|segons) (des d'ara|) a {location}
+(dóna'm|digues-me) l'hora (en|) {offset} (hores|minuts|segons) (des d'ara|)
+(dóna'm|digues-me) l'hora (en|) {offset} (hores|minuts|segons) (des d'ara|) a {location}
+(en|) {offset} (hores|minuts|segons) quina (hora serà|)
+(en|) {offset} (hores|minuts|segons) (des d'ara) quina (hora serà) a {location}
+quan serà {offset} (hores|minuts|segons) (des d'ara)
+quan serà {offset} (hores|minuts|segons) (des d'ara) a {location}
+quina hora (serà|és) a {location} (en|) {offset} (hores|minuts|segons) (des d'ara|)
+(quina´és|quina serà) l'hora a {location} (en|) {offset} (hores|minuts|segons) (des d'ara|)
+(a) {location} quina (hora serà) (en|) {offset} (hores|minuts|segons)

@@ -1,0 +1,3 @@
+[mycroft.plugin.tts]
+neon-tts-plugin-larynx-server = neon_tts_plugin_larynx_server:LarynxServerTTSPlugin
+

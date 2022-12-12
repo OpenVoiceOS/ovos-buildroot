@@ -1,0 +1,10 @@
+LICENSE
+MANIFEST.in
+README.md
+monotonic.py
+setup.cfg
+setup.py
+monotonic.egg-info/PKG-INFO
+monotonic.egg-info/SOURCES.txt
+monotonic.egg-info/dependency_links.txt
+monotonic.egg-info/top_level.txt

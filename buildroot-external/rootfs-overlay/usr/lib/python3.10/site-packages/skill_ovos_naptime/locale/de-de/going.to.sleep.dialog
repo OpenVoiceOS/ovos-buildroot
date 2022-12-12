@@ -1,0 +1,3 @@
+Ich gehe schlafen.  Sage '{{wake_word}}, wach auf' damit ich wieder zuhöre.
+Ich gehe jetzt schlafen.  Sage '{{wake_word}},  wach auf' um mich aufzuwecken.
+Okay, gehe schlafen.  Du kannst mich wecken, indem du '{{wake_word}},  wach auf' sagst.

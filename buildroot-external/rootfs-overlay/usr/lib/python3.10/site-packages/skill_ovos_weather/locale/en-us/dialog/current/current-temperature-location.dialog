@@ -1,0 +1,4 @@
+It's currently {temperature} degrees {temperature_unit} in {location}.
+It's currently {temperature} degrees in {location}.
+Right now, it's {temperature} degrees in {location}.
+

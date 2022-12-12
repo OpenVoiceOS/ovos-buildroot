@@ -1,0 +1,4 @@
+le temps dans les toutes prochaines heures à {{location}} sera {{condition}} et {{temp_max}} degrés
+Plus tard il y aura de la {{condition}} à {{location}}, avec des températures voisines de {{temp_max}} degrés
+à {{location}} il fera environ {{temp_max}} avec de la {{condition}}
+à {{location}} il fera environ {{temp_max}} degrés avec de la {{condition}}

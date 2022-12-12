@@ -1,0 +1,45 @@
+{
+    "authorname": "OpenVoiceOS",
+    "foldername": "skill-ovos-setup",
+    "url": "https://github.com/OpenVoiceOS/skill-ovos-setup",
+    "branch": "dev",
+    "license": "apache-2.0",
+    "tags": [
+        "Configuration",
+        "pair",
+        "connectivity",
+        "pairing",
+        "system",
+        "permissive-license"
+    ],
+    "short_description": "Setup your device, choose a voice and optionally connect to the Mycroft server",
+    "last_updated": "2022-10-13T20:44:10Z",
+    "icon": "https://raw.githack.com/FortAwesome/Font-Awesome/master/svgs/solid/handshake.svg",
+    "skillname": "OVOS - Setup",
+    "description": "This skill will offer you the option to select Selene, Personal, or no backend, an offline or online STT as well choose the voice your device will use\n\nThe default backend to provide services for Mycroft users is [Selene](https://home.mycroft.ai/).  Pairing a device with Home provides access to privacy-protecting Speech to Text, Wolfram Alpha and other such services, as well as easy configuration for all your Mycroft devices.\n\nThis skill works better if you have mycroft-gui, in headless devices (voice only) options will be limited\n\n![](./pairing.gif)",
+    "examples": [],
+    "credits": [
+        "Mycroft AI (@MycroftAI)"
+    ],
+    "category": "Configuration",
+    "categories": [
+        "Configuration"
+    ],
+    "requirements": {
+        "python": [
+            "ovos_workshop>=0.0.7a8",
+            "ovos-plugin-manager>=0.0.19a7",
+            "neon-tts-plugin-larynx-server~=0.1",
+            "ovos-tts-plugin-mimic2~=0.1,>=0.1.6a4",
+            "ovos-stt-plugin-vosk~=0.1, >=0.1.4a2",
+            "ovos-stt-plugin-selene~=0.0, >=0.0.3a1",
+            "ovos-tts-plugin-mimic~=0.2, >=0.2.7post1",
+            "ovos_backend_client~=0.0, >=0.0.6a8",
+            "ovos-PHAL-plugin-system>=0.0.2a5",
+            "ovos-tts-plugin-pico~=0.0, >=0.0.4a2"
+        ],
+        "skill": [],
+        "system": {}
+    },
+    "desktopFile": false
+}

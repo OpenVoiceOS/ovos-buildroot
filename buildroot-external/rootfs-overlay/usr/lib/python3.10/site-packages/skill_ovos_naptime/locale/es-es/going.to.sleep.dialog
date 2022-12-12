@@ -1,0 +1,3 @@
+Me voy a dormir.  Di '{{wake_word}}, despiértate' para llamar mi atención de nuevo.
+Me voy a dormir ahora.  Dí '{{wake_word}},  despierta' para que me levante.
+Bien, me voy a dormir.  Puedes despertarme diciendo '{{wake_word}},  despierta'.

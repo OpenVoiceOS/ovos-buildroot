@@ -1,0 +1,49 @@
+{
+    "authorname": "OpenVoiceOS",
+    "foldername": "skill-ovos-ddg",
+    "url": "https://github.com/OpenVoiceOS/skill-ovos-ddg",
+    "branch": "dev",
+    "license": "apache-2.0",
+    "tags": [
+        "search-engine",
+        "searchengine",
+        "query",
+        "duckduckgo",
+        "Information",
+        "permissive-license"
+    ],
+    "short_description": "Use DuckDuckGo to answer questions",
+    "last_updated": "2022-10-11T14:30:57Z",
+    "icon": "https://github.com/OpenVoiceOS/skill-ovos-ddg/res/icon/ddg.png",
+    "skillname": "DuckDuckGo",
+    "description": "Uses the [DuckDuckGo API](https://duckduckgo.com/api) to provide information. \n\nNOTE: this is meant a better alternative to the official duck duck go skill, it will be blacklisted",
+    "examples": [
+        "when was born {person}",
+        "ask the duck duck about {query}",
+        "what does the duck say about {query}",
+        "what is {person} birth date",
+        "search duck duck for {query}",
+        "ask the duck duck go about {query}",
+        "what does duck duck say about {query}",
+        "what is {person} birthday",
+        "when was {person} born",
+        "who is {person}",
+        "search the duck for {query}",
+        "search duck duck go for {query}",
+        "what does duck duck go say about {query}"
+    ],
+    "category": "Information",
+    "categories": [
+        "Information"
+    ],
+    "logo": "https://raw.githubusercontent.com/OpenVoiceOS/skill-ovos-ddg/dev/ui/logo.png",
+    "requirements": {
+        "python": [
+            "neon-solver-ddg-plugin",
+            "neon-solvers"
+        ],
+        "skill": [],
+        "system": {}
+    },
+    "desktopFile": false
+}

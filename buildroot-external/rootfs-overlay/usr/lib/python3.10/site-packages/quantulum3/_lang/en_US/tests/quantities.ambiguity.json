@@ -1,0 +1,369 @@
+[
+  {
+    "req": "I spent 20 million pounds on this!",
+    "res": [
+      {
+        "value": 20000000,
+        "unit": "pound sterling",
+        "surface": "20 million pounds"
+      }
+    ]
+  },
+  {
+    "req": "The average density of the Earth is 5.5x10-3 kg/cm³",
+    "res": [
+      {
+        "value": 0.0055,
+        "unit": "kilogram per cubic centimetre",
+        "surface": "5.5x10-3 kg/cm³",
+        "entity": "density",
+        "dimensions": [
+          {
+            "base": "kilogram",
+            "power": 1,
+            "surface": "kg"
+          },
+          {
+            "base": "centimetre",
+            "power": -3,
+            "surface": "cm³"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "req": "Hubble's cameras are super sharp across a 2½' (150\") field",
+    "res": [
+      {
+        "value": 2.5,
+        "unit": "minute of arc",
+        "surface": "2½'"
+      },
+      {
+        "value": 150,
+        "unit": "second of arc",
+        "surface": "150\""
+      }
+    ]
+  },
+  {
+    "req": "This diffuser uses finest 9\" 360-ish plates",
+    "res": [
+      {
+        "value": 9,
+        "unit": "inch",
+        "surface": "9\"",
+        "entity": "length"
+      },
+      {
+        "value": 360,
+        "unit": "dimensionless",
+        "surface": "360",
+        "entity": "unknown"
+      }
+    ]
+  },
+  {
+    "req": "One complete orbit in LEO takes about ninety minutes",
+    "res": [
+      {
+        "value": 90,
+        "unit": "minute",
+        "surface": "ninety minutes"
+      }
+    ]
+  },
+  {
+    "req": "Bahco 9031 Ergo Wide Jaw Adjustable Wrench 8\"",
+    "res": [
+      {
+        "value": 9031,
+        "unit": "dimensionless",
+        "surface": "9031"
+      },
+      {
+        "value": 8,
+        "unit": "inch",
+        "surface": "8\""
+      }
+    ]
+  },
+  {
+    "req": "One pound of good Welsh coal properly burned in the fire-box of a locomotive yields about 15,000 British thermal units of heat at a temperature high enough to enable from 50 to 80% to flow across the boiler-heating surface to the water, the rest escaping up the chimney with the furnace gases.",
+    "res": [
+      {
+        "value": 1,
+        "unit": "pound-mass",
+        "surface": "One pound"
+      },
+      {
+        "value": 15000,
+        "unit": "british thermal unit",
+        "surface": "15,000 British thermal units"
+      },
+      {
+        "value": 65,
+        "unit": "percentage",
+        "surface": "50 to 80%",
+        "uncertainty": 15
+      }
+    ]
+  },
+  {
+    "req": "I can go to Sam's Club and buy a twenty-pound bag of rice for $10, and a twenty pound bag of pinto beans for $13.",
+    "res": [
+      {
+        "value": 20.0,
+        "unit": "pound-mass",
+        "surface": "twenty-pound",
+        "entity": "mass"
+      },
+      {
+        "value": 10.0,
+        "unit": "dollar",
+        "surface": "$10",
+        "entity": "currency"
+      },
+      {
+        "value": 20.0,
+        "unit": "pound-mass",
+        "surface": "twenty pound",
+        "entity": "mass"
+      },
+      {
+        "value": 13.0,
+        "unit": "dollar",
+        "surface": "$13",
+        "entity": "currency"
+      }
+    ]
+  },
+  {
+    "req": "This car only uses 10 l/km.",
+    "res": [
+      {
+        "value": 10,
+        "unit": "litre per kilometre",
+        "surface": "10 l/km",
+        "entity": "fuel consumption",
+        "dimensions": [
+          {
+            "base": "litre",
+            "power": 1,
+            "surface": "l"
+          },
+          {
+            "base": "kilometre",
+            "power": -1,
+            "surface": "km"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "req": "At normal operating temperatures of 300 °C (572 °F, 573.15K), zircaloy is inert. However, above 1200 degrees Celsius, it reacts exothermically with water",
+    "res": [
+      {
+        "value": 300,
+        "unit": "degree Celsius",
+        "surface": "300 °C"
+      },
+      {
+        "value": 572,
+        "unit": "degree fahrenheit",
+        "surface": "572 °F"
+      },
+      {
+        "value": 573.15,
+        "unit": "kelvin",
+        "surface": "573.15K"
+      },
+      {
+        "value": 1200,
+        "unit": "degree Celsius",
+        "surface": "1200 degrees Celsius"
+      }
+    ]
+  },
+  {
+    "req": "It weighs no more than 2,000.45±0.01 pounds",
+    "res": [
+      {
+        "value": 2000.45,
+        "unit": "pound-mass",
+        "surface": "2,000.45±0.01 pounds",
+        "uncertainty": 0.01
+      }
+    ]
+  },
+  {
+    "req": "Weather got cold in the last days. Now its -10C",
+    "res": [
+      {
+        "value": -10.0,
+        "unit": "degree Celsius",
+        "surface": "-10C",
+        "entity": "temperature",
+        "dimensions": [],
+        "uncertainty": null
+      }
+    ]
+  },
+  {
+    "req": "Its 30 C outside!",
+    "res": [
+      {
+        "value": 30.0,
+        "unit": "degree Celsius",
+        "surface": "30 C",
+        "entity": "temperature",
+        "dimensions": [],
+        "uncertainty": null
+      }
+    ]
+  },
+  {
+    "req": "32K word magnetic core memory board",
+    "res": [
+      {
+        "value": 32.0,
+        "unit": "kibibyte",
+        "surface": "32K",
+        "entity": "data storage",
+        "dimensions": [],
+        "uncertainty": null
+      }
+    ]
+  },
+  {
+    "req": "The corresponding cgs unit to the gray is the rad (equivalent to 0.01 Gy), which remains common largely in the United States",
+    "res": [
+      {
+        "value": 0.01,
+        "unit": "gray",
+        "surface": "0.01 Gy",
+        "entity": "radiation absorbed dose",
+        "dimensions": [
+          {
+            "base": "energy",
+            "power": 1
+          },
+          {
+            "base": "mass",
+            "power": -1
+          }
+        ],
+        "uncertainty": null
+      }
+    ]
+  },
+  {
+    "req": " in physics, a unit of surface area equal to 12 b",
+    "res": [
+      {
+        "value": 12.0,
+        "unit": "barn",
+        "surface": "12 b",
+        "entity": "length",
+        "dimensions": [],
+        "uncertainty": null
+      }
+    ]
+  },
+  {
+    "req": "I'll transmit a small package of 1500 b",
+    "res": [
+      {
+        "value": 1500.0,
+        "unit": "bit",
+        "surface": "1500 b",
+        "entity": "data storage",
+        "dimensions": [],
+        "uncertainty": null
+      }
+    ]
+  },
+  {
+    "req": "The server receives the 1500b packet of information",
+    "res": [
+      {
+        "value": 1500.0,
+        "unit": "bit",
+        "surface": "1500b",
+        "entity": "data storage",
+        "dimensions": [],
+        "uncertainty": null
+      }
+    ]
+  },
+  {
+    "req": "As Stephanie Pappas at LiveScience reports, after snapping an image and storing it on its hard drive, New Horizons sends its data back on an antenna that transmits at only 12 watts, moving data at a snail's pace: only two kb per second.",
+    "res": [
+      {
+        "value": 12.0,
+        "unit": "watt",
+        "surface": "12 watts",
+        "entity": "power",
+        "dimensions": [
+          {
+            "base": "energy",
+            "power": 1
+          },
+          {
+            "base": "time",
+            "power": -1
+          }
+        ],
+        "uncertainty": null
+      },
+      {
+        "value": 2.0,
+        "unit": "kilobit per second",
+        "surface": "two kb per second",
+        "entity": "data transfer rate",
+        "dimensions": [
+          {
+            "base": "data storage",
+            "power": 1
+          },
+          {
+            "base": "time",
+            "power": -1
+          }
+        ],
+        "uncertainty": null
+      }
+    ]
+  },
+  {
+    "req": "The theoretical temperature is determined by extrapolating the ideal gas law; by international agreement, absolute zero is taken as −273.15° on the Celsius scale (International System of Units), which equals −459.67° on the Fahrenheit scale (United States customary units or Imperial units)",
+    "res": [
+      {
+        "value": 0,
+        "unit": "kelvin",
+        "surface": "absolute zero",
+        "entity": "temperature",
+        "uncertainty": null
+      },
+      {
+        "value": -273.15,
+        "unit": "degree Celsius",
+        "surface": "−273.15°",
+        "entity": "temperature",
+        "dimensions": [],
+        "uncertainty": null
+      },
+      {
+        "value": -459.67,
+        "unit": "degree Fahrenheit",
+        "surface": "−459.67°",
+        "entity": "temperature",
+        "dimensions": [],
+        "uncertainty": null
+      }
+    ]
+  }
+]
+

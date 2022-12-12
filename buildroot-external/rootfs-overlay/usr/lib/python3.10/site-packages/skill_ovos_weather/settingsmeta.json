@@ -1,0 +1,22 @@
+{
+    "skillMetadata": {
+        "sections": [
+            {
+                "name": "Options",
+                "fields": [
+                    {
+                        "type": "label",
+                        "label": "By default the weather will be reported in farenheit if <tt>U.S. Units</tt> are selected and celsius if <tt>Metric</tt> units are chosen under the Units of Measurement setting at <a href='https://home.mycroft.ai/#/setting/basic'>Mycroft Home</a>.  You many also override this unit here."
+                    },
+                    {
+                        "name": "units",
+                        "type": "select",
+                        "label": "Temperature units",
+                        "options": "Default (from Basic Settings)|default;Celsius|celsius;Fahrenheit|fahrenheit",
+                        "value": "default"
+                    }
+                ]
+            }
+        ]
+    }
+}

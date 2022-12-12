@@ -1,0 +1,26 @@
+{
+    "name": "Wolfram Alpha",
+    "skillname": "skill-wolfie",
+    "authorname": "JarbasSkills",
+    "foldername": "",
+    "url": "https://github.com/JarbasSkills/skill-wolfie",
+    "branch": "dev",
+    "desktopFile": false,
+    "warning": "",
+    "systemDeps": false,
+    "platforms": [
+        "arm",
+        "arm64",
+        "i386",
+        "x86_64",
+        "ia64"
+    ],
+    "examples": [
+        "ask the wolf what is the speed of light",
+        "How tall is Mount Everest?",
+        "When was The Rocky Horror Picture Show released?",
+        "What is Madonna's real name?",
+        "What's 18 times 4?",
+        "How many inches in a meter?"
+    ]
+}

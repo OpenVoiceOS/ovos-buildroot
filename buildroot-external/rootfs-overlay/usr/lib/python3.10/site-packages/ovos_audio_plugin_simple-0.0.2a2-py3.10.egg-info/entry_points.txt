@@ -1,0 +1,6 @@
+[mycroft.plugin.audioservice]
+ovos_audio_simple=ovos_audio_plugin_simple
+
+[mycroft.plugin.audioservice.config]
+ovos_audio_simple.config=ovos_audio_plugin_simple:SimpleAudioPluginConfig
+

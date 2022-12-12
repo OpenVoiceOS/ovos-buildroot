@@ -1,0 +1,9 @@
+setup.py
+ovos_stt_plugin_chromium/__init__.py
+ovos_stt_plugin_chromium.egg-info/PKG-INFO
+ovos_stt_plugin_chromium.egg-info/SOURCES.txt
+ovos_stt_plugin_chromium.egg-info/dependency_links.txt
+ovos_stt_plugin_chromium.egg-info/entry_points.txt
+ovos_stt_plugin_chromium.egg-info/requires.txt
+ovos_stt_plugin_chromium.egg-info/top_level.txt
+ovos_stt_plugin_chromium.egg-info/zip-safe

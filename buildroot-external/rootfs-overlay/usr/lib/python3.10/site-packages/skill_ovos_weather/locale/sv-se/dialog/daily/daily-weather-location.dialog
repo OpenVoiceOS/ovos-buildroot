@@ -1,0 +1,3 @@
+för {day} kommer det vara {condition}, med en topptemperatur på {temp_max} grader och {temp_min} som minst i {location}
+{day}, kommer {location} ha en topp på {temp_max} och en lägsta på {temp_min} och {condition}
+Prognosen för {day} är {temp_max} grader som högst och {temp_min} som lägst i {location}

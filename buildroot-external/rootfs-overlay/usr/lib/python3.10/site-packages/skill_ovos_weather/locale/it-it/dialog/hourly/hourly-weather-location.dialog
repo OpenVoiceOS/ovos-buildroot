@@ -1,0 +1,4 @@
+{{location}} il meteo nelle prossime ore sarà {{condition}} con {{temp_max}} gradi
+Più tardi sarà {{condition}} a {{location}}, con temperature di circa {{temp_max}} gradi
+{{location}} sarà a circa {{temp_max}} con {{condition}}
+{{location}} sarà a circa {{temp_max}} gradi e {{condition}}

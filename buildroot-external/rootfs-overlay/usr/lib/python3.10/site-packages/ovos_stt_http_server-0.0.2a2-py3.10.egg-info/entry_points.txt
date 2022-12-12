@@ -1,0 +1,3 @@
+[console_scripts]
+ovos-stt-server = ovos_stt_http_server.__main__:main
+

@@ -1,0 +1,6 @@
+[neon.plugin.lang.detect]
+libretranslate_detection_plug = libretranslate_neon_plugin:LibreTranslateDetectPlugin
+
+[neon.plugin.lang.translate]
+libretranslate_plug = libretranslate_neon_plugin:LibreTranslatePlugin
+

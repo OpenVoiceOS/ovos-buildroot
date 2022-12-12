@@ -1,0 +1,3 @@
+The wind will be moderate, about {speed} {speed_unit} from the {direction} {day}
+The forecast calls for a moderate wind from the {direction} at {speed} {speed_unit} {day}
+You can expect a moderate wind of about {speed} {speed_unit} {day}

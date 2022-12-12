@@ -1,0 +1,4 @@
+neon_solvers
+requests
+wikipedia_for_humans
+simplematch

@@ -1,0 +1,3 @@
+Avec un maximum de {{temp_max}} et un minimum de {{temp_min}} degrés, à {{location}} il fait {{condition}} avec une température actuelle de {{temp}} degrés.
+Actuellement il fait {{condition}} avec {{temp}} degrés {{scale}} à {{location}}. La prévision annonce des températures comprises entre {{temp_max}} et {{temp_min}} degrés.
+Maintenant, nous avons {{condition}} et {{temp}} degrés, pour un minimum de {{temp_min}} degrés et un maximum de {{temp_max}} degrés prévus à {{location}}.
