@@ -60,3 +60,6 @@ dtparam=spi=on
 
 # Disable GPIO IRQ
 dtoverlay=gpio-no-irq
+
+# enable 64bits support
+arm_64bit=1
