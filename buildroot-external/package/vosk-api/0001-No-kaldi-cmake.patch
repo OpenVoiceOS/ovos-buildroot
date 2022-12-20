@@ -1,0 +1,25 @@
+From f26985185d5186be22c79a27969391b74d0987a0 Mon Sep 17 00:00:00 2001
+From: j1nx <p.steenbergen@j1nx.nl>
+Date: Mon, 19 Dec 2022 09:50:08 +0100
+Subject: [PATCH 1/1] No kaldi cmake
+
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 6101a62..4bdd99b 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -12,7 +12,7 @@ add_library(vosk
+   src/vosk_api.cc
+ )
+ 
+-find_package(kaldi REQUIRED)
++#find_package(kaldi REQUIRED)
+ target_link_libraries(vosk PUBLIC kaldi-base kaldi-online2 kaldi-rnnlm fstngram)
+ 
+ include(GNUInstallDirs)
+-- 
+2.34.1
+

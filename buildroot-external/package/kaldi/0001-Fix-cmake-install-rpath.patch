@@ -1,0 +1,25 @@
+From 8651f18563ae11be6f26edc35afce32e884b2ed5 Mon Sep 17 00:00:00 2001
+From: j1nx <p.steenbergen@j1nx.nl>
+Date: Mon, 19 Dec 2022 10:20:48 +0100
+Subject: [PATCH 1/1] Fix cmake install rpath
+
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index e0ca3ea28..b7aa22fa9 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -52,7 +52,7 @@ if(BUILD_SHARED_LIBS)
+     elseif(APPLE)
+         set(CMAKE_INSTALL_RPATH "@loader_path")
+     else()
+-        set(CMAKE_INSTALL_RPATH "$ORIGIN;$ORIGIN/../lib;$ORIGIN/../../tools/openfst/lib")
++        set(CMAKE_INSTALL_RPATH ${CMAKE_INSTALL_FULL_LIBDIR})
+     endif()
+ endif()
+ 
+-- 
+2.34.1
+

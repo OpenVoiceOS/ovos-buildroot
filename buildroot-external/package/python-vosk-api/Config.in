@@ -1,0 +1,15 @@
+config BR2_PACKAGE_PYTHON_VOSK_API
+	bool "python-vosk-api"
+	select BR2_PACKAGE_PYTHON_CFFI
+	select BR2_PACKAGE_PYTHON_TQDM
+	select BR2_PACKAGE_PYTHON_REQUESTS
+	select BR2_PACKAGE_PYTHON_SRT
+	select BR2_PACKAGE_PYTHON_WEBSOCKETS
+	select BR2_PACKAGE_VOSK_API
+	help
+	  Offline speech recognition API for Android, iOS, 
+	  Raspberry Pi and servers with Python, Java, C# 
+	  and Node.
+
+	  https://github.com/alphacep/vosk-api.git
+

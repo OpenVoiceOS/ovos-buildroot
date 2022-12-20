@@ -1,0 +1,9 @@
+config BR2_PACKAGE_KALDI
+	bool "kaldi"
+	select BR2_PACKAGE_LAPACK
+	select BR2_PACKAGE_OPENFST
+	help
+	  Kaldi Speech Recognition Toolkit
+
+	  https://github.com/kaldi-asr/kaldi
+

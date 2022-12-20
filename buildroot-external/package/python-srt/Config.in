@@ -1,0 +1,7 @@
+config BR2_PACKAGE_PYTHON_SRT
+	bool "python-srt"
+	help
+	  A tiny library for parsing, modifying, and composing SRT
+	  files.
+
+	  https://github.com/cdown/srt

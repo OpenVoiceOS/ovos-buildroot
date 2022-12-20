@@ -1,0 +1,25 @@
+From a35d6219f9dba75a99dd90f3c02666a6c017c8fc Mon Sep 17 00:00:00 2001
+From: j1nx <p.steenbergen@j1nx.nl>
+Date: Mon, 19 Dec 2022 10:05:44 +0100
+Subject: [PATCH 1/1] Fix cblas linking issue with cmake
+
+---
+ cmake/gen_cmake_skeleton.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/cmake/gen_cmake_skeleton.py b/cmake/gen_cmake_skeleton.py
+index 5925c6369..88df4a0b6 100644
+--- a/cmake/gen_cmake_skeleton.py
++++ b/cmake/gen_cmake_skeleton.py
+@@ -269,7 +269,7 @@ class CMakeListsLibrary(object):
+ 
+         if len(self.depends) > 0:
+             ret.append("target_link_libraries(" + self.target_name + " PUBLIC")
+-            for d in self.depends:
++            for d in self.depends + ['-lcblas', '-llapack'] :
+                 ret.append("    " + d)
+             ret.append(")\n")
+ 
+-- 
+2.34.1
+

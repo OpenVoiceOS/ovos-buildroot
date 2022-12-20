@@ -1,0 +1,5 @@
+# md5, sha256 from https://pypi.org/pypi/srt/json
+md5  3b68be7c46ec6152123fd801f519a63d  srt-3.5.2.tar.gz
+sha256  7aa4ad5ce4126d3f53b3e7bc4edaa86653d0378bf1c0b1ab8c59f5ab41384450  srt-3.5.2.tar.gz
+# Locally computed sha256 checksums
+sha256  23fc2fec09b621a22699a1fa8685b5b21c64fde7f9385ca6e5f2f29d0a4bc776  LICENSE

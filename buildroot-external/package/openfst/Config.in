@@ -1,0 +1,7 @@
+config BR2_PACKAGE_OPENFST
+	bool "openfst"
+	help
+	  Port of the OpenFST library to Windows
+
+	  https://github.com/kkm000/openfst
+
