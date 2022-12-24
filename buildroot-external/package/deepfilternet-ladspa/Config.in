@@ -2,6 +2,7 @@ config BR2_PACKAGE_DEEPFILTERNET_LADSPA
 	bool "deepfilternet-ladspa"
 	depends on BR2_PACKAGE_HOST_RUSTC_TARGET_ARCH_SUPPORTS
 	select BR2_PACKAGE_HOST_CARGO
+	select BR2_PACKAGE_HDF5 
         help
 	  DeepFilterNet LADSPA Plugin
 

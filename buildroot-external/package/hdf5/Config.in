@@ -1,0 +1,8 @@
+config BR2_PACKAGE_HDF5
+	bool "hdf5"
+	help
+	  high-performance library's source code and a 
+	  file format specification that implement the 
+	  HDF5® data model.
+
+	  https://github.com/HDFGroup/hdf5
