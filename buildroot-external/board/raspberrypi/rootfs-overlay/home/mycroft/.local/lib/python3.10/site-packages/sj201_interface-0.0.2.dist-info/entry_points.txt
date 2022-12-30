@@ -1,0 +1,2 @@
+[console_scripts]
+sj201 = sj201_interface.cli:sj201_cli

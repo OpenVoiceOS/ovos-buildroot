@@ -1,0 +1,16 @@
+skillMetadata:
+  sections:
+    - name: Test Settings
+      fields:
+        - name: boolean_type
+          type: checkbox
+          label: Test Bool
+          value: false
+        - name: number_type
+          type: number
+          label: Test Float
+          value: 2.0
+        - name: text_type
+          type: text
+          label: Test String
+          value: '8'
