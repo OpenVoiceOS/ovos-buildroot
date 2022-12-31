@@ -6,7 +6,8 @@ After=mycroft.service
 [Service]
 Type=notify
 ExecStart=/usr/libexec/mycroft-systemd-messagebus
-StandardOutput=null
+StandardOutput=append:/var/log/mycroft/messagebus.log
+StandardError=append:/var/log/mycroft/messagebus.error.log
 TimeoutStartSec=1m
 TimeoutStopSec=1m
 Restart=on-failure

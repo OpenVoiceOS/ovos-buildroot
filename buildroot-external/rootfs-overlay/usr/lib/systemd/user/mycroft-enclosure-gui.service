@@ -8,7 +8,8 @@ After=pulseaudio.service
 [Service]
 Type=notify
 ExecStart=/usr/libexec/mycroft-systemd-gui
-StandardOutput=null
+StandardOutput=append:/var/log/mycroft/enclosure.log
+StandardError=append:/var/log/mycroft/enclosure.error.log
 TimeoutStartSec=1m
 TimeoutStopSec=1m
 Restart=on-failure
