@@ -4,7 +4,7 @@
 #
 ################################################################################
 
-PYTHON_OVOS_UTILS_VERSION = 8e0c4b762bc5b44c9f96ed6397cb996d53a7d598
+PYTHON_OVOS_UTILS_VERSION = d66d537679eea5732dcb0f9f69bc0524d470f13b
 PYTHON_OVOS_UTILS_SITE = $(call github,OpenVoiceOS,ovos_utils,$(PYTHON_OVOS_UTILS_VERSION))
 PYTHON_OVOS_UTILS_SETUP_TYPE = setuptools
 PYTHON_OVOS_UTILS_LICENSE_FILES = LICENSE

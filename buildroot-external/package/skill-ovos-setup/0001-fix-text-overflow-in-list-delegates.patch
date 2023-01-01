@@ -1,0 +1,50 @@
+From 29963eac8e3a5752d163f674c18b19bdd7775672 Mon Sep 17 00:00:00 2001
+From: Aditya Mehra <aix.m@outlook.com>
+Date: Fri, 16 Dec 2022 09:39:36 +1030
+Subject: [PATCH] fix text overflow in list delegates
+
+---
+ ui/STTListMenu.qml       | 2 ++
+ ui/TTSListMenuNested.qml | 2 ++
+ ui/TTSListMenuSingle.qml | 2 ++
+ 3 files changed, 6 insertions(+)
+
+diff --git a/ui/STTListMenu.qml b/ui/STTListMenu.qml
+index 2fe5325..7b3e586 100644
+--- a/ui/STTListMenu.qml
++++ b/ui/STTListMenu.qml
+@@ -214,6 +214,8 @@ Item {
+                         verticalAlignment: Text.AlignVCenter
+                         color: Kirigami.Theme.textColor
+                         font.capitalization: Font.AllUppercase
++                        maximumLineCount: 2
++                        elide: Text.ElideRight
+                         text: model.plugin_name + " | " + model.display_name
+                     }
+ 
+diff --git a/ui/TTSListMenuNested.qml b/ui/TTSListMenuNested.qml
+index e3edad7..4008397 100644
+--- a/ui/TTSListMenuNested.qml
++++ b/ui/TTSListMenuNested.qml
+@@ -230,6 +230,8 @@ Item {
+                         verticalAlignment: Text.AlignVCenter
+                         color: Kirigami.Theme.textColor
+                         font.capitalization: Font.AllUppercase
++                        maximumLineCount: 2
++                        elide: Text.ElideRight
+                         text: ttsListView.listmode  == 1 ? modelData.plugin_name + " | " + modelData.display_name : model.plugin_name
+                     }
+ 
+diff --git a/ui/TTSListMenuSingle.qml b/ui/TTSListMenuSingle.qml
+index 84d06a9..d3e3a84 100644
+--- a/ui/TTSListMenuSingle.qml
++++ b/ui/TTSListMenuSingle.qml
+@@ -214,6 +214,8 @@ Item {
+                         verticalAlignment: Text.AlignVCenter
+                         color: Kirigami.Theme.textColor
+                         font.capitalization: Font.AllUppercase
++                        maximumLineCount: 2
++                        elide: Text.ElideRight
+                         text: model.plugin_name + " | " + model.display_name
+                     }
+ 
