@@ -1,8 +1,0 @@
-config BR2_PACKAGE_HDF5_HOSTTOOLS
-	bool "hdf5-hosttools"
-	help
-	  high-performance library's source code and a 
-	  file format specification that implement the 
-	  HDF5® data model.
-
-	  https://github.com/HDFGroup/hdf5
