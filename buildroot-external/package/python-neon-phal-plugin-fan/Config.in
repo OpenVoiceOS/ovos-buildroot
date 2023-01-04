@@ -1,0 +1,6 @@
+config BR2_PACKAGE_PYTHON_NEON_PHAL_PLUGIN_FAN
+	bool "python-neon-phal-plugin-fan"
+	help
+	  PHAL Fan plugin
+
+	  https://github.com/NeonGeckoCom/neon-phal-plugin-fan
