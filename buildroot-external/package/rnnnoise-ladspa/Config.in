@@ -1,0 +1,7 @@
+config BR2_PACKAGE_RNNNOISE_LADSPA
+	bool "rnnnoise-ladspa"
+	help
+	  Noise suppression plugin based on Xiph's RNNoise
+
+	  https://github.com/werman/noise-suppression-for-voice
+
