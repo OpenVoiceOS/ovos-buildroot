@@ -1,0 +1,6 @@
+config BR2_PACKAGE_SKILL_OVOS_FILEBROWSER
+	bool "skill-ovos-filebrowser"
+	help
+	  File Browser for OpenVoice OS Platform 
+
+	  https://github.com/OpenVoiceOS/skill-ovos-filebrowser

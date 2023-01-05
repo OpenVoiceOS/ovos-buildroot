@@ -1,0 +1,6 @@
+config BR2_PACKAGE_SKILL_LOCAL_MUSIC
+	bool "skill-local-music"
+	help
+	  Neon Skill for Local Music Playback 
+
+	  https://github.com/NeonGeckoCom/skill-local_music
