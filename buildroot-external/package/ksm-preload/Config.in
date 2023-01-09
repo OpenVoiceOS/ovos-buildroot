@@ -1,0 +1,7 @@
+config BR2_PACKAGE_KSM_PRELOAD
+	bool "ksm-preload"
+	help
+	  Enables legacy applications to leverage Linux's memory deduplication.
+
+	  https://github.com/unbrice/ksm_preload
+
