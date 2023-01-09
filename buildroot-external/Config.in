@@ -98,6 +98,7 @@ endmenu
 	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/ncpamixer/Config.in"
 	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/neon2sse/Config.in"
 	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/openfst/Config.in"
+	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/ovos-bus-server/Config.in"
 	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/ovos-dashboard/Config.in"
 	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/ovos-shell/Config.in"
 	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/ovos-splash/Config.in"

@@ -1,0 +1,26 @@
+From 1a31e20944d730e098878bc6e41d3099dd670bae Mon Sep 17 00:00:00 2001
+From: j1nx <p.steenbergen@j1nx.nl>
+Date: Mon, 9 Jan 2023 10:39:10 +0100
+Subject: [PATCH 1/1] Make package installable
+
+---
+ server/CMakeLists.txt | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/server/CMakeLists.txt b/server/CMakeLists.txt
+index d7ad36b..ae3a4b4 100644
+--- a/server/CMakeLists.txt
++++ b/server/CMakeLists.txt
+@@ -34,5 +34,7 @@ include_directories(SYSTEM "${PROJECT_SOURCE_DIR}/external")
+ add_library(jsoncpp STATIC ${PROJECT_SOURCE_DIR}/external/jsoncpp.cpp)
+ 
+ # Build the server executable
+-add_executable(ovos-bus-server server.cpp WebsocketServer.cpp)
+-target_link_libraries (ovos-bus-server jsoncpp)
++set(TARGET ovos-bus-server)
++add_executable(${TARGET} server.cpp WebsocketServer.cpp)
++target_link_libraries (${TARGET} jsoncpp)
++install(TARGETS ${TARGET} DESTINATION bin)
+-- 
+2.34.1
+

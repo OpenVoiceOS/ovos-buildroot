@@ -1,0 +1,7 @@
+config BR2_PACKAGE_OVOS_BUS_SERVER
+	bool "ovos-bus-server"
+	help
+	  alternative ovos bus service (websocket server) in C++
+
+	  https://github.com/OpenVoiceOS/ovos-bus-server
+
