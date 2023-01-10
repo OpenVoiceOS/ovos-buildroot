@@ -1,0 +1,37 @@
+From f8cf01891fe60d8f2b9b638fa69050e04aa861b5 Mon Sep 17 00:00:00 2001
+From: Aditya Mehra <aix.m@outlook.com>
+Date: Tue, 10 Jan 2023 22:55:42 +1030
+Subject: [PATCH] send it from the python side everytime even if not visible
+ and idle is called
+
+---
+ __init__.py | 1 +
+ ui/idle.qml | 3 ---
+ 2 files changed, 1 insertion(+), 3 deletions(-)
+
+diff --git a/__init__.py b/__init__.py
+index 271afb0..4f12139 100644
+--- a/__init__.py
++++ b/__init__.py
+@@ -185,6 +185,7 @@ def handle_idle(self, _):
+         self.gui['rtl_mode'] = self.rtlMode
+         self.gui['dateFormat'] = self.config_core.get("date_format") or "DMY"
+         self.gui.show_page("idle.qml")
++        self.bus.emit(Message("ovos.homescreen.displayed"))
+ 
+     def update_examples(self):
+         """
+diff --git a/ui/idle.qml b/ui/idle.qml
+index 68c08f2..b0cca3d 100644
+--- a/ui/idle.qml
++++ b/ui/idle.qml
+@@ -136,9 +136,6 @@ Mycroft.CardDelegate {
+         if(visible && idleRoot.textModel){
+             textTimer.running = true
+         }
+-        if(visible) {
+-            Mycroft.MycroftController.sendRequest("ovos.homescreen.displayed", {})
+-        }
+     }
+ 
+     function getWeatherImagery(weathercode) {

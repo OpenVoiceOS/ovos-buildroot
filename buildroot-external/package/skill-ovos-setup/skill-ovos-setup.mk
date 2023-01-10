@@ -4,7 +4,7 @@
 #
 ################################################################################
 
-SKILL_OVOS_SETUP_VERSION = 5de17eef52762c7b9cf750fa155fe281d29f9210
+SKILL_OVOS_SETUP_VERSION = d48d23e8d4ef5a3ab950839c6a08c19c15582fa3
 SKILL_OVOS_SETUP_SITE = $(call github,OpenVoiceOS,skill-ovos-setup,$(SKILL_OVOS_SETUP_VERSION))
 SKILL_OVOS_SETUP_SETUP_TYPE = setuptools
 SKILL_OVOS_SETUP_LICENSE_FILES = LICENSE
