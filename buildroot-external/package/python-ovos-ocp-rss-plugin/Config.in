@@ -1,0 +1,5 @@
+config BR2_PACKAGE_PYTHON_OVOS_OCP_RSS_PLUGIN
+	bool "python-ovos-ocp-rss-plugin"
+	help
+	  
+	  https://github.com/OpenVoiceOS/ovos-ocp-rss-plugin

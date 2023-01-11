@@ -1,0 +1,5 @@
+config BR2_PACKAGE_PYTHON_OVOS_OCP_DEEZER_PLUGIN
+	bool "python-ovos-ocp-deezer-plugin"
+	help
+	  
+	  https://github.com/OpenVoiceOS/ovos-ocp-deezer-plugin

@@ -1,0 +1,5 @@
+config BR2_PACKAGE_PYTHON_OVOS_OCP_BANDCAMP_PLUGIN
+	bool "python-ovos-ocp-bandcamp-plugin"
+	help
+	  
+	  https://github.com/OpenVoiceOS/ovos-ocp-bandcamp-plugin

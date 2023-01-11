@@ -1,0 +1,6 @@
+config BR2_PACKAGE_PYTHON_OVOS_OCP_FILES_PLUGIN
+	bool "python-ovos-ocp-files-plugin"
+	help
+	  A library for reading and, in the future, writing audio metadata.
+
+	  https://github.com/OpenVoiceOS/ovos-ocp-files-plugin

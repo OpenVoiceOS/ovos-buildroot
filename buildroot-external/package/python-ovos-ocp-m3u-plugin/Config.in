@@ -1,0 +1,5 @@
+config BR2_PACKAGE_PYTHON_OVOS_OCP_M3U_PLUGIN
+	bool "python-ovos-ocp-m3u-plugin"
+	help
+	  
+	  https://github.com/OpenVoiceOS/ovos-ocp-m3u-plugin

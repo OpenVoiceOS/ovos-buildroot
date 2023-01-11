@@ -1,0 +1,5 @@
+config BR2_PACKAGE_PYTHON_OVOS_OCP_NEWS_PLUGIN
+	bool "python-ovos-ocp-news-plugin"
+	help
+	  
+	  https://github.com/OpenVoiceOS/ovos-ocp-news-plugin

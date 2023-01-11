@@ -1,0 +1,5 @@
+config BR2_PACKAGE_PYTHON_OVOS_OCP_YOUTUBE_PLUGIN
+	bool "python-ovos-ocp-youtube-plugin"
+	help
+	  
+	  https://github.com/OpenVoiceOS/ovos-ocp-youtube-plugin
