@@ -104,6 +104,7 @@ endmenu
 	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/ovos-dashboard/Config.in"
 	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/ovos-shell/Config.in"
 	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/ovos-splash/Config.in"
+	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/pa-volume/Config.in"
 	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/picotts/Config.in"
 	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/psimd/Config.in"
 	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/pthreadpool/Config.in"

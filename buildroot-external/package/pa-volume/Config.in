@@ -1,0 +1,7 @@
+config BR2_PACKAGE_PA_VOLUME
+	bool "pa-volume"
+	help
+	  Allows to set volume of non-active pulseaudio clients
+
+	  https://github.com/rhaas80/pa_volume
+
