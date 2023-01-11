@@ -1,0 +1,7 @@
+config BR2_PACKAGE_OPENFEC
+	bool "openfec"
+	help
+	  Unofficial OpenFEC fork with various bugfixes.
+
+	  https://github.com/roc-streaming/openfec
+

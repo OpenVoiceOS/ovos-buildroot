@@ -1,0 +1,193 @@
+From 57c62db33ed51b7e263d18996ea8656dc31722bb Mon Sep 17 00:00:00 2001
+From: Victor Gaydov <victor@enise.org>
+Date: Fri, 2 Dec 2022 16:30:58 +0400
+Subject: [PATCH] CMake improvements
+
+---
+ .github/workflows/{build-openfec.yml => build.yml} |  5 +++++
+ CMakeLists.txt                                     | 14 +++++++++++---
+ applis/eperftool/CMakeLists.txt                    |  8 ++++++--
+ .../simple_client_server/CMakeLists.txt            | 10 +++++++---
+ pc/CMakeLists.txt                                  |  6 +++++-
+ src/CMakeLists.txt                                 |  5 +++++
+ tests/CMakeLists.txt                               |  6 +++---
+ tools/descr_stats_v1.2/CMakeLists.txt              |  2 --
+ 8 files changed, 42 insertions(+), 14 deletions(-)
+ rename .github/workflows/{build-openfec.yml => build.yml} (94%)
+
+diff --git a/.github/workflows/build-openfec.yml b/.github/workflows/build.yml
+similarity index 94%
+rename from .github/workflows/build-openfec.yml
+rename to .github/workflows/build.yml
+index 730aa60..b36ef6d 100644
+--- a/.github/workflows/build-openfec.yml
++++ b/.github/workflows/build.yml
+@@ -43,6 +43,11 @@ jobs:
+           cd build
+           make -j2
+ 
++      - name: Run tests
++        run: |
++          cd build
++          make test
++
+   release:
+     runs-on: ubuntu-latest
+     if: startsWith(github.ref, 'refs/tags/v')
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index c1629d2..b3f46e3 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,4 +1,8 @@
+-cmake_minimum_required(VERSION 3.0.2)
++if(CMAKE_MAJOR_VERSION LESS 3)
++  cmake_minimum_required(VERSION 2.6)
++else()
++  cmake_minimum_required(VERSION 2.8.12)
++endif()
+ 
+ ##project
+ project(openfec C)
+@@ -39,13 +43,17 @@ message(STATUS "Optimization level ${OPTIMIZE}")
+ 
+ endif (DEBUG STREQUAL "ON")
+ 
+-set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin/${CMAKE_BUILD_TYPE})
+-set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin/${CMAKE_BUILD_TYPE})
++set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin/${CMAKE_BUILD_TYPE}
++  CACHE STRING "output path for libraries")
++set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin/${CMAKE_BUILD_TYPE}
++  CACHE STRING "output path for executables")
+ MARK_AS_ADVANCED(
+         LIBRARY_OUTPUT_PATH
+         EXECUTABLE_OUTPUT_PATH
+ )
+ 
++option(INSTALL_DEVTOOLS "install developer tools into the system" OFF)
++
+ link_directories(${LIBRARY_OUTPUT_PATH})
+ 
+ add_subdirectory(pc)
+diff --git a/applis/eperftool/CMakeLists.txt b/applis/eperftool/CMakeLists.txt
+index ca29521..f7966a1 100644
+--- a/applis/eperftool/CMakeLists.txt
++++ b/applis/eperftool/CMakeLists.txt
+@@ -1,9 +1,13 @@
+ file (GLOB eperftool_sources ./*)
+ 
+-set(EPERFTOOL_BIN ${PROJECT_BINARY_DIR}/applis/eperftool/eperftool CACHE STRING "eperftool dir")
++set(EPERFTOOL_BIN ${EXECUTABLE_OUTPUT_PATH}/eperftool CACHE STRING "eperftool exe")
+ add_executable( eperftool ${eperftool_sources})
+ 
+ 
+ target_link_libraries( eperftool openfec m)
+ 
+-install(TARGETS eperftool)
++if(INSTALL_DEVTOOLS)
++  install(TARGETS eperftool
++    RUNTIME DESTINATION ${CMAKE_INSTALL_FULL_BINDIR}
++    COMPONENT devtools)
++endif()
+diff --git a/applis/howto_examples/simple_client_server/CMakeLists.txt b/applis/howto_examples/simple_client_server/CMakeLists.txt
+index d3eed50..a215699 100644
+--- a/applis/howto_examples/simple_client_server/CMakeLists.txt
++++ b/applis/howto_examples/simple_client_server/CMakeLists.txt
+@@ -1,6 +1,6 @@
+ file (GLOB simple_server_sources ./simple_server.c)
+ 
+-set(SIMPLE_SERVER_BIN ${PROJECT_SOURCE_DIR}/bin/${CMAKE_BUILD_TYPE}/simple_server CACHE STRING "simple_server dir")
++set(SIMPLE_SERVER_BIN ${EXECUTABLE_OUTPUT_PATH}/simple_server CACHE STRING "simple_server exe")
+ add_executable(simple_server ${simple_server_sources})
+ 
+ target_link_libraries(simple_server openfec m)
+@@ -8,9 +8,13 @@ target_link_libraries(simple_server openfec m)
+ 
+ file (GLOB simple_client_sources ./simple_client.c)
+ 
+-set(SIMPLE_SERVER_BIN ${PROJECT_SOURCE_DIR}/bin/${CMAKE_BUILD_TYPE}/simple_client CACHE STRING "simple_client dir")
++set(SIMPLE_SERVER_BIN ${EXECUTABLE_OUTPUT_PATH}/simple_client CACHE STRING "simple_client exe")
+ add_executable(simple_client ${simple_client_sources})
+ 
+ target_link_libraries(simple_client openfec m)
+ 
+-install(TARGETS simple_server simple_client)
+\ No newline at end of file
++if(INSTALL_DEVTOOLS)
++  install(TARGETS simple_server simple_client
++    RUNTIME DESTINATION ${CMAKE_INSTALL_FULL_BINDIR}
++    COMPONENT applis)
++endif()
+diff --git a/pc/CMakeLists.txt b/pc/CMakeLists.txt
+index e9e2baf..589b91a 100644
+--- a/pc/CMakeLists.txt
++++ b/pc/CMakeLists.txt
+@@ -5,7 +5,7 @@ SET(PKG_CONFIG_LIBS
+     "-L\${libdir} -l${PROJECT_NAME}"
+ )
+ SET(PKG_CONFIG_CFLAGS
+-    "-I\${includedir}/lib_common -I\${includedir}/lib_stable"
++    "-I\${includedir}/lib_common -I\${includedir}/lib_stable -I\${includedir}/lib_advanced"
+ )
+ 
+ message(STATUS "Configuring \"${CMAKE_SOURCE_BINARY_DIR}/${PROJECT_NAME}.pc\"")
+@@ -15,3 +15,7 @@ CONFIGURE_FILE(
+   "${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_NAME}.pc"
+   @ONLY
+ )
++
++install(
++    FILES "${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_NAME}.pc"
++    DESTINATION ${CMAKE_INSTALL_FULL_DATAROOTDIR}/pkgconfig)
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index f92e095..0a547a0 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -37,6 +37,11 @@ target_link_libraries(openfec m)
+ 
+ install(TARGETS openfec DESTINATION ${CMAKE_INSTALL_FULL_LIBDIR})
+ 
++install(
++    DIRECTORY ${PROJECT_SOURCE_DIR}/src/
++    DESTINATION ${CMAKE_INSTALL_FULL_INCLUDEDIR}/openfec
++    FILES_MATCHING PATTERN "*.h*")
++
+ include(TestBigEndian)
+ test_big_endian(BIG_ENDIAN)
+ if(BIG_ENDIAN)
+diff --git a/tests/CMakeLists.txt b/tests/CMakeLists.txt
+index ac25678..630d950 100644
+--- a/tests/CMakeLists.txt
++++ b/tests/CMakeLists.txt
+@@ -1,19 +1,19 @@
+ # list of dedicated binary tests
+ add_executable(test_create_instance create_instance_test.c)
+ target_link_libraries(test_create_instance openfec m)
+-add_test("create_instance" ${PROJECT_BINARY_DIR}/tests/test_create_instance)
++add_test("create_instance" ${EXECUTABLE_OUTPUT_PATH}/test_create_instance)
+ set_tests_properties ("create_instance"
+ 	PROPERTIES FAIL_REGULAR_EXPRESSION "ERROR;FAILURE")
+ 
+ add_executable(test_encoder_instance encoder_instance_test.c)
+ target_link_libraries(test_encoder_instance openfec m)
+-add_test("encoder_instance" ${PROJECT_BINARY_DIR}/tests/test_encoder_instance)
++add_test("encoder_instance" ${EXECUTABLE_OUTPUT_PATH}/test_encoder_instance)
+ set_tests_properties ("encoder_instance"
+ 	PROPERTIES FAIL_REGULAR_EXPRESSION "ERROR;FAILURE")
+ 
+ add_executable(test_code_params code_params_test.c)
+ target_link_libraries(test_code_params openfec m)
+-add_test("code_params" ${PROJECT_BINARY_DIR}/tests/test_code_params)
++add_test("code_params" ${EXECUTABLE_OUTPUT_PATH}/test_code_params)
+ set_tests_properties ("code_params"
+ 	PROPERTIES FAIL_REGULAR_EXPRESSION "ERROR;FAILURE")
+ 
+diff --git a/tools/descr_stats_v1.2/CMakeLists.txt b/tools/descr_stats_v1.2/CMakeLists.txt
+index 471d732..b3732e9 100644
+--- a/tools/descr_stats_v1.2/CMakeLists.txt
++++ b/tools/descr_stats_v1.2/CMakeLists.txt
+@@ -4,5 +4,3 @@ set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/perf_eval)
+ add_executable(descr_stats  ${descr_stat_sources})
+ 
+ target_link_libraries( descr_stats  m)
+-
+-install(TARGETS descr_stats)

@@ -1,0 +1,11 @@
+config BR2_PACKAGE_ROC_TOOLKIT
+	bool "roc-toolkit"
+	select BR2_PACKAGE_GST1_LIBAV
+	select BR2_PACKAGE_LIBUNWIND
+	select BR2_PACKAGE_OPENFEC
+	select BR2_PACKAGE_SPEEXDSP
+	help
+	  Roc is a toolkit for real-time audio streaming over the network.
+
+	  https://github.com/roc-streaming/roc-toolkit
+
