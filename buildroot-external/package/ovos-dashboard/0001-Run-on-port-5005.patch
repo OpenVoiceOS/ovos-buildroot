@@ -1,0 +1,22 @@
+From 82809d49faf5a04dcba60dd64ebf7c7878553274 Mon Sep 17 00:00:00 2001
+From: j1nx <p.steenbergen@j1nx.nl>
+Date: Thu, 12 Jan 2023 19:32:03 +0100
+Subject: [PATCH 1/1] Run on port 5005
+
+---
+ app.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/app.py b/app.py
+index 32525dc..4da3e4e 100644
+--- a/app.py
++++ b/app.py
+@@ -294,4 +294,4 @@ def control_myc():
+ if __name__ == "__main__":
+     # app.run(debug=True)
+     SimpleLogin(app)
+-    socketio.run(app, host="0.0.0.0", debug=True)
++    socketio.run(app, host="0.0.0.0", port=5005, debug=True)
+-- 
+2.34.1
+

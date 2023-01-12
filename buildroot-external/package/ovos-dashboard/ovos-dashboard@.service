@@ -1,11 +1,8 @@
 [Unit]
 Description=OVOS Dashboard Service
-After=network.target
-Requires=dbus.socket
 
 [Service]
-Type=dbus
-BusName=com.openvoiceos.ovos-dashboard
+Type=simple
 Environment=SIMPLELOGIN_USERNAME="OVOS"
 Environment=SIMPLELOGIN_PASSWORD=%i
 Environment=MYCROFT_SKILLS_LOCATION=%h/.local/share/mycroft/skills/
@@ -14,4 +11,4 @@ ExecStart=python /usr/local/share/ovos-dashboard/app.py --serve-in-foreground
 Restart=always
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=default.target
