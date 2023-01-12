@@ -119,6 +119,7 @@ endmenu
 	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/tensorflow-lite/Config.in"
 	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/userland-tools/Config.in"
 	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/virtual-touch/Config.in"
+	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/vnc-eglfs/Config.in"
 	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/vocalfusion/Config.in"
 	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/vosk-api/Config.in"
 	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/whisper-tflite/Config.in"

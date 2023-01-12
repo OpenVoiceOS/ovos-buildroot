@@ -1,0 +1,43 @@
+From eb8b398864b7ffef315bcd67b26ccf47499537c4 Mon Sep 17 00:00:00 2001
+From: j1nx <p.steenbergen@j1nx.nl>
+Date: Thu, 12 Jan 2023 12:21:39 +0100
+Subject: [PATCH 1/1] Use QT_INSTALL_PREFIX
+
+---
+ platformproxy/platformproxy.pro | 4 ++--
+ src/src.pro                     | 4 ++--
+ 2 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/platformproxy/platformproxy.pro b/platformproxy/platformproxy.pro
+index ef24e8d..464fec2 100644
+--- a/platformproxy/platformproxy.pro
++++ b/platformproxy/platformproxy.pro
+@@ -30,8 +30,8 @@ SOURCES += \
+ 
+ OTHER_FILES += metadata.json
+ 
+-INSTALL_ROOT=/usr/local/vnceglfs
+-# INSTALL_ROOT=$$[QT_INSTALL_PREFIX]
++# INSTALL_ROOT=/usr/local/vnceglfs
++INSTALL_ROOT=$$[QT_INSTALL_PREFIX]
+ 
+ target.path = $${INSTALL_ROOT}/plugins/platforms
+ INSTALLS += target
+diff --git a/src/src.pro b/src/src.pro
+index 29e5fad..4c71645 100644
+--- a/src/src.pro
++++ b/src/src.pro
+@@ -61,8 +61,8 @@ SOURCES += \
+     VncClient.cpp \
+     VncNamespace.cpp \
+ 
+-INSTALL_ROOT=/usr/local/vnceglfs
+-# INSTALL_ROOT=$$[QT_INSTALL_PREFIX]
++# INSTALL_ROOT=/usr/local/vnceglfs
++INSTALL_ROOT=$$[QT_INSTALL_PREFIX]
+ 
+ target.path = $${INSTALL_ROOT}/lib
+ 
+-- 
+2.34.1
+
