@@ -1,0 +1,44 @@
+Metadata-Version: 2.1
+Name: youtube-search
+Version: 2.1.2
+Summary: Perform YouTube video searches without the API
+Home-page: https://github.com/joetats/youtube_search
+Author: Joe Tatusko
+Author-email: tatuskojc@gmail.com
+License: MIT
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: requests
+
+# youtube_search
+
+Python function for searching for youtube videos to avoid using their heavily rate-limited API
+
+To avoid using the API, this uses the form on the youtube homepage and scrapes the resulting page.
+
+## Example Usage
+
+For a basic search (and all of the current functionality), you can use the search tool as follows:
+
+```pip install youtube-search```
+
+```python
+from youtube_search import YoutubeSearch
+
+results = YoutubeSearch('search terms', max_results=10).to_json()
+
+print(results)
+
+# returns a json string
+
+########################################
+
+results = YoutubeSearch('search terms', max_results=10).to_dict()
+
+print(results)
+# returns a dictionary
+```
