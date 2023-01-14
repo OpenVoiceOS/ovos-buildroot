@@ -1,0 +1,6 @@
+config BR2_PACKAGE_PYTHON_OVOS_PHAL_PLUGIN_HOMEASSISTANT
+	bool "python-ovos-phal-plugin-homeassistant"
+	help
+	  HomeAssistant PHAL Plugin for OpenVoiceOS
+
+	  https://github.com/OpenVoiceOS/ovos-PHAL-plugin-homeassistant
