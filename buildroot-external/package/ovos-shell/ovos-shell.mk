@@ -4,7 +4,7 @@
 #
 ################################################################################
 
-OVOS_SHELL_VERSION = 187414332b10210c8747caba4e6a492745d32594
+OVOS_SHELL_VERSION = 0f3335b0aa3a806b130a6a79299d79c75bc12c0e
 OVOS_SHELL_SITE = $(call github,OpenVoiceOS,ovos-shell,$(OVOS_SHELL_VERSION))
 OVOS_SHELL_LICENSE = Apache License 2.0
 
