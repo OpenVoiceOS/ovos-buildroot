@@ -26,7 +26,12 @@ KF5_KCONFIG_CONF_OPTS = -DCMAKE_CXX_FLAGS="$(KF5_KCONFIG_CXXFLAGS)"
 KF5_KCONFIG_POST_INSTALL_STAGING_HOOKS = KF5_KCONFIG_COMPILER_FIX
 
 define KF5_KCONFIG_COMPILER_FIX
-	cp /usr/lib/libexec/kf5/kconfig_compiler_kf5 $(STAGING_DIR)/usr/lib/libexec/kf5/
+	[ -f /usr/lib/libexec/kf5/kconfig_compiler_kf5 ] cp /usr/lib/libexec/kf5/kconfig_compiler_kf5 $(STAGING_DIR)/usr/lib/libexec/kf5/
+	# Fedora:
+	[ -f /usr/libexec/kf5/kconfig_compiler_kf5 ] cp /usr/libexec/kf5/kconfig_compiler_kf5 $(STAGING_DIR)/usr/lib/libexec/kf5/
+	# Manjaro
+	[ -f /usr/lib/kf5/kconfig_compiler_kf5 ] cp /usr/lib/kf5/kconfig_compiler_kf5 $(STAGING_DIR)/usr/lib/libexec/kf5/
+	[ ! -f $(STAGING_DIR)/usr/lib/libexec/kf5/kconfig/compiler_kf5 ] echo "Failed to find kconfig_compiler_kf5."; exit 1;
 endef
 
 $(eval $(cmake-package))
