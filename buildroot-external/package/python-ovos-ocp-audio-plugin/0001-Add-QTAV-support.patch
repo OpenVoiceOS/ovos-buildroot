@@ -1,0 +1,1612 @@
+From 8fe077091bfa3ebf5caeef8e8a8cfb03a77fc515 Mon Sep 17 00:00:00 2001
+From: Aditya Mehra <aix.m@outlook.com>
+Date: Sun, 15 Jan 2023 10:10:22 +1030
+Subject: [PATCH 1/4] Add optional support for QtAV video player via
+ configuration
+
+---
+ ovos_plugin_common_play/ocp/gui.py            |   7 +-
+ ovos_plugin_common_play/ocp/player.py         |   4 +-
+ .../ui/+mediacenter/OVOSSeekControlQtAv.qml   | 407 ++++++++++++++++++
+ .../ui/+mediacenter/OVOSVideoPlayerQtAv.qml   | 241 +++++++++++
+ .../ocp/res/ui/OVOSSeekControlQtAv.qml        | 407 ++++++++++++++++++
+ .../ocp/res/ui/OVOSVideoPlayerQtAv.qml        | 241 +++++++++++
+ 6 files changed, 1305 insertions(+), 2 deletions(-)
+ create mode 100644 ovos_plugin_common_play/ocp/res/ui/+mediacenter/OVOSSeekControlQtAv.qml
+ create mode 100644 ovos_plugin_common_play/ocp/res/ui/+mediacenter/OVOSVideoPlayerQtAv.qml
+ create mode 100644 ovos_plugin_common_play/ocp/res/ui/OVOSSeekControlQtAv.qml
+ create mode 100644 ovos_plugin_common_play/ocp/res/ui/OVOSVideoPlayerQtAv.qml
+
+diff --git a/ovos_plugin_common_play/ocp/gui.py b/ovos_plugin_common_play/ocp/gui.py
+index eb0efbf..87840e1 100644
+--- a/ovos_plugin_common_play/ocp/gui.py
++++ b/ovos_plugin_common_play/ocp/gui.py
+@@ -23,6 +23,7 @@ def __init__(self):
+         self.search_mode_is_app = False
+         self.persist_home_display = False
+         self.event_scheduler_interface = None
++        self.video_player_interface = None
+ 
+     def bind(self, player):
+         self.player = player
+@@ -36,6 +37,7 @@ def bind(self, player):
+         self.player.add_event('ovos.common_play.skill.play',
+                               self.handle_play_skill_featured_media)
+         self.event_scheduler_interface = EventSchedulerInterface(name="ovos.common_play", bus=self.bus)
++        self.video_player_interface = self.player.video_player_interface
+ 
+     @property
+     def home_screen_page(self):
+@@ -55,7 +57,10 @@ def audio_service_page(self):
+ 
+     @property
+     def video_player_page(self):
+-        return join(self.player.res_dir, "ui", "OVOSVideoPlayer.qml")
++        if self.video_player_interface = "qtav":
++            return join(self.player.res_dir, "ui", "OVOSVideoPlayerQtAv.qml")
++        else:
++            return join(self.player.res_dir, "ui", "OVOSVideoPlayer.qml")
+ 
+     @property
+     def web_player_page(self):
+diff --git a/ovos_plugin_common_play/ocp/player.py b/ovos_plugin_common_play/ocp/player.py
+index af2db6e..f246654 100644
+--- a/ovos_plugin_common_play/ocp/player.py
++++ b/ovos_plugin_common_play/ocp/player.py
+@@ -25,6 +25,8 @@ def __init__(self, bus=None, settings=None, lang=None, gui=None,
+         gui = gui or OCPMediaPlayerGUI()
+         # mpris settings
+         manage_players = settings.get("manage_external_players", False)
++        # can be "default (QtMultimedia via Mycroft GUI)" or "qtav (QtAv via QML interface)"
++        video_player_interface = settings.get("video_player_interface", "default")
+         if settings.disable_mpris:
+             LOG.info("MPRIS integration is disabled")
+             self.mpris = None
+@@ -730,4 +732,4 @@ def handle_set_app_timeout_mode(self, message):
+         self.settings["app_view_timeout_mode"] = message.data.get("mode", "all")
+         self.settings.store()
+         self.gui["app_view_timeout_mode"] = self.settings.get("app_view_timeout_mode", "all")
+-        self.gui.cancel_app_view_timeout()
+\ No newline at end of file
++        self.gui.cancel_app_view_timeout()
+diff --git a/ovos_plugin_common_play/ocp/res/ui/+mediacenter/OVOSSeekControlQtAv.qml b/ovos_plugin_common_play/ocp/res/ui/+mediacenter/OVOSSeekControlQtAv.qml
+new file mode 100644
+index 0000000..a9437dd
+--- /dev/null
++++ b/ovos_plugin_common_play/ocp/res/ui/+mediacenter/OVOSSeekControlQtAv.qml
+@@ -0,0 +1,407 @@
++/*
++ * Copyright 2019 by Aditya Mehra <aix.m@outlook.com>
++ * Copyright 2019 by Marco Martin <mart@kde.org>
++ *
++ * Licensed under the Apache License, Version 2.0 (the "License");
++ * you may not use this file except in compliance with the License.
++ * You may obtain a copy of the License at
++ *
++ *    http://www.apache.org/licenses/LICENSE-2.0
++ *
++ * Unless required by applicable law or agreed to in writing, software
++ * distributed under the License is distributed on an "AS IS" BASIS,
++ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++ * See the License for the specific language governing permissions and
++ * limitations under the License.
++ *
++ */
++
++import QtQuick.Layouts 1.4
++import QtQuick 2.12
++import QtQuick.Controls 2.12 as Controls
++import org.kde.kirigami 2.10 as Kirigami
++import QtQuick.Templates 2.12 as Templates
++import QtGraphicalEffects 1.0
++import Mycroft 1.0 as Mycroft
++import QtAV 1.7
++
++Item {
++    id: seekControl
++    property bool opened: false
++    property int duration: 0
++    property int playPosition: 0
++    property int seekPosition: 0
++    property bool enabled: true
++    property bool seeking: false
++    property var videoControl
++    property string title
++    property var currentState: videoService.playbackState
++
++    readonly property var videoService: Mycroft.MediaService
++
++    clip: true
++    implicitWidth: parent.width
++    implicitHeight: mainLayout.implicitHeight + Kirigami.Units.largeSpacing * 2
++    opacity: opened
++
++    onOpenedChanged: {
++        if (opened) {
++            hideTimer.restart();
++        }
++    }
++
++    onFocusChanged: {
++        if(focus) {
++            backButton.forceActiveFocus()
++        }
++    }
++
++    Timer {
++        id: hideTimer
++        interval: 5000
++        onTriggered: {
++            seekControl.opened = false;
++            videoRoot.forceActiveFocus();
++        }
++    }
++
++    Rectangle {
++        width: parent.width
++        height: parent.height
++        property color tempColor: Qt.darker(Kirigami.Theme.backgroundColor, 2)
++        color: Qt.rgba(tempColor.r, tempColor.g, tempColor.b, 0.8)
++        y: opened ? 0 : parent.height
++
++        Rectangle {
++            anchors.top: parent.top
++            anchors.left: parent.left
++            anchors.right: parent.right
++            height: Mycroft.Units.gridUnit / 4
++            color: Kirigami.Theme.highlightColor
++        }
++
++        ColumnLayout {
++            id: mainLayout
++
++            anchors {
++                fill: parent
++                margins: Kirigami.Units.largeSpacing
++            }
++
++            RowLayout {
++                id: mainLayout2
++                Layout.fillHeight: true
++
++                Controls.Button {
++                    id: button
++                    Layout.preferredWidth: parent.width > 600 ? Kirigami.Units.iconSizes.large : Kirigami.Units.iconSizes.medium
++                    Layout.preferredHeight: Layout.preferredWidth
++                    highlighted: focus ? 1 : 0
++                    z: 1000
++
++                    background: Rectangle {
++                        color: Kirigami.Theme.backgroundColor
++                        radius: 5
++                        border.width: 1.25
++                        border.color: Qt.rgba(Kirigami.Theme.backgroundColor.r, Kirigami.Theme.backgroundColor.g, Kirigami.Theme.backgroundColor.b, 0.25)
++                    }
++
++                    contentItem: Kirigami.Icon {
++                        anchors.fill: parent
++                        anchors.margins: Mycroft.Units.gridUnit
++
++                        source: avVideo.playbackState == MediaPlayer.PlayingState ? Qt.resolvedUrl("images/media-playback-pause.svg") : Qt.resolvedUrl("images/media-playback-start.svg")
++
++                        ColorOverlay {
++                            source: parent
++                            anchors.fill: parent
++                            color: Kirigami.Theme.textColor
++                        }
++                    }
++
++                    onClicked: {
++                        avVideo.playbackState == MediaPlayer.PlayingState ? videoControl.pause() : videoControl.currentState == MediaPlayer.PausedState ? videoControl.resume() : videoControl.play()
++                        hideTimer.restart();
++                    }
++                    KeyNavigation.up: video
++                    KeyNavigation.left: backButton
++                    KeyNavigation.right: slider
++                    Keys.onReturnPressed: {
++                        clicked()
++                    }
++                    onFocusChanged: {
++                        hideTimer.restart();
++                    }
++                }
++
++                Controls.Button {
++                    id: prevbutton
++                    Layout.preferredWidth: parent.width > 600 ? Kirigami.Units.iconSizes.large : Kirigami.Units.iconSizes.medium
++                    Layout.preferredHeight: Layout.preferredWidth
++                    highlighted: focus ? 1 : 0
++                    z: 1000
++
++                    background: Rectangle {
++                        color: Kirigami.Theme.backgroundColor
++                        radius: 5
++                        border.width: 1.25
++                        border.color: Qt.rgba(Kirigami.Theme.backgroundColor.r, Kirigami.Theme.backgroundColor.g, Kirigami.Theme.backgroundColor.b, 0.25)
++                    }
++
++                    contentItem: Kirigami.Icon {
++                        anchors.fill: parent
++                        anchors.margins: Mycroft.Units.gridUnit
++
++                        source: Qt.resolvedUrl("images/media-skip-backward.svg")
++
++                        ColorOverlay {
++                            source: parent
++                            anchors.fill: parent
++                            color: Kirigami.Theme.textColor
++                        }
++                    }
++
++                    onClicked: {
++                        videoControl.previous()
++                        hideTimer.restart();
++                    }
++
++                    KeyNavigation.up: video
++                    KeyNavigation.left: backButton
++                    KeyNavigation.right: slider
++                    Keys.onReturnPressed: {
++                        clicked()
++                    }
++                    onFocusChanged: {
++                        hideTimer.restart();
++                    }
++                }
++
++                Controls.Button {
++                    id: nextbutton
++                    Layout.preferredWidth: parent.width > 600 ? Kirigami.Units.iconSizes.large : Kirigami.Units.iconSizes.medium
++                    Layout.preferredHeight: Layout.preferredWidth
++                    highlighted: focus ? 1 : 0
++                    z: 1000
++
++                    background: Rectangle {
++                        color: Kirigami.Theme.backgroundColor
++                        radius: 5
++                        border.width: 1.25
++                        border.color: Qt.rgba(Kirigami.Theme.backgroundColor.r, Kirigami.Theme.backgroundColor.g, Kirigami.Theme.backgroundColor.b, 0.25)
++                    }
++
++                    contentItem: Kirigami.Icon {
++                        anchors.fill: parent
++                        anchors.margins: Mycroft.Units.gridUnit
++
++                        source: Qt.resolvedUrl("images/media-skip-forward.svg")
++
++
++                        ColorOverlay {
++                            source: parent
++                            anchors.fill: parent
++                            color: Kirigami.Theme.textColor
++                        }
++                    }
++
++                    onClicked: {
++                        videoControl.next()
++                        hideTimer.restart();
++                    }
++                    KeyNavigation.up: video
++                    KeyNavigation.left: backButton
++                    KeyNavigation.right: slider
++                    Keys.onReturnPressed: {
++                        clicked()
++                    }
++                    onFocusChanged: {
++                        hideTimer.restart();
++                    }
++                }
++
++                Templates.Slider {
++                    id: slider
++                    Layout.fillWidth: true
++                    Layout.alignment: Qt.AlignVCenter
++                    implicitHeight: Kirigami.Units.gridUnit
++                    value: seekControl.playPosition
++                    from: 0
++                    to: seekControl.duration
++                    z: 1000
++                    property bool navSliderItem
++                    property int minimumValue: 0
++                    property int maximumValue: 20
++                    onMoved: {
++                        seekControl.seekPosition = value;
++                        hideTimer.restart();
++                    }
++
++                    onNavSliderItemChanged: {
++                        if(slider.navSliderItem){
++                            recthandler.color = "red"
++                        } else if (slider.focus) {
++                            recthandler.color = Kirigami.Theme.linkColor
++                        }
++                    }
++
++                    onFocusChanged: {
++                        if(!slider.focus){
++                            recthandler.color = Kirigami.Theme.textColor
++                        } else {
++                            recthandler.color = Kirigami.Theme.linkColor
++                        }
++                    }
++
++                    handle: Item {
++                        x: slider.visualPosition * (parent.width - (Kirigami.Units.largeSpacing + Kirigami.Units.smallSpacing))
++                        anchors.verticalCenter: parent.verticalCenter
++                        height: parent.height + Mycroft.Units.gridUnit
++
++                        Rectangle {
++                            id: hand
++                            anchors.verticalCenter: parent.verticalCenter
++                            implicitWidth: Kirigami.Units.iconSizes.small + Kirigami.Units.smallSpacing
++                            implicitHeight: parent.height / 2
++                            color: Kirigami.Theme.backgroundColor
++                            border.color: Kirigami.Theme.highlightColor
++                        }
++                    }
++
++                    background: Item {
++                        Rectangle {
++                            id: groove
++                            anchors {
++                                verticalCenter: parent.verticalCenter
++                                left: parent.left
++                                right: parent.right
++                            }
++                            height: Math.round(Kirigami.Units.gridUnit/3)
++                            color: Qt.lighter(Kirigami.Theme.highlightColor, 1.5)
++
++                            Rectangle {
++                                anchors {
++                                    left: parent.left
++                                    top: parent.top
++                                    bottom: parent.bottom
++                                }
++                                gradient: Gradient {
++                                    orientation: Gradient.Horizontal
++                                    GradientStop { position: 0.0; color: Kirigami.Theme.highlightColor }
++                                    GradientStop { position: 1.0; color: Qt.darker(Kirigami.Theme.highlightColor, 1.5) }
++                                }
++                                width: slider.position * (parent.width - slider.handle.width/2) + slider.handle.width/2
++                            }
++                        }
++
++                        Controls.Label {
++                            anchors {
++                                left: parent.left
++                                top: groove.bottom
++                                topMargin: Kirigami.Units.smallSpacing
++                            }
++                            horizontalAlignment: Text.AlignLeft
++                            verticalAlignment: Text.AlignVCenter
++                            text: formatedPosition(playPosition)
++                            color: Kirigami.Theme.textColor
++                        }
++
++                        Controls.Label {
++                            anchors {
++                                right: parent.right
++                                top: groove.bottom
++                                topMargin: Kirigami.Units.smallSpacing
++                            }
++                            horizontalAlignment: Text.AlignRight
++                            verticalAlignment: Text.AlignVCenter
++                            text: formatedDuration(duration)
++                            color: Kirigami.Theme.textColor
++                        }
++                    }
++                    KeyNavigation.up: video
++                    KeyNavigation.left: button
++                    Keys.onReturnPressed: {
++                        hideTimer.restart();
++                        if(!navSliderItem){
++                            navSliderItem = true
++                        } else {
++                            navSliderItem = false
++                        }
++                    }
++
++                    Keys.onLeftPressed: {
++                        console.log("leftPressedonSlider")
++                        hideTimer.restart();
++                        if(navSliderItem) {
++                            videoControl.seek(video.position - 5000)
++                        } else {
++                            button.forceActiveFocus()
++                        }
++                    }
++
++                    Keys.onRightPressed: {
++                        hideTimer.restart();
++                        if(navSliderItem) {
++                            videoControl.seek(video.position + 5000)
++                        }
++                    }
++                }
++
++                Controls.Button {
++                    id: backButton
++                    Layout.preferredWidth: parent.width > 600 ? Kirigami.Units.iconSizes.large : Kirigami.Units.iconSizes.medium
++                    Layout.preferredHeight: Layout.preferredWidth
++                    highlighted: focus ? 1 : 0
++                    z: 1000
++
++                    background: Rectangle {
++                        color: Kirigami.Theme.backgroundColor
++                        radius: 5
++                        border.width: 1.25
++                        border.color: Qt.rgba(Kirigami.Theme.backgroundColor.r, Kirigami.Theme.backgroundColor.g, Kirigami.Theme.backgroundColor.b, 0.25)
++                    }
++
++                    contentItem: Kirigami.Icon {
++                        anchors.fill: parent
++                        anchors.margins: Mycroft.Units.gridUnit
++
++                        source: Qt.resolvedUrl("images/back.svg")
++
++                        ColorOverlay {
++                            source: parent
++                            anchors.fill: parent
++                            color: Kirigami.Theme.textColor
++                        }
++                    }
++
++                    onClicked: {
++                        triggerGuiEvent("video.media.playback.ended", {})
++                        video.stop();
++                    }
++                    KeyNavigation.up: video
++                    KeyNavigation.right: button
++                    Keys.onReturnPressed: {
++                        hideTimer.restart();
++                        triggerGuiEvent("video.media.playback.ended", {})
++                        video.stop();
++                    }
++                    onFocusChanged: {
++                        hideTimer.restart();
++                    }
++                }
++            }
++        }
++    }
++
++    function formatedDuration(millis){
++        var minutes = Math.floor(millis / 60000);
++        var seconds = ((millis % 60000) / 1000).toFixed(0);
++        return minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
++    }
++
++    function formatedPosition(millis){
++        var minutes = Math.floor(millis / 60000);
++        var seconds = ((millis % 60000) / 1000).toFixed(0);
++        return minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
++    }
++}
+diff --git a/ovos_plugin_common_play/ocp/res/ui/+mediacenter/OVOSVideoPlayerQtAv.qml b/ovos_plugin_common_play/ocp/res/ui/+mediacenter/OVOSVideoPlayerQtAv.qml
+new file mode 100644
+index 0000000..395e1d9
+--- /dev/null
++++ b/ovos_plugin_common_play/ocp/res/ui/+mediacenter/OVOSVideoPlayerQtAv.qml
+@@ -0,0 +1,241 @@
++/*
++ * Copyright 2019 by Aditya Mehra <aix.m@outlook.com>
++ * Copyright 2019 by Marco Martin <mart@kde.org>
++ *
++ * Licensed under the Apache License, Version 2.0 (the "License");
++ * you may not use this file except in compliance with the License.
++ * You may obtain a copy of the License at
++ *
++ *    http://www.apache.org/licenses/LICENSE-2.0
++ *
++ * Unless required by applicable law or agreed to in writing, software
++ * distributed under the License is distributed on an "AS IS" BASIS,
++ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++ * See the License for the specific language governing permissions and
++ * limitations under the License.
++ *
++ */
++
++import QtMultimedia 5.12
++import QtQuick.Layouts 1.4
++import QtQuick 2.12
++import QtQuick.Controls 2.12 as Controls
++import org.kde.kirigami 2.10 as Kirigami
++import QtQuick.Window 2.3
++import QtGraphicalEffects 1.0
++import Mycroft 1.0 as Mycroft
++import "." as Local
++import QtAV 1.7
++
++Rectangle {
++    id: root
++    readonly property var videoService: Mycroft.MediaService
++    property Component controlBar
++    color: "black"
++
++    readonly property Item controlBarItem: {
++        if (controlBar) {
++            return controlBar.createObject(root, {"z": 9999});
++        } else {
++            return null;
++        }
++    }
++
++    property var videoSource
++    property var videoStatus
++    property var videoRepeat
++    property var videoThumb
++    property var videoTitle: sessionData.title
++    property var videoAuthor: sessionData.artist
++    property var playerMeta
++    property var cpsMeta
++    property bool busyIndicate: false
++
++    //Player Button Control Actions
++    property var currentState: avVideo.playbackState
++
++    //Mediaplayer Related Properties To Be Set By Probe MediaPlayer
++    property var playerDuration
++    property var playerPosition
++
++    Keys.onDownPressed: {
++        controlBarItem.opened = true
++        controlBarItem.forceActiveFocus()
++    }
++
++    onVideoSourceChanged: {
++        root.play()
++        delay(6000, function() {
++            infomationBar.visible = false;
++        })
++    }
++
++    function play(){
++        avVideo.source = videoSource
++    }
++
++    function pause(){
++        avVideo.pause()
++    }
++
++    function stop(){
++        avVideo.stop()
++    }
++
++    function resume(){
++        avVideo.play()
++    }
++
++    function seek(val){
++        avVideo.seek(val)
++    }
++
++    function next(){
++        videoService.playerNext()
++    }
++
++    function previous(){
++        videoService.playerPrevious()
++    }
++
++    Connections {
++        target: Window.window
++        onVisibleChanged: {
++            if(video.playbackState == MediaPlayer.PlayingState) {
++                stop()
++            }
++        }
++    }
++
++    Connections {
++        target: Mycroft.MediaService
++
++        onPlayRequested: {
++            videoSource = videoService.getTrack()
++        }
++
++        onStopRequested: {
++            videoSource = ""
++        }
++
++        onMediaStatusChanged: {
++            triggerGuiEvent("media.state", {"state": status})
++            if (status == MediaPlayer.EndOfMedia) {
++                pause()
++            }
++        }
++
++        onMetaUpdated: {
++            root.playerMeta = videoService.getPlayerMeta()
++
++            if(root.playerMeta.hasOwnProperty("Title")) {
++                root.videoTitle = root.playerMeta.Title ? root.playerMeta.Title : ""
++            }
++
++            if(root.playerMeta.hasOwnProperty("Artist")) {
++                root.videoAuthor = root.playerMeta.Artist
++            } else if(root.playerMeta.hasOwnProperty("ContributingArtist")) {
++                root.videoAuthor = root.playerMeta.ContributingArtist
++            }
++        }
++
++        onMetaReceived: {
++            root.cpsMeta = videoService.getCPSMeta()
++            root.videoThumb = root.cpsMeta.thumbnail
++            root.videoAuthor = root.cpsMeta.artist
++            root.videoTitle = root.cpsMeta.title
++        }
++    }
++
++
++    Timer {
++        id: delaytimer
++    }
++
++    function delay(delayTime, cb) {
++        delaytimer.interval = delayTime;
++        delaytimer.repeat = false;
++        delaytimer.triggered.connect(cb);
++        delaytimer.start();
++    }
++
++    controlBar: Local.OVOSSeekControlQtAv {
++        id: seekControl
++
++        anchors {
++            bottom: parent.bottom
++        }
++        title: videoTitle
++        videoControl: root
++        duration: avVideo.duration
++        playPosition: avVideo.position
++        onSeekPositionChanged: seek(seekPosition);
++        z: 1000
++    }
++
++    Item {
++        id: videoRoot
++        anchors.fill: parent
++
++        Rectangle {
++            id: infomationBar
++            anchors.left: parent.left
++            anchors.right: parent.right
++            anchors.top: parent.top
++            visible: false
++            color: Qt.rgba(Kirigami.Theme.backgroundColor.r, Kirigami.Theme.backgroundColor.g, Kirigami.Theme.backgroundColor.b, 0.6)
++            implicitHeight: vidTitle.implicitHeight + Kirigami.Units.largeSpacing * 2
++            z: 1001
++
++            onVisibleChanged: {
++                delay(15000, function() {
++                    infomationBar.visible = false;
++                })
++            }
++
++            Controls.Label {
++                id: vidTitle
++                visible: true
++                maximumLineCount: 2
++                wrapMode: Text.Wrap
++                anchors.left: parent.left
++                anchors.leftMargin: Kirigami.Units.largeSpacing
++                anchors.verticalCenter: parent.verticalCenter
++                text: videoTitle
++                z: 100
++            }
++        }
++
++        Video {
++            id: avVideo
++            anchors.fill: parent
++            autoLoad: true
++            autoPlay: true
++
++            Keys.onReturnPressed: {
++                avVideo.playbackState == MediaPlayer.PlayingState ? avVideo.pause() : avVideo.play()
++            }
++
++            Keys.onDownPressed: {
++                controlBarItem.opened = true
++                controlBarItem.forceActiveFocus()
++            }
++
++            MouseArea {
++                anchors.fill: parent
++                onClicked: {
++                    controlBarItem.opened = !controlBarItem.opened
++                }
++            }
++
++            onStatusChanged: {
++                triggerGuiEvent("media.state", {"state": status})
++                if (status == MediaPlayer.EndOfMedia) {
++                    pause()
++                }
++            }
++        }
++    }
++}
++
++
+diff --git a/ovos_plugin_common_play/ocp/res/ui/OVOSSeekControlQtAv.qml b/ovos_plugin_common_play/ocp/res/ui/OVOSSeekControlQtAv.qml
+new file mode 100644
+index 0000000..a9437dd
+--- /dev/null
++++ b/ovos_plugin_common_play/ocp/res/ui/OVOSSeekControlQtAv.qml
+@@ -0,0 +1,407 @@
++/*
++ * Copyright 2019 by Aditya Mehra <aix.m@outlook.com>
++ * Copyright 2019 by Marco Martin <mart@kde.org>
++ *
++ * Licensed under the Apache License, Version 2.0 (the "License");
++ * you may not use this file except in compliance with the License.
++ * You may obtain a copy of the License at
++ *
++ *    http://www.apache.org/licenses/LICENSE-2.0
++ *
++ * Unless required by applicable law or agreed to in writing, software
++ * distributed under the License is distributed on an "AS IS" BASIS,
++ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++ * See the License for the specific language governing permissions and
++ * limitations under the License.
++ *
++ */
++
++import QtQuick.Layouts 1.4
++import QtQuick 2.12
++import QtQuick.Controls 2.12 as Controls
++import org.kde.kirigami 2.10 as Kirigami
++import QtQuick.Templates 2.12 as Templates
++import QtGraphicalEffects 1.0
++import Mycroft 1.0 as Mycroft
++import QtAV 1.7
++
++Item {
++    id: seekControl
++    property bool opened: false
++    property int duration: 0
++    property int playPosition: 0
++    property int seekPosition: 0
++    property bool enabled: true
++    property bool seeking: false
++    property var videoControl
++    property string title
++    property var currentState: videoService.playbackState
++
++    readonly property var videoService: Mycroft.MediaService
++
++    clip: true
++    implicitWidth: parent.width
++    implicitHeight: mainLayout.implicitHeight + Kirigami.Units.largeSpacing * 2
++    opacity: opened
++
++    onOpenedChanged: {
++        if (opened) {
++            hideTimer.restart();
++        }
++    }
++
++    onFocusChanged: {
++        if(focus) {
++            backButton.forceActiveFocus()
++        }
++    }
++
++    Timer {
++        id: hideTimer
++        interval: 5000
++        onTriggered: {
++            seekControl.opened = false;
++            videoRoot.forceActiveFocus();
++        }
++    }
++
++    Rectangle {
++        width: parent.width
++        height: parent.height
++        property color tempColor: Qt.darker(Kirigami.Theme.backgroundColor, 2)
++        color: Qt.rgba(tempColor.r, tempColor.g, tempColor.b, 0.8)
++        y: opened ? 0 : parent.height
++
++        Rectangle {
++            anchors.top: parent.top
++            anchors.left: parent.left
++            anchors.right: parent.right
++            height: Mycroft.Units.gridUnit / 4
++            color: Kirigami.Theme.highlightColor
++        }
++
++        ColumnLayout {
++            id: mainLayout
++
++            anchors {
++                fill: parent
++                margins: Kirigami.Units.largeSpacing
++            }
++
++            RowLayout {
++                id: mainLayout2
++                Layout.fillHeight: true
++
++                Controls.Button {
++                    id: button
++                    Layout.preferredWidth: parent.width > 600 ? Kirigami.Units.iconSizes.large : Kirigami.Units.iconSizes.medium
++                    Layout.preferredHeight: Layout.preferredWidth
++                    highlighted: focus ? 1 : 0
++                    z: 1000
++
++                    background: Rectangle {
++                        color: Kirigami.Theme.backgroundColor
++                        radius: 5
++                        border.width: 1.25
++                        border.color: Qt.rgba(Kirigami.Theme.backgroundColor.r, Kirigami.Theme.backgroundColor.g, Kirigami.Theme.backgroundColor.b, 0.25)
++                    }
++
++                    contentItem: Kirigami.Icon {
++                        anchors.fill: parent
++                        anchors.margins: Mycroft.Units.gridUnit
++
++                        source: avVideo.playbackState == MediaPlayer.PlayingState ? Qt.resolvedUrl("images/media-playback-pause.svg") : Qt.resolvedUrl("images/media-playback-start.svg")
++
++                        ColorOverlay {
++                            source: parent
++                            anchors.fill: parent
++                            color: Kirigami.Theme.textColor
++                        }
++                    }
++
++                    onClicked: {
++                        avVideo.playbackState == MediaPlayer.PlayingState ? videoControl.pause() : videoControl.currentState == MediaPlayer.PausedState ? videoControl.resume() : videoControl.play()
++                        hideTimer.restart();
++                    }
++                    KeyNavigation.up: video
++                    KeyNavigation.left: backButton
++                    KeyNavigation.right: slider
++                    Keys.onReturnPressed: {
++                        clicked()
++                    }
++                    onFocusChanged: {
++                        hideTimer.restart();
++                    }
++                }
++
++                Controls.Button {
++                    id: prevbutton
++                    Layout.preferredWidth: parent.width > 600 ? Kirigami.Units.iconSizes.large : Kirigami.Units.iconSizes.medium
++                    Layout.preferredHeight: Layout.preferredWidth
++                    highlighted: focus ? 1 : 0
++                    z: 1000
++
++                    background: Rectangle {
++                        color: Kirigami.Theme.backgroundColor
++                        radius: 5
++                        border.width: 1.25
++                        border.color: Qt.rgba(Kirigami.Theme.backgroundColor.r, Kirigami.Theme.backgroundColor.g, Kirigami.Theme.backgroundColor.b, 0.25)
++                    }
++
++                    contentItem: Kirigami.Icon {
++                        anchors.fill: parent
++                        anchors.margins: Mycroft.Units.gridUnit
++
++                        source: Qt.resolvedUrl("images/media-skip-backward.svg")
++
++                        ColorOverlay {
++                            source: parent
++                            anchors.fill: parent
++                            color: Kirigami.Theme.textColor
++                        }
++                    }
++
++                    onClicked: {
++                        videoControl.previous()
++                        hideTimer.restart();
++                    }
++
++                    KeyNavigation.up: video
++                    KeyNavigation.left: backButton
++                    KeyNavigation.right: slider
++                    Keys.onReturnPressed: {
++                        clicked()
++                    }
++                    onFocusChanged: {
++                        hideTimer.restart();
++                    }
++                }
++
++                Controls.Button {
++                    id: nextbutton
++                    Layout.preferredWidth: parent.width > 600 ? Kirigami.Units.iconSizes.large : Kirigami.Units.iconSizes.medium
++                    Layout.preferredHeight: Layout.preferredWidth
++                    highlighted: focus ? 1 : 0
++                    z: 1000
++
++                    background: Rectangle {
++                        color: Kirigami.Theme.backgroundColor
++                        radius: 5
++                        border.width: 1.25
++                        border.color: Qt.rgba(Kirigami.Theme.backgroundColor.r, Kirigami.Theme.backgroundColor.g, Kirigami.Theme.backgroundColor.b, 0.25)
++                    }
++
++                    contentItem: Kirigami.Icon {
++                        anchors.fill: parent
++                        anchors.margins: Mycroft.Units.gridUnit
++
++                        source: Qt.resolvedUrl("images/media-skip-forward.svg")
++
++
++                        ColorOverlay {
++                            source: parent
++                            anchors.fill: parent
++                            color: Kirigami.Theme.textColor
++                        }
++                    }
++
++                    onClicked: {
++                        videoControl.next()
++                        hideTimer.restart();
++                    }
++                    KeyNavigation.up: video
++                    KeyNavigation.left: backButton
++                    KeyNavigation.right: slider
++                    Keys.onReturnPressed: {
++                        clicked()
++                    }
++                    onFocusChanged: {
++                        hideTimer.restart();
++                    }
++                }
++
++                Templates.Slider {
++                    id: slider
++                    Layout.fillWidth: true
++                    Layout.alignment: Qt.AlignVCenter
++                    implicitHeight: Kirigami.Units.gridUnit
++                    value: seekControl.playPosition
++                    from: 0
++                    to: seekControl.duration
++                    z: 1000
++                    property bool navSliderItem
++                    property int minimumValue: 0
++                    property int maximumValue: 20
++                    onMoved: {
++                        seekControl.seekPosition = value;
++                        hideTimer.restart();
++                    }
++
++                    onNavSliderItemChanged: {
++                        if(slider.navSliderItem){
++                            recthandler.color = "red"
++                        } else if (slider.focus) {
++                            recthandler.color = Kirigami.Theme.linkColor
++                        }
++                    }
++
++                    onFocusChanged: {
++                        if(!slider.focus){
++                            recthandler.color = Kirigami.Theme.textColor
++                        } else {
++                            recthandler.color = Kirigami.Theme.linkColor
++                        }
++                    }
++
++                    handle: Item {
++                        x: slider.visualPosition * (parent.width - (Kirigami.Units.largeSpacing + Kirigami.Units.smallSpacing))
++                        anchors.verticalCenter: parent.verticalCenter
++                        height: parent.height + Mycroft.Units.gridUnit
++
++                        Rectangle {
++                            id: hand
++                            anchors.verticalCenter: parent.verticalCenter
++                            implicitWidth: Kirigami.Units.iconSizes.small + Kirigami.Units.smallSpacing
++                            implicitHeight: parent.height / 2
++                            color: Kirigami.Theme.backgroundColor
++                            border.color: Kirigami.Theme.highlightColor
++                        }
++                    }
++
++                    background: Item {
++                        Rectangle {
++                            id: groove
++                            anchors {
++                                verticalCenter: parent.verticalCenter
++                                left: parent.left
++                                right: parent.right
++                            }
++                            height: Math.round(Kirigami.Units.gridUnit/3)
++                            color: Qt.lighter(Kirigami.Theme.highlightColor, 1.5)
++
++                            Rectangle {
++                                anchors {
++                                    left: parent.left
++                                    top: parent.top
++                                    bottom: parent.bottom
++                                }
++                                gradient: Gradient {
++                                    orientation: Gradient.Horizontal
++                                    GradientStop { position: 0.0; color: Kirigami.Theme.highlightColor }
++                                    GradientStop { position: 1.0; color: Qt.darker(Kirigami.Theme.highlightColor, 1.5) }
++                                }
++                                width: slider.position * (parent.width - slider.handle.width/2) + slider.handle.width/2
++                            }
++                        }
++
++                        Controls.Label {
++                            anchors {
++                                left: parent.left
++                                top: groove.bottom
++                                topMargin: Kirigami.Units.smallSpacing
++                            }
++                            horizontalAlignment: Text.AlignLeft
++                            verticalAlignment: Text.AlignVCenter
++                            text: formatedPosition(playPosition)
++                            color: Kirigami.Theme.textColor
++                        }
++
++                        Controls.Label {
++                            anchors {
++                                right: parent.right
++                                top: groove.bottom
++                                topMargin: Kirigami.Units.smallSpacing
++                            }
++                            horizontalAlignment: Text.AlignRight
++                            verticalAlignment: Text.AlignVCenter
++                            text: formatedDuration(duration)
++                            color: Kirigami.Theme.textColor
++                        }
++                    }
++                    KeyNavigation.up: video
++                    KeyNavigation.left: button
++                    Keys.onReturnPressed: {
++                        hideTimer.restart();
++                        if(!navSliderItem){
++                            navSliderItem = true
++                        } else {
++                            navSliderItem = false
++                        }
++                    }
++
++                    Keys.onLeftPressed: {
++                        console.log("leftPressedonSlider")
++                        hideTimer.restart();
++                        if(navSliderItem) {
++                            videoControl.seek(video.position - 5000)
++                        } else {
++                            button.forceActiveFocus()
++                        }
++                    }
++
++                    Keys.onRightPressed: {
++                        hideTimer.restart();
++                        if(navSliderItem) {
++                            videoControl.seek(video.position + 5000)
++                        }
++                    }
++                }
++
++                Controls.Button {
++                    id: backButton
++                    Layout.preferredWidth: parent.width > 600 ? Kirigami.Units.iconSizes.large : Kirigami.Units.iconSizes.medium
++                    Layout.preferredHeight: Layout.preferredWidth
++                    highlighted: focus ? 1 : 0
++                    z: 1000
++
++                    background: Rectangle {
++                        color: Kirigami.Theme.backgroundColor
++                        radius: 5
++                        border.width: 1.25
++                        border.color: Qt.rgba(Kirigami.Theme.backgroundColor.r, Kirigami.Theme.backgroundColor.g, Kirigami.Theme.backgroundColor.b, 0.25)
++                    }
++
++                    contentItem: Kirigami.Icon {
++                        anchors.fill: parent
++                        anchors.margins: Mycroft.Units.gridUnit
++
++                        source: Qt.resolvedUrl("images/back.svg")
++
++                        ColorOverlay {
++                            source: parent
++                            anchors.fill: parent
++                            color: Kirigami.Theme.textColor
++                        }
++                    }
++
++                    onClicked: {
++                        triggerGuiEvent("video.media.playback.ended", {})
++                        video.stop();
++                    }
++                    KeyNavigation.up: video
++                    KeyNavigation.right: button
++                    Keys.onReturnPressed: {
++                        hideTimer.restart();
++                        triggerGuiEvent("video.media.playback.ended", {})
++                        video.stop();
++                    }
++                    onFocusChanged: {
++                        hideTimer.restart();
++                    }
++                }
++            }
++        }
++    }
++
++    function formatedDuration(millis){
++        var minutes = Math.floor(millis / 60000);
++        var seconds = ((millis % 60000) / 1000).toFixed(0);
++        return minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
++    }
++
++    function formatedPosition(millis){
++        var minutes = Math.floor(millis / 60000);
++        var seconds = ((millis % 60000) / 1000).toFixed(0);
++        return minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
++    }
++}
+diff --git a/ovos_plugin_common_play/ocp/res/ui/OVOSVideoPlayerQtAv.qml b/ovos_plugin_common_play/ocp/res/ui/OVOSVideoPlayerQtAv.qml
+new file mode 100644
+index 0000000..395e1d9
+--- /dev/null
++++ b/ovos_plugin_common_play/ocp/res/ui/OVOSVideoPlayerQtAv.qml
+@@ -0,0 +1,241 @@
++/*
++ * Copyright 2019 by Aditya Mehra <aix.m@outlook.com>
++ * Copyright 2019 by Marco Martin <mart@kde.org>
++ *
++ * Licensed under the Apache License, Version 2.0 (the "License");
++ * you may not use this file except in compliance with the License.
++ * You may obtain a copy of the License at
++ *
++ *    http://www.apache.org/licenses/LICENSE-2.0
++ *
++ * Unless required by applicable law or agreed to in writing, software
++ * distributed under the License is distributed on an "AS IS" BASIS,
++ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++ * See the License for the specific language governing permissions and
++ * limitations under the License.
++ *
++ */
++
++import QtMultimedia 5.12
++import QtQuick.Layouts 1.4
++import QtQuick 2.12
++import QtQuick.Controls 2.12 as Controls
++import org.kde.kirigami 2.10 as Kirigami
++import QtQuick.Window 2.3
++import QtGraphicalEffects 1.0
++import Mycroft 1.0 as Mycroft
++import "." as Local
++import QtAV 1.7
++
++Rectangle {
++    id: root
++    readonly property var videoService: Mycroft.MediaService
++    property Component controlBar
++    color: "black"
++
++    readonly property Item controlBarItem: {
++        if (controlBar) {
++            return controlBar.createObject(root, {"z": 9999});
++        } else {
++            return null;
++        }
++    }
++
++    property var videoSource
++    property var videoStatus
++    property var videoRepeat
++    property var videoThumb
++    property var videoTitle: sessionData.title
++    property var videoAuthor: sessionData.artist
++    property var playerMeta
++    property var cpsMeta
++    property bool busyIndicate: false
++
++    //Player Button Control Actions
++    property var currentState: avVideo.playbackState
++
++    //Mediaplayer Related Properties To Be Set By Probe MediaPlayer
++    property var playerDuration
++    property var playerPosition
++
++    Keys.onDownPressed: {
++        controlBarItem.opened = true
++        controlBarItem.forceActiveFocus()
++    }
++
++    onVideoSourceChanged: {
++        root.play()
++        delay(6000, function() {
++            infomationBar.visible = false;
++        })
++    }
++
++    function play(){
++        avVideo.source = videoSource
++    }
++
++    function pause(){
++        avVideo.pause()
++    }
++
++    function stop(){
++        avVideo.stop()
++    }
++
++    function resume(){
++        avVideo.play()
++    }
++
++    function seek(val){
++        avVideo.seek(val)
++    }
++
++    function next(){
++        videoService.playerNext()
++    }
++
++    function previous(){
++        videoService.playerPrevious()
++    }
++
++    Connections {
++        target: Window.window
++        onVisibleChanged: {
++            if(video.playbackState == MediaPlayer.PlayingState) {
++                stop()
++            }
++        }
++    }
++
++    Connections {
++        target: Mycroft.MediaService
++
++        onPlayRequested: {
++            videoSource = videoService.getTrack()
++        }
++
++        onStopRequested: {
++            videoSource = ""
++        }
++
++        onMediaStatusChanged: {
++            triggerGuiEvent("media.state", {"state": status})
++            if (status == MediaPlayer.EndOfMedia) {
++                pause()
++            }
++        }
++
++        onMetaUpdated: {
++            root.playerMeta = videoService.getPlayerMeta()
++
++            if(root.playerMeta.hasOwnProperty("Title")) {
++                root.videoTitle = root.playerMeta.Title ? root.playerMeta.Title : ""
++            }
++
++            if(root.playerMeta.hasOwnProperty("Artist")) {
++                root.videoAuthor = root.playerMeta.Artist
++            } else if(root.playerMeta.hasOwnProperty("ContributingArtist")) {
++                root.videoAuthor = root.playerMeta.ContributingArtist
++            }
++        }
++
++        onMetaReceived: {
++            root.cpsMeta = videoService.getCPSMeta()
++            root.videoThumb = root.cpsMeta.thumbnail
++            root.videoAuthor = root.cpsMeta.artist
++            root.videoTitle = root.cpsMeta.title
++        }
++    }
++
++
++    Timer {
++        id: delaytimer
++    }
++
++    function delay(delayTime, cb) {
++        delaytimer.interval = delayTime;
++        delaytimer.repeat = false;
++        delaytimer.triggered.connect(cb);
++        delaytimer.start();
++    }
++
++    controlBar: Local.OVOSSeekControlQtAv {
++        id: seekControl
++
++        anchors {
++            bottom: parent.bottom
++        }
++        title: videoTitle
++        videoControl: root
++        duration: avVideo.duration
++        playPosition: avVideo.position
++        onSeekPositionChanged: seek(seekPosition);
++        z: 1000
++    }
++
++    Item {
++        id: videoRoot
++        anchors.fill: parent
++
++        Rectangle {
++            id: infomationBar
++            anchors.left: parent.left
++            anchors.right: parent.right
++            anchors.top: parent.top
++            visible: false
++            color: Qt.rgba(Kirigami.Theme.backgroundColor.r, Kirigami.Theme.backgroundColor.g, Kirigami.Theme.backgroundColor.b, 0.6)
++            implicitHeight: vidTitle.implicitHeight + Kirigami.Units.largeSpacing * 2
++            z: 1001
++
++            onVisibleChanged: {
++                delay(15000, function() {
++                    infomationBar.visible = false;
++                })
++            }
++
++            Controls.Label {
++                id: vidTitle
++                visible: true
++                maximumLineCount: 2
++                wrapMode: Text.Wrap
++                anchors.left: parent.left
++                anchors.leftMargin: Kirigami.Units.largeSpacing
++                anchors.verticalCenter: parent.verticalCenter
++                text: videoTitle
++                z: 100
++            }
++        }
++
++        Video {
++            id: avVideo
++            anchors.fill: parent
++            autoLoad: true
++            autoPlay: true
++
++            Keys.onReturnPressed: {
++                avVideo.playbackState == MediaPlayer.PlayingState ? avVideo.pause() : avVideo.play()
++            }
++
++            Keys.onDownPressed: {
++                controlBarItem.opened = true
++                controlBarItem.forceActiveFocus()
++            }
++
++            MouseArea {
++                anchors.fill: parent
++                onClicked: {
++                    controlBarItem.opened = !controlBarItem.opened
++                }
++            }
++
++            onStatusChanged: {
++                triggerGuiEvent("media.state", {"state": status})
++                if (status == MediaPlayer.EndOfMedia) {
++                    pause()
++                }
++            }
++        }
++    }
++}
++
++
+
+From 8aaebc157d14052b991a2e0dc045480e39bdd522 Mon Sep 17 00:00:00 2001
+From: jarbasai <jarbasai@mailfence.com>
+Date: Mon, 16 Jan 2023 18:11:43 +0000
+Subject: [PATCH 2/4] use enum
+
+---
+ ovos_plugin_common_play/__init__.py   |  6 ++++++
+ ovos_plugin_common_play/ocp/gui.py    | 28 ++++++++++++++++++++-------
+ ovos_plugin_common_play/ocp/player.py |  4 +---
+ 3 files changed, 28 insertions(+), 10 deletions(-)
+
+diff --git a/ovos_plugin_common_play/__init__.py b/ovos_plugin_common_play/__init__.py
+index 0dc036c..81a816a 100644
+--- a/ovos_plugin_common_play/__init__.py
++++ b/ovos_plugin_common_play/__init__.py
+@@ -209,6 +209,12 @@ def load_service(base_config, bus):
+         ## this list is checked in order until a available backend is found
+         "preferred_audio_services": ["vlc", "mplayer", "simple"],
+ 
++        # to handle video playback different backends are supported
++        #   - valid options - "native", "qtav", "auto"
++        # "qtav" does not support widget integration
++        # "native" sometimes has problems playing stream urls
++        "video_player_backend": "auto",
++
+         ## when media playback ends "click next"
+         "autoplay": True,
+         ## if True behaves as if the search results are part of the playlist
+diff --git a/ovos_plugin_common_play/ocp/gui.py b/ovos_plugin_common_play/ocp/gui.py
+index 87840e1..708ff33 100644
+--- a/ovos_plugin_common_play/ocp/gui.py
++++ b/ovos_plugin_common_play/ocp/gui.py
+@@ -1,13 +1,21 @@
++import enum
+ from os.path import join, dirname
+-from time import sleep, time
++from threading import Timer
++from time import sleep
++
+ from mycroft_bus_client.message import Message
+-from ovos_utils.gui import GUIInterface
++from ovos_config import Configuration
+ from ovos_utils.events import EventSchedulerInterface
++from ovos_utils.gui import GUIInterface
+ from ovos_utils.log import LOG
+-from ovos_config import Configuration
+ 
+ from ovos_plugin_common_play.ocp.status import *
+-from threading import Timer
++
++
++class VideoPlayerBackend(str, enum.Enum):
++    AUTO = "auto"
++    QTAV = "qtav"
++    NATIVE = "native"
+ 
+ 
+ class OCPMediaPlayerGUI(GUIInterface):
+@@ -23,7 +31,6 @@ def __init__(self):
+         self.search_mode_is_app = False
+         self.persist_home_display = False
+         self.event_scheduler_interface = None
+-        self.video_player_interface = None
+ 
+     def bind(self, player):
+         self.player = player
+@@ -37,7 +44,11 @@ def bind(self, player):
+         self.player.add_event('ovos.common_play.skill.play',
+                               self.handle_play_skill_featured_media)
+         self.event_scheduler_interface = EventSchedulerInterface(name="ovos.common_play", bus=self.bus)
+-        self.video_player_interface = self.player.video_player_interface
++
++    @property
++    def video_backend(self):
++        return self.player.settings.get("video_player_backend") or \
++               VideoPlayerBackend.AUTO
+ 
+     @property
+     def home_screen_page(self):
+@@ -57,7 +68,10 @@ def audio_service_page(self):
+ 
+     @property
+     def video_player_page(self):
+-        if self.video_player_interface = "qtav":
++        if self.video_backend == VideoPlayerBackend.AUTO:
++            # TODO - detect if qtav is available, if yes use it
++            pass
++        if self.video_backend == VideoPlayerBackend.QTAV:
+             return join(self.player.res_dir, "ui", "OVOSVideoPlayerQtAv.qml")
+         else:
+             return join(self.player.res_dir, "ui", "OVOSVideoPlayer.qml")
+diff --git a/ovos_plugin_common_play/ocp/player.py b/ovos_plugin_common_play/ocp/player.py
+index f246654..af2db6e 100644
+--- a/ovos_plugin_common_play/ocp/player.py
++++ b/ovos_plugin_common_play/ocp/player.py
+@@ -25,8 +25,6 @@ def __init__(self, bus=None, settings=None, lang=None, gui=None,
+         gui = gui or OCPMediaPlayerGUI()
+         # mpris settings
+         manage_players = settings.get("manage_external_players", False)
+-        # can be "default (QtMultimedia via Mycroft GUI)" or "qtav (QtAv via QML interface)"
+-        video_player_interface = settings.get("video_player_interface", "default")
+         if settings.disable_mpris:
+             LOG.info("MPRIS integration is disabled")
+             self.mpris = None
+@@ -732,4 +730,4 @@ def handle_set_app_timeout_mode(self, message):
+         self.settings["app_view_timeout_mode"] = message.data.get("mode", "all")
+         self.settings.store()
+         self.gui["app_view_timeout_mode"] = self.settings.get("app_view_timeout_mode", "all")
+-        self.gui.cancel_app_view_timeout()
++        self.gui.cancel_app_view_timeout()
+\ No newline at end of file
+
+From 65fcf3053e92f332dd625c3bd1f3ea5b85ce5e9b Mon Sep 17 00:00:00 2001
+From: jarbasai <jarbasai@mailfence.com>
+Date: Mon, 16 Jan 2023 18:24:50 +0000
+Subject: [PATCH 3/4] autodetect qtav
+
+---
+ ovos_plugin_common_play/ocp/gui.py   | 16 ++++++++++------
+ ovos_plugin_common_play/ocp/utils.py |  8 +++++++-
+ 2 files changed, 17 insertions(+), 7 deletions(-)
+
+diff --git a/ovos_plugin_common_play/ocp/gui.py b/ovos_plugin_common_play/ocp/gui.py
+index 708ff33..edab35b 100644
+--- a/ovos_plugin_common_play/ocp/gui.py
++++ b/ovos_plugin_common_play/ocp/gui.py
+@@ -10,6 +10,7 @@
+ from ovos_utils.log import LOG
+ 
+ from ovos_plugin_common_play.ocp.status import *
++from ovos_plugin_common_play.ocp.utils import is_qtav_available
+ 
+ 
+ class VideoPlayerBackend(str, enum.Enum):
+@@ -68,13 +69,16 @@ def audio_service_page(self):
+ 
+     @property
+     def video_player_page(self):
++        qtav = join(self.player.res_dir, "ui", "OVOSVideoPlayerQtAv.qml")
++        native = join(self.player.res_dir, "ui", "OVOSVideoPlayer.qml")
+         if self.video_backend == VideoPlayerBackend.AUTO:
+-            # TODO - detect if qtav is available, if yes use it
+-            pass
+-        if self.video_backend == VideoPlayerBackend.QTAV:
+-            return join(self.player.res_dir, "ui", "OVOSVideoPlayerQtAv.qml")
+-        else:
+-            return join(self.player.res_dir, "ui", "OVOSVideoPlayer.qml")
++            # detect if qtav is available, if yes use it
++            if is_qtav_available():
++                return qtav
++        elif self.video_backend == VideoPlayerBackend.QTAV:
++            return qtav
++
++        return native
+ 
+     @property
+     def web_player_page(self):
+diff --git a/ovos_plugin_common_play/ocp/utils.py b/ovos_plugin_common_play/ocp/utils.py
+index 71983ab..e1ef17f 100644
+--- a/ovos_plugin_common_play/ocp/utils.py
++++ b/ovos_plugin_common_play/ocp/utils.py
+@@ -2,7 +2,7 @@
+ import shutil
+ import tempfile
+ from os import makedirs
+-from os.path import basename, expanduser, isfile, join, dirname
++from os.path import basename, expanduser, isfile, join, dirname, exists
+ 
+ from ovos_plugin_common_play.ocp.status import TrackState, PlaybackType
+ from ovos_plugin_manager.ocp import StreamHandler
+@@ -10,6 +10,12 @@
+ ocp_plugins = StreamHandler()
+ 
+ 
++def is_qtav_available():
++    return exists("/usr/include/qt/QtAV") or \
++           exists("/usr/lib/qt/qml/QtAV") or \
++           exists("/usr/lib/libQtAV.so")
++
++
+ def find_mime(uri):
+     """ Determine mime type. """
+     mime = mimetypes.guess_type(uri)
+
+From 19223329133f660e1e02463d9eb3689583bb81ae Mon Sep 17 00:00:00 2001
+From: jarbasai <jarbasai@mailfence.com>
+Date: Mon, 16 Jan 2023 19:23:15 +0000
+Subject: [PATCH 4/4] add debug logs for qtav
+
+---
+ ovos_plugin_common_play/ocp/gui.py | 11 ++++++++++-
+ 1 file changed, 10 insertions(+), 1 deletion(-)
+
+diff --git a/ovos_plugin_common_play/ocp/gui.py b/ovos_plugin_common_play/ocp/gui.py
+index edab35b..2f61ce0 100644
+--- a/ovos_plugin_common_play/ocp/gui.py
++++ b/ovos_plugin_common_play/ocp/gui.py
+@@ -71,12 +71,21 @@ def audio_service_page(self):
+     def video_player_page(self):
+         qtav = join(self.player.res_dir, "ui", "OVOSVideoPlayerQtAv.qml")
+         native = join(self.player.res_dir, "ui", "OVOSVideoPlayer.qml")
++        has_qtav = is_qtav_available()
++        if has_qtav:
++            LOG.info("QtAV detected")
++
+         if self.video_backend == VideoPlayerBackend.AUTO:
+             # detect if qtav is available, if yes use it
+-            if is_qtav_available():
++            if has_qtav:
++                LOG.debug("defaulting to OVOSVideoPlayerQtAv")
+                 return qtav
++            LOG.debug("defaulting to native OVOSVideoPlayer")
+         elif self.video_backend == VideoPlayerBackend.QTAV:
++            LOG.debug("OVOSVideoPlayerQtAv explicitly configured")
+             return qtav
++        elif self.video_backend == VideoPlayerBackend.NATIVE:
++            LOG.debug("native OVOSVideoPlayer explicitly configured")
+ 
+         return native
+ 

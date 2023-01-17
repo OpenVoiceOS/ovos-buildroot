@@ -1,0 +1,8 @@
+config BR2_PACKAGE_QTAV
+	bool "qtav"
+	help
+	  QtAV is a multimedia playback library based on Qt 
+	  and FFmpeg. It can help you to write a player with 
+	  less effort than ever before.
+
+	  https://github.com/balabit/QtAV

@@ -109,6 +109,7 @@ endmenu
 	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/psimd/Config.in"
 	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/pthreadpool/Config.in"
 	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/qt5ct/Config.in"
+	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/qtav/Config.in"
 	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/respeaker/Config.in"
 	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/rnnnoise-ladspa/Config.in"
 	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/roc-toolkit/Config.in"
