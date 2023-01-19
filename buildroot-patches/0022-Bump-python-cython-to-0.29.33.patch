@@ -1,0 +1,42 @@
+From 2ef5c18a93d39563f56f4010f46902049cbdee35 Mon Sep 17 00:00:00 2001
+From: j1nx <p.steenbergen@j1nx.nl>
+Date: Thu, 19 Jan 2023 13:33:18 +0100
+Subject: [PATCH 1/1] Bump python-cython to 0.29.33
+
+---
+ package/python-cython/python-cython.hash | 4 ++--
+ package/python-cython/python-cython.mk   | 4 ++--
+ 2 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/package/python-cython/python-cython.hash b/package/python-cython/python-cython.hash
+index 9c5f1225cf..e7e86264d2 100644
+--- a/package/python-cython/python-cython.hash
++++ b/package/python-cython/python-cython.hash
+@@ -1,6 +1,6 @@
+ # md5, sha256 from https://pypi.org/pypi/cython/json
+-md5  2b2ba86abcf823985935d37f5e43b19a  Cython-0.29.27.tar.gz
+-sha256  c6a442504db906dfc13a480e96850cced994ecdc076bcf492c43515b78f70da2  Cython-0.29.27.tar.gz
++md5  bd42c555cb2298b8a94fa8de7ee679ba  Cython-0.29.33.tar.gz
++sha256  5040764c4a4d2ce964a395da24f0d1ae58144995dab92c6b96f44c3f4d72286a  Cython-0.29.33.tar.gz
+ # Locally computed sha256 checksums
+ sha256  a6cba85bc92e0cff7a450b1d873c0eaa2e9fc96bf472df0247a26bec77bf3ff9  LICENSE.txt
+ sha256  e1eb1c49a8508e8173dac30157e4a6439a44ad8846194746c424fbc3fc2b95d7  COPYING.txt
+diff --git a/package/python-cython/python-cython.mk b/package/python-cython/python-cython.mk
+index b9fbf7b11a..b11d75b33d 100644
+--- a/package/python-cython/python-cython.mk
++++ b/package/python-cython/python-cython.mk
+@@ -4,9 +4,9 @@
+ #
+ ################################################################################
+ 
+-PYTHON_CYTHON_VERSION = 0.29.27
++PYTHON_CYTHON_VERSION = 0.29.33
+ PYTHON_CYTHON_SOURCE = Cython-$(PYTHON_CYTHON_VERSION).tar.gz
+-PYTHON_CYTHON_SITE = https://files.pythonhosted.org/packages/eb/46/80dd9e5ad67ebc766ff3229901bde4a7bc82907efe93cd7007c4df458dd5
++PYTHON_CYTHON_SITE = https://files.pythonhosted.org/packages/dc/f6/e8e302f9942cbebede88b1a0c33d0be3a738c3ac37abae87254d58ffc51c
+ PYTHON_CYTHON_SETUP_TYPE = setuptools
+ PYTHON_CYTHON_LICENSE = Apache-2.0
+ PYTHON_CYTHON_LICENSE_FILES = COPYING.txt LICENSE.txt
+-- 
+2.34.1
+
