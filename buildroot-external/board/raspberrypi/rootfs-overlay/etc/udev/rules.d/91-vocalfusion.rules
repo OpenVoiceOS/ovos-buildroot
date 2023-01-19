@@ -1,0 +1,7 @@
+SUBSYSTEM!="sound", GOTO="vocalfusion_end"
+ACTION!="change", GOTO="vocalfusion_end"
+KERNEL!="card*", GOTO="vocalfusion_end"
+
+ATTR{id}=="sndxmosvocalfus",ENV{PULSE_PROFILE_SET}="xvf3510.conf"
+
+LABEL="vocalfusion_end"
