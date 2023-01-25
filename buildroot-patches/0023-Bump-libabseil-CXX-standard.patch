@@ -1,0 +1,31 @@
+From 6c4e6023d5b65447e23b737ebddff359668e64c4 Mon Sep 17 00:00:00 2001
+From: j1nx <p.steenbergen@j1nx.nl>
+Date: Wed, 25 Jan 2023 14:13:37 +0100
+Subject: [PATCH 1/1] Bump libabseil CXX standard
+
+---
+ package/libabseil-cpp/libabseil-cpp.mk | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/package/libabseil-cpp/libabseil-cpp.mk b/package/libabseil-cpp/libabseil-cpp.mk
+index 7c6bda7659..61ef26c11a 100644
+--- a/package/libabseil-cpp/libabseil-cpp.mk
++++ b/package/libabseil-cpp/libabseil-cpp.mk
+@@ -11,12 +11,12 @@ LIBABSEIL_CPP_LICENSE_FILES = LICENSE
+ LIBABSEIL_CPP_INSTALL_STAGING = YES
+ 
+ LIBABSEIL_CPP_CONF_OPTS = \
+-	-DCMAKE_CXX_STANDARD=11 \
++	-DCMAKE_CXX_STANDARD=17 \
+ 	-DABSL_ENABLE_INSTALL=ON \
+ 	-DABSL_USE_GOOGLETEST_HEAD=OFF
+ 
+ HOST_LIBABSEIL_CPP_CONF_OPTS = \
+-	-DCMAKE_CXX_STANDARD=11 \
++	-DCMAKE_CXX_STANDARD=17 \
+ 	-DABSL_ENABLE_INSTALL=ON \
+ 	-DABSL_USE_GOOGLETEST_HEAD=OFF
+ 
+-- 
+2.34.1
+

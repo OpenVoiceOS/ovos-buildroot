@@ -1,0 +1,24 @@
+From e2ebeaca6a16d981b0d130c06cfe38592623fbe3 Mon Sep 17 00:00:00 2001
+From: j1nx <p.steenbergen@j1nx.nl>
+Date: Fri, 20 Jan 2023 15:44:40 +0100
+Subject: [PATCH 1/1] Use 4 threads
+
+---
+ tflite_minimal/minimal.cc | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/tflite_minimal/minimal.cc b/tflite_minimal/minimal.cc
+index cd045e0..88e21fe 100644
+--- a/tflite_minimal/minimal.cc
++++ b/tflite_minimal/minimal.cc
+@@ -186,6 +186,7 @@ int main(int argc, char* argv[]) {
+   tflite::InterpreterBuilder builder(*model, resolver);
+   std::unique_ptr<tflite::Interpreter> interpreter;
+   builder(&interpreter);
++  interpreter->SetNumThreads(4);
+   TFLITE_MINIMAL_CHECK(interpreter != nullptr);
+ 
+   // Allocate tensor buffers.
+-- 
+2.34.1
+

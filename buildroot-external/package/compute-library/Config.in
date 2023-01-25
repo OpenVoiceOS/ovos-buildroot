@@ -1,0 +1,9 @@
+config BR2_PACKAGE_COMPUTE_LIBRARY
+	bool "compute-library"
+	help
+	  The Compute Library is a set of computer vision and 
+	  machine learning functions optimised for both Arm CPUs 
+	  and GPUs using SIMD technologies.
+
+	  https://github.com/ARM-software/ComputeLibrary
+

@@ -24,7 +24,9 @@ TENSORFLOW_LITE_DEPENDENCIES += \
         libabseil-cpp \
         neon2sse \
         ruy \
-	xnnpack
+	xnnpack \
+	opencl_headers \
+	vulkan-headers
 
 TENSORFLOW_LITE_CONF_OPTS = \
 	-DCMAKE_C_FLAGS="$(TARGET_CFLAGS) -funsafe-math-optimizations \
@@ -50,16 +52,24 @@ TENSORFLOW_LITE_CONF_OPTS = \
         -DFlatBuffers_DIR=$(STAGING_DIR)/usr/lib/cmake/flatbuffers \
         -DNEON_2_SSE_DIR=$(STAGING_DIR)/usr/lib/cmake/NEON_2_SSE \
         -DTFLITE_ENABLE_EXTERNAL_DELEGATE=ON \
-        -DTFLITE_ENABLE_GPU=OFF \
+        -DTFLITE_ENABLE_GPU=ON \
         -DTFLITE_ENABLE_INSTALL=ON \
         -DTFLITE_ENABLE_MMAP=ON \
         -DTFLITE_ENABLE_NNAPI=ON \
         -DTFLITE_ENABLE_RUY=ON \
         -DTFLITE_ENABLE_XNNPACK=ON
 
-TENSORFLOW_LITE_MAKE_OPTS += _pywrap_tensorflow_interpreter_wrapper
+TENSORFLOW_LITE_MAKE_OPTS += _pywrap_tensorflow_interpreter_wrapper benchmark_model
+
+TENSORFLOW_LITE_POST_INSTALL_STAGING_HOOKS = TENSORFLOW_LITE_INSTALL_VERSION_HEADER
 
 TENSORFLOW_LITE_POST_INSTALL_TARGET_HOOKS = TENSORFLOW_LITE_INSTALL_TFLITE_RUNTIME
+
+define TENSORFLOW_LITE_INSTALL_VERSION_HEADER
+	mkdir -p  $(STAGING_DIR)/usr/include/tensorflow/core/public
+	$(INSTALL) -D -m 644  $(@D)/tensorflow/core/public/version.h \
+		$(STAGING_DIR)/usr/include/tensorflow/core/public/
+endef
 
 define TENSORFLOW_LITE_INSTALL_TFLITE_RUNTIME
 

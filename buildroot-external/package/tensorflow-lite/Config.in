@@ -16,6 +16,8 @@ config BR2_PACKAGE_TENSORFLOW_LITE
         select BR2_PACKAGE_NEON2SSE
         select BR2_PACKAGE_RUY
 	select BR2_PACKAGE_XNNPACK
+	select BR2_PACKAGE_OPENCL_HEADERS
+	select BR2_PACKAGE_VULKAN_HEADERS
         help
           Tensorflow Lite dynamic library and headers: Inference engine to run previously trained machine learning models.
 

@@ -1,0 +1,11 @@
+config BR2_PACKAGE_ARMNN
+	select BR2_PACKAGE_COMPUTE_LIBRARY
+	select BR2_PACKAGE_TENSORFLOW_LITE
+	bool "armnn"
+	help
+	  Arm NN is the most performant machine learning (ML) 
+	  inference engine for Android and Linux, accelerating 
+	  ML on Arm Cortex-A CPUs and Arm Mali GPUs. 
+
+	  https://github.com/ARM-software/armnn
+
