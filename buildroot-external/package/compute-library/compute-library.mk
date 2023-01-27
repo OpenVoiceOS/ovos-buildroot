@@ -25,12 +25,13 @@ COMPUTE_LIBRARY_SCONS_OPTS = \
 	Werror=0 \
 	debug=0 \
 	asserts=0 \
+	opencl=0 \
 	neon=1 \
         os=linux \
 	examples=0 \
 	build=cross_compile \
 	toolchain_prefix="" \
-	embed_kernels=1 \
+	embed_kernels=0 \
 	extra_cxx_flags="-fPIC"
 
 COMPUTE_LIBRARY_SCONS_ENV += \
