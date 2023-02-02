@@ -32,8 +32,6 @@ generate-gitlab-ci-yml:
 
 buildroot-pipeline:
   stage: build
-  dependencies: 
-    - fetch-assets
   trigger:
     include:
       - artifact: generated-gitlab-ci.yml
