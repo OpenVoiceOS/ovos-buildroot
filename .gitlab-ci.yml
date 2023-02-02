@@ -16,8 +16,22 @@ fetch-assets:
     - git submodule update --remote --merge
     - ./scripts/br-patches.sh
 
-buildroot-pipeline:
+build rpi3-gui:
   stage: build
+  when: manual
+  dependencies:
+    - fetch-assets
+  artifacts:
+    when: success
+    paths:
+      - release
+  script:
+    - make clean
+    - make rpi3_64-gui
+
+build rpi4-gui:
+  stage: build
+  when: manual
   dependencies:
     - fetch-assets
   artifacts:
@@ -26,4 +40,4 @@ buildroot-pipeline:
       - release
   script:
     - make clean
-    - make rpi3_64-nogui
+    - make rpi4_64-gui
