@@ -1,5 +1,3 @@
-image: $CI_REGISTRY/buildroot.org/buildroot/base:20220105.2314
-
 stages:
   - fetch-assets
   - generate-gitlab-ci
@@ -18,24 +16,14 @@ fetch-assets:
     - git submodule update --remote --merge
     - ./scripts/br-patches.sh
 
-generate-gitlab-ci-yml:
-  stage: generate-gitlab-ci
-  dependencies: 
-    - fetch-assets
-  script: ./buildroot/support/scripts/generate-gitlab-ci-yml ./buildroot/support/misc/gitlab-ci.yml.in > generated-gitlab-ci.yml
-  artifacts:
-    when: always
-    paths:
-      - generated-gitlab-ci.yml
-      - br-test-pkg/*/.config
-      - br-test-pkg/*/missing.config
-
 buildroot-pipeline:
   stage: build
-  trigger:
-    include:
-      - artifact: generated-gitlab-ci.yml
-        job: generate-gitlab-ci-yml
-    strategy: depend
-  variables:
-    PARENT_PIPELINE_ID: $CI_PIPELINE_ID
+  dependencies:
+    - fetch-assets
+  artifacts:
+    when: on_success
+    paths:
+      - release
+  script:
+    - make clean
+    - make rpi3_64-nogui
