@@ -1,0 +1,52 @@
+diff --git a/support/misc/gitlab-ci.yml.in b/support/misc/gitlab-ci.yml.in
+index 47e72c3213..a18476e0d0 100644
+--- a/support/misc/gitlab-ci.yml.in
++++ b/support/misc/gitlab-ci.yml.in
+@@ -1,13 +1,13 @@
+ .check-check-package_base:
+     script:
+-        - python3 -m pytest -v utils/checkpackagelib/
++        - python3 -m pytest -v ./buildroot/utils/checkpackagelib/
+ 
+ .check-DEVELOPERS_base:
+     # get-developers should print just "No action specified"; if it prints
+     # anything else, it's a parse error.
+     # The initial ! is removed by YAML so we need to quote it.
+     script:
+-        - "! utils/get-developers | grep -v 'No action specified'"
++        - "! ./buildroot/utils/get-developers | grep -v 'No action specified'"
+ 
+ .check-flake8_base:
+     script:
+@@ -23,7 +23,7 @@
+     script:
+         - echo "Configure Buildroot for ${DEFCONFIG_NAME}"
+         - make ${DEFCONFIG_NAME}
+-        - support/scripts/check-dotconfig.py .config configs/${DEFCONFIG_NAME}
++        - ./buildroot/support/scripts/check-dotconfig.py .config ./buildroot/configs/${DEFCONFIG_NAME}
+     artifacts:
+         when: on_failure
+         expire_in: 2 weeks
+@@ -45,11 +45,11 @@
+     script:
+         - echo "Configure Buildroot for ${DEFCONFIG_NAME}"
+         - make ${DEFCONFIG_NAME}
+-        - ./support/scripts/check-dotconfig.py .config ./configs/${DEFCONFIG_NAME}
++        - ./buildroot/support/scripts/check-dotconfig.py .config ./buildroot/configs/${DEFCONFIG_NAME}
+         - echo 'Build buildroot'
+         - *run_make
+         - |
+-            ./support/scripts/boot-qemu-image.py "${DEFCONFIG_NAME}" > >(tee runtime-test.log) 2>&1 || {
++            ./buildroot/support/scripts/boot-qemu-image.py "${DEFCONFIG_NAME}" > >(tee runtime-test.log) 2>&1 || {
+                 echo 'Failed runtime test last output'
+                 tail -200 runtime-test.log
+                 exit 1
+@@ -75,7 +75,7 @@
+     # elastic runners.
+     script:
+         - echo "Starting runtime test ${TEST_CASE_NAME}"
+-        - ./support/testing/run-tests -o test-output/ -d test-dl/ -k --timeout-multiplier 10 ${TEST_CASE_NAME}
++        - ./buildroot/support/testing/run-tests -o test-output/ -d test-dl/ -k --timeout-multiplier 10 ${TEST_CASE_NAME}
+     artifacts:
+         when: always
+         expire_in: 2 weeks
