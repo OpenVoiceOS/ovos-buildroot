@@ -22,7 +22,7 @@ build rpi3-gui:
   dependencies:
     - fetch-assets
   artifacts:
-    when: success
+    when: on_success
     paths:
       - release
   script:
