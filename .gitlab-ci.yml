@@ -8,7 +8,7 @@ stages:
 fetch-assets:
   stage: fetch-assets
   artifacts:
-    untraked: true
+    untracked: true
     expire_in: 1 day
     when: on_success
     paths:
@@ -20,6 +20,7 @@ fetch-assets:
 
 generate-gitlab-ci-yml:
   stage: generate-gitlab-ci
+  dependences: fetch-assets
   script: ./buildroot/support/scripts/generate-gitlab-ci-yml ./buildroot/support/misc/gitlab-ci.yml.in > generated-gitlab-ci.yml
   artifacts:
     when: always
