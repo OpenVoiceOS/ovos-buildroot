@@ -14,7 +14,7 @@ fetch-assets:
 
 generate-gitlab-ci-yml:
   stage: generate-gitlab-ci
-  script: ./support/scripts/generate-gitlab-ci-yml support/misc/gitlab-ci.yml.in > generated-gitlab-ci.yml
+  script: ./buildroot/support/scripts/generate-gitlab-ci-yml ./buildroot/support/misc/gitlab-ci.yml.in > generated-gitlab-ci.yml
   artifacts:
     when: always
     paths:
