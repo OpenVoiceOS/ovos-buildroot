@@ -7,6 +7,12 @@ stages:
 
 fetch-assets:
   stage: fetch-assets
+  artifacts:
+    untraked: true
+    expire_in: 1 day
+    when: on_success
+    paths:
+      - buildroot
   script:
     - git submodule update --init --recursive
     - git submodule update --remote --merge
