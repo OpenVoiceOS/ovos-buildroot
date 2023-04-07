@@ -11,6 +11,7 @@ enable ovos-splash-systemd.service
 enable mycroft-admin-phal.service
 enable smb.service
 enable nmb.service
+enable mglru.service
 
 disable pulseaudio.service
 disable getty@.service

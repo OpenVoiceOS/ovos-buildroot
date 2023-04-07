@@ -1,0 +1,63 @@
+From 18de31751accdc76b93c578435643ea487069fe3 Mon Sep 17 00:00:00 2001
+From: j1nx <p.steenbergen@j1nx.nl>
+Date: Fri, 7 Apr 2023 12:30:29 +0200
+Subject: [PATCH 1/1] Bump python-scipy
+
+---
+ package/python-scipy/python-scipy.hash |  2 +-
+ package/python-scipy/python-scipy.mk   | 13 +++++++++++--
+ 2 files changed, 12 insertions(+), 3 deletions(-)
+
+diff --git a/package/python-scipy/python-scipy.hash b/package/python-scipy/python-scipy.hash
+index 0274679c43..453e89928f 100644
+--- a/package/python-scipy/python-scipy.hash
++++ b/package/python-scipy/python-scipy.hash
+@@ -1,5 +1,5 @@
+ # Locally generated
+-sha256  0140dd24d14ce194fdb3df496c2190f0896ca84ac98bf5d69c3b3fb7bde1a1e9  scipy-1.8.1.tar.xz
++sha256  2cf9dfb80a7b4589ba4c40ce7588986d6d5cebc5457cad2c2880f6bc2d42f3a5  scipy-1.10.1.tar.gz
+ sha256  96599f8ec69a2cc609265eed13fc75090aacb28742260e55ce623788a33da19c  LICENSE.txt
+ sha256  37e64a498894ac7c3b070023e3689e954a8ecf8a23b90968d09a455f1b4f7b35  scipy/linalg/src/lapack_deprecations/LICENSE
+ sha256  606209a000716c5f66e33e180ce08434b96ed17db4975ab9723c6b5fbcc89609  scipy/ndimage/LICENSE.txt
+diff --git a/package/python-scipy/python-scipy.mk b/package/python-scipy/python-scipy.mk
+index a8c23c6c88..80433fca28 100644
+--- a/package/python-scipy/python-scipy.mk
++++ b/package/python-scipy/python-scipy.mk
+@@ -4,8 +4,8 @@
+ #
+ ################################################################################
+ 
+-PYTHON_SCIPY_VERSION = 1.8.1
+-PYTHON_SCIPY_SOURCE = scipy-$(PYTHON_SCIPY_VERSION).tar.xz
++PYTHON_SCIPY_VERSION = 1.10.1
++PYTHON_SCIPY_SOURCE = scipy-$(PYTHON_SCIPY_VERSION).tar.gz
+ PYTHON_SCIPY_SITE = https://github.com/scipy/scipy/releases/download/v$(PYTHON_SCIPY_VERSION)
+ PYTHON_SCIPY_LICENSE = \
+ 	BSD-3-Clause, \
+@@ -36,14 +36,23 @@ PYTHON_SCIPY_INSTALL_STAGING = YES
+ PYTHON_SCIPY_SETUP_TYPE = setuptools
+ PYTHON_SCIPY_BUILD_OPTS = config_fc --fcompiler=gnu95
+ 
++PYTHON_SCIPY_CFLAGS = \
++	-I$(STAGING_DIR)/usr/include/python$(PYTHON3_VERSION_MAJOR)
+ PYTHON_SCIPY_LDFLAGS = $(TARGET_LDFLAGS) -shared \
+ 	-L$(PYTHON3_PATH)/site-packages/numpy/core/lib
+ # -lnpyrandom localization
+ PYTHON_SCIPY_LDFLAGS += \
+ 	-L$(STAGING_DIR)/usr/lib/python$(PYTHON3_VERSION_MAJOR)/site-packages/numpy/random/lib
+ 
++# scipy can use C++11 atomics when available, so we need to link with
++# libatomic for the architectures that need libatomic.
++ifeq ($(BR2_TOOLCHAIN_HAS_LIBATOMIC),y)
++PYTHON_SCIPY_LDFLAGS += -latomic
++endif
++
+ PYTHON_SCIPY_ENV = \
+ 	F90=$(TARGET_FC) \
++	CFLAGS="$(PYTHON_SCIPY_CFLAGS)" \
+ 	LDFLAGS="$(PYTHON_SCIPY_LDFLAGS)"
+ 
+ # Provide system configuration options to numpy distutils extensions, telling
+-- 
+2.34.1
+

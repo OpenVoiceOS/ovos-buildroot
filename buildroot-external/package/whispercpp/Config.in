@@ -1,5 +1,6 @@
 config BR2_PACKAGE_WHISPERCPP
 	bool "whispercpp"
+	select BR2_PACKAGE_OPENBLAS
 	help
 	  High-performance inference of OpenAI's Whisper 
 	  automatic speech recognition (ASR) model

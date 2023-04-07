@@ -4,7 +4,7 @@
 #
 ################################################################################
 
-WIFI_CONNECT_VERSION = 57f8f4a7190dfcdd0a7c7127d298378249f95135
+WIFI_CONNECT_VERSION = ce951054c8038c7d08a37a516c5e55f903e065ac
 WIFI_CONNECT_SITE = $(call github,balena-os,wifi-connect,$(WIFI_CONNECT_VERSION))
 WIFI_CONNECT_DEPENDENCIES = host-rustc host-pkgconf
 

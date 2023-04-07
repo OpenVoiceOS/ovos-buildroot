@@ -4,9 +4,9 @@
 #
 ################################################################################
 
-PYTHON_PYEE_VERSION = 8.1.0
+PYTHON_PYEE_VERSION = 9.0.4
 PYTHON_PYEE_SOURCE = pyee-$(PYTHON_PYEE_VERSION).tar.gz
-PYTHON_PYEE_SITE = https://files.pythonhosted.org/packages/fd/f8/d1c597ce15f3fd32ebdec9695da97a1af6e102c1ad8f9de32db84b05986c
+PYTHON_PYEE_SITE = https://files.pythonhosted.org/packages/99/d0/32803671d5d9dc032c766ad6c0716db98fa9b2c6ad9ec544f04849e9d3c7
 PYTHON_PYEE_SETUP_TYPE = distutils
 PYTHON_PYEE_LICENSE = MIT
 PYTHON_PYEE_DEPENDENCIES = host-python-pytest-runner

@@ -4,7 +4,7 @@
 #
 ################################################################################
 
-ROC_TOOLKIT_VERSION = 127cfc645d0a807a33506001367b6d9a9d46f23e
+ROC_TOOLKIT_VERSION = 767b88ed8ffe8cfae96bfef2f5502c39f1bdf0f9
 ROC_TOOLKIT_SITE = $(call github,roc-streaming,roc-toolkit,$(ROC_TOOLKIT_VERSION))
 ROC_TOOLKIT_LICENSE = MPL-2.0
 ROC_TOOLKIT_LICENSE_FILES = LICENSE

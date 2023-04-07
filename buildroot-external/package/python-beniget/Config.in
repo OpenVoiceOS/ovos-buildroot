@@ -1,7 +1,0 @@
-config BR2_PACKAGE_PYTHON_BENIGET
-	bool "python-beniget"
-	select BR2_PACKAGE_PYTHON_GAST # runtime
-	help
-	  Extract semantic information about static Python code.
-
-	  https://github.com/serge-sans-paille/beniget/

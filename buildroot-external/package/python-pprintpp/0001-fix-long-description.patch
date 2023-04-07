@@ -1,0 +1,23 @@
+From deec5e5efad562fc2f9084abfe249ed0c7dd65fa Mon Sep 17 00:00:00 2001
+From: Sandro Tosi <sandrotosi@users.noreply.github.com>
+Date: Sat, 24 Dec 2022 03:25:42 -0500
+Subject: [PATCH] fix: remove "U" move from open(), now universal newline is
+ the default
+
+---
+ setup.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/setup.py b/setup.py
+index aaece26..c6621db 100644
+--- a/setup.py
++++ b/setup.py
+@@ -8,7 +8,7 @@
+ os.chdir(os.path.dirname(sys.argv[0]) or ".")
+ 
+ try:
+-    long_description = open("README.rst", "U").read()
++    long_description = open("README.rst").read()
+ except IOError:
+     long_description = "See https://github.com/wolever/pprintpp"
+ 

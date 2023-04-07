@@ -4,7 +4,7 @@
 #
 ################################################################################
 
-SNAPCAST_VERSION = v0.26.0
+SNAPCAST_VERSION = v0.27.0
 SNAPCAST_SITE = $(call github,badaix,snapcast,$(SNAPCAST_VERSION))
 SNAPCAST_DEPENDENCIES = libogg alsa-lib avahi # libstdcpp libatomic libflac libvorbisidec
 SNAPCAST_LICENSE = GPL-3.0+
@@ -12,15 +12,16 @@ SNAPCAST_LICENSE_FILES = LICENSE
 
 define SNAPCLIENT_INSTALL_CONFIG
 	mkdir -p $(TARGET_DIR)/etc/snapcast
-	$(INSTALL) -m 0755 -D $(@D)/debian/snapclient.default $(TARGET_DIR)/etc/snapcast/snapclient
+	$(INSTALL) -m 0755 -D $(BR2_EXTERNAL_OPENVOICEOS_PATH)/package/snapcast/snapclient.default \
+		$(TARGET_DIR)/etc/snapcast/snapclient
 endef
 
 
 define SNAPSERVER_INSTALL_CONFIG
 	mkdir -p $(TARGET_DIR)/etc/snapcast
-	$(INSTALL) -m 0755 -D $(@D)/debian/snapserver.default $(TARGET_DIR)/etc/snapcast/snapserver
+	$(INSTALL) -m 0755 -D $(BR2_EXTERNAL_OPENVOICEOS_PATH)/package/snapcast/snapserver.default \
+		$(TARGET_DIR)/etc/snapcast/snapserver
 	$(INSTALL) -m 0755 -D $(@D)/server/etc/snapserver.conf $(TARGET_DIR)/etc/
-	chmod +r $(TARGET_DIR)/usr/share/snapserver/plug-ins/meta_mpd.py
 endef
 
 

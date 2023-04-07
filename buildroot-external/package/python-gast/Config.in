@@ -1,6 +1,0 @@
-config BR2_PACKAGE_PYTHON_GAST
-	bool "python-gast"
-	help
-	  Python AST that abstracts the underlying Python version.
-
-	  https://github.com/serge-sans-paille/gast/
