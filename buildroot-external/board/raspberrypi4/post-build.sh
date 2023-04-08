@@ -1,1 +1,0 @@
-../raspberrypi/post-build.sh
