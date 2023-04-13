@@ -1,0 +1,3 @@
+BOARD_ID=ova-64
+BOARD_NAME="Open Virtual Appliance 64bit"
+CHASSIS=virtual
