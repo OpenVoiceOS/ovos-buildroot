@@ -1,0 +1,7 @@
+[Unit]
+Description=OpenVoiceOS rootfs r/w overlay target
+Documentation=man:systemd.target(5)
+Before=sysinit.target
+
+[Install]
+WantedBy=multi-user.target

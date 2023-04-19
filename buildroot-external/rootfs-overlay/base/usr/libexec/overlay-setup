@@ -1,0 +1,17 @@
+#!/bin/sh
+
+if [ ! -d /mnt/overlay/etc ]; then
+  mkdir -p /mnt/overlay/etc
+  cp -a /etc /mnt/overlay/etc
+fi
+
+if [ ! -d /mnt/overlay/root ]; then
+  mkdir -p /mnt/overlay/root
+  cp -a /root /mnt/overlay/root
+fi
+
+if [ ! -d /mnt/overlay/home ]; then
+  mkdir -p /mnt/overlay/home
+  cp -a /home /mnt/overlay/home
+fi
+
