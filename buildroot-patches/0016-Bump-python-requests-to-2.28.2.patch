@@ -1,0 +1,41 @@
+From b135eb20858c55052f100a130093de056df40236 Mon Sep 17 00:00:00 2001
+From: j1nx <p.steenbergen@j1nx.nl>
+Date: Sun, 23 Apr 2023 18:04:07 +0200
+Subject: [PATCH 1/1] Bump python-requests to 2.28.2
+
+---
+ package/python-requests/python-requests.hash | 4 ++--
+ package/python-requests/python-requests.mk   | 4 ++--
+ 2 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/package/python-requests/python-requests.hash b/package/python-requests/python-requests.hash
+index 1383e680d5..b6f696000b 100644
+--- a/package/python-requests/python-requests.hash
++++ b/package/python-requests/python-requests.hash
+@@ -1,5 +1,5 @@
+ # md5, sha256 from https://pypi.org/pypi/requests/json
+-md5  796ea875cdae283529c03b9203d9c454  requests-2.28.1.tar.gz
+-sha256  7c5599b102feddaa661c826c56ab4fee28bfd17f5abca1ebbe3e7f19d7c97983  requests-2.28.1.tar.gz
++md5  09b752e0b0a672d805ae54455c128d42  requests-2.28.2.tar.gz
++sha256  98b1b2782e3c6c4904938b84c0eb932721069dfdb9134313beff7c83c2df24bf  requests-2.28.2.tar.gz
+ # Locally computed sha256 checksums
+ sha256  09e8a9bcec8067104652c168685ab0931e7868f9c8284b66f5ae6edae5f1130b  LICENSE
+diff --git a/package/python-requests/python-requests.mk b/package/python-requests/python-requests.mk
+index 7a21cca52c..8f9f4b2db4 100644
+--- a/package/python-requests/python-requests.mk
++++ b/package/python-requests/python-requests.mk
+@@ -4,9 +4,9 @@
+ #
+ ################################################################################
+ 
+-PYTHON_REQUESTS_VERSION = 2.28.1
++PYTHON_REQUESTS_VERSION = 2.28.2
+ PYTHON_REQUESTS_SOURCE = requests-$(PYTHON_REQUESTS_VERSION).tar.gz
+-PYTHON_REQUESTS_SITE = https://files.pythonhosted.org/packages/a5/61/a867851fd5ab77277495a8709ddda0861b28163c4613b011bc00228cc724
++PYTHON_REQUESTS_SITE = https://files.pythonhosted.org/packages/9d/ee/391076f5937f0a8cdf5e53b701ffc91753e87b07d66bae4a09aa671897bf
+ PYTHON_REQUESTS_SETUP_TYPE = setuptools
+ PYTHON_REQUESTS_LICENSE = Apache-2.0
+ PYTHON_REQUESTS_LICENSE_FILES = LICENSE
+-- 
+2.34.1
+
