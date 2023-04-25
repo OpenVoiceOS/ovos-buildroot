@@ -14,6 +14,7 @@ ROC_TOOLKIT_DEPENDENCIES = \
 	host-scons \
 	host-pkgconf \
 	host-ragel \
+	host-gengetopt \
 	gst1-libav \
 	libunwind \
 	openfec \
