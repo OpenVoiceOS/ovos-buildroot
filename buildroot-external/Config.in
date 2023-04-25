@@ -98,7 +98,6 @@ endmenu
 	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/librem/Config.in"
 	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/lottie-qml/Config.in"
 	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/ncpamixer/Config.in"
-	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/neon2sse/Config.in"
 	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/opencl_headers/Config.in"
 	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/openfec/Config.in"
 	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/openfst/Config.in"

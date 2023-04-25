@@ -1,0 +1,40 @@
+From 66dbf4fbe202318860caeab3b1ef9c2fe70e2c4c Mon Sep 17 00:00:00 2001
+From: James Hilliard <james.hilliard1@gmail.com>
+Date: Sun, 29 Jan 2023 16:55:08 -0700
+Subject: [PATCH] Enable CXX only when needed for tests/benchmarks
+
+Signed-off-by: James Hilliard <james.hilliard1@gmail.com>
+[Upstream status:
+https://github.com/pytorch/cpuinfo/pull/133]
+---
+ CMakeLists.txt | 8 +++++++-
+ 1 file changed, 7 insertions(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 9f4d1d1..9e1c153 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -3,7 +3,7 @@ CMAKE_MINIMUM_REQUIRED(VERSION 3.5 FATAL_ERROR)
+ # ---[ Setup project
+ PROJECT(
+     cpuinfo
+-    LANGUAGES C CXX
++    LANGUAGES C
+     )
+ 
+ # ---[ Options.
+@@ -103,6 +103,12 @@ ELSEIF(NOT CMAKE_SYSTEM_NAME MATCHES "^(Windows|WindowsStore|CYGWIN|MSYS|Darwin|
+   ENDIF()
+ ENDIF()
+ 
++IF(CPUINFO_SUPPORTED_PLATFORM)
++  IF(CPUINFO_BUILD_MOCK_TESTS OR CPUINFO_BUILD_UNIT_TESTS OR CPUINFO_BUILD_BENCHMARKS)
++    ENABLE_LANGUAGE(CXX)
++  ENDIF()
++ENDIF()
++
+ # ---[ Download deps
+ SET(CONFU_DEPENDENCIES_SOURCE_DIR ${CMAKE_SOURCE_DIR}/deps
+   CACHE PATH "Confu-style dependencies source directory")
+-- 
+2.34.1

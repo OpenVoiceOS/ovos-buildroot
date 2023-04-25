@@ -1,1 +1,4 @@
-sha256  b4ad5741bec475b695afe90f94bdb5b8e3d23197e9dd144a7d3230b6e5f5eb56  pthreadpool-545ebe9f225aec6dca49109516fac02e973a3de2.tar.gz
+# Locally calculated
+sha256  6b0018ce7c926b718ed3ecbed1e48c8a083df60529b33ef2c7232260d3c32f61  pthreadpool-edeb5d6b967bef092ff195ab40e216fa5ac11f61.tar.gz
+# License files, locally calculated
+sha256  57814a606b4d0fb087d9a534919084b6c11b58a4174cb5a4aef200187780dc3a  LICENSE

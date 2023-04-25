@@ -1,1 +1,4 @@
-sha256  5016bf69478ebbd2ea424f95aa011cebbc820025719ce24e32f4a974ed7e9863  xnnpack-a50369c0fdd15f0f35b1a91c964644327a88d480.tar.gz
+# Locally calculated
+sha256  fb519d082e5fcaa11e849386ad00e38b9ebde2cc9363032394516cd0d00295c3  xnnpack-e4b2b942b4a6d84b680ed690fee42ae99865945c.tar.gz
+# License files, locally calculated
+sha256  63f519e15726f4c4f830bd958f694c84fecb4e0a4cacc527d2696bb71ef95ada  LICENSE

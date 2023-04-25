@@ -1,0 +1,48 @@
+From eba14b5277ed8f155eb333f4bbe9f99366e3dece Mon Sep 17 00:00:00 2001
+From: James Hilliard <james.hilliard1@gmail.com>
+Date: Sun, 29 Jan 2023 21:43:50 -0700
+Subject: [PATCH] CMake: don't enable CXX unless building tests/benchmarks
+
+We only need CXX support when building tests/benchmarks.
+
+Fixes:
+CMake Error at CMakeLists.txt:6 (PROJECT):
+  No CMAKE_CXX_COMPILER could be found.
+
+  Tell CMake where to find the compiler by setting either the environment
+  variable "CXX" or the CMake cache entry CMAKE_CXX_COMPILER to the full path
+  to the compiler, or to the compiler name if it is in the PATH.
+
+Signed-off-by: James Hilliard <james.hilliard1@gmail.com>
+[Upstream status:
+https://github.com/Maratyszcza/FP16/pull/22]
+---
+ CMakeLists.txt | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 5e7d127..8028c07 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -3,13 +3,17 @@ CMAKE_MINIMUM_REQUIRED(VERSION 2.8.12 FATAL_ERROR)
+ INCLUDE(GNUInstallDirs)
+ 
+ # ---[ Project
+-PROJECT(FP16 C CXX)
++PROJECT(FP16 C)
+ 
+ # ---[ Options.
+ OPTION(FP16_BUILD_TESTS "Build FP16 unit tests" ON)
+ OPTION(FP16_BUILD_BENCHMARKS "Build FP16 micro-benchmarks" ON)
+ 
+ # ---[ CMake options
++IF(FP16_BUILD_TESTS OR FP16_BUILD_BENCHMARKS)
++  ENABLE_LANGUAGE(CXX)
++ENDIF()
++
+ IF(FP16_BUILD_TESTS)
+   ENABLE_TESTING()
+ ENDIF()
+-- 
+2.34.1
+
