@@ -1,0 +1,7 @@
+config BR2_PACKAGE_PYTHON_OVOS_GUI
+	bool "python-ovos-gui"
+	help
+	  GUI messagebus service, manages GUI state 
+	  and implements the gui protocol 
+
+	  https://github.com/OpenVoiceOS/ovos-gui
