@@ -4,4 +4,4 @@ config BR2_PACKAGE_PYTHON_OVOS_UTILS
 	  collection of simple utilities for use 
 	  across the mycroft ecosystem
 
-	  https://github.com/OpenVoiceOS/ovos_utils
+	  https://github.com/OpenVoiceOS/ovos-utils
