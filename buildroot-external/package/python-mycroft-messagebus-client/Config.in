@@ -1,9 +1,0 @@
-config BR2_PACKAGE_PYTHON_MYCROFT_MESSAGEBUS_CLIENT
-	bool "python-mycroft-messagebus-client"
-	help
-	  This module is a simple interface for the mycroft 
-	  messagebus and can be used to connect to mycroft, 
-	  send messages and react to messages sent by the 
-	  Mycroft system.
-
-	  https://github.com/MycroftAI/mycroft-messagebus-client
