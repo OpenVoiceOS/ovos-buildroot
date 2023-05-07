@@ -4,9 +4,9 @@
 #
 ################################################################################
 
-PYTHON_COMBO_LOCK_VERSION = 0.2.1
+PYTHON_COMBO_LOCK_VERSION = 0.2.5
 PYTHON_COMBO_LOCK_SOURCE = combo_lock-$(PYTHON_COMBO_LOCK_VERSION).tar.gz
-PYTHON_COMBO_LOCK_SITE = https://files.pythonhosted.org/packages/6f/a4/2721af17a3649b6716410e9f6ee80dfcc296f17d762a35659e4655a017f6
+PYTHON_COMBO_LOCK_SITE = https://files.pythonhosted.org/packages/1a/7d/22bc221fd33a0f72c84ff8c6f6b5f06533825c058fe29a57d12467344cb3
 PYTHON_COMBO_LOCK_SETUP_TYPE = setuptools
 PYTHON_COMBO_LOCK_LICENSE = apache-2.0
 
