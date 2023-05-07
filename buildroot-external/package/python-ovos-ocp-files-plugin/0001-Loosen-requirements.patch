@@ -1,0 +1,27 @@
+From 14ed8a6e2b434c88b5449af31abdd06fbeeb8a2e Mon Sep 17 00:00:00 2001
+From: j1nx <p.steenbergen@j1nx.nl>
+Date: Sun, 7 May 2023 15:18:00 +0200
+Subject: [PATCH 1/1] Loosen requirements
+
+---
+ requirements.txt | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/requirements.txt b/requirements.txt
+index d3d39d4..cebb676 100644
+--- a/requirements.txt
++++ b/requirements.txt
+@@ -1,6 +1,6 @@
+ attrs>=18.2
+ bidict~=0.0
+-bitstruct>=6.0,<9.0
+-more-itertools>=4.0,<9.0
++bitstruct>=6.0
++more-itertools>=4.0
+ pprintpp~=0.0
+-wrapt
+\ No newline at end of file
++wrapt
+-- 
+2.34.1
+
