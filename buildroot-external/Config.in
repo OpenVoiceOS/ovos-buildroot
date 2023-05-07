@@ -279,6 +279,7 @@ endmenu
 menu "OpenVoiceOS - Personal Assistant"
 menu "Core"
 	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/mycroft-gui/Config.in"
+	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/python-ovos-audio/Config.in"
 	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/python-ovos-cli-client/Config.in"
 	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/python-ovos-config/Config.in"
 	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/python-ovos-core/Config.in"

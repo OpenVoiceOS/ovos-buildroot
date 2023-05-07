@@ -1,0 +1,8 @@
+config BR2_PACKAGE_PYTHON_OVOS_AUDIO
+	bool "python-ovos-audio"
+	help
+	  The "mouth" of the OVOS assistant!
+
+	  Handles TTS generation and audio playback 
+
+	  https://github.com/OpenVoiceOS/ovos-audio
