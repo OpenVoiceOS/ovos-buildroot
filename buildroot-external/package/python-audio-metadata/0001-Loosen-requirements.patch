@@ -1,0 +1,29 @@
+From d7c84534b1317e2d70a98ffa3d0dd3e10a03b513 Mon Sep 17 00:00:00 2001
+From: j1nx <p.steenbergen@j1nx.nl>
+Date: Sun, 7 May 2023 14:08:14 +0200
+Subject: [PATCH 1/1] Loosen requirements
+
+---
+ pyproject.toml | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/pyproject.toml b/pyproject.toml
+index bf9515f..c415353 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -20,10 +20,10 @@ homepage = "https://github.com/thebigmunch/audio-metadata"
+ [tool.poetry.dependencies]
+ python = "^3.6"
+ 
+-attrs = ">=18.2,<19.4"
++attrs = ">=18.2"
+ bidict = "0.*"
+ bitstruct = ">=6.0,<9.0"
+-more-itertools = ">=4.0,<9.0"
++more-itertools = ">=4.0"
+ pendulum = ">=2.0,<=3.0,!=2.0.5,!=2.1.0"  # Work around https://github.com/sdispater/pendulum/issues/454
+ pprintpp = "0.*"
+ tbm-utils = "^2.3"
+-- 
+2.34.1
+
