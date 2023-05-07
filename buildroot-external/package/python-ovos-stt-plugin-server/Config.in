@@ -1,0 +1,6 @@
+config BR2_PACKAGE_PYTHON_OVOS_STT_PLUGIN_SERVER
+	bool "python-ovos-stt-plugin-server"
+	help
+	  OpenVoiceOS companion plugin for OpenVoiceOS STT Server
+
+	  https://github.com/OpenVoiceOS/ovos-stt-plugin-server
