@@ -1,0 +1,31 @@
+From 070ac326d09b935b819e2300b0f4b1b5e7d81ae9 Mon Sep 17 00:00:00 2001
+From: j1nx <p.steenbergen@j1nx.nl>
+Date: Sun, 7 May 2023 15:58:38 +0200
+Subject: [PATCH 1/1] Fix pep517 install
+
+---
+ build.py => buildext.py | 0
+ pyproject.toml          | 2 +-
+ 2 files changed, 1 insertion(+), 1 deletion(-)
+ rename build.py => buildext.py (100%)
+
+diff --git a/build.py b/buildext.py
+similarity index 100%
+rename from build.py
+rename to buildext.py
+diff --git a/pyproject.toml b/pyproject.toml
+index cadf000..36fd781 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -50,7 +50,7 @@ freezegun = "^0.3.15"
+ 
+ [tool.poetry.build]
+ generate-setup-file = false
+-script = "build.py"
++script = "buildext.py"
+ 
+ [tool.isort]
+ line_length = 88
+-- 
+2.34.1
+
