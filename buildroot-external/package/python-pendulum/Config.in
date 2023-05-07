@@ -1,0 +1,6 @@
+config BR2_PACKAGE_PYTHON_PENDULUM
+	bool "python-pendulum"
+	help
+	  Python datetimes made easy.
+
+	  https://pypi.org/project/pendulum/
