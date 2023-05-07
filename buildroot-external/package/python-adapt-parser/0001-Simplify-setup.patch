@@ -1,17 +1,17 @@
-From d49aa5b51128d0bf38fb902a57d1965e8983af5f Mon Sep 17 00:00:00 2001
+From 80e6b553e2e5343e5b8064bfe8af86264e3227d4 Mon Sep 17 00:00:00 2001
 From: j1nx <p.steenbergen@j1nx.nl>
-Date: Tue, 27 Jul 2021 15:01:43 +0200
+Date: Sun, 7 May 2023 13:28:28 +0200
 Subject: [PATCH 1/1] Simplify setup
 
 ---
- setup.py | 15 ---------------
- 1 file changed, 15 deletions(-)
+ setup.py | 16 ----------------
+ 1 file changed, 16 deletions(-)
 
 diff --git a/setup.py b/setup.py
-index 1de4f3a..de629bd 100644
+index 9f7b685..d642737 100644
 --- a/setup.py
 +++ b/setup.py
-@@ -18,25 +18,12 @@ __author__ = 'seanfitz'
+@@ -18,26 +18,12 @@ __author__ = 'seanfitz'
  import os
  from setuptools import setup
  
@@ -29,15 +29,16 @@ index 1de4f3a..de629bd 100644
 -
  setup(
      name="adapt-parser",
-     version="0.5.1",
+     version="1.0.0",
      author="Sean Fitzgerald",
      author_email="sean@fitzgeralds.me",
      description=("A text-to-intent parsing framework."),
 -    long_description=long_description,
-     long_description_content_type="text/markdown",
+-    long_description_content_type="text/markdown",
      license=("Apache License 2.0"),
      keywords="natural language processing",
-@@ -54,6 +41,4 @@ setup(
+     url="https://github.com/MycroftAI/adapt",
+@@ -55,6 +41,4 @@ setup(
          'Programming Language :: Python :: 3.8',
          'Programming Language :: Python :: 3.9',
      ],
@@ -45,5 +46,5 @@ index 1de4f3a..de629bd 100644
 -    install_requires=required('requirements.txt')
  )
 -- 
-2.20.1
+2.34.1
 

@@ -4,9 +4,9 @@
 #
 ################################################################################
 
-PYTHON_ADAPT_PARSER_VERSION = 0.5.1
+PYTHON_ADAPT_PARSER_VERSION = 1.0.0
 PYTHON_ADAPT_PARSER_SOURCE = adapt-parser-$(PYTHON_ADAPT_PARSER_VERSION).tar.gz
-PYTHON_ADAPT_PARSER_SITE = https://files.pythonhosted.org/packages/ea/f3/d1043da5dfe5b3cc5c02b0a62425d8d7231a43214ddbb6f20459b6be491c
+PYTHON_ADAPT_PARSER_SITE = https://files.pythonhosted.org/packages/ff/97/236a8cf280b789a86a7e5b50d3602e189ecc9726ebbb5b3259bb43761b02
 PYTHON_ADAPT_PARSER_SETUP_TYPE = setuptools
 
 $(eval $(python-package))
