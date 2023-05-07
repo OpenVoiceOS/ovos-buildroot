@@ -1,0 +1,9 @@
+config BR2_PACKAGE_PYTHON_OVOS_LISTENER
+	bool "python-ovos-listener"
+	help
+	  The "ears" of the OVOS assistant!
+
+	  Listens for wakewords, performs VAD and STT, the 
+	  final transcribed speech is then sent to ovos-core 
+
+	  https://github.com/OpenVoiceOS/ovos-listener

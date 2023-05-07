@@ -283,6 +283,8 @@ menu "Core"
 	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/python-ovos-config/Config.in"
 	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/python-ovos-core/Config.in"
 	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/python-ovos-gui/Config.in"
+	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/python-ovos-listener/Config.in"
+	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/python-ovos-messagebus/Config.in"
 	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/mycroft-service/Config.in"
 endmenu
 menu "Plugins"
