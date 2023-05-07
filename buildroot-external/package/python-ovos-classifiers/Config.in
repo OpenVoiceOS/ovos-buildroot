@@ -1,0 +1,18 @@
+config BR2_PACKAGE_PYTHON_OVOS_CLASSIFIERS
+	bool "python-ovos-classifiers"
+	help
+	  provide baseline feature extraction pipelines suited for each task
+
+	  provide user facing classes for each NLP task needed in the OVOS ecosystem
+		transparently load different models (model_path or external plugin)
+
+	  provide dataset loaders suited for each of those tasks per language
+
+	  provide baseline heuristic implementation for each task per language
+		replaces ovos-lingua-franca
+
+	  provide baseline implementations and benchmarks using classical nltk and 
+	  scikit-learn algorithms
+		minimum viable implementation to ensure lang support 
+
+	  https://github.com/OpenVoiceOS/ovos-core
