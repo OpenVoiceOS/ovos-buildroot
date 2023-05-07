@@ -4,10 +4,10 @@
 #
 ################################################################################
 
-PYTHON_PADACIOSO_VERSION = 0.1.1
-PYTHON_PADACIOSO_SOURCE = padacioso-$(PYTHON_PADACIOSO_VERSION).tar.gz
-PYTHON_PADACIOSO_SITE = https://files.pythonhosted.org/packages/7f/3d/292f14feaa17d724561d030616920e4dc4163aab13fd4e88d3071c1023a5
+PYTHON_PADACIOSO_VERSION = 8888ffe95731edafad02e9603559abd24bb363a4
+PYTHON_PADACIOSO_SITE = $(call github,OpenVoiceOS,padacioso,$(PYTHON_PADACIOSO_VERSION))
 PYTHON_PADACIOSO_SETUP_TYPE = setuptools
 PYTHON_PADACIOSO_LICENSE = apache-2.0
+PYTHON_PADACIOSO_ENV = MYCROFT_LOOSE_REQUIREMENTS=true
 
 $(eval $(python-package))

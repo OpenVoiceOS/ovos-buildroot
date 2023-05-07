@@ -1,3 +1,2 @@
-# md5, sha256 from https://pypi.org/pypi/padacioso/json
-md5  8db1031f1822579e37f43480f7f4f8e4  padacioso-0.1.1.tar.gz
-sha256  758083d43662a78b56e5eb25086cc1f702db26bf1bb5dd38e4a7372c86ac90b4  padacioso-0.1.1.tar.gz
+# Locally computed
+sha256  519f6dbbe9d821e83164484c669ed63f471bbdf08ab0d4bde186943a794776f0  python-padacioso-8888ffe95731edafad02e9603559abd24bb363a4.tar.gz
