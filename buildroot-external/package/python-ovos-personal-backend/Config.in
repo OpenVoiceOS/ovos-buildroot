@@ -1,5 +1,5 @@
-config BR2_PACKAGE_PYTHON_OVOS_LOCAL_BACKEND
-	bool "python-ovos-local-backend"
+config BR2_PACKAGE_PYTHON_OVOS_PERSONAL_BACKEND
+	bool "python-ovos-personal-backend"
 	select BR2_PACKAGE_PYTHON_FLASK # runtime
 	select BR2_PACKAGE_PYTHON_FLASK_MAIL # runtime
 	select BR2_PACKAGE_PYTHON_GEOCODER # runtime
@@ -12,4 +12,4 @@ config BR2_PACKAGE_PYTHON_OVOS_LOCAL_BACKEND
 	  Personal mycroft backend alternative to mycroft.home, 
 	  written in flask
 
-	  https://github.com/OpenVoiceOS/OVOS-local-backend
+	  https://github.com/OpenVoiceOS/ovos-personal-backend
