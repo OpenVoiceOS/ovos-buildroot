@@ -4,9 +4,10 @@
 #
 ################################################################################
 
-PYTHON_OVOS_PHAL_VERSION = 3892717778f6d7fc9020783716a7d0a8c0276cee
+PYTHON_OVOS_PHAL_VERSION = 0f0003cedb8b6c9ed0846a85f9c1bd0a55d73d44
 PYTHON_OVOS_PHAL_SITE = $(call github,OpenVoiceOS,ovos_PHAL,$(PYTHON_OVOS_PHAL_VERSION))
 PYTHON_OVOS_PHAL_SETUP_TYPE = setuptools
 PYTHON_OVOS_PHAL_LICENSE_FILES = LICENSE
+PYTHON_OVOS_PHAL_ENV = MYCROFT_LOOSE_REQUIREMENTS=true
 
 $(eval $(python-package))
