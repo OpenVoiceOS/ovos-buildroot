@@ -4,8 +4,9 @@
 #
 ################################################################################
 
-PYTHON_OVOS_STT_HTTP_SERVER_VERSION = f21f946c94bc512adc44573da54a865fd83c9af3
+PYTHON_OVOS_STT_HTTP_SERVER_VERSION = 57c656242e44f8d1d4b60574775dc29167cf314f
 PYTHON_OVOS_STT_HTTP_SERVER_SITE = $(call github,OpenVoiceOS,ovos-stt-http-server,$(PYTHON_OVOS_STT_HTTP_SERVER_VERSION))
 PYTHON_OVOS_STT_HTTP_SERVER_SETUP_TYPE = setuptools
+PYTHON_OVOS_STT_HTTP_SERVER_ENV = MYCROFT_LOOSE_REQUIREMENTS=true
 
 $(eval $(python-package))
