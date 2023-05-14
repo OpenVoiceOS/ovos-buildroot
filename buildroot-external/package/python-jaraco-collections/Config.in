@@ -1,0 +1,7 @@
+config BR2_PACKAGE_PYTHON_JARACO_COLLECTIONS
+	bool "python-jaraco-collections"
+	help
+	  Models and classes to supplement the stdlib 
+	  ‘collections’ module.
+
+	  https://github.com/jaraco/jaraco.collections
