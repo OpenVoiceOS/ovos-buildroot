@@ -1,0 +1,6 @@
+config BR2_PACKAGE_PYTHON_RICH_CLICK
+	bool "python-rich-rick"
+	help
+	  Format click help output nicely with Rich.
+
+	  https://github.com/ewels/rich-click
