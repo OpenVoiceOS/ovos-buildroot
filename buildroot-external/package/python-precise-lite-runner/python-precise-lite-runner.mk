@@ -4,7 +4,7 @@
 #
 ################################################################################
 
-PYTHON_PRECISE_LITE_RUNNER_VERSION = aafdcff2bab7a90cd32e1b9ac16daf4b38995bc6
+PYTHON_PRECISE_LITE_RUNNER_VERSION = f3cd8c138a5ba1b52c947496768777a31de15722
 PYTHON_PRECISE_LITE_RUNNER_SITE = $(call github,OpenVoiceOS,precise_lite_runner,$(PYTHON_PRECISE_LITE_RUNNER_VERSION))
 PYTHON_PRECISE_LITE_RUNNER_SETUP_TYPE = setuptools
 PYTHON_PRECISE_LITE_RUNNER_LICENSE = LICENSE
