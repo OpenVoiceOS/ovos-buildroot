@@ -1,0 +1,8 @@
+config BR2_PACKAGE_PYTHON_NESTED_LOOKUP
+	bool "python-nested-lookup"
+	select BR2_PACKAGE_PYTHON_SIX # runtime
+	help
+	  Python functions for working with deeply nested documents
+	  (lists and dicts).
+
+	  https://git.unturf.com/python/nested-lookup
