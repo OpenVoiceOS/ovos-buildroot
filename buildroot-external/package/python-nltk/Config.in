@@ -1,0 +1,10 @@
+config BR2_PACKAGE_PYTHON_NLTK
+	bool "python-nltk"
+	select BR2_PACKAGE_PYTHON_CLICK # runtime
+	select BR2_PACKAGE_PYTHON_JOBLIB # runtime
+	select BR2_PACKAGE_PYTHON_REGEX # runtime
+	select BR2_PACKAGE_PYTHON_TQDM # runtime
+	help
+	  Natural Language Toolkit.
+
+	  https://www.nltk.org/
