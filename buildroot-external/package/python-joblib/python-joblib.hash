@@ -1,0 +1,5 @@
+# md5, sha256 from https://pypi.org/pypi/joblib/json
+md5  928a19e66a10f6cda32fb004440c70fb  joblib-1.2.0.tar.gz
+sha256  e1cee4a79e4af22881164f218d4311f60074197fb707e082e803b61f6d137018  joblib-1.2.0.tar.gz
+# Locally computed sha256 checksums
+sha256  42612911c1872c5e4b43f6ae0e8ee59467cd350332241cf72ce90640264fae6a  LICENSE.txt

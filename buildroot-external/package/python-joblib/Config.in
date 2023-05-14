@@ -1,0 +1,6 @@
+config BR2_PACKAGE_PYTHON_JOBLIB
+	bool "python-joblib"
+	help
+	  Lightweight pipelining with Python functions.
+
+	  https://joblib.readthedocs.io
