@@ -1,0 +1,7 @@
+config BR2_PACKAGE_PYTHON_WEBCOLORS
+	bool "python-webcolors"
+	help
+	  webcolors is a module for working with 
+	  HTML/CSS color definitions.
+
+	  https://github.com/ubernostrum/webcolors
