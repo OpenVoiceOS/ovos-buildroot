@@ -3,4 +3,4 @@ config BR2_PACKAGE_SKILL_ALERTS
 	help
 	  A skill to schedule alarms, timers, and reminders
 
-	  https://github.com/NeonGeckoCom/skill-alerts
+	  https://github.com/OpenVoiceOS/skill-alerts
