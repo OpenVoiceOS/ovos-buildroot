@@ -4,7 +4,7 @@
 #
 ################################################################################
 
-PYTHON_OVOS_CORE_VERSION = f1677edb2d8a1e9248f96d87f14a6731f6eb979f
+PYTHON_OVOS_CORE_VERSION = e4cabf257c278e183d5c77aaaa3c920028e4f51f
 PYTHON_OVOS_CORE_SITE = $(call github,OpenVoiceOS,ovos-core,$(PYTHON_OVOS_CORE_VERSION))
 PYTHON_OVOS_CORE_SETUP_TYPE = setuptools
 PYTHON_OVOS_CORE_LICENSE_FILES = LICENSE
