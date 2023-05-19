@@ -1,0 +1,8 @@
+config BR2_PACKAGE_SKILL_OVOS_WIKIPEDIA
+	bool "skill-ovos-wikipedia"
+	help
+	  Query Wikipedia for answers to all your questions. 
+	  Get just a summary, or ask for more to get in-depth 
+	  information.
+
+	  https://github.com/OpenVoiceOS/skill-ovos-wikipedia
