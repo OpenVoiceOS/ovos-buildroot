@@ -4,7 +4,7 @@
 #
 ################################################################################
 
-PYTHON_OVOS_LISTENER_VERSION = 9fa3f8667125d677316e21e4c37d1b9dae2053d2
+PYTHON_OVOS_LISTENER_VERSION = 2d6ba2b6dbfae1c48c1833079d4aa94fa5cf6af5
 PYTHON_OVOS_LISTENER_SITE = $(call github,OpenVoiceOS,ovos-listener,$(PYTHON_OVOS_LISTENER_VERSION))
 PYTHON_OVOS_LISTENER_SETUP_TYPE = setuptools
 PYTHON_OVOS_LISTENER_LICENSE_FILES = LICENSE
