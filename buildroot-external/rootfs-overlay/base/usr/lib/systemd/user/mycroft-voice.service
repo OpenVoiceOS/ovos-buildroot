@@ -8,8 +8,8 @@ After=pulseaudio.service
 [Service]
 Type=notify
 ExecStart=/usr/libexec/mycroft-systemd-voice
-StandardOutput=append:/var/log/mycroft/voice.log
-StandardError=append:/var/log/mycroft/voice.error.log
+#StandardOutput=append:/var/log/mycroft/voice.log
+#StandardError=append:/var/log/mycroft/voice.error.log
 TimeoutStartSec=1m
 TimeoutStopSec=1m
 Restart=on-failure

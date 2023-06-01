@@ -10,3 +10,4 @@ PYTHON_WHEEL_SITE = https://files.pythonhosted.org/packages/4e/be/8139f127b4db2f
 PYTHON_WHEEL_SETUP_TYPE = setuptools
 
 $(eval $(python-package))
+$(eval $(host-python-package))

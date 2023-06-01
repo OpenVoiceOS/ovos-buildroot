@@ -8,8 +8,8 @@ After=pulseaudio.service
 [Service]
 Type=notify
 ExecStart=/usr/libexec/mycroft-systemd-phal
-StandardOutput=append:/var/log/mycroft/phal.log
-StandardError=append:/var/log/mycroft/phal.error.log
+#StandardOutput=append:/var/log/mycroft/phal.log
+#StandardError=append:/var/log/mycroft/phal.error.log
 TimeoutStartSec=1m
 TimeoutStopSec=1m
 Restart=on-failure
