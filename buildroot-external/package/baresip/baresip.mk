@@ -4,10 +4,10 @@
 #
 #############################################################
 
-BARESIP_VERSION = 2.7.0
+BARESIP_VERSION = 3.2.0
 BARESIP_SOURCE = v$(BARESIP_VERSION).tar.gz
 BARESIP_SITE = https://github.com/baresip/baresip/archive
-BARESIP_DEPENDENCIES = libre librem zlib
+BARESIP_DEPENDENCIES = libre zlib
 
 ifeq ($(BR2_PACKAGE_ALSA_LIB),y)
 BARESIP_DEPENDENCIES += alsa-lib

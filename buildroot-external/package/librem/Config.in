@@ -1,6 +1,0 @@
-config BR2_PACKAGE_LIBREM
-	bool "librem"
-	help
-	  Toolkit library for real-time audio and video processing.
-
-	  http://www.creytiv.com/

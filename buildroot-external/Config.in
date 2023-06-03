@@ -95,7 +95,6 @@ endmenu
 	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/ksm-preload/Config.in"
 	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/libcanberra/Config.in"
 	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/libre/Config.in"
-	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/librem/Config.in"
 	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/lottie-qml/Config.in"
 	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/ncpamixer/Config.in"
 	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/opencl_headers/Config.in"
