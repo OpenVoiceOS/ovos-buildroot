@@ -51,6 +51,24 @@ The following system packages are required to build the image:
 - wget
 - qtdeclarative5-dev
 
+#### Docker Build Environment
+To build the build environment run the following from the root folder of the project:
+```sh
+docker build --build-arg UID=$(id -u) --build-arg GID=$(id -g) -t buildroot-agent .
+```
+
+To execute a build, run the following, replacing <MAKE_ARG> with an argument to be passed in to `make`, such as `clean` or `rpi4_64-gui`
+```sh
+docker run -v ./:/src -v ./ccache/:/ccache -v ../downloads/:/downloads  --entrypoint /usr/bin/make -e BR2_JLEVEL=$(nproc) buildroot <MAKE_ARG>
+```
+Adjust paths to the `/ccache` and `/downloads` volumes accordingly. If these are not passed in, the caches will reside inside the container file system.
+
+On `podman`, the Dockerfile has been configured to run as a user with the same uid/gid as the current user (passed in as a build-arg). 
+This will require passing the --userns=keep-id argument, e.g.:
+```sh
+podman run --userns=keep-id -v ./:/src -v ./ccache/:/ccache -v ../downloads/:/downloads  --entrypoint /usr/bin/make -e BR2_JLEVEL=$(nproc) buildroot clean
+```
+
 #### The following firewall ports need to be allowed to the internet.
 In addition to the usual http/https ports (tcp 80, tcp 443) a couple of other ports need to be allowed to the internet :
 - tcp 9418 (git).
