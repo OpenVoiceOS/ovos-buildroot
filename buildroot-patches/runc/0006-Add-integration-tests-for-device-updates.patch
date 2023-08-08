@@ -1,0 +1,83 @@
+From 9fb0e3c66d89da615f4c60a79328f405d98bc53e Mon Sep 17 00:00:00 2001
+Message-Id: <9fb0e3c66d89da615f4c60a79328f405d98bc53e.1659958805.git.stefan@agner.ch>
+In-Reply-To: <410089ea4bb8bf051a941febd087b0346b967a10.1659958805.git.stefan@agner.ch>
+References: <410089ea4bb8bf051a941febd087b0346b967a10.1659958805.git.stefan@agner.ch>
+From: Stefan Agner <stefan@agner.ch>
+Date: Fri, 5 Aug 2022 13:03:21 +0200
+Subject: [PATCH 06/11] Add integration tests for device updates
+
+Signed-off-by: Stefan Agner <stefan@agner.ch>
+---
+ tests/integration/update.bats | 56 +++++++++++++++++++++++++++++++++++
+ 1 file changed, 56 insertions(+)
+
+diff --git a/tests/integration/update.bats b/tests/integration/update.bats
+index 01c69152..9e94837c 100644
+--- a/tests/integration/update.bats
++++ b/tests/integration/update.bats
+@@ -681,6 +681,62 @@ EOF
+ 	[ -z "$(<"$CONTAINER_OUTPUT")" ]
+ }
+ 
++
++@test "update devices" {
++	requires root
++
++	# Create a container without access to /dev/kmsg. Verify that accessing fails
++	# and update the container to add access from it.
++	#
++	# Finally, remove access again by passing an empty array of devices.
++	update_config ' .linux.resources.devices = [{"allow": false, "access": "rwm"}]
++			| .linux.devices = [{"path": "/dev/kmsg", "type": "c", "major": 1, "minor": 11}]
++			| .process.capabilities.bounding += ["CAP_SYSLOG"]
++			| .process.capabilities.effective += ["CAP_SYSLOG"]
++			| .process.capabilities.inheritable += ["CAP_SYSLOG"]
++			| .process.capabilities.permitted += ["CAP_SYSLOG"]'
++
++	# Run the container in the background.
++	runc run -d --console-socket "$CONSOLE_SOCKET" test_update_devices
++	[ "$status" -eq 0 ]
++
++	runc exec test_update_devices head -c 100 /dev/kmsg
++	[ "$status" -eq 1 ]
++
++	runc update --resources - test_update_devices <<EOF
++	{
++		"devices": [
++			{"allow": true, "type": "c", "major": 1, "minor": 11, "access": "rwa"}
++		]
++	}
++EOF
++
++	runc exec test_update_devices head -c 100 /dev/kmsg
++	[ "$status" -eq 0 ]
++
++
++	# Not updating devices should keep device access
++	# For backwards compatibility
++	runc update --resources - test_update_devices <<EOF
++	{ }
++EOF
++
++	runc exec test_update_devices head -c 100 /dev/kmsg
++	[ "$status" -eq 0 ]
++
++	# Explicitly removing access should remove access
++	runc update --resources - test_update_devices <<EOF
++	{
++		"devices": [
++			{"allow": false, "type": "c", "major": 1, "minor": 11, "access": "rwa"}
++		]
++	}
++EOF
++
++	runc exec test_update_devices head -c 100 /dev/kmsg
++	[ "$status" -eq 1 ]
++}
++
+ @test "update paused container" {
+ 	[[ "$ROOTLESS" -ne 0 ]] && requires rootless_cgroup
+ 	requires cgroups_freezer
+-- 
+2.37.1
+

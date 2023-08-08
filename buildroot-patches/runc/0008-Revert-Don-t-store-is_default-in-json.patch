@@ -1,0 +1,31 @@
+From 4733a41aed3326d514f3fd6d5b098d2a51f5193f Mon Sep 17 00:00:00 2001
+Message-Id: <4733a41aed3326d514f3fd6d5b098d2a51f5193f.1659958805.git.stefan@agner.ch>
+In-Reply-To: <410089ea4bb8bf051a941febd087b0346b967a10.1659958805.git.stefan@agner.ch>
+References: <410089ea4bb8bf051a941febd087b0346b967a10.1659958805.git.stefan@agner.ch>
+From: Stefan Agner <stefan@agner.ch>
+Date: Fri, 5 Aug 2022 17:53:34 +0200
+Subject: [PATCH 08/11] Revert "Don't store is_default in json"
+
+This reverts commit 2daa2e32e01dc198df877dc96c2d96faae4e04a0.
+
+Signed-off-by: Stefan Agner <stefan@agner.ch>
+---
+ libcontainer/devices/device.go | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/libcontainer/devices/device.go b/libcontainer/devices/device.go
+index ae59c6c5..9540a89c 100644
+--- a/libcontainer/devices/device.go
++++ b/libcontainer/devices/device.go
+@@ -26,7 +26,7 @@ type Device struct {
+ 	Gid uint32 `json:"gid"`
+ 
+ 	// Is Default Device
+-	IsDefault bool `json:"-"`
++	IsDefault bool `json:"is_default"`
+ }
+ 
+ // Permissions is a cgroupv1-style string to represent device access. It
+-- 
+2.37.1
+

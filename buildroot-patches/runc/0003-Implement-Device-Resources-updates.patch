@@ -1,0 +1,92 @@
+From 0f7ec1274b90032ca0383ec7c6385af1aa98b284 Mon Sep 17 00:00:00 2001
+Message-Id: <0f7ec1274b90032ca0383ec7c6385af1aa98b284.1659958805.git.stefan@agner.ch>
+In-Reply-To: <410089ea4bb8bf051a941febd087b0346b967a10.1659958805.git.stefan@agner.ch>
+References: <410089ea4bb8bf051a941febd087b0346b967a10.1659958805.git.stefan@agner.ch>
+From: Stefan Agner <stefan@agner.ch>
+Date: Thu, 3 Mar 2022 15:43:10 +0100
+Subject: [PATCH 03/11] Implement Device Resources updates
+
+Add support to update Device Resources with runc update.
+
+Signed-off-by: Stefan Agner <stefan@agner.ch>
+---
+ libcontainer/specconv/spec_linux.go |  4 ++--
+ update.go                           | 26 +++++++++++++++++++-------
+ 2 files changed, 21 insertions(+), 9 deletions(-)
+
+diff --git a/libcontainer/specconv/spec_linux.go b/libcontainer/specconv/spec_linux.go
+index c5b32b1e..555c39ca 100644
+--- a/libcontainer/specconv/spec_linux.go
++++ b/libcontainer/specconv/spec_linux.go
+@@ -385,7 +385,7 @@ func CreateLibcontainerConfig(opts *CreateOpts) (*configs.Config, error) {
+ 		return nil, err
+ 	}
+ 
+-	defaultAllowedDevices := createDefaultDevicesCgroups(config)
++	defaultAllowedDevices := CreateDefaultDevicesCgroups(config)
+ 
+ 	c, err := CreateCgroupConfig(opts, defaultAllowedDevices)
+ 	if err != nil {
+@@ -979,7 +979,7 @@ next:
+ 	return nil
+ }
+ 
+-func createDefaultDevicesCgroups(config *configs.Config) []*devices.Device {
++func CreateDefaultDevicesCgroups(config *configs.Config) []*devices.Device {
+ 	defaultAllowedDevices := []*devices.Device{}
+ next:
+ 	for _, ad := range AllowedDevices {
+diff --git a/update.go b/update.go
+index d02e7af9..9332515c 100644
+--- a/update.go
++++ b/update.go
+@@ -8,6 +8,7 @@ import (
+ 	"strconv"
+ 
+ 	"github.com/opencontainers/runc/libcontainer/cgroups"
++	"github.com/opencontainers/runc/libcontainer/specconv"
+ 	"github.com/sirupsen/logrus"
+ 
+ 	"github.com/docker/go-units"
+@@ -298,6 +299,24 @@ other options are ignored.
+ 		config.Cgroups.Resources.PidsLimit = r.Pids.Limit
+ 		config.Cgroups.Resources.Unified = r.Unified
+ 
++		if len(r.Devices) > 0 {
++			config.Cgroups.Resources.Devices = nil
++			defaultAllowedDevices := specconv.CreateDefaultDevicesCgroups(&config)
++
++			err = specconv.CreateCgroupDeviceConfig(config.Cgroups.Resources, &r, defaultAllowedDevices)
++			if err != nil {
++				return err
++			}
++			config.Cgroups.SkipDevices = false
++		} else {
++			// If "runc update" is not changing device configuration, add
++			// this to skip device update.
++			// This helps in case an extra plugin (nvidia GPU) applies some
++			// configuration on top of what runc does.
++			// Note this field is not saved into container's state.json.
++			config.Cgroups.SkipDevices = true
++		}
++
+ 		// Update Intel RDT
+ 		l3CacheSchema := context.String("l3-cache-schema")
+ 		memBwSchema := context.String("mem-bw-schema")
+@@ -329,13 +348,6 @@ other options are ignored.
+ 			config.IntelRdt.MemBwSchema = memBwSchema
+ 		}
+ 
+-		// XXX(kolyshkin@): currently "runc update" is unable to change
+-		// device configuration, so add this to skip device update.
+-		// This helps in case an extra plugin (nvidia GPU) applies some
+-		// configuration on top of what runc does.
+-		// Note this field is not saved into container's state.json.
+-		config.Cgroups.SkipDevices = true
+-
+ 		return container.Set(config)
+ 	},
+ }
+-- 
+2.37.1
+

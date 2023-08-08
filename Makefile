@@ -39,6 +39,12 @@ clean:
 menuconfig:
 	$(MAKE) -C $(BUILDROOT) BR2_EXTERNAL=../$(BUILDROOT_EXTERNAL) menuconfig
 
+linux-menuconfig:
+	$(MAKE) -C $(BUILDROOT) BR2_EXTERNAL=../$(BUILDROOT_EXTERNAL) linux-menuconfig
+
+busybox-menuconfig:
+	$(MAKE) -C $(BUILDROOT) BR2_EXTERNAL=../$(BUILDROOT_EXTERNAL) busybox-menuconfig
+
 savedefconfig:
 	$(MAKE) -C $(BUILDROOT) BR2_EXTERNAL=../$(BUILDROOT_EXTERNAL) savedefconfig
 

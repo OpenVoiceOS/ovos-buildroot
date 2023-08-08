@@ -1,8 +1,0 @@
-[Unit]
-Description=OpenVoiceOS - Mycroft GUI Interface
-Documentation=man:systemd.special(7)
-Requires=multi-user.target
-Wants=mycroft-gui.service
-Conflicts=rescue.service rescue.target
-After=multi-user.target rescue.service rescue.target
-AllowIsolate=yes

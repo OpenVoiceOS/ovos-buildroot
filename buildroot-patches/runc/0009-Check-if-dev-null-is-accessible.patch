@@ -1,0 +1,41 @@
+From b8a173423463e54e9e36b2b98be1586114ce897a Mon Sep 17 00:00:00 2001
+Message-Id: <b8a173423463e54e9e36b2b98be1586114ce897a.1659958805.git.stefan@agner.ch>
+In-Reply-To: <410089ea4bb8bf051a941febd087b0346b967a10.1659958805.git.stefan@agner.ch>
+References: <410089ea4bb8bf051a941febd087b0346b967a10.1659958805.git.stefan@agner.ch>
+From: Stefan Agner <stefan@agner.ch>
+Date: Fri, 5 Aug 2022 17:58:12 +0200
+Subject: [PATCH 09/11] Check if /dev/null is accessible
+
+Signed-off-by: Stefan Agner <stefan@agner.ch>
+---
+ tests/integration/update.bats | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/tests/integration/update.bats b/tests/integration/update.bats
+index 9e94837c..5f643da1 100644
+--- a/tests/integration/update.bats
++++ b/tests/integration/update.bats
+@@ -703,6 +703,10 @@ EOF
+ 	runc exec test_update_devices head -c 100 /dev/kmsg
+ 	[ "$status" -eq 1 ]
+ 
++	# Make sure default devices still work
++	runc exec test_update_devices cat /dev/null
++	[ "$status" -eq 0 ]
++
+ 	runc update --resources - test_update_devices <<EOF
+ 	{
+ 		"devices": [
+@@ -714,6 +718,9 @@ EOF
+ 	runc exec test_update_devices head -c 100 /dev/kmsg
+ 	[ "$status" -eq 0 ]
+ 
++	# Make sure default devices still work
++	runc exec test_update_devices cat /dev/null
++	[ "$status" -eq 0 ]
+ 
+ 	# Not updating devices should keep device access
+ 	# For backwards compatibility
+-- 
+2.37.1
+

@@ -1,0 +1,95 @@
+From c3c41d192aadac058415238e1680dffbd5a74dc6 Mon Sep 17 00:00:00 2001
+Message-Id: <c3c41d192aadac058415238e1680dffbd5a74dc6.1659958805.git.stefan@agner.ch>
+In-Reply-To: <410089ea4bb8bf051a941febd087b0346b967a10.1659958805.git.stefan@agner.ch>
+References: <410089ea4bb8bf051a941febd087b0346b967a10.1659958805.git.stefan@agner.ch>
+From: Stefan Agner <stefan@agner.ch>
+Date: Thu, 3 Mar 2022 14:55:53 +0100
+Subject: [PATCH 02/11] Implement common function to create DeviceCgroup rules
+
+Signed-off-by: Stefan Agner <stefan@agner.ch>
+---
+ libcontainer/specconv/spec_linux.go | 52 ++++++++++++++++++++++++++---
+ 1 file changed, 48 insertions(+), 4 deletions(-)
+
+diff --git a/libcontainer/specconv/spec_linux.go b/libcontainer/specconv/spec_linux.go
+index 8bf0aa20..c5b32b1e 100644
+--- a/libcontainer/specconv/spec_linux.go
++++ b/libcontainer/specconv/spec_linux.go
+@@ -625,6 +625,48 @@ func initSystemdProps(spec *specs.Spec) ([]systemdDbus.Property, error) {
+ 	return sp, nil
+ }
+ 
++func CreateCgroupDeviceConfig(r *configs.Resources, specr *specs.LinuxResources, defaultDevs []*devices.Device) error {
++	if specr != nil {
++		for i, d := range specr.Devices {
++			var (
++				t     = "a"
++				major = int64(-1)
++				minor = int64(-1)
++			)
++			if d.Type != "" {
++				t = d.Type
++			}
++			if d.Major != nil {
++				major = *d.Major
++			}
++			if d.Minor != nil {
++				minor = *d.Minor
++			}
++			if d.Access == "" {
++				return fmt.Errorf("device access at %d field cannot be empty", i)
++			}
++			dt, err := stringToCgroupDeviceRune(t)
++			if err != nil {
++				return err
++			}
++			r.Devices = append(r.Devices, &devices.Rule{
++				Type:        dt,
++				Major:       major,
++				Minor:       minor,
++				Permissions: devices.Permissions(d.Access),
++				Allow:       d.Allow,
++			})
++		}
++	}
++
++	// Append the default allowed devices to the end of the list.
++	for _, device := range defaultDevs {
++		r.Devices = append(r.Devices, &device.Rule)
++	}
++
++	return nil
++}
++
+ func CreateCgroupConfig(opts *CreateOpts, defaultDevs []*devices.Device) (*configs.Cgroup, error) {
+ 	var (
+ 		myCgroupPath string
+@@ -681,8 +723,9 @@ func CreateCgroupConfig(opts *CreateOpts, defaultDevs []*devices.Device) (*confi
+ 
+ 	// In rootless containers, any attempt to make cgroup changes is likely to fail.
+ 	// libcontainer will validate this but ignores the error.
++	var r *specs.LinuxResources = nil
+ 	if spec.Linux != nil {
+-		r := spec.Linux.Resources
++		r = spec.Linux.Resources
+ 		if r != nil {
+ 			for i, d := range spec.Linux.Resources.Devices {
+ 				var (
+@@ -844,10 +887,11 @@ func CreateCgroupConfig(opts *CreateOpts, defaultDevs []*devices.Device) (*confi
+ 		}
+ 	}
+ 
+-	// Append the default allowed devices to the end of the list.
+-	for _, device := range defaultDevs {
+-		c.Resources.Devices = append(c.Resources.Devices, &device.Rule)
++	err := CreateCgroupDeviceConfig(c.Resources, r, defaultDevs)
++	if err != nil {
++		return nil, err
+ 	}
++
+ 	return c, nil
+ }
+ 
+-- 
+2.37.1
+

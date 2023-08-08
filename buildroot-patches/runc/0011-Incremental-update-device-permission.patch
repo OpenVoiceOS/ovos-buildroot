@@ -1,0 +1,31 @@
+From 455ee2c389ae43db2219949178f912bc19d962eb Mon Sep 17 00:00:00 2001
+Message-Id: <455ee2c389ae43db2219949178f912bc19d962eb.1659958805.git.stefan@agner.ch>
+In-Reply-To: <410089ea4bb8bf051a941febd087b0346b967a10.1659958805.git.stefan@agner.ch>
+References: <410089ea4bb8bf051a941febd087b0346b967a10.1659958805.git.stefan@agner.ch>
+From: Stefan Agner <stefan@agner.ch>
+Date: Mon, 8 Aug 2022 13:39:26 +0200
+Subject: [PATCH 11/11] Incremental update device permission
+
+---
+ update.go | 5 +----
+ 1 file changed, 1 insertion(+), 4 deletions(-)
+
+diff --git a/update.go b/update.go
+index 9332515c..82ba0c8d 100644
+--- a/update.go
++++ b/update.go
+@@ -300,10 +300,7 @@ other options are ignored.
+ 		config.Cgroups.Resources.Unified = r.Unified
+ 
+ 		if len(r.Devices) > 0 {
+-			config.Cgroups.Resources.Devices = nil
+-			defaultAllowedDevices := specconv.CreateDefaultDevicesCgroups(&config)
+-
+-			err = specconv.CreateCgroupDeviceConfig(config.Cgroups.Resources, &r, defaultAllowedDevices)
++			err = specconv.CreateCgroupDeviceConfig(config.Cgroups.Resources, &r, nil)
+ 			if err != nil {
+ 				return err
+ 			}
+-- 
+2.37.1
+

@@ -1,3 +1,0 @@
-[D-BUS Service]
-Name=org.kde.kdeconnect
-Exec=/usr/lib/libexec/kdeconnectd -platform offscreen

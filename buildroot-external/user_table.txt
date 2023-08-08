@@ -1,1 +1,1 @@
-mycroft -2 mycroft -2 =mycroft /home/mycroft /bin/sh input,i2c,spi,gpio,adm,wheel,audio,video,pulse,pulse-access,lp,adm,network,systemd-journal,systemd-timesync Mycroft user
+mycroft -2 mycroft -2 =mycroft /home/mycroft /bin/sh input,i2c,spi,tty,gpio,adm,wheel,audio,video,lp,adm,network,systemd-journal,systemd-timesync,docker Mycroft user

@@ -1,0 +1,28 @@
+From 0549cd8a4d39469e79735ee84beb2a77ec43549d Mon Sep 17 00:00:00 2001
+Message-Id: <0549cd8a4d39469e79735ee84beb2a77ec43549d.1659958805.git.stefan@agner.ch>
+In-Reply-To: <410089ea4bb8bf051a941febd087b0346b967a10.1659958805.git.stefan@agner.ch>
+References: <410089ea4bb8bf051a941febd087b0346b967a10.1659958805.git.stefan@agner.ch>
+From: Stefan Agner <stefan@agner.ch>
+Date: Fri, 5 Aug 2022 18:03:37 +0200
+Subject: [PATCH 10/11] Address shfmt
+
+Signed-off-by: Stefan Agner <stefan@agner.ch>
+---
+ tests/integration/update.bats | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/tests/integration/update.bats b/tests/integration/update.bats
+index 5f643da1..f6dc30a9 100644
+--- a/tests/integration/update.bats
++++ b/tests/integration/update.bats
+@@ -681,7 +681,6 @@ EOF
+ 	[ -z "$(<"$CONTAINER_OUTPUT")" ]
+ }
+ 
+-
+ @test "update devices" {
+ 	requires root
+ 
+-- 
+2.37.1
+
