@@ -30,3 +30,13 @@ BOARD_DIR="$(dirname $0)"
 } > "${TARGET_DIR}/etc/machine-info"
 
 cp -f ../buildroot-external/board/ovos/ova/grub-efi.cfg ${BINARIES_DIR}/efi-part/EFI/BOOT/grub.cfg
+cp -f ../buildroot-external/board/ovos/ova/cmdline.txt ${BINARIES_DIR}
+cp -f ../buildroot-external/board/ovos/ova/sw-description ${BINARIES_DIR}
+
+grub-editenv "${BINARIES_DIR}/efi-part/EFI/BOOT/grubenv" create
+
+echo "Check for compressed kernel in ${TARGET_DIR}"
+if [ -f "${TARGET_DIR}/boot/bzImage" ]; then
+    echo "Found bzImage, renaming to kernel"
+    mv ${TARGET_DIR}/boot/bzImage ${TARGET_DIR}/boot/kernel
+fi

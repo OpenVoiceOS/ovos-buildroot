@@ -3,4 +3,6 @@
 /buildroot
 /release/*.img
 /release/*.xz
+/release/*.swu
+/release/*.vdi
 /logs/*.txt

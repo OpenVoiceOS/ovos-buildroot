@@ -1,0 +1,49 @@
+#!/bin/sh
+
+if [ $# -lt 1 ]; then
+    exit 0;
+fi
+
+function get_current_root_device
+{
+    PARTUUID=$(swupdate -g | sed 's/PARTUUID=\([^ ]*\).*/\1/');
+    CURRENT_ROOT=$(readlink -f /dev/disk/by-partuuid/$PARTUUID);
+}
+
+function get_update_part
+{
+    CURRENT_PART="${CURRENT_ROOT: -1}"
+    if [ $CURRENT_PART = "2" ]; then
+        UPDATE_PART="3";
+	GRUB_DEFAULT="1";
+	GRUB_FALLBACK="0";
+    else
+        UPDATE_PART="2";
+	GRUB_DEFAULT="0";
+        GRUB_FALLBACK="1";
+    fi
+}
+
+function get_update_device
+{
+    UPDATE_ROOT=${CURRENT_ROOT%?}${UPDATE_PART}
+}
+
+if [ $1 == "preinst" ]; then
+    # get the current root device
+    get_current_root_device
+
+    # get the device to be updated
+    get_update_part
+    get_update_device
+
+    # create a symlink for the update process
+    ln -sf $UPDATE_ROOT /dev/update
+fi
+
+if [ $1 == "postinst" ]; then
+    get_current_root_device
+    get_update_part
+    sync; /usr/bin/grub-editenv /boot/efi/EFI/BOOT/grubenv set default=$GRUB_DEFAULT; sync;
+    sync; /usr/bin/grub-editenv /boot/efi/EFI/BOOT/grubenv set fallback=$GRUB_FALLBACK; sync;
+fi

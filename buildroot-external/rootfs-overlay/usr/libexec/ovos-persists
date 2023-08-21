@@ -1,0 +1,15 @@
+#!/bin/sh
+set -e
+
+MACHINE_ID=$(cat /etc/machine-id)
+
+if [ -e /usr/bin/grub-editenv ]; then
+    GRUBENV_FILE="/boot/efi/EFI/BOOT/grubenv"
+    # machine-id
+    if [ "$(/usr/bin/grub-editenv "$GRUBENV_FILE" list | grep '^MACHINE_ID=' | cut -d= -f2)" != "${MACHINE_ID}" ]; then
+        echo "[INFO] set machine-id to ${MACHINE_ID}"
+        /usr/bin/grub-editenv "$GRUBENV_FILE" set "MACHINE_ID=${MACHINE_ID}"
+    else
+        echo "[INFO] machine-id is okay"
+    fi
+fi

@@ -30,6 +30,13 @@ BOARD_DIR="$(dirname $0)"
 } > "${TARGET_DIR}/etc/machine-info"
 
 cp -f ../buildroot-external/board/ovos/raspberrypi/cmdline.txt ${BINARIES_DIR}/rpi-firmware/cmdline.txt
+grub-editenv "${BINARIES_DIR}/efi-part/EFI/BOOT/grubenv" create
+
+echo "Check for kernel in ${TARGET_DIR}"
+if [ -f "${TARGET_DIR}/boot/Image" ]; then
+    echo "Found Image, renaming to kernel"
+    mv ${TARGET_DIR}/boot/Image ${TARGET_DIR}/boot/kernel
+fi
 
 # Copy the right config.txt file
 for arg in "$@"
@@ -37,9 +44,15 @@ do
     case "${arg}" in
         --rpi3)
         cp -f ../buildroot-external/board/ovos/raspberrypi/rpi3/config.txt ${BINARIES_DIR}/rpi-firmware/config.txt
+	cp -f ../buildroot-external/board/ovos/raspberrypi/rpi3/RPI_EFI.fd ${BINARIES_DIR}/rpi-firmware/RPI_EFI.fd
+	cp -f ../buildroot-external/board/ovos/raspberrypi/grub-efi.cfg ${BINARIES_DIR}/efi-part/EFI/BOOT/grub.cfg
+	cp -f ../buildroot-external/board/ovos/raspberrypi/rpi3/sw-description ${BINARIES_DIR}
         ;;
         --rpi4)
         cp -f ../buildroot-external/board/ovos/raspberrypi/rpi4/config.txt ${BINARIES_DIR}/rpi-firmware/config.txt
+	cp -f ../buildroot-external/board/ovos/raspberrypi/rpi4/RPI_EFI.fd ${BINARIES_DIR}/rpi-firmware/RPI_EFI.fd
+	cp -f ../buildroot-external/board/ovos/raspberrypi/grub-efi.cfg ${BINARIES_DIR}/efi-part/EFI/BOOT/grub.cfg
+	cp -f ../buildroot-external/board/ovos/raspberrypi/rpi4/sw-description ${BINARIES_DIR}
         ;;
     esac
 done

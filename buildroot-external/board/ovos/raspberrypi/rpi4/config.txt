@@ -1,3 +1,11 @@
+arm_64bit=1
+enable_uart=1
+enable_gic=1
+armstub=RPI_EFI.fd
+disable_commandline_tags=2
+device_tree_address=0x1f0000
+device_tree_end=0x200000
+
 # Please note that this is only a sample, we recommend you to change it to fit
 # your needs.
 # You should override this file using a post-build script.
@@ -8,7 +16,7 @@
 start_file=start4x.elf
 fixup_file=fixup4x.dat
 
-kernel=Image
+#kernel=Image
 
 # To use an external initramfs file
 # initramfs rootfs.cpio.gz
@@ -41,7 +49,7 @@ gpu_mem_1024=128
 dtoverlay=miniuart-bt
 
 # enable autoprobing of Bluetooth driver without need of hciattach/btattach
-dtoverlay=krnbt=on
+dtparam=krnbt=on
 
 # Enable the onboard soundcard
 dtparam=audio=on
@@ -68,4 +76,4 @@ dtparam=spi=on
 arm_boost=1
 
 # enable 64bits support
-arm_64bit=1
+#arm_64bit=1

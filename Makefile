@@ -1,7 +1,7 @@
 RELEASE_DIR = release
-
-BUILDROOT=buildroot
-BUILDROOT_EXTERNAL=buildroot-external
+BUILDDATE := $(shell date -u +'%Y%m%d_%H%M')
+BUILDROOT = buildroot
+BUILDROOT_EXTERNAL = buildroot-external
 DEFCONFIG_DIR = $(BUILDROOT_EXTERNAL)/configs
 
 TARGETS := $(notdir $(patsubst %_defconfig,%,$(wildcard $(DEFCONFIG_DIR)/*_defconfig)))
@@ -23,8 +23,14 @@ $(TARGETS_CONFIG): %-config:
 $(TARGETS): %: $(RELEASE_DIR) %-config
 	@echo "build $@"
 	$(MAKE) -C $(BUILDROOT) BR2_EXTERNAL=../$(BUILDROOT_EXTERNAL) 2>&1 | tee logs/buildroot_$@_output.txt
-	rsync -ah --progress $(BUILDROOT)/output/images/disk.img $(RELEASE_DIR)/OpenVoiceOS_$@.img
-	xz -3 -T0 -v -f $(RELEASE_DIR)/OpenVoiceOS_$@.img
+	rsync -ah --progress $(BUILDROOT)/output/images/disk.img $(RELEASE_DIR)/OpenVoiceOS_$@_$(BUILDDATE).img
+	rsync -ah --progress $(BUILDROOT)/output/images/rootfs.swu $(RELEASE_DIR)/OpenVoiceOS_$@_$(BUILDDATE).swu
+	xz -3 -T0 -v -f -k $(RELEASE_DIR)/OpenVoiceOS_$@_$(BUILDDATE).img
+	xz -3 -T0 -v -f -k $(RELEASE_DIR)/OpenVoiceOS_$@_$(BUILDDATE).swu
+	@if [ $@ = "ova_64" ]; then\
+		qemu-img convert -O vdi $(RELEASE_DIR)/OpenVoiceOS_$@_$(BUILDDATE).img $(RELEASE_DIR)/OpenVoiceOS_$@_$(BUILDDATE).vdi;\
+		xz -3 -T0 -v -f -k $(RELEASE_DIR)/OpenVoiceOS_$@_$(BUILDDATE).vdi;\
+	fi
 
 	# Do not clean when building for one target
 ifneq ($(words $(filter $(TARGETS),$(MAKECMDGOALS))), 1)
@@ -44,6 +50,9 @@ linux-menuconfig:
 
 busybox-menuconfig:
 	$(MAKE) -C $(BUILDROOT) BR2_EXTERNAL=../$(BUILDROOT_EXTERNAL) busybox-menuconfig
+
+swupdate-menuconfig:
+	$(MAKE) -C $(BUILDROOT) BR2_EXTERNAL=../$(BUILDROOT_EXTERNAL) swupdate-menuconfig
 
 savedefconfig:
 	$(MAKE) -C $(BUILDROOT) BR2_EXTERNAL=../$(BUILDROOT_EXTERNAL) savedefconfig

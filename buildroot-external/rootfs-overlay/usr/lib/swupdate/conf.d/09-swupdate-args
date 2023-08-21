@@ -1,0 +1,3 @@
+selection="-e update,rootfs"
+
+SWUPDATE_ARGS="-v ${selection} -f /etc/swupdate.cfg"
