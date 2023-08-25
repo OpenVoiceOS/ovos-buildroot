@@ -1,0 +1,6 @@
+#!/bin/sh
+
+# home persistent overlay
+if [ ! -d /mnt/home/mycroft ]; then
+  cp -a /home/mycroft /mnt/home/
+fi

@@ -1,0 +1,15 @@
+[Unit]
+Description=OpenVoiceOS overlay partition
+DefaultDependencies=no
+Before=umount.target local-fs.target
+Conflicts=umount.target
+After=systemd-fsck@dev-disk-by\x2dpartlabel-overlayfs.service
+Wants=systemd-fsck@dev-disk-by\x2dpartlabel-overlayfs.service
+
+[Mount]
+What=/dev/disk/by-partlabel/overlayfs
+Where=/mnt/overlay
+Type=ext4
+
+[Install]
+WantedBy=local-fs.target

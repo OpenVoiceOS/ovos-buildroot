@@ -1,0 +1,42 @@
+#!/bin/bash
+#
+# Credits to hassos-expand original script
+# https://github.com/home-assistant/operating-system/
+
+DEVICE_HOMEFS="$(findfs PARTUUID=ba3c2691-cce9-4963-b773-42c440c235ec)"
+DEVICE_HOMEFS_NAME="$(basename "${DEVICE_HOMEFS}")"
+DEVICE="/dev/$(lsblk -no pkname "${DEVICE_HOMEFS}")"
+PART_NUM="$(cat "/sys/class/block/${DEVICE_HOMEFS_NAME}/partition")"
+PART_TABLE="$(sfdisk -lqJ "${DEVICE}")"
+
+if sfdisk --verify "${DEVICE}" 2>&1 | grep "The backup GPT table is not on the end of the device."; then
+        echo "[INFO] Moving GPT backup header to the end"
+        sfdisk --relocate gpt-bak-std "${DEVICE}"
+
+        # Reload partition label to get correct .partitiontable.lastlba
+        PART_TABLE="$(sfdisk -lqJ "${DEVICE}")"
+fi
+LAST_USABLE_LBA="$(echo "${PART_TABLE}" | jq -r '.partitiontable.lastlba')"
+
+echo "[INFO] Last usable logical block ${LAST_USABLE_LBA}"
+
+JQ_FILTER=".partitiontable.partitions[] | select ( .node == \"${DEVICE_OVERLAYFS}\" ) | .start + .size"
+HOMEFS_PARTITION_END="$(echo "${PART_TABLE}" | jq "${JQ_FILTER}")"
+echo "[INFO] homefs partition end block ${HOMEFS_PARTITION_END}"
+
+UNUSED_BLOCKS=$(( LAST_USABLE_LBA - DATA_PARTITION_END ))
+if [ "${UNUSED_BLOCKS}" -le "16384" ]; then
+    echo "[INFO] No resize of homefs partition needed"
+    exit 0
+fi
+
+echo "[INFO] Update homefs partition ${PART_NUM}"
+echo ", +" | sfdisk --no-reread --no-tell-kernel -N "${PART_NUM}" "${DEVICE}"
+sfdisk -V "${DEVICE}"
+partx -u "${DEVICE}"
+udevadm settle
+partprobe "${DEVICE}"
+
+echo "[INFO] Resizing the homefs partition"
+resize2fs "${DEVICE_HOMEFS}"
+echo "[OK]"

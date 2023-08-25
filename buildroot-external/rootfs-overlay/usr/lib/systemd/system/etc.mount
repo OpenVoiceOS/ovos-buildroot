@@ -1,0 +1,15 @@
+[Unit]
+Description=etc persistent partition overlay
+Requires=mnt-overlay.mount
+After=mnt-overlay.mount
+Requires=ovos-overlay.service
+After=ovos-overlay.service
+
+[Mount]
+What=/mnt/overlay/etc
+Where=/etc
+Type=none
+Options=bind
+
+[Install]
+WantedBy=ovos-bind.target
