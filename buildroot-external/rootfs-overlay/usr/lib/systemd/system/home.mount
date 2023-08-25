@@ -1,0 +1,15 @@
+[Unit]
+Description=home persistent partition overlay
+Requires=mnt-home.mount
+After=mnt-home.mount
+Requires=ovos-home.service
+After=ovos-home.service
+
+[Mount]
+What=/mnt/home
+Where=/home
+Type=none
+Options=bind
+
+[Install]
+WantedBy=ovos-bind.target

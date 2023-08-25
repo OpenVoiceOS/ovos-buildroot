@@ -1,0 +1,15 @@
+[Unit]
+Description=OpenVoiceOS overlay setup 
+DefaultDependencies=no
+RefuseManualStart=true
+RefuseManualStop=true
+Before=ovos-bind.target
+After=mnt-home.mount
+
+[Service]
+Type=oneshot
+ExecStart=/usr/libexec/home-setup
+RemainAfterExit=true
+
+[Install]
+WantedBy=local-fs.target

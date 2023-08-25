@@ -1,4 +1,3 @@
-enable growdisk.service
 enable hostname.service
 enable sshd.service
 enable bluetooth.service

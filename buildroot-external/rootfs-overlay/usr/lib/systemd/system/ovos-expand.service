@@ -1,0 +1,15 @@
+[Unit]
+Description=OpenVoiceOS home partition resizing
+DefaultDependencies=no
+Before=mnt-home.mount
+RefuseManualStart=true
+RefuseManualStop=true
+Requires=dev-disk-by\x2dpartlabel-homefs.device
+After=dev-disk-by\x2dpartlabel-homefs.device systemd-fsck@dev-disk-by\x2dpartlabel-homefs.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/libexec/ovos-expand
+
+[Install]
+WantedBy=local-fs.target
