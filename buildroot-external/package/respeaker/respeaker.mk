@@ -4,7 +4,7 @@
 #
 ################################################################################
 
-RESPEAKER_VERSION = 977a7ff321b1949e8ce4555fb0e3677fd47d46b2
+RESPEAKER_VERSION = 4ab8158c18047e2c6d01e46958e3c1cb34f4983a
 RESPEAKER_SITE = $(call github,HinTak,seeed-voicecard,$(RESPEAKER_VERSION))
 RESPEAKER_LICENSE = GNU General Public License v3.0
 RESPEAKER_DEPENDENCIES = rpi-firmware dtc
@@ -14,10 +14,10 @@ $(eval $(kernel-module))
 define RESPEAKER_INSTALL_TARGET_CMDS
 
 	mkdir -p $(TARGET_DIR)/etc/voicecard
-	$(INSTALL) -D -m 0644 $(@D)/*.state $(TARGET_DIR)/etc/voicecard
+	$(INSTALL) -D -m 0644 $(@D)/ac108_6mic.state $(TARGET_DIR)/etc/voicecard
+	$(INSTALL) -D -m 0644 $(@D)/ac108_asound.state $(TARGET_DIR)/etc/voicecard
 
 	mkdir -p $(BINARIES_DIR)/rpi-firmware/overlays
-	$(INSTALL) -D -m 0644 $(@D)/seeed-2mic-voicecard.dtbo $(BINARIES_DIR)/rpi-firmware/overlays/
         $(INSTALL) -D -m 0644 $(@D)/seeed-4mic-voicecard.dtbo $(BINARIES_DIR)/rpi-firmware/overlays/
         $(INSTALL) -D -m 0644 $(@D)/seeed-8mic-voicecard.dtbo $(BINARIES_DIR)/rpi-firmware/overlays/
 

@@ -1,1 +1,0 @@
-adafruit_platformdetect
