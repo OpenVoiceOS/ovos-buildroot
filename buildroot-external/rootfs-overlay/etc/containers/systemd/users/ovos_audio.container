@@ -14,15 +14,15 @@ LogDriver=journald
 HostName=ovos_audio
 Network=host
 Timezone=local
+UserNS=keep-id:uid=%U,gid=%G
 Environment=PULSE_SERVER=unix:/run/user/1000/pulse/native
-Environment=PULSE_COOKIE=/home/ovos/.config/pulse/cookie
 Environment=DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus
 AddDevice=/dev/snd
 Volume=%h/ovos/config:/home/ovos/.config/mycroft
 Volume=%h/ovos/tmp:/tmp/mycroft
-Volume=%h/.config/pulse/cookie:/home/ovos/.config/pulse/cookie:ro
 Volume=%t/pulse:/run/user/1000/pulse:ro
-Volume=%/bus:/run/user/1000/bus:ro
+Volume=%t/bus:/run/user/1000/bus:ro
+Volume=ovos_tts_cache:/home/ovos/.cache/mycroft
 
 [Service]
 TimeoutStartSec=900

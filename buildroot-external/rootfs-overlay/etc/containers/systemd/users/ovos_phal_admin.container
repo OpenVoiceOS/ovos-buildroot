@@ -12,6 +12,7 @@ LogDriver=journald
 HostName=ovos_phal_admin
 Network=host
 Timezone=local
+UserNS=keep-id:uid=%U,gid=%G
 Volume=%h/ovos/config:/home/ovos/.config/mycroft
 Volume=%h/ovos/tmp:/tmp/mycroft
 Volume=/sys:/sys:ro

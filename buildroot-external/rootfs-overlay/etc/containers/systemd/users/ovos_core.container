@@ -14,12 +14,11 @@ LogDriver=journald
 HostName=ovos_core
 Network=host
 Timezone=local
+UserNS=keep-id:uid=%U,gid=%G
 Environment=PULSE_SERVER=unix:/run/user/1000/pulse/native
-Environment=PULSE_COOKIE=/home/ovos/.config/pulse/cookie
 AddDevice=/dev/snd
 Volume=%h/ovos/config:/home/ovos/.config/mycroft
 Volume=%h/ovos/tmp:/tmp/mycroft
-Volume=%h/.config/pulse/cookie:/home/ovos/.config/pulse/cookie:ro
 Volume=%t/pulse:/run/user/1000/pulse:ro
 Volume=ovos_nltk:/home/ovos/nltk_data
 Volume=%h/ovos/share:/home/ovos/.local/share/mycroft
