@@ -1,0 +1,28 @@
+[Unit]
+Description=OpenVoiceOS PHAL Service
+After=local-fs.target
+Wants=ovos_messagebus.service
+After=ovos_messagebus.service
+
+[Container]
+ContainerName=ovos_phal
+Image=docker.io/smartgic/ovos-phal:alpha
+AutoUpdate=registry
+LogDriver=journald
+HostName=ovos_phal
+Network=host
+Timezone=local
+Environment=PULSE_SERVER=unix:/run/user/1000/pulse/native
+Environment=PULSE_COOKIE=/home/ovos/.config/pulse/cookie
+AddDevice=/dev/snd
+Volume=%h/ovos/config:/home/ovos/.config/mycroft
+Volume=%h/ovos/tmp:/tmp/mycroft
+Volume=%h/.config/pulse/cookie:/home/ovos/.config/pulse/cookie:ro
+Volume=%t/pulse:/run/user/1000/pulse:ro
+
+[Service]
+TimeoutStartSec=900
+Restart=always
+
+[Install]
+WantedBy=multi-user.target default.target

@@ -1,0 +1,33 @@
+[Unit]
+Description=OpenVoiceOS Dinkum Listener Service
+After=local-fs.target
+Wants=ovos_messagebus.service
+After=ovos_messagebus.service
+Wants=ovos_phal.service
+After=ovos_phal.service
+
+[Container]
+ContainerName=ovos_listener
+Image=docker.io/smartgic/ovos-listener-dinkum:alpha
+AutoUpdate=registry
+LogDriver=journald
+HostName=ovos_listener
+Network=host
+Timezone=local
+Environment=PULSE_SERVER=unix:/run/user/1000/pulse/native
+Environment=PULSE_COOKIE=/home/ovos/.config/pulse/cookie
+AddDevice=/dev/snd
+Volume=%h/ovos/config:/home/ovos/.config/mycroft:ro
+Volume=%h/ovos/tmp:/tmp/mycroft
+Volume=%h/.config/pulse/cookie:/home/ovos/.config/pulse/cookie:ro
+Volume=%t/pulse:/run/user/1000/pulse:ro
+Volume=ovos_listener_records:/home/ovos/.local/share/mycroft/listener
+Volume=ovos_models:/home/ovos/.local/share/precise-lite
+Volume=ovos_vosk:/home/ovos/.local/share/vosk
+
+[Service]
+TimeoutStartSec=900
+Restart=always
+
+[Install]
+WantedBy=multi-user.target default.target

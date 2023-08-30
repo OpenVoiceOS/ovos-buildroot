@@ -1,0 +1,32 @@
+[Unit]
+Description=OpenVoiceOS Core Service
+After=local-fs.target
+Wants=ovos_messagebus.service
+After=ovos_messagebus.service
+Wants=ovos_phal.service
+After=ovos_phal.service
+
+[Container]
+ContainerName=ovos_core
+Image=docker.io/smartgic/ovos-core:alpha
+AutoUpdate=registry
+LogDriver=journald
+HostName=ovos_core
+Network=host
+Timezone=local
+Environment=PULSE_SERVER=unix:/run/user/1000/pulse/native
+Environment=PULSE_COOKIE=/home/ovos/.config/pulse/cookie
+AddDevice=/dev/snd
+Volume=%h/ovos/config:/home/ovos/.config/mycroft
+Volume=%h/ovos/tmp:/tmp/mycroft
+Volume=%h/.config/pulse/cookie:/home/ovos/.config/pulse/cookie:ro
+Volume=%t/pulse:/run/user/1000/pulse:ro
+Volume=ovos_nltk:/home/ovos/nltk_data
+Volume=%h/ovos/share:/home/ovos/.local/share/mycroft
+
+[Service]
+TimeoutStartSec=900
+Restart=always
+
+[Install]
+WantedBy=multi-user.target default.target

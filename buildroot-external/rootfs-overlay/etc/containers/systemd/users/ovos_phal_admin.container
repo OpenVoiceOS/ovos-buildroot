@@ -1,0 +1,25 @@
+[Unit]
+Description=OpenVoiceOS PHAL Admin Service
+After=local-fs.target
+Wants=ovos_messagebus.service
+After=ovos_messagebus.service
+
+[Container]
+ContainerName=ovos_phal_admin
+Image=docker.io/smartgic/ovos-phal-admin:alpha
+AutoUpdate=registry
+LogDriver=journald
+HostName=ovos_phal_admin
+Network=host
+Timezone=local
+Volume=%h/ovos/config:/home/ovos/.config/mycroft
+Volume=%h/ovos/tmp:/tmp/mycroft
+Volume=/sys:/sys:ro
+Volume=/dev:/dev:ro
+
+[Service]
+TimeoutStartSec=900
+Restart=always
+
+[Install]
+WantedBy=multi-user.target default.target

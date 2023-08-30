@@ -1,0 +1,21 @@
+[Unit]
+Description=OpenVoiceOS Messagebus Service
+After=local-fs.target
+
+[Container]
+ContainerName=ovos_messagebus
+Image=docker.io/smartgic/ovos-messagebus:alpha
+AutoUpdate=registry
+LogDriver=journald
+HostName=ovos_messagebus
+Network=host
+Timezone=local
+Volume=%h/ovos/config:/home/ovos/.config/mycroft:ro
+Volume=%h/ovos/tmp:/tmp/mycroft
+
+[Service]
+TimeoutStartSec=900
+Restart=unless-stopped
+
+[Install]
+WantedBy=multi-user.target default.target

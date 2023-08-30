@@ -1,0 +1,21 @@
+[Unit]
+Description=OpenVoiceOS CLI
+After=local-fs.target
+
+[Container]
+ContainerName=ovos_cli
+Image=docker.io/smartgic/ovos-cli:alpha
+AutoUpdate=registry
+LogDriver=journald
+HostName=ovos_cli
+Network=host
+Timezone=local
+Volume=%h/ovos/config:/home/ovos/.config/mycroft
+Volume=%h/ovos/tmp:/tmp/mycroft
+
+[Service]
+TimeoutStartSec=900
+Restart=unless-stopped
+
+[Install]
+WantedBy=multi-user.target default.target
