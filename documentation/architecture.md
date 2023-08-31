@@ -11,10 +11,6 @@ A synergy with the boot loader is necessary, because the boot loader must decide
 A seperate overlay partition for all changeable files is used to make the userspace system read/write. This seperate partition can be overlayed over either active rootfs partitions, being it slot A or slot B. A factory reset can therefor also being easliy obtained by resetting that overlay partition. It will then again start with the files shipped within the read only squashfs partition.
 All docker containers and OVOS framework associated configuration files are stored with the users HOME directory which again is a seperate partition at the end of the disk which is also auto extended over the full size of the disk at boot. This is done based on the availability of free unused disk space at boot. (Any boot, being it the first or any consecutive boot)
 
-## Boot system
-
-The system uses UEFI boot stubs to launch the GRUB2 boot loader. The GRUB2 bootloader takes care of booting the active system partition or can be used to boot into rescue mode for both these system partitions.
-
 ## Partition layout
 
 The partition table is written using GPT where possible. Boards/ systems that do not (yet) support GPT, a hybrid system is used. MBR to be able to boot from the ESP bootable partion and from there on GPT takes over again.
