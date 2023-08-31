@@ -44,10 +44,11 @@ In addition to the usual http/https ports (tcp 80, tcp 443) a couple of other po
 
 ## Getting the code.
 First, get the code on your system! The simplest method is via git.
-<br>
-- cd ~/
-- git clone --recurse-submodules https://github.com/OpenVoiceOS/ovos-buildroot.git
-- cd ovos-buildroot
+```
+$ cd ~/
+$ git clone --recurse-submodules https://github.com/OpenVoiceOS/ovos-buildroot.git
+$ cd ovos-buildroot
+```
 
 ## Building the image.
 Building the image(s) can be done by utilizing a proper Makefile;
