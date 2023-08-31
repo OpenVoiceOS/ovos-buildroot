@@ -16,7 +16,7 @@ Volume=%h/ovos/tmp:/tmp/mycroft
 
 [Service]
 TimeoutStartSec=900
-Restart=unless-stopped
+Restart=always
 
 [Install]
 WantedBy=multi-user.target default.target
