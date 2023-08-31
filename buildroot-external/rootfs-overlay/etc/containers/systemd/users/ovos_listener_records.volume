@@ -1,4 +1,4 @@
 [Volume]
-User=mycroft
-Group=mycroft
+User=ovos
+Group=ovos
 Label=name=ovos_listener_records

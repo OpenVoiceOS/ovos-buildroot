@@ -1,7 +1,5 @@
 [Unit]
 Description=Terminate OVOS splash boot Screen
-After=mycroft-messagebus.service
-After=mycroft-gui.service
 
 [Service]
 Type=oneshot

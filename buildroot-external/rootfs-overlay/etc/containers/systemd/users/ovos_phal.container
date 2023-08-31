@@ -15,7 +15,7 @@ HostName=ovos_phal
 Network=host
 Timezone=local
 UserNS=keep-id:uid=%U,gid=%G
-EnvironmentHost=true
+Environment=XDG_RUNTIME_DIR=%t
 AddDevice=/dev/snd
 Volume=%h/ovos/config:/home/ovos/.config/mycroft
 Volume=%h/ovos/tmp:/tmp/mycroft

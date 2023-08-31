@@ -19,8 +19,8 @@ BOARD_DIR="$(dirname $0)"
     echo "HOME_URL=https://github.com/OpenVoiceOS/OpenVoiceOS"
     echo "DOCUMENTATION_URL=https://github.com/OpenVoiceOS/OpenVoiceOS/tree/develop/documentation"
     echo "SUPPORT_URL=https://github.com/OpenVoiceOS/OpenVoiceOS/issues"
-    echo "VARIANT=\"${OVOS_NAME} - Mycroft Edition\""
-    echo "VARIANT_ID=${OVOS_ID}-${BOARD_ID}-mycroft"
+    echo "VARIANT=\"${OVOS_NAME} - Buildroot Edition\""
+    echo "VARIANT_ID=${OVOS_ID}-${BOARD_ID}-buildroot"
 } > "${TARGET_DIR}/usr/lib/os-release"
 
 # Write machine-info

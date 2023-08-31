@@ -30,5 +30,5 @@ config BR2_PACKAGE_OVOS_SPLASH
 
 	  http://git.yoctoproject.org/cgit/cgit.cgi/psplash/
 
-comment "mycroft-splash needs a toolchain w/ wchar"
+comment "ovos-splash needs a toolchain w/ wchar"
 	depends on !BR2_USE_WCHAR
