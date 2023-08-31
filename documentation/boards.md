@@ -2,8 +2,6 @@
 
 ## Supported Hardware:
 
-### Raspberry Pi
-
 | Device | Status | Board | Supported |
 |--------|-----------|-----------|-----------|
 | Raspberry Pi 3 B/B+ | Works | rpi3_64 | Work In Progress |
@@ -16,12 +14,12 @@
 
 ### Raspberry Pi
 
-| Device | Status | Board | Supported |
-|--------|-----------|-----------|-----------|
-| Raspberry Pi A+/B/B+ | Unknown, most likely under powered | N/A | NO |
-| Raspberry Pi Zero | Unknown, most likely under powered | N/A | NO |
-| Raspberry Pi Zero W | Unknown, most likely under powered | N/A | NO |
-| Raspberry Pi 2 B | Unknown, could possibly work | N/A | YES |
+| Device | Status | Board |
+|--------|-----------|-----------|
+| Raspberry Pi A+/B/B+ | Unknown, most likely under powered | N/A |
+| Raspberry Pi Zero | Unknown, most likely under powered | N/A |
+| Raspberry Pi Zero W | Unknown, most likely under powered | N/A |
+| Raspberry Pi 2 B | Unknown, could possibly work | Not available yet |
 
 ### Hardkernel
 
