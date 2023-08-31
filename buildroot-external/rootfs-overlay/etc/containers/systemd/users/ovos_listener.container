@@ -1,6 +1,8 @@
 [Unit]
 Description=OpenVoiceOS Dinkum Listener Service
 After=local-fs.target
+Wants=pipewire.service
+After=pipewire.service
 Wants=ovos_messagebus.service
 After=ovos_messagebus.service
 Wants=ovos_phal.service
@@ -15,11 +17,11 @@ HostName=ovos_listener
 Network=host
 Timezone=local
 UserNS=keep-id:uid=%U,gid=%G
-Environment=PULSE_SERVER=unix:/run/user/1000/pulse/native
+EnvironmentHost=true
 AddDevice=/dev/snd
 Volume=%h/ovos/config:/home/ovos/.config/mycroft:ro
 Volume=%h/ovos/tmp:/tmp/mycroft
-Volume=%t/pulse:/run/user/1000/pulse:ro
+Volume=%t/pipewire-0:/run/user/1000/pipewire-0:ro
 Volume=ovos_listener_records:/home/ovos/.local/share/mycroft/listener
 Volume=ovos_models:/home/ovos/.local/share/precise-lite
 Volume=ovos_vosk:/home/ovos/.local/share/vosk
