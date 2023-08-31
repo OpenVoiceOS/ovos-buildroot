@@ -8,6 +8,9 @@
 | Raspberry Pi 4 | Works | rpi4_64 | YES |
 | Open Virtual Appliance (QEMU, VirtualBox, VMWare, Proxmox, etc)| Works | ova_64 | YES |
 | Generic x86-64 (Intel NUC's) | Works | x86_64 | Work In Progress |
+| Mark - 1 | Works | rpi3_64 | Work In Progress |
+| Mark - 2 (Dev kit) | Works | rpi4_64 | Work In Progress |
+| Mark - 2 (Consumer device)| Works | rpi4_64 | Work In Progress |
 
 <br><br>
 ## Unsupported for now, but (perhaps) possible in the future
