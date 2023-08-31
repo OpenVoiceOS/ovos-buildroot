@@ -23,75 +23,14 @@ A minimalistic Linux OS bringing the open source voice assistant [ovos-core](htt
 | [![Uptime Robot status](https://img.shields.io/website-up-down-green-red/https/shields.io.svg?label=j1nx.nl)](https://stats.uptimerobot.com/Y5L6rSB07) | [![Buy me a](https://img.shields.io/badge/BuyMeABeer-Paypal-blue.svg)](https://www.paypal.me/j1nxnl) |
 | I use uptime robot to monitor for things i can't monitor when the connection drops. | If you feel the need, now it's as easy as clicking this button! |
 
-  
-## Getting started.
-Only use x86_64 based architecture/ hardware to build the image. 
-
-The following example Build environment has been tested :
-
-- Architecture: x86_64 
-- Hardware: Intel Core i5 processor, 8GB RAM, 240GB SSD (you can build on less RAM (2GB) and slower storage but more RAM, faster storage =  quicker image building)
-- OS: Ubuntu 22.04 LTS desktop
-
-#### Installing System Build Dependencies
-Buildroot dependencies must be installed as a prerequisite, assuming apt:
-
-sudo apt-get install -y \
-  bash \
-  bc \
-  binutils \
-  build-essential \
-  bzip2 \
-  cpio \
-  diffutils \
-  file \
-  findutils \
-  gzip \
-  libarchive-tools \
-  make \
-  patch \
-  perl \
-  rsync \
-  sed \
-  tar \
-  unzip \
-  wget \
-  which
-
-#### The following firewall ports need to be allowed to the internet.
-In addition to the usual http/https ports (tcp 80, tcp 443) a couple of other ports need to be allowed to the internet :
-- tcp 9418 (git).
-- tcp 21 (ftp PASV) and random ports for DATA channel. This can be optional but better to have this allowed along with the corresponding random data channel ports. (knowledge of firewalls required)
-
-
-### Getting the code.
-First, get the code on your system! The simplest method is via git.
-<br>
-- cd ~/
-- git clone --recurse-submodules https://github.com/OpenVoiceOS/OpenVoiceOS.git
-- cd OpenVoiceOS
-
-
-## Building the image.
-Building the image(s) can be done by utilizing a proper Makefile;
-<br>
-To see the available commands, just run: 'make help'
-<br>
-As example to build the rpi4 version;<br>
-- make clean
-- make rpi4_64
-
-When everything goes fine the created images/files will be available within the release directory.
-
-
 ## Documentation.
 More information and instructions can be found within the "documentation" folder.
 
 ## Credits
 Mycroft AI (@MycroftAI)<br>
-Buildroot (@buildroot)
-HelloChatterbox (@hellochatterbox)<br>
+Buildroot (@buildroot)<br>
 HassOS (@home-assistant)<br>
 
 ### Inspired by;
 HassOS (@home-assistant)<br>
+SkiffOS (@skiffos)
