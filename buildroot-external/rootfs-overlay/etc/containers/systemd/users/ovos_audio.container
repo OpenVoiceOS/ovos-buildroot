@@ -21,7 +21,7 @@ Environment=DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus
 Environment=XDG_RUNTIME_DIR=%t
 AddDevice=/dev/snd
 Volume=%h/ovos/config:/home/ovos/.config/mycroft
-Volume=%h/ovos/tmp:/tmp/mycroft
+Volume=/dev/shm:/tmp
 Volume=%t/pipewire-0:/run/user/1000/pipewire-0:ro
 Volume=%t/bus:/run/user/1000/bus:ro
 Volume=ovos_tts_cache:/home/ovos/.cache/mycroft

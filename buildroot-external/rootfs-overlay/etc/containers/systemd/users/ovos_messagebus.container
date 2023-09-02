@@ -12,11 +12,11 @@ Network=host
 Timezone=local
 UserNS=keep-id:uid=%U,gid=%G
 Volume=%h/ovos/config:/home/ovos/.config/mycroft:ro
-Volume=%h/ovos/tmp:/tmp/mycroft
+Volume=/dev/shm:/tmp
 
 [Service]
 TimeoutStartSec=900
-Restart=unless-stopped
+Restart=always
 
 [Install]
 WantedBy=multi-user.target default.target

@@ -20,7 +20,7 @@ UserNS=keep-id:uid=%U,gid=%G
 Environment=XDG_RUNTIME_DIR=%t
 AddDevice=/dev/snd
 Volume=%h/ovos/config:/home/ovos/.config/mycroft
-Volume=%h/ovos/tmp:/tmp/mycroft
+Volume=/dev/shm:/tmp
 Volume=%t/pipewire-0:/run/user/1000/pipewire-0:ro
 Volume=ovos_nltk:/home/ovos/nltk_data
 Volume=%h/ovos/share:/home/ovos/.local/share/mycroft
