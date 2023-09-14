@@ -1,4 +1,3 @@
-git+https://github.com/openVoiceOS/skill-alerts.git
 git+https://github.com/openVoiceOS/skill-ovos-date-time.git
 git+https://github.com/openVoiceOS/skill-ovos-naptime.git
 git+https://github.com/openVoiceOS/skill-ovos-news.git
