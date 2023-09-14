@@ -6,8 +6,7 @@ fi
 
 function get_current_root_device
 {
-    PARTUUID=$(swupdate -g | sed 's/PARTUUID=\([^ ]*\).*/\1/');
-    CURRENT_ROOT=$(readlink -f /dev/disk/by-partuuid/$PARTUUID);
+    CURRENT_ROOT=$(swupdate -g);
 }
 
 function get_update_part
@@ -39,11 +38,7 @@ if [ $1 == "preinst" ]; then
 
     # create a symlink for the update process
     ln -sf $UPDATE_ROOT /dev/update
-fi
 
-if [ $1 == "postinst" ]; then
-    get_current_root_device
-    get_update_part
     sync; /usr/bin/grub-editenv /boot/efi/EFI/BOOT/grubenv set default=$GRUB_DEFAULT; sync;
     sync; /usr/bin/grub-editenv /boot/efi/EFI/BOOT/grubenv set fallback=$GRUB_FALLBACK; sync;
 fi
