@@ -11,3 +11,11 @@ echo -e "\e[0m"
 echo "                     --- Welcome to OpenVoiceOS -  --              "
 echo "                                v0.1.1                             "
 echo
+echo "Available Tool COMMANDs:"
+echo "  ovos-cli-client       Command line client, useful for debugging  "
+echo "  ovos-config           Manage your local ovos configuration files "
+echo "  ovos-speak  <phrase>  Have the system speak a phrase to the user "
+echo "  ovos-log-watch        Watch ovos log files live                  "
+echo
+echo "  mana                  Messagebus Application from Neon Ai        "
+echo
