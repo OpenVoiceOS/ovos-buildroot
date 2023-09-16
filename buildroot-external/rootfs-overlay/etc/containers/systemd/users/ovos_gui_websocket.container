@@ -1,8 +1,10 @@
 [Unit]
 Description=OpenVoiceOS GUI Websocket Service
+After=local-fs.target
+After=network-online.target
+Wants=network-online.target
 Wants=ovos_messagebus.service
 After=ovos_messagebus.service
-After=local-fs.target
 
 [Container]
 ContainerName=ovos_gui_websocket

@@ -1,6 +1,8 @@
 [Unit]
 Description=OpenVoiceOS Messagebus Service
 After=local-fs.target
+After=network-online.target
+Wants=network-online.target
 
 [Container]
 ContainerName=ovos_messagebus

@@ -1,6 +1,8 @@
 [Unit]
 Description=OpenVoiceOS PHAL Admin Service
 After=local-fs.target
+After=network-online.target
+Wants=network-online.target
 Wants=ovos_messagebus.service
 After=ovos_messagebus.service
 

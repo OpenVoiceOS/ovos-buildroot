@@ -9,10 +9,10 @@ enable ovos-splash-systemd.service
 enable smb.service
 enable nmb.service
 enable mglru.service
+enable connectivity-check.service
 
 disable pipewire.service
 disable wireplumber.service
-disable ovos-splash-quit.service
 disable mosquitto.service
 disable motion.service
 disable mpd.service
