@@ -1,0 +1,21 @@
+software =
+{
+	name = "OpenVoiceOS";
+	description = "Firmware update for OpenVoiceOS";
+	version = "0.1.1";
+	bootloader_transaction_marker = false;
+	bootloader_state_marker = false;
+	rpi3 = {
+		hardware-compatibility: ["1.0"];
+		update: {
+			rootfs: {
+				images: ({
+					filename = "rootfs.squashfs";
+					device = "/dev/update";
+					installed-directly = true;
+					type = "raw";
+				});
+			};
+		};
+	}
+}
