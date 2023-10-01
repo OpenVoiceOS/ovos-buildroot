@@ -5,7 +5,7 @@ A minimalistic Linux OS bringing the open source voice assistant [ovos-core](htt
 1. [System](https://github.com/OpenVoiceOS/ovos-buildroot#system)
 2. [Stats](https://github.com/OpenVoiceOS/ovos-buildroot#stats)
 3. [Getting Started](https://github.com/OpenVoiceOS/ovos-buildroot#getting-started)
-4. [Building Guide](https://github.com/OpenVoiceOS/ovos-buildroot#building-guide)
+4. [Building Guide](https://github.com/OpenVoiceOS/ovos-buildroot#building)
 5. [Documentation](https://github.com/OpenVoiceOS/ovos-buildroot#documentation)
 6. [Credits](https://github.com/OpenVoiceOS/ovos-buildroot#credits)
 
@@ -76,22 +76,34 @@ In addition to the usual http/https ports (tcp 80, tcp 443) a couple of other po
   - This can be optional but better to have this allowed along with the corresponding random data channel ports. (knowledge of firewalls required)
 
 
-### Getting the code.
+### Installation
 
 The simplest method is to download the source code is via git.
-1. ```cd ~/```
-2. ```git clone --recurse-submodules https://github.com/OpenVoiceOS/OpenVoiceOS.git```
-3. ```cd OpenVoiceOS```
+```
+cd ~/
+```
+```
+git clone --recurse-submodules https://github.com/OpenVoiceOS/OpenVoiceOS.git
+```
+```
+cd OpenVoiceOS
+```
 
 
-## Building Guide
+## Building
 Building the image(s) can be done by utilizing a proper Makefile. To see the available commands, just run: 
 
-```make help```
+```
+make help
+```
 
 As example to build the rpi4 version, run the following make commands: <br>
-1. ```make clean```
-2. ```make rpi4_64```
+```
+make clean
+```
+```
+make rpi4_64
+```
 
 When everything goes fine, the created images/files will be available within the release directory.
 
