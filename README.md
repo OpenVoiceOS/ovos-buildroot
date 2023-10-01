@@ -1,7 +1,15 @@
 # <img src='https://camo.githubusercontent.com/48b782bbddb51b97cf2971fda5817080075f7799/68747470733a2f2f7261772e6769746861636b2e636f6d2f466f7274417765736f6d652f466f6e742d417765736f6d652f6d61737465722f737667732f736f6c69642f636f67732e737667' width='50' height='50' style='vertical-align:bottom'/> Open Voice Operating System - Buildroot Edition
 A minimalistic Linux OS bringing the open source voice assistant [ovos-core](https://github.com/OpenVoiceOS/ovos-core) to embedded, low-spec headless and/or small (touch)screen devices.
 
-## System.
+## Table of Contents
+1. [System](https://github.com/OpenVoiceOS/ovos-buildroot#system)
+2. [Stats](https://github.com/OpenVoiceOS/ovos-buildroot#stats)
+3. [Getting Started](https://github.com/OpenVoiceOS/ovos-buildroot#getting-started)
+4. [Building Guide](https://github.com/OpenVoiceOS/ovos-buildroot#building-guide)
+5. [Documentation](https://github.com/OpenVoiceOS/ovos-buildroot#documentation)
+6. [Credits](https://github.com/OpenVoiceOS/ovos-buildroot#credits)
+
+## System
 ### OpenVoiceOS - Full 64 Bit distribution
 - Linux kernel 6.1.x (LTS)
 - Buildroot 2023.02.x (LTS) (With some modification here and there)
@@ -11,7 +19,7 @@ A minimalistic Linux OS bringing the open source voice assistant [ovos-core](htt
 - x86_64 Intel based computers (UEFI based)
 - Open Virtual Appliance (UEFI based)
 
-## Stats:
+## Stats
 
 | [![Build Status](https://travis-ci.org/OpenVoiceOS/OpenVoiceOS.svg?branch=master)](https://travis-ci.org/OpenVoiceOS/OpenVoiceOS) | [![GitHub last commit](https://img.shields.io/github/last-commit/google/skia.svg)](https://github.com/OpenVoiceOS/OpenVoiceOS/commits/develop) |
 |:---:|:---:|
@@ -24,7 +32,7 @@ A minimalistic Linux OS bringing the open source voice assistant [ovos-core](htt
 | I use uptime robot to monitor for things i can't monitor when the connection drops. | If you feel the need, now it's as easy as clicking this button! |
 
   
-## Getting started.
+## Getting Started
 Only use x86_64 based architecture/ hardware to build the image. 
 
 The following example Build environment has been tested :
@@ -72,7 +80,7 @@ First, get the code on your system! The simplest method is via git.
 - cd OpenVoiceOS
 
 
-## Building the image.
+## Building Guide
 Building the image(s) can be done by utilizing a proper Makefile;
 <br>
 To see the available commands, just run: 'make help'
@@ -84,7 +92,7 @@ As example to build the rpi4 version;<br>
 When everything goes fine the created images/files will be available within the release directory.
 
 
-## Documentation.
+## Documentation
 More information and instructions can be found within the "documentation" folder.
 
 ## Credits
@@ -93,5 +101,5 @@ Buildroot (@buildroot)
 HelloChatterbox (@hellochatterbox)<br>
 HassOS (@home-assistant)<br>
 
-### Inspired by;
+### Inspired by:
 HassOS (@home-assistant)<br>
