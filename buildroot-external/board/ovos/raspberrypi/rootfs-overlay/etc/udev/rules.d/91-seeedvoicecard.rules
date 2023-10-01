@@ -1,0 +1,13 @@
+SUBSYSTEM!="sound", GOTO="seeedvoicecard_end"
+ACTION!="change", GOTO="seeedvoicecard_end"
+KERNEL!="card*", GOTO="seeedvoicecard_end"
+
+# PulseAudio profile sets
+ATTR{id}=="seeed4micvoicec",ENV{PULSE_PROFILE_SET}="seeed-voicecard-4mic.conf"
+ATTR{id}=="seeed8micvoicec",ENV{PULSE_PROFILE_SET}="seeed-voicecard-8mic.conf"
+
+# ALSA profile sets
+ATTR{id}=="seeed4micvoicec",ENV{ACP_PROFILE_SET}="seeed-voicecard-4mic.conf"
+ATTR{id}=="seeed8micvoicec",ENV{ACP_PROFILE_SET}="seeed-voicecard-8mic.conf"
+
+LABEL="seeedvoicecard_end"
