@@ -42,58 +42,61 @@ The following example Build environment has been tested :
 - OS: Ubuntu 22.04 LTS desktop
 
 #### Installing System Build Dependencies
-Buildroot dependencies must be installed as a prerequisite, assuming apt:
+Buildroot dependencies must be installed as a prerequisite. Below is a list of required dependencies.
+- bash 
+- bc 
+- binutils 
+- build-essential 
+- bzip2 
+- cpio 
+- diffutils 
+- file 
+- findutils 
+- gzip 
+- libarchive-tools 
+- make 
+- patch 
+- perl 
+- rsync 
+- sed 
+- tar 
+- unzip 
+- wget 
+- which
 
-sudo apt-get install -y \
-  bash \
-  bc \
-  binutils \
-  build-essential \
-  bzip2 \
-  cpio \
-  diffutils \
-  file \
-  findutils \
-  gzip \
-  libarchive-tools \
-  make \
-  patch \
-  perl \
-  rsync \
-  sed \
-  tar \
-  unzip \
-  wget \
-  which
+Assuming apt, the following command will install all of these required dependencies:
 
+```
+sudo apt-get install -y bash bc binutils build-essential bzip2 cpio diffutils file findutils gzip libarchive-tools make patch perl rsync sed tar unzip wget which
+```
 #### The following firewall ports need to be allowed to the internet.
 In addition to the usual http/https ports (tcp 80, tcp 443) a couple of other ports need to be allowed to the internet :
 - tcp 9418 (git).
-- tcp 21 (ftp PASV) and random ports for DATA channel. This can be optional but better to have this allowed along with the corresponding random data channel ports. (knowledge of firewalls required)
+- tcp 21 (ftp PASV) and random ports for DATA channel. 
+  - This can be optional but better to have this allowed along with the corresponding random data channel ports. (knowledge of firewalls required)
 
 
 ### Getting the code.
-First, get the code on your system! The simplest method is via git.
-<br>
-- cd ~/
-- git clone --recurse-submodules https://github.com/OpenVoiceOS/OpenVoiceOS.git
-- cd OpenVoiceOS
+
+The simplest method is to download the source code is via git.
+1. ```cd ~/```
+2. ```git clone --recurse-submodules https://github.com/OpenVoiceOS/OpenVoiceOS.git```
+3. ```cd OpenVoiceOS```
 
 
 ## Building Guide
-Building the image(s) can be done by utilizing a proper Makefile;
-<br>
-To see the available commands, just run: 'make help'
-<br>
-As example to build the rpi4 version;<br>
-- make clean
-- make rpi4_64
+Building the image(s) can be done by utilizing a proper Makefile. To see the available commands, just run: 
 
-When everything goes fine the created images/files will be available within the release directory.
+```make help```
 
+As example to build the rpi4 version, run the following make commands: <br>
+1. ```make clean```
+2. ```make rpi4_64```
+
+When everything goes fine, the created images/files will be available within the release directory.
 
 ## Documentation
-More information and instructions can be found within the "documentation" folder.
+More information and instructions can be found within the [Documentation](https://github.com/OpenVoiceOS/ovos-buildroot/tree/develop/documentation) folder.
 
 ## Credits
 Mycroft AI (@MycroftAI)<br>
