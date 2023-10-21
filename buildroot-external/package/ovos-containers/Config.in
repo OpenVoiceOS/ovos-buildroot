@@ -1,0 +1,21 @@
+menuconfig BR2_PACKAGE_OVOS_CONTAINERS
+	bool "Pre-install OVOS containers"
+	help
+	  This is the system layer that prepares and
+	  pre-install the required OVOS containers.
+
+	  https://github.com/OpenVoiceOS/ovos-docker
+
+if BR2_PACKAGE_OVOS_CONTAINERS
+
+config BR2_PACKAGE_OVOS_CONTAINERS_ARCH
+	string "Container Arch"
+	help
+	  Architecture for which we should be pull.
+
+config BR2_PACKAGE_OVOS_CONTAINERS_IMAGES
+	string "Images"
+	help
+	  Space separated list of images to pull.
+
+endif
