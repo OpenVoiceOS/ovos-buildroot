@@ -15,86 +15,57 @@
 # limitations under the License.
 ##########################################################################
 
-# Set default configurations
-ASOUND_STATE=/var/lib/alsa/default-asound.state
-PULSE_SYSTEM=/etc/pulse/pulseaudio-system.pa
-PULSE_DAEMON=/etc/pulse/pulseaudio-daemon.conf
-
 # Scanning the I2C bus for know addresses
-is_1a=$(i2cdetect -y 1 0x1a 0x1a | egrep "(1a|UU)" | awk '{print $2}') # ReSpeaker 2-mic / WM8960
+is_1a=$(i2cdetect -y 1 0x1a 0x1a | grep -E "(1a|UU)" | awk '{print $2}') # ReSpeaker 2-mic / WM8960
 if [ "${is_1a}" == "1a" ] || [ "${is_1a}" == "UU" ] ; then
     RESPEAKER2=found
     echo "ReSpeaker 2-mic $RESPEAKER2"
 fi
 
-is_35=$(i2cdetect -y 1 0x35 0x35 | egrep "(35|UU)" | awk '{print $2}') # ReSpeaker 4-mic squared
+is_35=$(i2cdetect -y 1 0x35 0x35 | grep -E "(35|UU)" | awk '{print $2}') # ReSpeaker 4-mic squared
 if [ "${is_35}" == "35" ] || [ "${is_35}" == "UU" ] ; then
     RESPEAKER4=found
     echo "ReSpeaker 4-mic $RESPEAKER4"
 fi
 
-is_3b=$(i2cdetect -y 1 0x3b 0x3b | egrep "(3b|UU)" | awk '{print $2}') # ReSpeaker 4-mic lineair / 6-mic
+is_3b=$(i2cdetect -y 1 0x3b 0x3b | grep -E "(3b|UU)" | awk '{print $2}') # ReSpeaker 4-mic lineair / 6-mic
 if [ "${is_3b}" == "3b" ] || [ "${is_3b}" == "UU" ] ; then
     RESPEAKER6=found
     echo "ReSpeaker 6-mic $RESPEAKER6"
 fi
 
-is_4b=$(i2cdetect -y 1 0x4b 0x4b | egrep "(4b|UU)" | awk '{print $2}') # Adafruit
+is_4b=$(i2cdetect -y 1 0x4b 0x4b | grep -E "(4b|UU)" | awk '{print $2}') # Adafruit
 if [ "${is_4b}" == "4b" ] || [ "${is_4b}" == "UU" ] ; then
     ADAFRUIT=found
     echo "Adafruit $ADAFRUIT"
 fi
 
-is_2f=$(i2cdetect -y 1 0x2f 0x2f | egrep "(2f|UU)" | awk '{print $2}') # TAS5806
+is_2f=$(i2cdetect -y 1 0x2f 0x2f | grep -E "(2f|UU)" | awk '{print $2}') # TAS5806
 if [ "${is_2f}" == "2f" ] || [ "${is_2f}" == "UU" ] ; then
     TAS5806=found
     echo "Texas Instruments 5806 $TAS5806"
 fi
 
-is_04=$(i2cdetect -y -a 1 0x04 0x04 | egrep "(04|UU)" | awk '{print $2}') # SJ201 Led Ring
+is_04=$(i2cdetect -y -a 1 0x04 0x04 | grep -E "(04|UU)" | awk '{print $2}') # SJ201 Led Ring
 if [ "${is_04}" == "04" ] || [ "${is_04}" == "UU" ] ; then
     SJ201LED=found
     echo "Mark2-Devkit SJ201 Leds $SJ201LED"
 fi
 
-
-# Remove old configurations
-if [ -f /etc/pulse/system.pa ] ; then
-    rm /etc/pulse/system.pa
-fi
-if [ -f /etc/pulse/default.pa ] ; then
-    rm /etc/pulse/default.pa
-fi
-if [ -f /etc/pulse/daemon.conf ] ; then
-    rm /etc/pulse/daemon.conf
-fi
-if [ -f /var/lib/alsa/asound.state ] ; then
-    rm /var/lib/alsa/asound.state
-fi
-if [ -f /etc/ovos_asound.state ] ; then
-    rm /etc/ovos_asound.state
-fi
-
+# Configure found devices
 if [ "$RESPEAKER2" == "found" ] && [ "$RESPEAKER4" != "found" ] ; then
     echo "Installing and configuring ReSpeaker 2-mic"
     dtoverlay seeed-2mic-voicecard
-    ASOUND_STATE=/etc/voicecard/wm8960_asound.state
 fi
 
 if [ "${RESPEAKER6}" == "found" ] && [ "${RESPEAKER4}" != "found" ] ; then
     echo "Installing and configuring ReSpeaker 4-mic"
     dtoverlay seeed-4mic-voicecard
-    ASOUND_STATE=/etc/voicecard/ac108_asound.state
-    PULSE_SYSTEM=/etc/pulse/seeed-voicecard-4mic-default.pa
-    PULSE_DAEMON=/etc/pulse/seeed-voicecard-4mic-daemon.conf
 fi
 
 if [ "{$RESPEAKER6}" == "found" ] && [ "${RESPEAKER4}" == "found" ] ; then
     echo "Installing and configuring ReSpeaker 6mic"
     dtoverlay seeed-8mic-voicecard
-    ASOUND_STATE=/etc/voicecard/ac108_6mic.state
-    PULSE_SYSTEM=/etc/pulse/seeed-voicecard-8mic-default.pa
-    PULSE_DAEMON=/etc/pulse/seeed-voicecard-8mic-daemon.conf
 fi
 
 if [ "$ADAFRUIT" ] ; then
@@ -115,23 +86,4 @@ if [ "$TAS5806" ] ; then
     fi
     # Reset FAN to low speed
     /usr/sbin/i2cset -a -y 1 0x04 101 30 i
-
-    PULSE_SYSTEM=/etc/pulse/mycroft-sj201-default.pa
-    PULSE_DAEMON=/etc/pulse/mycroft-sj201-daemon.conf
 fi
-
-# Install soundstate
-echo "create asound status file"
-ln -s $ASOUND_STATE /etc/ovos_asound.state
-ln -s $ASOUND_STATE /var/lib/alsa/asound.state
-
-# Install pulseaudio files
-echo "create pulse system file"
-ln -s $PULSE_SYSTEM /etc/pulse/system.pa
-echo "create pulse default file"
-ln -s $PULSE_SYSTEM /etc/pulse/default.pa
-echo "create pulse daemon file"
-ln -s $PULSE_DAEMON /etc/pulse/daemon.conf
-
-# Restore sound levels
-alsactl -E HOME=/run/alsa -f /etc/ovos_asound.state restore
