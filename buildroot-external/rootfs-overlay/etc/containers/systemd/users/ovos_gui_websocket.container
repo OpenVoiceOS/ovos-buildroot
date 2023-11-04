@@ -17,6 +17,7 @@ Timezone=local
 UserNS=keep-id:uid=%U,gid=%G
 Volume=%h/ovos/config:/home/ovos/.config/mycroft:ro
 Volume=/dev/shm:/tmp
+Volume=ovos_gui_files:/home/ovos/.cache/ovos_gui_file_server
 
 [Service]
 TimeoutStartSec=900

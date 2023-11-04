@@ -1,0 +1,4 @@
+[Volume]
+User=ovos
+Group=ovos
+Label=name=ovos_gui_files

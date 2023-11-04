@@ -14,7 +14,7 @@ After=ovos_gui_websocker.service
 
 [Container]
 ContainerName=ovos_gui
-Image=docker.io/smartgic/ovos-gui:alpha
+Image=docker.io/smartgic/ovos-gui-shell:alpha
 AutoUpdate=registry
 LogDriver=journald
 HostName=ovos_gui
@@ -22,6 +22,7 @@ Network=host
 Timezone=local
 UserNS=keep-id:uid=%U,gid=%G
 Environment=DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus
+Environment=DISPLAY=:0
 Environment=XDG_RUNTIME_DIR=%t
 Environment=QT_QPA_PLATFORM=eglfs
 Environment=QT_QPA_EGLFS_KMS_ATOMIC=1
@@ -41,6 +42,7 @@ Volume=/dev/shm:/tmp
 Volume=%t/pipewire-0:/run/user/1000/pipewire-0:ro
 Volume=%t/bus:/run/user/1000/bus:ro
 Volume=%h/ovos/share:/home/ovos/.local/share/mycroft
+Volume=ovos_gui_files:/home/ovos/.cache/gui_files
 
 [Service]
 TimeoutStartSec=900
