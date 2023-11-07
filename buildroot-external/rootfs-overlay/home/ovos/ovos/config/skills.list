@@ -1,3 +1,4 @@
+git+https://github.com/OpenVoiceOS/skill-ovos-homescreen.git
 git+https://github.com/openVoiceOS/skill-ovos-date-time.git
 git+https://github.com/openVoiceOS/skill-ovos-naptime.git
 git+https://github.com/openVoiceOS/skill-ovos-news.git
