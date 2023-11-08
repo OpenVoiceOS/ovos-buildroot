@@ -6,6 +6,7 @@ enable NetworkManager.service
 enable getty@tty1.service
 enable ovos-splash-start.service
 enable ovos-splash-systemd.service
+enable ovos-splash-quit.service
 enable smb.service
 enable nmb.service
 enable mglru.service
