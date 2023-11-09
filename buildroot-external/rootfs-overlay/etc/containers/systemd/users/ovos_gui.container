@@ -22,7 +22,6 @@ Network=host
 Timezone=local
 UserNS=keep-id:uid=%U,gid=%G
 Environment=DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus
-Environment=DISPLAY=:0
 Environment=XDG_RUNTIME_DIR=%t
 Environment=QT_QPA_PLATFORM=eglfs
 Environment=QT_QPA_EGLFS_KMS_ATOMIC=1
