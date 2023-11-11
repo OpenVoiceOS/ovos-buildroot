@@ -1,0 +1,35 @@
+[Unit]
+Description=OpenVoiceOS Audio Service
+After=local-fs.target
+After=network-online.target
+Wants=network-online.target
+Wants=pipewire.service
+After=pipewire.service
+Wants=ovos_messagebus.service
+After=ovos_messagebus.service
+Wants=ovos_phal.service
+After=ovos_phal.service
+
+[Container]
+ContainerName=ovos_audio
+Image=docker.io/smartgic/ovos-audio:alpha
+AutoUpdate=registry
+LogDriver=journald
+HostName=ovos_audio
+Network=host
+Timezone=local
+UserNS=keep-id:uid=%U,gid=%G
+EnvironmentFile=%h/.config/containers/env
+AddDevice=/dev/snd
+Volume=%h/ovos/config:/home/ovos/.config/mycroft
+Volume=/dev/shm:/tmp
+Volume=%t/pipewire-0:/run/user/1000/pipewire-0:ro
+Volume=%t/bus:/run/user/1000/bus:ro
+Volume=ovos_tts_cache:/home/ovos/.cache/mycroft
+
+[Service]
+TimeoutStartSec=900
+Restart=always
+
+[Install]
+WantedBy=multi-user.target default.target

@@ -1,5 +1,5 @@
 [Unit]
-Description=OpenVoiceOS Core Service
+Description=OpenVoiceOS Dinkum Listener Service
 After=local-fs.target
 After=network-online.target
 Wants=network-online.target
@@ -11,21 +11,22 @@ Wants=ovos_phal.service
 After=ovos_phal.service
 
 [Container]
-ContainerName=ovos_core
-Image=docker.io/smartgic/ovos-core:alpha
+ContainerName=ovos_listener
+Image=docker.io/smartgic/ovos-listener-dinkum:alpha
 AutoUpdate=registry
 LogDriver=journald
-HostName=ovos_core
+HostName=ovos_listener
 Network=host
 Timezone=local
 UserNS=keep-id:uid=%U,gid=%G
-Environment=XDG_RUNTIME_DIR=%t
+EnvironmentFile=%h/.config/containers/env
 AddDevice=/dev/snd
-Volume=%h/ovos/config:/home/ovos/.config/mycroft
+Volume=%h/ovos/config:/home/ovos/.config/mycroft:ro
 Volume=/dev/shm:/tmp
 Volume=%t/pipewire-0:/run/user/1000/pipewire-0:ro
-Volume=ovos_nltk:/home/ovos/nltk_data
-Volume=%h/ovos/share:/home/ovos/.local/share/mycroft
+Volume=ovos_listener_records:/home/ovos/.local/share/mycroft/listener
+Volume=ovos_models:/home/ovos/.local/share/precise-lite
+Volume=ovos_vosk:/home/ovos/.local/share/vosk
 
 [Service]
 TimeoutStartSec=900

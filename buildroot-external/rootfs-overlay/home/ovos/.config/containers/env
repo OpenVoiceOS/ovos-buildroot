@@ -1,0 +1,14 @@
+DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus
+XDG_RUNTIME_DIR=/run/user/1000
+QT_QPA_PLATFORM=eglfs
+QT_QPA_EGLFS_HIDECURSOR=1
+QT_QPA_EGLFS_KMS_ATOMIC=1
+QT_QPA_PLATFORMTHEME=qt5ct
+QT_PLUGIN_PATH=/usr/lib/qt/plugins:/usr/lib/plugins:/usr/lib/plugins/kf5
+QT_FILE_SELECTORS=ovos
+QT_FONT_DPI=120
+QT_IM_MODULE=qtvirtualkeyboard
+QT_QUICK_CONTROLS_STYLE=OpenVoiceStyle
+XDG_CURRENT_DESKTOP=kde
+QML2_IMPORT_PATH=/usr/lib/qml
+#QT_LOGGING_RULES=*=false

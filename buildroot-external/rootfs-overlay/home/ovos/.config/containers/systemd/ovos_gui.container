@@ -1,5 +1,5 @@
 [Unit]
-Description=OpenVoiceOS Dinkum Listener Service
+Description=OpenVoiceOS GUI Service
 After=local-fs.target
 After=network-online.target
 Wants=network-online.target
@@ -9,24 +9,30 @@ Wants=ovos_messagebus.service
 After=ovos_messagebus.service
 Wants=ovos_phal.service
 After=ovos_phal.service
+Wants=ovos_gui_websocket.service
+After=ovos_gui_websocker.service
 
 [Container]
-ContainerName=ovos_listener
-Image=docker.io/smartgic/ovos-listener-dinkum:alpha
+ContainerName=ovos_gui
+Image=docker.io/smartgic/ovos-gui-shell:alpha
 AutoUpdate=registry
 LogDriver=journald
-HostName=ovos_listener
+HostName=ovos_gui
 Network=host
 Timezone=local
 UserNS=keep-id:uid=%U,gid=%G
-Environment=XDG_RUNTIME_DIR=%t
+EnvironmentFile=%h/.config/containers/env
 AddDevice=/dev/snd
-Volume=%h/ovos/config:/home/ovos/.config/mycroft:ro
+AddDevice=/dev/dri
+AddDevice=/dev/vchiq
+AddDevice=/dev/input
+Volume=%h/ovos/config:/home/ovos/.config/mycroft
 Volume=/dev/shm:/tmp
 Volume=%t/pipewire-0:/run/user/1000/pipewire-0:ro
-Volume=ovos_listener_records:/home/ovos/.local/share/mycroft/listener
-Volume=ovos_models:/home/ovos/.local/share/precise-lite
-Volume=ovos_vosk:/home/ovos/.local/share/vosk
+Volume=%t/bus:/run/user/1000/bus:ro
+Volume=%h/ovos/share:/home/ovos/.local/share/mycroft
+Volume=ovos_gui_files:/home/ovos/.cache/gui_files
+Volume=/run/udev/data:/run/udev/data:ro
 
 [Service]
 TimeoutStartSec=900
