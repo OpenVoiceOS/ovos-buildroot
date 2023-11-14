@@ -1,0 +1,32 @@
+[Unit]
+Description=OpenVoiceOS PHAL Service
+After=local-fs.target
+After=network-online.target
+Wants=network-online.target
+Wants=pipewire.service
+After=pipewire.service
+Wants=ovos_messagebus.service
+After=ovos_messagebus.service
+
+[Container]
+ContainerName=ovos_phal
+Image=docker.io/smartgic/ovos-phal:alpha
+AutoUpdate=registry
+LogDriver=journald
+HostName=ovos_phal
+Network=host
+Timezone=local
+UserNS=keep-id:uid=%U,gid=%G
+EnvironmentFile=%h/.config/containers/env
+AddDevice=/dev/snd
+# AddDevice=/dev/gpiomem # Raspberry Pi only
+Volume=%h/ovos/config:/home/ovos/.config/mycroft
+Volume=/dev/shm:/tmp
+Volume=%t/pipewire-0:/run/user/1000/pipewire-0:ro
+
+[Service]
+TimeoutStartSec=900
+Restart=always
+
+[Install]
+WantedBy=multi-user.target default.target

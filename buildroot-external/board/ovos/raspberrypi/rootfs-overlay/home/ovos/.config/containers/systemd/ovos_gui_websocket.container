@@ -1,0 +1,27 @@
+[Unit]
+Description=OpenVoiceOS GUI Websocket Service
+After=local-fs.target
+After=network-online.target
+Wants=network-online.target
+Wants=ovos_messagebus.service
+After=ovos_messagebus.service
+
+[Container]
+ContainerName=ovos_gui_websocket
+Image=docker.io/smartgic/ovos-gui-websocket:alpha
+AutoUpdate=registry
+LogDriver=journald
+HostName=ovos_gui_websocket
+Network=host
+Timezone=local
+UserNS=keep-id:uid=%U,gid=%G
+Volume=%h/ovos/config:/home/ovos/.config/mycroft:ro
+Volume=/dev/shm:/tmp
+Volume=ovos_gui_files:/home/ovos/.cache/ovos_gui_file_server
+
+[Service]
+TimeoutStartSec=900
+Restart=always
+
+[Install]
+WantedBy=multi-user.target default.target
