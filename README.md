@@ -6,9 +6,9 @@ A minimalistic Linux OS bringing the open source voice assistant [ovos-core](htt
 - Linux kernel 6.1.x (LTS)
 - Buildroot 2023.02.x (LTS) (With some modification here and there)
 - OVOS framework / software package utilizing ovos-docker containers (Currently latest alpha/development version)
-- Raspberry Pi 3|3b|3b+
-- Raspberry Pi 4 
-- x86_64 Intel based computers (UEFI based)
+- Raspberry Pi 3|3b|3b+ (UEFI based)
+- Raspberry Pi 4 (UEFI based)
+- x86_64 Intel based computers (UEFI based) (Work In Progress)
 - Open Virtual Appliance (UEFI based)
 
 ## Stats:
