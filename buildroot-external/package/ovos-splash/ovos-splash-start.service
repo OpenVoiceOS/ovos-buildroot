@@ -1,7 +1,5 @@
 [Unit]
 Description=Starts OVOS splash boot screen
-Requires=dev-dri-card0.device
-After=dev-dri-card0.device
 Requires=dev-fb0.device
 After=dev-fb0.device
 DefaultDependencies=no
