@@ -56,3 +56,18 @@ do
         ;;
     esac
 done
+
+# Prepare home data
+rm -f ${BINARIES_DIR}/homefs.ext4
+truncate --size="5G" ${BINARIES_DIR}/homefs.ext4
+mkfs.ext4 -L "homefs" -E lazy_itable_init=0,lazy_journal_init=0 ${BINARIES_DIR}/homefs.ext4
+
+# Mount home image
+mkdir -p ${BINARIES_DIR}/home
+sudo mount -o loop,discard ${BINARIES_DIR}/homefs.ext4 ${BINARIES_DIR}/home
+
+# sync home folder
+sudo rsync -ah --progress ${TARGET_DIR}/home/* ${BINARIES_DIR}/home/
+
+# Unmount home image
+sudo umount ${BINARIES_DIR}/homefs.ext4
