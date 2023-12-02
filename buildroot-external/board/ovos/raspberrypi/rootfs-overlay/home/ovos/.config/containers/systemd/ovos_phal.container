@@ -21,8 +21,9 @@ EnvironmentFile=%h/.config/containers/env
 AddDevice=/dev/snd
 AddDevice=/dev/gpiomem
 Volume=%h/ovos/config:/home/ovos/.config/mycroft
-Volume=/dev/shm:/tmp
+Volume=%h/ovos/tmp:/tmp
 Volume=%t/pipewire-0:/run/user/1000/pipewire-0:ro
+Volume=ovos_venv_phal:/home/ovos/.venv
 
 [Service]
 TimeoutStartSec=900

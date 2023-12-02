@@ -1,4 +1,4 @@
-SUBSYSTEM=="input", GROUP="input", MODE="0660"
+SUBSYSTEM=="input", GROUP="input", MODE="0666"
 SUBSYSTEM=="i2c-dev", GROUP="i2c", MODE="0660"
 SUBSYSTEM=="spidev", GROUP="spi", MODE="0660"
 SUBSYSTEM=="bcm2835-gpiomem", GROUP="gpio", MODE="0660"

@@ -1,12 +1,10 @@
 git+https://github.com/OpenVoiceOS/skill-ovos-homescreen.git
 git+https://github.com/openVoiceOS/skill-ovos-date-time.git
 git+https://github.com/openVoiceOS/skill-ovos-naptime.git
-git+https://github.com/openVoiceOS/skill-ovos-news.git
 git+https://github.com/OpenVoiceOS/skill-ovos-personal.git
 git+https://github.com/OpenVoiceOS/skill-ovos-stop.git
 git+https://github.com/OpenVoiceOS/skill-ovos-volume.git
 git+https://github.com/OpenVoiceOS/skill-ovos-weather.git
-git+https://github.com/OpenVoiceOS/skill-ovos-youtube-music.git
 git+https://github.com/OpenVoiceOS/skill-ovos-fallback-unknown.git
 git+https://github.com/OpenVoiceOS/skill-ovos-wikipedia.git
 git+https://github.com/OpenVoiceOS/skill-ovos-wolfie.git
