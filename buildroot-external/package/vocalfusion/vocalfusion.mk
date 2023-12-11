@@ -4,14 +4,14 @@
 #
 ################################################################################
 
-VOCALFUSION_VERSION = c8c29036992a88726dcdfb967cbc1d9f14a95534
+VOCALFUSION_VERSION = 2c22f1bb90bf51fdde94ea263636678b22702062
 VOCALFUSION_SITE = $(call github,OpenVoiceOS,VocalFusionDriver,$(VOCALFUSION_VERSION))
 VOCALFUSION_MODULE_SUBDIRS = driver
 
 $(eval $(kernel-module))
 
 define VOCALFUSION_INSTALL_TARGET_CMDS
-	$(INSTALL) -D -m 0644 $(@D)/xvf3510.dtbo $(BINARIES_DIR)/rpi-firmware/overlays/
+	$(INSTALL) -D -m 0644 $(@D)/*.dtbo $(BINARIES_DIR)/rpi-firmware/overlays/
 
 	$(INSTALL) -D -m 755 $(BR2_EXTERNAL_OPENVOICEOS_PATH)/package/vocalfusion/xvf3510-flash \
                 $(TARGET_DIR)/usr/sbin/xvf3510-flash
