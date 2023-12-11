@@ -40,6 +40,12 @@ if [ "${is_4b}" == "4b" ] || [ "${is_4b}" == "UU" ] ; then
     echo "Adafruit $ADAFRUIT"
 fi
 
+is_2f=$(i2cdetect -y 1 0x2c 0x2c | grep -E "(2c|UU)" | awk '{print $2}') # TAS5806
+if [ "${is_2c}" == "2c" ] || [ "${is_2c}" == "UU" ] ; then
+    XMOS=found
+    echo "XMOS Chip $XMOS"
+fi
+
 is_2f=$(i2cdetect -y 1 0x2f 0x2f | grep -E "(2f|UU)" | awk '{print $2}') # TAS5806
 if [ "${is_2f}" == "2f" ] || [ "${is_2f}" == "UU" ] ; then
     TAS5806=found
@@ -81,9 +87,15 @@ if [ "$TAS5806" ] ; then
     # Initializing Texas Instruments 5806 Amplifier
     /usr/bin/tas5806-init
     if [ "$SJ201LED" ] ; then
+       echo "Found revision-6 SJ-201 board"
        # Initializing and resetting LED ring
        /usr/bin/sj201-reset-led
+       # Reset FAN to low speed
+       /usr/sbin/i2cset -a -y 1 0x04 101 30 i
+    else
+       echo "Assume revision-10 SJ-201 board"
+       dtoverlay sj201-rev10-pwm-fan-overlay
     fi
-    # Reset FAN to low speed
-    /usr/sbin/i2cset -a -y 1 0x04 101 30 i
+    echo "Configuring buttons"
+    dtoverlay sj201-buttons-overlay
 fi
