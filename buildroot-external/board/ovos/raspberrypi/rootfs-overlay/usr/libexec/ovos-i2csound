@@ -16,10 +16,10 @@
 ##########################################################################
 
 # Scanning the I2C bus for know addresses
-is_1a=$(i2cdetect -y 1 0x1a 0x1a | grep -E "(1a|UU)" | awk '{print $2}') # ReSpeaker 2-mic / WM8960
+is_1a=$(i2cdetect -y 1 0x1a 0x1a | grep -E "(1a|UU)" | awk '{print $2}') # ReSpeaker 2-mic / WM8960 based
 if [ "${is_1a}" == "1a" ] || [ "${is_1a}" == "UU" ] ; then
-    RESPEAKER2=found
-    echo "ReSpeaker 2-mic $RESPEAKER2"
+    WM8960=found
+    echo "WM8960 based 2-mic $WM8960"
 fi
 
 is_35=$(i2cdetect -y 1 0x35 0x35 | grep -E "(35|UU)" | awk '{print $2}') # ReSpeaker 4-mic squared
@@ -59,30 +59,31 @@ if [ "${is_04}" == "04" ] || [ "${is_04}" == "UU" ] ; then
 fi
 
 # Configure found devices
-if [ "$RESPEAKER2" == "found" ] && [ "$RESPEAKER4" != "found" ] ; then
+if [ "$WM8960" == "found" ] && [ "$RESPEAKER4" != "found" ] ; then
     echo "Installing and configuring WM8960 based 2-mic HAT"
     dtoverlay wm8960-soundcard
     echo "Configuring board"
-    amixer cset numid=1 34,34
-    amixer cset numid=26 3
-    amixer cset numid=27 4
-    amixer cset numid=30 5
-    amixer cset numid=32 5
-    amixer cset numid=33 5
-    amixer cset numid=34 25
-    amixer cset numid=35 on
-    amixer cset numid=9 3
-    amixer cset numid=8 3
-    amixer cset numid=49 on
-    amixer cset numid=51 on
-    amixer cset numid=37 0
-    amixer cset numid=38 0
-    amixer cset numid=39 5
-    amixer cset numid=48 on
-    amixer cset numid=50 on
-    amixer cset numid=54 on
-    amixer cset numid=16 5
-    amixer cset numid=15 4
+    amixer -c "wm8960soundcard" cset numid=1 34,34
+    amixer -c "wm8960soundcard" cset numid=26 3
+    amixer -c "wm8960soundcard" cset numid=27 4
+    amixer -c "wm8960soundcard" cset numid=30 5
+    amixer -c "wm8960soundcard" cset numid=32 5
+    amixer -c "wm8960soundcard" cset numid=33 5
+    amixer -c "wm8960soundcard" cset numid=34 25
+    amixer -c "wm8960soundcard" cset numid=35 on
+    amixer -c "wm8960soundcard" cset numid=9 3
+    amixer -c "wm8960soundcard" cset numid=8 3
+    amixer -c "wm8960soundcard" cset numid=49 on
+    amixer -c "wm8960soundcard" cset numid=51 on
+    amixer -c "wm8960soundcard" cset numid=37 0
+    amixer -c "wm8960soundcard" cset numid=38 0
+    amixer -c "wm8960soundcard" cset numid=39 5
+    amixer -c "wm8960soundcard" cset numid=48 on
+    amixer -c "wm8960soundcard" cset numid=50 on
+    amixer -c "wm8960soundcard" cset numid=54 on
+    amixer -c "wm8960soundcard" cset numid=16 5
+    amixer -c "wm8960soundcard" cset numid=15 4
+    alsactl store
 fi
 
 if [ "${RESPEAKER6}" == "found" ] && [ "${RESPEAKER4}" != "found" ] ; then
