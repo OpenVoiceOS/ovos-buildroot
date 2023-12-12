@@ -83,7 +83,8 @@ if [ "$WM8960" == "found" ] && [ "$RESPEAKER4" != "found" ] ; then
     amixer -c "wm8960soundcard" cset numid=54 on
     amixer -c "wm8960soundcard" cset numid=16 5
     amixer -c "wm8960soundcard" cset numid=15 4
-    alsactl store
+    echo "Configuring button"
+    dtoverlay wm8960-button-overlay
 fi
 
 if [ "${RESPEAKER6}" == "found" ] && [ "${RESPEAKER4}" != "found" ] ; then
