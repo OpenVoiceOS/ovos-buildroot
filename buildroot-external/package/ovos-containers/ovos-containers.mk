@@ -10,8 +10,20 @@ OVOS_CONTAINERS_LICENSE_FILES = $(BR2_EXTERNAL_OPENVOICEOS_PATH)/../LICENSE
 OVOS_CONTAINERS_SITE = $(BR2_EXTERNAL_OPENVOICEOS_PATH)/package/ovos-containers
 OVOS_CONTAINERS_SITE_METHOD = local
 
-#OVOS_CONTAINERS_IMAGES = $(call qstrip, $(BR2_PACKAGE_OVOS_CONTAINERS))
-OVOS_CONTAINERS_IMAGES = ovos-messagebus ovos-phal ovos-phal-admin ovos-listener-dinkum ovos-audio ovos-core ovos-cli ovos-gui-websocket ovos-gui-shell
+OVOS_CONTAINERS_IMAGES = ovos-messagebus \
+			 ovos-phal \
+			 ovos-phal-admin \
+			 ovos-listener-dinkum \
+			 ovos-audio \
+			 ovos-core \
+			 ovos-cli
+
+ifeq ($(BR2_PACKAGE_OVOS_CONTAINERS_GUI),y)
+OVOS_CONTAINERS_IMAGES += ovos-gui-websocket \
+			  ovos-gui-shell
+
+OVOS_CONTAINERS_INSTALL_GUI = YES
+endif
 
 define OVOS_CONTAINERS_BUILD_CMDS
 	$(Q)mkdir -p $(@D)/images
@@ -29,6 +41,13 @@ define OVOS_CONTAINERS_INSTALL_IMAGES_CMDS
 	rm -rf $(TARGET_DIR)/home/ovos/.local/share/containers/storage/storage.lock
 	rm -rf $(TARGET_DIR)/home/ovos/.local/share/containers/storage/userns.lock
 	rm -rf $(TARGET_DIR)/home/ovos/.local/share/containers/storage/libpod
+endef
+
+define OVOS_CONTAINERS_INSTALL_GUI
+	$(INSTALL) -D -m 644 $(BR2_EXTERNAL_OPENVOICEOS_PATH)/package/ovos-containers/ovos_gui_websocket.container \
+                $(TARGET_DIR)/home/ovos/.config/containers/systemd/ovos_gui_websocket.container
+	$(INSTALL) -D -m 644 $(BR2_EXTERNAL_OPENVOICEOS_PATH)/package/ovos-containers/ovos_gui.container \
+                $(TARGET_DIR)/home/ovos/.config/containers/systemd/ovos_gui.container
 endef
 
 $(eval $(generic-package))

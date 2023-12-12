@@ -13,9 +13,41 @@ config BR2_PACKAGE_OVOS_CONTAINERS_ARCH
 	help
 	  Architecture for which we should be pull.
 
-config BR2_PACKAGE_OVOS_CONTAINERS_IMAGES
-	string "Images"
+choice
+	prompt "Containers to pre-install"
+	default BR2_PACKAGE_OVOS_CONTAINERS_HEADLESS
+
+config BR2_PACKAGE_OVOS_CONTAINERS_HEADLESS
+	bool "Headless"
 	help
-	  Space separated list of images to pull.
+	  This install all minimal required containers
+	  to run the OVOS framework headless.
+
+	  Install: - ovos -messagebus
+		   - ovos-phal
+		   - ovos-phal-admin 
+		   - ovos-listener-dinkum 
+		   - ovos-audio
+		   - ovos-core
+		   - ovos-cli
+
+config BR2_PACKAGE_OVOS_CONTAINERS_GUI
+        bool "Graphical User Interface"
+        help
+          This install all required containers
+          to run the OVOS framework with the QT5
+	  Graphical User Interface enabled.
+
+           Install: - ovos -messagebus
+                   - ovos-phal
+                   - ovos-phal-admin
+                   - ovos-listener-dinkum
+                   - ovos-audio
+                   - ovos-core
+                   - ovos-cli
+		   - ovos-gui-websocket
+		   - ovos-gui-shell
+
+endchoice
 
 endif
