@@ -8,7 +8,7 @@
         target = <&gpio>;
         __overlay__ {
             wm8960_key_pin: wm8960_key_pin {
-                brcm,pins = <11>;     
+                brcm,pins = <17>;     
                 brcm,function = <0>; /* input mode */
                 brcm,pull = <0>;     /* pull up/down disabled */
             };
@@ -27,8 +27,8 @@
                     status = "okay";
                     debounce-interval = <50>;
 
-                    button_wake_up: button@11 {
-                        gpios = <&gpio 11 1>;
+                    button_wake_up: button@17 {
+                        gpios = <&gpio 17 1>;
                         linux,code = <143>; // KEY_WAKEUP
                         label = "Wake Up";
                         gpio-key,wakeup;
