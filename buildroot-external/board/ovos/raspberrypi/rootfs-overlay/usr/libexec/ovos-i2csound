@@ -16,10 +16,17 @@
 ##########################################################################
 
 # Scanning the I2C bus for know addresses
-is_1a=$(i2cdetect -y 1 0x1a 0x1a | grep -E "(1a|UU)" | awk '{print $2}') # ReSpeaker 2-mic / WM8960 based
+is_1a=$(i2cdetect -y 1 0x1a 0x1a | grep -E "(1a|UU)" | awk '{print $2}') # WM8xxx based
 if [ "${is_1a}" == "1a" ] || [ "${is_1a}" == "UU" ] ; then
-    WM8960=found
-    echo "WM8960 based 2-mic $WM8960"
+    echo "WM8xxx based HAT found"
+    atmega328p=$(avrdude -p atmega328p -C /etc/avrdude-gpio.conf -c linuxgpio -U signature:r:-:i -F 2>/dev/null | head -n1)
+    if [ "${atmega328p}" == ":030000001E950F3B" ] ; then
+        MARK1=found
+        echo "Mark-1 enclosure $MARK1"
+    else
+        WM8960=found
+        echo "WM8960 based 2-mic $WM8960"
+    fi
 fi
 
 is_35=$(i2cdetect -y 1 0x35 0x35 | grep -E "(35|UU)" | awk '{print $2}') # ReSpeaker 4-mic squared
@@ -86,6 +93,23 @@ if [ "$WM8960" == "found" ] && [ "$RESPEAKER4" != "found" ] ; then
     amixer -c "wm8960soundcard" cset numid=15 4
     echo "Configuring button"
     dtoverlay wm8960-button-overlay
+fi
+
+if [ "$MARK1" == "found" ] ; then
+    echo "Installing and configuring WM8731 based sound HAT"
+    dtoverlay proto-codec
+    echo "Configuring board"
+    sleep 3 # Allow some time to fully initialise the hardware / driver
+    amixer -c "sndrpiproto" cset numid=1 107,107
+    amixer -c "sndrpiproto" cset numid=2 on
+    amixer -c "sndrpiproto" cset numid=6 on
+    amixer -c "sndrpiproto" cset numid=10 on
+    amixer -c "sndrpiproto" cset numid=14 1
+    amixer -c "sndrpiproto" cset numid=13 on
+    amixer -c "sndrpiproto" cset numid=9 on
+    echo "Resetting Mark-1 faceplate"
+    echo "eyes.color=7365993" > /dev/ttyAMA0  # color=soft gray, #706569
+    echo "mouth.text=" > /dev/ttyAMA0
 fi
 
 if [ "${RESPEAKER6}" == "found" ] && [ "${RESPEAKER4}" != "found" ] ; then
