@@ -20,7 +20,8 @@ ROC_TOOLKIT_DEPENDENCIES = \
 	openfec \
 	speexdsp \
 	sox \
-	pulseaudio
+	pulseaudio \
+	libuv
 
 define ROC_TOOLKIT_BUILD_CMDS
 	(cd $(@D); \

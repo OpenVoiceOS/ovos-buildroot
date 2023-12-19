@@ -1,1 +1,1 @@
-ovos -2 ovos -2 =ovos /home/ovos /bin/sh input,i2c,spi,tty,gpio,adm,wheel,audio,video,lp,adm,network,systemd-journal,systemd-timesync Ovos user
+ovos -2 ovos -2 =ovos /home/ovos /bin/sh input,i2c,spi,tty,gpio,adm,wheel,audio,video,lp,adm,network,systemd-journal,systemd-timesync,pipewire,dialout Ovos user
