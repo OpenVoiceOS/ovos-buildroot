@@ -20,6 +20,7 @@ UserNS=keep-id:uid=%U,gid=%G
 EnvironmentFile=%h/.config/containers/env
 AddDevice=/dev/snd
 AddDevice=/dev/gpiomem
+AddDevice=/dev/ttyAMA0
 Volume=%h/ovos/config:/home/ovos/.config/mycroft
 Volume=%h/ovos/tmp:/tmp
 Volume=%t/pipewire-0:/run/user/1000/pipewire-0:ro
