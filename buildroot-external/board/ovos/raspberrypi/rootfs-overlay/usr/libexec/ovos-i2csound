@@ -115,6 +115,16 @@ fi
 if [ "${RESPEAKER6}" == "found" ] && [ "${RESPEAKER4}" != "found" ] ; then
     echo "Installing and configuring ReSpeaker 4-mic HAT"
     dtoverlay seeed-4mic-voicecard
+    echo "Configuring board"
+    sleep 3 # Allow some time to fully initialise the hardware / driver
+    amixer -c "seeed4micvoicec" cset numid=1 222
+    amixer -c "seeed4micvoicec" cset numid=2 222
+    amixer -c "seeed4micvoicec" cset numid=3 222
+    amixer -c "seeed4micvoicec" cset numid=4 222
+    amixer -c "seeed4micvoicec" cset numid=5 13
+    amixer -c "seeed4micvoicec" cset numid=6 13
+    amixer -c "seeed4micvoicec" cset numid=7 13
+    amixer -c "seeed4micvoicec" cset numid=8 13
 fi
 
 if [ "{$RESPEAKER6}" == "found" ] && [ "${RESPEAKER4}" == "found" ] ; then
