@@ -59,11 +59,12 @@ main() {
             detection_results[MARK1]=true
             echo "Mark-1 enclosure $MARK1"
         else
-            echo "WM8960 based 2-mic $WM8XXX"
+            detection_results[WM8960]=true
+            echo "WM8960 based 2-mic $WM8960"
         fi
     fi
 
-    if [[ ${detection_results[WM8XXX]} == true ]] && [[ ${detection_results[RESPEAKER4]} == false ]] ; then
+    if [[ ${detection_results[WM8960]} == true ]] && [[ ${detection_results[RESPEAKER4]} == false ]] ; then
         echo "Installing and configuring WM8960 based 2-mic HAT"
         dtoverlay wm8960-soundcard
         echo "Configuring board"
