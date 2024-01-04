@@ -128,7 +128,7 @@ bluez_monitor.rules = {
       --["resample.quality"] = 4,
       --["channelmix.normalize"] = false,
       --["channelmix.mix-lfe"] = false,
-      --["session.suspend-timeout-seconds"] = 5,  -- 0 disables suspend
+      ["session.suspend-timeout-seconds"] = 0,  -- 0 disables suspend
       --["monitor.channel-volumes"] = false,
 
       -- Media source role, "input" or "playback"

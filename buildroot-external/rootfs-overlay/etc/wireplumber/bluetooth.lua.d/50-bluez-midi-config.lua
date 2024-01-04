@@ -34,7 +34,7 @@ bluez_midi_monitor.rules = {
       --["priority.driver"] = 100,
       --["priority.session"] = 100,
       --["node.pause-on-idle"] = false,
-      --["session.suspend-timeout-seconds"] = 5,  -- 0 disables suspend
+      ["session.suspend-timeout-seconds"] = 0,  -- 0 disables suspend
       --["monitor.channel-volumes"] = false,
       --["node.latency-offset-msec"] = -10,  -- delay (<0) input to reduce jitter
     },
