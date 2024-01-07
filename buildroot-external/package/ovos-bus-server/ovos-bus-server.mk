@@ -4,7 +4,7 @@
 #
 ################################################################################
 
-OVOS_BUS_SERVER_VERSION = 6390bb787fad4660106577891ada6fa935b662d7
+OVOS_BUS_SERVER_VERSION = 2bd52c9703cf7fcf8d9730f1586cc1f005b459cd
 OVOS_BUS_SERVER_SITE = $(call github,OpenVoiceOS,ovos-bus-server,$(OVOS_BUS_SERVER_VERSION))
 OVOS_BUS_SERVER_LICENSE = Apache License 2.0
 

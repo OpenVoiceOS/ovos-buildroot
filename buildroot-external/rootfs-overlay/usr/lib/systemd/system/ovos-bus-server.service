@@ -1,0 +1,18 @@
+[Unit]
+Description=OVOS bus server
+Before=multi-user.target
+After=network.target
+
+[Service]
+Type=simple
+StandardOutput=null
+StandardError=null
+ExecStart=/usr/bin/ovos-bus-server
+Restart=always
+StartLimitInterval=0
+CPUSchedulingPolicy=fifo
+CPUSchedulingPriority=49
+
+[Install]
+WantedBy=multi-user.target
+RequiredBy=network.target

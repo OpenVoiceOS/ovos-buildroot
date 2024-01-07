@@ -19,6 +19,3 @@ Volume=%h/ovos/tmp:/tmp
 [Service]
 TimeoutStartSec=900
 Restart=always
-
-[Install]
-WantedBy=multi-user.target default.target

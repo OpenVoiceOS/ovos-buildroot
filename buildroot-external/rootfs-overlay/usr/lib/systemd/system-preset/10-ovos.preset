@@ -11,6 +11,7 @@ enable smb.service
 enable nmb.service
 enable mglru.service
 enable connectivity-check.service
+enable ovos-bus-server.service
 
 disable pipewire.service
 disable wireplumber.service

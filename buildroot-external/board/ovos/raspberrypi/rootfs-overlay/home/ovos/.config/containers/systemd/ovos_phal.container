@@ -5,8 +5,8 @@ After=network-online.target
 Wants=network-online.target
 Wants=pipewire.service
 After=pipewire.service
-Wants=ovos_messagebus.service
-After=ovos_messagebus.service
+Wants=ovos-bus-server.service
+After=ovos-bus-server.service
 
 [Container]
 ContainerName=ovos_phal
