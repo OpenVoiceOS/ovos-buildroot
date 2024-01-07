@@ -1,0 +1,252 @@
+From 8ee26220281bc5bbb6a2b72ab0cf5a2f120b1afa Mon Sep 17 00:00:00 2001
+From: Alexander Larsson <alexl@redhat.com>
+Date: Wed, 29 Nov 2023 10:57:42 +0100
+Subject: [PATCH] quadlet: Support systemd style dropin files
+
+For a source file like `foo.container`, look for drop in named
+`foo.container.d/*.conf` and merged them into the main file.  The
+dropins are applied in alphabetical order, and files in earlier
+diretories override later files with same name.
+
+This is similar to how systemd dropins work, see:
+https://www.freedesktop.org/software/systemd/man/latest/systemd.unit.html
+
+Also adds some tests for these
+
+Signed-off-by: Alexander Larsson <alexl@redhat.com>
+---
+ cmd/quadlet/main.go                           | 67 +++++++++++++++++++
+ docs/source/markdown/podman-systemd.unit.5.md |  7 ++
+ pkg/systemd/parser/unitfile.go                |  4 +-
+ test/e2e/quadlet/merged-override.container    |  8 +++
+ .../merged-override.container.d/10-first.conf |  2 +
+ .../20-second.conf                            |  4 ++
+ test/e2e/quadlet/merged.container             |  8 +++
+ .../quadlet/merged.container.d/10-first.conf  |  2 +
+ .../quadlet/merged.container.d/20-second.conf |  2 +
+ test/e2e/quadlet_test.go                      | 12 ++++
+ 10 files changed, 114 insertions(+), 2 deletions(-)
+ create mode 100644 test/e2e/quadlet/merged-override.container
+ create mode 100644 test/e2e/quadlet/merged-override.container.d/10-first.conf
+ create mode 100644 test/e2e/quadlet/merged-override.container.d/20-second.conf
+ create mode 100644 test/e2e/quadlet/merged.container
+ create mode 100644 test/e2e/quadlet/merged.container.d/10-first.conf
+ create mode 100644 test/e2e/quadlet/merged.container.d/20-second.conf
+
+diff --git a/cmd/quadlet/main.go b/cmd/quadlet/main.go
+index b36997b32a73..9c032427b0a4 100644
+--- a/cmd/quadlet/main.go
++++ b/cmd/quadlet/main.go
+@@ -242,6 +242,67 @@ func loadUnitsFromDir(sourcePath string) ([]*parser.UnitFile, error) {
+ 	return units, prevError
+ }
+ 
++func loadUnitDropins(unit *parser.UnitFile, sourcePaths []string) error {
++	var prevError error
++	reportError := func(err error) {
++		if prevError != nil {
++			err = fmt.Errorf("%s\n%s", prevError, err)
++		}
++		prevError = err
++	}
++
++	var dropinPaths = make(map[string]string)
++	for _, sourcePath := range sourcePaths {
++		dropinDir := path.Join(sourcePath, unit.Filename+".d")
++
++		dropinFiles, err := os.ReadDir(dropinDir)
++		if err != nil {
++			if !errors.Is(err, os.ErrNotExist) {
++				reportError(fmt.Errorf("error reading directory %q, %w", dropinDir, err))
++			}
++
++			continue
++		}
++
++		for _, dropinFile := range dropinFiles {
++			dropinName := dropinFile.Name()
++			if filepath.Ext(dropinName) != ".conf" {
++				continue // Only *.conf supported
++			}
++
++			if _, ok := dropinPaths[dropinName]; ok {
++				continue // We already saw this name
++			}
++
++			dropinPaths[dropinName] = path.Join(dropinDir, dropinName)
++		}
++	}
++
++	dropinFiles := make([]string, len(dropinPaths))
++	i := 0
++	for k := range dropinPaths {
++		dropinFiles[i] = k
++		i++
++	}
++
++	// Merge in alpha-numerical order
++	sort.Strings(dropinFiles)
++
++	for _, dropinFile := range dropinFiles {
++		dropinPath := dropinPaths[dropinFile]
++
++		Debugf("Loading source drop-in file %s", dropinPath)
++
++		if f, err := parser.ParseUnitFile(dropinPath); err != nil {
++			reportError(fmt.Errorf("error loading %q, %w", dropinPath, err))
++		} else {
++			unit.Merge(f)
++		}
++	}
++
++	return prevError
++}
++
+ func generateServiceFile(service *parser.UnitFile) error {
+ 	Debugf("writing %q", service.Path)
+ 
+@@ -456,6 +517,12 @@ func process() error {
+ 		return prevError
+ 	}
+ 
++	for _, unit := range units {
++		if err := loadUnitDropins(unit, sourcePaths); err != nil {
++			reportError(err)
++		}
++	}
++
+ 	if !dryRunFlag {
+ 		err := os.MkdirAll(outputPath, os.ModePerm)
+ 		if err != nil {
+diff --git a/docs/source/markdown/podman-systemd.unit.5.md b/docs/source/markdown/podman-systemd.unit.5.md
+index 8101338a56b6..4969a84aca7b 100644
+--- a/docs/source/markdown/podman-systemd.unit.5.md
++++ b/docs/source/markdown/podman-systemd.unit.5.md
+@@ -47,6 +47,13 @@ Each file type has a custom section (for example, `[Container]`) that is handled
+ other sections are passed on untouched, allowing the use of any normal systemd configuration options
+ like dependencies or cgroup limits.
+ 
++The source files also support drop-ins in the same [way systemd does](https://www.freedesktop.org/software/systemd/man/latest/systemd.unit.html).
++For a given source file (say `foo.container`), the corresponding `.d`directory (in this
++case `foo.container.d`) will be scanned for files with a `.conf` extension that are merged into
++the base file in alphabetical order. The format of these drop-in files is the same as the base file.
++This is useful to alter or add configuration settings for a unit, without having to modify unit
++files.
++
+ For rootless containers, when administrators place Quadlet files in the
+ /etc/containers/systemd/users directory, all users' sessions execute the
+ Quadlet when the login session begins. If the administrator places a Quadlet
+diff --git a/pkg/systemd/parser/unitfile.go b/pkg/systemd/parser/unitfile.go
+index 963909f9d876..732daa2be4fb 100644
+--- a/pkg/systemd/parser/unitfile.go
++++ b/pkg/systemd/parser/unitfile.go
+@@ -182,7 +182,7 @@ func (f *UnitFile) ensureGroup(groupName string) *unitGroup {
+ 	return g
+ }
+ 
+-func (f *UnitFile) merge(source *UnitFile) {
++func (f *UnitFile) Merge(source *UnitFile) {
+ 	for _, srcGroup := range source.groups {
+ 		group := f.ensureGroup(srcGroup.name)
+ 		group.merge(srcGroup)
+@@ -193,7 +193,7 @@ func (f *UnitFile) merge(source *UnitFile) {
+ func (f *UnitFile) Dup() *UnitFile {
+ 	copy := NewUnitFile()
+ 
+-	copy.merge(f)
++	copy.Merge(f)
+ 	copy.Filename = f.Filename
+ 	return copy
+ }
+diff --git a/test/e2e/quadlet/merged-override.container b/test/e2e/quadlet/merged-override.container
+new file mode 100644
+index 000000000000..d93a53b340a9
+--- /dev/null
++++ b/test/e2e/quadlet/merged-override.container
+@@ -0,0 +1,8 @@
++## assert-podman-final-args localhost/imagename
++## !assert-podman-args --env "MAIN=mainvalue"
++## !assert-podman-args --env "FIRST=value"
++## assert-podman-args --env "SECOND=othervalue"
++
++[Container]
++Image=localhost/imagename
++Environment=MAIN=mainvalue
+diff --git a/test/e2e/quadlet/merged-override.container.d/10-first.conf b/test/e2e/quadlet/merged-override.container.d/10-first.conf
+new file mode 100644
+index 000000000000..f6164d631e05
+--- /dev/null
++++ b/test/e2e/quadlet/merged-override.container.d/10-first.conf
+@@ -0,0 +1,2 @@
++[Container]
++Environment=FIRST=value
+diff --git a/test/e2e/quadlet/merged-override.container.d/20-second.conf b/test/e2e/quadlet/merged-override.container.d/20-second.conf
+new file mode 100644
+index 000000000000..5bfcdd44dcc8
+--- /dev/null
++++ b/test/e2e/quadlet/merged-override.container.d/20-second.conf
+@@ -0,0 +1,4 @@
++[Container]
++# Empty previous
++Environment=
++Environment=SECOND=othervalue
+diff --git a/test/e2e/quadlet/merged.container b/test/e2e/quadlet/merged.container
+new file mode 100644
+index 000000000000..3d19987fd0ca
+--- /dev/null
++++ b/test/e2e/quadlet/merged.container
+@@ -0,0 +1,8 @@
++## assert-podman-final-args localhost/imagename
++## assert-podman-args --env "MAIN=mainvalue"
++## assert-podman-args --env "FIRST=value"
++## assert-podman-args --env "SECOND=othervalue"
++
++[Container]
++Image=localhost/imagename
++Environment=MAIN=mainvalue
+diff --git a/test/e2e/quadlet/merged.container.d/10-first.conf b/test/e2e/quadlet/merged.container.d/10-first.conf
+new file mode 100644
+index 000000000000..f6164d631e05
+--- /dev/null
++++ b/test/e2e/quadlet/merged.container.d/10-first.conf
+@@ -0,0 +1,2 @@
++[Container]
++Environment=FIRST=value
+diff --git a/test/e2e/quadlet/merged.container.d/20-second.conf b/test/e2e/quadlet/merged.container.d/20-second.conf
+new file mode 100644
+index 000000000000..f1dcaa61fc93
+--- /dev/null
++++ b/test/e2e/quadlet/merged.container.d/20-second.conf
+@@ -0,0 +1,2 @@
++[Container]
++Environment=SECOND=othervalue
+diff --git a/test/e2e/quadlet_test.go b/test/e2e/quadlet_test.go
+index ad3061f4cdd2..c9c43d284971 100644
+--- a/test/e2e/quadlet_test.go
++++ b/test/e2e/quadlet_test.go
+@@ -664,6 +664,16 @@ BOGUS=foo
+ 			err = os.WriteFile(filepath.Join(quadletDir, fileName), testcase.data, 0644)
+ 			Expect(err).ToNot(HaveOccurred())
+ 
++			// Also copy any extra snippets
++			dotdDir := filepath.Join("quadlet", fileName+".d")
++			if s, err := os.Stat(dotdDir); err == nil && s.IsDir() {
++				dotdDirDest := filepath.Join(quadletDir, fileName+".d")
++				err = os.Mkdir(dotdDirDest, os.ModePerm)
++				Expect(err).ToNot(HaveOccurred())
++				err = CopyDirectory(dotdDir, dotdDirDest)
++				Expect(err).ToNot(HaveOccurred())
++			}
++
+ 			// Run quadlet to convert the file
+ 			session := podmanTest.Quadlet([]string{"--user", "--no-kmsg-log", generatedDir}, quadletDir)
+ 			session.WaitWithDefaultTimeout()
+@@ -748,6 +758,8 @@ BOGUS=foo
+ 		Entry("workingdir.container", "workingdir.container", 0, ""),
+ 		Entry("Container - global args", "globalargs.container", 0, ""),
+ 		Entry("Container - Containers Conf Modules", "containersconfmodule.container", 0, ""),
++		Entry("merged.container", "merged.container", 0, ""),
++		Entry("merged-override.container", "merged-override.container", 0, ""),
+ 
+ 		Entry("basic.volume", "basic.volume", 0, ""),
+ 		Entry("device-copy.volume", "device-copy.volume", 0, ""),
