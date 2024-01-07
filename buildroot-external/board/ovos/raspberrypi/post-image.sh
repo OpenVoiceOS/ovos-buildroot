@@ -2,33 +2,63 @@
 
 set -e
 
-BOARD_DIR="$(dirname $0)"
-BOARD_NAME="$(basename ${BOARD_DIR})"
+# Define board directory and related variables
+BOARD_DIR="$(dirname "$0")"
+BOARD_NAME="$(basename "${BOARD_DIR}")"
 GENIMAGE_CFG="${BOARD_DIR}/genimage-${BOARD_NAME}.cfg"
 GENIMAGE_TMP="${BUILD_DIR}/genimage.tmp"
-SWUPDATE_FILES="sw-description rootfs.squashfs"
 
-# Pass an empty rootpath. genimage makes a full copy of the given rootpath to
-# ${GENIMAGE_TMP}/root so passing TARGET_DIR would be a waste of time and disk
-# space. We don't rely on genimage to build the rootfs image, just to insert a
-# pre-built one in the disk image.
+# Define files for SWUPDATE
+SWUPDATE_FILES=("sw-description" "rootfs.squashfs")
 
-trap 'rm -rf "${ROOTPATH_TMP}"' EXIT
+# Check if necessary files and directories exist
+if [ ! -d "${BUILD_DIR}" ] || [ ! -f "${GENIMAGE_CFG}" ]; then
+    echo "Required directories or config files are missing."
+    exit 1
+fi
+
+# Function to create SWU file
+create_swu_file() {
+    local binaries_dir=$1
+    shift
+    local files=("$@")
+
+    pushd "${binaries_dir}" > /dev/null
+    printf '%s\n' "${files[@]}" | cpio -ov -H crc > rootfs.swu
+    if [ $? -ne 0 ]; then
+        echo "Error creating SWU file."
+        exit 1
+    fi
+    popd > /dev/null
+}
+
+# Clean up function for EXIT trap
+cleanup() {
+    echo "Cleaning up temporary files."
+    rm -rf "${ROOTPATH_TMP}"
+    rm -rf "${GENIMAGE_TMP}"
+}
+
+# Setting up trap for cleanup on script exit
+trap cleanup EXIT
+
+# Create temporary root path
 ROOTPATH_TMP="$(mktemp -d)"
 
-rm -rf "${GENIMAGE_TMP}"
-
+# Generate image using genimage
+echo "Generating image with genimage..."
 genimage \
-	--rootpath "${ROOTPATH_TMP}"   \
-	--tmppath "${GENIMAGE_TMP}"    \
-	--inputpath "${BINARIES_DIR}"  \
-	--outputpath "${BINARIES_DIR}" \
-	--config "${GENIMAGE_CFG}"
+    --rootpath "${ROOTPATH_TMP}" \
+    --tmppath "${GENIMAGE_TMP}" \
+    --inputpath "${BINARIES_DIR}" \
+    --outputpath "${BINARIES_DIR}" \
+    --config "${GENIMAGE_CFG}"
 
-pushd ${BINARIES_DIR}
-for f in ${SWUPDATE_FILES} ; do
-	echo ${f}
-done | cpio -ov -H crc > rootfs.swu
-popd
+if [ $? -ne 0 ]; then
+    echo "Error during image generation."
+    exit 1
+fi
 
-exit $?
+# Create SWU file
+echo "Creating SWU file..."
+create_swu_file "${BINARIES_DIR}" "${SWUPDATE_FILES[@]}"
