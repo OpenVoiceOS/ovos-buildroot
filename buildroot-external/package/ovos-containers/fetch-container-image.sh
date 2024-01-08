@@ -2,7 +2,7 @@
 
 # Original script from Home Assistant
 
-set -euo pipefail
+set -eu
 
 # Variables
 arch="$1"
