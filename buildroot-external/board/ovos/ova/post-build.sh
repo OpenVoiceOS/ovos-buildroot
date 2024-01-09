@@ -43,7 +43,7 @@ fi
 
 # Prepare home data
 rm -f ${BINARIES_DIR}/homefs.ext4
-truncate --size="5G" ${BINARIES_DIR}/homefs.ext4
+truncate --size="6890M" ${BINARIES_DIR}/homefs.ext4
 mkfs.ext4 -L "homefs" -E lazy_itable_init=0,lazy_journal_init=0 ${BINARIES_DIR}/homefs.ext4
 
 # Mount home image
