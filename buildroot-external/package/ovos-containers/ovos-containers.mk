@@ -32,10 +32,10 @@ endif
 
 define OVOS_CONTAINERS_BUILD_CMDS
 	$(Q)mkdir -p $(@D)/images
-	$(Q)mkdir -p $(OVOS_CONTAINERS_DL_DIR)
+	$(Q)mkdir -p $(OVOS_CONTAINERS_DL_DIR)/$(BR2_PACKAGE_OVOS_CONTAINERS_ARCH)
 	$(foreach image,$(OVOS_CONTAINERS_IMAGES),\
 		$(BR2_EXTERNAL_OPENVOICEOS_PATH)/package/ovos-containers/fetch-container-image.sh \
-			$(BR2_PACKAGE_OVOS_CONTAINERS_ARCH) $(image) "$(OVOS_CONTAINERS_DL_DIR)" "$(@D)/images"
+			$(BR2_PACKAGE_OVOS_CONTAINERS_ARCH) $(image) "$(OVOS_CONTAINERS_DL_DIR)/$(BR2_PACKAGE_OVOS_CONTAINERS_ARCH)" "$(@D)/images"
 	)
 endef
 
