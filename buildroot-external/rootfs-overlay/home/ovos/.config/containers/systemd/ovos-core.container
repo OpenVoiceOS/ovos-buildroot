@@ -7,21 +7,20 @@ Wants=pipewire.service
 After=pipewire.service
 Wants=ovos-bus-server.service
 After=ovos-bus-server.service
-Wants=ovos_phal.service
-After=ovos_phal.service
+Wants=ovos-phal.service
+After=ovos-phal.service
 
 [Container]
-ContainerName=ovos_core
+ContainerName=ovos-core
 Image=docker.io/smartgic/ovos-core:alpha
 AutoUpdate=registry
 LogDriver=journald
-HostName=ovos_core
+HostName=ovos-core
 Network=host
 Timezone=local
 UserNS=keep-id:uid=%U,gid=%G
 EnvironmentFile=%h/.config/containers/env
 AddDevice=/dev/snd
-AddDevice=/dev/gpiomem
 Volume=%h/ovos/config:/home/ovos/.config/mycroft
 Volume=%h/ovos/tmp:/tmp
 Volume=%t/pipewire-0:/run/user/1000/pipewire-0:ro
@@ -32,6 +31,3 @@ Volume=%h/ovos/share:/home/ovos/.local/share/mycroft
 [Service]
 TimeoutStartSec=900
 Restart=always
-
-[Install]
-WantedBy=multi-user.target default.target

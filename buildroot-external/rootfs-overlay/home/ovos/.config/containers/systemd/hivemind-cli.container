@@ -1,0 +1,23 @@
+[Unit]
+Description=Hivemind CLI
+After=local-fs.target
+After=network-online.target
+Wants=network-online.target
+After=hivemind-listener.service
+Wants=hivemind-listener.service
+
+[Container]
+ContainerName=hivemind-cli
+Image=docker.io/smartgic/hivemind-cli:alpha
+AutoUpdate=registry
+LogDriver=journald
+HostName=hivemind-cli
+Network=host
+Timezone=local
+UserNS=keep-id:uid=%U,gid=%G
+Volume=%h/hivemind/config:/home/hivemind/.config/hivemind:z
+Volume=%h/hivemind/share:/home/hivemind/.local/share/hivemind:z
+
+[Service]
+TimeoutStartSec=900
+Restart=always

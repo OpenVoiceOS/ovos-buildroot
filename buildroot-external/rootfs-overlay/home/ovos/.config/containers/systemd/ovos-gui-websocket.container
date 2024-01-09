@@ -3,15 +3,15 @@ Description=OpenVoiceOS GUI Websocket Service
 After=local-fs.target
 After=network-online.target
 Wants=network-online.target
-Wants=ovos_messagebus.service
-After=ovos_messagebus.service
+Wants=ovos-bus-server.service
+After=ovos-bus-server.service
 
 [Container]
-ContainerName=ovos_gui_websocket
+ContainerName=ovos-gui-websocket
 Image=docker.io/smartgic/ovos-gui-websocket:alpha
 AutoUpdate=registry
 LogDriver=journald
-HostName=ovos_gui_websocket
+HostName=ovos-gui-websocket
 Network=host
 Timezone=local
 UserNS=keep-id:uid=%U,gid=%G
@@ -22,6 +22,3 @@ Volume=ovos_gui_files:/home/ovos/.cache/ovos_gui_file_server
 [Service]
 TimeoutStartSec=900
 Restart=always
-
-[Install]
-WantedBy=multi-user.target default.target

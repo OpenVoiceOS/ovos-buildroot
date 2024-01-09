@@ -1,0 +1,23 @@
+[Unit]
+Description=Hivemind Listener
+After=local-fs.target
+After=network-online.target
+Wants=network-online.target
+After=ovos-core.service
+Wants=ovos-core.service
+
+[Container]
+ContainerName=hivemind-listener
+Image=docker.io/smartgic/hivemind-listener:alpha
+AutoUpdate=registry
+LogDriver=journald
+HostName=hivemind-listener
+Network=host
+Timezone=local
+UserNS=keep-id:uid=%U,gid=%G
+Volume=%h/hivemind/config:/home/hivemind/.config/hivemind:z
+Volume=%h/hivemind/share:/home/hivemind/.local/share/hivemind:z
+
+[Service]
+TimeoutStartSec=900
+Restart=always

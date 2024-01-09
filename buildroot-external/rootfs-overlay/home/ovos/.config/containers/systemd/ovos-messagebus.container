@@ -5,20 +5,17 @@ After=network-online.target
 Wants=network-online.target
 
 [Container]
-ContainerName=ovos_messagebus
+ContainerName=ovos-messagebus
 Image=docker.io/smartgic/ovos-messagebus:alpha
 AutoUpdate=registry
 LogDriver=journald
-HostName=ovos_messagebus
+HostName=ovos-messagebus
 Network=host
 Timezone=local
 UserNS=keep-id:uid=%U,gid=%G
 Volume=%h/ovos/config:/home/ovos/.config/mycroft:ro
-Volume=/dev/shm:/tmp
+Volume=%h/ovos/tmp:/tmp
 
 [Service]
 TimeoutStartSec=900
 Restart=always
-
-[Install]
-WantedBy=multi-user.target default.target

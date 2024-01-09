@@ -23,9 +23,7 @@ config BR2_PACKAGE_OVOS_CONTAINERS_HEADLESS
 	  This install all minimal required containers
 	  to run the OVOS framework headless.
 
-	  Install: - ovos -messagebus
-		   - ovos-phal
-		   - ovos-phal-admin 
+	  Install: - ovos-phal 
 		   - ovos-listener-dinkum 
 		   - ovos-audio
 		   - ovos-core
@@ -38,9 +36,7 @@ config BR2_PACKAGE_OVOS_CONTAINERS_GUI
           to run the OVOS framework with the QT5
 	  Graphical User Interface enabled.
 
-           Install: - ovos -messagebus
-                   - ovos-phal
-                   - ovos-phal-admin
+          Install: - ovos-phal
                    - ovos-listener-dinkum
                    - ovos-audio
                    - ovos-core
