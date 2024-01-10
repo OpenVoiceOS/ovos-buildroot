@@ -1,0 +1,24 @@
+[Unit]
+Description=OpenVoiceOS TTS Piper Server
+After=local-fs.target
+After=network-online.target
+Wants=network-online.target
+
+[Container]
+ContainerName=ovos-tts-server-piper
+Image=docker.io/smartgic/ovos-tts-server-piper:alpha
+AutoUpdate=registry
+LogDriver=journald
+HostName=ovos-tts-server-piper
+Network=host
+PublishPort=8089-9666
+Timezone=local
+UserNS=keep-id:uid=%U,gid=%G
+EnvironmentFile=%h/.config/containers/env
+Volume=%h/ovos/config:/home/ovos/.config/mycroft:ro,z
+Volume=ovos_tts_piper_cache:/home/ovos/.local/share/piper_tts
+Volume=ovos_tts_piper_gradio_cache:/home/ovos/gradio_cached_examples
+
+[Service]
+TimeoutStartSec=900
+Restart=always

@@ -13,8 +13,11 @@ echo "                                v0.1.1                             "
 echo
 echo "Available Tool COMMANDs:"
 echo "  ovos-cli-client       Command line client, useful for debugging  "
+echo "  ovos-simple-cli       Simple command line client for ovos        "
 echo "  ovos-config           Manage your local ovos configuration files "
 echo "  ovos-speak  <phrase>  Have the system speak a phrase to the user "
+echo "  ovos-listen           Start listening for commands               "
+echo "  ovos-say-to <phrase>  Directly give a written command to ovos    "
 echo "  ovos-log-watch        Watch ovos log files live                  "
 echo
 echo "  mana                  Messagebus Application from Neon Ai        "
