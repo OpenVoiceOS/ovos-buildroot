@@ -11,6 +11,7 @@ After=ovos-bus-server.service
 [Container]
 ContainerName=ovos-phal
 Image=docker.io/smartgic/ovos-phal:alpha
+Notify=healthy
 AutoUpdate=registry
 LogDriver=journald
 HostName=ovos-phal
