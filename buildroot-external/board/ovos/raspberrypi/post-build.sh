@@ -67,7 +67,7 @@ mkdir -p ${BINARIES_DIR}/home
 sudo mount -o loop,discard ${BINARIES_DIR}/homefs.ext4 ${BINARIES_DIR}/home
 
 # sync home folder
-sudo rsync -ah --progress ${TARGET_DIR}/home/* ${BINARIES_DIR}/home/
+sudo rsync -avPHSX ${TARGET_DIR}/home/* ${BINARIES_DIR}/home/
 
 # Unmount home image
 sudo umount ${BINARIES_DIR}/homefs.ext4

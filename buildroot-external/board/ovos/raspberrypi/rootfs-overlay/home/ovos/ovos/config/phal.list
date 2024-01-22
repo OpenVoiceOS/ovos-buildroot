@@ -1,2 +1,14 @@
 git+https://github.com/OpenVoiceOS/ovos-PHAL-plugin-mk1.git
 git+https://github.com/NeonGeckoCom/neon-phal-plugin-linear_led.git
+git+https://github.com/OpenVoiceOS/ovos-PHAL-plugin-gui-network-client.git
+git+https://github.com/OpenVoiceOS/ovos-PHAL-plugin-network-manager.git
+git+https://github.com/OpenVoiceOS/ovos-PHAL-plugin-wifi-setup.git
+git+https://github.com/OpenVoiceOS/ovos-PHAL-plugin-balena-wifi.git
+git+https://github.com/OpenVoiceOS/ovos-PHAL-sensors.git
+git+https://github.com/OpenVoiceOS/ovos-PHAL-plugin-connectivity-events.git
+git+https://github.com/OpenVoiceOS/ovos-PHAL-plugin-respeaker-2mic.git
+git+https://github.com/OpenVoiceOS/ovos-PHAL-plugin-respeaker-4mic.git
+git+https://github.com/OpenVoiceOS/ovos-PHAL-plugin-ipgeo.git
+git+https://github.com/OpenVoiceOS/ovos-PHAL-plugin-wallpaper-manager.git
+git+https://github.com/OpenVoiceOS/ovos-PHAL-plugin-oauth.git
+git+https://github.com/OpenVoiceOS/ovos-PHAL-plugin-homeassistant.git

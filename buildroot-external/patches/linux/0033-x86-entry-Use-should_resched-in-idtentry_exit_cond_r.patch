@@ -1,4 +1,4 @@
-From 37719a07083b68dad1449227e9fe66e8e6c9f2b6 Mon Sep 17 00:00:00 2001
+From 4a7f3d980fdfa78e88ce38e493b5d39384f35079 Mon Sep 17 00:00:00 2001
 From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Tue, 30 Jun 2020 11:45:14 +0200
 Subject: [PATCH 33/62] x86/entry: Use should_resched() in

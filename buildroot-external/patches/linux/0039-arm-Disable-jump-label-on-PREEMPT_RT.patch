@@ -1,4 +1,4 @@
-From f1c0950a69e46ee1d45192bfae026622da60bdc8 Mon Sep 17 00:00:00 2001
+From 16d22e88a2c9122e0cc5441e29a3b64bafb9c560 Mon Sep 17 00:00:00 2001
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Wed, 8 Jul 2015 17:14:48 +0200
 Subject: [PATCH 39/62] arm: Disable jump-label on PREEMPT_RT.

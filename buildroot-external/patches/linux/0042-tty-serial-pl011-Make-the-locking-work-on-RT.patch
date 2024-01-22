@@ -1,4 +1,4 @@
-From 1db3dc8a6af68447b52efbbf8dbb4d210d23d57b Mon Sep 17 00:00:00 2001
+From 9d7551c43f81729a91f4b95812918e034efcbeb9 Mon Sep 17 00:00:00 2001
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Tue, 8 Jan 2013 21:36:51 +0100
 Subject: [PATCH 42/62] tty/serial/pl011: Make the locking work on RT

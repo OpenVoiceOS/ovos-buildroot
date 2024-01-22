@@ -1,4 +1,4 @@
-From 6779399c1acfc91f6e9b0bd4dc4abb4f3cb30c78 Mon Sep 17 00:00:00 2001
+From 2bc2145c2bb1269adaf808b2204542ef2f1ca602 Mon Sep 17 00:00:00 2001
 From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Fri, 1 Oct 2021 20:01:03 +0200
 Subject: [PATCH 30/62] drm/i915: Drop the irqs_disabled() check

@@ -1,4 +1,4 @@
-From 47c9956482a592a16b58831ded27e3c0f62ec11d Mon Sep 17 00:00:00 2001
+From cc0f3bc0e7a996dcd926b3dd93321e450acc18a1 Mon Sep 17 00:00:00 2001
 From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Fri, 11 Oct 2019 13:14:29 +0200
 Subject: [PATCH 43/62] ARM: Allow to enable RT

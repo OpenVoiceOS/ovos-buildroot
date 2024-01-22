@@ -1,0 +1,11 @@
+[connection]
+id=OpenVoiceOS default
+uuid=554628d6-8290-3dea-90c1-9b3b108dc19c
+type=802-3-ethernet
+
+[ipv4]
+method=auto
+
+[ipv6]
+addr-gen-mode=stable-privacy
+method=auto

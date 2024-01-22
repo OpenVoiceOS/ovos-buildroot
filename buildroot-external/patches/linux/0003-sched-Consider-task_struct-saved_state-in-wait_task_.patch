@@ -1,4 +1,4 @@
-From e4742fc784660e012dc23090a72614bf1f9a0ca1 Mon Sep 17 00:00:00 2001
+From af0232b0cb6d5afed7dab020d7dca4759ad93757 Mon Sep 17 00:00:00 2001
 From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Wed, 22 Jun 2022 12:27:05 +0200
 Subject: [PATCH 03/62] sched: Consider task_struct::saved_state in

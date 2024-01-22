@@ -1,4 +1,4 @@
-From 93941796079cb4515170adf454f9218adc89856d Mon Sep 17 00:00:00 2001
+From b7e6efc63764062b7a173464a382d773a08b0b65 Mon Sep 17 00:00:00 2001
 From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Fri, 11 Oct 2019 13:14:41 +0200
 Subject: [PATCH 49/62] POWERPC: Allow to enable RT
