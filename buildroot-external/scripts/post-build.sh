@@ -82,8 +82,8 @@ handle_kernel_renaming() {
                 mv "${TARGET_DIR}/boot/bzImage" "${TARGET_DIR}/boot/kernel"
             fi
             ;;
-        "x86_64")
-            # No kernel renaming logic needed for x86_64
+        "pc")
+            # No kernel renaming logic needed for pc(x86_64)
             ;;
     esac
 }
@@ -105,7 +105,7 @@ main() {
     local home_mount_point="${BINARIES_DIR}/home"
     mkdir -p "${home_mount_point}"
     sudo mount -o loop,discard "${home_img}" "${home_mount_point}"
-    sudo rsync -ah --progress "${TARGET_DIR}/home/"* "${home_mount_point}/"
+    sudo rsync -avPHSX "${TARGET_DIR}/home/"* "${home_mount_point}/"
     sudo umount "${home_img}"
 }
 
