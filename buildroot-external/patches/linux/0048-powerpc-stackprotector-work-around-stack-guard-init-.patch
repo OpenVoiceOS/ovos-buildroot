@@ -1,4 +1,4 @@
-From d2e9a96e5570459dd886f87bf81c7714fb0a2108 Mon Sep 17 00:00:00 2001
+From 0e1e4be3ae95cb72855c0223b4ff5f52adec395c Mon Sep 17 00:00:00 2001
 From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Tue, 26 Mar 2019 18:31:29 +0100
 Subject: [PATCH 48/62] powerpc/stackprotector: work around stack-guard init

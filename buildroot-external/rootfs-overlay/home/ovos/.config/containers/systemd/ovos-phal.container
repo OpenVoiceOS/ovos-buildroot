@@ -5,8 +5,8 @@ After=network-online.target
 Wants=network-online.target
 Wants=pipewire.service
 After=pipewire.service
-Wants=ovos-bus-server.service
-After=ovos-bus-server.service
+Wants=ovos-messagebus.service
+After=ovos-messagebus.service
 
 [Container]
 ContainerName=ovos-phal
@@ -24,8 +24,6 @@ Volume=%h/ovos/config:/home/ovos/.config/mycroft
 Volume=%h/ovos/tmp:/tmp
 Volume=%t/pipewire-0:/run/user/1000/pipewire-0:ro
 Volume=ovos_venv_phal:/home/ovos/.venv
-Volume=/sys:/sys:ro
-Volume=/dev:/dev:ro
 
 [Service]
 TimeoutStartSec=900

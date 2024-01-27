@@ -1,4 +1,4 @@
-From 2a89ee21ea5c408b560839cc06bd0c13580fb3a4 Mon Sep 17 00:00:00 2001
+From 3d0d89a1306c53973cc898d6e003e18826cee219 Mon Sep 17 00:00:00 2001
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Thu, 28 Jul 2011 13:32:57 +0200
 Subject: [PATCH 41/62] tty/serial/omap: Make the locking RT aware

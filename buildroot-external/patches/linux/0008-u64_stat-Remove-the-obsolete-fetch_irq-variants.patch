@@ -1,4 +1,4 @@
-From b908a7b47d95003c498f2f575285f528148602d6 Mon Sep 17 00:00:00 2001
+From cf6d7ad80beb2d90140c212f8ccd32197e0eccdb Mon Sep 17 00:00:00 2001
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Thu, 25 Aug 2022 16:43:46 +0200
 Subject: [PATCH 08/62] u64_stat: Remove the obsolete fetch_irq() variants.

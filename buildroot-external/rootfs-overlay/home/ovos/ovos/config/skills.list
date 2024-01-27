@@ -1,8 +1,7 @@
 git+https://github.com/OpenVoiceOS/skill-ovos-homescreen.git
 git+https://github.com/openVoiceOS/skill-ovos-date-time.git
-git+https://github.com/openVoiceOS/skill-ovos-naptime.git
+git+https://github.com/OpenVoiceOS/skill-ovos-naptime.git
 git+https://github.com/OpenVoiceOS/skill-ovos-personal.git
-git+https://github.com/OpenVoiceOS/skill-ovos-stop.git
 git+https://github.com/OpenVoiceOS/skill-ovos-volume.git
 git+https://github.com/OpenVoiceOS/skill-ovos-weather.git
 git+https://github.com/OpenVoiceOS/skill-ovos-fallback-unknown.git
@@ -11,5 +10,8 @@ git+https://github.com/OpenVoiceOS/skill-ovos-wolfie.git
 git+https://github.com/OpenVoiceOS/ovos-skill-alerts.git
 git+https://github.com/OpenVoiceOS/skill-ovos-tunein.git
 git+https://github.com/OpenVoiceOS/skill-ovos-ddg.git
-git+https://github.com/NeonJarbas/skill-ovos-youtube-music
-git+https://github.com/NeonJarbas/skill-ovos-news
+git+https://github.com/OpenVoiceOS/skill-ovos-youtube-music.git
+git+https://github.com/OpenVoiceOS/skill-ovos-news.git
+git+https://github.com/OpenVoiceOS/skill-ovos-fallback-chatgpt.git@fix/not_loading_without_key
+git+https://github.com/OpenVoiceOS/ovos-bus-client.git
+git+https://github.com/OpenVoiceOS/skill-ovos-parrot

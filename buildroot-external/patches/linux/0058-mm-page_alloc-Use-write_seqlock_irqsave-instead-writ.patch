@@ -1,4 +1,4 @@
-From 9512a9467dec62e03f2df4f15af9a38332b8de58 Mon Sep 17 00:00:00 2001
+From 295da0c59de4794e746f56b1567e3188f9addc00 Mon Sep 17 00:00:00 2001
 From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Fri, 23 Jun 2023 22:15:17 +0200
 Subject: [PATCH 58/62] mm/page_alloc: Use write_seqlock_irqsave() instead

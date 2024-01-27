@@ -1,4 +1,4 @@
-From fe8c8e1f1ec5c61814ee0c4c90a2cef9d35ecad6 Mon Sep 17 00:00:00 2001
+From 141420c658c028a9ead177b6313cdaad0eff61ab Mon Sep 17 00:00:00 2001
 From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Mon, 21 Feb 2022 17:59:14 +0100
 Subject: [PATCH 31/62] Revert "drm/i915: Depend on !PREEMPT_RT."

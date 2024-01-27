@@ -41,9 +41,6 @@ max_framebuffers=2
 # How much memory in MB to assign to the GPU on Pi models having
 # 256, 512 or 1024 MB total memory
 gpu_mem=256
-gpu_mem_256=128
-gpu_mem_512=128
-gpu_mem_1024=128
 
 # fixes rpi (3B, 3B+, 3A+, 4B and Zero W) ttyAMA0 serial console
 dtoverlay=miniuart-bt
@@ -74,6 +71,3 @@ dtparam=spi=on
 
 # Enable boost from 1.5Ghz to 1.8Ghz on compatible models
 arm_boost=1
-
-# enable 64bits support
-#arm_64bit=1

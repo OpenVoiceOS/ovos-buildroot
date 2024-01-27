@@ -1,15 +1,15 @@
 SUBSYSTEM=="input", GROUP="input", MODE="0666"
 SUBSYSTEM=="i2c-dev", GROUP="i2c", MODE="0660"
-SUBSYSTEM=="spidev", GROUP="spi", MODE="0660"
-SUBSYSTEM=="bcm2835-gpiomem", GROUP="gpio", MODE="0660"
-SUBSYSTEM=="bcm2835-gpiomem", GROUP="gpio", MODE="0660"
+SUBSYSTEM=="spidev", GROUP="spi", MODE="0666"
+SUBSYSTEM=="bcm2835-gpiomem", GROUP="gpio", MODE="0666"
+SUBSYSTEM=="bcm2835-gpiomem", GROUP="gpio", MODE="0666"
 SUBSYSTEM=="rpivid-*", GROUP="video", MODE="0660"
 
 KERNEL=="vcsm-cma", GROUP="video", MODE="0660"
 SUBSYSTEM=="dma_heap", GROUP="video", MODE="0660"
 SUBSYSTEM=="vchiq", GROUP="video", MODE="0660"
 
-SUBSYSTEM=="gpio", GROUP="gpio", MODE="0660"
+SUBSYSTEM=="gpio", GROUP="gpio", MODE="0666"
 SUBSYSTEM=="gpio", KERNEL=="gpiochip*", ACTION=="add", PROGRAM="/bin/sh -c 'chgrp -R gpio /sys/class/gpio && chmod -R g=u /sys/class/gpio'"
 SUBSYSTEM=="gpio", ACTION=="add", PROGRAM="/bin/sh -c 'chgrp -R gpio /sys%p && chmod -R g=u /sys%p'"
 

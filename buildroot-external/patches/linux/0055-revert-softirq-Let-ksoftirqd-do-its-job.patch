@@ -1,4 +1,4 @@
-From fcdb9b29c6d58895a386ac23229564fad2c316b5 Mon Sep 17 00:00:00 2001
+From f30dbde350cc4692abd4d2cb48a88913d94edf7d Mon Sep 17 00:00:00 2001
 From: Paolo Abeni <pabeni@redhat.com>
 Date: Mon, 8 May 2023 08:17:44 +0200
 Subject: [PATCH 55/62] revert: "softirq: Let ksoftirqd do its job"

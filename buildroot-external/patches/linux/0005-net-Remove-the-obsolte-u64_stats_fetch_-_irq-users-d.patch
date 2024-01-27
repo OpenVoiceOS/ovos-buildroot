@@ -1,4 +1,4 @@
-From d1c3fb886c8b630c3a70f2f7192d53f545798283 Mon Sep 17 00:00:00 2001
+From 06b58043930deffafd35aacc0b3f2af41ea720b3 Mon Sep 17 00:00:00 2001
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Thu, 25 Aug 2022 16:15:44 +0200
 Subject: [PATCH 05/62] net: Remove the obsolte u64_stats_fetch_*_irq() users
@@ -723,10 +723,10 @@ index 107bcca7db8c..8f36fe90180f 100644
  	/* Once we successfully copy the stats in, update the data pointer */
  	*data += size;
 diff --git a/drivers/net/ethernet/intel/i40e/i40e_main.c b/drivers/net/ethernet/intel/i40e/i40e_main.c
-index b4157ff370a3..3b1f912c4c2b 100644
+index 63d43ef86f9b..8003cf091eee 100644
 --- a/drivers/net/ethernet/intel/i40e/i40e_main.c
 +++ b/drivers/net/ethernet/intel/i40e/i40e_main.c
-@@ -419,10 +419,10 @@ static void i40e_get_netdev_stats_struct_tx(struct i40e_ring *ring,
+@@ -425,10 +425,10 @@ static void i40e_get_netdev_stats_struct_tx(struct i40e_ring *ring,
  	unsigned int start;
  
  	do {
@@ -739,7 +739,7 @@ index b4157ff370a3..3b1f912c4c2b 100644
  
  	stats->tx_packets += packets;
  	stats->tx_bytes   += bytes;
-@@ -472,10 +472,10 @@ static void i40e_get_netdev_stats_struct(struct net_device *netdev,
+@@ -478,10 +478,10 @@ static void i40e_get_netdev_stats_struct(struct net_device *netdev,
  		if (!ring)
  			continue;
  		do {
@@ -752,7 +752,7 @@ index b4157ff370a3..3b1f912c4c2b 100644
  
  		stats->rx_packets += packets;
  		stats->rx_bytes   += bytes;
-@@ -897,10 +897,10 @@ static void i40e_update_vsi_stats(struct i40e_vsi *vsi)
+@@ -903,10 +903,10 @@ static void i40e_update_vsi_stats(struct i40e_vsi *vsi)
  			continue;
  
  		do {
@@ -765,7 +765,7 @@ index b4157ff370a3..3b1f912c4c2b 100644
  		tx_b += bytes;
  		tx_p += packets;
  		tx_restart += p->tx_stats.restart_queue;
-@@ -915,10 +915,10 @@ static void i40e_update_vsi_stats(struct i40e_vsi *vsi)
+@@ -921,10 +921,10 @@ static void i40e_update_vsi_stats(struct i40e_vsi *vsi)
  			continue;
  
  		do {
@@ -778,7 +778,7 @@ index b4157ff370a3..3b1f912c4c2b 100644
  		rx_b += bytes;
  		rx_p += packets;
  		rx_buf += p->rx_stats.alloc_buff_failed;
-@@ -935,10 +935,10 @@ static void i40e_update_vsi_stats(struct i40e_vsi *vsi)
+@@ -941,10 +941,10 @@ static void i40e_update_vsi_stats(struct i40e_vsi *vsi)
  				continue;
  
  			do {
@@ -823,7 +823,7 @@ index f4ac2b164b3e..892c6a4f03bb 100644
  	/* Once we successfully copy the stats in, update the data pointer */
  	*data += size;
 diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
-index f0f39364819a..f8d722339e89 100644
+index ab46cfca4028..aa74ce9afdf2 100644
 --- a/drivers/net/ethernet/intel/ice/ice_main.c
 +++ b/drivers/net/ethernet/intel/ice/ice_main.c
 @@ -6419,10 +6419,10 @@ ice_fetch_u64_stats_per_ring(struct u64_stats_sync *syncp,
@@ -910,7 +910,7 @@ index 45ce4ed16146..9824f7cfaca4 100644
  		packets += _packets;
  	}
 diff --git a/drivers/net/ethernet/intel/igc/igc_ethtool.c b/drivers/net/ethernet/intel/igc/igc_ethtool.c
-index 81897f7a90a9..dd8a9d27a167 100644
+index 2bee9cace598..f7284fa4324a 100644
 --- a/drivers/net/ethernet/intel/igc/igc_ethtool.c
 +++ b/drivers/net/ethernet/intel/igc/igc_ethtool.c
 @@ -840,15 +840,15 @@ static void igc_ethtool_get_stats(struct net_device *netdev,

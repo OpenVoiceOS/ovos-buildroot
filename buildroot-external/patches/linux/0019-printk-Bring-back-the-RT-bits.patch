@@ -1,4 +1,4 @@
-From dd4e52ae061806da556008ca819481befcff0fd3 Mon Sep 17 00:00:00 2001
+From 353209a61511cccc1372d883ffe41fcff355055b Mon Sep 17 00:00:00 2001
 From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Tue, 19 Jul 2022 20:08:01 +0200
 Subject: [PATCH 19/62] printk: Bring back the RT bits.

@@ -1,4 +1,4 @@
-From a549c0dff2a1a3b11b40abc969358d8cb367871d Mon Sep 17 00:00:00 2001
+From ca6770a982bcd5497cd057b5e0a8126c2e589a14 Mon Sep 17 00:00:00 2001
 From: John Ogness <john.ogness@linutronix.de>
 Date: Fri, 4 Feb 2022 16:01:17 +0106
 Subject: [PATCH 22/62] printk: avoid preempt_disable() for PREEMPT_RT

@@ -5,12 +5,12 @@ After=network-online.target
 Wants=network-online.target
 Wants=pipewire.service
 After=pipewire.service
-Wants=ovos-bus-server.service
-After=ovos-bus-server.service
-Wants=ovos-phal.service
-After=ovos-phal.service
-Wants=ovos-gui-websocket.service
-After=ovos-gui-websocket.service
+#Wants=ovos-messagebus.service
+#After=ovos-messagebus.service
+#Wants=ovos-phal.service
+#After=ovos-phal.service
+#Wants=ovos-gui-websocket.service
+#After=ovos-gui-websocket.service
 
 [Container]
 ContainerName=ovos-gui-shell

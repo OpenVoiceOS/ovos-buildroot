@@ -1,4 +1,4 @@
-From 7540de1a42a1a7409b4367b67c76480f7e96d25b Mon Sep 17 00:00:00 2001
+From 725cdc8f12a18ee15bbc8eb0f44927a324e78f93 Mon Sep 17 00:00:00 2001
 From: Mike Galbraith <umgwanakikbuti@gmail.com>
 Date: Sat, 27 Feb 2016 09:01:42 +0100
 Subject: [PATCH 24/62] drm/i915: Don't disable interrupts on PREEMPT_RT during
