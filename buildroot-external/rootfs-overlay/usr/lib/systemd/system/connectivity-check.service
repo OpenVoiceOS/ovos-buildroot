@@ -2,10 +2,10 @@
 DefaultDependencies=no
 After=nss-lookup.target
 Before=network-online.target
-Type=oneshot
-RemainAfterExit=yes
 
 [Service]
+Type=oneshot
+RemainAfterExit=yes
 ExecStart=sh -c 'while ! ping -c 1 docker.io; do sleep 1; done'
 
 [Install]

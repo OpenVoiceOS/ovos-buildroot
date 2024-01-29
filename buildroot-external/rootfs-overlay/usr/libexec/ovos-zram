@@ -1,81 +1,57 @@
 #!/bin/sh
 # Credits go to: https://github.com/home-assistant/operating-system/
-set -e
+set -e  # Exit on any command failure
 
-#### Options ####
-
+# Options
 TYPE=""
-MOUNT=""
-DEVICE=""
 SIZE=0
+MOUNT=""
 
-#### Parse arguments ####
-
-while [ "$1" != "" ]; do
-    key=$1
-    case $key in
-        -t|--type)
-            TYPE=$2
-            shift
-            ;;
-        -s|--size)
-            SIZE=$2
-            shift
-            ;;
-        -m|--mount)
-            MOUNT=$2
-            shift
-            ;;
-        *)
-            echo "[Error] $0 : Argument '$1' unknown"
-            exit 1
-            ;;
+# Parse arguments
+while [ "$#" -gt 0 ]; do
+    case "$1" in
+        -t|--type) TYPE="$2"; shift 2 ;;
+        -s|--size) SIZE="$2"; shift 2 ;;
+        -m|--mount) MOUNT="$2"; shift 2 ;;
+        *) echo "Error: Invalid argument '$1'"; exit 1 ;;
     esac
-    shift
 done
 
-# Valide Type
+# Validate Type
 if [ "$TYPE" != "swap" ] && [ "$TYPE" != "fs" ]; then
-    echo "[Error] Type unknown!"
+    echo "Error: Type must be 'swap' or 'fs'"
     exit 1
 fi
 
-# Lookup device
+# Determine device based on type and mount
+DEVICE="/dev/zram"
 if [ "$TYPE" = "swap" ]; then
-    DEVICE="/dev/zram0"
+    DEVICE+="0"
 elif [ "$MOUNT" = "var" ]; then
-    DEVICE="/dev/zram1"
-#elif [ "$MOUNT" = "tmp" ]; then
-#    DEVICE="/dev/zram1"
+    DEVICE+="1"
 else
-    echo "[Error] No device for lookup!"
+    echo "Error: No device for lookup!"
     exit 1
 fi
 
-# Calc 20% of memory for ZRAM swap partition
-if [ "$TYPE" = "swap" ] && [ "$SIZE" -eq "0" ]; then
-    SIZE="$(awk '/MemTotal/{ print $2 * 0.20 }' /proc/meminfo)K"
+# Calculate 20% of memory for ZRAM swap partition if not specified
+if [ "$TYPE" = "swap" ] && [ "$SIZE" -eq 0 ]; then
+    SIZE=$(awk '/MemTotal/{ print int($2 * 0.20) }' /proc/meminfo)K
 fi
 
-# Init device
+# Initialize ZRAM device
 zramctl "$DEVICE" -s "$SIZE" -a lz4
 
-# Swap
+# Setup based on type
 if [ "$TYPE" = "swap" ]; then
     mkswap -L "ovos-zramswap" "$DEVICE"
-fi
-
-# FileSystem
-if [ "$TYPE" = "fs" ]; then
+elif [ "$TYPE" = "fs" ]; then
     mkfs.ext4 -L "ovos-$MOUNT" -O ^has_journal "$DEVICE"
 fi
 
-# Copy persistent file structures into zram device
+# Handle var mount
 if [ "$MOUNT" = "var" ]; then
-    # Check if this is a first run
-    if [ ! -d /mnt/data/var ]; then
-        mkdir -p /mnt/data/var
-        cp -af /var/* /mnt/data/var/
-    fi
-    cp -af /mnt/data/var/* "$DEVICE"
+    VAR_DIR="/mnt/data/var"
+    [ ! -d "$VAR_DIR" ] && mkdir -p "$VAR_DIR" && cp -af /var/* "$VAR_DIR"
+    cp -af "$VAR_DIR"/* "$DEVICE"
 fi
