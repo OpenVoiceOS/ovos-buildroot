@@ -14,7 +14,6 @@ After=ovos-phal.service
 ContainerName=ovos-audio
 Image=ovos-audio.image
 Pull=never
-Notify=healthy
 AutoUpdate=registry
 LogDriver=journald
 HostName=ovos-audio

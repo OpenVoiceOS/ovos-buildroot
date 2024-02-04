@@ -14,7 +14,6 @@ After=ovos-phal.service
 ContainerName=ovos-listener-dinkum
 Image=ovos-listener-dinkum.image
 Pull=never
-Notify=healthy
 AutoUpdate=registry
 LogDriver=journald
 HostName=ovos-listener-dinkum

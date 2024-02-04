@@ -12,7 +12,6 @@ After=ovos-messagebus.service
 ContainerName=ovos-phal
 Image=ovos-phal.image
 Pull=never
-Notify=healthy
 AutoUpdate=registry
 LogDriver=journald
 HostName=ovos-phal

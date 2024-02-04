@@ -10,7 +10,6 @@ After=ovos-messagebus.service
 ContainerName=ovos-gui-websocket
 Image=ovos-gui-websocket.image
 Pull=never
-Notify=healthy
 AutoUpdate=registry
 LogDriver=journald
 HostName=ovos-gui-websocket

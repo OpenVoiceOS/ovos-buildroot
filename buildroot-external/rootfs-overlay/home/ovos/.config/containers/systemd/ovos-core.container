@@ -14,7 +14,6 @@ After=ovos-phal.service
 ContainerName=ovos-core
 Image=ovos-core.image
 Pull=never
-Notify=healthy
 AutoUpdate=registry
 LogDriver=journald
 HostName=ovos-core
