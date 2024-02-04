@@ -51,13 +51,10 @@ copy_board_specific_files() {
             cp -f "${BOARD_DIR}/../grub-efi.cfg" "${BINARIES_DIR}/efi-part/EFI/BOOT/grub.cfg"
             cp -f "${BOARD_DIR}/sw-description" "${BINARIES_DIR}"
             ;;
-        "ova")
+        "ova"|"pc")
             cp -f "${BOARD_DIR}/grub-efi.cfg" "${BINARIES_DIR}/efi-part/EFI/BOOT/grub.cfg"
             cp -f "${BOARD_DIR}/cmdline.txt" "${BINARIES_DIR}"
             cp -f "${BOARD_DIR}/sw-description" "${BINARIES_DIR}"
-            ;;
-        "pc")
-            cp -f "${BOARD_DIR}/grub-efi.cfg" "${BINARIES_DIR}/efi-part/EFI/BOOT/grub.cfg"
             ;;
         *)
             echo "No specific files to copy for board type: ${BOARD_TYPE}"
@@ -75,15 +72,15 @@ handle_kernel_renaming() {
                 mv "${TARGET_DIR}/boot/Image" "${TARGET_DIR}/boot/kernel"
             fi
             ;;
-        "ova")
+        "ova"|"pc")
             grub-editenv "${BINARIES_DIR}/efi-part/EFI/BOOT/grubenv" create
             if [ -f "${TARGET_DIR}/boot/bzImage" ]; then
                 echo "Found bzImage, renaming to kernel"
                 mv "${TARGET_DIR}/boot/bzImage" "${TARGET_DIR}/boot/kernel"
             fi
             ;;
-        "pc")
-            # No kernel renaming logic needed for pc(x86_64)
+        *)
+            echo "No kernel renaming logic needed for board type: ${BOARD_TYPE}"
             ;;
     esac
 }
