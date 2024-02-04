@@ -12,7 +12,7 @@ After=ovos-phal.service
 
 [Container]
 ContainerName=ovos-listener-dinkum
-Image=ovos-listener-dinkum.image
+Image=docker.io/smartgic/ovos-listener-dinkum:alpha
 Pull=never
 AutoUpdate=registry
 LogDriver=journald

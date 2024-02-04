@@ -1,4 +1,4 @@
 [Image]
 Image=docker.io/smartgic/ovos-phal:alpha
-ImageTag=docker.io/smartgic/ovos-phal:alpha
-TLSVerify=false
+ImageTag=ovos-phal
+#TLSVerify=false

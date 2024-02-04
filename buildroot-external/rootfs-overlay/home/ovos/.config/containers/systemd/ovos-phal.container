@@ -10,7 +10,7 @@ After=ovos-messagebus.service
 
 [Container]
 ContainerName=ovos-phal
-Image=ovos-phal.image
+Image=docker.io/smartgic/ovos-phal:alpha
 Pull=never
 AutoUpdate=registry
 LogDriver=journald

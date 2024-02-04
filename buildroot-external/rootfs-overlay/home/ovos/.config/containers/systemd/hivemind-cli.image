@@ -1,4 +1,4 @@
 [Image]
 Image=docker.io/smartgic/hivemind-cli:alpha
-ImageTag=docker.io/smartgic/hivemind-cli:alpha
-TLSVerify=false
+ImageTag=hivemind-cli
+#TLSVerify=false

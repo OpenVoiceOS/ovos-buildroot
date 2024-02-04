@@ -1,4 +1,4 @@
 [Image]
 Image=docker.io/smartgic/ovos-tts-server-piper:alpha
-ImageTag=docker.io/smartgic/ovos-tts-server-piper:alpha
-TLSVerify=false
+ImageTag=ovos-tts-server-piper
+#TLSVerify=false

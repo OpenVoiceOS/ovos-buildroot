@@ -6,7 +6,7 @@ Wants=network-online.target
 
 [Container]
 ContainerName=ovos-messagebus
-Image=ovos-messagebus.image
+Image=docker.io/smartgic/ovos-messagebus:alpha
 Pull=never
 AutoUpdate=registry
 LogDriver=journald
