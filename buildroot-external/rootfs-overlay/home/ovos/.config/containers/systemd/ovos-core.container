@@ -26,6 +26,7 @@ AddDevice=/dev/snd
 Volume=%h/ovos/config:/home/ovos/.config/mycroft
 Volume=%h/ovos/tmp:/tmp
 Volume=%t/pipewire-0:/run/user/1000/pipewire-0:ro
+Volume=ovos_local_state:/home/ovos/.local/state/mycroft
 Volume=ovos_nltk:/home/ovos/nltk_data
 Volume=ovos_venv_core:/home/ovos/.venv
 Volume=%h/ovos/share:/home/ovos/.local/share/mycroft

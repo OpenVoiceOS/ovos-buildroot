@@ -15,6 +15,7 @@ Network=host
 Timezone=local
 UserNS=keep-id:uid=%U,gid=%G
 Volume=%h/ovos/config:/home/ovos/.config/mycroft:ro
+Volume=ovos_local_state:/home/ovos/.local/state/mycroft
 Volume=%h/ovos/tmp:/tmp
 
 [Service]
