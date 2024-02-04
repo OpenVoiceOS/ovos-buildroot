@@ -6,7 +6,8 @@ Wants=network-online.target
 
 [Container]
 ContainerName=ovos-cli
-Image=docker.io/smartgic/ovos-cli:alpha
+Image=ovos-cli.image
+Pull=never
 AutoUpdate=registry
 LogDriver=journald
 HostName=ovos-cli

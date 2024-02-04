@@ -8,7 +8,8 @@ Wants=ovos-core.service
 
 [Container]
 ContainerName=hivemind-listener
-Image=docker.io/smartgic/hivemind-listener:alpha
+Image=hivemind-listener.image
+Pull=never
 AutoUpdate=registry
 LogDriver=journald
 HostName=hivemind-listener

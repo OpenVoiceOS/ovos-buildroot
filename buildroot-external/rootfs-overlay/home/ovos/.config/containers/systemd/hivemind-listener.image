@@ -1,0 +1,4 @@
+[Image]
+Image=docker.io/smartgic/hivemind-listener:alpha
+ImageTag=docker.io/smartgic/hivemind-listener:alpha
+TLSVerify=false

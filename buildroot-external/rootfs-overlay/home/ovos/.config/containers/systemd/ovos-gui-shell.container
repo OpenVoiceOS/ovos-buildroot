@@ -14,7 +14,8 @@ After=pipewire.service
 
 [Container]
 ContainerName=ovos-gui-shell
-Image=docker.io/smartgic/ovos-gui-shell:alpha
+Image=ovos-gui-shell.image
+Pull=never
 AutoUpdate=registry
 LogDriver=journald
 HostName=ovos-gui-shell

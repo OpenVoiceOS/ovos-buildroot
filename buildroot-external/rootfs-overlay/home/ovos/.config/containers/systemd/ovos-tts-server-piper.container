@@ -6,7 +6,8 @@ Wants=network-online.target
 
 [Container]
 ContainerName=ovos-tts-server-piper
-Image=docker.io/smartgic/ovos-tts-server-piper:alpha
+Image=ovos-tts-server-piper.image
+Pull=never
 AutoUpdate=registry
 LogDriver=journald
 HostName=ovos-tts-server-piper

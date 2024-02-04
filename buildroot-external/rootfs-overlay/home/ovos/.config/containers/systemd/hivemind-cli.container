@@ -8,7 +8,8 @@ Wants=hivemind-listener.service
 
 [Container]
 ContainerName=hivemind-cli
-Image=docker.io/smartgic/hivemind-cli:alpha
+Image=hivemind-cli.image
+Pull=never
 AutoUpdate=registry
 LogDriver=journald
 HostName=hivemind-cli

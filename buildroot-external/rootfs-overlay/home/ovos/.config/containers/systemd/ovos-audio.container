@@ -12,7 +12,8 @@ After=ovos-phal.service
 
 [Container]
 ContainerName=ovos-audio
-Image=docker.io/smartgic/ovos-audio:alpha
+Image=ovos-audio.image
+Pull=never
 Notify=healthy
 AutoUpdate=registry
 LogDriver=journald
