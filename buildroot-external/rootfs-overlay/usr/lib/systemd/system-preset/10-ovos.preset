@@ -8,9 +8,9 @@ enable ovos-splash-start.service
 enable ovos-splash-systemd.service
 enable mglru.service
 enable connectivity-check.service
+enable ovos-bus-server.service
 
 disable ovos-splash-quit.service
-disable ovos-bus-server.service
 disable pipewire.service
 disable pipewire-pulse.service
 disable wireplumber.service
