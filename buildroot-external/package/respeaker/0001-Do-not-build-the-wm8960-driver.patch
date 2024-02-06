@@ -1,0 +1,37 @@
+From d4dab0b7818bc3106f273cf24f02a3ea87cc653a Mon Sep 17 00:00:00 2001
+From: j1nx <p.steenbergen@j1nx.nl>
+Date: Tue, 6 Feb 2024 09:57:12 +0000
+Subject: [PATCH 1/1] Do not build the wm8960 driver
+
+---
+ Makefile | 3 ---
+ 1 file changed, 3 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index b9de7f4..b5f2595 100644
+--- a/Makefile
++++ b/Makefile
+@@ -12,12 +12,10 @@ uname_r=$(shell uname -r)
+ ifneq ($(KERNELRELEASE),)
+ # $(warning KERNELVERSION=$(KERNELVERSION))
+ 
+-snd-soc-wm8960-objs := wm8960.o
+ snd-soc-ac108-objs := ac108.o ac101.o
+ snd-soc-seeed-voicecard-objs := seeed-voicecard.o
+ 
+ 
+-obj-m += snd-soc-wm8960.o
+ obj-m += snd-soc-ac108.o
+ obj-m += snd-soc-seeed-voicecard.o
+ 
+@@ -41,7 +39,6 @@ clean:
+ 
+ install:
+ 	sudo cp snd-soc-ac108.ko ${DEST}/sound/soc/codecs/
+-	sudo cp snd-soc-wm8960.ko ${DEST}/sound/soc/codecs/
+ 	sudo cp snd-soc-seeed-voicecard.ko ${DEST}/sound/soc/bcm/
+ 	sudo depmod -a
+ 
+-- 
+2.34.1
+
