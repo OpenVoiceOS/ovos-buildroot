@@ -16,6 +16,7 @@ HostName=hivemind-listener
 Network=host
 Timezone=local
 UserNS=keep-id:uid=%U,gid=%G
+SecurityLabelDisable=true
 Volume=%h/hivemind/config:/home/hivemind/.config/hivemind:z
 Volume=%h/hivemind/share:/home/hivemind/.local/share/hivemind:z
 

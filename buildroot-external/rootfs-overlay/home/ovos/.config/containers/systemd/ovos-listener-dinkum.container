@@ -22,6 +22,7 @@ HostName=ovos-listener-dinkum
 Network=host
 Timezone=local
 UserNS=keep-id:uid=%U,gid=%G
+SecurityLabelDisable=true
 EnvironmentFile=%h/.config/containers/env
 AddDevice=/dev/snd
 Volume=%h/ovos/config:/home/ovos/.config/mycroft:ro

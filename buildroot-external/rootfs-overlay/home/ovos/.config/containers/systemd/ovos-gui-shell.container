@@ -22,6 +22,7 @@ HostName=ovos-gui-shell
 Network=host
 Timezone=local
 UserNS=keep-id:uid=%U,gid=%G
+SecurityLabelDisable=true
 EnvironmentFile=%h/.config/containers/env
 AddDevice=/dev/snd
 AddDevice=/dev/dri
