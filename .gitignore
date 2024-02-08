@@ -6,3 +6,4 @@
 /release/*.swu
 /release/*.vdi
 /logs/*.txt
+*__pycache__*

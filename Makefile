@@ -45,6 +45,9 @@ clean:
 menuconfig:
 	$(MAKE) -C $(BUILDROOT) BR2_EXTERNAL=../$(BUILDROOT_EXTERNAL) menuconfig
 
+linux-check-dotconfig:
+	$(MAKE) -C $(BUILDROOT) BR2_EXTERNAL=../$(BUILDROOT_EXTERNAL) BR2_CHECK_DOTCONFIG_OPTS="--github-format" linux-check-dotconfig
+
 linux-menuconfig:
 	$(MAKE) -C $(BUILDROOT) BR2_EXTERNAL=../$(BUILDROOT_EXTERNAL) linux-menuconfig
 
