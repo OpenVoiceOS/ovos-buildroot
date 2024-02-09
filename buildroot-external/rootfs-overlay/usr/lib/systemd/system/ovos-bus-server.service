@@ -10,7 +10,7 @@ StandardError=null
 ExecStart=/usr/bin/ovos-bus-server
 Restart=always
 StartLimitInterval=0
-CPUSchedulingPolicy=fifo
+#CPUSchedulingPolicy=fifo
 CPUSchedulingPriority=49
 
 [Install]
