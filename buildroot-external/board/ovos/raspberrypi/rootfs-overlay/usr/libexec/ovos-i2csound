@@ -168,10 +168,10 @@ main() {
             /usr/sbin/i2cset -a -y 1 0x04 101 30 i
         else
             echo "Assume revision-10 SJ-201 board"
-            dtoverlay sj201-rev10-pwm-fan-overlay
+            #dtoverlay sj201-rev10-pwm-fan-overlay
         fi
         echo "Configuring buttons"
-        dtoverlay sj201-buttons-overlay
+        #dtoverlay sj201-buttons-overlay
     fi
 
     if [[ ${detection_results[AIYVOICEBONNET]} == true ]] ; then
