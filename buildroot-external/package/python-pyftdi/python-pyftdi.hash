@@ -1,5 +1,5 @@
 # md5, sha256 from https://pypi.org/pypi/pyftdi/json
-md5  d8969beb9cd11c123f1249963bf8c0d8  pyftdi-0.54.0.tar.gz
-sha256  8df9af22077d17533d2f95b508b1d87959877627ea5dc2369056e90a3b5a232d  pyftdi-0.54.0.tar.gz
+md5  fa9feda5b80db51d538ed9b98e25504e  pyftdi-0.55.0.tar.gz
+sha256  a747bbbccc4eeea26cefa2c8bd3d2b8bef8c94ecb6969bb9c75a63640887519a  pyftdi-0.55.0.tar.gz
 # Locally computed sha256 checksums
 sha256  7342c9ccf3ec21eee9a23c6c74af15fb08ac1b79ddbccb4e063ddeaa6ef7c52d  pyftdi/doc/license.rst
