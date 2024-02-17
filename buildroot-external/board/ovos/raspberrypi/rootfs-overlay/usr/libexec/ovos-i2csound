@@ -155,7 +155,7 @@ main() {
 
     if [[ ${detection_results[TAS5806]} == true ]] ; then
         echo "Installing and configuring SJ-201 HAT"
-        # Initializing XMOS xvf3510
+        # Initializing XMOS xvf3510 based SJ-201 HAT
         dtoverlay xvf3510
         xvf3510-flash --direct "/usr/lib/firmware/xvf3510/app_xvf3510_int_spi_boot_v4_1_0.bin"
         # Initializing Texas Instruments 5806 Amplifier
@@ -168,10 +168,10 @@ main() {
             /usr/sbin/i2cset -a -y 1 0x04 101 30 i
         else
             echo "Assume revision-10 SJ-201 board"
-            dtoverlay sj201-rev10-pwm-fan-overlay
+            #dtoverlay sj201-rev10-pwm-fan-overlay
         fi
         echo "Configuring buttons"
-        dtoverlay sj201-buttons-overlay
+        #dtoverlay sj201-buttons-overlay
     fi
 
     if [[ ${detection_results[AIYVOICEBONNET]} == true ]] ; then

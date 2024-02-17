@@ -3,207 +3,244 @@
 # requires dtparam=spi=on in /boot/config.txt
 
 """
-This script configures the XVF3510 board in boot from SPI slave and load a
-binary file. It requires a bin file as input parameter.
+This script configures the XVF3510 board to boot from SPI slave and loads a
+binary file. It requires a bin file as an input parameter.
 """
 
 import sys
-import os
 import time
 import argparse
-import spidev
-import RPi.GPIO as GPIO
-from smbus import SMBus
+from smbus2 import SMBus
+import digitalio
+import busio
 from pathlib import Path
+import board
+from typing import Optional
 
-if sys.version[0] != '3':
-    print("Run this script with Python 3")
+# Global variables for GPIO pins
+BOOT_SEL_PIN = digitalio.DigitalInOut(board.D26)  # GPIO pin used for boot selection (PIN 37)
+RST_N_PIN = digitalio.DigitalInOut(board.D27)     # GPIO pin used for reset (PIN 13)
+I2C_ADDRESS = 0x2C                                # I2C address for the I/O expander. TODO: 0x20 was in original code, misstake?
+
+if sys.version_info[0] < 3:
+    print("This script requires Python 3.")
     sys.exit(1)
 
-def bit_reversed_byte(byte_to_reverse):
+def bit_reversed_byte(byte_to_reverse: int) -> int:
     """
-    Function to reverse the bit-order of a byte
+    Reverse the bits of a byte.
 
     Args:
-        byte_to_reverse: byte to process
-
-    Retruns:
-        byte in reversed order
-    """
-    return int('{:08b}'.format(byte_to_reverse)[::-1], 2)
-
-def set_boot_sel():
-    """
-    Function to set XVF3510 board in SPI slave boot mode
-
-    Args:
-        None
+        byte_to_reverse (int): The byte to reverse.
 
     Returns:
-        None
+        int: The reversed byte.
     """
-
-    bus = SMBus(1)
-
-    # reset BOOT_SEL
-    bus.write_byte_data(0x20, 3, 0xFE)
-    bus.write_byte_data(0x20, 7, 0xFF)
-
-    state = {}
-    for i in [2, 6]:
-        state[i] = bus.read_byte_data(0x20, i)
-
-    # start reset
-    data_to_write = 0x00 | (state[2] & 0xDF)
-    bus.write_byte_data(0x20, 2, data_to_write)
-    data_to_write = 0x00 | (state[6] & 0xDF)
-    bus.write_byte_data(0x20, 6, data_to_write)
-    # set BOOT_SEL high
-    data_to_write = 0x01
-    bus.write_byte_data(0x20, 3, data_to_write)
-    data_to_write = 0xFE
-    bus.write_byte_data(0x20, 7, data_to_write)
-    # stop reset
-    data_to_write = 0x20 | (state[2] & 0xDF)
-    bus.write_byte_data(0x20, 2, data_to_write)
-    data_to_write = 0x20 | (state[6] & 0xDF)
-    bus.write_byte_data(0x20, 6, data_to_write)
+    return int("{:08b}".format(byte_to_reverse)[::-1], 2)
 
 
-
-def send_image(bin_filename, verbose=False, max_spi_speed_mhz = 5, block_transfer_pause_ms = 1, direct = False, delay = False):
+def set_boot_sel() -> None:
     """
-    Function to send the given image to the device via SPI slave
+    Set XVF3510 board in SPI slave boot mode using I2C to manipulate BOOT_SEL pin.
+    """
+    try:
+        with SMBus(1) as bus:
+            # Reset BOOT_SEL to default
+            bus.write_byte_data(I2C_ADDRESS, 3, 0xFE)
+            bus.write_byte_data(I2C_ADDRESS, 7, 0xFF)
+
+            # Preserve other settings while manipulating BOOT_SEL
+            state = {i: bus.read_byte_data(I2C_ADDRESS, i) for i in [2, 6]}
+
+            # Start reset sequence
+            for i in [2, 6]:
+                bus.write_byte_data(I2C_ADDRESS, i, 0x00 | (state[i] & 0xDF))
+            # Set BOOT_SEL high
+            bus.write_byte_data(I2C_ADDRESS, 3, 0x01)
+            bus.write_byte_data(I2C_ADDRESS, 7, 0xFE)
+            # End reset sequence
+            for i in [2, 6]:
+                bus.write_byte_data(I2C_ADDRESS, i, 0x20 | (state[i] & 0xDF))
+    except Exception as e:
+        print(f"Error setting BOOT_SEL via I2C: {e}")
+        sys.exit(1)
+
+
+def send_image(
+    bin_filename: str,
+    verbose: bool = False,
+    max_spi_speed_mhz: float = 5,
+    block_transfer_pause_ms: float = 1,
+    direct: bool = False,
+    delay: bool = False,
+) -> None:
+    """
+    Send the given image to the device via SPI slave.
 
     Args:
-        bin_filename:   binary file containing the image to boot
-        verbose:        flag to print debug printouts
-        direct:         Use Pi GPIO outputs rather than the XVF3510 Pi HAT
-        delay:          Release BootSel early to delay startup on version 4.0.0 onwards
-
-    Returns:
-        None
+        bin_filename (str): Binary file name.
+        verbose (bool, optional): Enable verbose output. Defaults to False.
+        max_spi_speed_mhz (float, optional): Max SPI speed in MHz. Defaults to 5.
+        block_transfer_pause_ms (float, optional): Pause between blocks in milliseconds. Defaults to 1.
+        direct (bool, optional): Direct mode flag. Defaults to False.
+        delay (bool, optional): Delay startup flag. Defaults to False.
     """
+    binary_size = Path(bin_filename).stat().st_size
+    print(f'Read file "{bin_filename}" size: {binary_size} Bytes')
 
     if direct:
-        #setup GPIO
-        GPIO.setmode(GPIO.BOARD)
-        GPIO.setwarnings(False)
+        BOOT_SEL_PIN.switch_to_input()
+        RST_N_PIN.switch_to_output(value=True)
 
-        #boot_sel = 8
-        #rst_n = 10
-        '''
-           Mycroft board update
-        '''
-        #GPIO.setmode(GPIO.BCM)
-
-        boot_sel = 37 #26 #= 25 # fix these numbers to be Wiring Pi
-        rst_n    = 13 #27 #= 2  
-        GPIO.setup(boot_sel, GPIO.IN) # Normally, the Pi should not drive this
-        GPIO.setup(rst_n, GPIO.OUT, initial=GPIO.HIGH)
-
-    #setup SPI
-    spi = spidev.SpiDev()
-    bus_spi = 0
-    device = 0
-    spi.open(bus_spi, device)
-
-    #SPI Settings
-    spi.max_speed_hz = int(max_spi_speed_mhz * 1000000)
-    spi.mode = 0b00 #XMOS supports 00 or 11
-
-    spi_block_size = 4096 #Limitation in spidev and xfer2 doesn't work!
+    spi = setup_spi(max_spi_speed_mhz)
 
     if direct:
-        GPIO.output(rst_n, 0)
-        GPIO.setup(boot_sel, GPIO.OUT, initial=GPIO.HIGH)
-        GPIO.output(rst_n, 1)
+        RST_N_PIN.value=False
+        BOOT_SEL_PIN.switch_to_output(value=True)
+        RST_N_PIN.value=True
     else:
         set_boot_sel()
 
-    # Create a table to map byte values to their bit-reversed values
-    reverse_table  = [bit_reversed_byte(byte) for byte in range(256)]
+    reverse_table = [bit_reversed_byte(byte) for byte in range(256)]
 
-    data = []
-    with open(bin_filename, "rb") as f:
-        bytes_read = f.read()
-        data = list(bytes_read)
-        binary_size = len(data)
-        block_count = 0
-        print('Read file "{0}" size: {1} Bytes'.format(args.bin_filename, binary_size))
-        if binary_size % spi_block_size != 0:
-            print("Warning - binary file not a multiple of {} - {} remainder".format( \
-                  spi_block_size, binary_size % spi_block_size))
-        while binary_size > 0:
-            block = [reverse_table[byte] for byte in data[:spi_block_size]]
-            del data[:spi_block_size]
-            binary_size = len(data)
-            if verbose:
-                print("Sending {} Bytes in block {} checksum 0x{:X}".format( \
-                      len(block), block_count, sum(block)))
-            spi.xfer(block)
+    try:
+        with open(bin_filename, "rb") as f:
+            data = list(f.read())
+    except Exception as e:
+        print(f"Error reading binary file: {e}")
+        sys.exit(1)
 
-            if block_count == 0:
-                #Long delay for PLL reboot
-                time.sleep(0.1)
+    send_data_over_spi(data, spi, reverse_table, verbose, block_transfer_pause_ms, direct, delay)
 
-                if delay:
-                    # release boot_sel early to prevent startup
-                    if direct:
-                        GPIO.setup(boot_sel, GPIO.IN)
-                    else:
-                        #bus = smbus.SMBus(1)
-                        bus = SMBus(1)
-                        data_to_write = 0xFE
-                        bus.write_byte_data(0x20, 3, data_to_write)
-                        data_to_write = 0xFF
-                        bus.write_byte_data(0x20, 7, data_to_write)
-
-            elif binary_size > 0:
-                time.sleep(block_transfer_pause_ms / 1000)
-            block_count += 1
     print("Sending complete")
 
     if direct:
-        GPIO.setup(boot_sel, GPIO.IN) # Once booted, the Pi should not need to drive boot_sel
-        GPIO.setup(rst_n, GPIO.OUT, initial=GPIO.HIGH) # Once booted, the Pi should not need to drive reset
-        #GPIO.cleanup()
+        # Once booted, the Pi should not need to drive boot_sel and reset
+        BOOT_SEL_PIN.switch_to_input()
+        RST_N_PIN.value=True
     else:
-        #bus = smbus.SMBus(1)
-        bus = SMBus(1)
-
-        # reset BOOT_SEL
-        data_to_write = 0xFE
-        bus.write_byte_data(0x20, 3, data_to_write)
-        data_to_write = 0xFF
-        bus.write_byte_data(0x20, 7, data_to_write)
+        # Reset BOOT_SEL to default state
+        with SMBus(1) as bus:
+            bus.write_byte_data(I2C_ADDRESS, 3, 0xFE)
+            bus.write_byte_data(I2C_ADDRESS, 7, 0xFF)
 
 
+def setup_spi(max_spi_speed_mhz: float) -> busio.SPI:
+    """
+    Set up the SPI bus.
+
+    Args:
+        max_spi_speed_mhz (float): Max SPI speed in MHz.
+
+    Returns:
+        busio.SPI: Configured SPI bus.
+    """
+    spi = busio.SPI(board.SCLK, MOSI=board.MOSI, MISO=board.MISO)
+    while not spi.try_lock():
+        pass
+    spi.configure(baudrate=max_spi_speed_mhz * 1_000_000)
+    return spi
+
+
+def send_data_over_spi(
+    data: list,
+    spi: busio.SPI,
+    reverse_table: list,
+    verbose: bool,
+    pause_ms: float,
+    direct: bool,
+    delay: bool,
+) -> None:
+    """
+    Send data over SPI, handling block transfers and optional delays.
+
+    Args:
+        data (list): Data to send.
+        spi (busio.SPI): Configured SPI bus.
+        reverse_table (list): Table of bit-reversed byte values.
+        verbose (bool): Enable verbose output.
+        pause_ms (float): Pause between blocks in milliseconds.
+        direct (bool): Direct mode flag.
+        delay (bool): Delay startup flag.
+    """
+    spi_block_size = 4096
+    block_count = 0
+    total_data_length = len(data)
+    for i in range(0, total_data_length, spi_block_size):
+        block = [reverse_table[byte] for byte in data[i : i + spi_block_size]]
+        if verbose:
+            print(f"Sending {len(block)} Bytes in block {block_count} checksum 0x{sum(block):X}")
+        spi.write(block)
+
+        # Update the remaining data length after each block transfer
+        remaining_data_length = total_data_length - (i + len(block))
+        handle_block_transfer(
+            block_count, delay, direct, pause_ms, remaining_data_length
+        )
+        block_count += 1
+
+
+def handle_block_transfer(
+    block_count: int, delay: bool, direct: bool, pause_ms: float, remaining_data_length: int
+) -> None:
+    """
+    Handle specifics of block transfer, including initial delays and conditional logic for direct mode.
+
+    Args:
+        block_count (int): Number of blocks sent.
+        delay (bool): Delay startup flag.
+        direct (bool): Direct mode flag.
+        pause_ms (float): Pause between blocks in milliseconds.
+        remaining_data_length (int): Length of remaining data to send.
+    """
+    if block_count == 0:
+        # Long delay for PLL reboot
+        time.sleep(0.1)
+
+        if delay:
+            # release boot_sel early to prevent startup
+            if direct:
+                # release boot_sel early to prevent startup
+                BOOT_SEL_PIN.switch_to_input()
+            else:
+                # Reset BOOT_SEL to default state
+                with SMBus(1) as bus:
+                    bus.write_byte_data(I2C_ADDRESS, 3, 0xFE)
+                    bus.write_byte_data(I2C_ADDRESS, 7, 0xFF)
+
+    elif remaining_data_length > 0:
+        time.sleep(pause_ms / 1000)
 
 
 if __name__ == "__main__":
-    start_time = time.time()
-    parser = argparse.ArgumentParser(description='Load an image via SPI slave from an RPi')
-    parser.add_argument('bin_filename', help='binary file name')
-    parser.add_argument('--direct', action='store_true', \
-                        help='Use just direct GPIO outputs rather than using the XVF3510 Development Kit Pi HAT')
-    parser.add_argument('--delay', action='store_true', \
-                        help='Delay xvf3510 device start. Release the BootSel pin early to prevent the XVF3510 (V4.0.0 onwards) from starting with the default I2S configuration. This gives AP a chance to configure and start the XVF3510 device.')
-    parser.add_argument('--max-spi-speed-mhz', type=float, default=5, \
-                        help='Max SPI speed in MHz')
-    parser.add_argument('--block-transfer-pause-ms', type=float, default=1, \
-                        help='pause between SPI transfers in milliseconds, default 1ms')
-    parser.add_argument('--verbose', action='store_true', \
-                        help='print debug information')
-
+    parser = argparse.ArgumentParser(description="Load an image via SPI slave from an RPi")
+    parser.add_argument("bin_filename", help="binary file name")
+    parser.add_argument("--direct", action="store_true", help="Use direct GPIO outputs rather than the XVF3510 Development Kit Pi HAT")
+    parser.add_argument("--delay", action="store_true", help="Delay xvf3510 device start")
+    parser.add_argument("--max-spi-speed-mhz", type=float, default=5, help="Max SPI speed in MHz")
+    parser.add_argument("--block-transfer-pause-ms", type=float, default=1, help="Pause between SPI transfers in milliseconds")
+    parser.add_argument("--verbose", action="store_true", help="Print debug information")
     args = parser.parse_args()
 
-    if not Path(args.bin_filename).is_file():
-        print("Error: input file {} not found".format(args.bin_filename))
-        exit(1)
+    bin_path = Path(args.bin_filename)
+    if not bin_path.is_file():
+        print(f"Error: input file {bin_path} not found")
+        sys.exit(1)
 
-    send_image(args.bin_filename, args.verbose, args.max_spi_speed_mhz, args.block_transfer_pause_ms, args.direct, args.delay)
-
+    start_time = time.time()
+    send_image(
+        bin_path,
+        args.verbose,
+        args.max_spi_speed_mhz,
+        args.block_transfer_pause_ms,
+        args.direct,
+        args.delay,
+    )
     end_time = time.time()
+
+    BOOT_SEL_PIN.deinit()
+    RST_N_PIN.deinit()
+
     if args.verbose:
-        print("Sending image took {:.3} seconds".format(end_time - start_time))
+        print(f"Sending image took {end_time - start_time:.3f} seconds")
+

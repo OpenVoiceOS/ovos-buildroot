@@ -4,9 +4,9 @@
 #
 ################################################################################
 
-PYTHON_SMBUS2_VERSION = 0.4.1
+PYTHON_SMBUS2_VERSION = 0.4.3
 PYTHON_SMBUS2_SOURCE = smbus2-$(PYTHON_SMBUS2_VERSION).tar.gz
-PYTHON_SMBUS2_SITE = https://files.pythonhosted.org/packages/d9/33/787448c69603eec96af07d36f7ae3a7e3fce4020632eddb55152dc903233
+PYTHON_SMBUS2_SITE = https://files.pythonhosted.org/packages/98/17/9663936e52a348b3ad1c85e6ca6071d2abf00a5f64f2df50bec8dcca6e16
 PYTHON_SMBUS2_SETUP_TYPE = setuptools
 PYTHON_SMBUS2_LICENSE = MIT
 PYTHON_SMBUS2_LICENSE_FILES = LICENSE
