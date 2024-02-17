@@ -4,8 +4,8 @@
 #
 ################################################################################
 
-VOCALFUSION_VERSION = fdf7e4efbe3237d68eb0d00388e57b0c891366b3
-VOCALFUSION_SITE = $(call github,BohdanBuinich,VocalFusionDriver,$(VOCALFUSION_VERSION))
+VOCALFUSION_VERSION = f05a110772a47d02ddcc57128a7d1dc00a14ec5c
+VOCALFUSION_SITE = $(call github,OpenVoiceOS,VocalFusionDriver,$(VOCALFUSION_VERSION))
 VOCALFUSION_MODULE_SUBDIRS = driver
 
 $(eval $(kernel-module))
