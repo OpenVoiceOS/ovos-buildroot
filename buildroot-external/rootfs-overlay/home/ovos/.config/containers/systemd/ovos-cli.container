@@ -15,9 +15,9 @@ Network=host
 Timezone=local
 UserNS=keep-id:uid=%U,gid=%G
 SecurityLabelDisable=true
-Volume=%h/ovos/config:/home/ovos/.config/mycroft
-Volume=%h/ovos/tmp:/tmp
-Volume=ovos_local_state:/home/ovos/.local/state/mycroft
+Volume=%h/ovos/config:/home/ovos/.config/mycroft:z
+Volume=%h/ovos/tmp:/tmp:z
+Volume=ovos_local_state:/home/ovos/.local/state/mycroft:z
 
 [Service]
 TimeoutStartSec=900

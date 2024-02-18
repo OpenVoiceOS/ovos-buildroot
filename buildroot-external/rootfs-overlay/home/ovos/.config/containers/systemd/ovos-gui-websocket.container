@@ -3,10 +3,10 @@ Description=OpenVoiceOS GUI Websocket Service
 After=local-fs.target
 After=network-online.target
 Wants=network-online.target
-Wants=ovos-bus-server.service
-After=ovos-bus-server.service
-#Wants=ovos-messagebus.service
-#After=ovos-messagebus.service
+#Wants=ovos-bus-server.service
+#After=ovos-bus-server.service
+Wants=ovos-messagebus.service
+After=ovos-messagebus.service
 
 [Container]
 ContainerName=ovos-gui-websocket
@@ -19,9 +19,9 @@ Network=host
 Timezone=local
 UserNS=keep-id:uid=%U,gid=%G
 SecurityLabelDisable=true
-Volume=%h/ovos/config:/home/ovos/.config/mycroft:ro
-Volume=%h/ovos/tmp:/tmp
-Volume=ovos_gui_files:/home/ovos/.cache/ovos_gui_file_server
+Volume=%h/ovos/config:/home/ovos/.config/mycroft:ro,z
+Volume=%h/ovos/tmp:/tmp:z
+Volume=ovos_gui_files:/home/ovos/.cache/ovos_gui_file_server:z
 
 [Service]
 TimeoutStartSec=900

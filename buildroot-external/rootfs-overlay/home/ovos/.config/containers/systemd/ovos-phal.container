@@ -5,10 +5,10 @@ After=network-online.target
 Wants=network-online.target
 Wants=pipewire.service
 After=pipewire.service
-Wants=ovos-bus-server.service
-After=ovos-bus-server.service
-#Wants=ovos-messagebus.service
-#After=ovos-messagebus.service
+#Wants=ovos-bus-server.service
+#After=ovos-bus-server.service
+Wants=ovos-messagebus.service
+After=ovos-messagebus.service
 
 [Container]
 ContainerName=ovos-phal
@@ -23,9 +23,9 @@ UserNS=keep-id:uid=%U,gid=%G
 SecurityLabelDisable=true
 EnvironmentFile=%h/.config/containers/env
 AddDevice=/dev/snd
-Volume=%h/ovos/config:/home/ovos/.config/mycroft
-Volume=ovos_local_state:/home/ovos/.local/state/mycroft
-Volume=%h/ovos/tmp:/tmp
+Volume=%h/ovos/config:/home/ovos/.config/mycroft:z
+Volume=ovos_local_state:/home/ovos/.local/state/mycroft:z
+Volume=%h/ovos/tmp:/tmp:z
 Volume=%t/pipewire-0:/run/user/1000/pipewire-0:ro
 Volume=ovos_venv_phal:/home/ovos/.venv
 

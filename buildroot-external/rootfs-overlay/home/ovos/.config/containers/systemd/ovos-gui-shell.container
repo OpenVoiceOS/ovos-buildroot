@@ -27,12 +27,12 @@ EnvironmentFile=%h/.config/containers/env
 AddDevice=/dev/snd
 AddDevice=/dev/dri
 AddDevice=/dev/input
-Volume=%h/ovos/config:/home/ovos/.config/mycroft
-Volume=%h/ovos/tmp:/tmp
+Volume=%h/ovos/config:/home/ovos/.config/mycroft:z
+Volume=%h/ovos/tmp:/tmp:z
 Volume=%t/pipewire-0:/run/user/1000/pipewire-0:ro
 Volume=%t/bus:/run/user/1000/bus:ro
-Volume=%h/ovos/share:/home/ovos/.local/share/mycroft
-Volume=ovos_gui_files:/home/ovos/.cache/gui_files
+Volume=%h/ovos/share:/home/ovos/.local/share/mycroft:z
+Volume=ovos_gui_files:/home/ovos/.cache/gui_files:z
 Volume=/run/udev/data:/run/udev/data:ro
 
 [Service]

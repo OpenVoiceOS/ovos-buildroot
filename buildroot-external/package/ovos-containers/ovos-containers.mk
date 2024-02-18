@@ -11,6 +11,7 @@ OVOS_CONTAINERS_SITE = $(BR2_EXTERNAL_OPENVOICEOS_PATH)/package/ovos-containers
 OVOS_CONTAINERS_SITE_METHOD = local
 
 OVOS_CONTAINERS_IMAGES = ovos-phal \
+			 ovos-messagebus \
 			 ovos-listener-dinkum \
 			 ovos-audio \
 			 ovos-core \
