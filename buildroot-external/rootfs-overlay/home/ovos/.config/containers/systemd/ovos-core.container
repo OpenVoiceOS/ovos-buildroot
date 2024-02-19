@@ -16,6 +16,7 @@ After=ovos-phal.service
 ContainerName=ovos-core
 Image=docker.io/smartgic/ovos-core:alpha
 Pull=never
+Notify=healthy
 AutoUpdate=registry
 LogDriver=journald
 HostName=ovos-core

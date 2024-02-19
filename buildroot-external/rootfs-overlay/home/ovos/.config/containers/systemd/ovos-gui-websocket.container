@@ -12,6 +12,7 @@ After=ovos-messagebus.service
 ContainerName=ovos-gui-websocket
 Image=docker.io/smartgic/ovos-gui-websocket:alpha
 Pull=never
+Notify=healthy
 AutoUpdate=registry
 LogDriver=journald
 HostName=ovos-gui-websocket
