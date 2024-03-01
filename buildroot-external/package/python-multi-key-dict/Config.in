@@ -1,6 +1,0 @@
-config BR2_PACKAGE_PYTHON_MULTI_KEY_DICT
-	bool "python-multi-key-dict"
-	help
-	  Multi key dictionary implementation.
-
-	  https://github.com/formiaczek/multi_key_dict

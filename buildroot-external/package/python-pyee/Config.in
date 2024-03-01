@@ -1,6 +1,0 @@
-config BR2_PACKAGE_PYTHON_PYEE
-	bool "python-pyee"
-	help
-	  A port of node.js's EventEmitter to python.
-
-	  https://github.com/jfhbrook/pyee

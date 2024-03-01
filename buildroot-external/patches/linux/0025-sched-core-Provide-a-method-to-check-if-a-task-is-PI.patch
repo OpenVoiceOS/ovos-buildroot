@@ -1,7 +1,7 @@
-From a3b4b96acf6a09da67d22e7aa8a62f250bfc6e25 Mon Sep 17 00:00:00 2001
+From 480a24076ff3f106924b91564cae088f7e04914c Mon Sep 17 00:00:00 2001
 From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Fri, 4 Aug 2023 13:30:37 +0200
-Subject: [PATCH 025/195] sched/core: Provide a method to check if a task is
+Subject: [PATCH 025/196] sched/core: Provide a method to check if a task is
  PI-boosted.
 
 Provide a method to check if a task inherited the priority from another
@@ -57,5 +57,5 @@ index 90f9124ac027..7134598e3284 100644
   * yield - yield the current processor to other threads.
   *
 -- 
-2.43.0
+2.43.2
 

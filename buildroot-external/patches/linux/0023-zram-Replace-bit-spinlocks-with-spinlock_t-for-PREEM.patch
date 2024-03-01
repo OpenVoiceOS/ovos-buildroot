@@ -1,7 +1,7 @@
-From d25c9b1588e64c6b128e958bdb998668f65bd03a Mon Sep 17 00:00:00 2001
+From 03e700d918bec8e9cf7b84b0547aa3416951ac91 Mon Sep 17 00:00:00 2001
 From: Mike Galbraith <umgwanakikbuti@gmail.com>
 Date: Thu, 31 Mar 2016 04:08:28 +0200
-Subject: [PATCH 023/195] zram: Replace bit spinlocks with spinlock_t for
+Subject: [PATCH 023/196] zram: Replace bit spinlocks with spinlock_t for
  PREEMPT_RT.
 
 The bit spinlock disables preemption. The spinlock_t lock becomes a sleeping
@@ -98,5 +98,5 @@ index ca7a15bd4845..e64eb607eb45 100644
  	ktime_t ac_time;
  #endif
 -- 
-2.43.0
+2.43.2
 

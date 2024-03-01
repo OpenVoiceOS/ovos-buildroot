@@ -1,6 +1,0 @@
-config BR2_PACKAGE_PYTHON_PYXDG
-	bool "python-pyxdg"
-	help
-	  PyXDG is a python library to access freedesktop.org standards..
-
-	  https://freedesktop.org/wiki/Software/pyxdg/

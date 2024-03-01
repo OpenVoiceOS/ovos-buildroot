@@ -1,4 +1,4 @@
 [submodule "buildroot"]
 	path = buildroot
-	url = https://github.com/j1nx/buildroot.git
-	branch = ovos-2023.02.x
+	url = https://github.com/OpenVoiceOS/buildroot.git
+	branch = ovos-2024.02.x

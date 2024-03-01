@@ -1,6 +1,0 @@
-config BR2_PACKAGE_PYTHON_CACHETOOLS
-	bool "python-cachetools"
-	help
-	  Extensible memoizing collections and decorators.
-
-	  https://github.com/tkem/cachetools

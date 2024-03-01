@@ -1,7 +1,7 @@
-From beec053e6c4b3efcfb0c71e5594de0df4651d6f8 Mon Sep 17 00:00:00 2001
+From 940963fd380191ddc53a1519e9a43e9f64acff7d Mon Sep 17 00:00:00 2001
 From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Thu, 21 Sep 2023 16:15:12 +0200
-Subject: [PATCH 010/195] drm/amd/display: Remove migrate_en/dis from
+Subject: [PATCH 010/196] drm/amd/display: Remove migrate_en/dis from
  dc_fpu_begin().
 
 This is a revert of the commit mentioned below while it is not wrong, as
@@ -87,5 +87,5 @@ index 172aa10a8800..86f4c0e04654 100644
  		if (cpu_has_feature(CPU_FTR_VSX_COMP)) {
  			disable_kernel_vsx();
 -- 
-2.43.0
+2.43.2
 

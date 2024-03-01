@@ -1,7 +1,7 @@
-From 811417a29d37605f932c88499d94379ac8535991 Mon Sep 17 00:00:00 2001
+From ae915e145a1a823d3b54adb8b5cda19fa8f8dcde Mon Sep 17 00:00:00 2001
 From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Fri, 4 Aug 2023 13:30:39 +0200
-Subject: [PATCH 027/195] time: Allow to preempt after a callback.
+Subject: [PATCH 027/196] time: Allow to preempt after a callback.
 
 The TIMER_SOFTIRQ handler invokes timer callbacks of the expired timers.
 Before each invocation the timer_base::lock is dropped. The only lock
@@ -48,5 +48,5 @@ index 7cad6fe3c035..b3fbe97d1e34 100644
  		raw_spin_lock_irq(&base->lock);
  	}
 -- 
-2.43.0
+2.43.2
 

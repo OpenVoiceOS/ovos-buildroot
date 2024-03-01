@@ -1,7 +1,7 @@
-From 71103fe2c85e989e7b5374cead80c0d75425f1de Mon Sep 17 00:00:00 2001
+From f75402b89331eb0888900ae15fe7a8ec08564e90 Mon Sep 17 00:00:00 2001
 From: Peter Zijlstra <peterz@infradead.org>
 Date: Fri, 8 Sep 2023 18:22:48 +0200
-Subject: [PATCH 001/195] sched: Constrain locks in sched_submit_work()
+Subject: [PATCH 001/196] sched: Constrain locks in sched_submit_work()
 
 Even though sched_submit_work() is ran from preemptible context,
 it is discouraged to have it use blocking locks due to the recursion
@@ -50,5 +50,5 @@ index a854b71836dd..a9bf40d18cec 100644
  
  static void sched_update_worker(struct task_struct *tsk)
 -- 
-2.43.0
+2.43.2
 

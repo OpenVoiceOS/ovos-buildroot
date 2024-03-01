@@ -1,6 +1,0 @@
-config BR2_PACKAGE_PYTHON_SOURCE
-	bool "python-source"
-	help
-	  A simple printer of source list.
-
-	  http://www.cctv.com
