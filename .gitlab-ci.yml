@@ -1,0 +1,43 @@
+stages:
+  - fetch-assets
+  - generate-gitlab-ci
+  - build
+
+fetch-assets:
+  stage: fetch-assets
+  artifacts:
+    untracked: true
+    expire_in: 1 day
+    when: on_success
+    paths:
+      - buildroot
+  script:
+    - git submodule update --init --recursive
+    - git submodule update --remote --merge
+    - ./scripts/br-patches.sh
+
+build rpi3-gui:
+  stage: build
+  when: manual
+  dependencies:
+    - fetch-assets
+  artifacts:
+    when: on_success
+    paths:
+      - release
+  script:
+    - make clean
+    - make rpi3_64-gui
+
+build rpi4-gui:
+  stage: build
+  when: manual
+  dependencies:
+    - fetch-assets
+  artifacts:
+    when: on_success
+    paths:
+      - release
+  script:
+    - make clean
+    - make rpi4_64-gui
