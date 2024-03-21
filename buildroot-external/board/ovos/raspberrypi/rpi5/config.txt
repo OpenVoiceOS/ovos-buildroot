@@ -1,10 +1,7 @@
-# Raspberry Pi 3 Configuration
+# Raspberry Pi 5 Configuration
 
 # Basic setting
 arm_64bit=1
-
-# Disable command line tags.
-disable_commandline_tags=2
 
 # Specify UEFI firmware file.
 armstub=RPI_EFI.fd
@@ -13,13 +10,25 @@ armstub=RPI_EFI.fd
 enable_uart=1
 uart_2ndstage=1
 
+# Enable GIC (Generic Interrupt Controller).
+enable_gic=1
+
 # Set device tree memory address range.
 device_tree_address=0x1f0000
-device_tree_end=0x200000
+device_tree_end=0x210000
+
+# Keep RP1 PCIe configured on boot for PCIe peripherals.
+pciex4_reset=0
+
+# Max power to USB ports for high-power devices.
+usb_max_current_enable=1
+
+# Run CPU at max speed for better performance.
+# force_turbo=1
 
 # Custom bootloader files.
-start_file=start_x.elf
-fixup_file=fixup_x.dat
+start_file=start4x.elf
+fixup_file=fixup4x.dat
 
 # Disable overscan for full-resolution display.
 disable_overscan=1
@@ -27,8 +36,8 @@ disable_overscan=1
 # Auto-detect DSI displays and load overlays.
 display_auto_detect=1
 
-# Graphics acceleration with VC4 V3D driver, uses 384MB CMA limited to 2 framebuffer.
-dtoverlay=vc4-fkms-v3d,cma-384
+# Graphics acceleration with VC4 V3D driver, uses 512MB CMA limited to 2 framebuffer.
+dtoverlay=vc4-fkms-v3d,cma-512
 max_framebuffers=2
 
 # Uncomment for HDMI safe mode.
@@ -61,5 +70,5 @@ disable_splash=1
 # Enable I2C, I2S, and SPI interfaces for peripheral communication.
 dtparam=i2c=on,i2s=on,spi=on
 
-# Use DWC2 instead of XHCI on the rpi3 to prevent issues with te RealTime kernel
-dtoverlay=dwc2
+# Enable CPU frequency boost on compatible models.
+arm_boost=1
