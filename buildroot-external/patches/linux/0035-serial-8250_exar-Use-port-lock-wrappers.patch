@@ -1,7 +1,7 @@
-From 74a615bca2e2128d4ae9b52795a2e60dcaf9c712 Mon Sep 17 00:00:00 2001
+From 387ef2cfac20a43865414aedc210dc3164ca23b0 Mon Sep 17 00:00:00 2001
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Thu, 14 Sep 2023 20:43:26 +0206
-Subject: [PATCH 035/196] serial: 8250_exar: Use port lock wrappers
+Subject: [PATCH 035/198] serial: 8250_exar: Use port lock wrappers
 
 When a serial port is used for kernel console output, then all
 modifications to the UART registers which are done from other contexts,
@@ -37,7 +37,7 @@ Signed-off-by: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
  1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/drivers/tty/serial/8250/8250_exar.c b/drivers/tty/serial/8250/8250_exar.c
-index 8385be846840..91cf690b7c71 100644
+index 4d20f3aa280c..342786064590 100644
 --- a/drivers/tty/serial/8250/8250_exar.c
 +++ b/drivers/tty/serial/8250/8250_exar.c
 @@ -201,9 +201,9 @@ static int xr17v35x_startup(struct uart_port *port)
@@ -53,5 +53,5 @@ index 8385be846840..91cf690b7c71 100644
  	return serial8250_do_startup(port);
  }
 -- 
-2.43.2
+2.44.0
 

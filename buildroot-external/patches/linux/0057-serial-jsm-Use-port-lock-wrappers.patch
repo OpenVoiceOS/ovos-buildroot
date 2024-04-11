@@ -1,7 +1,7 @@
-From 2d16a8c5689cf2e2249a8011b795e1d0abab80af Mon Sep 17 00:00:00 2001
+From 9d49519691d85841c7bbec5a1b5420d8bb5c2aab Mon Sep 17 00:00:00 2001
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Thu, 14 Sep 2023 20:43:48 +0206
-Subject: [PATCH 057/196] serial: jsm: Use port lock wrappers
+Subject: [PATCH 057/198] serial: jsm: Use port lock wrappers
 
 When a serial port is used for kernel console output, then all
 modifications to the UART registers which are done from other contexts,
@@ -127,5 +127,5 @@ index 222afc270c88..ce0fef7e2c66 100644
  
  static const char *jsm_tty_type(struct uart_port *port)
 -- 
-2.43.2
+2.44.0
 

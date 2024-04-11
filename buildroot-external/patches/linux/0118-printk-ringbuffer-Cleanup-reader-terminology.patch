@@ -1,7 +1,7 @@
-From e69a87b9db7040f72eb3778cab817be8cdeedfdf Mon Sep 17 00:00:00 2001
+From cb0502082b6cfebf7aa64c7055426c6623206489 Mon Sep 17 00:00:00 2001
 From: John Ogness <john.ogness@linutronix.de>
 Date: Mon, 6 Nov 2023 15:01:58 +0000
-Subject: [PATCH 118/196] printk: ringbuffer: Cleanup reader terminology
+Subject: [PATCH 118/198] printk: ringbuffer: Cleanup reader terminology
 
 With the lockless ringbuffer, it is allowed that multiple
 CPUs/contexts write simultaneously into the buffer. This creates
@@ -68,5 +68,5 @@ index 244d991ffd73..67ee1c62fcd6 100644
  bool prb_read_valid_info(struct printk_ringbuffer *rb, u64 seq,
  			 struct printk_info *info, unsigned int *line_count)
 -- 
-2.43.2
+2.44.0
 

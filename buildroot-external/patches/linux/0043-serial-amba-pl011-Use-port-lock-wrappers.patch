@@ -1,7 +1,7 @@
-From 96c7d649adbd0d1dd0b530112b93dcc2bbf1066f Mon Sep 17 00:00:00 2001
+From d9b7b888b11585d0af93ed044d8fdf2fa19db277 Mon Sep 17 00:00:00 2001
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Thu, 14 Sep 2023 20:43:34 +0206
-Subject: [PATCH 043/196] serial: amba-pl011: Use port lock wrappers
+Subject: [PATCH 043/198] serial: amba-pl011: Use port lock wrappers
 
 When a serial port is used for kernel console output, then all
 modifications to the UART registers which are done from other contexts,
@@ -37,7 +37,7 @@ Signed-off-by: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
  1 file changed, 36 insertions(+), 36 deletions(-)
 
 diff --git a/drivers/tty/serial/amba-pl011.c b/drivers/tty/serial/amba-pl011.c
-index cd3913b933c7..aec67d740e44 100644
+index 362bbcdece0d..16c770311069 100644
 --- a/drivers/tty/serial/amba-pl011.c
 +++ b/drivers/tty/serial/amba-pl011.c
 @@ -347,9 +347,9 @@ static int pl011_fifo_to_tty(struct uart_amba_port *uap)
@@ -124,7 +124,7 @@ index cd3913b933c7..aec67d740e44 100644
  
  	if (uap->using_tx_dma) {
  		/* In theory, this should already be done by pl011_dma_flush_buffer */
-@@ -1370,9 +1370,9 @@ static void pl011_throttle_rx(struct uart_port *port)
+@@ -1400,9 +1400,9 @@ static void pl011_throttle_rx(struct uart_port *port)
  {
  	unsigned long flags;
  
@@ -136,7 +136,7 @@ index cd3913b933c7..aec67d740e44 100644
  }
  
  static void pl011_enable_ms(struct uart_port *port)
-@@ -1390,7 +1390,7 @@ __acquires(&uap->port.lock)
+@@ -1420,7 +1420,7 @@ __acquires(&uap->port.lock)
  {
  	pl011_fifo_to_tty(uap);
  
@@ -145,7 +145,7 @@ index cd3913b933c7..aec67d740e44 100644
  	tty_flip_buffer_push(&uap->port.state->port);
  	/*
  	 * If we were temporarily out of DMA mode for a while,
-@@ -1415,7 +1415,7 @@ __acquires(&uap->port.lock)
+@@ -1445,7 +1445,7 @@ __acquires(&uap->port.lock)
  #endif
  		}
  	}
@@ -328,5 +328,5 @@ index cd3913b933c7..aec67d740e44 100644
  
  	clk_disable(uap->clk);
 -- 
-2.43.2
+2.44.0
 

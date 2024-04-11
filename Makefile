@@ -57,6 +57,9 @@ busybox-menuconfig:
 swupdate-menuconfig:
 	$(MAKE) -C $(BUILDROOT) BR2_EXTERNAL=../$(BUILDROOT_EXTERNAL) swupdate-menuconfig
 
+uclibc-menuconfig:
+	$(MAKE) -C $(BUILDROOT) BR2_EXTERNAL=../$(BUILDROOT_EXTERNAL) uclibc-menuconfig
+
 savedefconfig:
 	$(MAKE) -C $(BUILDROOT) BR2_EXTERNAL=../$(BUILDROOT_EXTERNAL) savedefconfig
 

@@ -1,7 +1,7 @@
-From 359f0d1e6b006a6296c949598fc409321b89721e Mon Sep 17 00:00:00 2001
+From acbbd819705ab82602bbf45a18a584abb4d83efc Mon Sep 17 00:00:00 2001
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Thu, 14 Sep 2023 20:44:21 +0206
-Subject: [PATCH 090/196] serial: stm32: Use port lock wrappers
+Subject: [PATCH 090/198] serial: stm32: Use port lock wrappers
 
 When a serial port is used for kernel console output, then all
 modifications to the UART registers which are done from other contexts,
@@ -37,10 +37,10 @@ Signed-off-by: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
  1 file changed, 19 insertions(+), 19 deletions(-)
 
 diff --git a/drivers/tty/serial/stm32-usart.c b/drivers/tty/serial/stm32-usart.c
-index b6f4f436a565..f0901bedcc28 100644
+index e5f933beb6c0..d8fe1ca75ac4 100644
 --- a/drivers/tty/serial/stm32-usart.c
 +++ b/drivers/tty/serial/stm32-usart.c
-@@ -533,7 +533,7 @@ static void stm32_usart_rx_dma_complete(void *arg)
+@@ -535,7 +535,7 @@ static void stm32_usart_rx_dma_complete(void *arg)
  	unsigned int size;
  	unsigned long flags;
  
@@ -49,7 +49,7 @@ index b6f4f436a565..f0901bedcc28 100644
  	size = stm32_usart_receive_chars(port, false);
  	uart_unlock_and_check_sysrq_irqrestore(port, flags);
  	if (size)
-@@ -639,9 +639,9 @@ static void stm32_usart_tx_dma_complete(void *arg)
+@@ -641,9 +641,9 @@ static void stm32_usart_tx_dma_complete(void *arg)
  	stm32_usart_tx_dma_terminate(stm32port);
  
  	/* Let's see if we have pending data to send */
@@ -61,7 +61,7 @@ index b6f4f436a565..f0901bedcc28 100644
  }
  
  static void stm32_usart_tx_interrupt_enable(struct uart_port *port)
-@@ -885,7 +885,7 @@ static irqreturn_t stm32_usart_interrupt(int irq, void *ptr)
+@@ -887,7 +887,7 @@ static irqreturn_t stm32_usart_interrupt(int irq, void *ptr)
  	if (!stm32_port->throttled) {
  		if (((sr & USART_SR_RXNE) && !stm32_usart_rx_dma_started(stm32_port)) ||
  		    ((sr & USART_SR_ERR_MASK) && stm32_usart_rx_dma_started(stm32_port))) {
@@ -70,7 +70,7 @@ index b6f4f436a565..f0901bedcc28 100644
  			size = stm32_usart_receive_chars(port, false);
  			uart_unlock_and_check_sysrq(port);
  			if (size)
-@@ -894,14 +894,14 @@ static irqreturn_t stm32_usart_interrupt(int irq, void *ptr)
+@@ -896,14 +896,14 @@ static irqreturn_t stm32_usart_interrupt(int irq, void *ptr)
  	}
  
  	if ((sr & USART_SR_TXE) && !(stm32_port->tx_ch)) {
@@ -88,7 +88,7 @@ index b6f4f436a565..f0901bedcc28 100644
  		size = stm32_usart_receive_chars(port, false);
  		uart_unlock_and_check_sysrq(port);
  		if (size)
-@@ -989,7 +989,7 @@ static void stm32_usart_throttle(struct uart_port *port)
+@@ -991,7 +991,7 @@ static void stm32_usart_throttle(struct uart_port *port)
  	const struct stm32_usart_offsets *ofs = &stm32_port->info->ofs;
  	unsigned long flags;
  
@@ -97,7 +97,7 @@ index b6f4f436a565..f0901bedcc28 100644
  
  	/*
  	 * Pause DMA transfer, so the RX data gets queued into the FIFO.
-@@ -1002,7 +1002,7 @@ static void stm32_usart_throttle(struct uart_port *port)
+@@ -1004,7 +1004,7 @@ static void stm32_usart_throttle(struct uart_port *port)
  		stm32_usart_clr_bits(port, ofs->cr3, stm32_port->cr3_irq);
  
  	stm32_port->throttled = true;
@@ -106,7 +106,7 @@ index b6f4f436a565..f0901bedcc28 100644
  }
  
  /* Unthrottle the remote, the input buffer can now accept data. */
-@@ -1012,7 +1012,7 @@ static void stm32_usart_unthrottle(struct uart_port *port)
+@@ -1014,7 +1014,7 @@ static void stm32_usart_unthrottle(struct uart_port *port)
  	const struct stm32_usart_offsets *ofs = &stm32_port->info->ofs;
  	unsigned long flags;
  
@@ -115,7 +115,7 @@ index b6f4f436a565..f0901bedcc28 100644
  	stm32_usart_set_bits(port, ofs->cr1, stm32_port->cr1_irq);
  	if (stm32_port->cr3_irq)
  		stm32_usart_set_bits(port, ofs->cr3, stm32_port->cr3_irq);
-@@ -1026,7 +1026,7 @@ static void stm32_usart_unthrottle(struct uart_port *port)
+@@ -1028,7 +1028,7 @@ static void stm32_usart_unthrottle(struct uart_port *port)
  	if (stm32_port->rx_ch)
  		stm32_usart_rx_dma_start_or_resume(port);
  
@@ -124,7 +124,7 @@ index b6f4f436a565..f0901bedcc28 100644
  }
  
  /* Receive stop */
-@@ -1154,7 +1154,7 @@ static void stm32_usart_set_termios(struct uart_port *port,
+@@ -1156,7 +1156,7 @@ static void stm32_usart_set_termios(struct uart_port *port,
  
  	baud = uart_get_baud_rate(port, termios, old, 0, port->uartclk / 8);
  
@@ -133,7 +133,7 @@ index b6f4f436a565..f0901bedcc28 100644
  
  	ret = readl_relaxed_poll_timeout_atomic(port->membase + ofs->isr,
  						isr,
-@@ -1345,7 +1345,7 @@ static void stm32_usart_set_termios(struct uart_port *port,
+@@ -1347,7 +1347,7 @@ static void stm32_usart_set_termios(struct uart_port *port,
  	writel_relaxed(cr1, port->membase + ofs->cr1);
  
  	stm32_usart_set_bits(port, ofs->cr1, BIT(cfg->uart_enable_bit));
@@ -142,7 +142,7 @@ index b6f4f436a565..f0901bedcc28 100644
  
  	/* Handle modem control interrupts */
  	if (UART_ENABLE_MS(port, termios->c_cflag))
-@@ -1395,9 +1395,9 @@ static void stm32_usart_pm(struct uart_port *port, unsigned int state,
+@@ -1397,9 +1397,9 @@ static void stm32_usart_pm(struct uart_port *port, unsigned int state,
  		pm_runtime_get_sync(port->dev);
  		break;
  	case UART_PM_STATE_OFF:
@@ -154,7 +154,7 @@ index b6f4f436a565..f0901bedcc28 100644
  		pm_runtime_put_sync(port->dev);
  		break;
  	}
-@@ -1880,9 +1880,9 @@ static void stm32_usart_console_write(struct console *co, const char *s,
+@@ -1882,9 +1882,9 @@ static void stm32_usart_console_write(struct console *co, const char *s,
  	int locked = 1;
  
  	if (oops_in_progress)
@@ -166,7 +166,7 @@ index b6f4f436a565..f0901bedcc28 100644
  
  	/* Save and disable interrupts, enable the transmitter */
  	old_cr1 = readl_relaxed(port->membase + ofs->cr1);
-@@ -1896,7 +1896,7 @@ static void stm32_usart_console_write(struct console *co, const char *s,
+@@ -1898,7 +1898,7 @@ static void stm32_usart_console_write(struct console *co, const char *s,
  	writel_relaxed(old_cr1, port->membase + ofs->cr1);
  
  	if (locked)
@@ -175,7 +175,7 @@ index b6f4f436a565..f0901bedcc28 100644
  }
  
  static int stm32_usart_console_setup(struct console *co, char *options)
-@@ -2031,7 +2031,7 @@ static int __maybe_unused stm32_usart_serial_en_wakeup(struct uart_port *port,
+@@ -2033,7 +2033,7 @@ static int __maybe_unused stm32_usart_serial_en_wakeup(struct uart_port *port,
  		 * low-power mode.
  		 */
  		if (stm32_port->rx_ch) {
@@ -185,5 +185,5 @@ index b6f4f436a565..f0901bedcc28 100644
  			if (!stm32_usart_rx_dma_pause(stm32_port))
  				size += stm32_usart_receive_chars(port, true);
 -- 
-2.43.2
+2.44.0
 

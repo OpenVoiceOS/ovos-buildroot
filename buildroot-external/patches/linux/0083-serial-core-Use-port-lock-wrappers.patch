@@ -1,7 +1,7 @@
-From 0e9950b3324b08df7d223472910fabbd0a661519 Mon Sep 17 00:00:00 2001
+From 1d1af26137b4e240e05f8da2a093bb74708411af Mon Sep 17 00:00:00 2001
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Thu, 14 Sep 2023 20:44:14 +0206
-Subject: [PATCH 083/196] serial: core: Use port lock wrappers
+Subject: [PATCH 083/198] serial: core: Use port lock wrappers
 
 When a serial port is used for kernel console output, then all
 modifications to the UART registers which are done from other contexts,
@@ -38,7 +38,7 @@ Signed-off-by: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
  2 files changed, 48 insertions(+), 48 deletions(-)
 
 diff --git a/drivers/tty/serial/serial_core.c b/drivers/tty/serial/serial_core.c
-index 083ea4de48f9..fea8a8eca0c0 100644
+index 4c81210ad9b3..fc59ba702752 100644
 --- a/drivers/tty/serial/serial_core.c
 +++ b/drivers/tty/serial/serial_core.c
 @@ -79,7 +79,7 @@ static inline void uart_port_deref(struct uart_port *uport)
@@ -336,7 +336,7 @@ index 083ea4de48f9..fea8a8eca0c0 100644
  				tty_port_set_initialized(port, true);
  			} else {
  				/*
-@@ -2618,11 +2618,11 @@ uart_configure_port(struct uart_driver *drv, struct uart_state *state,
+@@ -2627,11 +2627,11 @@ uart_configure_port(struct uart_driver *drv, struct uart_state *state,
  		 * keep the DTR setting that is set in uart_set_options()
  		 * We probably don't need a spinlock around this, but
  		 */
@@ -351,7 +351,7 @@ index 083ea4de48f9..fea8a8eca0c0 100644
  		uart_rs485_config(port);
  
 diff --git a/drivers/tty/serial/serial_port.c b/drivers/tty/serial/serial_port.c
-index 862423237007..88975a4df306 100644
+index 0b3cef3c323b..72b6f4f326e2 100644
 --- a/drivers/tty/serial/serial_port.c
 +++ b/drivers/tty/serial/serial_port.c
 @@ -35,10 +35,10 @@ static int serial_port_runtime_resume(struct device *dev)
@@ -368,5 +368,5 @@ index 862423237007..88975a4df306 100644
  out:
  	pm_runtime_mark_last_busy(dev);
 -- 
-2.43.2
+2.44.0
 

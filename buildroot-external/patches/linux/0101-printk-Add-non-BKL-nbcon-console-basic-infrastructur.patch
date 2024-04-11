@@ -1,7 +1,7 @@
-From 722b7cde90957a6094cdd7a82dbac94a1fec5194 Mon Sep 17 00:00:00 2001
+From 4d72508b6543fa21b2ab307bb09a7cbfdc188c3f Mon Sep 17 00:00:00 2001
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Sat, 16 Sep 2023 21:26:00 +0206
-Subject: [PATCH 101/196] printk: Add non-BKL (nbcon) console basic
+Subject: [PATCH 101/198] printk: Add non-BKL (nbcon) console basic
  infrastructure
 
 The current console/printk subsystem is protected by a Big Kernel Lock,
@@ -232,10 +232,10 @@ index 000000000000..63d24ca62ac5
 +	nbcon_state_set(con, &state);
 +}
 diff --git a/kernel/printk/printk.c b/kernel/printk/printk.c
-index 0b3af1529778..1ec06dfa29d3 100644
+index 35d32d66fb11..ebeb0b4fa682 100644
 --- a/kernel/printk/printk.c
 +++ b/kernel/printk/printk.c
-@@ -3326,9 +3326,10 @@ static void try_enable_default_console(struct console *newcon)
+@@ -3376,9 +3376,10 @@ static void try_enable_default_console(struct console *newcon)
  		newcon->flags |= CON_CONSDEV;
  }
  
@@ -249,7 +249,7 @@ index 0b3af1529778..1ec06dfa29d3 100644
  	       con->name, con->index, ##__VA_ARGS__)
  
  static void console_init_seq(struct console *newcon, bool bootcon_registered)
-@@ -3488,6 +3489,9 @@ void register_console(struct console *newcon)
+@@ -3538,6 +3539,9 @@ void register_console(struct console *newcon)
  	newcon->dropped = 0;
  	console_init_seq(newcon, bootcon_registered);
  
@@ -259,7 +259,7 @@ index 0b3af1529778..1ec06dfa29d3 100644
  	/*
  	 * Put this console in the list - keep the
  	 * preferred driver at the head of the list.
-@@ -3579,6 +3583,9 @@ static int unregister_console_locked(struct console *console)
+@@ -3629,6 +3633,9 @@ static int unregister_console_locked(struct console *console)
  	 */
  	synchronize_srcu(&console_srcu);
  
@@ -270,5 +270,5 @@ index 0b3af1529778..1ec06dfa29d3 100644
  
  	if (console->exit)
 -- 
-2.43.2
+2.44.0
 

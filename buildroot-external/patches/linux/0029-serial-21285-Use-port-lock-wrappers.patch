@@ -1,7 +1,7 @@
-From 624855d352783d9df2a3de3be77cf25a9a2eace9 Mon Sep 17 00:00:00 2001
+From 6b27426c469aa7fc79fa5a11cde33d61ddb53619 Mon Sep 17 00:00:00 2001
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Thu, 14 Sep 2023 20:43:20 +0206
-Subject: [PATCH 029/196] serial: 21285: Use port lock wrappers
+Subject: [PATCH 029/198] serial: 21285: Use port lock wrappers
 
 When a serial port is used for kernel console output, then all
 modifications to the UART registers which are done from other contexts,
@@ -76,5 +76,5 @@ index d756fcc884cb..4de0c975ebdc 100644
  
  static const char *serial21285_type(struct uart_port *port)
 -- 
-2.43.2
+2.44.0
 

@@ -1,7 +1,7 @@
-From 6e66d71f16182d96094a77a8756c364823924eb4 Mon Sep 17 00:00:00 2001
+From 9372712a3d7f5dd1ce1fdee77c5bbdfbbb4b01bf Mon Sep 17 00:00:00 2001
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Thu, 14 Sep 2023 20:44:10 +0206
-Subject: [PATCH 079/196] serial: samsung_tty: Use port lock wrappers
+Subject: [PATCH 079/198] serial: samsung_tty: Use port lock wrappers
 
 When a serial port is used for kernel console output, then all
 modifications to the UART registers which are done from other contexts,
@@ -37,7 +37,7 @@ Signed-off-by: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
  1 file changed, 25 insertions(+), 25 deletions(-)
 
 diff --git a/drivers/tty/serial/samsung_tty.c b/drivers/tty/serial/samsung_tty.c
-index 07fb8a9dac63..ee51a0368a55 100644
+index 5a4d88e13471..a82b65155f6e 100644
 --- a/drivers/tty/serial/samsung_tty.c
 +++ b/drivers/tty/serial/samsung_tty.c
 @@ -248,7 +248,7 @@ static void s3c24xx_serial_rx_enable(struct uart_port *port)
@@ -155,7 +155,7 @@ index 07fb8a9dac63..ee51a0368a55 100644
  	return IRQ_HANDLED;
  }
  
-@@ -1033,7 +1033,7 @@ static void s3c24xx_serial_break_ctl(struct uart_port *port, int break_state)
+@@ -1032,7 +1032,7 @@ static void s3c24xx_serial_break_ctl(struct uart_port *port, int break_state)
  	unsigned long flags;
  	unsigned int ucon;
  
@@ -164,7 +164,7 @@ index 07fb8a9dac63..ee51a0368a55 100644
  
  	ucon = rd_regl(port, S3C2410_UCON);
  
-@@ -1044,7 +1044,7 @@ static void s3c24xx_serial_break_ctl(struct uart_port *port, int break_state)
+@@ -1043,7 +1043,7 @@ static void s3c24xx_serial_break_ctl(struct uart_port *port, int break_state)
  
  	wr_regl(port, S3C2410_UCON, ucon);
  
@@ -173,7 +173,7 @@ index 07fb8a9dac63..ee51a0368a55 100644
  }
  
  static int s3c24xx_serial_request_dma(struct s3c24xx_uart_port *p)
-@@ -1303,7 +1303,7 @@ static int s3c64xx_serial_startup(struct uart_port *port)
+@@ -1302,7 +1302,7 @@ static int s3c64xx_serial_startup(struct uart_port *port)
  	ourport->rx_enabled = 1;
  	ourport->tx_enabled = 0;
  
@@ -182,7 +182,7 @@ index 07fb8a9dac63..ee51a0368a55 100644
  
  	ufcon = rd_regl(port, S3C2410_UFCON);
  	ufcon |= S3C2410_UFCON_RESETRX | S5PV210_UFCON_RXTRIG8;
-@@ -1313,7 +1313,7 @@ static int s3c64xx_serial_startup(struct uart_port *port)
+@@ -1312,7 +1312,7 @@ static int s3c64xx_serial_startup(struct uart_port *port)
  
  	enable_rx_pio(ourport);
  
@@ -191,7 +191,7 @@ index 07fb8a9dac63..ee51a0368a55 100644
  
  	/* Enable Rx Interrupt */
  	s3c24xx_clear_bit(port, S3C64XX_UINTM_RXD, S3C64XX_UINTM);
-@@ -1341,7 +1341,7 @@ static int apple_s5l_serial_startup(struct uart_port *port)
+@@ -1340,7 +1340,7 @@ static int apple_s5l_serial_startup(struct uart_port *port)
  	ourport->rx_enabled = 1;
  	ourport->tx_enabled = 0;
  
@@ -200,7 +200,7 @@ index 07fb8a9dac63..ee51a0368a55 100644
  
  	ufcon = rd_regl(port, S3C2410_UFCON);
  	ufcon |= S3C2410_UFCON_RESETRX | S5PV210_UFCON_RXTRIG8;
-@@ -1351,7 +1351,7 @@ static int apple_s5l_serial_startup(struct uart_port *port)
+@@ -1350,7 +1350,7 @@ static int apple_s5l_serial_startup(struct uart_port *port)
  
  	enable_rx_pio(ourport);
  
@@ -209,7 +209,7 @@ index 07fb8a9dac63..ee51a0368a55 100644
  
  	/* Enable Rx Interrupt */
  	s3c24xx_set_bit(port, APPLE_S5L_UCON_RXTHRESH_ENA, S3C2410_UCON);
-@@ -1626,7 +1626,7 @@ static void s3c24xx_serial_set_termios(struct uart_port *port,
+@@ -1625,7 +1625,7 @@ static void s3c24xx_serial_set_termios(struct uart_port *port,
  		ulcon |= S3C2410_LCON_PNONE;
  	}
  
@@ -218,7 +218,7 @@ index 07fb8a9dac63..ee51a0368a55 100644
  
  	dev_dbg(port->dev,
  		"setting ulcon to %08x, brddiv to %d, udivslot %08x\n",
-@@ -1684,7 +1684,7 @@ static void s3c24xx_serial_set_termios(struct uart_port *port,
+@@ -1683,7 +1683,7 @@ static void s3c24xx_serial_set_termios(struct uart_port *port,
  	if ((termios->c_cflag & CREAD) == 0)
  		port->ignore_status_mask |= RXSTAT_DUMMY_READ;
  
@@ -227,7 +227,7 @@ index 07fb8a9dac63..ee51a0368a55 100644
  }
  
  static const char *s3c24xx_serial_type(struct uart_port *port)
-@@ -2376,14 +2376,14 @@ s3c24xx_serial_console_write(struct console *co, const char *s,
+@@ -2375,14 +2375,14 @@ s3c24xx_serial_console_write(struct console *co, const char *s,
  	if (cons_uart->sysrq)
  		locked = false;
  	else if (oops_in_progress)
@@ -246,5 +246,5 @@ index 07fb8a9dac63..ee51a0368a55 100644
  
  /* Shouldn't be __init, as it can be instantiated from other module */
 -- 
-2.43.2
+2.44.0
 

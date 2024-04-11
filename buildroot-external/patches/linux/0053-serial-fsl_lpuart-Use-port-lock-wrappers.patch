@@ -1,7 +1,7 @@
-From 46bfa550759cde139a65320e120a534c997d9ac2 Mon Sep 17 00:00:00 2001
+From ddae91de984cb3f971fb7456e94c9fc295a49bbb Mon Sep 17 00:00:00 2001
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Thu, 14 Sep 2023 20:43:44 +0206
-Subject: [PATCH 053/196] serial: fsl_lpuart: Use port lock wrappers
+Subject: [PATCH 053/198] serial: fsl_lpuart: Use port lock wrappers
 
 When a serial port is used for kernel console output, then all
 modifications to the UART registers which are done from other contexts,
@@ -37,7 +37,7 @@ Signed-off-by: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
  1 file changed, 44 insertions(+), 44 deletions(-)
 
 diff --git a/drivers/tty/serial/fsl_lpuart.c b/drivers/tty/serial/fsl_lpuart.c
-index f72e1340b47d..6d0cfb2e86b4 100644
+index 385b41275e8b..71d0cbd74807 100644
 --- a/drivers/tty/serial/fsl_lpuart.c
 +++ b/drivers/tty/serial/fsl_lpuart.c
 @@ -532,9 +532,9 @@ static void lpuart_dma_tx_complete(void *arg)
@@ -288,7 +288,7 @@ index f72e1340b47d..6d0cfb2e86b4 100644
  
  	sport->port.read_status_mask = 0;
  	if (termios->c_iflag & INPCK)
-@@ -2359,7 +2359,7 @@ lpuart32_set_termios(struct uart_port *port, struct ktermios *termios,
+@@ -2362,7 +2362,7 @@ lpuart32_set_termios(struct uart_port *port, struct ktermios *termios,
  			sport->lpuart_dma_rx_use = false;
  	}
  
@@ -297,7 +297,7 @@ index f72e1340b47d..6d0cfb2e86b4 100644
  }
  
  static const char *lpuart_type(struct uart_port *port)
-@@ -2477,9 +2477,9 @@ lpuart_console_write(struct console *co, const char *s, unsigned int count)
+@@ -2480,9 +2480,9 @@ lpuart_console_write(struct console *co, const char *s, unsigned int count)
  	int locked = 1;
  
  	if (oops_in_progress)
@@ -309,7 +309,7 @@ index f72e1340b47d..6d0cfb2e86b4 100644
  
  	/* first save CR2 and then disable interrupts */
  	cr2 = old_cr2 = readb(sport->port.membase + UARTCR2);
-@@ -2495,7 +2495,7 @@ lpuart_console_write(struct console *co, const char *s, unsigned int count)
+@@ -2498,7 +2498,7 @@ lpuart_console_write(struct console *co, const char *s, unsigned int count)
  	writeb(old_cr2, sport->port.membase + UARTCR2);
  
  	if (locked)
@@ -318,7 +318,7 @@ index f72e1340b47d..6d0cfb2e86b4 100644
  }
  
  static void
-@@ -2507,9 +2507,9 @@ lpuart32_console_write(struct console *co, const char *s, unsigned int count)
+@@ -2510,9 +2510,9 @@ lpuart32_console_write(struct console *co, const char *s, unsigned int count)
  	int locked = 1;
  
  	if (oops_in_progress)
@@ -330,7 +330,7 @@ index f72e1340b47d..6d0cfb2e86b4 100644
  
  	/* first save CR2 and then disable interrupts */
  	cr = old_cr = lpuart32_read(&sport->port, UARTCTRL);
-@@ -2525,7 +2525,7 @@ lpuart32_console_write(struct console *co, const char *s, unsigned int count)
+@@ -2528,7 +2528,7 @@ lpuart32_console_write(struct console *co, const char *s, unsigned int count)
  	lpuart32_write(&sport->port, old_cr, UARTCTRL);
  
  	if (locked)
@@ -339,7 +339,7 @@ index f72e1340b47d..6d0cfb2e86b4 100644
  }
  
  /*
-@@ -3089,7 +3089,7 @@ static int lpuart_suspend(struct device *dev)
+@@ -3092,7 +3092,7 @@ static int lpuart_suspend(struct device *dev)
  	uart_suspend_port(&lpuart_reg, &sport->port);
  
  	if (lpuart_uport_is_active(sport)) {
@@ -348,7 +348,7 @@ index f72e1340b47d..6d0cfb2e86b4 100644
  		if (lpuart_is_32(sport)) {
  			/* disable Rx/Tx and interrupts */
  			temp = lpuart32_read(&sport->port, UARTCTRL);
-@@ -3101,7 +3101,7 @@ static int lpuart_suspend(struct device *dev)
+@@ -3104,7 +3104,7 @@ static int lpuart_suspend(struct device *dev)
  			temp &= ~(UARTCR2_TE | UARTCR2_TIE | UARTCR2_TCIE);
  			writeb(temp, sport->port.membase + UARTCR2);
  		}
@@ -357,7 +357,7 @@ index f72e1340b47d..6d0cfb2e86b4 100644
  
  		if (sport->lpuart_dma_rx_use) {
  			/*
-@@ -3114,7 +3114,7 @@ static int lpuart_suspend(struct device *dev)
+@@ -3117,7 +3117,7 @@ static int lpuart_suspend(struct device *dev)
  			lpuart_dma_rx_free(&sport->port);
  
  			/* Disable Rx DMA to use UART port as wakeup source */
@@ -366,7 +366,7 @@ index f72e1340b47d..6d0cfb2e86b4 100644
  			if (lpuart_is_32(sport)) {
  				temp = lpuart32_read(&sport->port, UARTBAUD);
  				lpuart32_write(&sport->port, temp & ~UARTBAUD_RDMAE,
-@@ -3123,11 +3123,11 @@ static int lpuart_suspend(struct device *dev)
+@@ -3126,11 +3126,11 @@ static int lpuart_suspend(struct device *dev)
  				writeb(readb(sport->port.membase + UARTCR5) &
  				       ~UARTCR5_RDMAS, sport->port.membase + UARTCR5);
  			}
@@ -380,7 +380,7 @@ index f72e1340b47d..6d0cfb2e86b4 100644
  			if (lpuart_is_32(sport)) {
  				temp = lpuart32_read(&sport->port, UARTBAUD);
  				temp &= ~UARTBAUD_TDMAE;
-@@ -3137,7 +3137,7 @@ static int lpuart_suspend(struct device *dev)
+@@ -3140,7 +3140,7 @@ static int lpuart_suspend(struct device *dev)
  				temp &= ~UARTCR5_TDMAS;
  				writeb(temp, sport->port.membase + UARTCR5);
  			}
@@ -390,5 +390,5 @@ index f72e1340b47d..6d0cfb2e86b4 100644
  			dmaengine_terminate_sync(sport->dma_tx_chan);
  		}
 -- 
-2.43.2
+2.44.0
 

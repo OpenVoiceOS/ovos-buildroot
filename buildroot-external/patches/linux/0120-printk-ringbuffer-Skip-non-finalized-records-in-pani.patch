@@ -1,7 +1,7 @@
-From df308fa800ac57b2c12c940e1ad7ce692fb2fbe2 Mon Sep 17 00:00:00 2001
+From 67555ae6c7856f8b889d6526642b29374da35069 Mon Sep 17 00:00:00 2001
 From: John Ogness <john.ogness@linutronix.de>
 Date: Fri, 13 Oct 2023 10:23:11 +0000
-Subject: [PATCH 120/196] printk: ringbuffer: Skip non-finalized records in
+Subject: [PATCH 120/198] printk: ringbuffer: Skip non-finalized records in
  panic
 
 Normally a reader will stop once reaching a non-finalized
@@ -69,5 +69,5 @@ index b7748d7c44c1..d6ed33683b8b 100644
  	}
  
 -- 
-2.43.2
+2.44.0
 

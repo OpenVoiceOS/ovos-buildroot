@@ -1,7 +1,7 @@
-From 8777b7deb3069b2747696a2971979eaf11d0d42c Mon Sep 17 00:00:00 2001
+From c7e0556406938d6434991aeff87e85124c0c5a16 Mon Sep 17 00:00:00 2001
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Thu, 14 Sep 2023 20:43:36 +0206
-Subject: [PATCH 045/196] serial: ar933x: Use port lock wrappers
+Subject: [PATCH 045/198] serial: ar933x: Use port lock wrappers
 
 When a serial port is used for kernel console output, then all
 modifications to the UART registers which are done from other contexts,
@@ -145,5 +145,5 @@ index 924c1a89347c..ffd234673177 100644
  	local_irq_restore(flags);
  }
 -- 
-2.43.2
+2.44.0
 

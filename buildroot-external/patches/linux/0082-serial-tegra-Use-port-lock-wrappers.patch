@@ -1,7 +1,7 @@
-From c2a7bbba0b8c5cbce14465ff6338fde4b1e52e2c Mon Sep 17 00:00:00 2001
+From 66442db9d3a607c2bdfd84ed1a331813f2dd026a Mon Sep 17 00:00:00 2001
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Thu, 14 Sep 2023 20:44:13 +0206
-Subject: [PATCH 082/196] serial: tegra: Use port lock wrappers
+Subject: [PATCH 082/198] serial: tegra: Use port lock wrappers
 
 When a serial port is used for kernel console output, then all
 modifications to the UART registers which are done from other contexts,
@@ -177,5 +177,5 @@ index d4ec943cb8e9..6d4006b41975 100644
  
  static const char *tegra_uart_type(struct uart_port *u)
 -- 
-2.43.2
+2.44.0
 

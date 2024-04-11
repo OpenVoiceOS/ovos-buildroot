@@ -1,7 +1,7 @@
-From 245e39efef1a82639a16598af4216a9c60f91e9f Mon Sep 17 00:00:00 2001
+From 1d2a03eb0aa2ed5df8591651c8092031be48307d Mon Sep 17 00:00:00 2001
 From: Petr Mladek <pmladek@suse.com>
 Date: Fri, 6 Oct 2023 10:21:51 +0200
-Subject: [PATCH 110/196] printk: Reduce pr_flush() pooling time
+Subject: [PATCH 110/198] printk: Reduce pr_flush() pooling time
 
 pr_flush() does not guarantee that all messages would really get flushed
 to the console. The best it could do is to wait with a given timeout.[*]
@@ -46,10 +46,10 @@ Signed-off-by: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
  1 file changed, 13 insertions(+), 13 deletions(-)
 
 diff --git a/kernel/printk/printk.c b/kernel/printk/printk.c
-index e922523fec78..26a76b167ea6 100644
+index 7ee5216fe61a..6c6241c89e24 100644
 --- a/kernel/printk/printk.c
 +++ b/kernel/printk/printk.c
-@@ -3742,7 +3742,8 @@ late_initcall(printk_late_init);
+@@ -3792,7 +3792,8 @@ late_initcall(printk_late_init);
  /* If @con is specified, only wait for that console. Otherwise wait for all. */
  static bool __pr_flush(struct console *con, int timeout_ms, bool reset_on_progress)
  {
@@ -59,7 +59,7 @@ index e922523fec78..26a76b167ea6 100644
  	struct console *c;
  	u64 last_diff = 0;
  	u64 printk_seq;
-@@ -3760,6 +3761,9 @@ static bool __pr_flush(struct console *con, int timeout_ms, bool reset_on_progre
+@@ -3810,6 +3811,9 @@ static bool __pr_flush(struct console *con, int timeout_ms, bool reset_on_progre
  	console_unlock();
  
  	for (;;) {
@@ -69,7 +69,7 @@ index e922523fec78..26a76b167ea6 100644
  		diff = 0;
  
  		/*
-@@ -3797,24 +3801,20 @@ static bool __pr_flush(struct console *con, int timeout_ms, bool reset_on_progre
+@@ -3847,24 +3851,20 @@ static bool __pr_flush(struct console *con, int timeout_ms, bool reset_on_progre
  		console_srcu_read_unlock(cookie);
  
  		if (diff != last_diff && reset_on_progress)
@@ -103,5 +103,5 @@ index e922523fec78..26a76b167ea6 100644
  		last_diff = diff;
  	}
 -- 
-2.43.2
+2.44.0
 

@@ -1,7 +1,7 @@
-From a6e8aee3001c0312bb7e408bf47ce1ab3cfb32ab Mon Sep 17 00:00:00 2001
+From 9b9a28a033ae863d23d071bba13f6c34d154e3bb Mon Sep 17 00:00:00 2001
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Thu, 14 Sep 2023 20:43:58 +0206
-Subject: [PATCH 067/196] serial: msm: Use port lock wrappers
+Subject: [PATCH 067/198] serial: msm: Use port lock wrappers
 
 When a serial port is used for kernel console output, then all
 modifications to the UART registers which are done from other contexts,
@@ -186,5 +186,5 @@ index 90953e679e38..597264b546fd 100644
  	local_irq_restore(flags);
  }
 -- 
-2.43.2
+2.44.0
 

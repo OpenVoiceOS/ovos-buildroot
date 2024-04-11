@@ -1,7 +1,7 @@
-From 279159191fb892ad19a47abfe969e4cdc19d8ff0 Mon Sep 17 00:00:00 2001
+From 0ac36a1ae3846dfd22081abfd17040d1fd8fcaae Mon Sep 17 00:00:00 2001
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Thu, 14 Sep 2023 20:43:42 +0206
-Subject: [PATCH 051/196] serial: dz: Use port lock wrappers
+Subject: [PATCH 051/198] serial: dz: Use port lock wrappers
 
 When a serial port is used for kernel console output, then all
 modifications to the UART registers which are done from other contexts,
@@ -162,5 +162,5 @@ index 667f52e83277..6df7af9edc1c 100644
  	do {
  		trdy = dz_in(dport, DZ_CSR);
 -- 
-2.43.2
+2.44.0
 

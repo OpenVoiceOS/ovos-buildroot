@@ -1,7 +1,7 @@
-From e2bbf91f5aa8efe291dd496739c348eae6b65d2d Mon Sep 17 00:00:00 2001
+From c6aeabe6504b5812d8063d40f9c34010a160fef0 Mon Sep 17 00:00:00 2001
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Thu, 14 Sep 2023 20:44:00 +0206
-Subject: [PATCH 069/196] serial: omap: Use port lock wrappers
+Subject: [PATCH 069/198] serial: omap: Use port lock wrappers
 
 When a serial port is used for kernel console output, then all
 modifications to the UART registers which are done from other contexts,
@@ -181,5 +181,5 @@ index 135a838f517a..f4c6ff806465 100644
  }
  
 -- 
-2.43.2
+2.44.0
 

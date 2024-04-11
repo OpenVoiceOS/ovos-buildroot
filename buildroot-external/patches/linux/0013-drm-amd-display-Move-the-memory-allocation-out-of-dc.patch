@@ -1,7 +1,7 @@
-From ac9bf004c54c34415488830ec5cbdd2c85a77619 Mon Sep 17 00:00:00 2001
+From 660089faa4f04d68ff2dbce32b7ccd8532978704 Mon Sep 17 00:00:00 2001
 From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Thu, 21 Sep 2023 16:15:15 +0200
-Subject: [PATCH 013/196] drm/amd/display: Move the memory allocation out of
+Subject: [PATCH 013/198] drm/amd/display: Move the memory allocation out of
  dcn21_validate_bandwidth_fp().
 
 dcn21_validate_bandwidth_fp() is invoked while FPU access has been
@@ -92,5 +92,5 @@ index c51badf7b68a..a81a0b9e6884 100644
  
  void dcn21_clk_mgr_set_bw_params_wm_table(struct clk_bw_params *bw_params);
 -- 
-2.43.2
+2.44.0
 

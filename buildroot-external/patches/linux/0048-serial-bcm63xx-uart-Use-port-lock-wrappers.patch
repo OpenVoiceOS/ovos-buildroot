@@ -1,7 +1,7 @@
-From bc56987ad8ef8a8948ba64ffa8302ea324913079 Mon Sep 17 00:00:00 2001
+From 254504b36554b8987691ad1cd81bbb8b798eba0c Mon Sep 17 00:00:00 2001
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Thu, 14 Sep 2023 20:43:39 +0206
-Subject: [PATCH 048/196] serial: bcm63xx-uart: Use port lock wrappers
+Subject: [PATCH 048/198] serial: bcm63xx-uart: Use port lock wrappers
 
 When a serial port is used for kernel console output, then all
 modifications to the UART registers which are done from other contexts,
@@ -129,5 +129,5 @@ index 0dd8cceb837c..4a08fd5ee61b 100644
  }
  
 -- 
-2.43.2
+2.44.0
 

@@ -1,7 +1,7 @@
-From c10f1a40ece57be7eaa32266c41b354ad1a6a5f9 Mon Sep 17 00:00:00 2001
+From 46c6d072f618fc70fb1e629ab3acfe7e06dcb8b4 Mon Sep 17 00:00:00 2001
 From: John Ogness <john.ogness@linutronix.de>
 Date: Mon, 6 Nov 2023 14:59:55 +0000
-Subject: [PATCH 119/196] printk: Wait for all reserved records with pr_flush()
+Subject: [PATCH 119/198] printk: Wait for all reserved records with pr_flush()
 
 Currently pr_flush() will only wait for records that were
 available to readers at the time of the call (using
@@ -26,10 +26,10 @@ Signed-off-by: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
  3 files changed, 115 insertions(+), 1 deletion(-)
 
 diff --git a/kernel/printk/printk.c b/kernel/printk/printk.c
-index 53aa496cce91..e7b9a22f9a3a 100644
+index 2bb393009d4e..807692fd386a 100644
 --- a/kernel/printk/printk.c
 +++ b/kernel/printk/printk.c
-@@ -3756,7 +3756,7 @@ static bool __pr_flush(struct console *con, int timeout_ms, bool reset_on_progre
+@@ -3806,7 +3806,7 @@ static bool __pr_flush(struct console *con, int timeout_ms, bool reset_on_progre
  
  	might_sleep();
  
@@ -175,5 +175,5 @@ index d49460f7578e..52626d0f1fa3 100644
  #ifdef CONFIG_64BIT
  
 -- 
-2.43.2
+2.44.0
 
