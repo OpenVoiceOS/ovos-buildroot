@@ -1,0 +1,3 @@
+BOARD_ID=rpi5-64
+BOARD_NAME="RaspberryPi 5 64bit"
+CHASSIS=embedded

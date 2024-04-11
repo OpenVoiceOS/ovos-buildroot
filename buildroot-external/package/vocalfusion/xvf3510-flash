@@ -90,13 +90,15 @@ def send_image(
 
     if direct:
         BOOT_SEL_PIN.switch_to_input()
-        RST_N_PIN.switch_to_output(value=True)
+        RST_N_PIN.switch_to_output()
+        RST_N_PIN.value=1
 
     spi = setup_spi(max_spi_speed_mhz)
 
     if direct:
         RST_N_PIN.value=False
-        BOOT_SEL_PIN.switch_to_output(value=True)
+        BOOT_SEL_PIN.switch_to_output()
+        BOOT_SEL_PIN.value=True
         RST_N_PIN.value=True
     else:
         set_boot_sel()
