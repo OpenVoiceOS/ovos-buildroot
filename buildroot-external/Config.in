@@ -93,7 +93,6 @@ menu "KDE Framework and Plasma"
 	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/kf5-threadweaver/Config.in"
 endmenu
 	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/ksm-preload/Config.in"
-	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/libgpiod2/Config.in"
 	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/libre/Config.in"
 	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/librem/Config.in"
 	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/lottie-qml/Config.in"
