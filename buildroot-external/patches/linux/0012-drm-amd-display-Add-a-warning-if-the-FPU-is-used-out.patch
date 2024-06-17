@@ -1,7 +1,7 @@
-From c9e3099dae058e513e74091141f71dfd9e67aefa Mon Sep 17 00:00:00 2001
+From fafd90c1efec381f2a8a462e9debebe092a8b048 Mon Sep 17 00:00:00 2001
 From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Thu, 21 Sep 2023 16:15:14 +0200
-Subject: [PATCH 012/198] drm/amd/display: Add a warning if the FPU is used
+Subject: [PATCH 012/196] drm/amd/display: Add a warning if the FPU is used
  outside from task context.
 
 Add a warning if the FPU is used from any context other than task
@@ -27,5 +27,5 @@ index 8bd5926b47e0..4ae4720535a5 100644
  	depth = __this_cpu_inc_return(fpu_recursion_depth);
  
 -- 
-2.44.0
+2.45.1
 

@@ -1,7 +1,7 @@
-From 00e0ec0aeb7f915808d1772bc479c823de21c2d8 Mon Sep 17 00:00:00 2001
+From c51cb1cc8704b0d8ff63e91cbd7a6d4fd2e46743 Mon Sep 17 00:00:00 2001
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Thu, 14 Sep 2023 20:44:17 +0206
-Subject: [PATCH 086/198] serial: sh-sci: Use port lock wrappers
+Subject: [PATCH 086/196] serial: sh-sci: Use port lock wrappers
 
 When a serial port is used for kernel console output, then all
 modifications to the UART registers which are done from other contexts,
@@ -303,5 +303,5 @@ index a560b729fa3b..84ab434c94ba 100644
  
  static int serial_console_setup(struct console *co, char *options)
 -- 
-2.44.0
+2.45.1
 

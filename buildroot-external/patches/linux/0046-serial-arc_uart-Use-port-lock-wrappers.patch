@@ -1,7 +1,7 @@
-From 5a0e18332bea1b6453bd4e806c6504138127371d Mon Sep 17 00:00:00 2001
+From 0cd89f0ef7ea21aa9769ef5a405ec8c142685c7b Mon Sep 17 00:00:00 2001
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Thu, 14 Sep 2023 20:43:37 +0206
-Subject: [PATCH 046/198] serial: arc_uart: Use port lock wrappers
+Subject: [PATCH 046/196] serial: arc_uart: Use port lock wrappers
 
 When a serial port is used for kernel console output, then all
 modifications to the UART registers which are done from other contexts,
@@ -98,5 +98,5 @@ index ad4ae19b6ce3..1aa5b2b49c26 100644
  
  static struct console arc_console = {
 -- 
-2.44.0
+2.45.1
 

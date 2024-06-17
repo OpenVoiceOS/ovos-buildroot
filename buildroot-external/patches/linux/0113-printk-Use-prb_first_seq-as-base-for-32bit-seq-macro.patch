@@ -1,7 +1,7 @@
-From fcfa743b20e41c8a1cef0612900f0f1677f8a87b Mon Sep 17 00:00:00 2001
+From 8d5d83d17df92ac0609eb3920b06413901d8e4d3 Mon Sep 17 00:00:00 2001
 From: John Ogness <john.ogness@linutronix.de>
 Date: Wed, 22 Nov 2023 16:13:37 +0000
-Subject: [PATCH 113/198] printk: Use prb_first_seq() as base for 32bit seq
+Subject: [PATCH 113/196] printk: Use prb_first_seq() as base for 32bit seq
  macros
 
 Note: This change only applies to 32bit architectures. On 64bit
@@ -74,5 +74,5 @@ index 12f60c782e46..ee294aaf4aeb 100644
  	return seq;
  }
 -- 
-2.44.0
+2.45.1
 

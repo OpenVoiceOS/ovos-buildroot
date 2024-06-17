@@ -1,7 +1,7 @@
-From 70596fc48fbc159ec34ce9339df56ad352e09273 Mon Sep 17 00:00:00 2001
+From b79baec5430e0811c8f70e349d59db4223d661dd Mon Sep 17 00:00:00 2001
 From: John Ogness <john.ogness@linutronix.de>
 Date: Mon, 23 Oct 2023 11:11:05 +0000
-Subject: [PATCH 115/198] printk: ringbuffer: Clarify special lpos values
+Subject: [PATCH 115/196] printk: ringbuffer: Clarify special lpos values
 
 For empty line records, no data blocks are created. Instead,
 these valid records are identified by special logical position
@@ -95,5 +95,5 @@ index 2d948cc82b5b..d49460f7578e 100644
  #define FAILED_BLK_LPOS	\
  {				\
 -- 
-2.44.0
+2.45.1
 

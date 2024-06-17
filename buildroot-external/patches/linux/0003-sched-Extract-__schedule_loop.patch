@@ -1,7 +1,7 @@
-From 1878b10b7153990220aa3a02b8c92e1528701093 Mon Sep 17 00:00:00 2001
+From 274c3a06b39727d2ceea622ec9504725ad066758 Mon Sep 17 00:00:00 2001
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Fri, 8 Sep 2023 18:22:50 +0200
-Subject: [PATCH 003/198] sched: Extract __schedule_loop()
+Subject: [PATCH 003/196] sched: Extract __schedule_loop()
 
 There are currently two implementations of this basic __schedule()
 loop, and there is soon to be a third.
@@ -59,5 +59,5 @@ index 73949b8a55d2..4498af52cf47 100644
  NOKPROBE_SYMBOL(schedule_rtlock);
  #endif
 -- 
-2.44.0
+2.45.1
 

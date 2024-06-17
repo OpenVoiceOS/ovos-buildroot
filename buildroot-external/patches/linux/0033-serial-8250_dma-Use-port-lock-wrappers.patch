@@ -1,7 +1,7 @@
-From b975b09242cda03dfa24bc5859e09dcf0719455e Mon Sep 17 00:00:00 2001
+From 18ff09af02da7e776929e679f07d525b9696cf02 Mon Sep 17 00:00:00 2001
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Thu, 14 Sep 2023 20:43:24 +0206
-Subject: [PATCH 033/198] serial: 8250_dma: Use port lock wrappers
+Subject: [PATCH 033/196] serial: 8250_dma: Use port lock wrappers
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -81,5 +81,5 @@ index 7fa66501792d..8b30ca8fdd3f 100644
  
  int serial8250_tx_dma(struct uart_8250_port *p)
 -- 
-2.44.0
+2.45.1
 

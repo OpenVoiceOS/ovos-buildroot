@@ -1,7 +1,7 @@
-From c5863cc5e1158351c86d38ac26d1d77066869be3 Mon Sep 17 00:00:00 2001
+From c7e01a04ed53f115cb3af580ed462135aa6b71b2 Mon Sep 17 00:00:00 2001
 From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Wed, 1 Dec 2021 17:41:09 +0100
-Subject: [PATCH 019/198] softirq: Use a dedicated thread for timer wakeups.
+Subject: [PATCH 019/196] softirq: Use a dedicated thread for timer wakeups.
 
 A timer/hrtimer softirq is raised in-IRQ context. With threaded
 interrupts enabled or on PREEMPT_RT this leads to waking the ksoftirqd
@@ -229,5 +229,5 @@ index 63a8ce7177dd..7cad6fe3c035 100644
  
  /*
 -- 
-2.44.0
+2.45.1
 

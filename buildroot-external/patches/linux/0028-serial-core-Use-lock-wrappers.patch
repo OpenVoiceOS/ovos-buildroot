@@ -1,7 +1,7 @@
-From 75dbd89b7e5564256b898403840f9539d444f2c2 Mon Sep 17 00:00:00 2001
+From 6c5fd34375840faafa52dc7fcdd2af0ae03f8dc9 Mon Sep 17 00:00:00 2001
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Thu, 14 Sep 2023 20:43:19 +0206
-Subject: [PATCH 028/198] serial: core: Use lock wrappers
+Subject: [PATCH 028/196] serial: core: Use lock wrappers
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -94,5 +94,5 @@ index a7d5fa892be2..678409c47b88 100644
  #endif	/* CONFIG_MAGIC_SYSRQ_SERIAL */
  
 -- 
-2.44.0
+2.45.1
 

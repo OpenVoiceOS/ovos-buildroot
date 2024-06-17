@@ -1,7 +1,7 @@
-From ff02a1bafacf77d91927e5ac7556abfb0f598d34 Mon Sep 17 00:00:00 2001
+From db46aebeac180f931ba8691024ee135c07858583 Mon Sep 17 00:00:00 2001
 From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Tue, 1 Aug 2023 17:26:48 +0200
-Subject: [PATCH 018/198] sched/rt: Don't try push tasks if there are none.
+Subject: [PATCH 018/196] sched/rt: Don't try push tasks if there are none.
 
 I have a RT task X at a high priority and cyclictest on each CPU with
 lower priority than X's. If X is active and each CPU wakes their own
@@ -59,5 +59,5 @@ index 4ac36eb4cdee..acd1510e8d47 100644
  		rd->rto_cpu = -1;
  
 -- 
-2.44.0
+2.45.1
 

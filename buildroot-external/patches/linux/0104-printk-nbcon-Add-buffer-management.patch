@@ -1,7 +1,7 @@
-From eea34fa9a5e6e5ef9b0c2df58e6102128f978177 Mon Sep 17 00:00:00 2001
+From ba38ff3eb1db6db6065857a8bbbc56f2b402a04c Mon Sep 17 00:00:00 2001
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Sat, 16 Sep 2023 21:26:03 +0206
-Subject: [PATCH 104/198] printk: nbcon: Add buffer management
+Subject: [PATCH 104/196] printk: nbcon: Add buffer management
 
 In case of hostile takeovers it must be ensured that the previous
 owner cannot scribble over the output buffer of the emergency/panic
@@ -263,10 +263,10 @@ index a2a354f859f9..ba1febf15db6 100644
 +	con->pbufs = NULL;
  }
 diff --git a/kernel/printk/printk.c b/kernel/printk/printk.c
-index 3bb689b6ae19..edb0f9737bb9 100644
+index dd68135cb371..58b57deb0cbe 100644
 --- a/kernel/printk/printk.c
 +++ b/kernel/printk/printk.c
-@@ -3381,12 +3381,6 @@ static void try_enable_default_console(struct console *newcon)
+@@ -3380,12 +3380,6 @@ static void try_enable_default_console(struct console *newcon)
  		newcon->flags |= CON_CONSDEV;
  }
  
@@ -279,7 +279,7 @@ index 3bb689b6ae19..edb0f9737bb9 100644
  static void console_init_seq(struct console *newcon, bool bootcon_registered)
  {
  	struct console *con;
-@@ -3500,6 +3494,15 @@ void register_console(struct console *newcon)
+@@ -3499,6 +3493,15 @@ void register_console(struct console *newcon)
  		goto unlock;
  	}
  
@@ -295,7 +295,7 @@ index 3bb689b6ae19..edb0f9737bb9 100644
  	/*
  	 * See if we want to enable this console driver by default.
  	 *
-@@ -3527,8 +3530,11 @@ void register_console(struct console *newcon)
+@@ -3526,8 +3529,11 @@ void register_console(struct console *newcon)
  		err = try_enable_preferred_console(newcon, false);
  
  	/* printk() messages are not printed to the Braille console. */
@@ -308,7 +308,7 @@ index 3bb689b6ae19..edb0f9737bb9 100644
  
  	/*
  	 * If we have a bootconsole, and are switching to a real console,
-@@ -3639,7 +3645,7 @@ static int unregister_console_locked(struct console *console)
+@@ -3638,7 +3644,7 @@ static int unregister_console_locked(struct console *console)
  	synchronize_srcu(&console_srcu);
  
  	if (console->flags & CON_NBCON)
@@ -318,5 +318,5 @@ index 3bb689b6ae19..edb0f9737bb9 100644
  	console_sysfs_notify();
  
 -- 
-2.44.0
+2.45.1
 

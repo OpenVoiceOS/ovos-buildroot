@@ -1,7 +1,7 @@
-From 3905f3b627b3ff024c9521d2be49a5077ff79184 Mon Sep 17 00:00:00 2001
+From d491a188fa496d6b2cdf75506baf2f0b9c05f9be Mon Sep 17 00:00:00 2001
 From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Thu, 3 Aug 2023 12:09:31 +0200
-Subject: [PATCH 008/198] signal: Add proper comment about the preempt-disable
+Subject: [PATCH 008/196] signal: Add proper comment about the preempt-disable
  in ptrace_stop().
 
 Commit 53da1d9456fe7 ("fix ptrace slowness") added a preempt-disable section
@@ -48,5 +48,5 @@ index 09019017d669..051ed8114cd4 100644
  	preempt_disable();
  	read_unlock(&tasklist_lock);
 -- 
-2.44.0
+2.45.1
 

@@ -197,8 +197,7 @@ main() {
             sleep 3 # Allow some time to fully initialise the hardware / driver
         fi
         xvf3510-flash --direct "/usr/lib/firmware/xvf3510/app_xvf3510_int_spi_boot_v4_2_0.bin"
-        # Initializing Texas Instruments 5806 Amplifier
-        /usr/bin/tas5806-init
+
         if [[ ${detection_results[SJ201LED]} == true ]] ; then
             echo "Found revision-6 SJ-201 board"
             # Initializing and resetting LED ring

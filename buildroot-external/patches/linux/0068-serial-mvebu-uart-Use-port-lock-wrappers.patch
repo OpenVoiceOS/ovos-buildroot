@@ -1,7 +1,7 @@
-From 2afc44181b5734d06a4719ac7d4b12264dce9deb Mon Sep 17 00:00:00 2001
+From 5a1d9e8fd848e7897e845f875a9e3ea452ee7bd6 Mon Sep 17 00:00:00 2001
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Thu, 14 Sep 2023 20:43:59 +0206
-Subject: [PATCH 068/198] serial: mvebu-uart: Use port lock wrappers
+Subject: [PATCH 068/196] serial: mvebu-uart: Use port lock wrappers
 
 When a serial port is used for kernel console output, then all
 modifications to the UART registers which are done from other contexts,
@@ -109,5 +109,5 @@ index ea924e9b913b..0255646bc175 100644
  
  static int mvebu_uart_console_setup(struct console *co, char *options)
 -- 
-2.44.0
+2.45.1
 

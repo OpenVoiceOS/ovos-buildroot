@@ -1,7 +1,7 @@
-From 278ee5a1d6e11f88fbd8dd7f08a722c3f0a48c6f Mon Sep 17 00:00:00 2001
+From 1a78999e5e39fae53bac42f870e5247ec3dac661 Mon Sep 17 00:00:00 2001
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Thu, 14 Sep 2023 20:44:24 +0206
-Subject: [PATCH 093/198] serial: sunsab: Use port lock wrappers
+Subject: [PATCH 093/196] serial: sunsab: Use port lock wrappers
 
 When a serial port is used for kernel console output, then all
 modifications to the UART registers which are done from other contexts,
@@ -177,5 +177,5 @@ index 40eeaf835bba..6aa51a6f8063 100644
  	return 0;
  }
 -- 
-2.44.0
+2.45.1
 

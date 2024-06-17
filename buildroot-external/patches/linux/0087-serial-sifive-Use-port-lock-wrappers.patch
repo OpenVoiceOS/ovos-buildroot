@@ -1,7 +1,7 @@
-From 964adde6bb8848877f53d30a33ad1cabba18ee8f Mon Sep 17 00:00:00 2001
+From bcdc73beb8560a4df916f430735cb50f5e1a183d Mon Sep 17 00:00:00 2001
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Thu, 14 Sep 2023 20:44:18 +0206
-Subject: [PATCH 087/198] serial: sifive: Use port lock wrappers
+Subject: [PATCH 087/196] serial: sifive: Use port lock wrappers
 
 When a serial port is used for kernel console output, then all
 modifications to the UART registers which are done from other contexts,
@@ -103,5 +103,5 @@ index d195c5de52e7..b296e57a9dee 100644
  }
  
 -- 
-2.44.0
+2.45.1
 

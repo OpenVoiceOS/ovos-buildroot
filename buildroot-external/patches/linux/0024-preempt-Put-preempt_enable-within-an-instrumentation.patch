@@ -1,7 +1,7 @@
-From 46baab63c3d5465d00a87f9b88c96049b58f9a62 Mon Sep 17 00:00:00 2001
+From a622600aa33f630c975961c557bc1b42173a7ff6 Mon Sep 17 00:00:00 2001
 From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Wed, 8 Mar 2023 16:29:38 +0100
-Subject: [PATCH 024/198] preempt: Put preempt_enable() within an
+Subject: [PATCH 024/196] preempt: Put preempt_enable() within an
  instrumentation*() section.
 
 Callers of preempt_enable() can be within an noinstr section leading to:
@@ -48,5 +48,5 @@ index 9aa6358a1a16..cd16f0330fba 100644
  
  #define preempt_check_resched() \
 -- 
-2.44.0
+2.45.1
 

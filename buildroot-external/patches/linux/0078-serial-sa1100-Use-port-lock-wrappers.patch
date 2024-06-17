@@ -1,7 +1,7 @@
-From 6845a4152e1754bf40372d61bbf7c2398e3f4399 Mon Sep 17 00:00:00 2001
+From 1be172160f21847df23f6b6de47a17bc21c4e4ab Mon Sep 17 00:00:00 2001
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Thu, 14 Sep 2023 20:44:09 +0206
-Subject: [PATCH 078/198] serial: sa1100: Use port lock wrappers
+Subject: [PATCH 078/196] serial: sa1100: Use port lock wrappers
 
 When a serial port is used for kernel console output, then all
 modifications to the UART registers which are done from other contexts,
@@ -118,5 +118,5 @@ index ad011f1e2f4d..be7bcd75d9f4 100644
  
  static const char *sa1100_type(struct uart_port *port)
 -- 
-2.44.0
+2.45.1
 

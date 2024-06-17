@@ -1,7 +1,7 @@
-From 63366d15914d5b5eb32438f1b7a5fc8be59e0dd9 Mon Sep 17 00:00:00 2001
+From 4f36fa6b8c6cbaa11a181bfb618fd76a1761223b Mon Sep 17 00:00:00 2001
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Thu, 14 Sep 2023 20:43:46 +0206
-Subject: [PATCH 055/198] serial: imx: Use port lock wrappers
+Subject: [PATCH 055/196] serial: imx: Use port lock wrappers
 
 When a serial port is used for kernel console output, then all
 modifications to the UART registers which are done from other contexts,
@@ -355,5 +355,5 @@ index c77831e91ec2..66420a992539 100644
  
  static void imx_uart_enable_wakeup(struct imx_port *sport, bool on)
 -- 
-2.44.0
+2.45.1
 

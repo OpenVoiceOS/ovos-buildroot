@@ -1,7 +1,7 @@
-From cfc64e8039fd294ed97037945850a6c0ecdb6a23 Mon Sep 17 00:00:00 2001
+From 5065a66ba7375b43cc4c5d8b70522677350c1f29 Mon Sep 17 00:00:00 2001
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Sat, 16 Sep 2023 21:26:01 +0206
-Subject: [PATCH 102/198] printk: nbcon: Add acquire/release logic
+Subject: [PATCH 102/196] printk: nbcon: Add acquire/release logic
 
 Add per console acquire/release functionality.
 
@@ -708,5 +708,5 @@ index 63d24ca62ac5..a2a354f859f9 100644
   * nbcon_init - Initialize the nbcon console specific data
   * @con:	Console to initialize
 -- 
-2.44.0
+2.45.1
 

@@ -1,7 +1,7 @@
-From a9a1289498cb842a55d57ede4ff1b2bd96b7a1b9 Mon Sep 17 00:00:00 2001
+From e678498df469db89f4ab187fc8adabcf3eb37d12 Mon Sep 17 00:00:00 2001
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Thu, 14 Sep 2023 20:44:11 +0206
-Subject: [PATCH 080/198] serial: sb1250-duart: Use port lock wrappers
+Subject: [PATCH 080/196] serial: sb1250-duart: Use port lock wrappers
 
 When a serial port is used for kernel console output, then all
 modifications to the UART registers which are done from other contexts,
@@ -86,5 +86,5 @@ index f3cd69346482..dbec29d9a6c3 100644
  
  static int __init sbd_console_setup(struct console *co, char *options)
 -- 
-2.44.0
+2.45.1
 

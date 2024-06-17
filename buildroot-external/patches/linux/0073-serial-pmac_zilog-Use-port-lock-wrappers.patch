@@ -1,7 +1,7 @@
-From 8b2afd65acea3ba83a71dde9d62262f9242a5dd7 Mon Sep 17 00:00:00 2001
+From 8c95c6f02e0582acd5dc7d5742b845f1a04aa53f Mon Sep 17 00:00:00 2001
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Thu, 14 Sep 2023 20:44:04 +0206
-Subject: [PATCH 073/198] serial: pmac_zilog: Use port lock wrappers
+Subject: [PATCH 073/196] serial: pmac_zilog: Use port lock wrappers
 
 When a serial port is used for kernel console output, then all
 modifications to the UART registers which are done from other contexts,
@@ -37,10 +37,10 @@ Signed-off-by: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
  1 file changed, 26 insertions(+), 26 deletions(-)
 
 diff --git a/drivers/tty/serial/pmac_zilog.c b/drivers/tty/serial/pmac_zilog.c
-index 13668ffdb1e7..c8bf08c19c64 100644
+index 29bc80d39e8b..77691fbbf779 100644
 --- a/drivers/tty/serial/pmac_zilog.c
 +++ b/drivers/tty/serial/pmac_zilog.c
-@@ -246,9 +246,9 @@ static bool pmz_receive_chars(struct uart_pmac_port *uap)
+@@ -245,9 +245,9 @@ static bool pmz_receive_chars(struct uart_pmac_port *uap)
  #endif /* USE_CTRL_O_SYSRQ */
  		if (uap->port.sysrq) {
  			int swallow;
@@ -52,7 +52,7 @@ index 13668ffdb1e7..c8bf08c19c64 100644
  			if (swallow)
  				goto next_char;
  		}
-@@ -435,7 +435,7 @@ static irqreturn_t pmz_interrupt(int irq, void *dev_id)
+@@ -421,7 +421,7 @@ static irqreturn_t pmz_interrupt(int irq, void *dev_id)
  	uap_a = pmz_get_port_A(uap);
  	uap_b = uap_a->mate;
  
@@ -61,7 +61,7 @@ index 13668ffdb1e7..c8bf08c19c64 100644
  	r3 = read_zsreg(uap_a, R3);
  
  	/* Channel A */
-@@ -456,14 +456,14 @@ static irqreturn_t pmz_interrupt(int irq, void *dev_id)
+@@ -442,14 +442,14 @@ static irqreturn_t pmz_interrupt(int irq, void *dev_id)
  		rc = IRQ_HANDLED;
  	}
   skip_a:
@@ -78,7 +78,7 @@ index 13668ffdb1e7..c8bf08c19c64 100644
  	push = false;
  	if (r3 & (CHBEXT | CHBTxIP | CHBRxIP)) {
  		if (!ZS_IS_OPEN(uap_b)) {
-@@ -481,7 +481,7 @@ static irqreturn_t pmz_interrupt(int irq, void *dev_id)
+@@ -467,7 +467,7 @@ static irqreturn_t pmz_interrupt(int irq, void *dev_id)
  		rc = IRQ_HANDLED;
  	}
   skip_b:
@@ -87,7 +87,7 @@ index 13668ffdb1e7..c8bf08c19c64 100644
  	if (push)
  		tty_flip_buffer_push(&uap->port.state->port);
  
-@@ -497,9 +497,9 @@ static inline u8 pmz_peek_status(struct uart_pmac_port *uap)
+@@ -483,9 +483,9 @@ static inline u8 pmz_peek_status(struct uart_pmac_port *uap)
  	unsigned long flags;
  	u8 status;
  	
@@ -99,7 +99,7 @@ index 13668ffdb1e7..c8bf08c19c64 100644
  
  	return status;
  }
-@@ -685,7 +685,7 @@ static void pmz_break_ctl(struct uart_port *port, int break_state)
+@@ -671,7 +671,7 @@ static void pmz_break_ctl(struct uart_port *port, int break_state)
  	else
  		clear_bits |= SND_BRK;
  
@@ -108,7 +108,7 @@ index 13668ffdb1e7..c8bf08c19c64 100644
  
  	new_reg = (uap->curregs[R5] | set_bits) & ~clear_bits;
  	if (new_reg != uap->curregs[R5]) {
-@@ -693,7 +693,7 @@ static void pmz_break_ctl(struct uart_port *port, int break_state)
+@@ -679,7 +679,7 @@ static void pmz_break_ctl(struct uart_port *port, int break_state)
  		write_zsreg(uap, R5, uap->curregs[R5]);
  	}
  
@@ -117,7 +117,7 @@ index 13668ffdb1e7..c8bf08c19c64 100644
  }
  
  #ifdef CONFIG_PPC_PMAC
-@@ -865,18 +865,18 @@ static void pmz_irda_reset(struct uart_pmac_port *uap)
+@@ -851,18 +851,18 @@ static void pmz_irda_reset(struct uart_pmac_port *uap)
  {
  	unsigned long flags;
  
@@ -140,7 +140,7 @@ index 13668ffdb1e7..c8bf08c19c64 100644
  	msleep(10);
  }
  
-@@ -896,9 +896,9 @@ static int pmz_startup(struct uart_port *port)
+@@ -882,9 +882,9 @@ static int pmz_startup(struct uart_port *port)
  	 * initialize the chip
  	 */
  	if (!ZS_IS_CONS(uap)) {
@@ -152,7 +152,7 @@ index 13668ffdb1e7..c8bf08c19c64 100644
  	}	
  	sprintf(uap->irq_name, PMACZILOG_NAME"%d", uap->port.line);
  	if (request_irq(uap->port.irq, pmz_interrupt, IRQF_SHARED,
-@@ -921,9 +921,9 @@ static int pmz_startup(struct uart_port *port)
+@@ -907,9 +907,9 @@ static int pmz_startup(struct uart_port *port)
  		pmz_irda_reset(uap);
  
  	/* Enable interrupt requests for the channel */
@@ -164,7 +164,7 @@ index 13668ffdb1e7..c8bf08c19c64 100644
  
  	return 0;
  }
-@@ -933,7 +933,7 @@ static void pmz_shutdown(struct uart_port *port)
+@@ -919,7 +919,7 @@ static void pmz_shutdown(struct uart_port *port)
  	struct uart_pmac_port *uap = to_pmz(port);
  	unsigned long flags;
  
@@ -173,7 +173,7 @@ index 13668ffdb1e7..c8bf08c19c64 100644
  
  	/* Disable interrupt requests for the channel */
  	pmz_interrupt_control(uap, 0);
-@@ -948,19 +948,19 @@ static void pmz_shutdown(struct uart_port *port)
+@@ -934,19 +934,19 @@ static void pmz_shutdown(struct uart_port *port)
  		pmz_maybe_update_regs(uap);
  	}
  
@@ -196,7 +196,7 @@ index 13668ffdb1e7..c8bf08c19c64 100644
  }
  
  /* Shared by TTY driver and serial console setup.  The port lock is held
-@@ -1247,7 +1247,7 @@ static void pmz_set_termios(struct uart_port *port, struct ktermios *termios,
+@@ -1233,7 +1233,7 @@ static void pmz_set_termios(struct uart_port *port, struct ktermios *termios,
  	struct uart_pmac_port *uap = to_pmz(port);
  	unsigned long flags;
  
@@ -205,7 +205,7 @@ index 13668ffdb1e7..c8bf08c19c64 100644
  
  	/* Disable IRQs on the port */
  	pmz_interrupt_control(uap, 0);
-@@ -1259,7 +1259,7 @@ static void pmz_set_termios(struct uart_port *port, struct ktermios *termios,
+@@ -1245,7 +1245,7 @@ static void pmz_set_termios(struct uart_port *port, struct ktermios *termios,
  	if (ZS_IS_OPEN(uap))
  		pmz_interrupt_control(uap, 1);
  
@@ -214,7 +214,7 @@ index 13668ffdb1e7..c8bf08c19c64 100644
  }
  
  static const char *pmz_type(struct uart_port *port)
-@@ -1896,7 +1896,7 @@ static void pmz_console_write(struct console *con, const char *s, unsigned int c
+@@ -1882,7 +1882,7 @@ static void pmz_console_write(struct console *con, const char *s, unsigned int c
  	struct uart_pmac_port *uap = &pmz_ports[con->index];
  	unsigned long flags;
  
@@ -223,7 +223,7 @@ index 13668ffdb1e7..c8bf08c19c64 100644
  
  	/* Turn of interrupts and enable the transmitter. */
  	write_zsreg(uap, R1, uap->curregs[1] & ~TxINT_ENAB);
-@@ -1908,7 +1908,7 @@ static void pmz_console_write(struct console *con, const char *s, unsigned int c
+@@ -1894,7 +1894,7 @@ static void pmz_console_write(struct console *con, const char *s, unsigned int c
  	write_zsreg(uap, R1, uap->curregs[1]);
  	/* Don't disable the transmitter. */
  
@@ -233,5 +233,5 @@ index 13668ffdb1e7..c8bf08c19c64 100644
  
  /*
 -- 
-2.44.0
+2.45.1
 

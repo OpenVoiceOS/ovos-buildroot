@@ -1,7 +1,7 @@
-From 51aa5b4ef3775ca0af1535f4b542b60fce91c8c8 Mon Sep 17 00:00:00 2001
+From 7c7aa2fd849aea3a7921810889b8d085bc57eed2 Mon Sep 17 00:00:00 2001
 From: Frederic Weisbecker <frederic@kernel.org>
 Date: Tue, 5 Apr 2022 03:07:51 +0200
-Subject: [PATCH 020/198] rcutorture: Also force sched priority to timersd on
+Subject: [PATCH 020/196] rcutorture: Also force sched priority to timersd on
  boosting test.
 
 ksoftirqd is statically boosted to the priority level right above the
@@ -76,5 +76,5 @@ index c29c30106eb8..1277abc94228 100644
  
  static unsigned int local_pending_timers(void)
 -- 
-2.44.0
+2.45.1
 

@@ -1,7 +1,7 @@
-From df848f9ebfac6dd30358fbdc179b911a60c0ec5b Mon Sep 17 00:00:00 2001
+From e453078fee203a5b4b42d8a09d914275e860a130 Mon Sep 17 00:00:00 2001
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Thu, 14 Sep 2023 20:43:51 +0206
-Subject: [PATCH 060/198] serial: ma35d1: Use port lock wrappers
+Subject: [PATCH 060/196] serial: ma35d1: Use port lock wrappers
 
 When a serial port is used for kernel console output, then all
 modifications to the UART registers which are done from other contexts,
@@ -118,5 +118,5 @@ index 69da24565b99..73910c54d6be 100644
  
  static int __init ma35d1serial_console_setup(struct console *co, char *options)
 -- 
-2.44.0
+2.45.1
 

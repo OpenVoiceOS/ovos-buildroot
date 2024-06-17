@@ -1,7 +1,7 @@
-From 20988af9eed091714c307e7a6d080cf51ef874b1 Mon Sep 17 00:00:00 2001
+From b2d881323fc941835a59fcb7b04229063ed038e0 Mon Sep 17 00:00:00 2001
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Thu, 14 Sep 2023 20:43:56 +0206
-Subject: [PATCH 065/198] serial: mpc52xx: Use port lock wrappers
+Subject: [PATCH 065/196] serial: mpc52xx: Use port lock wrappers
 
 When a serial port is used for kernel console output, then all
 modifications to the UART registers which are done from other contexts,
@@ -90,5 +90,5 @@ index 916507b8f31d..a252465e745f 100644
  	return ret;
  }
 -- 
-2.44.0
+2.45.1
 

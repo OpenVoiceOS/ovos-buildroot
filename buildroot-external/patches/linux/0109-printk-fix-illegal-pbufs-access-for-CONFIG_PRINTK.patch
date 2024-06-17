@@ -1,7 +1,7 @@
-From 1778c80d0ce0b97fb7142d1e23f5e499c713a76e Mon Sep 17 00:00:00 2001
+From b9cd806a37744fec474d5c2c3f69ebae10605c5a Mon Sep 17 00:00:00 2001
 From: John Ogness <john.ogness@linutronix.de>
 Date: Wed, 20 Sep 2023 17:58:38 +0206
-Subject: [PATCH 109/198] printk: fix illegal pbufs access for !CONFIG_PRINTK
+Subject: [PATCH 109/196] printk: fix illegal pbufs access for !CONFIG_PRINTK
 
 When CONFIG_PRINTK is not set, PRINTK_MESSAGE_MAX is 0. This
 leads to a zero-sized array @outbuf in @printk_shared_pbufs. In
@@ -38,7 +38,7 @@ Signed-off-by: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
  1 file changed, 18 insertions(+), 26 deletions(-)
 
 diff --git a/kernel/printk/printk.c b/kernel/printk/printk.c
-index a8565bd0ac18..7ee5216fe61a 100644
+index 70f793b392e5..3bf517ae8262 100644
 --- a/kernel/printk/printk.c
 +++ b/kernel/printk/printk.c
 @@ -102,12 +102,6 @@ DEFINE_STATIC_SRCU(console_srcu);
@@ -67,7 +67,7 @@ index a8565bd0ac18..7ee5216fe61a 100644
  DECLARE_WAIT_QUEUE_HEAD(log_wait);
  /* All 3 protected by @syslog_lock. */
  /* the next printk record to read by syslog(READ) or /proc/kmsg */
-@@ -2381,22 +2381,6 @@ static bool __pr_flush(struct console *con, int timeout_ms, bool reset_on_progre
+@@ -2380,22 +2380,6 @@ static bool __pr_flush(struct console *con, int timeout_ms, bool reset_on_progre
  
  static u64 syslog_seq;
  
@@ -90,7 +90,7 @@ index a8565bd0ac18..7ee5216fe61a 100644
  static bool pr_flush(int timeout_ms, bool reset_on_progress) { return true; }
  static bool __pr_flush(struct console *con, int timeout_ms, bool reset_on_progress) { return true; }
  
-@@ -2750,6 +2734,8 @@ static void __console_unlock(void)
+@@ -2749,6 +2733,8 @@ static void __console_unlock(void)
  	up_console_sem();
  }
  
@@ -99,7 +99,7 @@ index a8565bd0ac18..7ee5216fe61a 100644
  /*
   * Prepend the message in @pmsg->pbufs->outbuf with a "dropped message". This
   * is achieved by shifting the existing message over and inserting the dropped
-@@ -2764,7 +2750,6 @@ static void __console_unlock(void)
+@@ -2763,7 +2749,6 @@ static void __console_unlock(void)
   *
   * If @pmsg->pbufs->outbuf is modified, @pmsg->outbuf_len is updated.
   */
@@ -107,7 +107,7 @@ index a8565bd0ac18..7ee5216fe61a 100644
  void console_prepend_dropped(struct printk_message *pmsg, unsigned long dropped)
  {
  	struct printk_buffers *pbufs = pmsg->pbufs;
-@@ -2796,9 +2781,6 @@ void console_prepend_dropped(struct printk_message *pmsg, unsigned long dropped)
+@@ -2795,9 +2780,6 @@ void console_prepend_dropped(struct printk_message *pmsg, unsigned long dropped)
  	memcpy(outbuf, scratchbuf, len);
  	pmsg->outbuf_len += len;
  }
@@ -117,7 +117,7 @@ index a8565bd0ac18..7ee5216fe61a 100644
  
  /*
   * Read and format the specified record (or a later record if the specified
-@@ -2956,6 +2938,16 @@ static bool console_emit_next_record(struct console *con, bool *handover, int co
+@@ -2955,6 +2937,16 @@ static bool console_emit_next_record(struct console *con, bool *handover, int co
  	return true;
  }
  
@@ -135,5 +135,5 @@ index a8565bd0ac18..7ee5216fe61a 100644
   * Print out all remaining records to all consoles.
   *
 -- 
-2.44.0
+2.45.1
 

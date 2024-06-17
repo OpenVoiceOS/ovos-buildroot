@@ -1,0 +1,20 @@
+From 61a906a6a722010ddcb3b9086a1124f4e471bbfd Mon Sep 17 00:00:00 2001
+From: Clark Williams <clark.williams@gmail.com>
+Date: Sun, 26 May 2024 20:51:26 -0500
+Subject: [PATCH 196/196] Linux 6.6.32-rt32 REBASE
+
+Signed-off-by: Clark Williams <clark.williams@gmail.com>
+---
+ localversion-rt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/localversion-rt b/localversion-rt
+index 9a218ca23053..ce6a482618d5 100644
+--- a/localversion-rt
++++ b/localversion-rt
+@@ -1 +1 @@
+--rt23
++-rt32
+-- 
+2.45.1
+

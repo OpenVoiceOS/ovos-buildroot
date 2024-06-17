@@ -1,7 +1,7 @@
-From d9b7b888b11585d0af93ed044d8fdf2fa19db277 Mon Sep 17 00:00:00 2001
+From 7ee23cef36f815349c95b29497c35bda97eba2c4 Mon Sep 17 00:00:00 2001
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Thu, 14 Sep 2023 20:43:34 +0206
-Subject: [PATCH 043/198] serial: amba-pl011: Use port lock wrappers
+Subject: [PATCH 043/196] serial: amba-pl011: Use port lock wrappers
 
 When a serial port is used for kernel console output, then all
 modifications to the UART registers which are done from other contexts,
@@ -328,5 +328,5 @@ index 362bbcdece0d..16c770311069 100644
  
  	clk_disable(uap->clk);
 -- 
-2.44.0
+2.45.1
 

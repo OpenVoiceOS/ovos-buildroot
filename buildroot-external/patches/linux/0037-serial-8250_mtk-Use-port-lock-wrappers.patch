@@ -1,7 +1,7 @@
-From a6146c1416cf4ac69b8f86a70c567bd9c5f59b37 Mon Sep 17 00:00:00 2001
+From c3cdebecf01d8cd7e7421441fa6a6cc29bef4ad0 Mon Sep 17 00:00:00 2001
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Thu, 14 Sep 2023 20:43:28 +0206
-Subject: [PATCH 037/198] serial: 8250_mtk: Use port lock wrappers
+Subject: [PATCH 037/196] serial: 8250_mtk: Use port lock wrappers
 
 When a serial port is used for kernel console output, then all
 modifications to the UART registers which are done from other contexts,
@@ -78,5 +78,5 @@ index 74da5676ce67..23457daae8a1 100644
  	if (tty_termios_baud_rate(termios))
  		tty_termios_encode_baud_rate(termios, baud, baud);
 -- 
-2.44.0
+2.45.1
 

@@ -1,7 +1,7 @@
-From 7bc5b3a4befaa2219dfd5d7c5c069d563afa0a81 Mon Sep 17 00:00:00 2001
+From 64f3446cd9cbba31faf719284c85750b28f22c5d Mon Sep 17 00:00:00 2001
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Thu, 14 Sep 2023 20:43:41 +0206
-Subject: [PATCH 050/198] serial: digicolor: Use port lock wrappers
+Subject: [PATCH 050/196] serial: digicolor: Use port lock wrappers
 
 When a serial port is used for kernel console output, then all
 modifications to the UART registers which are done from other contexts,
@@ -114,5 +114,5 @@ index 128b5479e813..5004125f3045 100644
  	/* Wait for transmitter to become empty */
  	do {
 -- 
-2.44.0
+2.45.1
 

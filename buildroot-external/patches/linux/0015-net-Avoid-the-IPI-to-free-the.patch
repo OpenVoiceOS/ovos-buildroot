@@ -1,7 +1,7 @@
-From 26b7ede776b83df57ce0ab06a5c545490759070b Mon Sep 17 00:00:00 2001
+From 3080305e309931d30a95a7f597fd336d8c18abfc Mon Sep 17 00:00:00 2001
 From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Mon, 15 Aug 2022 17:29:50 +0200
-Subject: [PATCH 015/198] net: Avoid the IPI to free the
+Subject: [PATCH 015/196] net: Avoid the IPI to free the
 
 skb_attempt_defer_free() collects a skbs, which was allocated on a
 remote CPU, on a per-CPU list. These skbs are either freed on that
@@ -105,10 +105,10 @@ index 1f6c8945f2ec..1e8928cd3c75 100644
  
  		init_gro_hash(&sd->backlog);
 diff --git a/net/core/skbuff.c b/net/core/skbuff.c
-index 60876262b3fb..02e2bab1ed8d 100644
+index f0a9ef1aeaa2..682175af439d 100644
 --- a/net/core/skbuff.c
 +++ b/net/core/skbuff.c
-@@ -6852,8 +6852,13 @@ nodefer:	__kfree_skb(skb);
+@@ -6863,8 +6863,13 @@ nodefer:	__kfree_skb(skb);
  	/* Make sure to trigger NET_RX_SOFTIRQ on the remote CPU
  	 * if we are unlucky enough (this seems very unlikely).
  	 */
@@ -124,5 +124,5 @@ index 60876262b3fb..02e2bab1ed8d 100644
  
  static void skb_splice_csum_page(struct sk_buff *skb, struct page *page,
 -- 
-2.44.0
+2.45.1
 
