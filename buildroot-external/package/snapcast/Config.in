@@ -10,6 +10,7 @@ config BR2_PACKAGE_SNAPCAST
 	select BR2_PACKAGE_DBUS
 	select BR2_PACKAGE_FLAC
 	select BR2_PACKAGE_LIBVORBIS
+	select BR2_PACKAGE_LIBSAMPLERATE
 	select BR2_PACKAGE_OPUS
 	help
 	  Synchronous multi-room audio player
