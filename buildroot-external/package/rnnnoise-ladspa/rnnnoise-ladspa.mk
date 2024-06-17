@@ -4,7 +4,7 @@
 #
 ################################################################################
 
-RNNNOISE_LADSPA_VERSION = c1cf4307c75abed8e3ecccdd23a35f7782feaf69
+RNNNOISE_LADSPA_VERSION = 9c4e5c28d8950e2cef837d8a0abd36c2fd9b5c2d
 RNNNOISE_LADSPA_SITE = $(call github,werman,noise-suppression-for-voice,$(RNNNOISE_LADSPA_VERSION))
 RNNNOISE_LADSPA_LICENSE = Apache License 2.0
 
