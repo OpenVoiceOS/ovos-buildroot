@@ -1,7 +1,7 @@
-From 7ab311d457505a1bc19f4da07105688c49bee967 Mon Sep 17 00:00:00 2001
+From 6616f715a346313eacffd373d8e9479d3d4dea05 Mon Sep 17 00:00:00 2001
 From: Mike Galbraith <umgwanakikbuti@gmail.com>
 Date: Sat, 27 Feb 2016 08:09:11 +0100
-Subject: [PATCH 158/196] drm/i915: Use preempt_disable/enable_rt() where
+Subject: [PATCH 158/198] drm/i915: Use preempt_disable/enable_rt() where
  recommended
 
 Mario Kleiner suggest in commit
@@ -57,5 +57,5 @@ index f5659ebd08eb..5b6d2f55528d 100644
  	spin_unlock_irqrestore(&dev_priv->uncore.lock, irqflags);
  
 -- 
-2.45.1
+2.45.2
 

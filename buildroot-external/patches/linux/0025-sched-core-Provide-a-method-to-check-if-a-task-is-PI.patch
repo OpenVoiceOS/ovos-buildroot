@@ -1,7 +1,7 @@
-From 4ae4b72fbf397e10c5dd99e5a16d05738e7731f9 Mon Sep 17 00:00:00 2001
+From 3fe6d131433d048f8ab7dd55f7106599ecefaddd Mon Sep 17 00:00:00 2001
 From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Fri, 4 Aug 2023 13:30:37 +0200
-Subject: [PATCH 025/196] sched/core: Provide a method to check if a task is
+Subject: [PATCH 025/198] sched/core: Provide a method to check if a task is
  PI-boosted.
 
 Provide a method to check if a task inherited the priority from another
@@ -31,7 +31,7 @@ index 67623ffd4a8e..eab173e5d09b 100644
  extern void set_user_nice(struct task_struct *p, long nice);
  extern int task_prio(const struct task_struct *p);
 diff --git a/kernel/sched/core.c b/kernel/sched/core.c
-index d703c5427cf2..c731c53d6bfd 100644
+index b49e976e831d..bbc2e377fc79 100644
 --- a/kernel/sched/core.c
 +++ b/kernel/sched/core.c
 @@ -8923,6 +8923,21 @@ static inline void preempt_dynamic_init(void) { }
@@ -57,5 +57,5 @@ index d703c5427cf2..c731c53d6bfd 100644
   * yield - yield the current processor to other threads.
   *
 -- 
-2.45.1
+2.45.2
 

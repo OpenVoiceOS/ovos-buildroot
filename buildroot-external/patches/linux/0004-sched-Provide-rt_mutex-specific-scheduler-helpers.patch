@@ -1,7 +1,7 @@
-From 7e8cc292a114b7d286d1e01eabe11dad82341a8b Mon Sep 17 00:00:00 2001
+From 63efc63673a6fab2c2dae2c23fea60297bbe2394 Mon Sep 17 00:00:00 2001
 From: Peter Zijlstra <peterz@infradead.org>
 Date: Fri, 8 Sep 2023 18:22:51 +0200
-Subject: [PATCH 004/196] sched: Provide rt_mutex specific scheduler helpers
+Subject: [PATCH 004/198] sched: Provide rt_mutex specific scheduler helpers
 
 With PREEMPT_RT there is a rt_mutex recursion problem where
 sched_submit_work() can use an rtlock (aka spinlock_t). More
@@ -72,7 +72,7 @@ index 994c25640e15..b2b9e6eb9683 100644
   * Must hold either p->pi_lock or task_rq(p)->lock.
   */
 diff --git a/kernel/sched/core.c b/kernel/sched/core.c
-index 4498af52cf47..d703c5427cf2 100644
+index 8f6962c0619b..b49e976e831d 100644
 --- a/kernel/sched/core.c
 +++ b/kernel/sched/core.c
 @@ -6724,9 +6724,6 @@ static inline void sched_submit_work(struct task_struct *tsk)
@@ -133,5 +133,5 @@ index 4498af52cf47..d703c5427cf2 100644
  {
  	if (pi_task)
 -- 
-2.45.1
+2.45.2
 

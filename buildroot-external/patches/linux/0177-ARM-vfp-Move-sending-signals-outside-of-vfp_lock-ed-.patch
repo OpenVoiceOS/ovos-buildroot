@@ -1,7 +1,7 @@
-From eef1b989875ac035ec75e8e50e2e52cd22570181 Mon Sep 17 00:00:00 2001
+From 8fd59b45743ed86ffb5316253af1ded00d7f2f89 Mon Sep 17 00:00:00 2001
 From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Wed, 28 Jun 2023 09:39:33 +0200
-Subject: [PATCH 177/196] ARM: vfp: Move sending signals outside of
+Subject: [PATCH 177/198] ARM: vfp: Move sending signals outside of
  vfp_lock()ed section.
 
 VFP_bounce() is invoked from within vfp_support_entry() and may send a
@@ -122,5 +122,5 @@ index 9543f011d0ed..9fde36fcb80c 100644
  }
  
 -- 
-2.45.1
+2.45.2
 

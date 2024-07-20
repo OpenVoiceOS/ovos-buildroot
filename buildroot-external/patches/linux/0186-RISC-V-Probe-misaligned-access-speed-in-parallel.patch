@@ -1,7 +1,7 @@
-From 2870ed42a6e1a9f65b4573d8e5fba1e3dd3ddd1f Mon Sep 17 00:00:00 2001
+From e01378b41fd2a2c29575a677b80f1750e564d6a0 Mon Sep 17 00:00:00 2001
 From: Evan Green <evan@rivosinc.com>
 Date: Mon, 6 Nov 2023 14:58:55 -0800
-Subject: [PATCH 186/196] RISC-V: Probe misaligned access speed in parallel
+Subject: [PATCH 186/198] RISC-V: Probe misaligned access speed in parallel
 
 Probing for misaligned access speed takes about 0.06 seconds. On a
 system with 64 cores, doing this in smp_callin() means it's done
@@ -192,5 +192,5 @@ index 1b8da4e40a4d..2cb5e651412c 100644
  	if (has_vector()) {
  		if (riscv_v_setup_vsize())
 -- 
-2.45.1
+2.45.2
 

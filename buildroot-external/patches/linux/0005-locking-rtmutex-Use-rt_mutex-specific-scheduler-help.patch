@@ -1,7 +1,7 @@
-From 5762f7281a1fdd82c3d062c45b22c923e60ec13b Mon Sep 17 00:00:00 2001
+From 3fee7fa89258ca88cff520d3218f2836b2a28967 Mon Sep 17 00:00:00 2001
 From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Fri, 8 Sep 2023 18:22:52 +0200
-Subject: [PATCH 005/196] locking/rtmutex: Use rt_mutex specific scheduler
+Subject: [PATCH 005/198] locking/rtmutex: Use rt_mutex specific scheduler
  helpers
 
 Have rt_mutex use the rt_mutex specific scheduler helpers to avoid
@@ -187,5 +187,5 @@ index 48a19ed8486d..842037b2ba54 100644
  /*
   * The common functions which get wrapped into the rwlock API.
 -- 
-2.45.1
+2.45.2
 

@@ -1,7 +1,7 @@
-From 297d1365997f0e5e91dacbad570101275d6e76fa Mon Sep 17 00:00:00 2001
+From 9d93ad1422ee62613b842bdca8be6aa62ad12130 Mon Sep 17 00:00:00 2001
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Mon, 11 Sep 2023 15:53:04 +0000
-Subject: [PATCH 140/196] panic: Mark emergency section in warn
+Subject: [PATCH 140/198] panic: Mark emergency section in warn
 
 Mark the full contents of __warn() as an emergency section. In
 this section, the CPU will not perform console output for the
@@ -39,5 +39,5 @@ index f0e91a0c4001..147803c3a402 100644
  
  #ifdef CONFIG_BUG
 -- 
-2.45.1
+2.45.2
 

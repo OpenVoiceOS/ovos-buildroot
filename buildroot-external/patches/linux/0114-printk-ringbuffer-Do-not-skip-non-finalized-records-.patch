@@ -1,7 +1,7 @@
-From 86ff02e346f857bd3ebb35f648f85cfa5a6cd255 Mon Sep 17 00:00:00 2001
+From 43c5b27e8b51eec77e5aec0c95ae3b06ac59335d Mon Sep 17 00:00:00 2001
 From: John Ogness <john.ogness@linutronix.de>
 Date: Thu, 19 Oct 2023 10:32:05 +0000
-Subject: [PATCH 114/196] printk: ringbuffer: Do not skip non-finalized records
+Subject: [PATCH 114/198] printk: ringbuffer: Do not skip non-finalized records
  with prb_next_seq()
 
 Commit f244b4dc53e5 ("printk: ringbuffer: Improve
@@ -308,5 +308,5 @@ index ee294aaf4aeb..2d948cc82b5b 100644
  	.text_data_ring = {									\
  		.size_bits	= (avgtextbits) + (descbits),					\
 -- 
-2.45.1
+2.45.2
 

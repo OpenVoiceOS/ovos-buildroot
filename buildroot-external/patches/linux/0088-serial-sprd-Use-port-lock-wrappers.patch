@@ -1,7 +1,7 @@
-From 4b60d142cf08c5470367870165430ee8e904e784 Mon Sep 17 00:00:00 2001
+From 38287f1eb52744bdc247913e3e414ecc2a99d2b4 Mon Sep 17 00:00:00 2001
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Thu, 14 Sep 2023 20:44:19 +0206
-Subject: [PATCH 088/196] serial: sprd: Use port lock wrappers
+Subject: [PATCH 088/198] serial: sprd: Use port lock wrappers
 
 When a serial port is used for kernel console output, then all
 modifications to the UART registers which are done from other contexts,
@@ -163,5 +163,5 @@ index f328fa57231f..f257525f9299 100644
  
  static int sprd_console_setup(struct console *co, char *options)
 -- 
-2.45.1
+2.45.2
 

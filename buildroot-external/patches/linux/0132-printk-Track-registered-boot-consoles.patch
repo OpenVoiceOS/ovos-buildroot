@@ -1,7 +1,7 @@
-From cf5de27c7c6d8ee8da49746295a846c27c797155 Mon Sep 17 00:00:00 2001
+From 8d645d576b8fd2f404b0e4fdd9a68389c20e2395 Mon Sep 17 00:00:00 2001
 From: John Ogness <john.ogness@linutronix.de>
 Date: Tue, 24 Oct 2023 14:13:14 +0000
-Subject: [PATCH 132/196] printk: Track registered boot consoles
+Subject: [PATCH 132/198] printk: Track registered boot consoles
 
 Unfortunately it is not known if a boot console and a regular
 (legacy or nbcon) console use the same hardware. For this reason
@@ -79,5 +79,5 @@ index 271865952a4d..4185c58f7915 100644
  }
  
 -- 
-2.45.1
+2.45.2
 

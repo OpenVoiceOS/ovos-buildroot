@@ -1,7 +1,7 @@
-From 8f4d1011400accaa7da246482d3ca30779c0a043 Mon Sep 17 00:00:00 2001
+From 8aedd4f9111049ea5549e463fa0e8ae6e84ccf21 Mon Sep 17 00:00:00 2001
 From: Clark Williams <clark.williams@gmail.com>
 Date: Mon, 5 Feb 2024 14:04:38 -0600
-Subject: [PATCH 190/196] arch/riscv: check_unaligned_acces(): don't alloc page
+Subject: [PATCH 190/198] arch/riscv: check_unaligned_acces(): don't alloc page
  for check
 
 Drop the alloc_pages() call since the page is passed in as
@@ -31,5 +31,5 @@ index 9d8b6b463592..dd118773e717 100644
  	dst = (void *)((unsigned long)page_address(page) | 0x1);
  	/* Unalign src as well, but differently (off by 1 + 2 = 3). */
 -- 
-2.45.1
+2.45.2
 

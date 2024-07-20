@@ -1,5 +1,10 @@
 config BR2_PACKAGE_PYTHON_OVOS_GUI
 	bool "python-ovos-gui"
+	select BR2_PACKAGE_PYTHON_OVOS_BUS_CLIENT
+	select BR2_PACKAGE_PYTHON_OVOS_UTILS
+	select BR2_PACKAGE_PYTHON_OVOS_CONFIG
+	select BR2_PACKAGE_PYTHON_TORNADO
+	select BR2_PACKAGE_PYTHON_OVOS_PLUGIN_MANAGER
 	help
 	  GUI messagebus service, manages GUI state 
 	  and implements the gui protocol 

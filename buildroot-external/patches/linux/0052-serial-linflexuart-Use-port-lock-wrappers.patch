@@ -1,7 +1,7 @@
-From c4a981074cc232c31fd8a56c5a2665f7321a3320 Mon Sep 17 00:00:00 2001
+From 471d5859d368d3904b99653762a91d196c146d86 Mon Sep 17 00:00:00 2001
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Thu, 14 Sep 2023 20:43:43 +0206
-Subject: [PATCH 052/196] serial: linflexuart: Use port lock wrappers
+Subject: [PATCH 052/198] serial: linflexuart: Use port lock wrappers
 
 When a serial port is used for kernel console output, then all
 modifications to the UART registers which are done from other contexts,
@@ -144,5 +144,5 @@ index 249cb380c3c6..7fa809a405e8 100644
  
  /*
 -- 
-2.45.1
+2.45.2
 

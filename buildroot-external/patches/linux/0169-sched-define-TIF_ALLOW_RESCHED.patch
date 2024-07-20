@@ -1,7 +1,7 @@
-From 71f110e72a1ae52cde9f14916ca3de45ba93f5e6 Mon Sep 17 00:00:00 2001
+From 44da9a8614255aa01be5a907cbe139ccd2d2e2d5 Mon Sep 17 00:00:00 2001
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Sat, 23 Sep 2023 03:11:05 +0200
-Subject: [PATCH 169/196] sched: define TIF_ALLOW_RESCHED
+Subject: [PATCH 169/198] sched: define TIF_ALLOW_RESCHED
 
 On Fri, Sep 22 2023 at 00:55, Thomas Gleixner wrote:
 > On Thu, Sep 21 2023 at 09:00, Linus Torvalds wrote:
@@ -121,7 +121,7 @@ Signed-off-by: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
  20 files changed, 171 insertions(+), 56 deletions(-)
 
 diff --git a/arch/x86/Kconfig b/arch/x86/Kconfig
-index 282313172756..c8bdb181469a 100644
+index fe340c07ddbf..7bbf835fe725 100644
 --- a/arch/x86/Kconfig
 +++ b/arch/x86/Kconfig
 @@ -273,6 +273,7 @@ config X86
@@ -437,7 +437,7 @@ index 2e0f75bcb7fd..d952fa5ee880 100644
  
  		if (ti_work & _TIF_NOTIFY_RESUME)
 diff --git a/kernel/sched/core.c b/kernel/sched/core.c
-index c731c53d6bfd..89bf86d3351d 100644
+index bbc2e377fc79..92ded5b2ab6d 100644
 --- a/kernel/sched/core.c
 +++ b/kernel/sched/core.c
 @@ -898,14 +898,15 @@ static inline void hrtick_rq_init(struct rq *rq)
@@ -583,7 +583,7 @@ index 4c3d0d9f3db6..63e19b89c8c3 100644
  }
  late_initcall(sched_init_debug);
 diff --git a/kernel/sched/fair.c b/kernel/sched/fair.c
-index 397ef27c9bdb..ed7894d27621 100644
+index 01b3fc97ddc2..1e499b4e3c78 100644
 --- a/kernel/sched/fair.c
 +++ b/kernel/sched/fair.c
 @@ -1022,8 +1022,10 @@ static void clear_buddies(struct cfs_rq *cfs_rq, struct sched_entity *se);
@@ -696,7 +696,7 @@ index 397ef27c9bdb..ed7894d27621 100644
  			return;
  		}
  		hrtick_start(rq, delta);
-@@ -8187,7 +8203,7 @@ static void check_preempt_wakeup(struct rq *rq, struct task_struct *p, int wake_
+@@ -8207,7 +8223,7 @@ static void check_preempt_wakeup(struct rq *rq, struct task_struct *p, int wake_
  	 * prevents us from potentially nominating it as a false LAST_BUDDY
  	 * below.
  	 */
@@ -705,7 +705,7 @@ index 397ef27c9bdb..ed7894d27621 100644
  		return;
  
  	/* Idle tasks are by definition preempted by non-idle tasks. */
-@@ -8229,7 +8245,7 @@ static void check_preempt_wakeup(struct rq *rq, struct task_struct *p, int wake_
+@@ -8249,7 +8265,7 @@ static void check_preempt_wakeup(struct rq *rq, struct task_struct *p, int wake_
  	return;
  
  preempt:
@@ -714,7 +714,7 @@ index 397ef27c9bdb..ed7894d27621 100644
  }
  
  #ifdef CONFIG_SMP
-@@ -12386,7 +12402,7 @@ static inline void task_tick_core(struct rq *rq, struct task_struct *curr)
+@@ -12401,7 +12417,7 @@ static inline void task_tick_core(struct rq *rq, struct task_struct *curr)
  	 */
  	if (rq->core->core_forceidle_count && rq->cfs.nr_running == 1 &&
  	    __entity_slice_used(&curr->se, MIN_NR_TASKS_DURING_FORCEIDLE))
@@ -723,7 +723,7 @@ index 397ef27c9bdb..ed7894d27621 100644
  }
  
  /*
-@@ -12551,7 +12567,7 @@ prio_changed_fair(struct rq *rq, struct task_struct *p, int oldprio)
+@@ -12566,7 +12582,7 @@ prio_changed_fair(struct rq *rq, struct task_struct *p, int oldprio)
  	 */
  	if (task_current(rq, p)) {
  		if (p->prio > oldprio)
@@ -818,5 +818,5 @@ index 3b7d3e9eb6ea..5a4fefbc0856 100644
  		need_resched = 'p';
  		break;
 -- 
-2.45.1
+2.45.2
 

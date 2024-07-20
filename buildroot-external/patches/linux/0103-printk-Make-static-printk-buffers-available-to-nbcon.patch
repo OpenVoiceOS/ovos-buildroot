@@ -1,7 +1,7 @@
-From ea8f9781b8d35982e7b75e61d003f9fc41daea03 Mon Sep 17 00:00:00 2001
+From f1c1c2a3e149f73f417874acbb0a7bb64f56a083 Mon Sep 17 00:00:00 2001
 From: John Ogness <john.ogness@linutronix.de>
 Date: Sat, 16 Sep 2023 21:26:02 +0206
-Subject: [PATCH 103/196] printk: Make static printk buffers available to nbcon
+Subject: [PATCH 103/198] printk: Make static printk buffers available to nbcon
 
 The nbcon boot consoles also need printk buffers that are available
 very early. Since the nbcon boot consoles will also be serialized
@@ -68,5 +68,5 @@ index b2c65b991e1e..dd68135cb371 100644
  	unsigned long flags;
  
 -- 
-2.45.1
+2.45.2
 

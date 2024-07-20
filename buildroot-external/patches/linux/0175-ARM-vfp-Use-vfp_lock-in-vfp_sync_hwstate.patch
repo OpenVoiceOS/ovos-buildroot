@@ -1,7 +1,7 @@
-From 4281b162af322386674a2017b5d889a652560322 Mon Sep 17 00:00:00 2001
+From c52084f5d7da55db04b48a5343c88985e09fd9c3 Mon Sep 17 00:00:00 2001
 From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Fri, 19 May 2023 16:57:30 +0200
-Subject: [PATCH 175/196] ARM: vfp: Use vfp_lock() in vfp_sync_hwstate().
+Subject: [PATCH 175/198] ARM: vfp: Use vfp_lock() in vfp_sync_hwstate().
 
 vfp_sync_hwstate() uses preempt_disable() followed by local_bh_disable()
 to ensure that it won't get interrupted while checking the VFP state.
@@ -45,5 +45,5 @@ index 8d321cdb7ac5..3b9360bfc508 100644
  
  /* Ensure that the thread reloads the hardware VFP state on the next use. */
 -- 
-2.45.1
+2.45.2
 

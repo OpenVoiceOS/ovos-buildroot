@@ -19,12 +19,9 @@ OVOS_CONTAINERS_IMAGES = ovos-phal \
 			 ovos-cli
 
 ifeq ($(BR2_PACKAGE_OVOS_CONTAINERS_GUI),y)
-OVOS_CONTAINERS_IMAGES += ovos-gui-websocket \
-			  ovos-gui-shell
+OVOS_CONTAINERS_IMAGES += ovos-gui-shell
 define OVOS_CONTAINERS_INSTALL_GUI_SERVICES
 
-        $(INSTALL) -D -m 644 $(BR2_EXTERNAL_OPENVOICEOS_PATH)/package/ovos-containers/ovos_gui_websocket.container \
-                $(TARGET_DIR)/home/ovos/.config/containers/systemd/ovos_gui_websocket.container
         $(INSTALL) -D -m 644 $(BR2_EXTERNAL_OPENVOICEOS_PATH)/package/ovos-containers/ovos_gui.container \
                 $(TARGET_DIR)/home/ovos/.config/containers/systemd/ovos_gui.container
 

@@ -1,7 +1,7 @@
-From 21c4e3aa6d5daff7fe273905dd216338255a8d5f Mon Sep 17 00:00:00 2001
+From 8ebdc90090c53e64cb542228f3e90f309c0933e8 Mon Sep 17 00:00:00 2001
 From: John Ogness <john.ogness@linutronix.de>
 Date: Fri, 20 Oct 2023 10:01:58 +0000
-Subject: [PATCH 152/196] printk: nbcon: Provide function to reacquire
+Subject: [PATCH 152/198] printk: nbcon: Provide function to reacquire
  ownership
 
 Contexts may become nbcon owners for various reasons, not just
@@ -95,5 +95,5 @@ index b866d0138fe0..f843df54ee82 100644
   * nbcon_emit_next_record - Emit a record in the acquired context
   * @wctxt:	The write context that will be handed to the write function
 -- 
-2.45.1
+2.45.2
 

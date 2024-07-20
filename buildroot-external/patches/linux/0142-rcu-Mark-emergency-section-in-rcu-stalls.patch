@@ -1,7 +1,7 @@
-From ebee2e00f0d0af3c186e73912c0d4836fc556720 Mon Sep 17 00:00:00 2001
+From 56f2eb8c0d438feea7e61fcbd4a1ac7e2b72e129 Mon Sep 17 00:00:00 2001
 From: John Ogness <john.ogness@linutronix.de>
 Date: Mon, 11 Sep 2023 15:53:39 +0000
-Subject: [PATCH 142/196] rcu: Mark emergency section in rcu stalls
+Subject: [PATCH 142/198] rcu: Mark emergency section in rcu stalls
 
 Mark an emergency section within print_other_cpu_stall(), where
 RCU stall information is printed. In this section, the CPU will
@@ -16,7 +16,7 @@ Signed-off-by: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
  1 file changed, 5 insertions(+)
 
 diff --git a/kernel/rcu/tree_stall.h b/kernel/rcu/tree_stall.h
-index e09f4f624261..3114830489ef 100644
+index 11a1fac3a589..6f085a159fca 100644
 --- a/kernel/rcu/tree_stall.h
 +++ b/kernel/rcu/tree_stall.h
 @@ -8,6 +8,7 @@
@@ -27,7 +27,7 @@ index e09f4f624261..3114830489ef 100644
  
  //////////////////////////////////////////////////////////////////////////////
  //
-@@ -603,6 +604,8 @@ static void print_other_cpu_stall(unsigned long gp_seq, unsigned long gps)
+@@ -604,6 +605,8 @@ static void print_other_cpu_stall(unsigned long gp_seq, unsigned long gps)
  	if (rcu_stall_is_suppressed())
  		return;
  
@@ -36,7 +36,7 @@ index e09f4f624261..3114830489ef 100644
  	/*
  	 * OK, time to rat on our buddy...
  	 * See Documentation/RCU/stallwarn.rst for info on how to debug
-@@ -657,6 +660,8 @@ static void print_other_cpu_stall(unsigned long gp_seq, unsigned long gps)
+@@ -658,6 +661,8 @@ static void print_other_cpu_stall(unsigned long gp_seq, unsigned long gps)
  	panic_on_rcu_stall();
  
  	rcu_force_quiescent_state();  /* Kick them all. */
@@ -46,5 +46,5 @@ index e09f4f624261..3114830489ef 100644
  
  static void print_cpu_stall(unsigned long gps)
 -- 
-2.45.1
+2.45.2
 

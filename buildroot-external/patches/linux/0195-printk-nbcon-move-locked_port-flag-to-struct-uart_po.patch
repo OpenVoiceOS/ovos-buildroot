@@ -1,7 +1,7 @@
-From 20fd4439f644cf99034529d23ebbadfbedcf1923 Mon Sep 17 00:00:00 2001
+From 12ed4ced87b59876f24206b440c991c891518c80 Mon Sep 17 00:00:00 2001
 From: Junxiao Chang <junxiao.chang@intel.com>
 Date: Tue, 23 Jan 2024 13:40:32 +0800
-Subject: [PATCH 195/196] printk: nbcon: move locked_port flag to struct
+Subject: [PATCH 195/198] printk: nbcon: move locked_port flag to struct
  uart_port
 
 Console pointer in uart_port might be shared among multiple uart
@@ -42,10 +42,10 @@ index f8a062867888..1eb9580e9b18 100644
  	struct rcuwait		rcuwait;
  	struct irq_work		irq_work;
 diff --git a/include/linux/serial_core.h b/include/linux/serial_core.h
-index e5947b13f2f1..99d3f1e24bec 100644
+index 7c861b4606aa..6de3d7aab17d 100644
 --- a/include/linux/serial_core.h
 +++ b/include/linux/serial_core.h
-@@ -488,6 +488,7 @@ struct uart_port {
+@@ -489,6 +489,7 @@ struct uart_port {
  	struct uart_icount	icount;			/* statistics */
  
  	struct console		*cons;			/* struct console, if any */
@@ -92,5 +92,5 @@ index 1b1b585b1675..b53d93585ee7 100644
  EXPORT_SYMBOL_GPL(nbcon_release);
  
 -- 
-2.45.1
+2.45.2
 

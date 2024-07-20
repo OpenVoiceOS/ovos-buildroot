@@ -1,7 +1,7 @@
-From fd2f440a4fa98bdd61c5344811a8b3c53de0e2b4 Mon Sep 17 00:00:00 2001
+From d340dc1c843a6528d8f5106ac9df3386c65ed4a1 Mon Sep 17 00:00:00 2001
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Thu, 14 Sep 2023 20:43:39 +0206
-Subject: [PATCH 048/196] serial: bcm63xx-uart: Use port lock wrappers
+Subject: [PATCH 048/198] serial: bcm63xx-uart: Use port lock wrappers
 
 When a serial port is used for kernel console output, then all
 modifications to the UART registers which are done from other contexts,
@@ -38,7 +38,7 @@ Signed-off-by: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
  1 file changed, 11 insertions(+), 11 deletions(-)
 
 diff --git a/drivers/tty/serial/bcm63xx_uart.c b/drivers/tty/serial/bcm63xx_uart.c
-index 0dd8cceb837c..4a08fd5ee61b 100644
+index 44c27e5cefbc..b104c36ce5c0 100644
 --- a/drivers/tty/serial/bcm63xx_uart.c
 +++ b/drivers/tty/serial/bcm63xx_uart.c
 @@ -201,7 +201,7 @@ static void bcm_uart_break_ctl(struct uart_port *port, int ctl)
@@ -59,7 +59,7 @@ index 0dd8cceb837c..4a08fd5ee61b 100644
  }
  
  /*
-@@ -332,7 +332,7 @@ static irqreturn_t bcm_uart_interrupt(int irq, void *dev_id)
+@@ -335,7 +335,7 @@ static irqreturn_t bcm_uart_interrupt(int irq, void *dev_id)
  	unsigned int irqstat;
  
  	port = dev_id;
@@ -68,7 +68,7 @@ index 0dd8cceb837c..4a08fd5ee61b 100644
  
  	irqstat = bcm_uart_readl(port, UART_IR_REG);
  	if (irqstat & UART_RX_INT_STAT)
-@@ -353,7 +353,7 @@ static irqreturn_t bcm_uart_interrupt(int irq, void *dev_id)
+@@ -356,7 +356,7 @@ static irqreturn_t bcm_uart_interrupt(int irq, void *dev_id)
  					       estat & UART_EXTINP_DCD_MASK);
  	}
  
@@ -77,7 +77,7 @@ index 0dd8cceb837c..4a08fd5ee61b 100644
  	return IRQ_HANDLED;
  }
  
-@@ -451,9 +451,9 @@ static void bcm_uart_shutdown(struct uart_port *port)
+@@ -454,9 +454,9 @@ static void bcm_uart_shutdown(struct uart_port *port)
  {
  	unsigned long flags;
  
@@ -89,7 +89,7 @@ index 0dd8cceb837c..4a08fd5ee61b 100644
  
  	bcm_uart_disable(port);
  	bcm_uart_flush(port);
-@@ -470,7 +470,7 @@ static void bcm_uart_set_termios(struct uart_port *port, struct ktermios *new,
+@@ -473,7 +473,7 @@ static void bcm_uart_set_termios(struct uart_port *port, struct ktermios *new,
  	unsigned long flags;
  	int tries;
  
@@ -98,7 +98,7 @@ index 0dd8cceb837c..4a08fd5ee61b 100644
  
  	/* Drain the hot tub fully before we power it off for the winter. */
  	for (tries = 3; !bcm_uart_tx_empty(port) && tries; tries--)
-@@ -546,7 +546,7 @@ static void bcm_uart_set_termios(struct uart_port *port, struct ktermios *new,
+@@ -549,7 +549,7 @@ static void bcm_uart_set_termios(struct uart_port *port, struct ktermios *new,
  
  	uart_update_timeout(port, new->c_cflag, baud);
  	bcm_uart_enable(port);
@@ -107,7 +107,7 @@ index 0dd8cceb837c..4a08fd5ee61b 100644
  }
  
  /*
-@@ -712,9 +712,9 @@ static void bcm_console_write(struct console *co, const char *s,
+@@ -715,9 +715,9 @@ static void bcm_console_write(struct console *co, const char *s,
  		/* bcm_uart_interrupt() already took the lock */
  		locked = 0;
  	} else if (oops_in_progress) {
@@ -119,7 +119,7 @@ index 0dd8cceb837c..4a08fd5ee61b 100644
  		locked = 1;
  	}
  
-@@ -725,7 +725,7 @@ static void bcm_console_write(struct console *co, const char *s,
+@@ -728,7 +728,7 @@ static void bcm_console_write(struct console *co, const char *s,
  	wait_for_xmitr(port);
  
  	if (locked)
@@ -129,5 +129,5 @@ index 0dd8cceb837c..4a08fd5ee61b 100644
  }
  
 -- 
-2.45.1
+2.45.2
 

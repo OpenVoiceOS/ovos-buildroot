@@ -1,7 +1,7 @@
-From f2acafdeb7152aa873ba7d1e6926ec95d95925bd Mon Sep 17 00:00:00 2001
+From 8d69ccda032c156357902beb6572a7c42efe07c5 Mon Sep 17 00:00:00 2001
 From: John Ogness <john.ogness@linutronix.de>
 Date: Tue, 12 Sep 2023 13:25:41 +0000
-Subject: [PATCH 128/196] printk: Make console_is_usable() available to nbcon
+Subject: [PATCH 128/198] printk: Make console_is_usable() available to nbcon
 
 Move console_is_usable() as-is into internal.h so that it can
 be used by nbcon printing functions as well.
@@ -106,5 +106,5 @@ index ea13c808c282..d959be5c4102 100644
  {
  	console_locked = 0;
 -- 
-2.45.1
+2.45.2
 

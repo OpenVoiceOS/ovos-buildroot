@@ -1,7 +1,7 @@
-From a319203dcea1fc32b3a011c84a36fb9a2709be63 Mon Sep 17 00:00:00 2001
+From 86f17fad3cbc20b01189260d7fa0589f01bd420d Mon Sep 17 00:00:00 2001
 From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Fri, 19 May 2023 16:57:29 +0200
-Subject: [PATCH 174/196] ARM: vfp: Provide vfp_lock() for VFP locking.
+Subject: [PATCH 174/198] ARM: vfp: Provide vfp_lock() for VFP locking.
 
 kernel_neon_begin() uses local_bh_disable() to ensure exclusive access
 to the VFP unit. This is broken on PREEMPT_RT because a BH disabled
@@ -76,5 +76,5 @@ index 7e8773a2d99d..8d321cdb7ac5 100644
  EXPORT_SYMBOL(kernel_neon_end);
  
 -- 
-2.45.1
+2.45.2
 

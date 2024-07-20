@@ -1,5 +1,9 @@
 config BR2_PACKAGE_PYTHON_OVOS_BACKEND_CLIENT
 	bool "python-ovos-backend-client"
+	select BR2_PACKAGE_PYTHON_OVOS_UTILS
+	select BR2_PACKAGE_PYTHON_OVOS_CONFIG
+	select BR2_PACKAGE_PYTHON_JSON_DATABASE
+	select BR2_PACKAGE_PYTHON_OAUTHLIB
 	help
 	  Unofficial python api for interaction with 
 	  https://api.mycroft.ai , also compatible with 

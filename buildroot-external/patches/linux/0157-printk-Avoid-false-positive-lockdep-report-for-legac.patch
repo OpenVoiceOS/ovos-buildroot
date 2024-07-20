@@ -1,7 +1,7 @@
-From 7d3e5d9facb2a528500033ce83c9f84740f37224 Mon Sep 17 00:00:00 2001
+From 63bec499b97c17677443a9588ba0d08b9a9a08f8 Mon Sep 17 00:00:00 2001
 From: John Ogness <john.ogness@linutronix.de>
 Date: Mon, 11 Dec 2023 09:34:16 +0000
-Subject: [PATCH 157/196] printk: Avoid false positive lockdep report for
+Subject: [PATCH 157/198] printk: Avoid false positive lockdep report for
  legacy driver.
 
 printk may invoke the legacy console driver from atomic context. This leads to
@@ -65,5 +65,5 @@ index 4f1ca9931ddb..249576a8c351 100644
  				printk_seq = nbcon_seq_read(con);
  			} else {
 -- 
-2.45.1
+2.45.2
 

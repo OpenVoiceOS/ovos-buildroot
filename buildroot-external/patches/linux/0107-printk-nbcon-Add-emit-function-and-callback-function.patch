@@ -1,7 +1,7 @@
-From 50a7856a375ddca9456fcd493ac1c1dd193e4be8 Mon Sep 17 00:00:00 2001
+From 16cd156a23e59e274126f6905454ca660576a1d3 Mon Sep 17 00:00:00 2001
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Sat, 16 Sep 2023 21:26:06 +0206
-Subject: [PATCH 107/196] printk: nbcon: Add emit function and callback
+Subject: [PATCH 107/198] printk: nbcon: Add emit function and callback
  function for atomic printing
 
 Implement an emit function for nbcon consoles to output printk
@@ -268,5 +268,5 @@ index a1ab4760f807..70f793b392e5 100644
  	static int panic_console_dropped;
  
 -- 
-2.45.1
+2.45.2
 

@@ -1,7 +1,7 @@
-From bec076ae9bfb37045b447f79ff00da285ca4282e Mon Sep 17 00:00:00 2001
+From 57e43e1ee218df621ee5337c3d847d4d890c46bd Mon Sep 17 00:00:00 2001
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Thu, 14 Sep 2023 20:44:07 +0206
-Subject: [PATCH 076/196] serial: rda: Use port lock wrappers
+Subject: [PATCH 076/198] serial: rda: Use port lock wrappers
 
 When a serial port is used for kernel console output, then all
 modifications to the UART registers which are done from other contexts,
@@ -178,5 +178,5 @@ index be5c842b5ba9..d824c8318f33 100644
  	local_irq_restore(flags);
  }
 -- 
-2.45.1
+2.45.2
 

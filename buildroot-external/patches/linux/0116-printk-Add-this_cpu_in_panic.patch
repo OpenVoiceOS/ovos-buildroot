@@ -1,7 +1,7 @@
-From 73668866a245db351c6b332d5640602eaa637bff Mon Sep 17 00:00:00 2001
+From d9d8ca1dfa796746289aa27e4b8024010cba450a Mon Sep 17 00:00:00 2001
 From: John Ogness <john.ogness@linutronix.de>
 Date: Fri, 13 Oct 2023 14:30:49 +0000
-Subject: [PATCH 116/196] printk: Add this_cpu_in_panic()
+Subject: [PATCH 116/198] printk: Add this_cpu_in_panic()
 
 There is already panic_in_progress() and other_cpu_in_panic(),
 but checking if the current CPU is the panic CPU must still be
@@ -91,5 +91,5 @@ index a30338aca084..2bb393009d4e 100644
   * console_lock - block the console subsystem from printing
   *
 -- 
-2.45.1
+2.45.2
 

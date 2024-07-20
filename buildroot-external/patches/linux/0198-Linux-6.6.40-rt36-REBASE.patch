@@ -1,0 +1,20 @@
+From c30ecc49dba2d516854fca994b63f8cdcb22a064 Mon Sep 17 00:00:00 2001
+From: Clark Williams <clark.williams@gmail.com>
+Date: Tue, 16 Jul 2024 17:10:23 -0500
+Subject: [PATCH 198/198] Linux 6.6.40-rt36 REBASE
+
+Signed-off-by: Clark Williams <clark.williams@gmail.com>
+---
+ localversion-rt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/localversion-rt b/localversion-rt
+index 21988f9ad53f..22940344b6c0 100644
+--- a/localversion-rt
++++ b/localversion-rt
+@@ -1 +1 @@
+--rt34
++-rt36
+-- 
+2.45.2
+

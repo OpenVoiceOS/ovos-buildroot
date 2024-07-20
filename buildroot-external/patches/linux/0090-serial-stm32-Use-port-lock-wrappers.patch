@@ -1,7 +1,7 @@
-From 62bae6347efa388fc68a191b955c9433e4dc3a6e Mon Sep 17 00:00:00 2001
+From 8801ae048d144686a300e8bf50da0cb75be81995 Mon Sep 17 00:00:00 2001
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Thu, 14 Sep 2023 20:44:21 +0206
-Subject: [PATCH 090/196] serial: stm32: Use port lock wrappers
+Subject: [PATCH 090/198] serial: stm32: Use port lock wrappers
 
 When a serial port is used for kernel console output, then all
 modifications to the UART registers which are done from other contexts,
@@ -186,5 +186,5 @@ index 9ef90bb30a47..b963f9ccb070 100644
  			if (!stm32_usart_rx_dma_pause(stm32_port))
  				size += stm32_usart_receive_chars(port, true);
 -- 
-2.45.1
+2.45.2
 

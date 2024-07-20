@@ -1,7 +1,7 @@
-From 2bcc0ec7aebcfd9021f6828c56f8fd12b04fa85f Mon Sep 17 00:00:00 2001
+From c583441ffa00737ef173ec1c6e83d33b61e0eaa0 Mon Sep 17 00:00:00 2001
 From: Tvrtko Ursulin <tvrtko.ursulin@intel.com>
 Date: Wed, 5 Jul 2023 10:30:25 +0100
-Subject: [PATCH 166/196] drm/i915: Do not disable preemption for resets
+Subject: [PATCH 166/198] drm/i915: Do not disable preemption for resets
 
 Commit ade8a0f59844 ("drm/i915: Make all GPU resets atomic") added a
 preempt disable section over the hardware reset callback to prepare the
@@ -100,5 +100,5 @@ index 13fb8e5042c5..b51fb0c97772 100644
  		wa_14015076503_end(gt, reset_mask);
  	}
 -- 
-2.45.1
+2.45.2
 

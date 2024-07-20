@@ -1,7 +1,7 @@
-From 570c90a1aed48c9a6e0b5ff37a2ceb5576d70333 Mon Sep 17 00:00:00 2001
+From dceaa0a09e37e39a8abc2df6c938825e0051a0a2 Mon Sep 17 00:00:00 2001
 From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Tue, 3 Oct 2023 21:37:21 +0200
-Subject: [PATCH 167/196] drm/i915/guc: Consider also RCU depth in busy loop.
+Subject: [PATCH 167/198] drm/i915/guc: Consider also RCU depth in busy loop.
 
 intel_guc_send_busy_loop() looks at in_atomic() and irqs_disabled() to
 decide if it should busy-spin while waiting or if it may sleep.
@@ -30,5 +30,5 @@ index 8dc291ff0093..5b8d084c9c58 100644
  	/*
  	 * FIXME: Have caller pass in if we are in an atomic context to avoid
 -- 
-2.45.1
+2.45.2
 

@@ -1,7 +1,7 @@
-From 3539e6e800522cd65fc2a5d2877b7d3e020c6e1b Mon Sep 17 00:00:00 2001
+From b4a23991c2f41ecd56e4caebe04eafb3c5a50f70 Mon Sep 17 00:00:00 2001
 From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Tue, 23 Jan 2024 12:56:21 +0100
-Subject: [PATCH 194/196] arm: Disable FAST_GUP on PREEMPT_RT if HIGHPTE is
+Subject: [PATCH 194/198] arm: Disable FAST_GUP on PREEMPT_RT if HIGHPTE is
  also enabled.
 
 gup_pgd_range() is invoked with disabled interrupts and invokes
@@ -38,5 +38,5 @@ index a154ecd2d3c3..e5a283851c02 100644
  	select HAVE_FUNCTION_ERROR_INJECTION
  	select HAVE_FUNCTION_GRAPH_TRACER
 -- 
-2.45.1
+2.45.2
 

@@ -1,7 +1,7 @@
-From 7434d8adc2c81422e3ebeb82b60c495b4c612b62 Mon Sep 17 00:00:00 2001
+From 8439993d928210a989f726376ee3653c887459de Mon Sep 17 00:00:00 2001
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Mon, 11 Sep 2023 15:21:57 +0000
-Subject: [PATCH 139/196] printk: nbcon: Implement emergency sections
+Subject: [PATCH 139/198] printk: nbcon: Implement emergency sections
 
 In emergency situations (something has gone wrong but the
 system continues to operate), usually important information
@@ -61,7 +61,7 @@ index 73515c324347..2583f13c25ba 100644
  static inline bool nbcon_enter_unsafe(struct nbcon_write_context *wctxt) { return false; }
  static inline bool nbcon_exit_unsafe(struct nbcon_write_context *wctxt) { return false; }
 diff --git a/include/linux/printk.h b/include/linux/printk.h
-index cf545b76131f..7a942e987b16 100644
+index aeab9888e4ee..ebebc32e78de 100644
 --- a/include/linux/printk.h
 +++ b/include/linux/printk.h
 @@ -197,6 +197,7 @@ void show_regs_print_info(const char *log_lvl);
@@ -239,5 +239,5 @@ index e8d60e29c17f..4a0df41d32b8 100644
  	}
  
 -- 
-2.45.1
+2.45.2
 

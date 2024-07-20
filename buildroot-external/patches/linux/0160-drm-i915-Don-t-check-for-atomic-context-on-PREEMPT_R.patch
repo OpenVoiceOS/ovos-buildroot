@@ -1,7 +1,7 @@
-From c5176b905ef79943e4b17211bb08ce6dba12024b Mon Sep 17 00:00:00 2001
+From 8d3919173e1b111bd9070c5b3d2bfa7781979ccb Mon Sep 17 00:00:00 2001
 From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Mon, 25 Oct 2021 15:05:18 +0200
-Subject: [PATCH 160/196] drm/i915: Don't check for atomic context on
+Subject: [PATCH 160/198] drm/i915: Don't check for atomic context on
  PREEMPT_RT
 
 The !in_atomic() check in _wait_for_atomic() triggers on PREEMPT_RT
@@ -32,5 +32,5 @@ index c61066498bf2..48e19e55d6b0 100644
  #else
  # define _WAIT_FOR_ATOMIC_CHECK(ATOMIC) do { } while (0)
 -- 
-2.45.1
+2.45.2
 

@@ -1,7 +1,7 @@
-From 6c5fd34375840faafa52dc7fcdd2af0ae03f8dc9 Mon Sep 17 00:00:00 2001
+From 3c73775d695d5cd02c3e8d459e1df2724b9f24f0 Mon Sep 17 00:00:00 2001
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Thu, 14 Sep 2023 20:43:19 +0206
-Subject: [PATCH 028/196] serial: core: Use lock wrappers
+Subject: [PATCH 028/198] serial: core: Use lock wrappers
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -41,10 +41,10 @@ Signed-off-by: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
  1 file changed, 6 insertions(+), 6 deletions(-)
 
 diff --git a/include/linux/serial_core.h b/include/linux/serial_core.h
-index a7d5fa892be2..678409c47b88 100644
+index 052df85dfd59..71d925e8a79b 100644
 --- a/include/linux/serial_core.h
 +++ b/include/linux/serial_core.h
-@@ -1058,14 +1058,14 @@ static inline void uart_unlock_and_check_sysrq(struct uart_port *port)
+@@ -1078,14 +1078,14 @@ static inline void uart_unlock_and_check_sysrq(struct uart_port *port)
  	u8 sysrq_ch;
  
  	if (!port->has_sysrq) {
@@ -61,7 +61,7 @@ index a7d5fa892be2..678409c47b88 100644
  
  	if (sysrq_ch)
  		handle_sysrq(sysrq_ch);
-@@ -1077,14 +1077,14 @@ static inline void uart_unlock_and_check_sysrq_irqrestore(struct uart_port *port
+@@ -1097,14 +1097,14 @@ static inline void uart_unlock_and_check_sysrq_irqrestore(struct uart_port *port
  	u8 sysrq_ch;
  
  	if (!port->has_sysrq) {
@@ -78,7 +78,7 @@ index a7d5fa892be2..678409c47b88 100644
  
  	if (sysrq_ch)
  		handle_sysrq(sysrq_ch);
-@@ -1100,12 +1100,12 @@ static inline int uart_prepare_sysrq_char(struct uart_port *port, u8 ch)
+@@ -1120,12 +1120,12 @@ static inline int uart_prepare_sysrq_char(struct uart_port *port, u8 ch)
  }
  static inline void uart_unlock_and_check_sysrq(struct uart_port *port)
  {
@@ -94,5 +94,5 @@ index a7d5fa892be2..678409c47b88 100644
  #endif	/* CONFIG_MAGIC_SYSRQ_SERIAL */
  
 -- 
-2.45.1
+2.45.2
 

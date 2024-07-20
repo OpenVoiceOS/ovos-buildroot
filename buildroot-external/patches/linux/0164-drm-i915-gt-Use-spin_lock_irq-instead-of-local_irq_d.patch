@@ -1,7 +1,7 @@
-From 7a099dc205a08e168d268638199b6457a6069b00 Mon Sep 17 00:00:00 2001
+From 6b966b4b8fb6c198cdf5d078f056746cbcca6ed7 Mon Sep 17 00:00:00 2001
 From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Wed, 8 Sep 2021 19:03:41 +0200
-Subject: [PATCH 164/196] drm/i915/gt: Use spin_lock_irq() instead of
+Subject: [PATCH 164/198] drm/i915/gt: Use spin_lock_irq() instead of
  local_irq_disable() + spin_lock()
 
 execlists_dequeue() is invoked from a function which uses
@@ -90,5 +90,5 @@ index 42e09f158920..ac80e229f1cc 100644
  	}
  
 -- 
-2.45.1
+2.45.2
 

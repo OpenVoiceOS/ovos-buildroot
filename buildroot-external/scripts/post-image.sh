@@ -9,7 +9,7 @@ GENIMAGE_CFG="${BOARD_DIR}/genimage-${BOARD_TYPE}.cfg"
 GENIMAGE_TMP="${BUILD_DIR}/genimage.tmp"
 
 # Define files for SWUPDATE
-SWUPDATE_FILES=("sw-description" "rootfs.squashfs")
+SWUPDATE_FILES=("sw-description" "rootfs.erofs")
 
 # Function to create SWU file
 create_swu_file() {

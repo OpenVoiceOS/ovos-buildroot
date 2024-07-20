@@ -1,7 +1,7 @@
-From c5845b7d673bcd0119f1f40b126a28ade5e9953b Mon Sep 17 00:00:00 2001
+From a8f77499281fd4ee5e73b42da0d52b19407eb91f Mon Sep 17 00:00:00 2001
 From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Fri, 26 Jul 2019 11:30:49 +0200
-Subject: [PATCH 180/196] powerpc: traps: Use PREEMPT_RT
+Subject: [PATCH 180/198] powerpc: traps: Use PREEMPT_RT
 
 Add PREEMPT_RT to the backtrace if enabled.
 
@@ -35,5 +35,5 @@ index 2de7f6dcd32b..739f5b179a7f 100644
  	       IS_ENABLED(CONFIG_SMP) ? (" NR_CPUS=" __stringify(NR_CPUS)) : "",
  	       debug_pagealloc_enabled() ? " DEBUG_PAGEALLOC" : "",
 -- 
-2.45.1
+2.45.2
 

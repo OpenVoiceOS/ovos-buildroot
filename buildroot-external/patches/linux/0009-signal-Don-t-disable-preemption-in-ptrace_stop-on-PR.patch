@@ -1,7 +1,7 @@
-From a1d2d7b91bc31bbfbfbc05438ecbe88fe2d54202 Mon Sep 17 00:00:00 2001
+From 207befc216df4061572b5eb8b1e1f5280b770658 Mon Sep 17 00:00:00 2001
 From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Thu, 3 Aug 2023 12:09:32 +0200
-Subject: [PATCH 009/196] signal: Don't disable preemption in ptrace_stop() on
+Subject: [PATCH 009/198] signal: Don't disable preemption in ptrace_stop() on
  PREEMPT_RT.
 
 On PREEMPT_RT keeping preemption disabled during the invocation of
@@ -49,5 +49,5 @@ index 051ed8114cd4..b71026341056 100644
  	cgroup_leave_frozen(true);
  
 -- 
-2.45.1
+2.45.2
 

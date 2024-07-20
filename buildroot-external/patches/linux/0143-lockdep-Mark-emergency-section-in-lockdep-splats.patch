@@ -1,7 +1,7 @@
-From 838607e30d219e32bdd5132dd4deeacfe972aeeb Mon Sep 17 00:00:00 2001
+From 199f7037124b35f897f93646bdadb6c25031174c Mon Sep 17 00:00:00 2001
 From: John Ogness <john.ogness@linutronix.de>
 Date: Mon, 18 Sep 2023 20:27:41 +0000
-Subject: [PATCH 143/196] lockdep: Mark emergency section in lockdep splats
+Subject: [PATCH 143/198] lockdep: Mark emergency section in lockdep splats
 
 Mark an emergency section within print_usage_bug(), where
 lockdep bugs are printed. In this section, the CPU will not
@@ -46,5 +46,5 @@ index 151bd3de5936..5c21ba41e308 100644
  
  /*
 -- 
-2.45.1
+2.45.2
 

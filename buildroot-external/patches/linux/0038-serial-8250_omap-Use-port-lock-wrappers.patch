@@ -1,7 +1,7 @@
-From f9959f0ba207be470f5be435892eef3ae7ce6f76 Mon Sep 17 00:00:00 2001
+From 56532bba46e4ebd1777505b80fcdce6cff87d973 Mon Sep 17 00:00:00 2001
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Thu, 14 Sep 2023 20:43:29 +0206
-Subject: [PATCH 038/196] serial: 8250_omap: Use port lock wrappers
+Subject: [PATCH 038/198] serial: 8250_omap: Use port lock wrappers
 
 When a serial port is used for kernel console output, then all
 modifications to the UART registers which are done from other contexts,
@@ -37,10 +37,10 @@ Signed-off-by: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
  1 file changed, 26 insertions(+), 26 deletions(-)
 
 diff --git a/drivers/tty/serial/8250/8250_omap.c b/drivers/tty/serial/8250/8250_omap.c
-index 346167afe9e1..db5519ce0192 100644
+index 8f472a2080ff..78fc1f17d5e2 100644
 --- a/drivers/tty/serial/8250/8250_omap.c
 +++ b/drivers/tty/serial/8250/8250_omap.c
-@@ -401,7 +401,7 @@ static void omap_8250_set_termios(struct uart_port *port,
+@@ -405,7 +405,7 @@ static void omap_8250_set_termios(struct uart_port *port,
  	 * interrupts disabled.
  	 */
  	pm_runtime_get_sync(port->dev);
@@ -49,7 +49,7 @@ index 346167afe9e1..db5519ce0192 100644
  
  	/*
  	 * Update the per-port timeout.
-@@ -504,7 +504,7 @@ static void omap_8250_set_termios(struct uart_port *port,
+@@ -508,7 +508,7 @@ static void omap_8250_set_termios(struct uart_port *port,
  	}
  	omap8250_restore_regs(up);
  
@@ -58,7 +58,7 @@ index 346167afe9e1..db5519ce0192 100644
  	pm_runtime_mark_last_busy(port->dev);
  	pm_runtime_put_autosuspend(port->dev);
  
-@@ -529,7 +529,7 @@ static void omap_8250_pm(struct uart_port *port, unsigned int state,
+@@ -533,7 +533,7 @@ static void omap_8250_pm(struct uart_port *port, unsigned int state,
  	pm_runtime_get_sync(port->dev);
  
  	/* Synchronize UART_IER access against the console. */
@@ -67,7 +67,7 @@ index 346167afe9e1..db5519ce0192 100644
  
  	serial_out(up, UART_LCR, UART_LCR_CONF_MODE_B);
  	efr = serial_in(up, UART_EFR);
-@@ -541,7 +541,7 @@ static void omap_8250_pm(struct uart_port *port, unsigned int state,
+@@ -545,7 +545,7 @@ static void omap_8250_pm(struct uart_port *port, unsigned int state,
  	serial_out(up, UART_EFR, efr);
  	serial_out(up, UART_LCR, 0);
  
@@ -76,7 +76,7 @@ index 346167afe9e1..db5519ce0192 100644
  
  	pm_runtime_mark_last_busy(port->dev);
  	pm_runtime_put_autosuspend(port->dev);
-@@ -660,7 +660,7 @@ static irqreturn_t omap8250_irq(int irq, void *dev_id)
+@@ -676,7 +676,7 @@ static irqreturn_t omap8250_irq(int irq, void *dev_id)
  		unsigned long delay;
  
  		/* Synchronize UART_IER access against the console. */
@@ -85,7 +85,7 @@ index 346167afe9e1..db5519ce0192 100644
  		up->ier = port->serial_in(port, UART_IER);
  		if (up->ier & (UART_IER_RLSI | UART_IER_RDI)) {
  			port->ops->stop_rx(port);
-@@ -670,7 +670,7 @@ static irqreturn_t omap8250_irq(int irq, void *dev_id)
+@@ -686,7 +686,7 @@ static irqreturn_t omap8250_irq(int irq, void *dev_id)
  			 */
  			cancel_delayed_work(&up->overrun_backoff);
  		}
@@ -94,7 +94,7 @@ index 346167afe9e1..db5519ce0192 100644
  
  		delay = msecs_to_jiffies(up->overrun_backoff_time_ms);
  		schedule_delayed_work(&up->overrun_backoff, delay);
-@@ -717,10 +717,10 @@ static int omap_8250_startup(struct uart_port *port)
+@@ -733,10 +733,10 @@ static int omap_8250_startup(struct uart_port *port)
  	}
  
  	/* Synchronize UART_IER access against the console. */
@@ -107,7 +107,7 @@ index 346167afe9e1..db5519ce0192 100644
  
  #ifdef CONFIG_PM
  	up->capabilities |= UART_CAP_RPM;
-@@ -733,9 +733,9 @@ static int omap_8250_startup(struct uart_port *port)
+@@ -749,9 +749,9 @@ static int omap_8250_startup(struct uart_port *port)
  	serial_out(up, UART_OMAP_WER, priv->wer);
  
  	if (up->dma && !(priv->habit & UART_HAS_EFR2)) {
@@ -119,7 +119,7 @@ index 346167afe9e1..db5519ce0192 100644
  	}
  
  	enable_irq(up->port.irq);
-@@ -761,10 +761,10 @@ static void omap_8250_shutdown(struct uart_port *port)
+@@ -777,10 +777,10 @@ static void omap_8250_shutdown(struct uart_port *port)
  		serial_out(up, UART_OMAP_EFR2, 0x0);
  
  	/* Synchronize UART_IER access against the console. */
@@ -132,7 +132,7 @@ index 346167afe9e1..db5519ce0192 100644
  	disable_irq_nosync(up->port.irq);
  	dev_pm_clear_wake_irq(port->dev);
  
-@@ -789,10 +789,10 @@ static void omap_8250_throttle(struct uart_port *port)
+@@ -805,10 +805,10 @@ static void omap_8250_throttle(struct uart_port *port)
  
  	pm_runtime_get_sync(port->dev);
  
@@ -145,7 +145,7 @@ index 346167afe9e1..db5519ce0192 100644
  
  	pm_runtime_mark_last_busy(port->dev);
  	pm_runtime_put_autosuspend(port->dev);
-@@ -807,14 +807,14 @@ static void omap_8250_unthrottle(struct uart_port *port)
+@@ -823,14 +823,14 @@ static void omap_8250_unthrottle(struct uart_port *port)
  	pm_runtime_get_sync(port->dev);
  
  	/* Synchronize UART_IER access against the console. */
@@ -162,7 +162,7 @@ index 346167afe9e1..db5519ce0192 100644
  
  	pm_runtime_mark_last_busy(port->dev);
  	pm_runtime_put_autosuspend(port->dev);
-@@ -958,7 +958,7 @@ static void __dma_rx_complete(void *param)
+@@ -974,7 +974,7 @@ static void __dma_rx_complete(void *param)
  	unsigned long flags;
  
  	/* Synchronize UART_IER access against the console. */
@@ -171,7 +171,7 @@ index 346167afe9e1..db5519ce0192 100644
  
  	/*
  	 * If the tx status is not DMA_COMPLETE, then this is a delayed
-@@ -967,7 +967,7 @@ static void __dma_rx_complete(void *param)
+@@ -983,7 +983,7 @@ static void __dma_rx_complete(void *param)
  	 */
  	if (dmaengine_tx_status(dma->rxchan, dma->rx_cookie, &state) !=
  			DMA_COMPLETE) {
@@ -180,7 +180,7 @@ index 346167afe9e1..db5519ce0192 100644
  		return;
  	}
  	__dma_rx_do_complete(p);
-@@ -978,7 +978,7 @@ static void __dma_rx_complete(void *param)
+@@ -994,7 +994,7 @@ static void __dma_rx_complete(void *param)
  			omap_8250_rx_dma(p);
  	}
  
@@ -189,7 +189,7 @@ index 346167afe9e1..db5519ce0192 100644
  }
  
  static void omap_8250_rx_dma_flush(struct uart_8250_port *p)
-@@ -1083,7 +1083,7 @@ static void omap_8250_dma_tx_complete(void *param)
+@@ -1099,7 +1099,7 @@ static void omap_8250_dma_tx_complete(void *param)
  	dma_sync_single_for_cpu(dma->txchan->device->dev, dma->tx_addr,
  				UART_XMIT_SIZE, DMA_TO_DEVICE);
  
@@ -198,7 +198,7 @@ index 346167afe9e1..db5519ce0192 100644
  
  	dma->tx_running = 0;
  
-@@ -1112,7 +1112,7 @@ static void omap_8250_dma_tx_complete(void *param)
+@@ -1128,7 +1128,7 @@ static void omap_8250_dma_tx_complete(void *param)
  		serial8250_set_THRI(p);
  	}
  
@@ -207,7 +207,7 @@ index 346167afe9e1..db5519ce0192 100644
  }
  
  static int omap_8250_tx_dma(struct uart_8250_port *p)
-@@ -1278,7 +1278,7 @@ static int omap_8250_dma_handle_irq(struct uart_port *port)
+@@ -1294,7 +1294,7 @@ static int omap_8250_dma_handle_irq(struct uart_port *port)
  		return IRQ_HANDLED;
  	}
  
@@ -216,7 +216,7 @@ index 346167afe9e1..db5519ce0192 100644
  
  	status = serial_port_in(port, UART_LSR);
  
-@@ -1758,15 +1758,15 @@ static int omap8250_runtime_resume(struct device *dev)
+@@ -1774,15 +1774,15 @@ static int omap8250_runtime_resume(struct device *dev)
  		up = serial8250_get_port(priv->line);
  
  	if (up && omap8250_lost_context(up)) {
@@ -237,5 +237,5 @@ index 346167afe9e1..db5519ce0192 100644
  
  	priv->latency = priv->calc_latency;
 -- 
-2.45.1
+2.45.2
 

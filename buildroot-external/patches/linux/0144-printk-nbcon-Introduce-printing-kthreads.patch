@@ -1,7 +1,7 @@
-From 60dcdc649250dc4ab3b0bae364c3bcaa11b8bf9d Mon Sep 17 00:00:00 2001
+From 91aa35af5fe20f032dad5d693f7e638b4ae27c33 Mon Sep 17 00:00:00 2001
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Fri, 22 Sep 2023 14:12:21 +0000
-Subject: [PATCH 144/196] printk: nbcon: Introduce printing kthreads
+Subject: [PATCH 144/198] printk: nbcon: Introduce printing kthreads
 
 Provide the main implementation for running a printer kthread
 per nbcon console that is takeover/handover aware.
@@ -448,5 +448,5 @@ index 4a0df41d32b8..3e307d475d23 100644
  }
  EXPORT_SYMBOL(console_start);
 -- 
-2.45.1
+2.45.2
 

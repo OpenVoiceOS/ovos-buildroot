@@ -1,7 +1,7 @@
-From 51a50423dca1cbd65b3ca77a955789e2339b7360 Mon Sep 17 00:00:00 2001
+From a8724492d34701293e269c18afc7d13e6f753b32 Mon Sep 17 00:00:00 2001
 From: John Ogness <john.ogness@linutronix.de>
 Date: Tue, 19 Sep 2023 17:07:34 +0000
-Subject: [PATCH 141/196] panic: Mark emergency section in oops
+Subject: [PATCH 141/198] panic: Mark emergency section in oops
 
 Mark an emergency section beginning with oops_enter() until the
 end of oops_exit(). In this section, the CPU will not perform
@@ -40,5 +40,5 @@ index 147803c3a402..9215df21d8c2 100644
  }
  
 -- 
-2.45.1
+2.45.2
 

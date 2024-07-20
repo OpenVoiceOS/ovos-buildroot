@@ -1,7 +1,7 @@
-From a5fe0116a092247a92ef756b5685c9979de7e461 Mon Sep 17 00:00:00 2001
+From dc39202974274168a8d2acd26f5882622ad84ad3 Mon Sep 17 00:00:00 2001
 From: John Ogness <john.ogness@linutronix.de>
 Date: Tue, 19 Sep 2023 14:33:27 +0000
-Subject: [PATCH 133/196] printk: nbcon: Use nbcon consoles in
+Subject: [PATCH 133/198] printk: nbcon: Use nbcon consoles in
  console_flush_all()
 
 Allow nbcon consoles to print messages in the printk() caller
@@ -178,5 +178,5 @@ index 4185c58f7915..d6173575ea03 100644
  			if (!progress)
  				continue;
 -- 
-2.45.1
+2.45.2
 

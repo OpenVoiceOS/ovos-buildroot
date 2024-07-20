@@ -1,7 +1,7 @@
-From b8a28c44c2ab44b5f7813953b06a57f06f0ca10b Mon Sep 17 00:00:00 2001
+From a21bd956430d0b1aab1fdc3d372a8b34becd3d73 Mon Sep 17 00:00:00 2001
 From: John Ogness <john.ogness@linutronix.de>
 Date: Fri, 20 Oct 2023 09:52:59 +0000
-Subject: [PATCH 124/196] printk: nbcon: Ensure ownership release on failed
+Subject: [PATCH 124/198] printk: nbcon: Ensure ownership release on failed
  emit
 
 Until now it was assumed that ownership has been lost when the
@@ -59,5 +59,5 @@ index c8093bcc01fe..8ecd76aa22e6 100644
  	/*
  	 * Since any dropped message was successfully output, reset the
 -- 
-2.45.1
+2.45.2
 

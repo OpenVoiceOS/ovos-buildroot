@@ -1,7 +1,7 @@
-From 3162522ee74c2bd31805a4fd5e4f42195aa44af1 Mon Sep 17 00:00:00 2001
+From 6edba83ec17ba6ee1a4c87751e66f4c71f2b661d Mon Sep 17 00:00:00 2001
 From: John Ogness <john.ogness@linutronix.de>
 Date: Wed, 22 Nov 2023 11:23:43 +0000
-Subject: [PATCH 122/196] printk: Consider nbcon boot consoles on seq init
+Subject: [PATCH 122/198] printk: Consider nbcon boot consoles on seq init
 
 If a non-boot console is registering and boot consoles exist, the
 consoles are flushed before being unregistered. This allows the
@@ -52,5 +52,5 @@ index 7c5ab5c01abb..ae3bf0cf215a 100644
  			}
  
 -- 
-2.45.1
+2.45.2
 

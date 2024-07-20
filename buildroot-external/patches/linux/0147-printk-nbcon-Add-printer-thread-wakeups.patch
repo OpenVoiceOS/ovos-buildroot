@@ -1,7 +1,7 @@
-From d06a9983059e59948f336ba4a75930e2a2eaf948 Mon Sep 17 00:00:00 2001
+From 10089cc4c5e8a6729bbaff79bdae44a562b0f829 Mon Sep 17 00:00:00 2001
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Tue, 26 Sep 2023 13:03:52 +0000
-Subject: [PATCH 147/196] printk: nbcon: Add printer thread wakeups
+Subject: [PATCH 147/198] printk: nbcon: Add printer thread wakeups
 
 Add a function to wakeup the printer threads. Use the new function
 when:
@@ -171,5 +171,5 @@ index 3863e3dc3816..3cdda6dd8941 100644
  }
  
 -- 
-2.45.1
+2.45.2
 

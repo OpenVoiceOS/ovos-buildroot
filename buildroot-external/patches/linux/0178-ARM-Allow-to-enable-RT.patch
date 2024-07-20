@@ -1,7 +1,7 @@
-From e1bffb2a2eb57aa1d1613927563ff8901027fabe Mon Sep 17 00:00:00 2001
+From 1aead82931bca8573d654d324e6191a2b6a68f63 Mon Sep 17 00:00:00 2001
 From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Fri, 11 Oct 2019 13:14:29 +0200
-Subject: [PATCH 178/196] ARM: Allow to enable RT
+Subject: [PATCH 178/198] ARM: Allow to enable RT
 
 Allow to select RT.
 
@@ -32,5 +32,5 @@ index dea47ba6576b..a154ecd2d3c3 100644
  	select HAVE_REGS_AND_STACK_ACCESS_API
  	select HAVE_RSEQ
 -- 
-2.45.1
+2.45.2
 

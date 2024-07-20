@@ -1,7 +1,7 @@
-From 9d79040c2c1c1f48b290b9cee53e2ad94fe595d3 Mon Sep 17 00:00:00 2001
+From b384d371d5d010103ec54eba9b7671fc5185ff2d Mon Sep 17 00:00:00 2001
 From: Frederic Weisbecker <frederic@kernel.org>
 Date: Tue, 5 Apr 2022 03:07:52 +0200
-Subject: [PATCH 021/196] tick: Fix timer storm since introduction of timersd
+Subject: [PATCH 021/198] tick: Fix timer storm since introduction of timersd
 
 If timers are pending while the tick is reprogrammed on nohz_mode, the
 next expiry is not armed to fire now, it is delayed one jiffy forward
@@ -80,10 +80,10 @@ index f459b0f27c94..a5091ac97fc6 100644
  
  DECLARE_PER_CPU(struct task_struct *, ksoftirqd);
 diff --git a/kernel/softirq.c b/kernel/softirq.c
-index 1277abc94228..a4d359e2c2b5 100644
+index 63e8b9ad2727..65477d8e00af 100644
 --- a/kernel/softirq.c
 +++ b/kernel/softirq.c
-@@ -621,12 +621,7 @@ static inline void tick_irq_exit(void)
+@@ -625,12 +625,7 @@ static inline void tick_irq_exit(void)
  
  #ifdef CONFIG_PREEMPT_RT
  DEFINE_PER_CPU(struct task_struct *, timersd);
@@ -111,5 +111,5 @@ index 55cbc49f70d1..1a0ed106b192 100644
  
  static ktime_t tick_nohz_next_event(struct tick_sched *ts, int cpu)
 -- 
-2.45.1
+2.45.2
 

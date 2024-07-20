@@ -1,7 +1,7 @@
-From e9acb7f8a6f9ea40a4652bd2e4f854bb4f62ada3 Mon Sep 17 00:00:00 2001
+From 506b4f99b77fc525d26c38059b527fff7fb56d3f Mon Sep 17 00:00:00 2001
 From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Fri, 11 Oct 2019 13:14:41 +0200
-Subject: [PATCH 185/196] POWERPC: Allow to enable RT
+Subject: [PATCH 185/198] POWERPC: Allow to enable RT
 
 Allow to select RT.
 
@@ -32,5 +32,5 @@ index 2fe51e0ad637..116444551038 100644
  	select HAVE_SETUP_PER_CPU_AREA		if PPC64
  	select HAVE_SOFTIRQ_ON_OWN_STACK
 -- 
-2.45.1
+2.45.2
 

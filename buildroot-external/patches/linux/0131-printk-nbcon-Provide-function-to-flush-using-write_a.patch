@@ -1,7 +1,7 @@
-From d566b3785bc3db732a48baf372e9b88a14e482fe Mon Sep 17 00:00:00 2001
+From 4b98adb0a527460558f3dcd04208ecfa88da3d19 Mon Sep 17 00:00:00 2001
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Tue, 12 Sep 2023 12:00:08 +0000
-Subject: [PATCH 131/196] printk: nbcon: Provide function to flush using
+Subject: [PATCH 131/198] printk: nbcon: Provide function to flush using
  write_atomic()
 
 Provide nbcon_atomic_flush_all() to perform flushing of all
@@ -191,5 +191,5 @@ index bdd3d7e40e63..271865952a4d 100644
  }
  
 -- 
-2.45.1
+2.45.2
 

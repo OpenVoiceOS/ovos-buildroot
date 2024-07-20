@@ -1,7 +1,7 @@
-From e10cc10c2c65b272c663530395ce528e0f04d53a Mon Sep 17 00:00:00 2001
+From 3d4bfbfd0c6cb1cb846bd0d48f90dd68e9082cc4 Mon Sep 17 00:00:00 2001
 From: John Ogness <john.ogness@linutronix.de>
 Date: Tue, 26 Sep 2023 13:31:00 +0000
-Subject: [PATCH 150/196] proc: Add nbcon support for /proc/consoles
+Subject: [PATCH 150/198] proc: Add nbcon support for /proc/consoles
 
 Update /proc/consoles output to show 'W' if an nbcon write
 callback is implemented (write_atomic or write_thread).
@@ -54,5 +54,5 @@ index e0758fe7936d..2703676549f5 100644
  		seq_printf(m, " %4d:%d", MAJOR(dev), MINOR(dev));
  
 -- 
-2.45.1
+2.45.2
 

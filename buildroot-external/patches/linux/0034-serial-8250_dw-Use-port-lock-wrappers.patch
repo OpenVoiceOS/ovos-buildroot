@@ -1,7 +1,7 @@
-From 15d8a9cc288fb357d7e88d18443499acc485a8f3 Mon Sep 17 00:00:00 2001
+From 4870c45e792f351ad18c9730500f8be26377e8c4 Mon Sep 17 00:00:00 2001
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Thu, 14 Sep 2023 20:43:25 +0206
-Subject: [PATCH 034/196] serial: 8250_dw: Use port lock wrappers
+Subject: [PATCH 034/198] serial: 8250_dw: Use port lock wrappers
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -41,10 +41,10 @@ Signed-off-by: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
  1 file changed, 4 insertions(+), 4 deletions(-)
 
 diff --git a/drivers/tty/serial/8250/8250_dw.c b/drivers/tty/serial/8250/8250_dw.c
-index a1f2259cc9a9..53c284bb271d 100644
+index 8aed33be2ebf..5367bcc6256c 100644
 --- a/drivers/tty/serial/8250/8250_dw.c
 +++ b/drivers/tty/serial/8250/8250_dw.c
-@@ -263,20 +263,20 @@ static int dw8250_handle_irq(struct uart_port *p)
+@@ -290,20 +290,20 @@ static int dw8250_handle_irq(struct uart_port *p)
  	 * so we limit the workaround only to non-DMA mode.
  	 */
  	if (!up->dma && rx_timeout) {
@@ -70,5 +70,5 @@ index a1f2259cc9a9..53c284bb271d 100644
  		if (status & (UART_LSR_DR | UART_LSR_BI)) {
  			dw8250_writel_ext(p, RZN1_UART_RDMACR, 0);
 -- 
-2.45.1
+2.45.2
 

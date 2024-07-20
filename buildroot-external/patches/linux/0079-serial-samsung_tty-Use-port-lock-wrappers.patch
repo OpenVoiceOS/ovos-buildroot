@@ -1,7 +1,7 @@
-From 19fce9567f035d97964d26ec6f75987db8cc09c8 Mon Sep 17 00:00:00 2001
+From 3c291dbac86a9fc13cd8be946be4d9567032af86 Mon Sep 17 00:00:00 2001
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Thu, 14 Sep 2023 20:44:10 +0206
-Subject: [PATCH 079/196] serial: samsung_tty: Use port lock wrappers
+Subject: [PATCH 079/198] serial: samsung_tty: Use port lock wrappers
 
 When a serial port is used for kernel console output, then all
 modifications to the UART registers which are done from other contexts,
@@ -246,5 +246,5 @@ index 5a4d88e13471..a82b65155f6e 100644
  
  /* Shouldn't be __init, as it can be instantiated from other module */
 -- 
-2.45.1
+2.45.2
 

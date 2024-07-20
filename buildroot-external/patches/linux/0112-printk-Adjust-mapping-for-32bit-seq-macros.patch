@@ -1,7 +1,7 @@
-From b6c7abca34a169f0b68eb1b6d7d8e62a93a861d7 Mon Sep 17 00:00:00 2001
+From e95b196575d1532162a8f60547704b1ce0f724ee Mon Sep 17 00:00:00 2001
 From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Thu, 7 Dec 2023 14:15:15 +0000
-Subject: [PATCH 112/196] printk: Adjust mapping for 32bit seq macros
+Subject: [PATCH 112/198] printk: Adjust mapping for 32bit seq macros
 
 Note: This change only applies to 32bit architectures. On 64bit
       architectures the macros are NOPs.
@@ -72,5 +72,5 @@ index b82a96dc2ea2..12f60c782e46 100644
  	return seq;
  }
 -- 
-2.45.1
+2.45.2
 

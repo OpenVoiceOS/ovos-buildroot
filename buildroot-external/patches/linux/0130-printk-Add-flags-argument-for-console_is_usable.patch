@@ -1,7 +1,7 @@
-From 275f24270e33e162fa6e057882d4325a3810e1b4 Mon Sep 17 00:00:00 2001
+From cc05ace906af4fff6a7b977d9afb7f76ed3407a9 Mon Sep 17 00:00:00 2001
 From: John Ogness <john.ogness@linutronix.de>
 Date: Tue, 12 Sep 2023 13:45:33 +0000
-Subject: [PATCH 130/196] printk: Add @flags argument for console_is_usable()
+Subject: [PATCH 130/198] printk: Add @flags argument for console_is_usable()
 
 The caller of console_is_usable() usually needs @console->flags
 for its own checks. Rather than having console_is_usable() read
@@ -70,5 +70,5 @@ index d959be5c4102..bdd3d7e40e63 100644
  
  			if (flags & CON_NBCON) {
 -- 
-2.45.1
+2.45.2
 

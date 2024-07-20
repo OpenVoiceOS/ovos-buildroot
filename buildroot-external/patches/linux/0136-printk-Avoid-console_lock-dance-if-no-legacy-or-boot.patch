@@ -1,7 +1,7 @@
-From 15f1cfee6004220e763b7f92ac7ab3c4e36b1ec2 Mon Sep 17 00:00:00 2001
+From c58808c23fd2aae0bb9bbeffc8eb9b95d623366d Mon Sep 17 00:00:00 2001
 From: John Ogness <john.ogness@linutronix.de>
 Date: Tue, 26 Sep 2023 12:44:07 +0000
-Subject: [PATCH 136/196] printk: Avoid console_lock dance if no legacy or boot
+Subject: [PATCH 136/198] printk: Avoid console_lock dance if no legacy or boot
  consoles
 
 Currently the console lock is used to attempt legacy-type
@@ -214,5 +214,5 @@ index d6173575ea03..e92da55b8e9f 100644
  
  void printk_trigger_flush(void)
 -- 
-2.45.1
+2.45.2
 

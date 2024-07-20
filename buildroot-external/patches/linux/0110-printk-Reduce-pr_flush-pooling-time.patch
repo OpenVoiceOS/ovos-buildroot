@@ -1,7 +1,7 @@
-From 61149c3f90366ad941011ad24573276fcc7fa419 Mon Sep 17 00:00:00 2001
+From 9c9ef995e00ff1dc27cfbeda1774e0a2ed8e86f5 Mon Sep 17 00:00:00 2001
 From: Petr Mladek <pmladek@suse.com>
 Date: Fri, 6 Oct 2023 10:21:51 +0200
-Subject: [PATCH 110/196] printk: Reduce pr_flush() pooling time
+Subject: [PATCH 110/198] printk: Reduce pr_flush() pooling time
 
 pr_flush() does not guarantee that all messages would really get flushed
 to the console. The best it could do is to wait with a given timeout.[*]
@@ -103,5 +103,5 @@ index 3bf517ae8262..a30338aca084 100644
  		last_diff = diff;
  	}
 -- 
-2.45.1
+2.45.2
 

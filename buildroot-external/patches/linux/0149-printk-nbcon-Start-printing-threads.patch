@@ -1,7 +1,7 @@
-From 99e5cd49c55579243f18dfa1992dfb2e79eb53a7 Mon Sep 17 00:00:00 2001
+From 53db28831d24fb9e4254f51d14db1109d8b5feb6 Mon Sep 17 00:00:00 2001
 From: John Ogness <john.ogness@linutronix.de>
 Date: Tue, 5 Dec 2023 14:09:31 +0000
-Subject: [PATCH 149/196] printk: nbcon: Start printing threads
+Subject: [PATCH 149/198] printk: nbcon: Start printing threads
 
 If there are no boot consoles, the printing threads are started
 in early_initcall.
@@ -140,5 +140,5 @@ index 3cdda6dd8941..3722f1a66357 100644
  }
  
 -- 
-2.45.1
+2.45.2
 

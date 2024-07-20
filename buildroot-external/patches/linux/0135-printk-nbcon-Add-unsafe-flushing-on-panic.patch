@@ -1,7 +1,7 @@
-From 0c9f8b26b25d0f9505961a2dd517874a72be41d6 Mon Sep 17 00:00:00 2001
+From 00019227e4afec5a6e2a8cb678d44d9bf30383ed Mon Sep 17 00:00:00 2001
 From: John Ogness <john.ogness@linutronix.de>
 Date: Fri, 20 Oct 2023 10:03:42 +0000
-Subject: [PATCH 135/196] printk: nbcon: Add unsafe flushing on panic
+Subject: [PATCH 135/198] printk: nbcon: Add unsafe flushing on panic
 
 Add nbcon_atomic_flush_unsafe() to flush all nbcon consoles
 using the write_atomic() callback and allowing unsafe hostile
@@ -22,7 +22,7 @@ Signed-off-by: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
  3 files changed, 22 insertions(+), 2 deletions(-)
 
 diff --git a/include/linux/printk.h b/include/linux/printk.h
-index 2aa57a870caf..e26dcf63efb1 100644
+index cdb5e352ffb4..bd6c54e15cfb 100644
 --- a/include/linux/printk.h
 +++ b/include/linux/printk.h
 @@ -199,6 +199,7 @@ extern asmlinkage void dump_stack(void) __cold;
@@ -101,5 +101,5 @@ index 3e999784ba5c..1c01f88d596d 100644
  
  /**
 -- 
-2.45.1
+2.45.2
 

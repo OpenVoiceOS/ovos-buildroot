@@ -1,7 +1,7 @@
-From 228135349ab2ea8fa33100caf52ff52932c2c94a Mon Sep 17 00:00:00 2001
+From 74630b9e216fd61db5d16393cd190806bffe6963 Mon Sep 17 00:00:00 2001
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Thu, 14 Sep 2023 20:43:47 +0206
-Subject: [PATCH 056/196] serial: ip22zilog: Use port lock wrappers
+Subject: [PATCH 056/198] serial: ip22zilog: Use port lock wrappers
 
 When a serial port is used for kernel console output, then all
 modifications to the UART registers which are done from other contexts,
@@ -186,5 +186,5 @@ index 845ff706bc59..320b29cd4683 100644
  	if (options)
  		uart_parse_options(options, &baud, &parity, &bits, &flow);
 -- 
-2.45.1
+2.45.2
 

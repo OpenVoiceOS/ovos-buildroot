@@ -1,7 +1,7 @@
-From 89bcfe07af29170f19c148949069bf525a815e39 Mon Sep 17 00:00:00 2001
+From 2f43d41cf7678427c0c86521a695a35d22504c38 Mon Sep 17 00:00:00 2001
 From: John Ogness <john.ogness@linutronix.de>
 Date: Wed, 13 Sep 2023 15:30:36 +0000
-Subject: [PATCH 154/196] serial: 8250: Switch to nbcon console
+Subject: [PATCH 154/198] serial: 8250: Switch to nbcon console
 
 Implement the necessary callbacks to switch the 8250 console driver
 to perform as an nbcon console.
@@ -340,5 +340,5 @@ index be65de65fe61..ec46e3b49ee9 100644
  int serial8250_console_exit(struct uart_port *port);
  
 -- 
-2.45.1
+2.45.2
 

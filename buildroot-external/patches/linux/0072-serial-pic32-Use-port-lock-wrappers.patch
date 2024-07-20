@@ -1,7 +1,7 @@
-From 8ff603444ac36cb84658125b311387497a651259 Mon Sep 17 00:00:00 2001
+From 64aa37b611ac8f44e74e39ac63ced8a0c4285115 Mon Sep 17 00:00:00 2001
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Thu, 14 Sep 2023 20:44:03 +0206
-Subject: [PATCH 072/196] serial: pic32: Use port lock wrappers
+Subject: [PATCH 072/198] serial: pic32: Use port lock wrappers
 
 When a serial port is used for kernel console output, then all
 modifications to the UART registers which are done from other contexts,
@@ -119,5 +119,5 @@ index e308d5022b3f..3a95bf5d55d3 100644
  
  /* serial core request to claim uart iomem */
 -- 
-2.45.1
+2.45.2
 

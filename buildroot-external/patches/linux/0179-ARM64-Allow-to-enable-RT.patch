@@ -1,7 +1,7 @@
-From 7ac72e1bcf6687c8e221f53ea1a19910d687b3af Mon Sep 17 00:00:00 2001
+From 513c05cb0c5d676fb1a5790b2d372da348ac85c0 Mon Sep 17 00:00:00 2001
 From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Fri, 11 Oct 2019 13:14:35 +0200
-Subject: [PATCH 179/196] ARM64: Allow to enable RT
+Subject: [PATCH 179/198] ARM64: Allow to enable RT
 
 Allow to select RT.
 
@@ -24,5 +24,5 @@ index f9777ce2ccb2..9717c564daac 100644
  	select ARCH_WANT_COMPAT_IPC_PARSE_VERSION if COMPAT
  	select ARCH_WANT_DEFAULT_BPF_JIT
 -- 
-2.45.1
+2.45.2
 

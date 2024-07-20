@@ -1,7 +1,7 @@
-From 4d40f5372b47b31497b77e31068597501ed016f3 Mon Sep 17 00:00:00 2001
+From 32bf371ec5836a57fd85c3bbf1b9d060269b031f Mon Sep 17 00:00:00 2001
 From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Wed, 8 Sep 2021 17:18:00 +0200
-Subject: [PATCH 163/196] drm/i915/gt: Queue and wait for the irq_work item.
+Subject: [PATCH 163/198] drm/i915/gt: Queue and wait for the irq_work item.
 
 Disabling interrupts and invoking the irq_work function directly breaks
 on PREEMPT_RT.
@@ -22,26 +22,27 @@ Reported-by: Clark Williams <williams@redhat.com>
 Signed-off-by: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Reviewed-by: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>
 ---
- drivers/gpu/drm/i915/gt/intel_breadcrumbs.c | 5 ++---
- 1 file changed, 2 insertions(+), 3 deletions(-)
+ drivers/gpu/drm/i915/gt/intel_breadcrumbs.c | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
 
 diff --git a/drivers/gpu/drm/i915/gt/intel_breadcrumbs.c b/drivers/gpu/drm/i915/gt/intel_breadcrumbs.c
-index ecc990ec1b95..8d04b10681f0 100644
+index f2973cd1a8aa..aa77f8601b8a 100644
 --- a/drivers/gpu/drm/i915/gt/intel_breadcrumbs.c
 +++ b/drivers/gpu/drm/i915/gt/intel_breadcrumbs.c
-@@ -312,10 +312,9 @@ void __intel_breadcrumbs_park(struct intel_breadcrumbs *b)
+@@ -315,7 +315,12 @@ void __intel_breadcrumbs_park(struct intel_breadcrumbs *b)
+ 		return;
+ 
  	/* Kick the work once more to drain the signalers, and disarm the irq */
- 	irq_work_sync(&b->irq_work);
- 	while (READ_ONCE(b->irq_armed) && !atomic_read(&b->active)) {
--		local_irq_disable();
--		signal_irq_work(&b->irq_work);
--		local_irq_enable();
+-	irq_work_queue(&b->irq_work);
++	irq_work_sync(&b->irq_work);
++	while (READ_ONCE(b->irq_armed) && !atomic_read(&b->active)) {
 +		irq_work_queue(&b->irq_work);
- 		cond_resched();
++		cond_resched();
 +		irq_work_sync(&b->irq_work);
- 	}
++	}
  }
  
+ void intel_breadcrumbs_free(struct kref *kref)
 -- 
-2.45.1
+2.45.2
 

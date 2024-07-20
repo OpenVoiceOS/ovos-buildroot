@@ -1,7 +1,7 @@
-From 377cf73147d19add985655e71bb6455d741e3cb4 Mon Sep 17 00:00:00 2001
+From 4d49d73275b45c4ecb001165a29f9b4f9703ef8a Mon Sep 17 00:00:00 2001
 From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Mon, 21 Feb 2022 17:59:14 +0100
-Subject: [PATCH 168/196] Revert "drm/i915: Depend on !PREEMPT_RT."
+Subject: [PATCH 168/198] Revert "drm/i915: Depend on !PREEMPT_RT."
 
 Once the known issues are addressed, it should be safe to enable the
 driver.
@@ -24,5 +24,5 @@ index ce397a8797f7..98c3f532822d 100644
  	select INTERVAL_TREE
  	# we need shmfs for the swappable backing store, and in particular
 -- 
-2.45.1
+2.45.2
 

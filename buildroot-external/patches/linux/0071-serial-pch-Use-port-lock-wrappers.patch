@@ -1,7 +1,7 @@
-From 7e9f1690bf3dd4a42b27d94951a42fa85a95fc5a Mon Sep 17 00:00:00 2001
+From 9a8ba8481235374bf9e1caf62f62699410716d74 Mon Sep 17 00:00:00 2001
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Thu, 14 Sep 2023 20:44:02 +0206
-Subject: [PATCH 071/196] serial: pch: Use port lock wrappers
+Subject: [PATCH 071/198] serial: pch: Use port lock wrappers
 
 When a serial port is used for kernel console output, then all
 modifications to the UART registers which are done from other contexts,
@@ -81,5 +81,5 @@ index cc83b772b7ca..436cc6d52a11 100644
  		spin_unlock(&priv->lock);
  	local_irq_restore(flags);
 -- 
-2.45.1
+2.45.2
 

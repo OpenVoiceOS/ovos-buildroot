@@ -1,0 +1,779 @@
+From d569c8828bbc9ffebbf5825121d70e4f63f11dbb Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ma=C3=ADra=20Canal?= <mcanal@igalia.com>
+Date: Fri, 17 May 2024 11:40:23 -0300
+Subject: [PATCH 1/8] numa: Add simple generic NUMA emulation
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Add some common code for splitting the memory into N emulated NUMA memory
+nodes.
+
+Individual architecture can then enable selecting this option and use the
+existing numa=fake=<N> kernel argument to enable it.
+
+Memory is always split into equally sized chunks.
+
+Signed-off-by: Maíra Canal <mcanal@igalia.com>
+Signed-off-by: Tvrtko Ursulin <tvrtko.ursulin@igalia.com>
+Co-developed-by: Tvrtko Ursulin <tvrtko.ursulin@igalia.com>
+Cc: Catalin Marinas <catalin.marinas@arm.com>
+Cc: Will Deacon <will@kernel.org>
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: “Rafael J. Wysocki" <rafael@kernel.org>
+---
+ drivers/base/Kconfig          |  7 ++++
+ drivers/base/Makefile         |  1 +
+ drivers/base/arch_numa.c      |  6 ++++
+ drivers/base/numa_emulation.c | 67 +++++++++++++++++++++++++++++++++++
+ drivers/base/numa_emulation.h | 21 +++++++++++
+ 5 files changed, 102 insertions(+)
+ create mode 100644 drivers/base/numa_emulation.c
+ create mode 100644 drivers/base/numa_emulation.h
+
+diff --git a/drivers/base/Kconfig b/drivers/base/Kconfig
+index 2b8fd6bb7da0b..1f60cd4dd057d 100644
+--- a/drivers/base/Kconfig
++++ b/drivers/base/Kconfig
+@@ -230,6 +230,13 @@ config GENERIC_ARCH_NUMA
+ 	  Enable support for generic NUMA implementation. Currently, RISC-V
+ 	  and ARM64 use it.
+ 
++config GENERIC_ARCH_NUMA_EMULATION
++	bool
++	depends on GENERIC_ARCH_NUMA
++	help
++	  Enable NUMA emulation. Note that NUMA emulation will only be used if
++	  the machine has no NUMA node.
++
+ config FW_DEVLINK_SYNC_STATE_TIMEOUT
+ 	bool "sync_state() behavior defaults to timeout instead of strict"
+ 	help
+diff --git a/drivers/base/Makefile b/drivers/base/Makefile
+index 3079bfe53d04d..34fcf5bd73702 100644
+--- a/drivers/base/Makefile
++++ b/drivers/base/Makefile
+@@ -25,6 +25,7 @@ obj-$(CONFIG_DEV_COREDUMP) += devcoredump.o
+ obj-$(CONFIG_GENERIC_MSI_IRQ) += platform-msi.o
+ obj-$(CONFIG_GENERIC_ARCH_TOPOLOGY) += arch_topology.o
+ obj-$(CONFIG_GENERIC_ARCH_NUMA) += arch_numa.o
++obj-$(CONFIG_GENERIC_ARCH_NUMA_EMULATION) += numa_emulation.o
+ obj-$(CONFIG_ACPI) += physical_location.o
+ 
+ obj-y			+= test/
+diff --git a/drivers/base/arch_numa.c b/drivers/base/arch_numa.c
+index 5b59d133b6af4..6ad08f681b3cc 100644
+--- a/drivers/base/arch_numa.c
++++ b/drivers/base/arch_numa.c
+@@ -15,6 +15,8 @@
+ 
+ #include <asm/sections.h>
+ 
++#include "numa_emulation.h"
++
+ struct pglist_data *node_data[MAX_NUMNODES] __read_mostly;
+ EXPORT_SYMBOL(node_data);
+ nodemask_t numa_nodes_parsed __initdata;
+@@ -30,6 +32,8 @@ static __init int numa_parse_early_param(char *opt)
+ 		return -EINVAL;
+ 	if (str_has_prefix(opt, "off"))
+ 		numa_off = true;
++	if (str_has_prefix(opt, "fake="))
++		return numa_emu_cmdline(opt + 5);
+ 
+ 	return 0;
+ }
+@@ -471,6 +475,8 @@ void __init arch_numa_init(void)
+ 			return;
+ 		if (acpi_disabled && !numa_init(of_numa_init))
+ 			return;
++		if (!numa_init(numa_emu_init))
++			return;
+ 	}
+ 
+ 	numa_init(dummy_numa_init);
+diff --git a/drivers/base/numa_emulation.c b/drivers/base/numa_emulation.c
+new file mode 100644
+index 0000000000000..df652fa8351b6
+--- /dev/null
++++ b/drivers/base/numa_emulation.c
+@@ -0,0 +1,67 @@
++// SPDX-License-Identifier: GPL-2.0-only
++/*
++ * Simple NUMA emulation.
++ *
++ * Copyright © 2024 Raspberry Pi Ltd
++ *
++ * Author: Maíra Canal <mcanal@igalia.com>
++ * Author: Tvrtko Ursulin <tursulin@igalia.com>
++ */
++#include <linux/memblock.h>
++
++#include "numa_emulation.h"
++
++static unsigned int emu_nodes;
++
++int __init numa_emu_cmdline(char *str)
++{
++	int ret;
++
++	ret = kstrtouint(str, 10, &emu_nodes);
++	if (ret)
++		return ret;
++
++	if (emu_nodes > MAX_NUMNODES) {
++		pr_notice("numa=fake=%u too large, reducing to %u\n",
++			  emu_nodes, MAX_NUMNODES);
++		emu_nodes = MAX_NUMNODES;
++	}
++
++	return 0;
++}
++
++int __init numa_emu_init(void)
++{
++	phys_addr_t start, end;
++	unsigned long size;
++	unsigned int i;
++	int ret;
++
++	if (!emu_nodes)
++		return -EINVAL;
++
++	start = memblock_start_of_DRAM();
++	end = memblock_end_of_DRAM() - 1;
++
++	size = DIV_ROUND_DOWN_ULL(end - start + 1, emu_nodes);
++	size = PAGE_ALIGN_DOWN(size);
++
++	for (i = 0; i < emu_nodes; i++) {
++		u64 s, e;
++
++		s = start + i * size;
++		e = s + size - 1;
++
++		if (i == (emu_nodes - 1) && e != end)
++			e = end;
++
++		pr_info("Faking a node at [mem %pap-%pap]\n", &s, &e);
++		ret = numa_add_memblk(i, s, e + 1);
++		if (ret) {
++			pr_err("Failed to add fake NUMA node %d!\n", i);
++			break;
++		}
++	}
++
++	return ret;
++}
+diff --git a/drivers/base/numa_emulation.h b/drivers/base/numa_emulation.h
+new file mode 100644
+index 0000000000000..62b38215a2f00
+--- /dev/null
++++ b/drivers/base/numa_emulation.h
+@@ -0,0 +1,21 @@
++/* SPDX-License-Identifier: GPL-2.0-only */
++/*
++ * NUMA emulation header
++ *
++ * Copyright © 2024 Raspberry Pi Ltd
++ */
++
++#ifdef CONFIG_GENERIC_ARCH_NUMA_EMULATION
++int numa_emu_cmdline(char *str);
++int __init numa_emu_init(void);
++#else
++static inline int numa_emu_cmdline(char *str)
++{
++	return -EINVAL;
++}
++
++static int __init numa_emu_init(void)
++{
++	return -EOPNOTSUPP;
++}
++#endif /* CONFIG_NUMA_EMU */
+
+From 2cde7ba8bc2b4fd89e4ba4bce990980f6c012509 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ma=C3=ADra=20Canal?= <mcanal@igalia.com>
+Date: Fri, 17 May 2024 11:40:34 -0300
+Subject: [PATCH 2/8] arm64/numa: Add NUMA emulation for ARM64
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Allow selecting NUMA emulation on arm64.
+
+Signed-off-by: Maíra Canal <mcanal@igalia.com>
+Signed-off-by: Tvrtko Ursulin <tvrtko.ursulin@igalia.com>
+Cc: Catalin Marinas <catalin.marinas@arm.com>
+Cc: Will Deacon <will@kernel.org>
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: “Rafael J. Wysocki" <rafael@kernel.org>
+---
+ arch/arm64/Kconfig | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
+
+diff --git a/arch/arm64/Kconfig b/arch/arm64/Kconfig
+index c9691b0c0f29a..8d63a70f57c77 100644
+--- a/arch/arm64/Kconfig
++++ b/arch/arm64/Kconfig
+@@ -1461,6 +1461,16 @@ config NODES_SHIFT
+ 	  Specify the maximum number of NUMA Nodes available on the target
+ 	  system.  Increases memory reserved to accommodate various tables.
+ 
++config NUMA_EMULATION
++	bool "NUMA emulation"
++	depends on NUMA
++	select GENERIC_ARCH_NUMA_EMULATION
++	help
++	  Enable NUMA emulation support. A flat machine will be split into
++	  virtual nodes when booted with "numa=fake=N", where N is the number
++	  of nodes, the system RAM will be split into N equal chunks, and
++	  assigned to each node.
++
+ source "kernel/Kconfig.hz"
+ 
+ config ARCH_SPARSEMEM_ENABLE
+
+From e7f3f4cd90409d8249913fa7a67f14d71f348dfa Mon Sep 17 00:00:00 2001
+From: Tvrtko Ursulin <tvrtko.ursulin@igalia.com>
+Date: Wed, 3 Jul 2024 17:16:15 +0100
+Subject: [PATCH 3/8] mm/mempolicy: Rename some functions
+
+Will make the following backported patches a bit easier.
+
+Signed-off-by: Tvrtko Ursulin <tvrtko.ursulin@igalia.com>
+---
+ mm/mempolicy.c | 14 +++++++-------
+ 1 file changed, 7 insertions(+), 7 deletions(-)
+
+diff --git a/mm/mempolicy.c b/mm/mempolicy.c
+index e52e3a0b8f2e6..0555c2f2ee032 100644
+--- a/mm/mempolicy.c
++++ b/mm/mempolicy.c
+@@ -1968,7 +1968,7 @@ unsigned int mempolicy_slab_node(void)
+  * node in pol->nodes (starting from n=0), wrapping around if n exceeds the
+  * number of present nodes.
+  */
+-static unsigned offset_il_node(struct mempolicy *pol, unsigned long n)
++static unsigned interleave_nid(struct mempolicy *pol, unsigned long n)
+ {
+ 	nodemask_t nodemask = pol->nodes;
+ 	unsigned int target, nnodes;
+@@ -1994,7 +1994,7 @@ static unsigned offset_il_node(struct mempolicy *pol, unsigned long n)
+ }
+ 
+ /* Determine a node number for interleave */
+-static inline unsigned interleave_nid(struct mempolicy *pol,
++static inline unsigned interleave_vma(struct mempolicy *pol,
+ 		 struct vm_area_struct *vma, unsigned long addr, int shift)
+ {
+ 	if (vma) {
+@@ -2010,7 +2010,7 @@ static inline unsigned interleave_nid(struct mempolicy *pol,
+ 		BUG_ON(shift < PAGE_SHIFT);
+ 		off = vma->vm_pgoff >> (shift - PAGE_SHIFT);
+ 		off += (addr - vma->vm_start) >> shift;
+-		return offset_il_node(pol, off);
++		return interleave_nid(pol, off);
+ 	} else
+ 		return interleave_nodes(pol);
+ }
+@@ -2042,8 +2042,8 @@ int huge_node(struct vm_area_struct *vma, unsigned long addr, gfp_t gfp_flags,
+ 	mode = (*mpol)->mode;
+ 
+ 	if (unlikely(mode == MPOL_INTERLEAVE)) {
+-		nid = interleave_nid(*mpol, vma, addr,
+-					huge_page_shift(hstate_vma(vma)));
++		nid = interleave_vma(*mpol, vma, addr,
++				     huge_page_shift(hstate_vma(vma)));
+ 	} else {
+ 		nid = policy_node(gfp_flags, *mpol, numa_node_id());
+ 		if (mode == MPOL_BIND || mode == MPOL_PREFERRED_MANY)
+@@ -2196,7 +2196,7 @@ struct folio *vma_alloc_folio(gfp_t gfp, int order, struct vm_area_struct *vma,
+ 		struct page *page;
+ 		unsigned nid;
+ 
+-		nid = interleave_nid(pol, vma, addr, PAGE_SHIFT + order);
++		nid = interleave_vma(pol, vma, addr, PAGE_SHIFT + order);
+ 		mpol_cond_put(pol);
+ 		gfp |= __GFP_COMP;
+ 		page = alloc_page_interleave(gfp, order, nid);
+@@ -2602,7 +2602,7 @@ int mpol_misplaced(struct page *page, struct vm_area_struct *vma, unsigned long
+ 	case MPOL_INTERLEAVE:
+ 		pgoff = vma->vm_pgoff;
+ 		pgoff += (addr - vma->vm_start) >> PAGE_SHIFT;
+-		polnid = offset_il_node(pol, pgoff);
++		polnid = interleave_nid(pol, pgoff);
+ 		break;
+ 
+ 	case MPOL_PREFERRED:
+
+From 9c182de03088ee46fe49dbe5a1d5cba5ef4b49f5 Mon Sep 17 00:00:00 2001
+From: Tvrtko Ursulin <tvrtko.ursulin@igalia.com>
+Date: Wed, 22 May 2024 17:12:16 +0100
+Subject: [PATCH 4/8] mm/numa: Allow override of kernel's default NUMA policy
+
+Add numa_policy kernel argument to allow overriding the kernel's default
+NUMA policy at boot time.
+
+Syntax identical to what tmpfs accepts as it's mpol argument is accepted.
+
+Some examples:
+
+ numa_policy=interleave
+ numa_policy=interleave=skip-interleave
+ numa_policy=bind:0-3,5,7,9-15
+ numa_policy=bind=static:1-2
+
+Signed-off-by: Tvrtko Ursulin <tvrtko.ursulin@igalia.com>
+---
+ mm/mempolicy.c | 49 ++++++++++++++++++++++++++++++++++++++++++-------
+ 1 file changed, 42 insertions(+), 7 deletions(-)
+
+diff --git a/mm/mempolicy.c b/mm/mempolicy.c
+index 0555c2f2ee032..335d478051713 100644
+--- a/mm/mempolicy.c
++++ b/mm/mempolicy.c
+@@ -2974,7 +2974,9 @@ void __init numa_policy_init(void)
+ /* Reset policy of current process to default */
+ void numa_default_policy(void)
+ {
+-	do_set_mempolicy(MPOL_DEFAULT, 0, NULL);
++	struct mempolicy *pol = &default_policy;
++
++	do_set_mempolicy(pol->mode, pol->flags, &pol->nodes);
+ }
+ 
+ /*
+@@ -2992,7 +2994,6 @@ static const char * const policy_modes[] =
+ };
+ 
+ 
+-#ifdef CONFIG_TMPFS
+ /**
+  * mpol_parse_str - parse string to mempolicy, for tmpfs mpol mount option.
+  * @str:  string containing mempolicy to parse
+@@ -3005,13 +3006,18 @@ static const char * const policy_modes[] =
+  */
+ int mpol_parse_str(char *str, struct mempolicy **mpol)
+ {
+-	struct mempolicy *new = NULL;
++	struct mempolicy *new;
+ 	unsigned short mode_flags;
+ 	nodemask_t nodes;
+ 	char *nodelist = strchr(str, ':');
+ 	char *flags = strchr(str, '=');
+ 	int err = 1, mode;
+ 
++	if (*mpol)
++		new = *mpol;
++	else
++		new = NULL;
++
+ 	if (flags)
+ 		*flags++ = '\0';	/* terminate mode string */
+ 
+@@ -3090,9 +3096,16 @@ int mpol_parse_str(char *str, struct mempolicy **mpol)
+ 			goto out;
+ 	}
+ 
+-	new = mpol_new(mode, mode_flags, &nodes);
+-	if (IS_ERR(new))
+-		goto out;
++	if (!new) {
++		new = mpol_new(mode, mode_flags, &nodes);
++		if (IS_ERR(new))
++			goto out;
++	} else {
++		atomic_set(&new->refcnt, 1);
++		new->mode = mode;
++		new->flags = mode_flags;
++		new->home_node = NUMA_NO_NODE;
++	}
+ 
+ 	/*
+ 	 * Save nodes for mpol_to_str() to show the tmpfs mount options
+@@ -3125,7 +3138,29 @@ int mpol_parse_str(char *str, struct mempolicy **mpol)
+ 		*mpol = new;
+ 	return err;
+ }
+-#endif /* CONFIG_TMPFS */
++
++static int __init setup_numapolicy(char *str)
++{
++	struct mempolicy pol = { }, *ppol = &pol;
++	char buf[128];
++	int ret;
++
++	if (str)
++		ret = mpol_parse_str(str, &ppol);
++	else
++		ret = -EINVAL;
++
++	if (!ret) {
++		default_policy = pol;
++		mpol_to_str(buf, sizeof(buf), &pol);
++		pr_info("NUMA default policy overridden to '%s'\n", buf);
++	} else {
++		pr_warn("Unable to parse numa_policy=\n");
++	}
++
++	return ret == 0;
++}
++__setup("numa_policy=", setup_numapolicy);
+ 
+ /**
+  * mpol_to_str - format a mempolicy structure for printing
+
+From 0ca75652ca247ed850f999d70a35b29c3a873062 Mon Sep 17 00:00:00 2001
+From: Tvrtko Ursulin <tvrtko.ursulin@igalia.com>
+Date: Tue, 18 Jun 2024 15:48:59 +0100
+Subject: [PATCH 5/8] iommu/dma: Add ability to configure NUMA allocation
+ policy for remapped allocations
+
+Add iommu_dma_numa_policy= kernel parameter which can be used to modify
+the NUMA allocation policy of remapped buffer allocations.
+
+Policy is only used for devices which are not associated with a NUMA node.
+
+Syntax identical to what tmpfs accepts as it's mpol argument is accepted.
+
+Some examples:
+
+ iommu_dma_numa_policy=interleave
+ iommu_dma_numa_policy=interleave=skip-interleave
+ iommu_dma_numa_policy=bind:0-3,5,7,9-15
+ iommu_dma_numa_policy=bind=static:1-2
+
+Signed-off-by: Tvrtko Ursulin <tvrtko.ursulin@igalia.com>
+---
+ drivers/iommu/dma-iommu.c | 45 +++++++++++++++++++++++++++++++++++++++
+ include/linux/mempolicy.h | 12 +++++++++++
+ mm/mempolicy.c            | 45 +++++++++++++++++++++++++++++++++++++++
+ 3 files changed, 102 insertions(+)
+
+diff --git a/drivers/iommu/dma-iommu.c b/drivers/iommu/dma-iommu.c
+index 2da969fc89900..7f320c1982c07 100644
+--- a/drivers/iommu/dma-iommu.c
++++ b/drivers/iommu/dma-iommu.c
+@@ -20,6 +20,7 @@
+ #include <linux/iova.h>
+ #include <linux/irq.h>
+ #include <linux/list_sort.h>
++#include <linux/mempolicy.h>
+ #include <linux/memremap.h>
+ #include <linux/mm.h>
+ #include <linux/mutex.h>
+@@ -775,11 +776,50 @@ static void __iommu_dma_free_pages(struct page **pages, int count)
+ 	kvfree(pages);
+ }
+ 
++static struct mempolicy iommu_dma_mpol = {
++#ifdef CONFIG_NUMA
++	.refcnt = ATOMIC_INIT(1), /* never free it */
++	.mode = MPOL_LOCAL,
++#endif
++};
++
++static int __init setup_numapolicy(char *str)
++{
++	struct mempolicy pol = { }, *ppol = &pol;
++	char buf[128];
++	int ret;
++
++	if (str)
++		ret = mpol_parse_str(str, &ppol);
++	else
++		ret = -EINVAL;
++
++	if (!ret) {
++		iommu_dma_mpol = pol;
++		mpol_to_str(buf, sizeof(buf), &pol);
++		pr_info("DMA IOMMU NUMA default policy overridden to '%s'\n", buf);
++	} else {
++		pr_warn("Unable to parse dma_iommu_numa_policy=\n");
++	}
++
++	return ret == 0;
++}
++__setup("iommu_dma_numa_policy=", setup_numapolicy);
++
+ static struct page **__iommu_dma_alloc_pages(struct device *dev,
+ 		unsigned int count, unsigned long order_mask, gfp_t gfp)
+ {
+ 	struct page **pages;
+ 	unsigned int i = 0, nid = dev_to_node(dev);
++#ifdef CONFIG_NUMA
++	const bool use_numa = nid == NUMA_NO_NODE &&
++			      iommu_dma_mpol.mode != MPOL_LOCAL;
++#else
++	const bool use_numa = false;
++#endif
++
++	if (use_numa)
++		order_mask = 1;
+ 
+ 	order_mask &= GENMASK(MAX_ORDER, 0);
+ 	if (!order_mask)
+@@ -795,6 +835,7 @@ static struct page **__iommu_dma_alloc_pages(struct device *dev,
+ 	while (count) {
+ 		struct page *page = NULL;
+ 		unsigned int order_size;
++		nodemask_t *nodemask;
+ 
+ 		/*
+ 		 * Higher-order allocations are a convenience rather
+@@ -809,6 +850,10 @@ static struct page **__iommu_dma_alloc_pages(struct device *dev,
+ 			order_size = 1U << order;
+ 			if (order_mask > order_size)
+ 				alloc_flags |= __GFP_NORETRY;
++			if (use_numa)
++				nodemask = numa_policy_nodemask(gfp,
++								&iommu_dma_mpol,
++								i, &nid);
+ 			page = alloc_pages_node(nid, alloc_flags, order);
+ 			if (!page)
+ 				continue;
+diff --git a/include/linux/mempolicy.h b/include/linux/mempolicy.h
+index d232de7cdc569..23545ec0c64c7 100644
+--- a/include/linux/mempolicy.h
++++ b/include/linux/mempolicy.h
+@@ -140,6 +140,8 @@ bool vma_policy_mof(struct vm_area_struct *vma);
+ 
+ extern void numa_default_policy(void);
+ extern void numa_policy_init(void);
++nodemask_t *numa_policy_nodemask(gfp_t gfp, struct mempolicy *pol, pgoff_t ilx,
++				 int *nid);
+ extern void mpol_rebind_task(struct task_struct *tsk, const nodemask_t *new);
+ extern void mpol_rebind_mm(struct mm_struct *mm, nodemask_t *new);
+ 
+@@ -234,6 +236,12 @@ static inline void numa_policy_init(void)
+ {
+ }
+ 
++static inline nodemask_t *
++numa_policy_nodemask(gfp_t gfp, struct mempolicy *pol, pgoff_t ilx, int *nid)
++{
++	return NULL;
++}
++
+ static inline void numa_default_policy(void)
+ {
+ }
+@@ -278,6 +286,10 @@ static inline int mpol_parse_str(char *str, struct mempolicy **mpol)
+ }
+ #endif
+ 
++static inline void mpol_to_str(char *buffer, int maxlen, struct mempolicy *pol)
++{
++}
++
+ static inline int mpol_misplaced(struct page *page, struct vm_area_struct *vma,
+ 				 unsigned long address)
+ {
+diff --git a/mm/mempolicy.c b/mm/mempolicy.c
+index 335d478051713..461a6512cb9ab 100644
+--- a/mm/mempolicy.c
++++ b/mm/mempolicy.c
+@@ -124,8 +124,10 @@ enum zone_type policy_zone = 0;
+  * run-time system-wide default policy => local allocation
+  */
+ static struct mempolicy default_policy = {
++#ifdef CONFIG_NUMA
+ 	.refcnt = ATOMIC_INIT(1), /* never free it */
+ 	.mode = MPOL_LOCAL,
++#endif
+ };
+ 
+ static struct mempolicy preferred_node_policy[MAX_NUMNODES];
+@@ -300,7 +302,9 @@ static struct mempolicy *mpol_new(unsigned short mode, unsigned short flags,
+ 	policy = kmem_cache_alloc(policy_cache, GFP_KERNEL);
+ 	if (!policy)
+ 		return ERR_PTR(-ENOMEM);
++#ifdef CONFIG_NUMA
+ 	atomic_set(&policy->refcnt, 1);
++#endif
+ 	policy->mode = mode;
+ 	policy->flags = flags;
+ 	policy->home_node = NUMA_NO_NODE;
+@@ -2015,6 +2019,47 @@ static inline unsigned interleave_vma(struct mempolicy *pol,
+ 		return interleave_nodes(pol);
+ }
+ 
++#define NO_INTERLEAVE_INDEX (-1UL)     /* use task il_prev for interleaving */
++
++nodemask_t *numa_policy_nodemask(gfp_t gfp, struct mempolicy *pol, pgoff_t ilx,
++				 int *nid)
++{
++	nodemask_t *nodemask = NULL;
++
++	switch (pol->mode) {
++	case MPOL_PREFERRED:
++		/* Override input node id */
++		*nid = first_node(pol->nodes);
++		break;
++	case MPOL_PREFERRED_MANY:
++		nodemask = &pol->nodes;
++		if (pol->home_node != NUMA_NO_NODE)
++			*nid = pol->home_node;
++		break;
++	case MPOL_BIND:
++		/* Restrict to nodemask (but not on lower zones) */
++		if (apply_policy_zone(pol, gfp_zone(gfp)) &&
++		    cpuset_nodemask_valid_mems_allowed(&pol->nodes))
++			nodemask = &pol->nodes;
++		if (pol->home_node != NUMA_NO_NODE)
++			*nid = pol->home_node;
++		/*
++		 * __GFP_THISNODE shouldn't even be used with the bind policy
++		 * because we might easily break the expectation to stay on the
++		 * requested node and not break the policy.
++		 */
++		WARN_ON_ONCE(gfp & __GFP_THISNODE);
++		break;
++	case MPOL_INTERLEAVE:
++		/* Override input node id */
++		*nid = (ilx == NO_INTERLEAVE_INDEX) ?
++		       interleave_nodes(pol) : interleave_nid(pol, ilx);
++		break;
++	}
++
++	return nodemask;
++}
++
+ #ifdef CONFIG_HUGETLBFS
+ /*
+  * huge_node(@vma, @addr, @gfp_flags, @mpol)
+
+From 4036deca99c4ee4a4e9da6f3809594da27c8fcf9 Mon Sep 17 00:00:00 2001
+From: Tvrtko Ursulin <tvrtko.ursulin@igalia.com>
+Date: Wed, 17 Jul 2024 09:33:21 +0100
+Subject: [PATCH 6/8] dma-buf: system_heap: Allow specifying maximum allocation
+ order
+
+system_heap.max_order=<uint>
+
+Signed-off-by: Tvrtko Ursulin <tvrtko.ursulin@igalia.com>
+---
+ drivers/dma-buf/heaps/system_heap.c | 10 +++++++++-
+ 1 file changed, 9 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/dma-buf/heaps/system_heap.c b/drivers/dma-buf/heaps/system_heap.c
+index 9076d47ed2ef4..9dc5dfeaca2a7 100644
+--- a/drivers/dma-buf/heaps/system_heap.c
++++ b/drivers/dma-buf/heaps/system_heap.c
+@@ -54,6 +54,11 @@ static gfp_t order_flags[] = {HIGH_ORDER_GFP, HIGH_ORDER_GFP, LOW_ORDER_GFP};
+ static const unsigned int orders[] = {8, 4, 0};
+ #define NUM_ORDERS ARRAY_SIZE(orders)
+ 
++static unsigned int module_max_order = orders[0];
++
++module_param_named(max_order, module_max_order, uint, 0400);
++MODULE_PARM_DESC(max_order, "Maximum allocation order override.");
++
+ static struct sg_table *dup_sg_table(struct sg_table *table)
+ {
+ 	struct sg_table *new_table;
+@@ -339,7 +344,7 @@ static struct dma_buf *system_heap_allocate(struct dma_heap *heap,
+ 	struct system_heap_buffer *buffer;
+ 	DEFINE_DMA_BUF_EXPORT_INFO(exp_info);
+ 	unsigned long size_remaining = len;
+-	unsigned int max_order = orders[0];
++	unsigned int max_order = module_max_order;
+ 	struct dma_buf *dmabuf;
+ 	struct sg_table *table;
+ 	struct scatterlist *sg;
+@@ -433,6 +438,9 @@ static int system_heap_create(void)
+ 	if (IS_ERR(sys_heap))
+ 		return PTR_ERR(sys_heap);
+ 
++	if (module_max_order > orders[0])
++		module_max_order = orders[0];
++
+ 	return 0;
+ }
+ module_init(system_heap_create);
+
+From 2b3cadacd49729991c06a67a6a34ebe092ad2633 Mon Sep 17 00:00:00 2001
+From: Dom Cobley <popcornmix@gmail.com>
+Date: Tue, 7 May 2024 19:14:56 +0100
+Subject: [PATCH 7/8] config: bcm2711_defconfig/bcm2712_defconfig: Enable NUMA
+
+Signed-off-by: Dom Cobley <popcornmix@gmail.com>
+---
+ arch/arm64/configs/bcm2711_defconfig | 2 ++
+ arch/arm64/configs/bcm2712_defconfig | 2 ++
+ 2 files changed, 4 insertions(+)
+
+diff --git a/arch/arm64/configs/bcm2711_defconfig b/arch/arm64/configs/bcm2711_defconfig
+index f2e5dca7866d3..0e06b79151063 100644
+--- a/arch/arm64/configs/bcm2711_defconfig
++++ b/arch/arm64/configs/bcm2711_defconfig
+@@ -41,6 +41,7 @@ CONFIG_ARCH_BRCMSTB=y
+ # CONFIG_CAVIUM_ERRATUM_22375 is not set
+ # CONFIG_CAVIUM_ERRATUM_23154 is not set
+ # CONFIG_CAVIUM_ERRATUM_27456 is not set
++CONFIG_NUMA=y
+ CONFIG_COMPAT=y
+ CONFIG_ARMV8_DEPRECATED=y
+ CONFIG_SWP_EMULATION=y
+@@ -1678,3 +1679,4 @@ CONFIG_SCHED_TRACER=y
+ CONFIG_BLK_DEV_IO_TRACE=y
+ # CONFIG_UPROBE_EVENTS is not set
+ # CONFIG_STRICT_DEVMEM is not set
++CONFIG_NUMA_EMULATION=y
+diff --git a/arch/arm64/configs/bcm2712_defconfig b/arch/arm64/configs/bcm2712_defconfig
+index bdaf3190f9b32..c0d19316844ce 100644
+--- a/arch/arm64/configs/bcm2712_defconfig
++++ b/arch/arm64/configs/bcm2712_defconfig
+@@ -42,6 +42,7 @@ CONFIG_ARCH_BRCMSTB=y
+ # CONFIG_CAVIUM_ERRATUM_23154 is not set
+ # CONFIG_CAVIUM_ERRATUM_27456 is not set
+ CONFIG_ARM64_16K_PAGES=y
++CONFIG_NUMA=y
+ CONFIG_COMPAT=y
+ CONFIG_ARMV8_DEPRECATED=y
+ CONFIG_SWP_EMULATION=y
+@@ -1681,3 +1682,4 @@ CONFIG_SCHED_TRACER=y
+ CONFIG_BLK_DEV_IO_TRACE=y
+ # CONFIG_UPROBE_EVENTS is not set
+ # CONFIG_STRICT_DEVMEM is not set
++CONFIG_NUMA_EMULATION=y
+
+From d162b2d8f1735208639f376c02ef483f20be2728 Mon Sep 17 00:00:00 2001
+From: Dom Cobley <popcornmix@gmail.com>
+Date: Thu, 18 Jul 2024 20:22:18 +0100
+Subject: [PATCH 8/8] dts: Set preferred numa options in bootargs
+
+Signed-off-by: Dom Cobley <popcornmix@gmail.com>
+---
+ arch/arm/boot/dts/broadcom/bcm2711-rpi-4-b.dts   | 2 +-
+ arch/arm64/boot/dts/broadcom/bcm2712-rpi-5-b.dts | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/arch/arm/boot/dts/broadcom/bcm2711-rpi-4-b.dts b/arch/arm/boot/dts/broadcom/bcm2711-rpi-4-b.dts
+index d3a3a1e4d4c68..dc0831a4a260e 100644
+--- a/arch/arm/boot/dts/broadcom/bcm2711-rpi-4-b.dts
++++ b/arch/arm/boot/dts/broadcom/bcm2711-rpi-4-b.dts
+@@ -266,7 +266,7 @@
+ 
+ / {
+ 	chosen {
+-		bootargs = "coherent_pool=1M 8250.nr_uarts=1 snd_bcm2835.enable_headphones=0";
++		bootargs = "coherent_pool=1M 8250.nr_uarts=1 snd_bcm2835.enable_headphones=0 system_heap.max_order=0 numa=fake=8 numa_policy=interleave iommu_dma_numa_policy=interleave";
+ 	};
+ 
+ 	/delete-node/ wifi-pwrseq;
+diff --git a/arch/arm64/boot/dts/broadcom/bcm2712-rpi-5-b.dts b/arch/arm64/boot/dts/broadcom/bcm2712-rpi-5-b.dts
+index 57ee497628646..16a69973ca0ad 100644
+--- a/arch/arm64/boot/dts/broadcom/bcm2712-rpi-5-b.dts
++++ b/arch/arm64/boot/dts/broadcom/bcm2712-rpi-5-b.dts
+@@ -430,7 +430,7 @@ dpi_16bit_gpio2:        &rp1_dpi_16bit_gpio2        { };
+ 
+ / {
+ 	chosen: chosen {
+-		bootargs = "reboot=w coherent_pool=1M 8250.nr_uarts=1 pci=pcie_bus_safe";
++		bootargs = "reboot=w coherent_pool=1M 8250.nr_uarts=1 pci=pcie_bus_safe system_heap.max_order=0 numa=fake=8 numa_policy=interleave iommu_dma_numa_policy=interleave";
+ 		stdout-path = "serial10:115200n8";
+ 	};
+ 

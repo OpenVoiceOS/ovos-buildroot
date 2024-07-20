@@ -1,7 +1,7 @@
-From 71bb6e938e8f3b5575787a6e86c609e7ade985fb Mon Sep 17 00:00:00 2001
+From 797fbc7ed8fa0b7325d140a3c21c8f05ed50eb02 Mon Sep 17 00:00:00 2001
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Thu, 14 Sep 2023 20:44:23 +0206
-Subject: [PATCH 092/196] serial: sunplus-uart: Use port lock wrappers
+Subject: [PATCH 092/198] serial: sunplus-uart: Use port lock wrappers
 
 When a serial port is used for kernel console output, then all
 modifications to the UART registers which are done from other contexts,
@@ -147,5 +147,5 @@ index 3aacd5eb414c..4251f4e1ba99 100644
  	local_irq_restore(flags);
  }
 -- 
-2.45.1
+2.45.2
 

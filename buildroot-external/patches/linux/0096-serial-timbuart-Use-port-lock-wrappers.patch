@@ -1,7 +1,7 @@
-From e331019856e9f0951884c04185306e118d2a59ec Mon Sep 17 00:00:00 2001
+From ca6106acfbcb39f30ddb5003dadd2537d1002bc0 Mon Sep 17 00:00:00 2001
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Thu, 14 Sep 2023 20:44:27 +0206
-Subject: [PATCH 096/196] serial: timbuart: Use port lock wrappers
+Subject: [PATCH 096/198] serial: timbuart: Use port lock wrappers
 
 When a serial port is used for kernel console output, then all
 modifications to the UART registers which are done from other contexts,
@@ -72,5 +72,5 @@ index 0859394a78cd..0cc6524f5e8b 100644
  
  static const char *timbuart_type(struct uart_port *port)
 -- 
-2.45.1
+2.45.2
 

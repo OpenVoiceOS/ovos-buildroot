@@ -1,0 +1,15 @@
+config BR2_PACKAGE_PYTHON_OVOS_GUI_PLUGIN_SHELL_COMPANION
+	bool "python-ovos-gui-plugin-shell-companion"
+	select BR2_PACKAGE_PYTHON_OVOS_PLUGIN_MANAGER
+	select BR2_PACKAGE_PYTHON_OVOS_UTILS
+	select BR2_PACKAGE_PYTHON_OVOS_CONFIG
+	select BR2_PACKAGE_PYTHON_ASTRAL
+	help
+	  provides various bus APIs that integrate with 
+	  ovos-shell.
+	    - color scheme manager
+	    - notifications widgets
+	    - configuration provider  (settings UI)
+	    - brightness control  (night mode etc) 
+
+	  https://github.com/OpenVoiceOS/ovos-gui-plugin-shell-companion

@@ -1,7 +1,7 @@
-From 91cee6ed0c00712a0a2f98c238394beb58aaabb3 Mon Sep 17 00:00:00 2001
+From 9d40a911c9a21f9c241cfe8336797bc37a5172de Mon Sep 17 00:00:00 2001
 From: John Ogness <john.ogness@linutronix.de>
 Date: Mon, 11 Dec 2023 09:36:52 +0000
-Subject: [PATCH 137/196] printk: Track nbcon consoles
+Subject: [PATCH 137/198] printk: Track nbcon consoles
 
 Add a global flag @have_nbcon_console to identify if any nbcon
 consoles are registered. This will be used in follow-up commits
@@ -68,5 +68,5 @@ index e92da55b8e9f..977a97f0396b 100644
  	return res;
  }
 -- 
-2.45.1
+2.45.2
 

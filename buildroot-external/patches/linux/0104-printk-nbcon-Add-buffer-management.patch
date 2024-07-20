@@ -1,7 +1,7 @@
-From ba38ff3eb1db6db6065857a8bbbc56f2b402a04c Mon Sep 17 00:00:00 2001
+From 23c3e68cd07fdb9288084ee7639506e0e76d093c Mon Sep 17 00:00:00 2001
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Sat, 16 Sep 2023 21:26:03 +0206
-Subject: [PATCH 104/196] printk: nbcon: Add buffer management
+Subject: [PATCH 104/198] printk: nbcon: Add buffer management
 
 In case of hostile takeovers it must be ensured that the previous
 owner cannot scribble over the output buffer of the emergency/panic
@@ -318,5 +318,5 @@ index dd68135cb371..58b57deb0cbe 100644
  	console_sysfs_notify();
  
 -- 
-2.45.1
+2.45.2
 

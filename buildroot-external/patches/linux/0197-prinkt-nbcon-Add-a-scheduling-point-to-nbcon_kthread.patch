@@ -1,0 +1,41 @@
+From 82fb9d752a830a3b659697aac963f88ebde44104 Mon Sep 17 00:00:00 2001
+From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
+Date: Thu, 20 Jun 2024 11:21:13 +0200
+Subject: [PATCH 197/198] prinkt/nbcon: Add a scheduling point to
+ nbcon_kthread_func().
+
+Constant printing can lead to a CPU hog in nbcon_kthread_func(). The
+context is preemptible but on !PREEMPT kernels there is no explicit
+preemption point which leads softlockup warnings.
+
+Add an explicit preemption point in nbcon_kthread_func().
+
+Reported-by: Derek Barbosa <debarbos@redhat.com>
+Link: https://lore.kernel.org/ZnHF5j1DUDjN1kkq@debarbos-thinkpadt14sgen2i.remote.csb
+Reviewed-by: John Ogness <john.ogness@linutronix.de>
+Acked-by: Andrew Halaney <ahalaney@redhat.com>
+Tested-by: Andrew Halaney <ahalaney@redhat.com>
+Acked-by: Derek Barbosa <debarbos@redhat.com>
+Tested-by: Derek Barbosa <debarbos@redhat.com>
+Link: https://lore.kernel.org/r/20240620094300.YJlW043f@linutronix.de
+Signed-off-by: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
+Signed-off-by: Clark Williams <clark.williams@gmail.com>
+---
+ kernel/printk/nbcon.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/kernel/printk/nbcon.c b/kernel/printk/nbcon.c
+index b53d93585ee7..b941039ee7d2 100644
+--- a/kernel/printk/nbcon.c
++++ b/kernel/printk/nbcon.c
+@@ -1081,6 +1081,7 @@ static int nbcon_kthread_func(void *__console)
+ 		}
+ 
+ 		console_srcu_read_unlock(cookie);
++		cond_resched();
+ 
+ 	} while (backlog);
+ 
+-- 
+2.45.2
+

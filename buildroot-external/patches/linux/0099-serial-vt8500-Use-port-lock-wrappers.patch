@@ -1,7 +1,7 @@
-From 1903ad3bc6bd47c375245d3f668d3a381c7a7b1b Mon Sep 17 00:00:00 2001
+From 3b482457439fd43fb58c780ae34588e13ab68ec7 Mon Sep 17 00:00:00 2001
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Thu, 14 Sep 2023 20:44:30 +0206
-Subject: [PATCH 099/196] serial: vt8500: Use port lock wrappers
+Subject: [PATCH 099/198] serial: vt8500: Use port lock wrappers
 
 When a serial port is used for kernel console output, then all
 modifications to the UART registers which are done from other contexts,
@@ -77,5 +77,5 @@ index c5d5c2765119..78a1c1eea11b 100644
  
  static const char *vt8500_type(struct uart_port *port)
 -- 
-2.45.1
+2.45.2
 

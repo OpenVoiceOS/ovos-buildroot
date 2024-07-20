@@ -1,7 +1,7 @@
-From 8fdc9a63d87ff3c5b232e900181bf9214dd1b961 Mon Sep 17 00:00:00 2001
+From 8c2578163fa025e4f11a9474ecb34d3c037ac9a5 Mon Sep 17 00:00:00 2001
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Thu, 14 Sep 2023 20:44:05 +0206
-Subject: [PATCH 074/196] serial: pxa: Use port lock wrappers
+Subject: [PATCH 074/198] serial: pxa: Use port lock wrappers
 
 When a serial port is used for kernel console output, then all
 modifications to the UART registers which are done from other contexts,
@@ -151,5 +151,5 @@ index 73c60f5ea027..46e70e155aab 100644
  	clk_disable(up->clk);
  
 -- 
-2.45.1
+2.45.2
 

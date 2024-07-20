@@ -1,7 +1,7 @@
-From 2db644ab7d72fad6b37df65a4851616312692caf Mon Sep 17 00:00:00 2001
+From 6a5af1e8fbd6409bd0102147c056daa76ccf7918 Mon Sep 17 00:00:00 2001
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Thu, 14 Sep 2023 20:43:22 +0206
-Subject: [PATCH 031/196] serial: 8250_bcm7271: Use port lock wrappers
+Subject: [PATCH 031/198] serial: 8250_bcm7271: Use port lock wrappers
 
 When a serial port is used for kernel console output, then all
 modifications to the UART registers which are done from other contexts,
@@ -37,7 +37,7 @@ Signed-off-by: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
  1 file changed, 14 insertions(+), 14 deletions(-)
 
 diff --git a/drivers/tty/serial/8250/8250_bcm7271.c b/drivers/tty/serial/8250/8250_bcm7271.c
-index aa5aff046756..ff0662c68725 100644
+index 9afd5979c9e0..db23b3a02aef 100644
 --- a/drivers/tty/serial/8250/8250_bcm7271.c
 +++ b/drivers/tty/serial/8250/8250_bcm7271.c
 @@ -567,7 +567,7 @@ static irqreturn_t brcmuart_isr(int irq, void *dev_id)
@@ -89,7 +89,7 @@ index aa5aff046756..ff0662c68725 100644
  	serial8250_do_shutdown(port);
  }
  
-@@ -788,7 +788,7 @@ static int brcmuart_handle_irq(struct uart_port *p)
+@@ -807,7 +807,7 @@ static int brcmuart_handle_irq(struct uart_port *p)
  	 * interrupt but there is no data ready.
  	 */
  	if (((iir & UART_IIR_ID) == UART_IIR_RX_TIMEOUT) && !(priv->shutdown)) {
@@ -98,7 +98,7 @@ index aa5aff046756..ff0662c68725 100644
  		status = serial_port_in(p, UART_LSR);
  		if ((status & UART_LSR_DR) == 0) {
  
-@@ -813,7 +813,7 @@ static int brcmuart_handle_irq(struct uart_port *p)
+@@ -832,7 +832,7 @@ static int brcmuart_handle_irq(struct uart_port *p)
  
  			handled = 1;
  		}
@@ -107,7 +107,7 @@ index aa5aff046756..ff0662c68725 100644
  		if (handled)
  			return 1;
  	}
-@@ -831,7 +831,7 @@ static enum hrtimer_restart brcmuart_hrtimer_func(struct hrtimer *t)
+@@ -850,7 +850,7 @@ static enum hrtimer_restart brcmuart_hrtimer_func(struct hrtimer *t)
  	if (priv->shutdown)
  		return HRTIMER_NORESTART;
  
@@ -116,7 +116,7 @@ index aa5aff046756..ff0662c68725 100644
  	status = serial_port_in(p, UART_LSR);
  
  	/*
-@@ -855,7 +855,7 @@ static enum hrtimer_restart brcmuart_hrtimer_func(struct hrtimer *t)
+@@ -874,7 +874,7 @@ static enum hrtimer_restart brcmuart_hrtimer_func(struct hrtimer *t)
  		status |= UART_MCR_RTS;
  		serial_port_out(p, UART_MCR, status);
  	}
@@ -125,7 +125,7 @@ index aa5aff046756..ff0662c68725 100644
  	return HRTIMER_NORESTART;
  }
  
-@@ -1154,10 +1154,10 @@ static int __maybe_unused brcmuart_suspend(struct device *dev)
+@@ -1173,10 +1173,10 @@ static int __maybe_unused brcmuart_suspend(struct device *dev)
  	 * This will prevent resume from enabling RTS before the
  	 *  baud rate has been restored.
  	 */
@@ -138,7 +138,7 @@ index aa5aff046756..ff0662c68725 100644
  
  	serial8250_suspend_port(priv->line);
  	clk_disable_unprepare(priv->baud_mux_clk);
-@@ -1196,10 +1196,10 @@ static int __maybe_unused brcmuart_resume(struct device *dev)
+@@ -1215,10 +1215,10 @@ static int __maybe_unused brcmuart_resume(struct device *dev)
  
  	if (priv->saved_mctrl & TIOCM_RTS) {
  		/* Restore RTS */
@@ -152,5 +152,5 @@ index aa5aff046756..ff0662c68725 100644
  
  	return 0;
 -- 
-2.45.1
+2.45.2
 

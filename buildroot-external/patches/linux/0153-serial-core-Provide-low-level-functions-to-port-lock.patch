@@ -1,7 +1,7 @@
-From 8efc17c25c90adbc680f196d6f221675fe00dc2b Mon Sep 17 00:00:00 2001
+From df5a4b7476642b0702ce41b375065c9c29692985 Mon Sep 17 00:00:00 2001
 From: John Ogness <john.ogness@linutronix.de>
 Date: Mon, 11 Dec 2023 09:19:18 +0000
-Subject: [PATCH 153/196] serial: core: Provide low-level functions to port
+Subject: [PATCH 153/198] serial: core: Provide low-level functions to port
  lock
 
 The nbcon console's driver_enter() and driver_exit() callbacks need
@@ -21,10 +21,10 @@ Signed-off-by: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
  1 file changed, 12 insertions(+)
 
 diff --git a/include/linux/serial_core.h b/include/linux/serial_core.h
-index 150dcf1ea332..e5947b13f2f1 100644
+index 6fc2003767a9..7c861b4606aa 100644
 --- a/include/linux/serial_core.h
 +++ b/include/linux/serial_core.h
-@@ -681,6 +681,18 @@ static inline void uart_port_unlock_irqrestore(struct uart_port *up, unsigned lo
+@@ -682,6 +682,18 @@ static inline void uart_port_unlock_irqrestore(struct uart_port *up, unsigned lo
  	spin_unlock_irqrestore(&up->lock, flags);
  }
  
@@ -44,5 +44,5 @@ index 150dcf1ea332..e5947b13f2f1 100644
  {
  	return up->serial_in(up, offset);
 -- 
-2.45.1
+2.45.2
 
