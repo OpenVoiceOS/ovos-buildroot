@@ -1,4 +1,4 @@
-From 4b98adb0a527460558f3dcd04208ecfa88da3d19 Mon Sep 17 00:00:00 2001
+From 97b0a5d0737b41b2159e84d77e3f812cf47858c8 Mon Sep 17 00:00:00 2001
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Tue, 12 Sep 2023 12:00:08 +0000
 Subject: [PATCH 131/198] printk: nbcon: Provide function to flush using

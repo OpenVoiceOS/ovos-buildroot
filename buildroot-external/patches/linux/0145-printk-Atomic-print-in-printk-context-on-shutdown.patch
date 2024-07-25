@@ -1,4 +1,4 @@
-From b2f7eb250aa8378717d6fdd1330d7106c33dfde8 Mon Sep 17 00:00:00 2001
+From 9329cfd7d8dcde0005524b9127ebad271d572776 Mon Sep 17 00:00:00 2001
 From: John Ogness <john.ogness@linutronix.de>
 Date: Mon, 23 Oct 2023 17:43:48 +0000
 Subject: [PATCH 145/198] printk: Atomic print in printk context on shutdown

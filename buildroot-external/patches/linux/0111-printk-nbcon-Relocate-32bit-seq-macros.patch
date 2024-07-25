@@ -1,4 +1,4 @@
-From 2231add817fb703a4cda3b3fe3291f8bf7a78ce5 Mon Sep 17 00:00:00 2001
+From e7094b05f57497aed79ec171e9577f123ab190d2 Mon Sep 17 00:00:00 2001
 From: John Ogness <john.ogness@linutronix.de>
 Date: Wed, 6 Dec 2023 12:01:56 +0000
 Subject: [PATCH 111/198] printk: nbcon: Relocate 32bit seq macros

@@ -1,4 +1,4 @@
-From 6d93f6ca26545b3982743cb0a8c4408a3914dda9 Mon Sep 17 00:00:00 2001
+From 4f11c0eee49429fd5fb115d7231e311597587421 Mon Sep 17 00:00:00 2001
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Sat, 16 Sep 2023 21:26:01 +0206
 Subject: [PATCH 102/198] printk: nbcon: Add acquire/release logic

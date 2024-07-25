@@ -1,4 +1,4 @@
-From 916cc53f908e1ad5abefe7c1a152b4fe7bbaee76 Mon Sep 17 00:00:00 2001
+From 849f46281c4b845ae40e39ef82ec0fa3a6ac729d Mon Sep 17 00:00:00 2001
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Thu, 14 Sep 2023 20:43:41 +0206
 Subject: [PATCH 050/198] serial: digicolor: Use port lock wrappers

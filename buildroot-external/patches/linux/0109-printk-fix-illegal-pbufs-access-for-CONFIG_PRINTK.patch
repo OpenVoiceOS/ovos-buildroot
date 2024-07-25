@@ -1,4 +1,4 @@
-From 9b1f37ea619f15195bf7ccb9e80b06f224d18ff7 Mon Sep 17 00:00:00 2001
+From 9b2e2cf50d64bbaed68f06656a3da2bf35e6a68b Mon Sep 17 00:00:00 2001
 From: John Ogness <john.ogness@linutronix.de>
 Date: Wed, 20 Sep 2023 17:58:38 +0206
 Subject: [PATCH 109/198] printk: fix illegal pbufs access for !CONFIG_PRINTK

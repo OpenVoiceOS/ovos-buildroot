@@ -1,4 +1,4 @@
-From 63efc63673a6fab2c2dae2c23fea60297bbe2394 Mon Sep 17 00:00:00 2001
+From 92d2f65eb79154dc9a01fee79cfb29b8c7c643c0 Mon Sep 17 00:00:00 2001
 From: Peter Zijlstra <peterz@infradead.org>
 Date: Fri, 8 Sep 2023 18:22:51 +0200
 Subject: [PATCH 004/198] sched: Provide rt_mutex specific scheduler helpers
@@ -72,10 +72,10 @@ index 994c25640e15..b2b9e6eb9683 100644
   * Must hold either p->pi_lock or task_rq(p)->lock.
   */
 diff --git a/kernel/sched/core.c b/kernel/sched/core.c
-index 8f6962c0619b..b49e976e831d 100644
+index 30659d67daf6..a1fc8d66c7ac 100644
 --- a/kernel/sched/core.c
 +++ b/kernel/sched/core.c
-@@ -6724,9 +6724,6 @@ static inline void sched_submit_work(struct task_struct *tsk)
+@@ -6727,9 +6727,6 @@ static inline void sched_submit_work(struct task_struct *tsk)
  	static DEFINE_WAIT_OVERRIDE_MAP(sched_map, LD_WAIT_CONFIG);
  	unsigned int task_flags;
  
@@ -85,7 +85,7 @@ index 8f6962c0619b..b49e976e831d 100644
  	/*
  	 * Establish LD_WAIT_CONFIG context to ensure none of the code called
  	 * will use a blocking primitive -- which would lead to recursion.
-@@ -6784,7 +6781,12 @@ asmlinkage __visible void __sched schedule(void)
+@@ -6787,7 +6784,12 @@ asmlinkage __visible void __sched schedule(void)
  {
  	struct task_struct *tsk = current;
  
@@ -99,7 +99,7 @@ index 8f6962c0619b..b49e976e831d 100644
  	__schedule_loop(SM_NONE);
  	sched_update_worker(tsk);
  }
-@@ -7045,6 +7047,32 @@ static void __setscheduler_prio(struct task_struct *p, int prio)
+@@ -7048,6 +7050,32 @@ static void __setscheduler_prio(struct task_struct *p, int prio)
  
  #ifdef CONFIG_RT_MUTEXES
  

@@ -1,4 +1,4 @@
-From 3470ae03d7dbbfaddcd602547d28d0008320f1b2 Mon Sep 17 00:00:00 2001
+From d0206dbfadfde807099d9a22ec0ae36bb5bc5723 Mon Sep 17 00:00:00 2001
 From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Thu, 21 Sep 2023 16:15:12 +0200
 Subject: [PATCH 010/198] drm/amd/display: Remove migrate_en/dis from

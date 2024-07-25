@@ -1,4 +1,4 @@
-From f76fedc1abfc2adb9318554ff722565c4c61ccab Mon Sep 17 00:00:00 2001
+From 4988f6a2000b18714877f7723f34b594da6e2222 Mon Sep 17 00:00:00 2001
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Thu, 14 Sep 2023 20:43:55 +0206
 Subject: [PATCH 064/198] serial: milbeaut_usio: Use port lock wrappers

@@ -1,4 +1,4 @@
-From 0ff344b817fada3e81a6839145bac10e82ef95e8 Mon Sep 17 00:00:00 2001
+From 5969916a10182049759b55eaa6854f0ae5fd6478 Mon Sep 17 00:00:00 2001
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Thu, 14 Sep 2023 20:43:51 +0206
 Subject: [PATCH 060/198] serial: ma35d1: Use port lock wrappers
@@ -37,7 +37,7 @@ Signed-off-by: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
  1 file changed, 11 insertions(+), 11 deletions(-)
 
 diff --git a/drivers/tty/serial/ma35d1_serial.c b/drivers/tty/serial/ma35d1_serial.c
-index 69da24565b99..73910c54d6be 100644
+index 99225f1e02ac..faccd772c68c 100644
 --- a/drivers/tty/serial/ma35d1_serial.c
 +++ b/drivers/tty/serial/ma35d1_serial.c
 @@ -269,16 +269,16 @@ static void receive_chars(struct uart_ma35d1_port *up)

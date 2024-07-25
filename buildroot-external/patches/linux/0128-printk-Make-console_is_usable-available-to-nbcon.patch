@@ -1,4 +1,4 @@
-From 8d69ccda032c156357902beb6572a7c42efe07c5 Mon Sep 17 00:00:00 2001
+From b77aa505de83d888e52326b6479c7ca65931d083 Mon Sep 17 00:00:00 2001
 From: John Ogness <john.ogness@linutronix.de>
 Date: Tue, 12 Sep 2023 13:25:41 +0000
 Subject: [PATCH 128/198] printk: Make console_is_usable() available to nbcon

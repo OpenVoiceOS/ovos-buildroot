@@ -1,4 +1,4 @@
-From 271128c2e614ef38ec1545a7ca0ed7f78ea548cb Mon Sep 17 00:00:00 2001
+From a163641aa3ab7642600300e9c1d5e7d496b57fc8 Mon Sep 17 00:00:00 2001
 From: John Ogness <john.ogness@linutronix.de>
 Date: Wed, 13 Sep 2023 08:35:23 +0000
 Subject: [PATCH 126/198] printk: nbcon: Implement processing in port->lock

@@ -1,4 +1,4 @@
-From 7a0ae4f4b09ad7148565125e6e268e1e4487235c Mon Sep 17 00:00:00 2001
+From 624b479df0eadf4c24e78331cd977bf078dd0efd Mon Sep 17 00:00:00 2001
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Thu, 14 Sep 2023 20:44:04 +0206
 Subject: [PATCH 073/198] serial: pmac_zilog: Use port lock wrappers

@@ -1,4 +1,4 @@
-From dc39202974274168a8d2acd26f5882622ad84ad3 Mon Sep 17 00:00:00 2001
+From 60af9a31de44d6dbf8d570f4724cb49683e0b1a6 Mon Sep 17 00:00:00 2001
 From: John Ogness <john.ogness@linutronix.de>
 Date: Tue, 19 Sep 2023 14:33:27 +0000
 Subject: [PATCH 133/198] printk: nbcon: Use nbcon consoles in

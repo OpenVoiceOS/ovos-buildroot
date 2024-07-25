@@ -1,4 +1,4 @@
-From 32bf371ec5836a57fd85c3bbf1b9d060269b031f Mon Sep 17 00:00:00 2001
+From f0d6e0ef7ebbeb06c5a4bbfa8b9f4072d6c3ff21 Mon Sep 17 00:00:00 2001
 From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Wed, 8 Sep 2021 17:18:00 +0200
 Subject: [PATCH 163/198] drm/i915/gt: Queue and wait for the irq_work item.

@@ -1,4 +1,4 @@
-From 8439993d928210a989f726376ee3653c887459de Mon Sep 17 00:00:00 2001
+From b66eafce0ae518c018d45f07688a31c943dc855f Mon Sep 17 00:00:00 2001
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Mon, 11 Sep 2023 15:21:57 +0000
 Subject: [PATCH 139/198] printk: nbcon: Implement emergency sections

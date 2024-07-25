@@ -1,4 +1,4 @@
-From e9b6548f8b14611fbfb36a182a18fb0423047bfc Mon Sep 17 00:00:00 2001
+From cf56a8cb4d23d06dc03a323a09d0ce29cf806ee9 Mon Sep 17 00:00:00 2001
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Thu, 14 Sep 2023 20:43:42 +0206
 Subject: [PATCH 051/198] serial: dz: Use port lock wrappers

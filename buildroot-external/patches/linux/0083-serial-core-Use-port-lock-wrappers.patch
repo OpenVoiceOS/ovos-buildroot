@@ -1,4 +1,4 @@
-From 3d281d2925aa565e636d1ad71fbfe4e26cf8d928 Mon Sep 17 00:00:00 2001
+From 0028d055bba014627f1726e420eccce06fcc929b Mon Sep 17 00:00:00 2001
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Thu, 14 Sep 2023 20:44:14 +0206
 Subject: [PATCH 083/198] serial: core: Use port lock wrappers

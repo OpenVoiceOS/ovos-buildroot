@@ -1,4 +1,4 @@
-From 9d93ad1422ee62613b842bdca8be6aa62ad12130 Mon Sep 17 00:00:00 2001
+From ae7cc983d37f9ea86b8d9b11008ee5cdbe781231 Mon Sep 17 00:00:00 2001
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Mon, 11 Sep 2023 15:53:04 +0000
 Subject: [PATCH 140/198] panic: Mark emergency section in warn

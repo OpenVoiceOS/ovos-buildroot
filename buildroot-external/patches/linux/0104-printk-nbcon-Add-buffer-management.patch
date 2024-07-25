@@ -1,4 +1,4 @@
-From 23c3e68cd07fdb9288084ee7639506e0e76d093c Mon Sep 17 00:00:00 2001
+From a46ae38d9cf7dfca3d411a2e495979794c65b5d5 Mon Sep 17 00:00:00 2001
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Sat, 16 Sep 2023 21:26:03 +0206
 Subject: [PATCH 104/198] printk: nbcon: Add buffer management

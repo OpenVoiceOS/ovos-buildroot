@@ -1,4 +1,4 @@
-From 6a72baf324b91806da60d0624cbf8856614fd1ae Mon Sep 17 00:00:00 2001
+From 237cdf22e2d45ba69c9c9732b50ea47a3c4117b8 Mon Sep 17 00:00:00 2001
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Thu, 14 Sep 2023 20:43:50 +0206
 Subject: [PATCH 059/198] serial: lpc32xx_hs: Use port lock wrappers

@@ -1,4 +1,4 @@
-From 797fbc7ed8fa0b7325d140a3c21c8f05ed50eb02 Mon Sep 17 00:00:00 2001
+From ea0480eb24826864db610efc119aad4b66a1b107 Mon Sep 17 00:00:00 2001
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Thu, 14 Sep 2023 20:44:23 +0206
 Subject: [PATCH 092/198] serial: sunplus-uart: Use port lock wrappers

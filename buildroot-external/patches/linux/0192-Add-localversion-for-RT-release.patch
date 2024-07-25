@@ -1,4 +1,4 @@
-From 9fb4ad6259384c51c68876ddac2baf82a36cd848 Mon Sep 17 00:00:00 2001
+From ab45bd552de1353214b40be5a6486805c7cc7116 Mon Sep 17 00:00:00 2001
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Fri, 8 Jul 2011 20:25:16 +0200
 Subject: [PATCH 192/198] Add localversion for -RT release

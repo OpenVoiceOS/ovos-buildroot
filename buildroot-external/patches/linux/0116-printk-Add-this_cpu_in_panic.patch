@@ -1,4 +1,4 @@
-From d9d8ca1dfa796746289aa27e4b8024010cba450a Mon Sep 17 00:00:00 2001
+From 94fd9efd698b8fb85660a96c31f5c055ee9caa3e Mon Sep 17 00:00:00 2001
 From: John Ogness <john.ogness@linutronix.de>
 Date: Fri, 13 Oct 2023 14:30:49 +0000
 Subject: [PATCH 116/198] printk: Add this_cpu_in_panic()

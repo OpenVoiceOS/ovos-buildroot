@@ -1,4 +1,4 @@
-From da74c3f819aa2f0e863222f6d21ba4354698ea5c Mon Sep 17 00:00:00 2001
+From afbb80a0344372098b821a0c4899d17270fb0a0e Mon Sep 17 00:00:00 2001
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Thu, 14 Sep 2023 20:44:00 +0206
 Subject: [PATCH 069/198] serial: omap: Use port lock wrappers

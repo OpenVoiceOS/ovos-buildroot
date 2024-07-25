@@ -1,4 +1,4 @@
-From 27a59a2218861d6cbaada24a2aad4060c214e151 Mon Sep 17 00:00:00 2001
+From 1642ca0a5ebda5bfea190f6b1aa4aac94fb63854 Mon Sep 17 00:00:00 2001
 From: John Ogness <john.ogness@linutronix.de>
 Date: Wed, 22 Nov 2023 16:13:37 +0000
 Subject: [PATCH 113/198] printk: Use prb_first_seq() as base for 32bit seq

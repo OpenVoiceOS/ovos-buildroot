@@ -1,4 +1,4 @@
-From b1cdc256f5318df8b58105d6e7feae9bbc4a29f2 Mon Sep 17 00:00:00 2001
+From a193861a106dacd8ab3d9e286cf72173735e946e Mon Sep 17 00:00:00 2001
 From: John Ogness <john.ogness@linutronix.de>
 Date: Tue, 26 Sep 2023 14:43:30 +0000
 Subject: [PATCH 146/198] printk: nbcon: Add context to console_is_usable()

@@ -1,4 +1,4 @@
-From 10089cc4c5e8a6729bbaff79bdae44a562b0f829 Mon Sep 17 00:00:00 2001
+From b83ef70b2f46edda7d4f4d712e3f975e7d3f9ce4 Mon Sep 17 00:00:00 2001
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Tue, 26 Sep 2023 13:03:52 +0000
 Subject: [PATCH 147/198] printk: nbcon: Add printer thread wakeups

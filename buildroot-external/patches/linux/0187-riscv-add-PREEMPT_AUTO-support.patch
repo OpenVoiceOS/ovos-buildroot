@@ -1,4 +1,4 @@
-From cd6c34f495ea2063b6ea6aa303f31032a83a9729 Mon Sep 17 00:00:00 2001
+From b3d09cebebec269866fc989d226bcbdcf49c6e1b Mon Sep 17 00:00:00 2001
 From: Jisheng Zhang <jszhang@kernel.org>
 Date: Tue, 31 Oct 2023 22:35:20 +0800
 Subject: [PATCH 187/198] riscv: add PREEMPT_AUTO support

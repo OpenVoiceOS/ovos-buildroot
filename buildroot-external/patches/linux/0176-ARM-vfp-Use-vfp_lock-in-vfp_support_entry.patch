@@ -1,4 +1,4 @@
-From 116991bbdfe41e25fe1b3501fca3e89564ce5671 Mon Sep 17 00:00:00 2001
+From 221bbd4ada7665e7b44fb86b04cca72c546c27ab Mon Sep 17 00:00:00 2001
 From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Wed, 28 Jun 2023 09:36:10 +0200
 Subject: [PATCH 176/198] ARM: vfp: Use vfp_lock() in vfp_support_entry().

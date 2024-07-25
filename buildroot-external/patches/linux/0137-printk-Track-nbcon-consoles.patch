@@ -1,4 +1,4 @@
-From 9d40a911c9a21f9c241cfe8336797bc37a5172de Mon Sep 17 00:00:00 2001
+From 34d748c4d82305dfabebd4ab225d334e362cafc5 Mon Sep 17 00:00:00 2001
 From: John Ogness <john.ogness@linutronix.de>
 Date: Mon, 11 Dec 2023 09:36:52 +0000
 Subject: [PATCH 137/198] printk: Track nbcon consoles

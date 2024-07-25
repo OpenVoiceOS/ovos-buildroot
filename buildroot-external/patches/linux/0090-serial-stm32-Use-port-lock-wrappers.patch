@@ -1,4 +1,4 @@
-From 8801ae048d144686a300e8bf50da0cb75be81995 Mon Sep 17 00:00:00 2001
+From e39d93e2952ac2e67db4ef4707c4fcdc5b5f4c74 Mon Sep 17 00:00:00 2001
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Thu, 14 Sep 2023 20:44:21 +0206
 Subject: [PATCH 090/198] serial: stm32: Use port lock wrappers

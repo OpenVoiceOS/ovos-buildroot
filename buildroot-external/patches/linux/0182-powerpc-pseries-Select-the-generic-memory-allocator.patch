@@ -1,4 +1,4 @@
-From 5dd4f31ddfab741ebf20b5ceac4c18bc714cf105 Mon Sep 17 00:00:00 2001
+From 24b10ae73548b915f973fb7eb18fb42f906fa8f1 Mon Sep 17 00:00:00 2001
 From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Thu, 9 Mar 2023 09:13:52 +0100
 Subject: [PATCH 182/198] powerpc/pseries: Select the generic memory allocator.

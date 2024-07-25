@@ -1,4 +1,4 @@
-From c583441ffa00737ef173ec1c6e83d33b61e0eaa0 Mon Sep 17 00:00:00 2001
+From 41fb1e62a1c2162089aa169de541388bd29cf9d9 Mon Sep 17 00:00:00 2001
 From: Tvrtko Ursulin <tvrtko.ursulin@intel.com>
 Date: Wed, 5 Jul 2023 10:30:25 +0100
 Subject: [PATCH 166/198] drm/i915: Do not disable preemption for resets

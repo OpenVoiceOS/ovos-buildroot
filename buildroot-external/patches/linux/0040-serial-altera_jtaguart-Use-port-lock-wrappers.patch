@@ -1,4 +1,4 @@
-From 6609031dab7f29f6ecbfe93f3b5a0edfeba6e3da Mon Sep 17 00:00:00 2001
+From 072715587bf21e30fa500c7a096398d7e1267b37 Mon Sep 17 00:00:00 2001
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Thu, 14 Sep 2023 20:43:31 +0206
 Subject: [PATCH 040/198] serial: altera_jtaguart: Use port lock wrappers

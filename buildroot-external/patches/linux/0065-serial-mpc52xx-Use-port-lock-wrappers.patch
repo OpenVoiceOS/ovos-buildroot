@@ -1,4 +1,4 @@
-From 36e5d0460cf6ec77a652274097e4332c91496225 Mon Sep 17 00:00:00 2001
+From c10459bc601c340a3745fd10f72cfc74c65c52cc Mon Sep 17 00:00:00 2001
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Thu, 14 Sep 2023 20:43:56 +0206
 Subject: [PATCH 065/198] serial: mpc52xx: Use port lock wrappers

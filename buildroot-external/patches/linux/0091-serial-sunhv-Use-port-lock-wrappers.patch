@@ -1,4 +1,4 @@
-From 32421b23abbfa310516ac741726a8f7c506e0660 Mon Sep 17 00:00:00 2001
+From 201046a72deb397a92c0fab4be1947e2eb9de425 Mon Sep 17 00:00:00 2001
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Thu, 14 Sep 2023 20:44:22 +0206
 Subject: [PATCH 091/198] serial: sunhv: Use port lock wrappers

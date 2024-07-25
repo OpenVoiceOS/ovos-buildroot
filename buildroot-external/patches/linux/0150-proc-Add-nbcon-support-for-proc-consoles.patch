@@ -1,4 +1,4 @@
-From 3d4bfbfd0c6cb1cb846bd0d48f90dd68e9082cc4 Mon Sep 17 00:00:00 2001
+From d8caddd8e1c7dc5324cc66c85a09cdb3cc5fb8d4 Mon Sep 17 00:00:00 2001
 From: John Ogness <john.ogness@linutronix.de>
 Date: Tue, 26 Sep 2023 13:31:00 +0000
 Subject: [PATCH 150/198] proc: Add nbcon support for /proc/consoles

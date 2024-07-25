@@ -1,4 +1,4 @@
-From a403f361a137c5141d5b7997394f2805fd1cde14 Mon Sep 17 00:00:00 2001
+From 22c9b9a29b2c1f43ed823960803d7d3502f68bff Mon Sep 17 00:00:00 2001
 From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Wed, 19 Dec 2018 10:47:02 +0100
 Subject: [PATCH 162/198] drm/i915: skip DRM_I915_LOW_LEVEL_TRACEPOINTS with

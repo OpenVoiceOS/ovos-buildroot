@@ -1,4 +1,4 @@
-From 332d3bcd23afc3fcf110bc09fcab6b315bac9d34 Mon Sep 17 00:00:00 2001
+From ba79756a1205549b30c6665d992decfcbf02776f Mon Sep 17 00:00:00 2001
 From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Thu, 21 Sep 2023 16:15:14 +0200
 Subject: [PATCH 012/198] drm/amd/display: Add a warning if the FPU is used

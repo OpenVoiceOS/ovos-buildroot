@@ -1,4 +1,4 @@
-From 6d23b8de485e6daeb30bb60ebd2549e5ef6efabc Mon Sep 17 00:00:00 2001
+From 86a03026e71ac5627a00059c3447543f9236d5bf Mon Sep 17 00:00:00 2001
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Thu, 14 Sep 2023 20:43:34 +0206
 Subject: [PATCH 043/198] serial: amba-pl011: Use port lock wrappers

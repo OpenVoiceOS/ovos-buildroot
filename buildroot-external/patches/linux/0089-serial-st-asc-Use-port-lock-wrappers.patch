@@ -1,4 +1,4 @@
-From dc8aa6501e3f721816d33f85f3d4e8bfadd6e6ad Mon Sep 17 00:00:00 2001
+From 022c6762c98e422a1591bf00077e3cca8026a095 Mon Sep 17 00:00:00 2001
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Thu, 14 Sep 2023 20:44:20 +0206
 Subject: [PATCH 089/198] serial: st-asc: Use port lock wrappers

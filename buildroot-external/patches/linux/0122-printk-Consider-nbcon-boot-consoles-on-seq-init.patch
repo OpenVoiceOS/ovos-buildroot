@@ -1,4 +1,4 @@
-From 6edba83ec17ba6ee1a4c87751e66f4c71f2b661d Mon Sep 17 00:00:00 2001
+From 6c90eec36703464a4132aa048833d5235ea1a907 Mon Sep 17 00:00:00 2001
 From: John Ogness <john.ogness@linutronix.de>
 Date: Wed, 22 Nov 2023 11:23:43 +0000
 Subject: [PATCH 122/198] printk: Consider nbcon boot consoles on seq init

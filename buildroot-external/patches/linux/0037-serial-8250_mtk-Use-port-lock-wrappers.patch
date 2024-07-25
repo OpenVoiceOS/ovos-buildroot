@@ -1,4 +1,4 @@
-From daad1b7d725b68a09709b7ac56af8081c53e767a Mon Sep 17 00:00:00 2001
+From b859af0fd194fed9bc10a7193b1aad2643dcb87f Mon Sep 17 00:00:00 2001
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Thu, 14 Sep 2023 20:43:28 +0206
 Subject: [PATCH 037/198] serial: 8250_mtk: Use port lock wrappers

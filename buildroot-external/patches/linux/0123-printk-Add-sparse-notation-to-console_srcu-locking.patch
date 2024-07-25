@@ -1,4 +1,4 @@
-From 91acc7b64bc151d05354eba28c3b3cc72d648628 Mon Sep 17 00:00:00 2001
+From 193ce314450f469c9d1e7860036b6ca877f53e6e Mon Sep 17 00:00:00 2001
 From: John Ogness <john.ogness@linutronix.de>
 Date: Mon, 9 Oct 2023 13:55:19 +0000
 Subject: [PATCH 123/198] printk: Add sparse notation to console_srcu locking

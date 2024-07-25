@@ -1,4 +1,4 @@
-From 16cd156a23e59e274126f6905454ca660576a1d3 Mon Sep 17 00:00:00 2001
+From 4845b3a0b1e1d4549adc89ae802a064603edffe4 Mon Sep 17 00:00:00 2001
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Sat, 16 Sep 2023 21:26:06 +0206
 Subject: [PATCH 107/198] printk: nbcon: Add emit function and callback

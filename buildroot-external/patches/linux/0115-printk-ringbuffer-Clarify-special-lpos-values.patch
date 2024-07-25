@@ -1,4 +1,4 @@
-From b259fe98de353127f88fbbde88d6fe19405bda4e Mon Sep 17 00:00:00 2001
+From 5bd491a49a85d598556317629369df6ff996386f Mon Sep 17 00:00:00 2001
 From: John Ogness <john.ogness@linutronix.de>
 Date: Mon, 23 Oct 2023 11:11:05 +0000
 Subject: [PATCH 115/198] printk: ringbuffer: Clarify special lpos values

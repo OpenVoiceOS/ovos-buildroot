@@ -1,4 +1,4 @@
-From a3ebd3312161e490b585099db04073855a03bccd Mon Sep 17 00:00:00 2001
+From bf7ec75da0a9eb4f4f2008b8241b9dcadcd8a222 Mon Sep 17 00:00:00 2001
 From: Jisheng Zhang <jszhang@kernel.org>
 Date: Tue, 31 Oct 2023 22:35:21 +0800
 Subject: [PATCH 188/198] riscv: allow to enable RT

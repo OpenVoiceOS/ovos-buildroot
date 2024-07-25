@@ -1,4 +1,4 @@
-From 64aa37b611ac8f44e74e39ac63ced8a0c4285115 Mon Sep 17 00:00:00 2001
+From 2b19ea0cccf8d64230e831e3e9412738abf3c7b6 Mon Sep 17 00:00:00 2001
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Thu, 14 Sep 2023 20:44:03 +0206
 Subject: [PATCH 072/198] serial: pic32: Use port lock wrappers

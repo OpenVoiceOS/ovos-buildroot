@@ -1,4 +1,4 @@
-From 75a5ab0b79294ba8e709661d27289ec4e90ba03b Mon Sep 17 00:00:00 2001
+From 91ba1e1f2eb1e0838cf783f3389eb1d881d6c1cd Mon Sep 17 00:00:00 2001
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Thu, 14 Sep 2023 20:44:18 +0206
 Subject: [PATCH 087/198] serial: sifive: Use port lock wrappers

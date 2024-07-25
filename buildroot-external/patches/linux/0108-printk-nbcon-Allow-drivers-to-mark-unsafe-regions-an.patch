@@ -1,4 +1,4 @@
-From b2093d06df4908c9264a7a3c163ec8b380241683 Mon Sep 17 00:00:00 2001
+From b34105219d37d62ee96c478c2e9ee2c92f4ed0c5 Mon Sep 17 00:00:00 2001
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Sat, 16 Sep 2023 21:26:07 +0206
 Subject: [PATCH 108/198] printk: nbcon: Allow drivers to mark unsafe regions

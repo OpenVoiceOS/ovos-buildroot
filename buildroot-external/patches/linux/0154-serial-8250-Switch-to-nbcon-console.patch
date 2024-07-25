@@ -1,4 +1,4 @@
-From 2f43d41cf7678427c0c86521a695a35d22504c38 Mon Sep 17 00:00:00 2001
+From d00025c87e6773fbab9b836b265f3f275a4579be Mon Sep 17 00:00:00 2001
 From: John Ogness <john.ogness@linutronix.de>
 Date: Wed, 13 Sep 2023 15:30:36 +0000
 Subject: [PATCH 154/198] serial: 8250: Switch to nbcon console

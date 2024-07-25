@@ -1,4 +1,4 @@
-From 3eaf391234fa1a512223c52c688e1c98bac8b7f2 Mon Sep 17 00:00:00 2001
+From 75878d038e0d5584d280c97aac2863d88103fb67 Mon Sep 17 00:00:00 2001
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Thu, 14 Sep 2023 20:44:15 +0206
 Subject: [PATCH 084/198] serial: mctrl_gpio: Use port lock wrappers

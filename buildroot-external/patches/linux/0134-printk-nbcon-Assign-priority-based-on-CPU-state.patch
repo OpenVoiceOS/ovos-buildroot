@@ -1,4 +1,4 @@
-From d349313752e59ddceb634bac5989875700fe17f9 Mon Sep 17 00:00:00 2001
+From e60fb8daacbb1f03fce094a20f33f8cf33cffdea Mon Sep 17 00:00:00 2001
 From: John Ogness <john.ogness@linutronix.de>
 Date: Thu, 14 Dec 2023 14:38:42 +0000
 Subject: [PATCH 134/198] printk: nbcon: Assign priority based on CPU state

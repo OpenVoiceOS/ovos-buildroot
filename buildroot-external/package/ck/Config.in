@@ -1,0 +1,19 @@
+config BR2_PACKAGE_CK_ARCH_SUPPORTS
+	bool
+	default y if BR2_arm && !BR2_ARM_CPU_ARMV4 && !BR2_ARM_CPU_ARMV5 && !BR2_ARM_CPU_ARMV7M
+	default y if BR2_aarch64
+	default y if BR2_powerpc || BR2_powerpc64 || BR2_powerpc64le
+	default y if BR2_s390x
+	default y if BR2_sparc_v9
+	default y if BR2_i386
+	default y if BR2_x86_64
+
+config BR2_PACKAGE_CK
+	bool "concurrency kit"
+	depends on BR2_PACKAGE_CK_ARCH_SUPPORTS
+	help
+	  Concurrency primitives, safe memory reclamation mechanisms
+	  and non-blocking data structures for the research, design and
+	  implementation of high performance concurrent systems.
+
+	  https://github.com/concurrencykit/ck.git

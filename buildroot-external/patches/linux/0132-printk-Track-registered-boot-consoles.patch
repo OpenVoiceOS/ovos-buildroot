@@ -1,4 +1,4 @@
-From 8d645d576b8fd2f404b0e4fdd9a68389c20e2395 Mon Sep 17 00:00:00 2001
+From f846c0b94984ab5cca985a94d7402861e4aa36ef Mon Sep 17 00:00:00 2001
 From: John Ogness <john.ogness@linutronix.de>
 Date: Tue, 24 Oct 2023 14:13:14 +0000
 Subject: [PATCH 132/198] printk: Track registered boot consoles

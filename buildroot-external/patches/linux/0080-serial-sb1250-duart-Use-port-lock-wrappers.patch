@@ -1,4 +1,4 @@
-From 905bf33a1d568fada86580aa3d51ff361ef777ed Mon Sep 17 00:00:00 2001
+From c5b18148fa1a5601c2f4acc21409cf4d48facd57 Mon Sep 17 00:00:00 2001
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Thu, 14 Sep 2023 20:44:11 +0206
 Subject: [PATCH 080/198] serial: sb1250-duart: Use port lock wrappers

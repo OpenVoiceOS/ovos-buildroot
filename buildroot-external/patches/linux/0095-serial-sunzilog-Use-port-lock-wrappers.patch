@@ -1,4 +1,4 @@
-From 9c6da45f338da2dd8816bf5b7e2c2ad03a4355d7 Mon Sep 17 00:00:00 2001
+From 6f47076573080a68d9662eaa4f9e8413017648a2 Mon Sep 17 00:00:00 2001
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Thu, 14 Sep 2023 20:44:26 +0206
 Subject: [PATCH 095/198] serial: sunzilog: Use port lock wrappers

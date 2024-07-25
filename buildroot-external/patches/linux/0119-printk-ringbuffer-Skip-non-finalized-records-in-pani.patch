@@ -1,4 +1,4 @@
-From 64f853dc53b8260bd20ee4cd45ca30c4c907b263 Mon Sep 17 00:00:00 2001
+From 8d0608472a38d174d69347cd428b53c71191539d Mon Sep 17 00:00:00 2001
 From: John Ogness <john.ogness@linutronix.de>
 Date: Fri, 13 Oct 2023 10:23:11 +0000
 Subject: [PATCH 119/198] printk: ringbuffer: Skip non-finalized records in

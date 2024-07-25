@@ -1,4 +1,4 @@
-From 9c9ef995e00ff1dc27cfbeda1774e0a2ed8e86f5 Mon Sep 17 00:00:00 2001
+From 95101752d854ef7c9163515c48eb66eeced6faf7 Mon Sep 17 00:00:00 2001
 From: Petr Mladek <pmladek@suse.com>
 Date: Fri, 6 Oct 2023 10:21:51 +0200
 Subject: [PATCH 110/198] printk: Reduce pr_flush() pooling time

@@ -1,4 +1,4 @@
-From 7d0d856c667dae6ce8cf5d0a5f7039c52e4d3613 Mon Sep 17 00:00:00 2001
+From ac8e3b8ae84855e6975a813bb5f06ba88cd3bce2 Mon Sep 17 00:00:00 2001
 From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Fri, 22 Sep 2023 14:58:18 +0000
 Subject: [PATCH 125/198] printk: Check printk_deferred_enter()/_exit() usage

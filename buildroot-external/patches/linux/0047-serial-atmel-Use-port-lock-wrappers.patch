@@ -1,4 +1,4 @@
-From 13101454e81a130df7745de810f64caeecd461ad Mon Sep 17 00:00:00 2001
+From 325c2f842f06aba6dae0545aa1ab36105ef14ebe Mon Sep 17 00:00:00 2001
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Thu, 14 Sep 2023 20:43:38 +0206
 Subject: [PATCH 047/198] serial: atmel: Use port lock wrappers

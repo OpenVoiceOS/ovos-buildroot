@@ -1,4 +1,4 @@
-From a8f77499281fd4ee5e73b42da0d52b19407eb91f Mon Sep 17 00:00:00 2001
+From dcb930902aca3818705af8d0dd1933fdc3db1868 Mon Sep 17 00:00:00 2001
 From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Fri, 26 Jul 2019 11:30:49 +0200
 Subject: [PATCH 180/198] powerpc: traps: Use PREEMPT_RT

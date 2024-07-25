@@ -1,4 +1,4 @@
-From e95b196575d1532162a8f60547704b1ce0f724ee Mon Sep 17 00:00:00 2001
+From 2b2341af54ffff064b08377fc5ffe79b118b8977 Mon Sep 17 00:00:00 2001
 From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Thu, 7 Dec 2023 14:15:15 +0000
 Subject: [PATCH 112/198] printk: Adjust mapping for 32bit seq macros

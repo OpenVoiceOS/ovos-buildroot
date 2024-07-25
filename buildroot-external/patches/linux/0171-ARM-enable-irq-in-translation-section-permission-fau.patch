@@ -1,4 +1,4 @@
-From cea46b11cc81d30f922bc5e005c52bd7182e74c2 Mon Sep 17 00:00:00 2001
+From 95bd01fcebc2d15474bd897848b051ce517f8d80 Mon Sep 17 00:00:00 2001
 From: "Yadi.hu" <yadi.hu@windriver.com>
 Date: Wed, 10 Dec 2014 10:32:09 +0800
 Subject: [PATCH 171/198] ARM: enable irq in translation/section permission

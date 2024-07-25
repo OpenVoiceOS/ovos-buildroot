@@ -1,4 +1,4 @@
-From ec3d7a9eb01292346c027684d4e9e8db04f42b4a Mon Sep 17 00:00:00 2001
+From 52ababf2b05d1ffa8114ab3ae43b7e573fb2361e Mon Sep 17 00:00:00 2001
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Thu, 14 Sep 2023 20:44:09 +0206
 Subject: [PATCH 078/198] serial: sa1100: Use port lock wrappers

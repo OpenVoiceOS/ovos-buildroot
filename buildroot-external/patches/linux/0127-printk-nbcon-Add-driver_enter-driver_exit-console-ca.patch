@@ -1,4 +1,4 @@
-From d6a4f420d0e3c60a4b4d5a04dc66fc4e42bc0645 Mon Sep 17 00:00:00 2001
+From 9ed29870b3da53fac04522a75fac5a08f66a19ca Mon Sep 17 00:00:00 2001
 From: John Ogness <john.ogness@linutronix.de>
 Date: Fri, 8 Dec 2023 15:54:27 +0000
 Subject: [PATCH 127/198] printk: nbcon: Add driver_enter/driver_exit console

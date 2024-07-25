@@ -1,4 +1,4 @@
-From c52084f5d7da55db04b48a5343c88985e09fd9c3 Mon Sep 17 00:00:00 2001
+From 9d92054ae980b1a94d09974d2d469aa24525dcd7 Mon Sep 17 00:00:00 2001
 From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Fri, 19 May 2023 16:57:30 +0200
 Subject: [PATCH 175/198] ARM: vfp: Use vfp_lock() in vfp_sync_hwstate().

@@ -1,4 +1,4 @@
-From 0c81e8feb81c26938bb8e1671251c5bbbbe61e71 Mon Sep 17 00:00:00 2001
+From 36e07023ee977202464b7cca7776c65d13438b3e Mon Sep 17 00:00:00 2001
 From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Wed, 7 Aug 2019 18:15:38 +0200
 Subject: [PATCH 016/198] x86: Allow to enable RT

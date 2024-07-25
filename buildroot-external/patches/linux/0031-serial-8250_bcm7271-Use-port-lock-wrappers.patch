@@ -1,4 +1,4 @@
-From 6a5af1e8fbd6409bd0102147c056daa76ccf7918 Mon Sep 17 00:00:00 2001
+From 7446c26604cd03192e2cbc113641533204f235bf Mon Sep 17 00:00:00 2001
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Thu, 14 Sep 2023 20:43:22 +0206
 Subject: [PATCH 031/198] serial: 8250_bcm7271: Use port lock wrappers

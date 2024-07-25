@@ -1,4 +1,4 @@
-From d340dc1c843a6528d8f5106ac9df3386c65ed4a1 Mon Sep 17 00:00:00 2001
+From d2f045ac943207d02e3cb9bd374f3c5d35c13c15 Mon Sep 17 00:00:00 2001
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Thu, 14 Sep 2023 20:43:39 +0206
 Subject: [PATCH 048/198] serial: bcm63xx-uart: Use port lock wrappers

@@ -1,4 +1,4 @@
-From 81ca347a128d8e95525ede510565d2fae991b1de Mon Sep 17 00:00:00 2001
+From 9b6a4883d0fcbeaab44dba6578949ecf43573458 Mon Sep 17 00:00:00 2001
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Sat, 16 Sep 2023 21:26:05 +0206
 Subject: [PATCH 106/198] printk: nbcon: Add sequence handling

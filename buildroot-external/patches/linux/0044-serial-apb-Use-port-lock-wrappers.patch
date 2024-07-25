@@ -1,4 +1,4 @@
-From 0b6067b5319203fff5b964e99691bf95aca008c6 Mon Sep 17 00:00:00 2001
+From 8e17c4e2574b46e536dbc23f1d70a5a9c5766c2e Mon Sep 17 00:00:00 2001
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Thu, 14 Sep 2023 20:43:35 +0206
 Subject: [PATCH 044/198] serial: apb: Use port lock wrappers

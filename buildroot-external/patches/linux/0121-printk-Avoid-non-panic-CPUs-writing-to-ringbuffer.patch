@@ -1,4 +1,4 @@
-From 99201b54df68e0b442e1f7b735aa5f69c4c5f69a Mon Sep 17 00:00:00 2001
+From 3469598de40f75e5ebc89aaa6dd10106f5b038fb Mon Sep 17 00:00:00 2001
 From: John Ogness <john.ogness@linutronix.de>
 Date: Fri, 20 Oct 2023 09:37:05 +0000
 Subject: [PATCH 121/198] printk: Avoid non-panic CPUs writing to ringbuffer

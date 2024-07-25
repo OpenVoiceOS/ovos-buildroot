@@ -1,4 +1,4 @@
-From a29d619de0f1d68471bf3765fd78d1c74c3c94f6 Mon Sep 17 00:00:00 2001
+From f3abad909d805624b6de91cbd4678e78dd7461d4 Mon Sep 17 00:00:00 2001
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Thu, 14 Sep 2023 20:43:52 +0206
 Subject: [PATCH 061/198] serial: mcf: Use port lock wrappers

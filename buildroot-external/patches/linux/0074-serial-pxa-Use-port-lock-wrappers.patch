@@ -1,4 +1,4 @@
-From 8c2578163fa025e4f11a9474ecb34d3c037ac9a5 Mon Sep 17 00:00:00 2001
+From 82029c6e95019551ecac0865e6c24ac7a1e52a96 Mon Sep 17 00:00:00 2001
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Thu, 14 Sep 2023 20:44:05 +0206
 Subject: [PATCH 074/198] serial: pxa: Use port lock wrappers

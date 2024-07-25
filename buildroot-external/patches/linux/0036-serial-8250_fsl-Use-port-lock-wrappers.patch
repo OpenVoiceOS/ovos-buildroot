@@ -1,4 +1,4 @@
-From afda5a365e4f9515b9c3ee95a74f7ab8b5506bce Mon Sep 17 00:00:00 2001
+From 3b586d0c385c87dbaec0b5f0f17412cf9d2a5895 Mon Sep 17 00:00:00 2001
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Thu, 14 Sep 2023 20:43:27 +0206
 Subject: [PATCH 036/198] serial: 8250_fsl: Use port lock wrappers

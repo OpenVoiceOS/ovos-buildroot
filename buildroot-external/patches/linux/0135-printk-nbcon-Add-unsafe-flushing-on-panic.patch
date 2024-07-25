@@ -1,4 +1,4 @@
-From 00019227e4afec5a6e2a8cb678d44d9bf30383ed Mon Sep 17 00:00:00 2001
+From 002dd3dd61d558ffd6b8f1548eba67d77f16ca11 Mon Sep 17 00:00:00 2001
 From: John Ogness <john.ogness@linutronix.de>
 Date: Fri, 20 Oct 2023 10:03:42 +0000
 Subject: [PATCH 135/198] printk: nbcon: Add unsafe flushing on panic

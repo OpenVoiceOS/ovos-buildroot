@@ -1,4 +1,4 @@
-From d3387d952d438dbf7defeed50f8fbc39fba1df70 Mon Sep 17 00:00:00 2001
+From 7901a04965c7c34d6891b5eb127b8e46af1af9bf Mon Sep 17 00:00:00 2001
 From: Mike Galbraith <umgwanakikbuti@gmail.com>
 Date: Thu, 31 Mar 2016 04:08:28 +0200
 Subject: [PATCH 023/198] zram: Replace bit spinlocks with spinlock_t for

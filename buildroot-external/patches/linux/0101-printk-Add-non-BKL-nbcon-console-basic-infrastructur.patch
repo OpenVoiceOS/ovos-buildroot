@@ -1,4 +1,4 @@
-From e92085f2bb9799cda069c2a5a9021074b260dcb4 Mon Sep 17 00:00:00 2001
+From 5f3b7c1634d2529b2cf77d2b5787e9ccffca0fb5 Mon Sep 17 00:00:00 2001
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Sat, 16 Sep 2023 21:26:00 +0206
 Subject: [PATCH 101/198] printk: Add non-BKL (nbcon) console basic

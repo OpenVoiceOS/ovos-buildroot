@@ -1,4 +1,4 @@
-From a1a763c342c621e5fc99edd1e45509f94eef6775 Mon Sep 17 00:00:00 2001
+From b0dca7a41ff05f6b45e242b5c21f77d4898ae670 Mon Sep 17 00:00:00 2001
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Thu, 14 Sep 2023 20:43:48 +0206
 Subject: [PATCH 057/198] serial: jsm: Use port lock wrappers

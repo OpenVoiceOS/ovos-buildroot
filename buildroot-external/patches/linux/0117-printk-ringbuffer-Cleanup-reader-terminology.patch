@@ -1,4 +1,4 @@
-From 25fbe7ba2a3c5b3a4f8b3cb9826aeda5f7152436 Mon Sep 17 00:00:00 2001
+From 6e5bb140e1f3877e1a05d39e7764b389e38231a7 Mon Sep 17 00:00:00 2001
 From: John Ogness <john.ogness@linutronix.de>
 Date: Mon, 6 Nov 2023 15:01:58 +0000
 Subject: [PATCH 117/198] printk: ringbuffer: Cleanup reader terminology

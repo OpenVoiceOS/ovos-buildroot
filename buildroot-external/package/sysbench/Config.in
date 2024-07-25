@@ -1,0 +1,29 @@
+config BR2_PACKAGE_SYSBENCH_ARCH_SUPPORTS
+	bool
+	default y if !BR2_powerpc
+
+config BR2_PACKAGE_SYSBENCH
+	bool "sysbench"
+	depends on BR2_PACKAGE_SYSBENCH_ARCH_SUPPORTS
+	depends on BR2_PACKAGE_CK_ARCH_SUPPORTS
+	depends on !BR2_STATIC_LIBS # luajit
+	depends on !BR2_PACKAGE_LUA # luajit
+	depends on BR2_PACKAGE_LUAJIT_ARCH_SUPPORTS # luajit
+	depends on BR2_TOOLCHAIN_HAS_THREADS
+
+	select BR2_PACKAGE_LUAJIT
+	select BR2_PACKAGE_CK
+	select BR2_PACKAGE_PKGCONF
+	select BR2_PACKAGE_LIBTOOL
+	help
+	  This benchmark was designed for identifying basic system
+	  parameters, as they are important for system using MySQL (w
+	  Innodb) under intensive load. Handling of IO in case of many
+	  parallel requests, checked as well as memory allocation
+	  /transfer speed and scheduler performance. CPU is benchmarked
+	  by using 64bit integer manipulation using Euklid algorithms
+	  for prime number computation. Benchmarks are designed to show
+	  benefit of multiple CPUs as well as of multiple hard drives,
+	  battery backed up write cache.
+
+	  https://github.com/akopytov/sysbench.git

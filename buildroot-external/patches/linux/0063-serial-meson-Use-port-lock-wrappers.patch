@@ -1,4 +1,4 @@
-From 0b33645969ae92e4cdc60ee469f47d89faa5e4f4 Mon Sep 17 00:00:00 2001
+From 6efda0771514df14d0ca711f278924edb2236bbe Mon Sep 17 00:00:00 2001
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Thu, 14 Sep 2023 20:43:54 +0206
 Subject: [PATCH 063/198] serial: meson: Use port lock wrappers

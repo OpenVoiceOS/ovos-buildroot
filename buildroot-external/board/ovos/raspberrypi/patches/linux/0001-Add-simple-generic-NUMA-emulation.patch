@@ -1,7 +1,7 @@
-From d569c8828bbc9ffebbf5825121d70e4f63f11dbb Mon Sep 17 00:00:00 2001
+From 0e8201a532a1cc7fa89974e27294351f8dfab7fc Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Ma=C3=ADra=20Canal?= <mcanal@igalia.com>
 Date: Fri, 17 May 2024 11:40:23 -0300
-Subject: [PATCH 1/8] numa: Add simple generic NUMA emulation
+Subject: [PATCH 1/7] numa: Add simple generic NUMA emulation
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -193,10 +193,10 @@ index 0000000000000..62b38215a2f00
 +}
 +#endif /* CONFIG_NUMA_EMU */
 
-From 2cde7ba8bc2b4fd89e4ba4bce990980f6c012509 Mon Sep 17 00:00:00 2001
+From 5694c7bffc6184d7e72f9b34976d75f8e9bc0eca Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Ma=C3=ADra=20Canal?= <mcanal@igalia.com>
 Date: Fri, 17 May 2024 11:40:34 -0300
-Subject: [PATCH 2/8] arm64/numa: Add NUMA emulation for ARM64
+Subject: [PATCH 2/7] arm64/numa: Add NUMA emulation for ARM64
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -235,83 +235,10 @@ index c9691b0c0f29a..8d63a70f57c77 100644
  
  config ARCH_SPARSEMEM_ENABLE
 
-From e7f3f4cd90409d8249913fa7a67f14d71f348dfa Mon Sep 17 00:00:00 2001
-From: Tvrtko Ursulin <tvrtko.ursulin@igalia.com>
-Date: Wed, 3 Jul 2024 17:16:15 +0100
-Subject: [PATCH 3/8] mm/mempolicy: Rename some functions
-
-Will make the following backported patches a bit easier.
-
-Signed-off-by: Tvrtko Ursulin <tvrtko.ursulin@igalia.com>
----
- mm/mempolicy.c | 14 +++++++-------
- 1 file changed, 7 insertions(+), 7 deletions(-)
-
-diff --git a/mm/mempolicy.c b/mm/mempolicy.c
-index e52e3a0b8f2e6..0555c2f2ee032 100644
---- a/mm/mempolicy.c
-+++ b/mm/mempolicy.c
-@@ -1968,7 +1968,7 @@ unsigned int mempolicy_slab_node(void)
-  * node in pol->nodes (starting from n=0), wrapping around if n exceeds the
-  * number of present nodes.
-  */
--static unsigned offset_il_node(struct mempolicy *pol, unsigned long n)
-+static unsigned interleave_nid(struct mempolicy *pol, unsigned long n)
- {
- 	nodemask_t nodemask = pol->nodes;
- 	unsigned int target, nnodes;
-@@ -1994,7 +1994,7 @@ static unsigned offset_il_node(struct mempolicy *pol, unsigned long n)
- }
- 
- /* Determine a node number for interleave */
--static inline unsigned interleave_nid(struct mempolicy *pol,
-+static inline unsigned interleave_vma(struct mempolicy *pol,
- 		 struct vm_area_struct *vma, unsigned long addr, int shift)
- {
- 	if (vma) {
-@@ -2010,7 +2010,7 @@ static inline unsigned interleave_nid(struct mempolicy *pol,
- 		BUG_ON(shift < PAGE_SHIFT);
- 		off = vma->vm_pgoff >> (shift - PAGE_SHIFT);
- 		off += (addr - vma->vm_start) >> shift;
--		return offset_il_node(pol, off);
-+		return interleave_nid(pol, off);
- 	} else
- 		return interleave_nodes(pol);
- }
-@@ -2042,8 +2042,8 @@ int huge_node(struct vm_area_struct *vma, unsigned long addr, gfp_t gfp_flags,
- 	mode = (*mpol)->mode;
- 
- 	if (unlikely(mode == MPOL_INTERLEAVE)) {
--		nid = interleave_nid(*mpol, vma, addr,
--					huge_page_shift(hstate_vma(vma)));
-+		nid = interleave_vma(*mpol, vma, addr,
-+				     huge_page_shift(hstate_vma(vma)));
- 	} else {
- 		nid = policy_node(gfp_flags, *mpol, numa_node_id());
- 		if (mode == MPOL_BIND || mode == MPOL_PREFERRED_MANY)
-@@ -2196,7 +2196,7 @@ struct folio *vma_alloc_folio(gfp_t gfp, int order, struct vm_area_struct *vma,
- 		struct page *page;
- 		unsigned nid;
- 
--		nid = interleave_nid(pol, vma, addr, PAGE_SHIFT + order);
-+		nid = interleave_vma(pol, vma, addr, PAGE_SHIFT + order);
- 		mpol_cond_put(pol);
- 		gfp |= __GFP_COMP;
- 		page = alloc_page_interleave(gfp, order, nid);
-@@ -2602,7 +2602,7 @@ int mpol_misplaced(struct page *page, struct vm_area_struct *vma, unsigned long
- 	case MPOL_INTERLEAVE:
- 		pgoff = vma->vm_pgoff;
- 		pgoff += (addr - vma->vm_start) >> PAGE_SHIFT;
--		polnid = offset_il_node(pol, pgoff);
-+		polnid = interleave_nid(pol, pgoff);
- 		break;
- 
- 	case MPOL_PREFERRED:
-
-From 9c182de03088ee46fe49dbe5a1d5cba5ef4b49f5 Mon Sep 17 00:00:00 2001
+From bc6a552169ea72495452409b227301671c78e267 Mon Sep 17 00:00:00 2001
 From: Tvrtko Ursulin <tvrtko.ursulin@igalia.com>
 Date: Wed, 22 May 2024 17:12:16 +0100
-Subject: [PATCH 4/8] mm/numa: Allow override of kernel's default NUMA policy
+Subject: [PATCH 3/7] mm/numa: Allow override of kernel's default NUMA policy
 
 Add numa_policy kernel argument to allow overriding the kernel's default
 NUMA policy at boot time.
@@ -331,7 +258,7 @@ Signed-off-by: Tvrtko Ursulin <tvrtko.ursulin@igalia.com>
  1 file changed, 42 insertions(+), 7 deletions(-)
 
 diff --git a/mm/mempolicy.c b/mm/mempolicy.c
-index 0555c2f2ee032..335d478051713 100644
+index e52e3a0b8f2e6..15bd6d5edd79a 100644
 --- a/mm/mempolicy.c
 +++ b/mm/mempolicy.c
 @@ -2974,7 +2974,9 @@ void __init numa_policy_init(void)
@@ -425,230 +352,10 @@ index 0555c2f2ee032..335d478051713 100644
  /**
   * mpol_to_str - format a mempolicy structure for printing
 
-From 0ca75652ca247ed850f999d70a35b29c3a873062 Mon Sep 17 00:00:00 2001
-From: Tvrtko Ursulin <tvrtko.ursulin@igalia.com>
-Date: Tue, 18 Jun 2024 15:48:59 +0100
-Subject: [PATCH 5/8] iommu/dma: Add ability to configure NUMA allocation
- policy for remapped allocations
-
-Add iommu_dma_numa_policy= kernel parameter which can be used to modify
-the NUMA allocation policy of remapped buffer allocations.
-
-Policy is only used for devices which are not associated with a NUMA node.
-
-Syntax identical to what tmpfs accepts as it's mpol argument is accepted.
-
-Some examples:
-
- iommu_dma_numa_policy=interleave
- iommu_dma_numa_policy=interleave=skip-interleave
- iommu_dma_numa_policy=bind:0-3,5,7,9-15
- iommu_dma_numa_policy=bind=static:1-2
-
-Signed-off-by: Tvrtko Ursulin <tvrtko.ursulin@igalia.com>
----
- drivers/iommu/dma-iommu.c | 45 +++++++++++++++++++++++++++++++++++++++
- include/linux/mempolicy.h | 12 +++++++++++
- mm/mempolicy.c            | 45 +++++++++++++++++++++++++++++++++++++++
- 3 files changed, 102 insertions(+)
-
-diff --git a/drivers/iommu/dma-iommu.c b/drivers/iommu/dma-iommu.c
-index 2da969fc89900..7f320c1982c07 100644
---- a/drivers/iommu/dma-iommu.c
-+++ b/drivers/iommu/dma-iommu.c
-@@ -20,6 +20,7 @@
- #include <linux/iova.h>
- #include <linux/irq.h>
- #include <linux/list_sort.h>
-+#include <linux/mempolicy.h>
- #include <linux/memremap.h>
- #include <linux/mm.h>
- #include <linux/mutex.h>
-@@ -775,11 +776,50 @@ static void __iommu_dma_free_pages(struct page **pages, int count)
- 	kvfree(pages);
- }
- 
-+static struct mempolicy iommu_dma_mpol = {
-+#ifdef CONFIG_NUMA
-+	.refcnt = ATOMIC_INIT(1), /* never free it */
-+	.mode = MPOL_LOCAL,
-+#endif
-+};
-+
-+static int __init setup_numapolicy(char *str)
-+{
-+	struct mempolicy pol = { }, *ppol = &pol;
-+	char buf[128];
-+	int ret;
-+
-+	if (str)
-+		ret = mpol_parse_str(str, &ppol);
-+	else
-+		ret = -EINVAL;
-+
-+	if (!ret) {
-+		iommu_dma_mpol = pol;
-+		mpol_to_str(buf, sizeof(buf), &pol);
-+		pr_info("DMA IOMMU NUMA default policy overridden to '%s'\n", buf);
-+	} else {
-+		pr_warn("Unable to parse dma_iommu_numa_policy=\n");
-+	}
-+
-+	return ret == 0;
-+}
-+__setup("iommu_dma_numa_policy=", setup_numapolicy);
-+
- static struct page **__iommu_dma_alloc_pages(struct device *dev,
- 		unsigned int count, unsigned long order_mask, gfp_t gfp)
- {
- 	struct page **pages;
- 	unsigned int i = 0, nid = dev_to_node(dev);
-+#ifdef CONFIG_NUMA
-+	const bool use_numa = nid == NUMA_NO_NODE &&
-+			      iommu_dma_mpol.mode != MPOL_LOCAL;
-+#else
-+	const bool use_numa = false;
-+#endif
-+
-+	if (use_numa)
-+		order_mask = 1;
- 
- 	order_mask &= GENMASK(MAX_ORDER, 0);
- 	if (!order_mask)
-@@ -795,6 +835,7 @@ static struct page **__iommu_dma_alloc_pages(struct device *dev,
- 	while (count) {
- 		struct page *page = NULL;
- 		unsigned int order_size;
-+		nodemask_t *nodemask;
- 
- 		/*
- 		 * Higher-order allocations are a convenience rather
-@@ -809,6 +850,10 @@ static struct page **__iommu_dma_alloc_pages(struct device *dev,
- 			order_size = 1U << order;
- 			if (order_mask > order_size)
- 				alloc_flags |= __GFP_NORETRY;
-+			if (use_numa)
-+				nodemask = numa_policy_nodemask(gfp,
-+								&iommu_dma_mpol,
-+								i, &nid);
- 			page = alloc_pages_node(nid, alloc_flags, order);
- 			if (!page)
- 				continue;
-diff --git a/include/linux/mempolicy.h b/include/linux/mempolicy.h
-index d232de7cdc569..23545ec0c64c7 100644
---- a/include/linux/mempolicy.h
-+++ b/include/linux/mempolicy.h
-@@ -140,6 +140,8 @@ bool vma_policy_mof(struct vm_area_struct *vma);
- 
- extern void numa_default_policy(void);
- extern void numa_policy_init(void);
-+nodemask_t *numa_policy_nodemask(gfp_t gfp, struct mempolicy *pol, pgoff_t ilx,
-+				 int *nid);
- extern void mpol_rebind_task(struct task_struct *tsk, const nodemask_t *new);
- extern void mpol_rebind_mm(struct mm_struct *mm, nodemask_t *new);
- 
-@@ -234,6 +236,12 @@ static inline void numa_policy_init(void)
- {
- }
- 
-+static inline nodemask_t *
-+numa_policy_nodemask(gfp_t gfp, struct mempolicy *pol, pgoff_t ilx, int *nid)
-+{
-+	return NULL;
-+}
-+
- static inline void numa_default_policy(void)
- {
- }
-@@ -278,6 +286,10 @@ static inline int mpol_parse_str(char *str, struct mempolicy **mpol)
- }
- #endif
- 
-+static inline void mpol_to_str(char *buffer, int maxlen, struct mempolicy *pol)
-+{
-+}
-+
- static inline int mpol_misplaced(struct page *page, struct vm_area_struct *vma,
- 				 unsigned long address)
- {
-diff --git a/mm/mempolicy.c b/mm/mempolicy.c
-index 335d478051713..461a6512cb9ab 100644
---- a/mm/mempolicy.c
-+++ b/mm/mempolicy.c
-@@ -124,8 +124,10 @@ enum zone_type policy_zone = 0;
-  * run-time system-wide default policy => local allocation
-  */
- static struct mempolicy default_policy = {
-+#ifdef CONFIG_NUMA
- 	.refcnt = ATOMIC_INIT(1), /* never free it */
- 	.mode = MPOL_LOCAL,
-+#endif
- };
- 
- static struct mempolicy preferred_node_policy[MAX_NUMNODES];
-@@ -300,7 +302,9 @@ static struct mempolicy *mpol_new(unsigned short mode, unsigned short flags,
- 	policy = kmem_cache_alloc(policy_cache, GFP_KERNEL);
- 	if (!policy)
- 		return ERR_PTR(-ENOMEM);
-+#ifdef CONFIG_NUMA
- 	atomic_set(&policy->refcnt, 1);
-+#endif
- 	policy->mode = mode;
- 	policy->flags = flags;
- 	policy->home_node = NUMA_NO_NODE;
-@@ -2015,6 +2019,47 @@ static inline unsigned interleave_vma(struct mempolicy *pol,
- 		return interleave_nodes(pol);
- }
- 
-+#define NO_INTERLEAVE_INDEX (-1UL)     /* use task il_prev for interleaving */
-+
-+nodemask_t *numa_policy_nodemask(gfp_t gfp, struct mempolicy *pol, pgoff_t ilx,
-+				 int *nid)
-+{
-+	nodemask_t *nodemask = NULL;
-+
-+	switch (pol->mode) {
-+	case MPOL_PREFERRED:
-+		/* Override input node id */
-+		*nid = first_node(pol->nodes);
-+		break;
-+	case MPOL_PREFERRED_MANY:
-+		nodemask = &pol->nodes;
-+		if (pol->home_node != NUMA_NO_NODE)
-+			*nid = pol->home_node;
-+		break;
-+	case MPOL_BIND:
-+		/* Restrict to nodemask (but not on lower zones) */
-+		if (apply_policy_zone(pol, gfp_zone(gfp)) &&
-+		    cpuset_nodemask_valid_mems_allowed(&pol->nodes))
-+			nodemask = &pol->nodes;
-+		if (pol->home_node != NUMA_NO_NODE)
-+			*nid = pol->home_node;
-+		/*
-+		 * __GFP_THISNODE shouldn't even be used with the bind policy
-+		 * because we might easily break the expectation to stay on the
-+		 * requested node and not break the policy.
-+		 */
-+		WARN_ON_ONCE(gfp & __GFP_THISNODE);
-+		break;
-+	case MPOL_INTERLEAVE:
-+		/* Override input node id */
-+		*nid = (ilx == NO_INTERLEAVE_INDEX) ?
-+		       interleave_nodes(pol) : interleave_nid(pol, ilx);
-+		break;
-+	}
-+
-+	return nodemask;
-+}
-+
- #ifdef CONFIG_HUGETLBFS
- /*
-  * huge_node(@vma, @addr, @gfp_flags, @mpol)
-
-From 4036deca99c4ee4a4e9da6f3809594da27c8fcf9 Mon Sep 17 00:00:00 2001
+From 45539b4b21cc01fce4ddceda26d255f774f2a98e Mon Sep 17 00:00:00 2001
 From: Tvrtko Ursulin <tvrtko.ursulin@igalia.com>
 Date: Wed, 17 Jul 2024 09:33:21 +0100
-Subject: [PATCH 6/8] dma-buf: system_heap: Allow specifying maximum allocation
+Subject: [PATCH 4/7] dma-buf: system_heap: Allow specifying maximum allocation
  order
 
 system_heap.max_order=<uint>
@@ -694,10 +401,10 @@ index 9076d47ed2ef4..9dc5dfeaca2a7 100644
  }
  module_init(system_heap_create);
 
-From 2b3cadacd49729991c06a67a6a34ebe092ad2633 Mon Sep 17 00:00:00 2001
+From f4d5eba3ee53bce68a6051c197802d5e0ad4b563 Mon Sep 17 00:00:00 2001
 From: Dom Cobley <popcornmix@gmail.com>
 Date: Tue, 7 May 2024 19:14:56 +0100
-Subject: [PATCH 7/8] config: bcm2711_defconfig/bcm2712_defconfig: Enable NUMA
+Subject: [PATCH 5/7] config: bcm2711_defconfig/bcm2712_defconfig: Enable NUMA
 
 Signed-off-by: Dom Cobley <popcornmix@gmail.com>
 ---
@@ -740,35 +447,159 @@ index bdaf3190f9b32..c0d19316844ce 100644
  # CONFIG_STRICT_DEVMEM is not set
 +CONFIG_NUMA_EMULATION=y
 
-From d162b2d8f1735208639f376c02ef483f20be2728 Mon Sep 17 00:00:00 2001
+From cc081f92d5831ba494d19327dd1ac70d7fa68c24 Mon Sep 17 00:00:00 2001
+From: Phil Elwell <phil@raspberrypi.com>
+Date: Tue, 23 Jul 2024 15:55:54 +0100
+Subject: [PATCH 6/7] dts: Move some common rpi settings into rpi files
+
+Most 2711 devices and all 2712 device share common bootargs (command
+lines). Make the common values shared defaults, overriding them were
+necessary.
+
+Signed-off-by: Phil Elwell <phil@raspberrypi.com>
+---
+ arch/arm/boot/dts/broadcom/bcm2711-rpi-4-b.dts    | 4 ----
+ arch/arm/boot/dts/broadcom/bcm2711-rpi-cm4.dts    | 4 ----
+ arch/arm/boot/dts/broadcom/bcm2711-rpi-ds.dtsi    | 1 +
+ arch/arm64/boot/dts/broadcom/bcm2712-rpi-5-b.dts  | 5 -----
+ arch/arm64/boot/dts/broadcom/bcm2712-rpi-cm5.dtsi | 5 -----
+ arch/arm64/boot/dts/broadcom/bcm2712-rpi.dtsi     | 5 +++++
+ 6 files changed, 6 insertions(+), 18 deletions(-)
+
+diff --git a/arch/arm/boot/dts/broadcom/bcm2711-rpi-4-b.dts b/arch/arm/boot/dts/broadcom/bcm2711-rpi-4-b.dts
+index d3a3a1e4d4c68..75ce412a85dd7 100644
+--- a/arch/arm/boot/dts/broadcom/bcm2711-rpi-4-b.dts
++++ b/arch/arm/boot/dts/broadcom/bcm2711-rpi-4-b.dts
+@@ -265,10 +265,6 @@
+ #include "bcm283x-rpi-i2c0mux_0_44.dtsi"
+ 
+ / {
+-	chosen {
+-		bootargs = "coherent_pool=1M 8250.nr_uarts=1 snd_bcm2835.enable_headphones=0";
+-	};
+-
+ 	/delete-node/ wifi-pwrseq;
+ };
+ 
+diff --git a/arch/arm/boot/dts/broadcom/bcm2711-rpi-cm4.dts b/arch/arm/boot/dts/broadcom/bcm2711-rpi-cm4.dts
+index 6ed20e0a88d1a..678b37518fdc1 100644
+--- a/arch/arm/boot/dts/broadcom/bcm2711-rpi-cm4.dts
++++ b/arch/arm/boot/dts/broadcom/bcm2711-rpi-cm4.dts
+@@ -274,10 +274,6 @@
+ #include "bcm283x-rpi-i2c0mux_0_44.dtsi"
+ 
+ / {
+-	chosen {
+-		bootargs = "coherent_pool=1M 8250.nr_uarts=1 snd_bcm2835.enable_headphones=0";
+-	};
+-
+ 	/delete-node/ wifi-pwrseq;
+ };
+ 
+diff --git a/arch/arm/boot/dts/broadcom/bcm2711-rpi-ds.dtsi b/arch/arm/boot/dts/broadcom/bcm2711-rpi-ds.dtsi
+index b264daee2703d..f134343029b61 100644
+--- a/arch/arm/boot/dts/broadcom/bcm2711-rpi-ds.dtsi
++++ b/arch/arm/boot/dts/broadcom/bcm2711-rpi-ds.dtsi
+@@ -3,6 +3,7 @@
+ 
+ / {
+ 	chosen: chosen {
++		bootargs = "coherent_pool=1M 8250.nr_uarts=1 snd_bcm2835.enable_headphones=0";
+ 	};
+ 
+ 	__overrides__ {
+diff --git a/arch/arm64/boot/dts/broadcom/bcm2712-rpi-5-b.dts b/arch/arm64/boot/dts/broadcom/bcm2712-rpi-5-b.dts
+index 57ee497628646..672744eb89e15 100644
+--- a/arch/arm64/boot/dts/broadcom/bcm2712-rpi-5-b.dts
++++ b/arch/arm64/boot/dts/broadcom/bcm2712-rpi-5-b.dts
+@@ -429,11 +429,6 @@ dpi_16bit_gpio2:        &rp1_dpi_16bit_gpio2        { };
+ };
+ 
+ / {
+-	chosen: chosen {
+-		bootargs = "reboot=w coherent_pool=1M 8250.nr_uarts=1 pci=pcie_bus_safe";
+-		stdout-path = "serial10:115200n8";
+-	};
+-
+ 	fan: cooling_fan {
+ 		status = "disabled";
+ 		compatible = "pwm-fan";
+diff --git a/arch/arm64/boot/dts/broadcom/bcm2712-rpi-cm5.dtsi b/arch/arm64/boot/dts/broadcom/bcm2712-rpi-cm5.dtsi
+index bff6dd0eca638..1bbf8e76fb869 100644
+--- a/arch/arm64/boot/dts/broadcom/bcm2712-rpi-cm5.dtsi
++++ b/arch/arm64/boot/dts/broadcom/bcm2712-rpi-cm5.dtsi
+@@ -420,11 +420,6 @@ dpi_16bit_gpio2:        &rp1_dpi_16bit_gpio2        { };
+ };
+ 
+ / {
+-	chosen: chosen {
+-		bootargs = "reboot=w coherent_pool=1M 8250.nr_uarts=1 pci=pcie_bus_safe";
+-		stdout-path = "serial10:115200n8";
+-	};
+-
+ 	fan: cooling_fan {
+ 		status = "disabled";
+ 		compatible = "pwm-fan";
+diff --git a/arch/arm64/boot/dts/broadcom/bcm2712-rpi.dtsi b/arch/arm64/boot/dts/broadcom/bcm2712-rpi.dtsi
+index 664b632372446..8e2bb21b74c29 100644
+--- a/arch/arm64/boot/dts/broadcom/bcm2712-rpi.dtsi
++++ b/arch/arm64/boot/dts/broadcom/bcm2712-rpi.dtsi
+@@ -98,6 +98,11 @@
+ };
+ 
+ / {
++	chosen: chosen {
++		bootargs = "reboot=w coherent_pool=1M 8250.nr_uarts=1 pci=pcie_bus_safe";
++		stdout-path = "serial10:115200n8";
++	};
++
+ 	aliases: aliases {
+ 		blconfig = &blconfig;
+ 		blpubkey = &blpubkey;
+
+From 1bc94ce720d54f970f43993f2582fb8564a264b3 Mon Sep 17 00:00:00 2001
 From: Dom Cobley <popcornmix@gmail.com>
 Date: Thu, 18 Jul 2024 20:22:18 +0100
-Subject: [PATCH 8/8] dts: Set preferred numa options in bootargs
+Subject: [PATCH 7/7] dts: Set preferred numa options in bootargs
 
 Signed-off-by: Dom Cobley <popcornmix@gmail.com>
 ---
- arch/arm/boot/dts/broadcom/bcm2711-rpi-4-b.dts   | 2 +-
- arch/arm64/boot/dts/broadcom/bcm2712-rpi-5-b.dts | 2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
+ arch/arm/boot/dts/broadcom/bcm2711-rpi-cm4s.dts | 2 +-
+ arch/arm/boot/dts/broadcom/bcm2711-rpi-ds.dtsi  | 2 +-
+ arch/arm64/boot/dts/broadcom/bcm2712-rpi.dtsi   | 2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/arch/arm/boot/dts/broadcom/bcm2711-rpi-4-b.dts b/arch/arm/boot/dts/broadcom/bcm2711-rpi-4-b.dts
-index d3a3a1e4d4c68..dc0831a4a260e 100644
---- a/arch/arm/boot/dts/broadcom/bcm2711-rpi-4-b.dts
-+++ b/arch/arm/boot/dts/broadcom/bcm2711-rpi-4-b.dts
-@@ -266,7 +266,7 @@
+diff --git a/arch/arm/boot/dts/broadcom/bcm2711-rpi-cm4s.dts b/arch/arm/boot/dts/broadcom/bcm2711-rpi-cm4s.dts
+index d9fc78e49bf39..36109a0099afd 100644
+--- a/arch/arm/boot/dts/broadcom/bcm2711-rpi-cm4s.dts
++++ b/arch/arm/boot/dts/broadcom/bcm2711-rpi-cm4s.dts
+@@ -148,7 +148,7 @@
  
  / {
  	chosen {
--		bootargs = "coherent_pool=1M 8250.nr_uarts=1 snd_bcm2835.enable_headphones=0";
-+		bootargs = "coherent_pool=1M 8250.nr_uarts=1 snd_bcm2835.enable_headphones=0 system_heap.max_order=0 numa=fake=8 numa_policy=interleave iommu_dma_numa_policy=interleave";
+-		bootargs = "coherent_pool=1M snd_bcm2835.enable_headphones=0";
++		bootargs = "coherent_pool=1M snd_bcm2835.enable_headphones=0 numa=fake=8 numa_policy=interleave";
  	};
  
- 	/delete-node/ wifi-pwrseq;
-diff --git a/arch/arm64/boot/dts/broadcom/bcm2712-rpi-5-b.dts b/arch/arm64/boot/dts/broadcom/bcm2712-rpi-5-b.dts
-index 57ee497628646..16a69973ca0ad 100644
---- a/arch/arm64/boot/dts/broadcom/bcm2712-rpi-5-b.dts
-+++ b/arch/arm64/boot/dts/broadcom/bcm2712-rpi-5-b.dts
-@@ -430,7 +430,7 @@ dpi_16bit_gpio2:        &rp1_dpi_16bit_gpio2        { };
+ 	aliases {
+diff --git a/arch/arm/boot/dts/broadcom/bcm2711-rpi-ds.dtsi b/arch/arm/boot/dts/broadcom/bcm2711-rpi-ds.dtsi
+index f134343029b61..1b8e9e5e324d0 100644
+--- a/arch/arm/boot/dts/broadcom/bcm2711-rpi-ds.dtsi
++++ b/arch/arm/boot/dts/broadcom/bcm2711-rpi-ds.dtsi
+@@ -3,7 +3,7 @@
+ 
+ / {
+ 	chosen: chosen {
+-		bootargs = "coherent_pool=1M 8250.nr_uarts=1 snd_bcm2835.enable_headphones=0";
++		bootargs = "coherent_pool=1M 8250.nr_uarts=1 snd_bcm2835.enable_headphones=0 numa=fake=8 numa_policy=interleave";
+ 	};
+ 
+ 	__overrides__ {
+diff --git a/arch/arm64/boot/dts/broadcom/bcm2712-rpi.dtsi b/arch/arm64/boot/dts/broadcom/bcm2712-rpi.dtsi
+index 8e2bb21b74c29..777a1e5bda777 100644
+--- a/arch/arm64/boot/dts/broadcom/bcm2712-rpi.dtsi
++++ b/arch/arm64/boot/dts/broadcom/bcm2712-rpi.dtsi
+@@ -99,7 +99,7 @@
  
  / {
  	chosen: chosen {

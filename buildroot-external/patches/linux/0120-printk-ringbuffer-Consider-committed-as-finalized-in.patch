@@ -1,4 +1,4 @@
-From 59ed65a9420989294645df398c9e68180d6ed581 Mon Sep 17 00:00:00 2001
+From d29d46982574054090c3e17cc6de9abd58208702 Mon Sep 17 00:00:00 2001
 From: John Ogness <john.ogness@linutronix.de>
 Date: Mon, 20 Nov 2023 12:46:35 +0100
 Subject: [PATCH 120/198] printk: ringbuffer: Consider committed as finalized

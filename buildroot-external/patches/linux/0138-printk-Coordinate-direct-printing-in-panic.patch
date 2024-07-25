@@ -1,4 +1,4 @@
-From 0a0e0683c8ef122489f87bb047f4193f8410d211 Mon Sep 17 00:00:00 2001
+From 273edc65e88de8a03cf5a7a6748638df80c89e1a Mon Sep 17 00:00:00 2001
 From: John Ogness <john.ogness@linutronix.de>
 Date: Wed, 22 Nov 2023 11:56:58 +0000
 Subject: [PATCH 138/198] printk: Coordinate direct printing in panic

@@ -1,4 +1,4 @@
-From 70046a2439ea9aaab097b025d69e4c5777f110dc Mon Sep 17 00:00:00 2001
+From f84633df1dd5f66f99e5ce5a29937acc3cb96e7b Mon Sep 17 00:00:00 2001
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Thu, 14 Sep 2023 20:44:16 +0206
 Subject: [PATCH 085/198] serial: txx9: Use port lock wrappers

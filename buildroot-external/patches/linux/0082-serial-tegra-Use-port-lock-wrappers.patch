@@ -1,4 +1,4 @@
-From 6fa04328c73caf182ef6a1ebdbf5632a2d81d6d4 Mon Sep 17 00:00:00 2001
+From 8d967a865b6953167130468168458394550be89e Mon Sep 17 00:00:00 2001
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Thu, 14 Sep 2023 20:44:13 +0206
 Subject: [PATCH 082/198] serial: tegra: Use port lock wrappers

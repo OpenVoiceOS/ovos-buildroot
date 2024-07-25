@@ -1,4 +1,4 @@
-From 57e43e1ee218df621ee5337c3d847d4d890c46bd Mon Sep 17 00:00:00 2001
+From 62462308af959e397122c1a6219761e049471bec Mon Sep 17 00:00:00 2001
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Thu, 14 Sep 2023 20:44:07 +0206
 Subject: [PATCH 076/198] serial: rda: Use port lock wrappers

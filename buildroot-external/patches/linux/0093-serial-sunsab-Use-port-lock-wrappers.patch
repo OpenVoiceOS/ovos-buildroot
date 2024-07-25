@@ -1,4 +1,4 @@
-From b23b6bb62fea80c29f07c7d8cfcfd18a0780fa5a Mon Sep 17 00:00:00 2001
+From 272fb95cd3e14fc16d8d8d143831e0eed9014990 Mon Sep 17 00:00:00 2001
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Thu, 14 Sep 2023 20:44:24 +0206
 Subject: [PATCH 093/198] serial: sunsab: Use port lock wrappers

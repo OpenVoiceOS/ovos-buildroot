@@ -1,4 +1,4 @@
-From 82fb9d752a830a3b659697aac963f88ebde44104 Mon Sep 17 00:00:00 2001
+From 5a1d423eb0a3a621a4a1a8fc6070fc9e76a9a26a Mon Sep 17 00:00:00 2001
 From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Thu, 20 Jun 2024 11:21:13 +0200
 Subject: [PATCH 197/198] prinkt/nbcon: Add a scheduling point to

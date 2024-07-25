@@ -1,4 +1,4 @@
-From 9a8ba8481235374bf9e1caf62f62699410716d74 Mon Sep 17 00:00:00 2001
+From 787597c3d5c6eccc63a42080a9000b439febc947 Mon Sep 17 00:00:00 2001
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Thu, 14 Sep 2023 20:44:02 +0206
 Subject: [PATCH 071/198] serial: pch: Use port lock wrappers

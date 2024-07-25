@@ -1,4 +1,4 @@
-From 1d341dfc82351031ea1a93de23758b7777a51892 Mon Sep 17 00:00:00 2001
+From 67e6407f9c6997124a48007e3c96c33ce7e9dbf9 Mon Sep 17 00:00:00 2001
 From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Thu, 21 Sep 2023 16:15:15 +0200
 Subject: [PATCH 013/198] drm/amd/display: Move the memory allocation out of

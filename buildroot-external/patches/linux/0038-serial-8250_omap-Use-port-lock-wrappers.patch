@@ -1,4 +1,4 @@
-From 56532bba46e4ebd1777505b80fcdce6cff87d973 Mon Sep 17 00:00:00 2001
+From 89c679b54a7b3877b5d4b67c3dce5571fc98ff32 Mon Sep 17 00:00:00 2001
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Thu, 14 Sep 2023 20:43:29 +0206
 Subject: [PATCH 038/198] serial: 8250_omap: Use port lock wrappers

@@ -1,4 +1,4 @@
-From d6997d53bfddd199295e21d81deb60f80138f50c Mon Sep 17 00:00:00 2001
+From 9b77283262bf5440db5c5730b730a1b949574684 Mon Sep 17 00:00:00 2001
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Thu, 14 Sep 2023 20:43:46 +0206
 Subject: [PATCH 055/198] serial: imx: Use port lock wrappers

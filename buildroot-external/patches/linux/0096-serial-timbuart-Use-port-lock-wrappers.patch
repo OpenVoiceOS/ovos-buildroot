@@ -1,4 +1,4 @@
-From ca6106acfbcb39f30ddb5003dadd2537d1002bc0 Mon Sep 17 00:00:00 2001
+From b6450c235eac01069228819da5994fab9bd43a86 Mon Sep 17 00:00:00 2001
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Thu, 14 Sep 2023 20:44:27 +0206
 Subject: [PATCH 096/198] serial: timbuart: Use port lock wrappers

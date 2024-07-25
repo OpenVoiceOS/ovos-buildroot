@@ -1,4 +1,4 @@
-From 56f2eb8c0d438feea7e61fcbd4a1ac7e2b72e129 Mon Sep 17 00:00:00 2001
+From ddcac0ca1e98a7ffa5c899b31664cb0ed3aff29a Mon Sep 17 00:00:00 2001
 From: John Ogness <john.ogness@linutronix.de>
 Date: Mon, 11 Sep 2023 15:53:39 +0000
 Subject: [PATCH 142/198] rcu: Mark emergency section in rcu stalls

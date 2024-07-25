@@ -1,4 +1,4 @@
-From d9d52896ca258256888030cfd311a37a98e919a4 Mon Sep 17 00:00:00 2001
+From d589f5c720e72cb067f0d9d09f1acbd6b6e9f6aa Mon Sep 17 00:00:00 2001
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Thu, 14 Sep 2023 20:43:40 +0206
 Subject: [PATCH 049/198] serial: cpm_uart: Use port lock wrappers

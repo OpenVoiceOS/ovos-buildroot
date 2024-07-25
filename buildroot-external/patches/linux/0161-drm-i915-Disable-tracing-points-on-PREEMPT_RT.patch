@@ -1,4 +1,4 @@
-From 343b17ac073d19f5107705e87faac66a351794d2 Mon Sep 17 00:00:00 2001
+From 2c01464463916f5d9b4b7a36be2234013f7dcbfd Mon Sep 17 00:00:00 2001
 From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Thu, 6 Dec 2018 09:52:20 +0100
 Subject: [PATCH 161/198] drm/i915: Disable tracing points on PREEMPT_RT

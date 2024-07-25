@@ -1,4 +1,4 @@
-From a8e0a42e91459b21573f9ec940965b26bb0cf9d3 Mon Sep 17 00:00:00 2001
+From 966806d649a35aa824a2b2a8223c9bf0d4193270 Mon Sep 17 00:00:00 2001
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Thu, 14 Sep 2023 20:44:06 +0206
 Subject: [PATCH 075/198] serial: qcom-geni: Use port lock wrappers

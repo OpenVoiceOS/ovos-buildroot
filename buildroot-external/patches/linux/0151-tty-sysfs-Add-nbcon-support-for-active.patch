@@ -1,4 +1,4 @@
-From 70cd8442117d3f5837d45c8c432e6a6bcdd67980 Mon Sep 17 00:00:00 2001
+From afa37e5be14791e9e32d9c34c78c21ecb7350383 Mon Sep 17 00:00:00 2001
 From: John Ogness <john.ogness@linutronix.de>
 Date: Fri, 22 Sep 2023 14:31:09 +0000
 Subject: [PATCH 151/198] tty: sysfs: Add nbcon support for 'active'

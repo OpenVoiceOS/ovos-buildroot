@@ -1,4 +1,4 @@
-From 2dfa9f9c68b582c25a433a35b9b9b9a6ac924d70 Mon Sep 17 00:00:00 2001
+From f178d0e863ed7025a9350cbb950281e400fcaa16 Mon Sep 17 00:00:00 2001
 From: Frederic Weisbecker <frederic@kernel.org>
 Date: Tue, 5 Apr 2022 03:07:51 +0200
 Subject: [PATCH 020/198] rcutorture: Also force sched priority to timersd on

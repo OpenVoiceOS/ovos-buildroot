@@ -1,4 +1,4 @@
-From a5ad40efc5cd4e88be94245306fc5b98de6258f8 Mon Sep 17 00:00:00 2001
+From 587ff8c1e0d4260e84573d21d2387b7bc3f6c055 Mon Sep 17 00:00:00 2001
 From: Peter Zijlstra <peterz@infradead.org>
 Date: Fri, 8 Sep 2023 18:22:48 +0200
 Subject: [PATCH 001/198] sched: Constrain locks in sched_submit_work()
@@ -18,10 +18,10 @@ Link: https://lkml.kernel.org/r/20230908162254.999499-2-bigeasy@linutronix.de
  1 file changed, 9 insertions(+)
 
 diff --git a/kernel/sched/core.c b/kernel/sched/core.c
-index dcb30e304871..ca7a390b9f62 100644
+index 820880960513..3593fa308098 100644
 --- a/kernel/sched/core.c
 +++ b/kernel/sched/core.c
-@@ -6721,11 +6721,18 @@ void __noreturn do_task_dead(void)
+@@ -6724,11 +6724,18 @@ void __noreturn do_task_dead(void)
  
  static inline void sched_submit_work(struct task_struct *tsk)
  {
@@ -40,7 +40,7 @@ index dcb30e304871..ca7a390b9f62 100644
  	task_flags = tsk->flags;
  	/*
  	 * If a worker goes to sleep, notify and ask workqueue whether it
-@@ -6750,6 +6757,8 @@ static inline void sched_submit_work(struct task_struct *tsk)
+@@ -6753,6 +6760,8 @@ static inline void sched_submit_work(struct task_struct *tsk)
  	 * make sure to submit it to avoid deadlocks.
  	 */
  	blk_flush_plug(tsk->plug, true);

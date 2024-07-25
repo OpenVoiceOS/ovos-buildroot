@@ -1,4 +1,4 @@
-From df886b013878b3ada509177a9d4eb3a4c2c23301 Mon Sep 17 00:00:00 2001
+From 23d144bb0f021b6b20003b42bb1dfdcd301cf755 Mon Sep 17 00:00:00 2001
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Thu, 14 Sep 2023 20:43:45 +0206
 Subject: [PATCH 054/198] serial: icom: Use port lock wrappers

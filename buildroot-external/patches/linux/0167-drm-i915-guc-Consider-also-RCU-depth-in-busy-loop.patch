@@ -1,4 +1,4 @@
-From dceaa0a09e37e39a8abc2df6c938825e0051a0a2 Mon Sep 17 00:00:00 2001
+From 27595e31b5747c9ea7eddbba26253b7a0505c64e Mon Sep 17 00:00:00 2001
 From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Tue, 3 Oct 2023 21:37:21 +0200
 Subject: [PATCH 167/198] drm/i915/guc: Consider also RCU depth in busy loop.

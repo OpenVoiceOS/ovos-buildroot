@@ -1,4 +1,4 @@
-From df5a4b7476642b0702ce41b375065c9c29692985 Mon Sep 17 00:00:00 2001
+From 720a215a22de4e08809f6ac8e2a60494c3679355 Mon Sep 17 00:00:00 2001
 From: John Ogness <john.ogness@linutronix.de>
 Date: Mon, 11 Dec 2023 09:19:18 +0000
 Subject: [PATCH 153/198] serial: core: Provide low-level functions to port

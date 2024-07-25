@@ -1,4 +1,4 @@
-From 726fcf358613df82a8068f8aaa9507d67df8de50 Mon Sep 17 00:00:00 2001
+From 105d9b72e13aab3277bd67e131719c4ed0ca94b5 Mon Sep 17 00:00:00 2001
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Fri, 8 Sep 2023 18:22:50 +0200
 Subject: [PATCH 003/198] sched: Extract __schedule_loop()
@@ -15,10 +15,10 @@ Link: https://lkml.kernel.org/r/20230908162254.999499-4-bigeasy@linutronix.de
  1 file changed, 11 insertions(+), 10 deletions(-)
 
 diff --git a/kernel/sched/core.c b/kernel/sched/core.c
-index ca7a390b9f62..8f6962c0619b 100644
+index 3593fa308098..30659d67daf6 100644
 --- a/kernel/sched/core.c
 +++ b/kernel/sched/core.c
-@@ -6771,16 +6771,21 @@ static void sched_update_worker(struct task_struct *tsk)
+@@ -6774,16 +6774,21 @@ static void sched_update_worker(struct task_struct *tsk)
  	}
  }
  
@@ -45,7 +45,7 @@ index ca7a390b9f62..8f6962c0619b 100644
  	sched_update_worker(tsk);
  }
  EXPORT_SYMBOL(schedule);
-@@ -6844,11 +6849,7 @@ void __sched schedule_preempt_disabled(void)
+@@ -6847,11 +6852,7 @@ void __sched schedule_preempt_disabled(void)
  #ifdef CONFIG_PREEMPT_RT
  void __sched notrace schedule_rtlock(void)
  {

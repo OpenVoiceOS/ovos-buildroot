@@ -1,4 +1,4 @@
-From a333398f29d5a235da91a21723508bc5412f66bf Mon Sep 17 00:00:00 2001
+From 5fef4d3309e981aa62c5184f974d76fb7b26d2b7 Mon Sep 17 00:00:00 2001
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Thu, 14 Sep 2023 20:44:29 +0206
 Subject: [PATCH 098/198] serial: ucc_uart: Use port lock wrappers

@@ -1,4 +1,4 @@
-From 0885034ac6bb370faf679bfcd44a7d7d76fdb6dd Mon Sep 17 00:00:00 2001
+From b902f0c9ca0f4234552215a4b8fbb6b0cd274aa4 Mon Sep 17 00:00:00 2001
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Thu, 14 Sep 2023 20:43:37 +0206
 Subject: [PATCH 046/198] serial: arc_uart: Use port lock wrappers

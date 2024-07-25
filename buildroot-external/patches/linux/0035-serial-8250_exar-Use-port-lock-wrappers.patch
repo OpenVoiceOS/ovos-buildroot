@@ -1,4 +1,4 @@
-From dd51d4714ec1d3482aa85da3d185c2f8553764a0 Mon Sep 17 00:00:00 2001
+From ebb1f40b7cff4130355091b16d8b084992e8ab73 Mon Sep 17 00:00:00 2001
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Thu, 14 Sep 2023 20:43:26 +0206
 Subject: [PATCH 035/198] serial: 8250_exar: Use port lock wrappers

@@ -1,4 +1,4 @@
-From c58808c23fd2aae0bb9bbeffc8eb9b95d623366d Mon Sep 17 00:00:00 2001
+From 470596aa24121701bdeb1652bbc590658afaee5c Mon Sep 17 00:00:00 2001
 From: John Ogness <john.ogness@linutronix.de>
 Date: Tue, 26 Sep 2023 12:44:07 +0000
 Subject: [PATCH 136/198] printk: Avoid console_lock dance if no legacy or boot

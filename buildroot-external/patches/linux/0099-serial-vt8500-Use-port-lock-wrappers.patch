@@ -1,4 +1,4 @@
-From 3b482457439fd43fb58c780ae34588e13ab68ec7 Mon Sep 17 00:00:00 2001
+From bd637f8e5b8bf0abb4570b67c7bff609d37c6459 Mon Sep 17 00:00:00 2001
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Thu, 14 Sep 2023 20:44:30 +0206
 Subject: [PATCH 099/198] serial: vt8500: Use port lock wrappers

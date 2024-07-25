@@ -1,4 +1,4 @@
-From 3c73775d695d5cd02c3e8d459e1df2724b9f24f0 Mon Sep 17 00:00:00 2001
+From af075b784af639458d4408659d908a5b165b0696 Mon Sep 17 00:00:00 2001
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Thu, 14 Sep 2023 20:43:19 +0206
 Subject: [PATCH 028/198] serial: core: Use lock wrappers

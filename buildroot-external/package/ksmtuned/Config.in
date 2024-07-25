@@ -1,0 +1,7 @@
+config BR2_PACKAGE_KSMTUNED
+	bool "ksmtuned"
+	help
+	  Kernel Samepage Merging services, ksm and ksmtuned.
+
+	  https://github.com/ksmtuned/ksmtuned
+

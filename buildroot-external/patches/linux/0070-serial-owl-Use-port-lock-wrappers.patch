@@ -1,4 +1,4 @@
-From abf9e80da57ca5384bc737cfb48a7d1b75d993d4 Mon Sep 17 00:00:00 2001
+From 556370f59ed3add619e904352a009448d76dcffb Mon Sep 17 00:00:00 2001
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Thu, 14 Sep 2023 20:44:01 +0206
 Subject: [PATCH 070/198] serial: owl: Use port lock wrappers

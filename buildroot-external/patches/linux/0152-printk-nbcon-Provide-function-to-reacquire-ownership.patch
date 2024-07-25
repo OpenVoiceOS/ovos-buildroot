@@ -1,4 +1,4 @@
-From 8ebdc90090c53e64cb542228f3e90f309c0933e8 Mon Sep 17 00:00:00 2001
+From ea2aa59d0bb7b8478cc2edfb26278838e129ae75 Mon Sep 17 00:00:00 2001
 From: John Ogness <john.ogness@linutronix.de>
 Date: Fri, 20 Oct 2023 10:01:58 +0000
 Subject: [PATCH 152/198] printk: nbcon: Provide function to reacquire

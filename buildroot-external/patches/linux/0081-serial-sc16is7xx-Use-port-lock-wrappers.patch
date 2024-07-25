@@ -1,4 +1,4 @@
-From cd3dc0f9dc561de73525997a01ac09e1d125dd02 Mon Sep 17 00:00:00 2001
+From 00ad54e4131cacae641a93b84e7d90f425999ed2 Mon Sep 17 00:00:00 2001
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Thu, 14 Sep 2023 20:44:12 +0206
 Subject: [PATCH 081/198] serial: sc16is7xx: Use port lock wrappers

@@ -1,4 +1,4 @@
-From 3fe6d131433d048f8ab7dd55f7106599ecefaddd Mon Sep 17 00:00:00 2001
+From 9e74fe7b9f9d7e48bed2b9a35436905afd3730e5 Mon Sep 17 00:00:00 2001
 From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Fri, 4 Aug 2023 13:30:37 +0200
 Subject: [PATCH 025/198] sched/core: Provide a method to check if a task is
@@ -31,10 +31,10 @@ index 67623ffd4a8e..eab173e5d09b 100644
  extern void set_user_nice(struct task_struct *p, long nice);
  extern int task_prio(const struct task_struct *p);
 diff --git a/kernel/sched/core.c b/kernel/sched/core.c
-index b49e976e831d..bbc2e377fc79 100644
+index a1fc8d66c7ac..b917a854ac50 100644
 --- a/kernel/sched/core.c
 +++ b/kernel/sched/core.c
-@@ -8923,6 +8923,21 @@ static inline void preempt_dynamic_init(void) { }
+@@ -8926,6 +8926,21 @@ static inline void preempt_dynamic_init(void) { }
  
  #endif /* #ifdef CONFIG_PREEMPT_DYNAMIC */
  

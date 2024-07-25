@@ -1,4 +1,4 @@
-From a8724492d34701293e269c18afc7d13e6f753b32 Mon Sep 17 00:00:00 2001
+From 5a61894d99aa1d7b1b70e6f50c74980d6dcf940f Mon Sep 17 00:00:00 2001
 From: John Ogness <john.ogness@linutronix.de>
 Date: Tue, 19 Sep 2023 17:07:34 +0000
 Subject: [PATCH 141/198] panic: Mark emergency section in oops
