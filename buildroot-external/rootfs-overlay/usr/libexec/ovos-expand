@@ -35,8 +35,9 @@ echo ", +" | sfdisk --no-reread --no-tell-kernel -N "${PART_NUM}" "${DEVICE}"
 sfdisk -V "${DEVICE}"
 partx -u "${DEVICE}"
 udevadm settle
-partprobe "${DEVICE}"
 
-echo "[INFO] Resizing the homefs partition"
-resize2fs "${DEVICE_HOMEFS}"
-echo "[OK]"
+if ! systemctl start "dev-disk-by\x2dpartlabel-homefs.device"; then
+    echo "[ERROR] homefs partition not found!"
+    exit 1
+fi
+echo "[INFO] homefs partition succesfully resized"

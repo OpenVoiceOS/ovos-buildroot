@@ -1,0 +1,13 @@
+[Unit]
+Description=Systemd persistent state
+Requires=mnt-overlay.mount
+After=mnt-overlay.mount
+
+[Mount]
+What=/mnt/overlay/var/lib/systemd
+Where=/var/lib/systemd
+Type=None
+Options=bind
+
+[Install]
+WantedBy=ovos-bind.target

@@ -1,0 +1,13 @@
+[Unit]
+Description=ALSA persistent state
+Requires=mnt-overlay.mount
+After=mnt-overlay.mount
+
+[Mount]
+What=/mnt/overlay/var/lib/alsa
+Where=/var/lib/alsa
+Type=None
+Options=bind
+
+[Install]
+WantedBy=ovos-bind.target

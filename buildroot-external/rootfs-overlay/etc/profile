@@ -1,5 +1,5 @@
 export PATH="/usr/bin:/usr/sbin"
-export LD_PRELOAD="/usr/lib/libjemalloc.so.2"
+# export LD_PRELOAD="/usr/lib/libjemalloc.so.2"
 
 if [ "$PS1" ]; then
         if [ "`id -u`" -eq 0 ]; then

@@ -1,0 +1,13 @@
+[Unit]
+Description=OpenVoiceOS swap
+DefaultDependencies=no
+Requires=mnt-home.mount
+After=mnt-home.mount systemd-growfs@mnt-home.service
+Before=mnt-data-swapfile.swap
+
+[Service]
+Type=oneshot
+ExecStart=/usr/libexec/ovos-swapfile
+
+[Install]
+WantedBy=swap.target

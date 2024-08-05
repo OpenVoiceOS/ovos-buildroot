@@ -116,6 +116,7 @@ endmenu
 	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/respeaker/Config.in"
 	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/rnnnoise-ladspa/Config.in"
 	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/roc-toolkit/Config.in"
+	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/rpi-bluetooth/Config.in"
 	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/rpi-eeprom/Config.in"
 	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/ruy/Config.in"
 	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/snapcast/Config.in"

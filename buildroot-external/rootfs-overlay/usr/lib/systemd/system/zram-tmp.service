@@ -1,0 +1,15 @@
+[Unit]
+Description=OpenVoiceOS ZRAM tmp
+DefaultDependencies=no
+Before=tmp.mount
+RefuseManualStart=true
+RefuseManualStop=true
+
+[Service]
+Type=oneshot
+ExecStart=/usr/libexec/ovos-zram -t fs -m tmp -s 64M
+RemainAfterExit=true
+StandardOutput=null
+
+[Install]
+WantedBy=ovos-zram.target

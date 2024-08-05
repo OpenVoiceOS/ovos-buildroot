@@ -1,0 +1,15 @@
+[Unit]
+Description=NetworkManager persistent data
+Requires=mnt-overlay.mount
+After=mnt-overlay.mount ovos-overlay.service
+Before=NetworkManager.service
+
+[Mount]
+What=/mnt/overlay/var/lib/NetworkManager
+Where=/var/lib/NetworkManager
+Type=none
+Options=bind
+LazyUnmount=yes
+
+[Install]
+WantedBy=ovos-bind.target

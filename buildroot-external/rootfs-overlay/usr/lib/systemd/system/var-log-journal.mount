@@ -1,0 +1,15 @@
+[Unit]
+Description=Systemd persistent logging
+Requires=mnt-overlay.mount
+After=mnt-overlay.mount
+Before=systemd-journal-flush.service
+
+[Mount]
+What=/mnt/overlay/logs
+Where=/var/log/journal
+Type=None
+Options=bind
+LazyUnmount=yes
+
+[Install]
+WantedBy=ovos-bind.target

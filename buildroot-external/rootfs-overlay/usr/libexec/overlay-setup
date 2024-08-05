@@ -10,3 +10,29 @@ fi
 if [ ! -d /mnt/overlay/root ]; then
   mkdir -p /mnt/overlay/root
 fi
+
+# journal/logs directory
+if [ ! -d /mnt/overlay/logs ]; then
+  mkdir -p /mnt/overlay/logs
+fi
+
+# Systemd persistent state directory
+if [ ! -d /mnt/overlay/var/lib/systemd ]; then
+  mkdir -p /mnt/overlay/var/lib/systemd
+  cp -a /var/lib/systemd/* /mnt/overlay/var/lib/systemd/
+fi
+
+# Bluetooth persistent state directory
+if [ ! -d /mnt/overlay/var/lib/bluetooth ]; then
+  mkdir -p /mnt/overlay/var/lib/bluetooth
+fi
+
+# NetworkManager persistent data directory
+if [ ! -d /mnt/overlay/var/lib/NetworkManager ]; then
+  mkdir -p /mnt/overlay/var/lib/NetworkManager
+fi
+
+# ALSA persistent state directory
+if [ ! -d /mnt/overlay/var/lib/alsa ]; then
+  mkdir -p /mnt/overlay/var/lib/alsa
+fi

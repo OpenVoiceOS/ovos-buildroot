@@ -1,0 +1,12 @@
+[Unit]
+Description=Configure Bluetooth Modems connected by UART
+ConditionFileNotEmpty=/proc/device-tree/soc/gpio@7e200000/bt_pins/brcm,pins
+After=dev-serial1.device
+
+[Service]
+Type=forking
+ExecCondition=/bin/sh -c '[ "$(cat /proc/device-tree/$(cat /proc/device-tree/aliases/bluetooth)/status)" != "okay" ]'
+ExecStart=/usr/bin/btuart
+
+[Install]
+WantedBy=ovos-hardware.target
