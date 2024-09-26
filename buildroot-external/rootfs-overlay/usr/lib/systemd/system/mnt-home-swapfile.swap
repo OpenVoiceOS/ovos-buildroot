@@ -1,8 +1,0 @@
-[Unit]
-Description=OVOS swap file
-
-[Swap]
-What=/mnt/home/swapfile
-
-[Install]
-WantedBy=swap.target

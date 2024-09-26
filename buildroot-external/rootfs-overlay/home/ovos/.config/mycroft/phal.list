@@ -1,0 +1,9 @@
+ovos-phal-plugin-ipgeo>=0.1.0,<1.0.0
+ovos-PHAL-plugin-connectivity-events>=0.0.1,<1.0.0
+ovos-PHAL-plugin-oauth>=0.0.1,<1.0.0
+ovos-PHAL-plugin-wifi-setup>=1.0.0,<2.0.0
+ovos-phal-plugin-alsa>=0.0.1,<1.0.0
+ovos-phal-plugin-system>=0.1.0,<1.0.0
+ovos-PHAL-plugin-network-manager>=0.0.1,<2.0.0
+ovos-PHAL-plugin-wallpaper-manager>=0.0.1,<1.0.0
+ovos-PHAL-plugin-hotkeys>=0.0.0,<1.0.0

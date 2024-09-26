@@ -105,6 +105,7 @@ endmenu
 	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/ovos-bus-server/Config.in"
 	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/ovos-containers/Config.in"
 	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/ovos-dashboard/Config.in"
+	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/ovos-rust-messagebus/Config.in"
 	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/ovos-shell/Config.in"
 	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/ovos-splash/Config.in"
 	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/pa-volume/Config.in"

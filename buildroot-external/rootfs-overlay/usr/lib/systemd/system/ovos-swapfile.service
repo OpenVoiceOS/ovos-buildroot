@@ -1,8 +1,8 @@
 [Unit]
 Description=OpenVoiceOS swap
 DefaultDependencies=no
-Requires=mnt-home.mount
-After=mnt-home.mount systemd-growfs@mnt-home.service
+RequiresMountsFor=/home /etc
+After=systemd-growfs@mnt-home.service
 Before=mnt-data-swapfile.swap
 
 [Service]

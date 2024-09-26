@@ -1,4 +1,0 @@
-[Image]
-Image=docker.io/smartgic/hivemind-listener:alpha
-ImageTag=hivemind-listener
-#TLSVerify=false

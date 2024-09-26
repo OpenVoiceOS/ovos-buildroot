@@ -1,7 +1,7 @@
 #!/bin/sh
 set -e
 
-swapfile="/mnt/home/swapfile"
+swapfile="/home/swapfile"
 swapsize="$(awk '/MemTotal/{ print $2 * 0.33 }' /proc/meminfo)"
 
 
@@ -13,6 +13,7 @@ if [ ! -s "${swapfile}" ] || [ "$(stat "${swapfile}" -c '%s')" -lt $((swapsize *
 	fi
 
 	dd if=/dev/zero of="${swapfile}" bs=1k count="${swapsize}"
+	chmod 0600 "${swapfile}"
 fi
 
 if ! swaplabel "${swapfile}" > /dev/null 2>&1; then

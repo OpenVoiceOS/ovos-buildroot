@@ -1,4 +1,4 @@
 [Image]
-Image=docker.io/smartgic/ovos-gui-shell:alpha
+Image=docker.io/smartgic/ovos-gui-shell:0.0.8a
 ImageTag=ovos-gui-shell
 #TLSVerify=false

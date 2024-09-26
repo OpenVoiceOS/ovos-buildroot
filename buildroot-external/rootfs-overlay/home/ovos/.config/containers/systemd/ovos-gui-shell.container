@@ -1,20 +1,21 @@
 [Unit]
 Description=OpenVoiceOS GUI Service
-After=local-fs.target
-After=network.target
+#After=local-fs.target
+#After=
+#After=network-online.target
 #Wants=network-online.target
 #Wants=pipewire.service
 #After=pipewire.service
+#Wants=ovos-bus-server.service
+#After=ovos-bus-server.service
 #Wants=ovos-messagebus.service
 #After=ovos-messagebus.service
-#Wants=ovos-phal.service
-#After=ovos-phal.service
 #Wants=ovos-gui-websocket.service
 #After=ovos-gui-websocket.service
 
 [Container]
 ContainerName=ovos-gui-shell
-Image=docker.io/smartgic/ovos-gui-shell:alpha
+Image=docker.io/smartgic/ovos-gui-shell:0.1.0
 Pull=never
 AutoUpdate=registry
 LogDriver=journald
@@ -22,18 +23,18 @@ HostName=ovos-gui-shell
 Network=host
 Timezone=local
 UserNS=keep-id:uid=%U,gid=%G
-SecurityLabelDisable=true
 EnvironmentFile=%h/.config/containers/env
-AddDevice=/dev/snd
-AddDevice=/dev/dri
-AddDevice=/dev/input
-Volume=%h/ovos/config:/home/ovos/.config/mycroft:z
-Volume=%h/ovos/tmp:/tmp:z
-Volume=%t/pipewire-0:/run/user/1000/pipewire-0:ro
-Volume=%t/bus:/run/user/1000/bus:ro
-Volume=%h/ovos/share:/home/ovos/.local/share/mycroft:z
-Volume=ovos_gui_files:/home/ovos/.cache/gui_files:z
-Volume=/run/udev/data:/run/udev/data:ro
+AddDevice=-/dev/snd
+AddDevice=-/dev/dri
+AddDevice=-/dev/input
+Volume=%h/.config/mycroft:/home/ovos/.config/mycroft
+Volume=%h/.local/state/mycroft:/home/ovos/.local/state/mycroft
+Volume=%h/.local/share/mycroft:/home/ovos/.local/share/mycroft
+Volume=%h/.cache:/home/ovos/.cache
+Volume=%h/ovos/tmp:/tmp:z,U
+Volume=%t:/run/user/1000
+Volume=/run/dbus:/run/dbus
+Volume=/run/udev:/run/udev:ro
 
 [Service]
 TimeoutStartSec=900

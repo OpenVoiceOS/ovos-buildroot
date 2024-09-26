@@ -11,9 +11,9 @@ RPI_BLUETOOTH_LICENSE_FILES = debian/copyright
 
 define RPI_BLUETOOTH_INSTALL_TARGET_CMDS
 	$(INSTALL) -d $(TARGET_DIR)/etc/systemd/system/ovos-hardware.target.wants
-	$(INSTALL) -m 0644 $(BR2_EXTERNAL_HASSOS_PATH)/package/rpi-bluetooth/hciuart.service $(TARGET_DIR)/usr/lib/systemd/system/
-	$(INSTALL) -m 0644 $(BR2_EXTERNAL_HASSOS_PATH)/package/pi-bluetooth/hcidisable.service $(TARGET_DIR)/usr/lib/systemd/system/
-	$(INSTALL) -m 0644 $(BR2_EXTERNAL_HASSOS_PATH)/package/rpi-bluetooth/bthelper@.service $(TARGET_DIR)/usr/lib/systemd/system/
+	$(INSTALL) -m 0644 $(BR2_EXTERNAL_OPENVOICEOS_PATH)/package/rpi-bluetooth/hciuart.service $(TARGET_DIR)/usr/lib/systemd/system/
+	$(INSTALL) -m 0644 $(BR2_EXTERNAL_OPENVOICEOS_PATH)/package/rpi-bluetooth/hcidisable.service $(TARGET_DIR)/usr/lib/systemd/system/
+	$(INSTALL) -m 0644 $(BR2_EXTERNAL_OPENVOICEOS_PATH)/package/rpi-bluetooth/bthelper@.service $(TARGET_DIR)/usr/lib/systemd/system/
 
 	$(INSTALL) -d $(TARGET_DIR)/usr/bin
 	$(INSTALL) -m 0755 $(@D)/usr/bin/btuart $(TARGET_DIR)/usr/bin/

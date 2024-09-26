@@ -1,0 +1,16 @@
+[Unit]
+Description=OVOS swap file
+Requires=mnt-overlay.mount
+After=mnt-overlay.mount
+Requires=ovos-overlay.service
+After=ovos-overlay.service
+Requires=mnt-home.mount
+After=mnt-home.mount
+Requires=ovos-swapfile.service
+After=ovos-swapfile.service
+
+[Swap]
+What=/home/swapfile
+
+[Install]
+WantedBy=swap.target

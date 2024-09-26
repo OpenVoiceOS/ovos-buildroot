@@ -1,0 +1,5 @@
+[Volume]
+User=ovos
+Group=ovos
+Copy=true
+Label=name=ovos_venv_messagebus

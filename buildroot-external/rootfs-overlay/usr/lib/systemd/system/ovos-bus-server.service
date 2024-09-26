@@ -7,7 +7,8 @@ After=network.target
 Type=simple
 StandardOutput=null
 StandardError=null
-ExecStart=/usr/bin/ovos-bus-server
+Environment=OVOS_BUS_MAX_MSG_SIZE=100
+ExecStart=/usr/local/bin/ovos_messagebus
 Restart=always
 StartLimitInterval=0
 

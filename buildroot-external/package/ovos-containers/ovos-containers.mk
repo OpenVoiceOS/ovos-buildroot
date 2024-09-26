@@ -11,22 +11,16 @@ OVOS_CONTAINERS_SITE = $(BR2_EXTERNAL_OPENVOICEOS_PATH)/package/ovos-containers
 OVOS_CONTAINERS_SITE_METHOD = local
 #OVOS_CONTAINERS_DEPENDENCIES = host-skopeo host-podman host-jq
 
-OVOS_CONTAINERS_IMAGES = ovos-phal \
-			 ovos-messagebus \
+OVOS_CONTAINERS_IMAGES = ovos-messagebus \
+			 ovos-phal \
 			 ovos-listener-dinkum \
 			 ovos-audio \
 			 ovos-core \
+			 ovos-gui-websocket \
 			 ovos-cli
 
 ifeq ($(BR2_PACKAGE_OVOS_CONTAINERS_GUI),y)
 OVOS_CONTAINERS_IMAGES += ovos-gui-shell
-define OVOS_CONTAINERS_INSTALL_GUI_SERVICES
-
-        $(INSTALL) -D -m 644 $(BR2_EXTERNAL_OPENVOICEOS_PATH)/package/ovos-containers/ovos_gui.container \
-                $(TARGET_DIR)/home/ovos/.config/containers/systemd/ovos_gui.container
-
-OVOS_CONTAINERS_POST_INSTALL_TARGET_HOOKS += OVOS_CONTAINERS_INSTALL_GUI_SERVICES
-endef
 endif
 
 define OVOS_CONTAINERS_BUILD_CMDS

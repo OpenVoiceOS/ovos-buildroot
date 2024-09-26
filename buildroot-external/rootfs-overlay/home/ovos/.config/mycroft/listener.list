@@ -1,0 +1,9 @@
+ovos-backend-client>=0.1.0,<2.0.0
+ovos-stt-plugin-server>=0.0.3,<1.0.0
+ovos-stt-plugin-chromium>=0.0.1,<1.0.0
+ovos-stt-plugin-vosk>=0.0.1,<1.0.0
+ovos-vad-plugin-noise>=0.1.0,<1.0.0
+ovos-microphone-plugin-alsa>=0.0.0,<1.0.0
+ovos-microphone-plugin-sounddevice>=0.0.0,<1.0.0
+ovos-ww-plugin-precise-lite>=0.1,<1.0.0
+ovos-ww-plugin-vosk>=0.1,<1.0.0

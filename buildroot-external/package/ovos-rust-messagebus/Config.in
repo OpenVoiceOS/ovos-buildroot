@@ -1,0 +1,9 @@
+config BR2_PACKAGE_OVOS_RUST_MESSAGEBUS
+	bool "ovos-rust-messagebus"
+	depends on BR2_PACKAGE_HOST_RUSTC_TARGET_ARCH_SUPPORTS
+	select BR2_PACKAGE_HOST_CARGO
+        help
+	  This is a Rust implementation of the OpenVoiceOS (OVOS) 
+	  messagebus, providing a fast and efficient communication 
+	  backbone for OVOS components. Think of it as the "nervous system" 
+	  of the OVOS platform.

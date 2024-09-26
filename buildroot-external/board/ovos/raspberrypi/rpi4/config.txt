@@ -30,7 +30,7 @@ display_auto_detect=1
 
 # Enable DRM VC4 V3D driver and setup the mode
 # dtoverlay=vc4-fkms-v3d,cma-384
-dtoverlay=vc4-kms-v3d-pi4
+dtoverlay=vc4-kms-v3d,cma-256
 # hdmi_drive=2
 # hdmi_group=2
 # hdmi_mode=14
@@ -40,7 +40,7 @@ max_framebuffers=2
 
 # How much memory in MB to assign to the GPU on Pi models having
 # 256, 512 or 1024 MB total memory
-gpu_mem=256
+#gpu_mem=256
 
 # fixes rpi (3B, 3B+, 3A+, 4B and Zero W) ttyAMA0 serial console
 dtoverlay=miniuart-bt
