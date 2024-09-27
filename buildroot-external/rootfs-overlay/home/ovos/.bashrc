@@ -7,8 +7,7 @@ alias ovos-config='podman exec --interactive --tty ovos-cli ovos-config'
 alias ovos-speak='podman exec --interactive --tty ovos-cli ovos-speak'
 alias ovos-listen='podman exec --interactive --tty ovos-cli ovos-listen'
 alias ovos-say-to='podman exec --interactive --tty ovos-cli ovos-say-to'
-alias ovos-log-watch='journalctl --user-unit=ovos_* -f'
-alias mana='podman exec --interactive --tty ovos-cli mana'
+alias ovos-log-watch='journalctl --user-unit=ovos-* -f'
 
 ######################################################################
 # Initialize OpenVoiceOS CLI Environment

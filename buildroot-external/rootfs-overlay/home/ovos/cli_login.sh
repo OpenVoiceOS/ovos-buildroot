@@ -20,5 +20,3 @@ echo "  ovos-listen           Start listening for commands               "
 echo "  ovos-say-to <phrase>  Directly give a written command to ovos    "
 echo "  ovos-log-watch        Watch ovos log files live                  "
 echo
-echo "  mana                  Messagebus Application from Neon Ai        "
-echo
