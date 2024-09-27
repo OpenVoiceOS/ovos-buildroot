@@ -14,7 +14,7 @@ Wants=ovos-phal.service
 
 [Container]
 ContainerName=ovos-listener-dinkum
-Image=docker.io/smartgic/ovos-listener-dinkum:0.1.0
+Image=docker.io/smartgic/ovos-listener-dinkum:0.0.8a
 Pull=never
 #Notify=healthy
 AutoUpdate=registry

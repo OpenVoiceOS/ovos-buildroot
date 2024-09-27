@@ -10,7 +10,7 @@ Wants=ovos-bus-server.service
 
 [Container]
 ContainerName=ovos-gui-websocket
-Image=docker.io/smartgic/ovos-gui-websocket:0.1.0
+Image=docker.io/smartgic/ovos-gui-websocket:0.0.8a
 Pull=never
 #Notify=healthy
 AutoUpdate=registry

@@ -14,7 +14,7 @@ Wants=ovos-phal.service
 
 [Container]
 ContainerName=ovos-audio
-Image=docker.io/smartgic/ovos-audio:0.1.0
+Image=docker.io/smartgic/ovos-audio:0.0.8a
 Pull=never
 #Notify=healthy
 AutoUpdate=registry
