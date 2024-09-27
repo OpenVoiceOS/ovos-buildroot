@@ -33,6 +33,8 @@ SUBSYSTEM=="mem", KERNEL=="mem|kmem|port", GROUP="kmem", MODE="0640"
 SUBSYSTEM=="input", GROUP="input", MODE="0666"
 SUBSYSTEM=="input", KERNEL=="js[0-9]*", MODE="0664"
 
+SUBSYSTEM=="misc", KERNEL=="uinput", MODE="0660", GROUP="input"
+
 SUBSYSTEM=="video4linux", GROUP="video"
 SUBSYSTEM=="graphics", GROUP="video"
 SUBSYSTEM=="drm", KERNEL!="renderD*", GROUP="video", MODE="0666"
