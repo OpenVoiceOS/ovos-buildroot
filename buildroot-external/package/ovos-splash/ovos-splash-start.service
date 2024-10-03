@@ -1,7 +1,7 @@
 [Unit]
 Description=Starts OVOS splash boot screen
-Requires=dev-fb0.device
-After=dev-fb0.device
+Requires=sys-devices-platform-gpu-graphics-fb0.device
+After=sys-devices-platform-gpu-graphics-fb0.device
 DefaultDependencies=no
 RequiresMountsFor=/run
 
