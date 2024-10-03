@@ -12,7 +12,7 @@ Wants=ovos-bus-server.service
 
 [Container]
 ContainerName=ovos-phal
-Image=docker.io/smartgic/ovos-phal:0.0.8a
+Image=docker.io/smartgic/ovos-phal:0.1.0
 Pull=never
 #Notify=healthy
 AutoUpdate=registry
@@ -27,7 +27,7 @@ SecurityLabelDisable=true
 AddCapability=all
 AddDevice=-/dev/snd
 Volume=%h/.config/mycroft:/home/ovos/.config/mycroft
-Volume=%h/.local/state/mycroft:/home/ovos/.local/state/mycroft
+Volume=%h/.local/state/mycroft:/home/ovos/.local/state
 Volume=%h/ovos/tmp:/tmp:z,U
 Volume=/run/dbus:/run/dbus
 Volume=/run/udev:/run/udev:ro

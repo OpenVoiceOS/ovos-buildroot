@@ -15,7 +15,7 @@ Description=OpenVoiceOS GUI Service
 
 [Container]
 ContainerName=ovos-gui-shell
-Image=docker.io/smartgic/ovos-gui-shell:0.0.8a
+Image=docker.io/smartgic/ovos-gui-shell:0.1.0
 Pull=never
 AutoUpdate=registry
 LogDriver=journald
@@ -28,7 +28,7 @@ AddDevice=-/dev/snd
 AddDevice=-/dev/dri
 AddDevice=-/dev/input
 Volume=%h/.config/mycroft:/home/ovos/.config/mycroft
-Volume=%h/.local/state/mycroft:/home/ovos/.local/state/mycroft
+Volume=%h/.local/state/mycroft:/home/ovos/.local/state
 Volume=%h/.local/share/mycroft:/home/ovos/.local/share/mycroft
 Volume=%h/.cache:/home/ovos/.cache
 Volume=%h/ovos/tmp:/tmp:z,U

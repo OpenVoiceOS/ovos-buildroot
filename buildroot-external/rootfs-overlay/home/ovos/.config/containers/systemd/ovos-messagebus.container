@@ -6,7 +6,7 @@ Wants=network-online.target
 
 [Container]
 ContainerName=ovos-messagebus
-Image=docker.io/smartgic/ovos-messagebus:0.0.8a
+Image=docker.io/smartgic/ovos-messagebus:0.1.0
 Pull=never
 AutoUpdate=registry
 LogDriver=journald
@@ -16,7 +16,7 @@ Timezone=local
 UserNS=keep-id:uid=%U,gid=%G
 EnvironmentFile=%h/.config/containers/env
 Volume=%h/.config/mycroft:/home/ovos/.config/mycroft
-Volume=%h/.local/state/mycroft:/home/ovos/.local/state/mycroft
+Volume=%h/.local/state/mycroft:/home/ovos/.local/state
 Volume=%h/ovos/tmp:/tmp:z,U
 Volume=%h/.cache:/home/ovos/.cache
 Volume=ovos_venv_messagebus:/home/ovos/.venv:z,U

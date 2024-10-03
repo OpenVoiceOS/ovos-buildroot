@@ -14,7 +14,7 @@ Wants=ovos-phal.service
 
 [Container]
 ContainerName=ovos-core
-Image=docker.io/smartgic/ovos-core:0.0.8a
+Image=docker.io/smartgic/ovos-core:0.1.0
 Pull=never
 #Notify=healthy
 AutoUpdate=registry
@@ -25,7 +25,7 @@ Timezone=local
 UserNS=keep-id:uid=%U,gid=%G
 EnvironmentFile=%h/.config/containers/env
 Volume=%h/.config/mycroft:/home/ovos/.config/mycroft
-Volume=%h/.local/state/mycroft:/home/ovos/.local/state/mycroft
+Volume=%h/.local/state/mycroft:/home/ovos/.local/state
 Volume=%h/.local/share/mycroft:/home/ovos/.local/share/mycroft
 Volume=%h/.cache:/home/ovos/.cache
 Volume=%h/ovos/tmp:/tmp:z,U
