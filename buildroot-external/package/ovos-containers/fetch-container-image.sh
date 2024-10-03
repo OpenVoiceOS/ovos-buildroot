@@ -10,7 +10,7 @@ image="$2"
 dl_dir="$3"
 dst_dir="$4"
 image_name="docker.io/smartgic/${image}"
-full_image_name="${image_name}:0.0.8a"
+full_image_name="${image_name}:0.1.0"
 
 # Fetch image digest
 image_digest=$(skopeo --override-arch "${arch}" inspect --retry-times=5 "docker://${full_image_name}" | jq -r '.Digest')
