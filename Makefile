@@ -23,10 +23,12 @@ $(TARGETS_CONFIG): %-config:
 $(TARGETS): %: $(RELEASE_DIR) %-config
 	@echo "build $@"
 	$(MAKE) -C $(BUILDROOT) BR2_EXTERNAL=../$(BUILDROOT_EXTERNAL) 2>&1 | tee logs/buildroot_$@_output.txt
-	rsync -ah --progress $(BUILDROOT)/output/images/disk.img $(RELEASE_DIR)/OpenVoiceOS_$@_$(BUILDDATE).img
+	#rsync -ah --progress $(BUILDROOT)/output/images/disk.img $(RELEASE_DIR)/OpenVoiceOS_$@_$(BUILDDATE).img
+	#rsync -ah --progress $(BUILDROOT)/output/images/rootfs.swu $(RELEASE_DIR)/OpenVoiceOS_$@_$(BUILDDATE).swu
+	#xz -3 -T0 -v -f $(RELEASE_DIR)/OpenVoiceOS_$@_$(BUILDDATE).img
+	#xz -3 -T0 -v -f $(RELEASE_DIR)/OpenVoiceOS_$@_$(BUILDDATE).swu
+	xz -2 -v -f -T0 -c $(BUILDROOT)/output/images/disk.img > $(RELEASE_DIR)/OpenVoiceOS_$@_$(BUILDDATE).img.xz
 	rsync -ah --progress $(BUILDROOT)/output/images/rootfs.swu $(RELEASE_DIR)/OpenVoiceOS_$@_$(BUILDDATE).swu
-	xz -3 -T0 -v -f $(RELEASE_DIR)/OpenVoiceOS_$@_$(BUILDDATE).img
-	xz -3 -T0 -v -f $(RELEASE_DIR)/OpenVoiceOS_$@_$(BUILDDATE).swu
 	@if [ $@ = "ova_64" ]; then\
 		qemu-img convert -O vdi $(RELEASE_DIR)/OpenVoiceOS_$@_$(BUILDDATE).img $(RELEASE_DIR)/OpenVoiceOS_$@_$(BUILDDATE).vdi;\
 		xz -3 -T0 -v -f -k $(RELEASE_DIR)/OpenVoiceOS_$@_$(BUILDDATE).vdi;\
