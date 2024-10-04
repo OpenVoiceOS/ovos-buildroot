@@ -13,7 +13,7 @@ OVOS_CONTAINERS_SITE_METHOD = local
 
 OVOS_CONTAINERS_IMAGES = ovos-messagebus \
 			 ovos-phal \
-			 ovos-listener-dinkum \
+			 ovos-listener \
 			 ovos-audio \
 			 ovos-core \
 			 ovos-gui-websocket \
