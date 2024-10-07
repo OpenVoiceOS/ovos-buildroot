@@ -16,7 +16,7 @@ Timezone=local
 UserNS=keep-id:uid=%U,gid=%G
 EnvironmentFile=%h/.config/containers/env
 Volume=%h/.config/mycroft:/home/ovos/.config/mycroft
-Volume=%h/.local/state/mycroft:/home/ovos/.local/state
+Volume=%h/.local/state/mycroft:/home/ovos/.local/state/mycroft
 Volume=%h/ovos/tmp:/tmp:z,U
 Volume=%h/.cache:/home/ovos/.cache
 Volume=ovos_venv_messagebus:/home/ovos/.venv:z,U

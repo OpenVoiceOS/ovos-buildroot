@@ -26,7 +26,7 @@ UserNS=keep-id:uid=%U,gid=%G
 EnvironmentFile=%h/.config/containers/env
 AddDevice=/dev/snd
 Volume=%h/.config/mycroft:/home/ovos/.config/mycroft
-Volume=%h/.local/state/mycroft:/home/ovos/.local/state
+Volume=%h/.local/state/mycroft:/home/ovos/.local/state/mycroft
 Volume=%h/.local/share/mycroft:/home/ovos/.local/share/mycroft
 Volume=%h/.cache/mycroft:/home/ovos/.cache
 Volume=%h/ovos/tmp:/tmp:z,U
