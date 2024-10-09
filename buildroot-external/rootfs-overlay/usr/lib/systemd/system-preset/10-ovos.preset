@@ -17,3 +17,4 @@ disable wireplumber.service
 disable btspeaker.service
 disable telnetd.service
 disable network.service
+disable getty@tty1.service

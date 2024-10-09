@@ -1,0 +1,40 @@
+From 969d54be09de0372f97cd9af2b201c6d5bdab42a Mon Sep 17 00:00:00 2001
+From: Daniel Abrecht <public@danielabrecht.ch>
+Date: Sat, 6 Jan 2024 23:48:20 +0000
+Subject: [PATCH] Also search for
+ ucm2/conf.d/[${CardDriver}|${KernelDriver}]/${CardName}.conf
+
+The CardLongName may be derived from various DMI properties of the system, that have little to do with the card itself.
+Sometimes, that may be a good thing, but sometimes, it may contain the completely generic "Unknown-UnknownProduct-",
+see https://gitlab.com/postmarketOS/pmaports/-/issues/1498#note_1716959721 for example. At least for devices using
+device tree and simple-card, the name of the card (CardName), which then comes from the device tree, which can be provided
+by the kernel too, may be a lot more relevant, and does actually identify the device.
+
+Signed-off-by: Daniel Abrecht <public@danielabrecht.ch>
+---
+ ucm2/ucm.conf | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/ucm2/ucm.conf b/ucm2/ucm.conf
+index fb1a0bef..366cc1a1 100644
+--- a/ucm2/ucm.conf
++++ b/ucm2/ucm.conf
+@@ -49,6 +49,7 @@ If.driver {
+ 		# The probed path when hw-card is found:
+ 		#
+ 		#   ucm2/conf.d/[${CardDriver}|${KernelDriver}]/${CardLongName}.conf
++		#   ucm2/conf.d/[${CardDriver}|${KernelDriver}]/${CardName}.conf
+ 		#   ucm2/conf.d/[${CardDriver}|${KernelDriver}]/[${CardDriver}|${KernelDriver}].conf
+ 		#   ucm2/${KernelModule}/${KernelModule}.conf (obsolete)
+ 		#   ucm2/${CardDriver}/${CardLongName}.conf (obsolete)
+@@ -77,6 +78,10 @@ If.driver {
+ 					File "${CardLongName}.conf"
+ 				}
+ 				UseCasePath.confd2 {
++					Directory "conf.d/${var:Driver}"
++					File "${CardName}.conf"
++				}
++				UseCasePath.confd3 {
+ 					Directory "conf.d/${var:Driver}"
+ 					File "${var:Driver}.conf"
+ 				}

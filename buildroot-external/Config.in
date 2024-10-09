@@ -1,4 +1,5 @@
 menu "Additional drivers, libraries and/or applications"
+	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/alsa-ucm-conf/Config.in"
 	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/armnn/Config.in"
 	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/baresip/Config.in"
 	source "$BR2_EXTERNAL_OPENVOICEOS_PATH/package/btspeaker/Config.in"

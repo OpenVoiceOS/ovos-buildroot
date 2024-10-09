@@ -1,0 +1,325 @@
+From 4646199906b21fcf76409d9aaab512153b600cd8 Mon Sep 17 00:00:00 2001
+From: j1nx <p.steenbergen@j1nx.nl>
+Date: Mon, 7 Oct 2024 11:33:57 +0000
+Subject: [PATCH 1/1] Add support for the XMOS VocalFusion 3510-INT soundcard
+
+---
+ arch/arm/boot/dts/overlays/Makefile           |  4 +-
+ arch/arm/boot/dts/overlays/README             |  7 ++
+ arch/arm/boot/dts/overlays/overlay_map.dts    | 10 +++
+ .../dts/overlays/xmos-xvf3510-overlay.dts     | 58 +++++++++++++
+ .../overlays/xmos-xvf3510-rpi5-overlay.dts    | 58 +++++++++++++
+ sound/soc/bcm/Kconfig                         |  6 ++
+ sound/soc/bcm/rpi-simple-soundcard.c          | 83 +++++++++++++++++++
+ 7 files changed, 225 insertions(+), 1 deletion(-)
+ create mode 100644 arch/arm/boot/dts/overlays/xmos-xvf3510-overlay.dts
+ create mode 100644 arch/arm/boot/dts/overlays/xmos-xvf3510-rpi5-overlay.dts
+
+diff --git a/arch/arm/boot/dts/overlays/Makefile b/arch/arm/boot/dts/overlays/Makefile
+index bd16c4a18d9f..7056737fd344 100644
+--- a/arch/arm/boot/dts/overlays/Makefile
++++ b/arch/arm/boot/dts/overlays/Makefile
+@@ -336,7 +336,9 @@ dtbo-$(CONFIG_ARCH_BCM2835) += \
+ 	waveshare-can-fd-hat-mode-a.dtbo \
+ 	waveshare-can-fd-hat-mode-b.dtbo \
+ 	wittypi.dtbo \
+-	wm8960-soundcard.dtbo
++	wm8960-soundcard.dtbo \
++	xmos-xvf3510.dtbo \
++	xmos-xvf3510-rpi5.dtbo
+ 
+ targets += dtbs dtbs_install
+ targets += $(dtbo-y)
+diff --git a/arch/arm/boot/dts/overlays/README b/arch/arm/boot/dts/overlays/README
+index dfd7a44c757d..c7f26a2dbab3 100644
+--- a/arch/arm/boot/dts/overlays/README
++++ b/arch/arm/boot/dts/overlays/README
+@@ -5470,6 +5470,13 @@ Params: alsaname                Changes the card name in ALSA
+         compatible              Changes the codec compatibility
+ 
+ 
++Name:   xmos-xvf3510
++Info:   Overlay for the XMOS VocalFusion 3510-INT soundcard
++        https://www.xmos.com/download/XVF3510-INT-Datasheet(4_1).pdf
++Load:   dtoverlay=xmos-xvf3510
++Params: <None>
++
++
+ Troubleshooting
+ ===============
+ 
+diff --git a/arch/arm/boot/dts/overlays/overlay_map.dts b/arch/arm/boot/dts/overlays/overlay_map.dts
+index 2ddf4c7f4323..df856d049c53 100644
+--- a/arch/arm/boot/dts/overlays/overlay_map.dts
++++ b/arch/arm/boot/dts/overlays/overlay_map.dts
+@@ -511,4 +511,14 @@ w1-gpio-pullup-pi5 {
+ 		bcm2712;
+ 	};
+ 
++	xmos-xvf3510 {
++		bcm2835;
++                bcm2711;
++                bcm2712 = "xmos-xvf3510-pi5";
++	};
++
++	xmos-xvf3510-pi5 {
++		bcm2712;
++	};
++
+ };
+diff --git a/arch/arm/boot/dts/overlays/xmos-xvf3510-overlay.dts b/arch/arm/boot/dts/overlays/xmos-xvf3510-overlay.dts
+new file mode 100644
+index 000000000000..d8be81a90338
+--- /dev/null
++++ b/arch/arm/boot/dts/overlays/xmos-xvf3510-overlay.dts
+@@ -0,0 +1,58 @@
++// Definitions for XMOS VocalFusion 3510-INT
++/dts-v1/;
++/plugin/;
++
++/ {
++	compatible = "brcm,bcm2835";
++
++	fragment@0 {
++		target = <&gpio>;
++		__overlay__ {
++			xvf_clk_pin: xvf_clk_pin {
++				brcm,pins = <4>;
++				brcm,function = <4>;
++			};
++			xvf_ctrl_pins: xvf_ctrl_pins {
++				brcm,pins = <16 27>;
++				brcm,function = <1 1>;
++			};
++		};
++	};
++
++	fragment@1 {
++		target = <&i2s_clk_producer>;
++		__overlay__ {
++			status = "okay";
++		};
++	};
++
++	fragment@2 {
++		target-path = "/";
++		__overlay__ {
++			dummy-codec {
++				#sound-dai-cells = <0>;
++				compatible = "snd-soc-dummy";
++				status = "okay";
++			};
++		};
++	};
++
++	fragment@3 {
++		target = <&sound>;
++		__overlay__ {
++			compatible = "xmos,xmos-xvf3510";
++			i2s-controller = <&i2s_clk_producer>;
++			status = "okay";
++
++			clocks = <&clocks 38>;
++			clock-names = "mclk";
++			clock-frequency = <24576000>;
++                
++			pinctrl-names = "default";
++			pinctrl-0 = <&xvf_clk_pin &xvf_ctrl_pins>;
++
++			pwr-gpio = <&gpio 16 0>;
++			rst-gpio = <&gpio 27 0>;
++		};
++	};
++};
+diff --git a/arch/arm/boot/dts/overlays/xmos-xvf3510-rpi5-overlay.dts b/arch/arm/boot/dts/overlays/xmos-xvf3510-rpi5-overlay.dts
+new file mode 100644
+index 000000000000..e88d07ccd24e
+--- /dev/null
++++ b/arch/arm/boot/dts/overlays/xmos-xvf3510-rpi5-overlay.dts
+@@ -0,0 +1,58 @@
++// Definitions for XMOS VocalFusion 3510-INT
++/dts-v1/;
++/plugin/;
++
++/ {
++	compatible = "brcm,bcm2712";
++
++	fragment@0 {
++		target = <&gpio>;
++		__overlay__ {
++			xvf_clk_pin: xvf_clk_pin {
++				brcm,pins = <4>;
++				brcm,function = <4>;
++			};
++			xvf_ctrl_pins: xvf_ctrl_pins {
++				brcm,pins = <16 27>;
++				brcm,function = <1 1>;
++			};
++		};
++	};
++
++	fragment@1 {
++		target = <&i2s_clk_producer>;
++		__overlay__ {
++			status = "okay";
++		};
++	};
++
++	fragment@2 {
++		target-path = "/";
++		__overlay__ {
++			dummy-codec {
++				#sound-dai-cells = <0>;
++				compatible = "snd-soc-dummy";
++				status = "okay";
++			};
++		};
++	};
++
++	fragment@3 {
++		target = <&sound>;
++		__overlay__ {
++			compatible = "xmos,xmos-xvf3510";
++			i2s-controller = <&i2s_clk_producer>;
++			status = "okay";
++
++			clocks = <&rp1_clocks 33>;
++			clock-names = "mclk";
++			clock-frequency = <24576000>;
++                
++			pinctrl-names = "default";
++			pinctrl-0 = <&xvf_clk_pin &xvf_ctrl_pins>;
++
++			pwr-gpio = <&rp1_gpio 16 0>;
++			rst-gpio = <&rp1_gpio 27 0>;
++		};
++	};
++};
+diff --git a/sound/soc/bcm/Kconfig b/sound/soc/bcm/Kconfig
+index fa50cab51478..c0e393a0d1f8 100644
+--- a/sound/soc/bcm/Kconfig
++++ b/sound/soc/bcm/Kconfig
+@@ -141,6 +141,12 @@ config SND_BCM2708_SOC_RPI_PROTO
+ 	help
+ 	  Say Y or M if you want to add support for Audio Codec Board PROTO (WM8731).
+ 
++config SND_BCM2708_SOC_XMOS_XVF3510
++        tristate "Support for XMOS VocalFusion 3510-INT"
++        select SND_RPI_SIMPLE_SOUNDCARD
++        help
++          Say Y or M if you want to add support for XMOS VocalFusion 3510-INT.
++
+ config SND_BCM2708_SOC_JUSTBOOM_BOTH
+ 	tristate "Support for simultaneous JustBoom Digi and JustBoom DAC"
+ 	select SND_SOC_WM8804
+diff --git a/sound/soc/bcm/rpi-simple-soundcard.c b/sound/soc/bcm/rpi-simple-soundcard.c
+index c8f681cb07ca..17bd6cfc0e01 100644
+--- a/sound/soc/bcm/rpi-simple-soundcard.c
++++ b/sound/soc/bcm/rpi-simple-soundcard.c
+@@ -33,6 +33,7 @@
+ #include <linux/module.h>
+ #include <linux/platform_device.h>
+ #include <linux/gpio/consumer.h>
++#include <linux/clk.h>
+ 
+ #include <sound/core.h>
+ #include <sound/pcm.h>
+@@ -473,6 +474,86 @@ static struct snd_rpi_simple_drvdata drvdata_pifi_mini_210 = {
+ 	.fixed_bclk_ratio = 64,
+ };
+ 
++SND_SOC_DAILINK_DEFS(xmos_xvf3510,
++	DAILINK_COMP_ARRAY(COMP_EMPTY()),
++	DAILINK_COMP_ARRAY(COMP_CODEC("snd-soc-dummy", "snd-soc-dummy-dai")),
++	DAILINK_COMP_ARRAY(COMP_EMPTY()));
++
++static int xmos_xvf3510_init(struct snd_soc_pcm_runtime *rtd)
++{
++	struct snd_soc_dai *codec_dai = asoc_rtd_to_codec(rtd, 0);
++	struct gpio_desc *pwr_gpio, *rst_gpio;
++	struct clk *mclk;
++	int rate, ret;
++
++	codec_dai->driver->capture.channels_max = 2;
++	codec_dai->driver->capture.rates = SNDRV_PCM_RATE_48000;
++
++	// Obtain and configure the master clock
++	mclk = devm_clk_get(snd_rpi_simple.dev, NULL);
++	if (IS_ERR(mclk)) {
++		dev_err(snd_rpi_simple.dev, "Failed to get clock: %ld\n", PTR_ERR(mclk));
++		return PTR_ERR(mclk);
++	}
++
++	// Read clock frequency from the DT
++	ret = of_property_read_u32(snd_rpi_simple.dev->of_node, "clock-frequency", &rate);
++	if (ret) {
++		dev_err(snd_rpi_simple.dev, "Failed to read 'clock-frequency' from device tree: %d\n", ret);
++		return ret;
++	}
++
++	dev_info(snd_rpi_simple.dev, "rate set to: %u Hz\n", rate);
++
++	// Set the clock to the desired frequency
++	ret = clk_set_rate(mclk, rate);
++	if (ret) {
++		dev_err(snd_rpi_simple.dev, "Failed to set clock rate: %d\n", ret);
++		return ret;
++	}
++
++	clk_prepare_enable(mclk);
++	dev_info(snd_rpi_simple.dev, "mclk set to: %lu Hz\n", clk_get_rate(mclk));
++
++	// Configure power and reset GPIOs
++	pwr_gpio = devm_gpiod_get(snd_rpi_simple.dev, "pwr", GPIOD_OUT_HIGH);
++	if (IS_ERR(pwr_gpio)) {
++        	dev_err(snd_rpi_simple.dev, "Failed to get PWR GPIO: %ld\n", PTR_ERR(pwr_gpio));
++        	return PTR_ERR(pwr_gpio);
++	}
++
++	rst_gpio = devm_gpiod_get(snd_rpi_simple.dev, "rst", GPIOD_OUT_HIGH);
++	if (IS_ERR(rst_gpio)) {
++		dev_err(snd_rpi_simple.dev, "Failed to get RST GPIO: %ld\n", PTR_ERR(rst_gpio));
++		return PTR_ERR(rst_gpio);
++	}
++
++	// Initialise the XMOS chip
++	gpiod_set_value(pwr_gpio, 1);
++	gpiod_set_value(rst_gpio, 1);
++
++	pr_info("XMOS VocalFusion 3510-INT soundcard module loaded\n");
++	return 0;
++}
++
++static struct snd_soc_dai_link snd_xmos_xvf3510_dai[] = {
++	{
++		.name           = "XMOS VocalFusion 3510-INT",
++		.stream_name    = "XMOS VocalFusion 3510-INT HiFi",
++		.dai_fmt        = SND_SOC_DAIFMT_I2S |
++					SND_SOC_DAIFMT_NB_NF |
++					SND_SOC_DAIFMT_CBS_CFS,
++		.init           = xmos_xvf3510_init,
++		SND_SOC_DAILINK_REG(xmos_xvf3510),
++	},
++};
++
++static struct snd_rpi_simple_drvdata drvdata_xmos_xvf3510 = {
++	.card_name = "snd_xvf3510",
++	.dai       = snd_xmos_xvf3510_dai,
++	.fixed_bclk_ratio = 64,
++};
++
+ static const struct of_device_id snd_rpi_simple_of_match[] = {
+ 	{ .compatible = "adi,adau1977-adc",
+ 		.data = (void *) &drvdata_adau1977 },
+@@ -497,6 +578,8 @@ static const struct of_device_id snd_rpi_simple_of_match[] = {
+ 		.data = (void *) &drvdata_merus_amp },
+ 	{ .compatible = "pifi,pifi-mini-210",
+ 		.data = (void *) &drvdata_pifi_mini_210 },
++	{ .compatible = "xmos,xmos-xvf3510",
++                .data = (void *) &drvdata_xmos_xvf3510 },
+ 	{},
+ };
+ 
+-- 
+2.34.1
+

@@ -1,0 +1,5 @@
+config BR2_PACKAGE_ALSA_UCM_CONF
+	bool "alsa-ucm-conf"
+	depends on BR2_PACKAGE_ALSA_LIB_UCM
+        help
+	  ALSA Use Case Manager configuration.

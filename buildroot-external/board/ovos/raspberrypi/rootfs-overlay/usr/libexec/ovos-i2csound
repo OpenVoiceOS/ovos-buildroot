@@ -189,14 +189,11 @@ main() {
     if [[ ${detection_results[TAS5806]} == true ]] ; then
         echo "Installing and configuring SJ-201 HAT"
         # Initializing XMOS xvf3510 based SJ-201 HAT
-        if [[ "$board_result" == "RPI5" ]]; then
-            dtoverlay sj201-pi5
-        else
-            dtoverlay sj201
-            echo "Configuring board"
-            sleep 3 # Allow some time to fully initialise the hardware / driver
-        fi
+        dtoverlay xmos-xvf3510
+        echo "Configuring board"
+        sleep 3 # Allow some time to fully initialise the hardware / driver
         xvf3510-flash --direct "/usr/lib/firmware/xvf3510/app_xvf3510_int_spi_boot_v4_2_0.bin"
+        /usr/bin/tas5806-init
 
         if [[ ${detection_results[SJ201LED]} == true ]] ; then
             echo "Found revision-6 SJ-201 board"
