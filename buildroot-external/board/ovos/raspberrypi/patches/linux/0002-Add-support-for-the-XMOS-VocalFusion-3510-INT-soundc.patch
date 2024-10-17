@@ -1,4 +1,4 @@
-From 4646199906b21fcf76409d9aaab512153b600cd8 Mon Sep 17 00:00:00 2001
+From 516d52f57928ec26ef45c49188cb4378347c79c0 Mon Sep 17 00:00:00 2001
 From: j1nx <p.steenbergen@j1nx.nl>
 Date: Mon, 7 Oct 2024 11:33:57 +0000
 Subject: [PATCH 1/1] Add support for the XMOS VocalFusion 3510-INT soundcard
@@ -16,10 +16,10 @@ Subject: [PATCH 1/1] Add support for the XMOS VocalFusion 3510-INT soundcard
  create mode 100644 arch/arm/boot/dts/overlays/xmos-xvf3510-rpi5-overlay.dts
 
 diff --git a/arch/arm/boot/dts/overlays/Makefile b/arch/arm/boot/dts/overlays/Makefile
-index bd16c4a18d9f..7056737fd344 100644
+index b9530c339797..92cd3dc00dc3 100644
 --- a/arch/arm/boot/dts/overlays/Makefile
 +++ b/arch/arm/boot/dts/overlays/Makefile
-@@ -336,7 +336,9 @@ dtbo-$(CONFIG_ARCH_BCM2835) += \
+@@ -337,7 +337,9 @@ dtbo-$(CONFIG_ARCH_BCM2835) += \
  	waveshare-can-fd-hat-mode-a.dtbo \
  	waveshare-can-fd-hat-mode-b.dtbo \
  	wittypi.dtbo \
@@ -31,10 +31,10 @@ index bd16c4a18d9f..7056737fd344 100644
  targets += dtbs dtbs_install
  targets += $(dtbo-y)
 diff --git a/arch/arm/boot/dts/overlays/README b/arch/arm/boot/dts/overlays/README
-index dfd7a44c757d..c7f26a2dbab3 100644
+index 47cea04fea5f..b25f2a040d6e 100644
 --- a/arch/arm/boot/dts/overlays/README
 +++ b/arch/arm/boot/dts/overlays/README
-@@ -5470,6 +5470,13 @@ Params: alsaname                Changes the card name in ALSA
+@@ -5487,6 +5487,13 @@ Params: alsaname                Changes the card name in ALSA
          compatible              Changes the codec compatibility
  
  
