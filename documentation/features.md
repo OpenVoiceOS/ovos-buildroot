@@ -2,7 +2,7 @@
 
 ## Updating the system
 
-The system is using the SWUpdate system to seamlessly update and switch between Slot-A and Slot-B. An firmware update file basically contains a new version of the rootfs but can also include seperate files for either the overlay partion or even to update files wihin the HOME partition/ directory if required.
+The system is using the SWUpdate system to seamlessly update and switch between Slot-A and Slot-B. An firmware update file basically contains a new version of the rootfs but can also include seperate files for either the overlay partion or even to update files within the HOME partition/ directory if required.
 SWupdate files are using the .swu extension (SoftWare Update) and are basically CPIO images that can contain one or multiple rootfs images and/ or files. In addition, it also contain a sw-description file with meta information about the update.
 
 A visual representation of this CPIO image looks like this:
@@ -32,9 +32,9 @@ Updates can be applied by using the following multiple methods:
 - Push/Pull from a fleet management server using Hawkbit. (Planned for stable updates in the future)
 
 
-### Streaminig updates
+### Streaming updates
 
-Because we make use of a mirrored Slot A/B update architecture and therefor it will always be possible to boot into the other Slot and/ or recovery mode, updates are streamingly applied. Therefor no additional free space is required to first upload/download the firmware update image to the device. The update is applied as it is being uploaded/ downloaded.
+Because we make use of a mirrored Slot A/B update architecture and therefore it will always be possible to boot into the other Slot and/ or recovery mode, updates are streamingly applied. Therefore no additional free space is required to first upload/download the firmware update image to the device. The update is applied as it is being uploaded/ downloaded.
 
 ### On-device webbased updates
 
