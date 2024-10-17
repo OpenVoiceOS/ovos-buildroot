@@ -2,14 +2,14 @@
 
 ## Disk image build up
 
-The system uses a so called "Double copy with fall-back" architecture. Also known as "A/B (seamless) system updates". This system guarantess that there is always a working copy even if the softwre update is interrupted or a power off occurs.
+The system uses a so called "Double copy with fall-back" architecture. Also known as "A/B (seamless) system updates". This system guarantees that there is always a working copy even if the software update is interrupted or a power off occurs.
 Each of these A/B copies contains a linux kernel within it's root file system, which is read only and compressed by utilizing squashfs. At current time the rootfs disk usage is ~300MB.
 
 ![Double_copy_layout](./images/Double_copy_layout.png)
 
 A synergy with the boot loader is necessary, because the boot loader must decide which copy should be started. It must be possible to switch between the two copies. After a reboot, the boot loader decides which copy should run.
-A seperate overlay partition for all changeable files is used to make the userspace system read/write. This seperate partition can be overlayed over either active rootfs partitions, being it slot A or slot B. A factory reset can therefor also being easliy obtained by resetting that overlay partition. It will then again start with the files shipped within the read only squashfs partition.
-All docker containers and OVOS framework associated configuration files are stored with the users HOME directory which again is a seperate partition at the end of the disk which is also auto extended over the full size of the disk at boot. This is done based on the availability of free unused disk space at boot. (Any boot, being it the first or any consecutive boot)
+A separate overlay partition for all changeable files is used to make the userspace system read/write. This separate partition can be overlayed over either active rootfs partitions, being it slot A or slot B. A factory reset can therefore also being easily obtained by resetting that overlay partition. It will then again start with the files shipped within the read only squashfs partition.
+All docker containers and OVOS framework associated configuration files are stored with the users HOME directory which again is a separate partition at the end of the disk which is also auto extended over the full size of the disk at boot. This is done based on the availability of free unused disk space at boot. (Any boot, being it the first or any consecutive boot)
 
 ## Partition layout
 
