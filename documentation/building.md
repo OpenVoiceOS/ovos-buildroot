@@ -63,7 +63,7 @@ As example to build the rpi4 version;
 $ make clean
 $ make rpi4_64
 ```
-Building an image on the above stated devlopment machne takes around 3-4 hours. If you have a higher specification build machine, the building time can be as fast (or slow, depending on your point of view) as ~2 hours.
+Building an image on the above stated development machine takes around 3-4 hours. If you have a higher specification build machine, the building time can be as fast (or slow, depending on your point of view) as ~2 hours.
 
 When everything goes fine the following images/files will be available within the ./release directory;
 #### OpenVoiceOS_{CONFIG}_{TIMESTAMP}.img
@@ -71,7 +71,7 @@ This is the raw flashable disk image that can be flashed to your to be used disk
 <br>* At current time this file is about ~1.4GB.
 
 #### OpenVoiceOS_{CONFIG}_{TIMESTAMP}.img.xz
-This is the same raw flashable disk image that can be flashed to your to be used disk (SD-Card, USB-Stick, SSD, SATA, etc), however xz compressed. This save bandwith if it needs to be downloaded and certain disk image utilities such as the Raspberry Pi Disk imager have native support to flash these type of files without uncompressing them first.
+This is the same raw flashable disk image that can be flashed to your to be used disk (SD-Card, USB-Stick, SSD, SATA, etc), however xz compressed. This save bandwidth if it needs to be downloaded and certain disk image utilities such as the Raspberry Pi Disk imager have native support to flash these type of files without uncompressing them first.
 <br>* At current time this file is about ~450MB.
 
 #### OpenVoiceOS_{CONFIG}_{TIMESTAMP}.swu
