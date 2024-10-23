@@ -1,4 +1,4 @@
-From 0e8201a532a1cc7fa89974e27294351f8dfab7fc Mon Sep 17 00:00:00 2001
+From a69041cfea612c0db434e2df6ec3dda2cfddc3f8 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Ma=C3=ADra=20Canal?= <mcanal@igalia.com>
 Date: Fri, 17 May 2024 11:40:23 -0300
 Subject: [PATCH 1/7] numa: Add simple generic NUMA emulation
@@ -193,7 +193,7 @@ index 0000000000000..62b38215a2f00
 +}
 +#endif /* CONFIG_NUMA_EMU */
 
-From 5694c7bffc6184d7e72f9b34976d75f8e9bc0eca Mon Sep 17 00:00:00 2001
+From a39545f2be3992471c74ddc8a210c605f9c63d9d Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Ma=C3=ADra=20Canal?= <mcanal@igalia.com>
 Date: Fri, 17 May 2024 11:40:34 -0300
 Subject: [PATCH 2/7] arm64/numa: Add NUMA emulation for ARM64
@@ -214,10 +214,10 @@ Cc: “Rafael J. Wysocki" <rafael@kernel.org>
  1 file changed, 10 insertions(+)
 
 diff --git a/arch/arm64/Kconfig b/arch/arm64/Kconfig
-index c9691b0c0f29a..8d63a70f57c77 100644
+index 6d05b69f2318b..103200d8c542d 100644
 --- a/arch/arm64/Kconfig
 +++ b/arch/arm64/Kconfig
-@@ -1461,6 +1461,16 @@ config NODES_SHIFT
+@@ -1499,6 +1499,16 @@ config NODES_SHIFT
  	  Specify the maximum number of NUMA Nodes available on the target
  	  system.  Increases memory reserved to accommodate various tables.
  
@@ -235,7 +235,7 @@ index c9691b0c0f29a..8d63a70f57c77 100644
  
  config ARCH_SPARSEMEM_ENABLE
 
-From bc6a552169ea72495452409b227301671c78e267 Mon Sep 17 00:00:00 2001
+From 976b92ae3b7d8f134c94ed3739379b0f25c3a84b Mon Sep 17 00:00:00 2001
 From: Tvrtko Ursulin <tvrtko.ursulin@igalia.com>
 Date: Wed, 22 May 2024 17:12:16 +0100
 Subject: [PATCH 3/7] mm/numa: Allow override of kernel's default NUMA policy
@@ -258,7 +258,7 @@ Signed-off-by: Tvrtko Ursulin <tvrtko.ursulin@igalia.com>
  1 file changed, 42 insertions(+), 7 deletions(-)
 
 diff --git a/mm/mempolicy.c b/mm/mempolicy.c
-index e52e3a0b8f2e6..15bd6d5edd79a 100644
+index 4cae854c0f28d..fb63b8548ae84 100644
 --- a/mm/mempolicy.c
 +++ b/mm/mempolicy.c
 @@ -2974,7 +2974,9 @@ void __init numa_policy_init(void)
@@ -352,7 +352,7 @@ index e52e3a0b8f2e6..15bd6d5edd79a 100644
  /**
   * mpol_to_str - format a mempolicy structure for printing
 
-From 45539b4b21cc01fce4ddceda26d255f774f2a98e Mon Sep 17 00:00:00 2001
+From 19adc602017aa88be7f43f17c2515eba9ebaf942 Mon Sep 17 00:00:00 2001
 From: Tvrtko Ursulin <tvrtko.ursulin@igalia.com>
 Date: Wed, 17 Jul 2024 09:33:21 +0100
 Subject: [PATCH 4/7] dma-buf: system_heap: Allow specifying maximum allocation
@@ -401,53 +401,7 @@ index 9076d47ed2ef4..9dc5dfeaca2a7 100644
  }
  module_init(system_heap_create);
 
-From f4d5eba3ee53bce68a6051c197802d5e0ad4b563 Mon Sep 17 00:00:00 2001
-From: Dom Cobley <popcornmix@gmail.com>
-Date: Tue, 7 May 2024 19:14:56 +0100
-Subject: [PATCH 5/7] config: bcm2711_defconfig/bcm2712_defconfig: Enable NUMA
-
-Signed-off-by: Dom Cobley <popcornmix@gmail.com>
----
- arch/arm64/configs/bcm2711_defconfig | 2 ++
- arch/arm64/configs/bcm2712_defconfig | 2 ++
- 2 files changed, 4 insertions(+)
-
-diff --git a/arch/arm64/configs/bcm2711_defconfig b/arch/arm64/configs/bcm2711_defconfig
-index f2e5dca7866d3..0e06b79151063 100644
---- a/arch/arm64/configs/bcm2711_defconfig
-+++ b/arch/arm64/configs/bcm2711_defconfig
-@@ -41,6 +41,7 @@ CONFIG_ARCH_BRCMSTB=y
- # CONFIG_CAVIUM_ERRATUM_22375 is not set
- # CONFIG_CAVIUM_ERRATUM_23154 is not set
- # CONFIG_CAVIUM_ERRATUM_27456 is not set
-+CONFIG_NUMA=y
- CONFIG_COMPAT=y
- CONFIG_ARMV8_DEPRECATED=y
- CONFIG_SWP_EMULATION=y
-@@ -1678,3 +1679,4 @@ CONFIG_SCHED_TRACER=y
- CONFIG_BLK_DEV_IO_TRACE=y
- # CONFIG_UPROBE_EVENTS is not set
- # CONFIG_STRICT_DEVMEM is not set
-+CONFIG_NUMA_EMULATION=y
-diff --git a/arch/arm64/configs/bcm2712_defconfig b/arch/arm64/configs/bcm2712_defconfig
-index bdaf3190f9b32..c0d19316844ce 100644
---- a/arch/arm64/configs/bcm2712_defconfig
-+++ b/arch/arm64/configs/bcm2712_defconfig
-@@ -42,6 +42,7 @@ CONFIG_ARCH_BRCMSTB=y
- # CONFIG_CAVIUM_ERRATUM_23154 is not set
- # CONFIG_CAVIUM_ERRATUM_27456 is not set
- CONFIG_ARM64_16K_PAGES=y
-+CONFIG_NUMA=y
- CONFIG_COMPAT=y
- CONFIG_ARMV8_DEPRECATED=y
- CONFIG_SWP_EMULATION=y
-@@ -1681,3 +1682,4 @@ CONFIG_SCHED_TRACER=y
- CONFIG_BLK_DEV_IO_TRACE=y
- # CONFIG_UPROBE_EVENTS is not set
- # CONFIG_STRICT_DEVMEM is not set
-+CONFIG_NUMA_EMULATION=y
-
-From cc081f92d5831ba494d19327dd1ac70d7fa68c24 Mon Sep 17 00:00:00 2001
+From 933b9fccb049caae1d53a8e4dc42b225524c480e Mon Sep 17 00:00:00 2001
 From: Phil Elwell <phil@raspberrypi.com>
 Date: Tue, 23 Jul 2024 15:55:54 +0100
 Subject: [PATCH 6/7] dts: Move some common rpi settings into rpi files
@@ -509,10 +463,10 @@ index b264daee2703d..f134343029b61 100644
  
  	__overrides__ {
 diff --git a/arch/arm64/boot/dts/broadcom/bcm2712-rpi-5-b.dts b/arch/arm64/boot/dts/broadcom/bcm2712-rpi-5-b.dts
-index 57ee497628646..672744eb89e15 100644
+index 52b58acdb95ca..e2c9e1e28444a 100644
 --- a/arch/arm64/boot/dts/broadcom/bcm2712-rpi-5-b.dts
 +++ b/arch/arm64/boot/dts/broadcom/bcm2712-rpi-5-b.dts
-@@ -429,11 +429,6 @@ dpi_16bit_gpio2:        &rp1_dpi_16bit_gpio2        { };
+@@ -430,11 +430,6 @@ dpi_16bit_gpio2:        &rp1_dpi_16bit_gpio2        { };
  };
  
  / {
@@ -541,7 +495,7 @@ index bff6dd0eca638..1bbf8e76fb869 100644
  		status = "disabled";
  		compatible = "pwm-fan";
 diff --git a/arch/arm64/boot/dts/broadcom/bcm2712-rpi.dtsi b/arch/arm64/boot/dts/broadcom/bcm2712-rpi.dtsi
-index 664b632372446..8e2bb21b74c29 100644
+index ca9833da402db..8241ed5d77e63 100644
 --- a/arch/arm64/boot/dts/broadcom/bcm2712-rpi.dtsi
 +++ b/arch/arm64/boot/dts/broadcom/bcm2712-rpi.dtsi
 @@ -98,6 +98,11 @@
@@ -557,7 +511,7 @@ index 664b632372446..8e2bb21b74c29 100644
  		blconfig = &blconfig;
  		blpubkey = &blpubkey;
 
-From 1bc94ce720d54f970f43993f2582fb8564a264b3 Mon Sep 17 00:00:00 2001
+From e87a8694aa8d0db63b4951bd76ae97b3cea75828 Mon Sep 17 00:00:00 2001
 From: Dom Cobley <popcornmix@gmail.com>
 Date: Thu, 18 Jul 2024 20:22:18 +0100
 Subject: [PATCH 7/7] dts: Set preferred numa options in bootargs
@@ -596,7 +550,7 @@ index f134343029b61..1b8e9e5e324d0 100644
  
  	__overrides__ {
 diff --git a/arch/arm64/boot/dts/broadcom/bcm2712-rpi.dtsi b/arch/arm64/boot/dts/broadcom/bcm2712-rpi.dtsi
-index 8e2bb21b74c29..777a1e5bda777 100644
+index 8241ed5d77e63..2aa9e9a1d11f6 100644
 --- a/arch/arm64/boot/dts/broadcom/bcm2712-rpi.dtsi
 +++ b/arch/arm64/boot/dts/broadcom/bcm2712-rpi.dtsi
 @@ -99,7 +99,7 @@
