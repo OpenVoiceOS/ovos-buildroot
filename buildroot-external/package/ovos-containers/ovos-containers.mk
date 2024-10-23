@@ -15,7 +15,7 @@ OVOS_CONTAINERS_IMAGES = ovos-messagebus \
 			 ovos-phal \
 			 ovos-listener \
 			 ovos-audio \
-			 ovos-core \
+			 ovos-core-buildroot \
 			 ovos-gui-websocket \
 			 ovos-cli
 
