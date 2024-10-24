@@ -14,7 +14,7 @@ Wants=ovos-phal.service
 
 [Container]
 ContainerName=ovos-core
-Image=docker.io/smartgic/ovos-core:0.1.0
+Image=docker.io/smartgic/ovos-core-buildroot:0.1.0
 Pull=never
 #Notify=healthy
 AutoUpdate=registry

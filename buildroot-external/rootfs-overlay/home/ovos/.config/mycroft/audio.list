@@ -1,6 +1,0 @@
-ovos-tts-plugin-server>=0.0.2, <1.0.0
-ovos_audio_plugin_simple>=0.1.0, <1.0.0
-ovos-audio-plugin-mpv>=0.0.1, <1.0.0
-ovos-media-plugin-spotify>=0.2.3, <1.0.0
-ovos-media-plugin-chromecast>=0.1.0, <1.0.0
-ovos_plugin_common_play[extractors]>=0.0.7, <2.0.0
