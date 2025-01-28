@@ -71,3 +71,5 @@ dtparam=spi=on
 
 # Enable boost from 1.5Ghz to 1.8Ghz on compatible models
 arm_boost=1
+
+enable_uart=1

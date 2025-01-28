@@ -4,7 +4,7 @@
 #
 ################################################################################
 
-ALSA_UCM_CONF_VERSION = 1.2.12
+ALSA_UCM_CONF_VERSION = 1.2.13
 ALSA_UCM_CONF_SITE = $(call github,alsa-project,alsa-ucm-conf,v$(ALSA_UCM_CONF_VERSION))
 ALSA_UCM_CONF_DEPENDENCIES = alsa-lib
 

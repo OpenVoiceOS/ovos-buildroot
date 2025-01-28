@@ -103,7 +103,8 @@ main() {
     local home_mount_point="${BINARIES_DIR}/home"
     mkdir -p "${home_mount_point}"
     sudo mount -o loop,discard "${home_img}" "${home_mount_point}"
-    sudo rsync -avPHSX "${TARGET_DIR}/home/"* "${home_mount_point}/"
+    #sudo rsync -avPHSX "${TARGET_DIR}/home/"* "${home_mount_point}/"
+    sudo rsync -avPSX "${TARGET_DIR}/home/"* "${home_mount_point}/"
     sudo umount "${home_img}"
 }
 

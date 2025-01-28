@@ -4,7 +4,7 @@
 #
 ################################################################################
 
-NCPAMIXER_VERSION = a273d233437caa31348fe3ffd8cfdd7c3d3d27c7
+NCPAMIXER_VERSION = 400d90e545fb3c139b83b41915bd2d458b92daf8
 NCPAMIXER_SITE = $(call github,fulhax,ncpamixer,$(NCPAMIXER_VERSION))
 NCPAMIXER_SUBDIR = src
 NCPAMIXER_LICENSE = MIT

@@ -4,7 +4,7 @@
 #
 ################################################################################
 
-OVOS_RUST_MESSAGEBUS_VERSION = 0.3.1
+OVOS_RUST_MESSAGEBUS_VERSION = 1.1.0
 OVOS_RUST_MESSAGEBUS_SITE = $(call github,OscillateLabsLLC,ovos-rust-messagebus,v$(OVOS_RUST_MESSAGEBUS_VERSION))
 OVOS_RUST_MESSAGEBUS_DEPENDENCIES = host-rustc host-pkgconf
 
