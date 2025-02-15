@@ -1,6 +1,0 @@
-config BR2_PACKAGE_PSIMD
-	bool "psimd"
-	help
-	  Portable 128-bit SIMD intrinsics
-
-	  https://github.com/Maratyszcza/psimd/
