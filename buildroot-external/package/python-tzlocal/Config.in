@@ -1,7 +1,0 @@
-config BR2_PACKAGE_PYTHON_TZLOCAL
-	bool "python-tzlocal"
-	help
-	  This Python module returns a tzinfo object 
-	  with the local timezone information
-
-	  https://github.com/regebro/tzlocal
