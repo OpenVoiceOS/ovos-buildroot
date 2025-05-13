@@ -97,7 +97,7 @@ main() {
     local home_img="${BINARIES_DIR}/homefs.ext4"
     echo "Preparing home data at ${home_img}"
     rm -f "${home_img}"
-    truncate --size="6890M" "${home_img}"
+    truncate --size="256M" "${home_img}"
     mkfs.ext4 -L "homefs" -E lazy_itable_init=0,lazy_journal_init=0 "${home_img}"
 
     local home_mount_point="${BINARIES_DIR}/home"
