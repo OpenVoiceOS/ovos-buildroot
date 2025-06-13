@@ -30,7 +30,7 @@ display_auto_detect=1
 
 # Enable DRM VC4 V3D driver and setup the mode
 # dtoverlay=vc4-fkms-v3d,cma-384
-dtoverlay=vc4-kms-v3d,cma-256
+dtoverlay=vc4-kms-v3d
 # hdmi_drive=2
 # hdmi_group=2
 # hdmi_mode=14
@@ -57,7 +57,7 @@ dtparam=random=on
 # Enable camera driver
 # dtoverlay=imx219
 # dtoverlay=ov5647
-# camera_auto_detect=1
+camera_auto_detect=1
 
 # Disable rainbow color splash
 disable_splash=1
@@ -71,5 +71,3 @@ dtparam=spi=on
 
 # Enable boost from 1.5Ghz to 1.8Ghz on compatible models
 arm_boost=1
-
-enable_uart=1

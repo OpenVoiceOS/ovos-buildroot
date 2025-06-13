@@ -48,8 +48,11 @@ copy_board_specific_files() {
             cp -f "${BOARD_DIR}/../cmdline.txt" "${BINARIES_DIR}/cmdline.txt"
             cp -f "${BOARD_DIR}/config.txt" "${BINARIES_DIR}/config.txt"
             cp -rf "${BOARD_DIR}/uefi" "${BINARIES_DIR}/"
-            cp -f "${BOARD_DIR}/../grub-efi.cfg" "${BINARIES_DIR}/efi-part/EFI/BOOT/grub.cfg"
-            cp -f "${BOARD_DIR}/sw-description" "${BINARIES_DIR}"
+            #mkdir -p "${BINARIES_DIR}/xbootldr-part/loader/entries/buildroot"
+            mkdir -p "${BINARIES_DIR}/efi-part/loader/entries/buildroot"
+            cp -f "${BOARD_DIR}/../buildroot.conf" "${BINARIES_DIR}/efi-part/loader/entries/buildroot.conf"
+            cp -f "${BINARIES_DIR}/Image" "${BINARIES_DIR}/efi-part/loader/entries/buildroot/"
+            #cp -f "${BINARIES_DIR}/rootfs.cpio" "${BINARIES_DIR}/efi-part/loader/entries/buildroot/Initrd"
             ;;
         "ova"|"pc")
             cp -f "${BOARD_DIR}/grub-efi.cfg" "${BINARIES_DIR}/efi-part/EFI/BOOT/grub.cfg"
@@ -66,7 +69,7 @@ copy_board_specific_files() {
 handle_kernel_renaming() {
     case "${BOARD_TYPE}" in
         "rpi3"|"rpi4"|"rpi5")
-            grub-editenv "${BINARIES_DIR}/efi-part/EFI/BOOT/grub.env" create
+            #grub-editenv "${BINARIES_DIR}/efi-part/EFI/BOOT/grub.env" create
             #if [ -f "${TARGET_DIR}/boot/Image" ]; then
             #    echo "Found Image, symlinking to kernel"
             #    # rm -f "${TARGET_DIR}/boot/kernel"
@@ -91,7 +94,7 @@ main() {
     write_os_release
     write_machine_info
     copy_board_specific_files
-    handle_kernel_renaming
+    #handle_kernel_renaming
 
     # Prepare and sync home data
     local home_img="${BINARIES_DIR}/homefs.ext4"

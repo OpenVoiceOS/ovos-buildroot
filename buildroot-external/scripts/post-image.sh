@@ -8,19 +8,6 @@ BOARD_TYPE="$(basename "${BOARD_DIR}")"
 GENIMAGE_CFG="${BOARD_DIR}/genimage-${BOARD_TYPE}.cfg"
 GENIMAGE_TMP="${BUILD_DIR}/genimage.tmp"
 
-# Define files for SWUPDATE
-SWUPDATE_FILES=("sw-description" "rootfs.erofs")
-
-# Function to create SWU file
-create_swu_file() {
-    local binaries_dir=$1
-    local files=("${@:2}")
-
-    pushd "${binaries_dir}" > /dev/null
-    printf '%s\n' "${files[@]}" | cpio -ov -H crc > rootfs.swu
-    popd > /dev/null
-}
-
 # Clean up function for EXIT trap
 cleanup() {
     echo "Cleaning up temporary files."
@@ -47,9 +34,6 @@ main() {
         exit 1
     fi
 
-    # Create SWU file
-    echo "Creating SWU file..."
-    create_swu_file "${BINARIES_DIR}" "${SWUPDATE_FILES[@]}"
 }
 
 # Setting up trap for cleanup on script exit
