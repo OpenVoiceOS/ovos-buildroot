@@ -1,4 +1,4 @@
 [Image]
-Image=docker.io/smartgic/ovos-gui-websocket:0.0.8a
+Image=docker.io/smartgic/ovos-gui-websocket:0.1.0
 ImageTag=ovos-gui-websocket
 #TLSVerify=false
